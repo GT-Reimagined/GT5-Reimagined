@@ -47,7 +47,7 @@ import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
-public class Machines {
+public class MachineRecipes {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
         addBasicMachineRecipes(output, provider);
         addHatchRecipes(output, provider);

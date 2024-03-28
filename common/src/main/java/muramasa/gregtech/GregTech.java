@@ -92,7 +92,7 @@ public class GregTech extends AntimatterMod {
         event.addLoader(Smelting::loadRecipes);
         event.addLoader(WireCablesPlates::loadRecipes);
         event.addLoader(VanillaExtensions::loadRecipes);
-        event.addLoader(muramasa.gregtech.loader.crafting.Machines::loadRecipes);
+        event.addLoader(MachineRecipes::loadRecipes);
         event.addLoader(SteamMachines::loadRecipes);
         event.addLoader(BlockParts::loadRecipes);
         event.addLoader(Parts::loadRecipes);
