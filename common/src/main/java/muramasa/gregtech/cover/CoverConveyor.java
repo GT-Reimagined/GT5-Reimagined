@@ -85,7 +85,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
-        if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
+        if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport() && canMove(side)) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
             ItemStack stack = TesseractCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
