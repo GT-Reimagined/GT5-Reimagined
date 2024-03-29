@@ -4,6 +4,7 @@ package muramasa.gregtech.datagen;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
@@ -13,7 +14,12 @@ import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
 
+import java.util.Locale;
+
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.util.Utils.*;
+import static muramasa.gregtech.data.Machines.*;
+import static muramasa.gregtech.data.Machines.LARGE_BOILER;
 
 public class GregTechLocalizations {
 
@@ -151,15 +157,19 @@ public class GregTechLocalizations {
                 override("item.antimatter_shared.liquid_" + s + "_bucket", Utils.lowerUnderscoreToUpperSpaced(s) + " Bucket");
             }
 //            AntimatterAPI.all(ItemPowerUnit.class, domain).stream().filter(i -> i.getId().startsWith("power_unit") || i.getId().startsWith("small_power_unit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())));
-            override("machine.large_turbine.hv", "Large Steam Turbine");
-            override("machine.large_turbine.ev", "Large Gas Turbine");
-            override("machine.large_turbine.iv", "Large HP Steam Turbine");
-            override("machine.large_boiler.lv", "Large Bronze Boiler");
-            override("machine.large_boiler.mv", "Large Steel Boiler");
-            override("machine.large_boiler.hv", "Large HP Titanium Boiler");
-            override("machine.large_boiler.ev", "Large HP Tungstensteel Boiler");
+            override(LARGE_TURBINE, HV, "Large Steam Turbine");
+            override(LARGE_TURBINE, EV, "Large Gas Turbine");
+            override(LARGE_TURBINE, IV, "Large HP Steam Turbine");
+            override(LARGE_BOILER, LV, "Large Bronze Boiler");
+            override(LARGE_BOILER, MV, "Large Steel Boiler");
+            override(LARGE_BOILER, HV, "Large HP Titanium Boiler");
+            override(LARGE_BOILER, EV, "Large HP Tungstensteel Boiler");
             override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
             add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
+            override("machine.hull", "%s " + HULL.getLang(locale));
+            HULL.getTiers().forEach(tier -> {
+                override(HULL, tier, tier.getId().toUpperCase() + " " + HULL.getLang(locale));
+            });
         }
     }
 
