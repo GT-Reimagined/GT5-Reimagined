@@ -11,6 +11,15 @@ import net.minecraft.resources.ResourceLocation;
 
 public class Textures {
 
+    public static final IOverlayTexturer EMPTY_HANDLER = (type, state, tier, i) -> new Texture[] {
+        new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+                new Texture(GTIRef.ID, "block/machine/empty"),
+    };
+
     public static final ITextureHandler BOILER_HANDLER = (m, t, s) -> new Texture[] {
         new Texture(GTIRef.ID, "block/machine/base/brick"),
         new Texture(GTIRef.ID, "block/machine/base/" + t.getId()),

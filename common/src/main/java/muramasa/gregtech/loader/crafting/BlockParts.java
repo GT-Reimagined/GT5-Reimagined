@@ -34,6 +34,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.gregtech.data.Machines.HULL;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
 
@@ -257,7 +258,7 @@ public class BlockParts {
     }
 
     private static void addTierHull(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Tier tier) {
-        provider.addItemRecipe(output, "hulls", AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID),
+        provider.addItemRecipe(output, "hulls", HULL.getItem(tier),
                 of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))
                 , "PRP", "WKW");
     }

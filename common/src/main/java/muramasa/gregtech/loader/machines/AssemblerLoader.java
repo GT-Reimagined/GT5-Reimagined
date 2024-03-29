@@ -36,6 +36,7 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
+import static muramasa.gregtech.data.Machines.HULL;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
@@ -249,7 +250,7 @@ public class AssemblerLoader {
     private static void addTierHull(Tier tier) {
         Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Plastic;
         ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
-                .fi(liquid.getLiquid(L * 2)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "hull_" + tier.getId(), GTIRef.ID))).add("hull_" + tier.getId(), 50, 16);
+                .fi(liquid.getLiquid(L * 2)).io(new ItemStack(HULL.getItem(tier))).add("hull_" + tier.getId(), 50, 16);
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {

@@ -110,16 +110,6 @@ public class GregTechBlocks {
     public static final BlockCasing CASING_ZPM = new BlockCasing(GTIRef.ID, "casing_zpm");
     public static final BlockCasing CASING_UV = new BlockCasing(GTIRef.ID, "casing_uv");
     public static final BlockCasing CASING_UHV = new BlockCasing(GTIRef.ID, "casing_uhv");
-    public static final BlockCasing HULL_ULV = new BlockCasing(GTIRef.ID, "hull_ulv");
-    public static final BlockCasing HULL_LV = new BlockCasing(GTIRef.ID, "hull_lv");
-    public static final BlockCasing HULL_MV = new BlockCasing(GTIRef.ID, "hull_mv");
-    public static final BlockCasing HULL_HV = new BlockCasing(GTIRef.ID, "hull_hv");
-    public static final BlockCasing HULL_EV = new BlockCasing(GTIRef.ID, "hull_ev");
-    public static final BlockCasing HULL_IV = new BlockCasing(GTIRef.ID, "hull_iv");
-    public static final BlockCasing HULL_LUV = new BlockCasing(GTIRef.ID, "hull_luv");
-    public static final BlockCasing HULL_ZPM = new BlockCasing(GTIRef.ID, "hull_zpm");
-    public static final BlockCasing HULL_UV = new BlockCasing(GTIRef.ID, "hull_uv");
-    public static final BlockCasing HULL_UHV = new BlockCasing(GTIRef.ID, "hull_uhv");
     public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GTIRef.ID, AntimatterMaterials.Wood, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     public static final BlockColoredWall STEEL_WALL = new BlockColoredWall(GTIRef.ID, Steel);
     public static final BlockColoredWall INVAR_WALL = new BlockColoredWall(GTIRef.ID, Invar);

@@ -42,6 +42,8 @@ import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
 public class Machines {
+    public static BasicMachine HULL = new BasicMachine(GTIRef.ID, "hull").setTiers(Tier.getAllElectric()).overlayTexture(Textures.EMPTY_HANDLER).noCovers();
+
     /**
      ** Steam Singleblock Machines
      **/
@@ -267,5 +269,6 @@ public class Machines {
     public static void init() {
         BATH.removeFlags(EU);
         NUCLEAR_REACTOR_CORE.removeFlags(EU);
+        HULL.removeFlags(EU);
     }
 }
