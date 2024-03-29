@@ -42,7 +42,14 @@ import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
 public class Machines {
-    public static BasicMachine HULL = new BasicMachine(GTIRef.ID, "hull").setTiers(Tier.getAllElectric()).overlayTexture(Textures.EMPTY_HANDLER).noCovers();
+    public static BasicMachine HULL = new BasicMachine(GTIRef.ID, "hull").setTiers(Tier.getAllElectric()).overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().addFlags(GUI, ITEM, FLUID).setTile(BlockEntityHull::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        tooltip.remove(tooltip.size() - 1);
+        tooltip.remove(tooltip.size() - 1);
+        tooltip.add(Utils.translatable("machine.voltage.in").append(": ").append(Utils.literal(machine.getTier().getVoltage() + " (" + machine.getTier().getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
+        tooltip.add(Utils.translatable("machine.voltage.out").append(": ").append(Utils.literal(machine.getTier().getVoltage() + " (" + machine.getTier().getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
+        //tooltip.add(Utils.translatable("generic.amp").append(": ").append(Utils.literal(String.valueOf(4)).withStyle(ChatFormatting.YELLOW)));
+        tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
+    });
 
     /**
      ** Steam Singleblock Machines
@@ -72,7 +79,7 @@ public class Machines {
     public static BasicMachine ALLOY_SMELTER = new BasicMachine(GTIRef.ID, "alloy_smelter").setMap(RecipeMaps.ALLOY_SMELTER).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
     public static BasicMachine AMP_FABRICATOR = new BasicMachine(GTIRef.ID, "amp_fabricator").setMap(RecipeMaps.AMP_FABRICATOR).addFlags(GUI, ITEM);
     public static BasicMachine ARC_FURNACE = new BasicMachine(GTIRef.ID, "arc_furnace").setMap(RecipeMaps.ARC_FURNACE).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).amps(3);
-    public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(RecipeMaps.ASSEMBLER).setTile(BlockEntityAssembler::new).addFlags(GUI, ITEM, FLUID).setVerticalFacingAllowed(true).custom();
+    public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(RecipeMaps.ASSEMBLER).setTile(BlockEntityAssembler::new).addFlags(GUI, ITEM, FLUID).custom();
     public static BasicMachine AUTOCLAVE = new BasicMachine(GTIRef.ID, "autoclave").setMap(RecipeMaps.AUTOCLAVE).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine BENDER = new BasicMachine(GTIRef.ID, "bender").setMap(RecipeMaps.BENDER).addFlags(GUI, ITEM);
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(RecipeMaps.CANNER).addFlags(GUI, ITEM);
@@ -84,7 +91,7 @@ public class Machines {
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(RecipeMaps.COMPRESSOR).addFlags(GUI, ITEM);
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(RecipeMaps.CUTTER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(RecipeMaps.DISASSEMBLER).addFlags(GUI, ITEM).custom();
-    public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setVerticalFacingAllowed(true).setSound(GregTechSounds.EXTRACTOR,  0.6f);
+    public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine ELECTRIC_OVEN = new BasicMachine(GTIRef.ID, "electric_oven").setMap(RecipeMaps.ELECTRIC_OVEN).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE, 0.6f);
     public static BasicMachine ELECTROLYZER = new BasicMachine(GTIRef.ID, "electrolyzer").setMap(RecipeMaps.ELECTROLYZER).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER, 0.6f);
     public static BasicMachine ELECTROMAGNETIC_SEPARATOR = new BasicMachine(GTIRef.ID, "electromagnetic_separator").setMap(RecipeMaps.ELECTROMAGNETIC_SEPARATOR).addFlags(GUI, ITEM);
@@ -269,6 +276,5 @@ public class Machines {
     public static void init() {
         BATH.removeFlags(EU);
         NUCLEAR_REACTOR_CORE.removeFlags(EU);
-        HULL.removeFlags(EU);
     }
 }
