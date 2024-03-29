@@ -66,11 +66,15 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                 stringBuilder.append("\n").append("Produces ");
                                 if (prospect.contains("fluid")){
                                     CompoundTag fluid = prospect.getCompound("fluid");
-                                    Fluid fluid1 = AntimatterPlatformUtils.getFluidFromID(new ResourceLocation(fluid.getString("name")));
-                                    stringBuilder.append(fluid.getLong("maxYield")).append("L ").append(FluidPlatformUtils.INSTANCE.getFluidDisplayName(FluidHolder.of(fluid1)).getContents());
+                                    FluidHolder fluid1 = FluidPlatformUtils.createFluidStack(AntimatterPlatformUtils.getFluidFromID(new ResourceLocation(fluid.getString("name"))), 1);
+                                    stringBuilder.append(fluid.getLong("maxYield")).append("L ");
+                                    pages.add(StringTag.valueOf(Component.Serializer.toJson(Utils.literal(stringBuilder.toString()))));
+                                    pages.add(StringTag.valueOf(Component.Serializer.toJson(Utils.translatable(fluid1.getTranslationKey()))));
+                                    stringBuilder = new StringBuilder();
                                 } else {
                                     stringBuilder.append("No oil");
                                 }
+
                                 if (prospect.contains("ores")){
                                     CompoundTag ores = prospect.getCompound("ores");
                                     if (!ores.isEmpty()) {
@@ -91,7 +95,9 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                     }
                                 }
                                 //page.putString("text", stringBuilder.toString());
-                                pages.add(StringTag.valueOf(Component.Serializer.toJson(new TextComponent(stringBuilder.toString()))));
+                                if (!stringBuilder.isEmpty()) {
+                                    pages.add(StringTag.valueOf(Component.Serializer.toJson(Utils.literal(stringBuilder.toString()))));
+                                }
                                 nbt.put("pages", pages);
                             } else if (bookData != null){
                                 output.setTag(bookData.copy());
