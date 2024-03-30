@@ -1181,7 +1181,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Phosphate).addByProduct(Phosphor);
         event.setMaterial(Phosphor).addByProduct(Phosphate);
         event.setMaterial(TricalciumPhosphate).addByProduct(Phosphate);
-        event.setMaterial(Pitchblende).addByProduct(Thorium, Uranium, Lead);
+        event.setMaterial(Pitchblende).addByProduct(Lead, Thorium, RareEarth);
         event.setMaterial(Platinum).addByProduct(Nickel, Iridium);
         event.setMaterial(Plutonium).addByProduct(Uranium, Lead);
         event.setMaterial(Powellite).addByProduct(Molybdenite, Scheelite);
@@ -1216,8 +1216,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Titanium).addByProduct(Almandine);
         event.setMaterial(Tungstate).addByProduct(Manganese, Silver, Lithium);
         event.setMaterial(Tungsten).addByProduct(Manganese, Molybdenum);
-        event.setMaterial(Uraninite).addByProduct(Uranium, Thorium, Plutonium);
-        //event.setMaterial(Uranium).addByProduct(Lead, Thorium, Plutonium);
+        event.setMaterial(Uraninite).addByProduct(Lead, Thorium, RareEarth);
         event.setMaterial(Uvarovite).addByProduct(YellowGarnet, Chromium);
         event.setMaterial(VanadiumMagnetite).addByProduct(Magnetite, Vanadium);
         event.setMaterial(Wulfenite).addByProduct(Powellite/*, Sheelite*/, Molybdenite, Galena);
