@@ -68,7 +68,7 @@ public class MaceratorLoader {
                 ints.add(0.1 * BY_PRODUCT_MULTI.getInt(m));
                 if (!stoneDust.isEmpty()) ints.add(0.5);
                 double[] chances = ints.stream().mapToDouble(i -> i).toArray();
-                rm.RB().ii(ore).io(stackArray).chances(chances).add("ore_" + m.getId() + "_" + s.getId(),400, 2);
+                rm.RB().ii(ore).io(stackArray).outputChances(chances).add("ore_" + m.getId() + "_" + s.getId(),400, 2);
             });
         });
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
@@ -80,7 +80,7 @@ public class MaceratorLoader {
             Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             Material aOreByProduct2 = m.getByProducts().size() > 1 ? m.getByProducts().get(1) : aOreByProduct1;
             Material aOreByProduct3 = m.getByProducts().size() > 2 ? m.getByProducts().get(2) : aOreByProduct2;
-            MACERATOR.RB().ii(crushed).io(AntimatterMaterialTypes.DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("crushed_" + m.getId(),400, 2);
+            MACERATOR.RB().ii(crushed).io(AntimatterMaterialTypes.DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1).add("crushed_" + m.getId(),400, 2);
 
             if (m.has(AntimatterMaterialTypes.CRUSHED_REFINED)) {
                 var rb = MACERATOR.RB();
@@ -96,17 +96,17 @@ public class MaceratorLoader {
                     rb.io(DUST.get(m.getByProducts().get(4)));
                     chances.add(1000);
                 }
-                rb.chances(chances.stream().mapToInt(i -> i).toArray()).add("refined_" + m.getId(),400, 2);
+                rb.outputChances(chances.stream().mapToInt(i -> i).toArray()).add("refined_" + m.getId(),400, 2);
             }
             if (m.has(AntimatterMaterialTypes.CRUSHED_PURIFIED) && m.has(AntimatterMaterialTypes.DUST_PURE)) {
-                MACERATOR.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1)).io(AntimatterMaterialTypes.DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1).add("purified_" + m.getId(),400, 2);
+                MACERATOR.RB().ii(AntimatterMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1)).io(AntimatterMaterialTypes.DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1).add("purified_" + m.getId(),400, 2);
             }
         });
         RAW_ORE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST) && !m.has(AntimatterMaterialTypes.CRUSHED)) return;
             Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             ItemStack crushedStack = (m.has(CRUSHED) ? AntimatterMaterialTypes.CRUSHED : DUST).get(m, ORE_MULTI.getInt(m));
-            MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m)) * 2, crushedStack), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).chances(1.0, 0.1 * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add("raw_" + m.getId(),400, 2);
+            MACERATOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m)) * 2, crushedStack), AntimatterMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1 * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).add("raw_" + m.getId(),400, 2);
         });
         GEM_EXQUISITE.all().forEach(m -> {
             if (!m.has(AntimatterMaterialTypes.DUST)) return;
@@ -159,7 +159,7 @@ public class MaceratorLoader {
         MACERATOR.RB().ii(RecipeIngredient.of(Items.TERRACOTTA, 1)).io(DUST.get(Clay, 1)).add("clay_dust_1",16, 4);
         MACERATOR.RB().ii(RecipeIngredient.of(GTCoreItems.Plantball, 1)).io(new ItemStack(Biochaff, 1)).add("biochaff",32, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Biochaff, 1)).io(new ItemStack(Items.DIRT, 1)).add("dirt",32, 2);
-        MACERATOR.RB().ii(RecipeIngredient.of(GTCoreTags.RUBBER_LOGS)).io(DUST.get(Wood, 6), new ItemStack(GTCoreItems.StickyResin, 1)).chances(1.0, 0.33).add("rubber_log", 400, 2);
+        MACERATOR.RB().ii(RecipeIngredient.of(GTCoreTags.RUBBER_LOGS)).io(DUST.get(Wood, 6), new ItemStack(GTCoreItems.StickyResin, 1)).outputChances(1.0, 0.33).add("rubber_log", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Blocks.CALCITE)).io(DUST.get(Calcite)).add("calcite_from_mc_calcite", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Blocks.OBSIDIAN, Blocks.CRYING_OBSIDIAN)).io(DUST.get(Obsidian, 9)).add("obsidian_dust", 400, 2);
         MACERATOR.RB().ii(RecipeIngredient.of(Items.BLAZE_ROD)).io(new ItemStack(Items.BLAZE_POWDER, 5)).add("blaze_powder", 400, 2);

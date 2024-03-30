@@ -60,26 +60,26 @@ public class CentrifugeLoader {
         //CENTRIFUGING.RB().ii(of(DUST.get(Stone, 32))).io(DUST.get(Quartz, 9), DUST.get(PotassiumFeldspar, 9), DUST.get(Marble, 8), DUST.get(Biotite, 4),
         //        DUST.get(Sodalite, 4)).add("stone_dust",7680, 30);
 
-        CENTRIFUGE.RB().fi(Lava.getLiquid(100)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).chances(.2, .1, .025, .025, .025, .025).add("lava", 80, 80);
-        CENTRIFUGE.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier, null)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).chances(.2, .1, .025, .025, .025, .025).add("pahoehoe_lava", 40, 80);
+        CENTRIFUGE.RB().fi(Lava.getLiquid(100)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).outputChances(.2, .1, .025, .025, .025, .025).add("lava", 80, 80);
+        CENTRIFUGE.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier, null)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).outputChances(.2, .1, .025, .025, .025, .025).add("pahoehoe_lava", 40, 80);
         CENTRIFUGE.RB().ii(of(GLOWSTONE_DUST, 10)).io(DUST.get(Gold, 5), DUST.get(Redstone, 5)).fo(Helium.getGas(1000)).add("glowstone_to_helium", 2920, 16);
         CENTRIFUGE.RB().ii(of(MAGMA_CREAM, 1)).io(BLAZE_POWDER, SLIME_BALL).add("magma_cream", 500, 5);
-        CENTRIFUGE.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).chances(.8, .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsand", 200, 80);
-        CENTRIFUGE.RB().ii(SOUL_SOIL).io(DUST_TINY.get(Coal), DIRT).chances( .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsoil", 200, 80);
-        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(RareEarth, 1)).io(DUST_SMALL.get(Neodymium), DUST_SMALL.get(Yttrium), DUST_SMALL.get(Lanthanum), DUST_SMALL.get(Cerium), DUST_SMALL.get(Cadmium), DUST_SMALL.get(Caesium)).chances(0.25, 0.25, 0.25, 0.25, 0.25, 0.25).add("rare_earth", 64, 20);
+        CENTRIFUGE.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).outputChances(.8, .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsand", 200, 80);
+        CENTRIFUGE.RB().ii(SOUL_SOIL).io(DUST_TINY.get(Coal), DIRT).outputChances( .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsoil", 200, 80);
+        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(RareEarth, 1)).io(DUST_SMALL.get(Neodymium), DUST_SMALL.get(Yttrium), DUST_SMALL.get(Lanthanum), DUST_SMALL.get(Cerium), DUST_SMALL.get(Cadmium), DUST_SMALL.get(Caesium)).outputChances(0.25, 0.25, 0.25, 0.25, 0.25, 0.25).add("rare_earth", 64, 20);
         CENTRIFUGE.RB().fi(Propane.getGas(320)).fo(Lubricant.getLiquid(290)).add("propane", 20, 5);
         CENTRIFUGE.RB().fi(Butane.getGas(320)).fo(Lubricant.getLiquid(370)).add("butane", 20, 5);
         CENTRIFUGE.RB().fi(RefineryGas.getGas(800)).fo(LPG.getLiquid(400)).add("refinery_gas", 20, 5);
-        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(PlatinumGroupSludge,1)).io(DUST_TINY.get(Platinum), DUST_TINY.get(Palladium), DUST_TINY.get(Iridium), DUST_TINY.get(Osmium)).chances(1, .8, .6, .6).add("platinum_group_sludge", 900, 30);
+        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(PlatinumGroupSludge,1)).io(DUST_TINY.get(Platinum), DUST_TINY.get(Palladium), DUST_TINY.get(Iridium), DUST_TINY.get(Osmium)).outputChances(1, .8, .6, .6).add("platinum_group_sludge", 900, 30);
         CENTRIFUGE.RB().fi(UraniumHexafluoride.getGas(1400)).fo(Uranium238Hexafluoride.getGas(1000), Uranium235Hexafluoride.getGas(400)).add("uranium_hexafluoride", 24, 512);
         CENTRIFUGE.RB().fi(Water.getLiquid(100000)).fo(SemiheavyWater.getLiquid(100), HeavyWater.getLiquid(10), TritiatedWater.getLiquid(1)).add("heavy_water", 64, 64);
         CENTRIFUGE.RB().fi(SemiheavyWater.getLiquid(500)).fo(HeavyWater.getLiquid(50), TritiatedWater.getLiquid(5)).add("heavy_water_2", 32, 64);
         //Cake Centrifuging
         /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/
-        CENTRIFUGE.RB().ii(of(GTCoreTags.RUBBER_LOGS)).io(new ItemStack(GTCoreItems.StickyResin), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).chances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
+        CENTRIFUGE.RB().ii(of(GTCoreTags.RUBBER_LOGS)).io(new ItemStack(GTCoreItems.StickyResin), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).outputChances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
-        CENTRIFUGE.RB().ii(of(GTCoreItems.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball)).fo(Glue.getLiquid(100)).chances(10000, 1000).add("sticky_resin", 300, 5);
+        CENTRIFUGE.RB().ii(of(GTCoreItems.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball)).fo(Glue.getLiquid(100)).outputChances(1.0, 0.1).add("sticky_resin", 300, 5);
         //Methane
         addMethaneRecipe(MELON, 9, 72);
         addMethaneRecipe(BREAD, 9, 72);
@@ -141,11 +141,11 @@ public class CentrifugeLoader {
     }
 
     private static void addDepletedRodRecipe(ItemDepletedRod rod, Material secondary){
-        CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium), DUST_TINY.get(rod.getMaterial()), DUST_TINY.get(secondary)).chances(1.0, 1.0, .75).add(rod.getId(), 256, 64);
+        CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium), DUST_TINY.get(rod.getMaterial()), DUST_TINY.get(secondary)).outputChances(1.0, 1.0, .75).add(rod.getId(), 256, 64);
     }
 
     private static void addEnrichedRodRecipe(ItemEnrichedRod rod, Material secondary){
-        CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium, 1), DUST_TINY.get(rod.getMaterial(), 4), DUST_TINY.get(secondary, 1)).chances(1.0, 1.0, .5).add(rod.getId(), 256, 64);
+        CENTRIFUGE.RB().ii(rod).io(DUST.get(Zirconium, 1), DUST_TINY.get(rod.getMaterial(), 4), DUST_TINY.get(secondary, 1)).outputChances(1.0, 1.0, .5).add(rod.getId(), 256, 64);
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks){

@@ -120,7 +120,7 @@ public class BathLoader {
                     .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
                     .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
-                    .chances(1.0, 0.7, 1.0)
+                    .outputChances(1.0, 0.7, 1.0)
                     .add("mercury_" + main.getId(),40*20));
     }
     public static void persulfatebathing(){
@@ -129,7 +129,7 @@ public class BathLoader {
                         .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                         .fi(SodiumPersulfate.getLiquid(1000))
                         .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
-                        .chances(1.0, 0.7, 1.0)
+                        .outputChances(1.0, 0.7, 1.0)
                         .add("persulfate_"+main.getId(),40*20));
     }
 

@@ -8,7 +8,6 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.item.ItemTag;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
 import net.minecraft.resources.ResourceLocation;
