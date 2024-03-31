@@ -1,0 +1,319 @@
+MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE
+Diesel Engine (#1156/1171) 1156:1171 Controller Block for the Large Diesel Engine Size(WxHxD): 3x3x4, Controller (front centered) 
+3x3x4 of Stable Titanium Casing (hollow, Min 24!)
+2x Titanium Gear Box Casing inside the Hollow Casing 
+8x Engine Intake Casings (around controller Min 8!)
+1x Input Hatch (one of the Casings) 
+1x Maintenance Hatch (one of the Casings)
+1x Muffler Hatch (Top middle back) 
+1x Dynamo Hatch (back centered) 
+Engine Intake Casings not obstructed (only air blocks) 
+gregtech:gt.blockmachines 
+MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE
+
+-------------------------------------------------------------------------------------------------------------
+
+Blast Furnace (#1156/1171 1156:1171 Controller for the Electrical Blast Furnace, 
+Size(WxHxD): 3x4x3, 
+Controller (bottom Middle front centered)
+1x Item Input Hatch (Minimum 1) Bottom Layer outside ring
+1x Item Output Hatch Bottom Layer outside ring
+1x Energy Hatch Bottom Layer outside ring
+16x Coils Blocks, 2 layers of rings of x8  Coil Blocks, each middle layers (The center of both layers should be empty)
+8x Heat Proof Casings around a Muffler Hatch (facing up) on top Layer
+2 -4 Amps of power supply 
+
+ -----------------------------------------------------------------------------------------------------    
+
+Coke Oven  (#1156/1171) 1156:1171 Controller for Coke Oven
+Size(WxHxD): 3x3x3, 
+Controller (middle front centered)
+25x  Coke Oven Blocks (Hollow Cube)
+Input Coal/Charcoal on any Sides 
+Output on any Sides
+
+ -----------------------------------------------------------------------------------------------------  
+  
+- NEED TEST - Combustion Engine  (#1156/1171) 1156:1171 Controller for the Large Combustion Engine 
+Size(WxHxD): 3x3x4, 
+Controller (middle front centered)
+3x3x4 Titanium Casing (hollow, Min 22!)
+8x Engine Intake Casings (around controller Min 8!)
+2x Titanium Gear Box Casing inside the Hollow Casing 
+1x Fluid Input Hatch (one of the 4 Side Middle  Casings) 
+1x Fluid Output Hatch (one of the 4 Side Middle  Casings) 
+1x Muffler Hatch any of top casings 
+1x Dynamo Hatch (back centered) 
+Engine Intake Casings not obstructed (only air blocks) 
+
+ -----------------------------------------------------------------------------------------------------   
+ 
+Cracking Unit (#1156/1171) 1156:1171 Controller  for the Oil Cracking Unit 
+Size(WxHxD): 5x3x3,  
+Controller (middle front centered)
+3x3x4 Titanium Casing (hollow, Min 22!)
+16x Cupronickel Coils Blocks, two hollow vertical rings touching each side of the controller
+1x Fluid Input Hatch on the Left Side Middle Center of Vertical Ring  the oil product
+1x Fluid Input Hatch  on any of the center Casing Ring  For Steam input
+1x Fluid Output Hatch on the Right Side Middle  Center of Vertical Ring  for Cracked Product 
+1x Energy Hatch (Any of the center Casing Ring) 
+18-21x Stainless Steel Casing Elsewhere
+Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings 
+ -----------------------------------------------------------------------------------------------------    
+Distillation Tower (#1156/1171) 1156:1171 Controller for the Distillation Tower 
+Size(WxHxD): 3xNx3(where N is between three and twelve),  
+Controller (middle bottom front centered)
+1x Energy Hatch any bottom layer casing
+1x+ Item Output Hatch any bottom layer casing
+1x+ Fluid Input Hatch any bottom layer casing
+1-11x Fluid Output Hatch at least one per layer (except the bottom layer)
+19-82x Stainless Steel  Casings, everywhere else. 
+ -----------------------------------------------------------------------------------------------------    
+Cryo Distillation Tower (#1156/1171) 1156:1171 Controller for the Cryogenic Distillation Tower  
+Size(WxHxD): 3xNx3(where N is between three and twelve),  
+Controller (middle bottom front centered)
+1x Energy Hatch any bottom layer casing
+1x+ Fluid Input Hatch any bottom layer casing (Air input though  Air Vent Cover on Pipe)
+1-11x Fluid Output Hatch at least one per layer (except the bottom layer)
+19-82x Frostproof Casings, everywhere else. 
+ -----------------------------------------------------------------------------------------------------    
+- NEED TEST - Heat Exchanger (#1156/1171) 1156:1171 Controller for the Heat Exchanger Machine
+Size(WxHxD): 3x4x3 Controller (middle bottom front centered)
+2x Fluid Input Hatch, one center of bottom layer (facing down for Hot Fluid input), the other any exterior casing of mid layers
+2x Fluid Output Hatch, one center of top layer (facing up), the other any exterior casing of mid layers
+2x Titanium Pipe Casings (center two blocks of multi, not visible from outside)
+21-30x Titanium Casings, everywhere else. 
+Optional 1x Item input Hatch and 1x Item Output Hatch on Top/Bottom layers casings
+ -----------------------------------------------------------------------------------------------------    
+- NEED TEST - Implosion Compressor  (#1156/1171) 1156:1171 Controller for Implosion Compressor  
+Size(WxHxD): 3x3x3, 
+Controller (middle front centered)
+17-20x  Solid Steel Casings (Hollow Cube)
+None or 1+ Item Output hatch on any Sides
+None or 1+ Item Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+1x Muffler Hatch on any Sides
+
+------------------------------------------------------------------------------------------------------ 
+ 
+Large Boiler  (#1156/1171) 1156:1171 Controller for the Large Boiler
+Size(WxHxD): 3x5x3, 
+Controller (bottom middle front centered)
+5x Any tier Firebox Casings (around controller bottom layer)
+3x Any tier Pipe Casings (center three blocks of multi, not visible from outside)
+1x Fluid Input Hatch (Any Bottom layer) 
+1x Item Input Hatch (Any Bottom layer) 
+1x Muffler Hatch on Middle bottom layer (not obstructed, only air blocks) 
+1x Fluid Output Hatch (One of the Middle layer Casings) 
+32x Any Tier Boiler Casing (Bronze, Solid Steel, Titanium and Tungstensteel)
+ -----------------------------------------------------------------------------------------------------    
+- NEED TEST - Large Centrifuge (#1156/1171) 1156:1171 Controller for Large Centrifuge 
+Size(WxHxD): 3x2x3,
+Controller (bottom middle front centered)
+15-16x  Tungestensteel Casings (Hollow Cube)
+None or 1+ Item Output hatch on any Sides
+None or 1+ Item Input Hatch on any Sides
+None or 1+ Fluid Output hatch on any Sides
+None or 1+ Fluid Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+ -----------------------------------------------------------------------------------------------------    
+
+Large Chemical Reactor (#1156/1171) 1156:1171 Controller for Large Chemical Reactor  
+Size(WxHxD): 3x3x3, 
+Controller (middle front centered)
+15-19x  Chemical Inert Casing (Hollow Cube)
+1x PTFE Pipe Casing Center Middle block
+1x Cupronickel Coil Block on  touching any  side of PTFE Pipe Casing block
+None or 1+ Item Output hatch on any Sides
+None or 1+ Item Input Hatch on any Sides
+None or 1+ Fluid Output hatch on any Sides
+None or 1+ Fluid Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+ -----------------------------------------------------------------------------------------------------    
+
+- NEED TEST - Large Electrolizer (#1156/1171) 1156:1171 Controller for Large Electrolizer
+Size(WxHxD): 5x2x5,
+Controller (front Bottom centered)
+9x Electrolytic Cells 3x1x3 on inside
+6x Nichrome Coil Block on two sides of Electrolytic Cells
+33-34x Stainless steel casings around leave top Electrlytic Cells open
+None or 1x+ Item Output hatch on any Sides
+None or 1x+ Item Input Hatch on any Sides
+None or 1x+ Fluid Output hatch on any Sides
+None or 1x+ Fluid Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+ -----------------------------------------------------------------------------------------------------    
+
+- NEED TEST -  Large Macerator (#1156/1171) 1156:1171 Controller for Large Macerator  
+Size(WxHxD): 5x3x5, 
+Controller (Bottom front centered)
+18x Griding Wheels 3x2x3 on inside
+40-43x  Tungstensteel Casings around leave top Griding wheels open
+1x+ Item Output hatch on any Sides
+1x+ Item Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+ LARGE_MACERATOR.setStructure(BlockEntityLargeMacerator.class, b -> b.part("main")
+.of("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC").
+.of("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC").
+.of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").
+.at('C', GregTechBlocks.CASING_TUNGSTENSTEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+ .at('G', GregTechBlocks.GRINDING_WHEELS)
+  .offset(2, 2, 0).min(1, HATCH_ENERGY, HATCH_ITEM_I, HATCH_ITEM_O).build()
+
+ -----------------------------------------------------------------------------------------------------    
+
+Large Turbine (#1156/1171) 1156:1171 Controller for the Large Turbine (Steam/High Pressure Steam/Gas/Plasma)
+Size(WxHxD): 3x3x4, 
+Controller (middle front centered)
+3x3x4 Any Turbine Casing (hollow, Min 22!) (
+1x+ Fluid Input Hatch (One Of The Two Side Middle Layers  Casings) 
+1x+ Fluid Output Hatch (One Of The Two Side Middle  Layers Casings) 
+1x Dynamo Hatch (back centered) 
+1x Rotor Turbine Inside GUI on the Controller
+Respective Fuel (Steam, High Pressure Steam, Gas Fuel and Any Plasma)
+
+ LARGE_TURBINE.setStructure(BlockEntityLargeTurbine.class, b -> b.part("main")
+ .of("CCC", "CCC", "CCC", "CCC")
+.of("C~C", "H-H", "H-H", "CEC")
+.of(0).build()
+ .atElement('C', StructureUtility.lazy(t -> ofBlock(t.getCasing())))
+  .atElement('H', StructureUtility.<BlockEntityLargeTurbine>ofChain(StructureUtility.lazy(t -> ofBlock(t.getCasing())), ofHatch(HATCH_FLUID_I),ofHatch(HATCH_FLUID_O)))
+ .atElement('E', ofHatch(HATCH_DYNAMO))
+.min(1, HATCH_FLUID_I, HATCH_FLUID_O).offset(1, 1, 0).build()
+----------------------------------------------------------------------------------------------------------
+
+Multi Smelter (#1156/1171) 1156:1171 Controller for The Multi Smelter
+Size(WxHxD): 3x3x3, 
+Controller (bottom Middle front centered)
+1x+ Item Input Hatch Bottom Layer 
+1x+ Item Output Hatch Bottom Layer 
+1x+ Energy Hatch Bottom Layer outside ring
+8x Any tier Coil Blocks forming a ring at middle layer (The center should be empty)
+8x Heat Proof Casings around a Muffler Hatch (facing up) on top Layer
+2 -4 Amps of power supply
+
+----------------------------------------------------------------------------------------------------------
+
+
+Primitive Blast Furnace (#1156/1171) 1156:1171 Controller for The Primitive Blast Furnace 
+Size(WxHxD): 3x4x3, 
+Controller (2 layer Middle front centered)
+32x Casing Fire Bricks Blocks Structure, Solid on the bottom and hollow inside from the 2layer till the top
+
+
+----------------------------------------------------------------------------------------------------------
+- NEED TEST - Processing Array (#1156/1171) 1156:1171 Controller for Processing Array
+Size(WxHxD): 3x3x3, 
+Controller (middle front centered)
+17-20x  Tungestensteel Casings (Hollow Cube)
+None or 1x+ Item Output hatch on any Sides
+None or 1x+ Item Input Hatch on any Sides
+None or 1x+ Fluid Output hatch on any Sides
+None or 1x+ Fluid Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+----------------------------------------------------------------------------------------------------------
+        
+Pyrolysis Oven(#1156/1171) 1156:1171 Controller for Pyrolysis Oven
+Size(WxHxD): 5x4x5, 
+Controller (bottom front centered)
+17-20x  Ulv Casings (Hollow Cube)
+None or 1x+ Item Output hatch on any Sides
+None or 1x+ Item Input Hatch on any Sides
+None or 1x+ Fluid Output hatch on any Sides
+None or 1x+ Fluid Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+PYROLYSIS_OVEN.setStructure(BlockEntityPyrolysisOven.class, b -> b.part("main")
+       .of("UUUUU", "UHHHU", "UHHHU", "UHHHU", "UUUUU").
+       .of("UUUUU", "U---U", "U---U", "U---U", "UUUUU")
+       .of(1)
+       .of("BB~BB", "BCCCB", "BCCCB", "BCCCB", "BBBBB").build()
+ .atElement('C', ofCoil(BlockEntityPyrolysisOven::setCoilData, BlockEntityPyrolysisOven::getCoilData))
+.at('B', GregTechBlocks.CASING_ULV, HATCH_ITEM_O, HATCH_ENERGY, HATCH_FLUID_O)
+.at('U', GregTechBlocks.CASING_ULV)
+.at('H', GregTechBlocks.CASING_ULV, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_MUFFLER)
+                .offset(2, 3, 0).min(1, HATCH_ITEM_I, HATCH_ENERGY).exact(1, HATCH_MUFFLER).build()
+        );
+----------------------------------------------------------------------------------------------------------
+
+        OIL_DRILLING_RIG.setStructure(BlockEntityOilDrillingRig.class, b -> b.part("main")
+                .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").build()
+  .at('F', FRAME.get().get(Steel).asBlock()).at
+('C', GregTechBlocks.CASING_SOLID_STEEL)
+                .at('H', GregTechBlocks.CASING_SOLID_STEEL, HATCH_ENERGY, HATCH_FLUID_O)
+                .offset(1, 6, 0).min(1, HATCH_FLUID_O, HATCH_ENERGY).build());
+
+----------------------------------------------------------------------------------------------------------
+
+        TREE_GROWTH_SIMULATOR.setStructure(BlockEntityTreeGrowthSimulator.class, b -> b.part("main")
+                .of("CCCCC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").of("CCCCC", "C---C", "C---C", "C---C", "CCCCC").of(1).of(1).of(1).of(1).of(1)
+                .of("CCCCC", "CDDDC", "CDDDC", "CDDDC", "CCCCC").of("BB~BB", "BBBBB", "BBBBB", "BBBBB", "BBBBB").build()
+                .at('C', GregTechBlocks.CASING_PLASTIC, HATCH_ITEM_O, HATCH_ENERGY)
+                .at('B', GregTechBlocks.CASING_BLACK_BRONZE, HATCH_ENERGY, HATCH_ITEM_I, HATCH_FLUID_I).at('D', BlockTags.DIRT)
+                .offset(2, 8, 0).min(1, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY).build()
+        );
+----------------------------------------------------------------------------------------------------------
+ Vaccum Freezer (#1156/1171) 1156:1171 Controller for Vaccum Freezer
+Size(WxHxD): 3x3x3, 
+Controller (middle front centered)
+17-22x  Frost Proof Casing (Hollow Cube)
+1x+ Item Output hatch on any Sides
+1x+ Item Input Hatch on any Sides
+1x+ Energy Hatch on any Sides
+
+ VACUUM_FREEZER.setStructure(BlockEntityVacuumFreezer.class, b -> b.part("main")
+.of("CCC", "CCC", "CCC")
+.of("C~C", "C-C", "CCC")
+.of(0).build()
+ .at('C', GregTechBlocks.CASING_FROST_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+  .offset(1, 1, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).build()
+        );
+----------------------------------------------------------------------------------------------------------
+FUSION_REACTOR.setStructure(BlockEntityFusionReactor.class, b -> b.part("main")
+            .of(
+                "               ",
+                "      BOB      ",
+                "    OO   OO    ",
+                "   O       O   ",
+                "  O         O  ",
+                "  O         O  ",
+                " B           B ",
+                " O           O ",
+                " B           B ",
+                "  O         O  ",
+                "  O         O  ",
+                "   O       O   ",
+                "    OO   OO    ",
+                "      BOB      ",
+                "               "
+            ).of("      XOX      ",
+                 "    OOCCCOO    ",
+                 "   ECCXOXCCE   ",
+                 "  ECEO   OECE  ",
+                 " OCE       ECO ",
+                 " OCO       OCO ",
+                 "XCX         XCX",
+                 "OCO         OCO",
+                 "XCX         XCX",
+                 " OCO       OCO ",
+                 " OCE       ECO ",
+                 "  ECEO   OECE  ",
+                 "   ECCX~XCCE   ",
+                 "    OOCCCOO    ",
+                 "      XOX      ").of(0).build()
+                .at('O', GregTechBlocks.CASING_FUSION).at('C', GregTechBlocks.COIL_FUSION)
+                .atElement('B', StructureUtility.<BlockEntityFusionReactor>ofChain(
+                        ofBlock(GregTechBlocks.CASING_FUSION),
+                        ofHatch(HATCH_FLUID_I),
+                        ofHatch(HATCH_ITEM_I)))
+                .atElement('X', StructureUtility.<BlockEntityFusionReactor>ofChain(
+                        ofBlock(GregTechBlocks.CASING_FUSION),
+                        ofHatch(HATCH_FLUID_O),
+                        ofHatch(HATCH_ITEM_O)))
+                .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(ofBlock(GregTechBlocks.CASING_FUSION), ofHatch(HATCH_ENERGY)))
+            .offset(7, 1, 12).min(1, HATCH_FLUID_I).min(1, HATCH_FLUID_O).min(4, HATCH_ENERGY).build());
