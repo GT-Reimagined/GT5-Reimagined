@@ -50,6 +50,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
+                if (processingBlocked) return false;
                 int tGeneratedEU = (int) (this.euPerTick * 2L * this.efficiency / 10000L);
                 if (tGeneratedEU > 0 && !simulate) {
                     int amount = (tGeneratedEU + 160) / 160;
