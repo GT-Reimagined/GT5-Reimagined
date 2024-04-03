@@ -74,6 +74,7 @@ public class CentrifugeLoader {
         CENTRIFUGE.RB().fi(UraniumHexafluoride.getGas(1400)).fo(Uranium238Hexafluoride.getGas(1000), Uranium235Hexafluoride.getGas(400)).add("uranium_hexafluoride", 24, 512);
         CENTRIFUGE.RB().fi(Water.getLiquid(100000)).fo(SemiheavyWater.getLiquid(100), HeavyWater.getLiquid(10), TritiatedWater.getLiquid(1)).add("heavy_water", 64, 64);
         CENTRIFUGE.RB().fi(SemiheavyWater.getLiquid(500)).fo(HeavyWater.getLiquid(50), TritiatedWater.getLiquid(5)).add("heavy_water_2", 32, 64);
+        CENTRIFUGE.RB().ii(CRUSHED_REFINED.getMaterialIngredient(Cobalt, 1)).io(DUST.get(Cobalt, 1), DUST_TINY.get(Cobalt60, 2)).add("cobalt_60", 2304, 512);
         //Cake Centrifuging
         /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/
