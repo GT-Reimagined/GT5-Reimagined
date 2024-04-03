@@ -158,7 +158,7 @@ public class BlastFurnaceLoader {
         addBlastAlloyRecipes(RedSteel, 8, 1300, 120, ImmutableMap.of(RoseGold, 1, Brass, 1, Steel, 2, BlackSteel, 4));
         addBlastAlloyRecipes(HSSG, 9, 9000, 120, ImmutableMap.of(TungstenSteel, 5, Chromium, 1, Molybdenum, 2, Vanadium, 1));
         addBlastAlloyRecipes(HSSE, 9, 10800, 120, ImmutableMap.of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
-        addBlastAlloyRecipes(HSSS, 9, 810 * 20, 120, ImmutableMap.of(HSSG, 6, Cobalt, 2, Iridium, 1));
+        addBlastAlloyRecipes(HSSS, 9, 810 * 20, 120, ImmutableMap.of(HSSG, 6, Iridium, 2, Osmium, 1));
         //TODO figure out proper nuclear
 
         //Nuclear Processing
