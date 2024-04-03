@@ -21,6 +21,7 @@ dependencies{
         exclude(group: "net.fabricmc.fabric-api")
         exclude(group: "com.github.LlamaLad7")
     }
+    modImplementation "com.teamresourceful.resourcefullib:resourcefullib-common-1.18.2:${project.resourcefullib_version}"
     modImplementation("net.feltmc:felt-player-item-api:1.1.0"){
         transitive = false
     }
