@@ -19,8 +19,7 @@ import net.minecraft.world.item.Items;
 import java.util.function.ToLongFunction;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Endstone;
 import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
@@ -121,7 +120,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(AntimatterMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || (!r.has(INGOT) && r != Obsidian))) {
+            if (r.has(AntimatterMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || (!r.has(INGOT) && !r.has(GEM) && r != Obsidian))) {
                 EXTRUDER.RB().ii(of(AntimatterMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(AntimatterMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
