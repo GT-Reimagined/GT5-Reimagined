@@ -72,6 +72,7 @@ public class BathLoader {
         }
         mercurybathing();
         persulfatebathing();
+        BATH.RB().ii(CRUSHED.getMaterialIngredient(Cobaltite, 1)).io(CRUSHED_PURIFIED.get(Cobaltite), CRUSHED_PURIFIED.get(Cobalt), DUST.get(Stone)).outputChances(1.0, 0.25, 1.0).add("persulfate_cobaltite", 144);
         addVitriolRecipe(Chalcopyrite, BlueVitriol);
         addVitriolRecipe(Copper, BlueVitriol);
         addVitriolRecipe(Gold, BlueVitriol);
@@ -86,6 +87,7 @@ public class BathLoader {
         addVitriolRecipe(Magnetite, GreenVitriol);
         addVitriolRecipe(Pyrite, GreenVitriol);
         addVitriolRecipe(Cobaltite, RedVitriol);
+        addVitriolRecipe(Cobalt, RedVitriol);
         addVitriolRecipe(Magnesite, PinkVitriol);
         addVitriolRecipe(Olivine, PinkVitriol);
         addVitriolRecipe(Pyrope, PinkVitriol);

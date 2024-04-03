@@ -72,7 +72,6 @@ public class MaceratorLoader {
             });
         });
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
-            if (!m.has(ORE)) return;
             if (!m.has(AntimatterMaterialTypes.CRUSHED)) return;
             RecipeIngredient crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1);
 

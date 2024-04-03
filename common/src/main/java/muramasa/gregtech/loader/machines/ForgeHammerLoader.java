@@ -27,12 +27,14 @@ import static muramasa.gregtech.data.RecipeMaps.FORGE_HAMMER;
 public class ForgeHammerLoader {
     public static void init() {
         AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
-            if (!m.has(AntimatterMaterialTypes.ORE) && m != AntimatterMaterials.Gold && m != AntimatterMaterials.Iron && m != AntimatterMaterials.Diamond && m != AntimatterMaterials.Emerald && m != AntimatterMaterials.Lapis && m != AntimatterMaterials.Redstone) return;
+            if (m != AntimatterMaterials.Gold && m != AntimatterMaterials.Iron && m != AntimatterMaterials.Diamond && m != AntimatterMaterials.Emerald && m != AntimatterMaterials.Lapis && m != AntimatterMaterials.Redstone) return;
             int multiplier = 1;
             RecipeIngredient ore = RecipeIngredient.of(TagUtils.getForgelikeItemTag("ores/" + m.getId()),1), crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1);
             ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m,1);
 
-            FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m) * multiplier, crushedStack)).add(m.getId() + "_ore",16, 10);
+            if (m.has(AntimatterMaterialTypes.ORE)) {
+                FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m) * multiplier, crushedStack)).add(m.getId() + "_ore",16, 10);
+            }
             FORGE_HAMMER.RB().ii(crushed).io(DUST_IMPURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.get(m,1))).io(DUST_PURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
             if (m.has(CRUSHED_REFINED)) {

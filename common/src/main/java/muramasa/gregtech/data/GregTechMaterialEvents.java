@@ -55,7 +55,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Chromium).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE, ROTOR); //aka Chromium
         event.setMaterial(Manganese).asMetal(1519, FOIL).asOre();
         //Iron, added by vanilla
-        event.setMaterial(Cobalt).asMetal(1768, 0, CRUSHED_REFINED);
+        event.setMaterial(Cobalt).asMetal(1768, 0, CRUSHED);
         event.setMaterial(Nickel).asMetal(1728, 0, PLATE).asOre();
         //Copper, by vanilla
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
@@ -1255,7 +1255,6 @@ public class GregTechMaterialEvents {
         CHEMBATH_MERCURY.add(Iridium, Platinum);
         CHEMBATH_MERCURY.add(Silver,Silver);
         CHEMBATH_MERCURY.add(Tungstate, Silver);
-        CHEMBATH_PERSULFATE.add(Cobaltite,Cobaltite);
         CHEMBATH_PERSULFATE.add(Pentlandite,Cobalt);
         CHEMBATH_PERSULFATE.add(Copper, Copper);
         CHEMBATH_PERSULFATE.add(Gold, Copper);
