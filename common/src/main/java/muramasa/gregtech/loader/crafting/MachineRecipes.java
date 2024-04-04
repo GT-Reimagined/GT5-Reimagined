@@ -741,7 +741,7 @@ public class MachineRecipes {
 
     private static void addHatchRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
-            Item hull = Item.BY_BLOCK.get(GregTech.get(BlockCasing.class, "hull_" + tier.getId()));
+            Item hull = HULL.getItem(tier);
             if (hull == null) return;
             add(HATCH_ITEM_I, tier, (m,item) ->  provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
