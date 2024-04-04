@@ -36,10 +36,18 @@ public class WireCablesPlates {
             Map<PipeSize, Item> wires = sizes.stream().map(s -> new Pair<>(s, wire.getBlockItem(s))).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
             PipeSize[] val = VALUES;
             for (int i = 1; i < val.length; i += 1) {
-                oneToTwo(wires, val[i], val[i-1], output, provider);
-                twoToOne(wires, val[i-1], val[i], output,provider);
+                int offset = val[i] == HUGE ? 1 : 0;
+                if (val[i] == LARGE){
+                    provider.shapeless(output,"three_to_one_" + AntimatterPlatformUtils.getIdFromItem(wires.get(LARGE)).getPath(),"wire",
+                            new ItemStack(wires.get(val[i]),1),wires.get(SMALL),wires.get(SMALL),wires.get(SMALL));
+                    provider.shapeless(output,"one_to_three_" + AntimatterPlatformUtils.getIdFromItem(wires.get(NORMAL)).getPath(),"wire",
+                            new ItemStack(wires.get(SMALL),3),wires.get(val[i]));
+                    continue;
+                }
+                twoToOne(wires, val[i-1 - offset], val[i], output,provider);
+                oneToTwo(wires, val[i], val[i-1 - offset], output, provider);
                 if (i > 1) {
-                    fourToOne(wires, val[i-2], val[i], output, provider);
+                    fourToOne(wires, val[i-2 - offset], val[i], output, provider);
                 }
             }
             if (wire.getMaterial().has(PLATE)) {
