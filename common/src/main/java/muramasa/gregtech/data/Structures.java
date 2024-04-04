@@ -121,7 +121,7 @@ public class Structures {
                 }).build());
         HEAT_EXCHANGER.setStructure(BlockEntityHeatExchanger.class, b -> b.part("main")
                 .of("DDD", "DOD", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DID", "DDD").build()
-                .at('D', GregTechBlocks.CASING_TITANIUM, HATCH_ITEM_I, HATCH_ITEM_O)
+                .at('D', GregTechBlocks.CASING_TITANIUM)
                 .at('C', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_O, HATCH_FLUID_I).at('P', GregTechBlocks.CASING_PIPE_TITANIUM)
                 .at('I', HATCH_FLUID_I).at('O', HATCH_FLUID_O)
                 .offset(1, 3, 0).min(2, HATCH_FLUID_O, HATCH_FLUID_I).build());
