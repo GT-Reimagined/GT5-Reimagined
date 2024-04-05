@@ -17,7 +17,7 @@ public class BlockCasing extends BlockDynamic {
     }
 
     public BlockCasing(String domain, String id) {
-        this(domain, id, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL));
+        this(domain, id, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops());
     }
 
     @Override
