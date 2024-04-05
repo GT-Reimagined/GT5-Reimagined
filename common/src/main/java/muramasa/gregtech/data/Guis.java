@@ -315,7 +315,6 @@ public class Guis {
         ADVANCED_MINER.add(MULTIBLOCK.getSlots());
         PROCESSING_ARRAY.add(MULTIBLOCK.getSlots());
         PYROLYSIS_OVEN.add(MULTIBLOCK.getSlots());
-        COMBUSTION_ENGINE.add(MULTIBLOCK.getSlots());
         DISTLLATION_TOWER.add(MULTIBLOCK.getSlots());
         CRYO_DISTLLATION_TOWER.add(MULTIBLOCK.getSlots());
         CRACKING_UNIT.add(MULTIBLOCK.getSlots());
