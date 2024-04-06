@@ -115,6 +115,77 @@ public class GregTechLocalizations {
             add("message.gti.mini_portal.connect", "Target at: x: %s y: %s z: %s in %s");
             add("message.gti.redstone_mode.normal", "Redstone Mode: Normal");
             add("message.gti.redstone_mode.inverted", "Redstone Mode: Inverted");
+            structureTranslations();
+        }
+
+        private void structureTranslations(){
+            add("tooltip.electric_blast_furnace.0", "Controller for the Electrical Blast Furnace");
+            add("tooltip.electric_blast_furnace.1", "Size(WxHxD): 3x4x3");
+            add("tooltip.electric_blast_furnace.2", "Controller (bottom Middle front centered)");
+            add("tooltip.electric_blast_furnace.3", "1x Item Input Hatch (Minimum 1) Bottom Layer outside ring");
+            add("tooltip.electric_blast_furnace.4", "1x Item Output Hatch Bottom Layer outside ring");
+            add("tooltip.electric_blast_furnace.5", "1x Energy Hatch Bottom Layer outside ring");
+            add("tooltip.electric_blast_furnace.6", "16x Coils Blocks, 2 layers of rings of x8  Coil Blocks, each middle layers (The center of both layers should be empty)");
+            add("tooltip.electric_blast_furnace.7", "8x Heat Proof Casings around a Muffler Hatch (facing up) on top Layer");
+            add("tooltip.electric_blast_furnace.8", "2 -4 Amps of power supply");
+
+            add("tooltip.combustion_engine.0", "Controller for the Large Combustion Engine");
+            add("tooltip.combustion_engine.1", "Size(WxHxD): 3x3x4");
+            add("tooltip.combustion_engine.2", "Controller (front centered)");
+            add("tooltip.combustion_engine.3", "3x3x4 of Stable Titanium Casing (hollow, Min 24!)");
+            add("tooltip.combustion_engine.4", "2x Titanium Gear Box Casing inside the Hollow Casing ");
+            add("tooltip.combustion_engine.5", "8x Engine Intake Casings (around controller Min 8!)");
+            add("tooltip.combustion_engine.6", "1x Input Hatch (one of the Casings)");
+            add("tooltip.combustion_engine.7", "1x Muffler Hatch (Top middle back)");
+            add("tooltip.combustion_engine.8", "1x Dynamo Hatch (back centered) ");
+            add("tooltip.combustion_engine.9", "Engine Intake Casings not obstructed (only air blocks)");
+
+            add("tooltip.cracking_unit.0", "Controller for the Oil Cracking Unit");
+            add("tooltip.cracking_unit.1", "Size(WxHxD): 5x3x3");
+            add("tooltip.cracking_unit.2", "Controller (middle front centered)");
+            add("tooltip.cracking_unit.3", "3x3x4 Titanium Casing (hollow, Min 22!)");
+            add("tooltip.cracking_unit.4", "16x Cupronickel Coils Blocks, two hollow vertical rings touching each side of the controller");
+            add("tooltip.cracking_unit.5", "1x Fluid Input Hatch on the Right Side Middle Center of Vertical Ring  the oil product");
+            add("tooltip.cracking_unit.6", "1x Fluid Input Hatch  on any of the center Casing Ring  For Steam input");
+            add("tooltip.cracking_unit.7", "1x Fluid Output Hatch on the Left Side Middle  Center of Vertical Ring  for Cracked Product");
+            add("tooltip.cracking_unit.8", "1x Energy Hatch (Any of the center Casing Ring)");
+            add("tooltip.cracking_unit.9", "18-21x Stainless Steel Casing Elsewhere");
+            add("tooltip.cracking_unit.10", "Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings");
+
+            add("tooltip.distillation_tower.0", "Controller for the Distillation Tower");
+            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xNx3(where N is between three and twelve)");
+            add("tooltip.distillation_tower.2", "Controller (middle bottom front centered)");
+            add("tooltip.distillation_tower.3", "1x Energy Hatch any bottom layer casing");
+            add("tooltip.distillation_tower.4", "1x+ Item Output Hatch any bottom layer casing");
+            add("tooltip.distillation_tower.5", "1x+ Fluid Input Hatch any bottom layer casing");
+            add("tooltip.distillation_tower.6", "1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)");
+            add("tooltip.distillation_tower.7", "19-82x Stainless Steel  Casings, everywhere else.");
+
+            add("tooltip.cryo_distillation_tower.0", "Controller for the Cryogenic Distillation Tower");
+            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xNx3(where N is between three and twelve)");
+            add("tooltip.cryo_distillation_tower.2", "Controller (middle bottom front centered)");
+            add("tooltip.cryo_distillation_tower.3", "1x Energy Hatch any bottom layer casing");
+            add("tooltip.cryo_distillation_tower.4", "1x+ Item Output Hatch any bottom layer casing");
+            add("tooltip.cryo_distillation_tower.5", "1x+ Fluid Input Hatch any bottom layer casing");
+            add("tooltip.cryo_distillation_tower.6", "1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)");
+            add("tooltip.cryo_distillation_tower.7", "19-82x Frostproof Casings, everywhere else.");
+
+            add("tooltip.heat_exchanger.0", "Controller for the Heat Exchanger");
+            add("tooltip.heat_exchanger.1", "Size(WxHxD): 3x4x3");
+            add("tooltip.heat_exchanger.2", "Controller (middle bottom front centered)");
+            add("tooltip.heat_exchanger.3", "2x Fluid Input Hatch, one center of bottom layer (facing down for Hot Fluid input), the other any exterior casing of mid layers");
+            add("tooltip.heat_exchanger.4", "2x Fluid Output Hatch, one center of top layer (facing up), the other any exterior casing of mid layers");
+            add("tooltip.heat_exchanger.5", "2x Titanium Pipe Casings (center two blocks of multi, not visible from outside)");
+            add("tooltip.heat_exchanger.6", "21-30x Titanium Casings, everywhere else.");
+
+            add("tooltip.implosion_compressor.0", "Controller for the Implosion Compressor");
+            add("tooltip.implosion_compressor.1", "Size(WxHxD): 3x3x3");
+            add("tooltip.implosion_compressor.2", "Controller (middle front centered)");
+            add("tooltip.implosion_compressor.3", "17-20x  Solid Steel Casings (Hollow Cube)");
+            add("tooltip.implosion_compressor.4", "None or 1+ Item Output hatch on any Sides");
+            add("tooltip.implosion_compressor.5", "None or 1+ Item Input Hatch on any Sides");
+            add("tooltip.implosion_compressor.6", "1x+ Energy Hatch on any Sides");
+            add("tooltip.implosion_compressor.7", "1x Muffler Hatch on any Sides");
         }
 
         @Override

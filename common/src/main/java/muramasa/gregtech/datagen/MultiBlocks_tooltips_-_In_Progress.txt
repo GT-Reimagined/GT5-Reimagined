@@ -1,19 +1,18 @@
-MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE
-Diesel Engine (#1156/1171) 1156:1171 Controller Block for the Large Diesel Engine Size(WxHxD): 3x3x4, Controller (front centered) 
+
+Controller Block for the Large Combustion Engine
+Size(WxHxD): 3x3x4,
+Controller (front centered)
 3x3x4 of Stable Titanium Casing (hollow, Min 24!)
 2x Titanium Gear Box Casing inside the Hollow Casing 
 8x Engine Intake Casings (around controller Min 8!)
-1x Input Hatch (one of the Casings) 
-1x Maintenance Hatch (one of the Casings)
+1x Input Hatch (one of the Casings)
 1x Muffler Hatch (Top middle back) 
 1x Dynamo Hatch (back centered) 
-Engine Intake Casings not obstructed (only air blocks) 
-gregtech:gt.blockmachines 
-MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE MODEL EXEMPLE
+Engine Intake Casings not obstructed (only air blocks)
 
 -------------------------------------------------------------------------------------------------------------
 
-Blast Furnace (#1156/1171 1156:1171 Controller for the Electrical Blast Furnace, 
+Controller for the Electrical Blast Furnace,
 Size(WxHxD): 3x4x3, 
 Controller (bottom Middle front centered)
 1x Item Input Hatch (Minimum 1) Bottom Layer outside ring
@@ -25,30 +24,16 @@ Controller (bottom Middle front centered)
 
  -----------------------------------------------------------------------------------------------------    
 
-Coke Oven  (#1156/1171) 1156:1171 Controller for Coke Oven
+Controller for Coke Oven
 Size(WxHxD): 3x3x3, 
 Controller (middle front centered)
 25x  Coke Oven Blocks (Hollow Cube)
-Input Coal/Charcoal on any Sides 
+Input Coal/Wood on any Sides
 Output on any Sides
-
- -----------------------------------------------------------------------------------------------------  
-  
-- NEED TEST - Combustion Engine  (#1156/1171) 1156:1171 Controller for the Large Combustion Engine 
-Size(WxHxD): 3x3x4, 
-Controller (middle front centered)
-3x3x4 Titanium Casing (hollow, Min 22!)
-8x Engine Intake Casings (around controller Min 8!)
-2x Titanium Gear Box Casing inside the Hollow Casing 
-1x Fluid Input Hatch (one of the 4 Side Middle  Casings) 
-1x Fluid Output Hatch (one of the 4 Side Middle  Casings) 
-1x Muffler Hatch any of top casings 
-1x Dynamo Hatch (back centered) 
-Engine Intake Casings not obstructed (only air blocks) 
 
  -----------------------------------------------------------------------------------------------------   
  
-Cracking Unit (#1156/1171) 1156:1171 Controller  for the Oil Cracking Unit 
+Controller  for the Oil Cracking Unit
 Size(WxHxD): 5x3x3,  
 Controller (middle front centered)
 3x3x4 Titanium Casing (hollow, Min 22!)
@@ -60,32 +45,32 @@ Controller (middle front centered)
 18-21x Stainless Steel Casing Elsewhere
 Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings 
  -----------------------------------------------------------------------------------------------------    
-Distillation Tower (#1156/1171) 1156:1171 Controller for the Distillation Tower 
+Controller for the Distillation Tower
 Size(WxHxD): 3xNx3(where N is between three and twelve),  
 Controller (middle bottom front centered)
 1x Energy Hatch any bottom layer casing
 1x+ Item Output Hatch any bottom layer casing
 1x+ Fluid Input Hatch any bottom layer casing
-1-11x Fluid Output Hatch at least one per layer (except the bottom layer)
+1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)
 19-82x Stainless Steel  Casings, everywhere else. 
  -----------------------------------------------------------------------------------------------------    
-Cryo Distillation Tower (#1156/1171) 1156:1171 Controller for the Cryogenic Distillation Tower  
+Controller for the Cryogenic Distillation Tower
 Size(WxHxD): 3xNx3(where N is between three and twelve),  
 Controller (middle bottom front centered)
 1x Energy Hatch any bottom layer casing
 1x+ Fluid Input Hatch any bottom layer casing (Air input though  Air Vent Cover on Pipe)
-1-11x Fluid Output Hatch at least one per layer (except the bottom layer)
+1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)
 19-82x Frostproof Casings, everywhere else. 
  -----------------------------------------------------------------------------------------------------    
-- NEED TEST - Heat Exchanger (#1156/1171) 1156:1171 Controller for the Heat Exchanger Machine
-Size(WxHxD): 3x4x3 Controller (middle bottom front centered)
+Controller for the Heat Exchanger Machine
+Size(WxHxD): 3x4x3
+Controller (middle bottom front centered)
 2x Fluid Input Hatch, one center of bottom layer (facing down for Hot Fluid input), the other any exterior casing of mid layers
 2x Fluid Output Hatch, one center of top layer (facing up), the other any exterior casing of mid layers
 2x Titanium Pipe Casings (center two blocks of multi, not visible from outside)
-21-30x Titanium Casings, everywhere else. 
-Optional 1x Item input Hatch and 1x Item Output Hatch on Top/Bottom layers casings
+21-30x Titanium Casings, everywhere else.
  -----------------------------------------------------------------------------------------------------    
-- NEED TEST - Implosion Compressor  (#1156/1171) 1156:1171 Controller for Implosion Compressor  
+Controller for Implosion Compressor
 Size(WxHxD): 3x3x3, 
 Controller (middle front centered)
 17-20x  Solid Steel Casings (Hollow Cube)
@@ -96,7 +81,7 @@ None or 1+ Item Input Hatch on any Sides
 
 ------------------------------------------------------------------------------------------------------ 
  
-Large Boiler  (#1156/1171) 1156:1171 Controller for the Large Boiler
+Controller for the Large Boiler
 Size(WxHxD): 3x5x3, 
 Controller (bottom middle front centered)
 5x Any tier Firebox Casings (around controller bottom layer)
