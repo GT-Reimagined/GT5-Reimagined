@@ -10,6 +10,7 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -109,6 +110,11 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
                     return super.extractItem(slot, amount, simulate);
                 }
             });
+        }
+
+        @Override
+        public boolean allowsInput(Direction side) {
+            return side != tile.getFacing().getOpposite();
         }
     }
 }
