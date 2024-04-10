@@ -146,10 +146,10 @@ public class Circuitry {
                         .build(), "CNC", "CSC", "CNC");
         provider.addItemRecipe(output, GTIRef.ID, "", "circuits", NandChip,
                 ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
-        provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
+        /*provider.addItemRecipe(output, GTIRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
                 ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");
         provider.addItemRecipe(output, GTIRef.ID, "", "energy_orbs", GTCoreItems.LapotronCrystal,
-                ImmutableMap.of('C', CIRCUITS_DATA, 'L', DUST_LAPIS_LAZURITE, 'S', GregTechTags.GEM_SAPPHIRES), "LCL", "LSL", "LCL");
+                ImmutableMap.of('C', CIRCUITS_DATA, 'L', DUST_LAPIS_LAZURITE, 'S', GregTechTags.GEM_SAPPHIRES), "LCL", "LSL", "LCL");*/
     }
 
     public static void init() {

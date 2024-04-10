@@ -237,6 +237,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(IridiumSodiumOxide).asDust();
         event.setMaterial(Kimberlite).asDust(ROCK);
         event.setMaterial(Komatiite).asDust(ROCK);
+        event.setMaterial(Lapotronium).asDust();
         event.setMaterial(Limestone).asDust(ROCK);
         event.setMaterial(LithiumChloride).asDust(880, MOLTEN).asFluid();
         event.setMaterial(MagnesiumCarbonate).asDust();
@@ -665,6 +666,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(IndiumGalliumPhosphide).mats(of(Indium, 1, Gallium, 1, Phosphor, 1));
         event.setMaterial(IridiumSodiumOxide).mats(of(Iridium,1,Sodium,1,Oxygen,2));
         event.setMaterial(Komatiite).mats(of(Olivine, 1, MagnesiumCarbonate, 2, Flint, 6, DarkAsh, 3));
+        event.setMaterial(Lapotronium).mats(of(Lapis, 6, Sapphire, 1, Energium, 9));
         event.setMaterial(Limestone).mats(of(Calcite, 1));
         event.setMaterial(LithiumChloride).mats(of(Lithium, 1, Chlorine, 1)).elecTicks(64);
         event.setMaterial(MagnesiumChloride).mats(of(Magnesium, 1, Chlorine, 2)).elecTicks(1024);

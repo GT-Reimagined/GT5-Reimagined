@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.EnergyCrystal;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.RawLapotronCrustal;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
@@ -39,6 +40,8 @@ public class AutoclaveLoader {
         }
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(DistilledWater.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal_distilled_water", 250, 256);
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(Water.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal", 500, 256);
+        AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Lapotronium, 16)).fi(DistilledWater.getLiquid(1000)).io(RawLapotronCrustal).add("raw_lapotron_crystal_distilled_water", 250, 256);
+        AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Lapotronium, 16)).fi(Water.getLiquid(1000)).io(RawLapotronCrustal).add("raw_lapotron_crystal", 500, 256);
         AUTOCLAVE.RB().ii(of(Items.NETHER_STAR)).fi(Neutronium.getLiquid(L * 2)).io(GregTechItems.GraviStar).add("gravistar", 480, 7680);
     }
 }

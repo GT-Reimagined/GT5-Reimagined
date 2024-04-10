@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import io.github.gregtechintergalactical.gtcore.GTCore;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
@@ -229,6 +230,7 @@ public class Materials {
     public static Material Graphene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "graphene", 0x808080, DULL));
     public static Material IndiumGalliumPhosphide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "indium_gallium_phosphide", 0x570b79, NONE));
     public static Material IridiumSodiumOxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "iridium_sodium_oxide", 0xffffff, NONE));
+    public static Material Lapotronium = GTCoreMaterials.Lapotronium;
     public static Material LithiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lithium_chloride", 0xdedefa, DULL));
     public static Material MagnesiumCarbonate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_carbonate", 0xF0E6E6, DULL));
     public static Material MagnesiumChloride = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magnesium_chloride", 0xd40d5c, DULL));
