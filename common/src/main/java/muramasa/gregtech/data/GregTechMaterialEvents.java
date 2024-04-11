@@ -704,7 +704,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Hematite).mats(of(Iron, 2, Oxygen, 3)).elecTicks(150);
         event.setMaterial(Bastnasite).mats(of(Cerium, 1, Carbon, 1, Fluorine, 1, Oxygen, 3)).elecTicks(192);
         event.setMaterial(Barite).mats(of(Barium, 1, Sulfur, 1, Oxygen, 4)).elecTicks(204);
-        event.setMaterial(Bentonite).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(Silicon, 12).put(Hydrogen, 6).put(Water, 5).put(Oxygen, 36)).elecTicks(480); // TODO: Ore Gen
+        event.setMaterial(Bentonite).mats(b -> b.put(Sodium, 1).put(Magnesium, 6).put(SiliconDioxide, 12).put(Hydrogen, 6).put(Water, 5)).elecTicks(480); // TODO: Ore Gen
         event.setMaterial(BrownLimonite).mats(of(Iron, 1, Hydrogen, 1, Oxygen, 2));
         event.setMaterial(Calcite).mats(of(Calcium, 1, Carbon, 1, Oxygen, 3)).elecTicks(100);
         event.setMaterial(Cassiterite).mats(of(Tin, 1, Oxygen, 2), 1).elecTicks(132);
