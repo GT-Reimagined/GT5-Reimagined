@@ -104,7 +104,7 @@ public class ArcFurnaceLoader {
             sizes.forEach(size -> {
                 Item cableItem = w.getBlockItem(size);
                 int ct = size.getCableThickness();
-                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 8 : 16;
+                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 6 : 8;
                 addRecyclingRecipe(cableItem, of(w.getMaterial(), amount));
             });
         });
@@ -114,7 +114,7 @@ public class ArcFurnaceLoader {
             sizes.forEach(size -> {
                 Item cableItem = w.getBlockItem(size);
                 int ct = size.getCableThickness();
-                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 8 : 16;
+                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 6 : 8;
                 addRecyclingRecipe(cableItem, of(w.getMaterial(), amount));
             });
         });
@@ -125,7 +125,7 @@ public class ArcFurnaceLoader {
                 Item cableItem = c.getBlockItem(size);
                 int ct = size.getCableThickness();
                 float multiplier = ct == 16 ?  5 : ct == 12 ? 4 : ct == 8 ? 3 : ct == 4 ? 2 : 1;
-                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 8 : 16;
+                float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 6 : 8;
                 addRecyclingRecipe(cableItem, of(c.getMaterial(), amount, Rubber, multiplier));
             });
         });
