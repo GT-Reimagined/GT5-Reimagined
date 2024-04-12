@@ -115,7 +115,6 @@ public class ToolTypes {
         }
     });
     static {
-        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_RE.location(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.BATTERIES_SMALL.location(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.BATTERIES_MEDIUM.location(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.BATTERIES_LARGE.location(), ToolTypes::getEnergy);
