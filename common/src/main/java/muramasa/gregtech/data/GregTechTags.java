@@ -15,6 +15,7 @@ public class GregTechTags {
     public static final TagKey<Item> GRIND_HEADS = getTag("grind_heads");
     public static final TagKey<Item> GEM_SAPPHIRES = getTag("gems/sapphires");
     public static final TagKey<Item> DUST_SAPPHIRES = getTag("dusts/sapphires");
+    public static final TagKey<Item> DUST_SANDS = getTag("dusts/sands");
     public static final TagKey<Block> ASPHALT = TagUtils.getBlockTag(new ResourceLocation(GTIRef.ID, "asphalt"));
     public static TagKey<Item> getTag(String id){
         return TagUtils.getForgelikeItemTag(id);

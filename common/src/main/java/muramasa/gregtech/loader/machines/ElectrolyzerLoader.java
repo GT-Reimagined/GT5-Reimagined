@@ -7,6 +7,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.gregtech.GregTechConfig;
+import muramasa.gregtech.data.GregTechTags;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.tags.ItemTags;
@@ -55,6 +56,7 @@ public class ElectrolyzerLoader {
             b.io(items).fo(fluids).add(prefix + "_" + t.getId(),duration, euPerTick);
         });
         ELECTROLYZER.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
+        ELECTROLYZER.RB().ii(RecipeIngredient.of(GregTechTags.DUST_SANDS, 32)).io(DUST.get(Materials.SiliconDioxide)).add("sand_dusts_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
         if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Carbon, 3), DUST.getMaterialIngredient(Alumina, 10))
