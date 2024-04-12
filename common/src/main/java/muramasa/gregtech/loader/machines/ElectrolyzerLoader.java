@@ -58,6 +58,8 @@ public class ElectrolyzerLoader {
         ELECTROLYZER.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(GregTechTags.DUST_SANDS, 32)).io(DUST.get(Materials.SiliconDioxide)).add("sand_dusts_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
+        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Bentonite, 33)).io(DUST_SMALL.get(Sodium, 2), DUST.get(Magnesium, 3), DUST.get(Silicon, 6))
+                .fo(Hydrogen.getGas(3000), Water.getLiquid(2500), Oxygen.getGas(18000)).add("dust_bentonite", 240, 120);
         if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Carbon, 3), DUST.getMaterialIngredient(Alumina, 10))
                     .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
