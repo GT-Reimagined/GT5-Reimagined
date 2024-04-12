@@ -11,6 +11,7 @@ import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.block.BlockAsphalt;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -40,7 +41,7 @@ public class MixerLoader {
         addDust(IndiumGalliumPhosphide, 8, 20*20);
         addDust(Energium, 8, 10*20);
         //addDust(Lapotronium, 8, 10*20);
-        MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 6), DUST.getMaterialIngredient(Sapphire, 1), DUST.getMaterialIngredient(Energium, 9)).io(DUST.get(Lapotronium, 16)).add("lapotronium_dust", 200, 8);
+        MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 6), of(GregTechTags.DUST_SAPPHIRES, 5), DUST.getMaterialIngredient(Redstone, 4)).io(DUST.get(Lapotronium, 16)).add("lapotronium_dust", 200, 8);
         addDust(GalliumArsenide, 8, 15*20);
         addDust(VanadiumSteel, 8, 50*20);
         addDust(CobaltBrass, 8, 45*20);
