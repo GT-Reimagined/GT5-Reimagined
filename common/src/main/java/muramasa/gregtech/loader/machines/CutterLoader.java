@@ -41,7 +41,7 @@ public class CutterLoader {
             if (mat == AntimatterMaterials.Diamond || mat == AntimatterMaterials.NetherizedDiamond)
                 multiplier = 5;
             int count = mat.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-            addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 10 * multiplier), 30);
+            addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 8 * multiplier), 30);
             if (mat.has(ITEM_CASING)){
                 addCutterRecipe(PLATE.getMaterialTag(mat), ITEM_CASING.get(mat, 2), "item_casing_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 5 * multiplier), 16);
             }
