@@ -258,6 +258,7 @@ public class Materials {
     public static Material TricalciumPhosphate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tricalcium_phosphate", 0xffff00, DULL));
     public static Material TungsticAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tungstic_acid", 0xb4c800, SHINY));
     public static Material TungstenTrioxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tungsten_trioxide", 0xc7d300, DULL));
+    public static Material Wollastonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "wollastonite", 0xf0f0f0, DULL));
 
     /**
      ** Ores

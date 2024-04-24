@@ -35,11 +35,20 @@ public class CutterLoader {
             return m.getMass();
         };
         for (Material mat : AntimatterMaterialTypes.PLATE.all()) {
-            if (!mat.has(AntimatterMaterialTypes.BLOCK))
-                continue;
             int multiplier = 1;//mat.has(AntimatterMaterialTypes.GEM) ? 8 : 3;
             if (mat == AntimatterMaterials.Diamond || mat == AntimatterMaterials.NetherizedDiamond)
                 multiplier = 5;
+            if (mat.has(GEM)){
+                addCutterRecipe(GEM.getMaterialTag(mat), PLATE.get(mat, 1), "plate_" + mat.getId() + "_from_gem", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
+                if (mat.has(GEM_FLAWLESS)) {
+                    addCutterRecipe(GEM_FLAWLESS.getMaterialTag(mat), PLATE.get(mat, 2), "plate_" + mat.getId() + "_from_gem_flawless", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
+                }
+                if (mat.has(GEM_EXQUISITE)) {
+                    addCutterRecipe(GEM_EXQUISITE.getMaterialTag(mat), PLATE.get(mat, 4), "plate_" + mat.getId() + "_from_gem_exquisite", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
+                }
+            }
+            if (!mat.has(AntimatterMaterialTypes.BLOCK))
+                continue;
             int count = mat.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
             addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 8 * multiplier), 30);
             if (mat.has(ITEM_CASING)){

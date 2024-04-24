@@ -266,6 +266,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumSulfide).asDust();
         event.setMaterial(TungsticAcid).asDust();
         event.setMaterial(TungstenTrioxide).asDust();
+        event.setMaterial(Wollastonite).asDust();
         //Nuclear
 
         /**
@@ -653,7 +654,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BorosilicateGlass).mats(of(Boron, 1, Silicon, 7, Oxygen,14));
         event.setMaterial(Brick).mats(of(Aluminium, 4, Silicon, 3, Oxygen, 12));
         event.setMaterial(CalciumChloride).mats(of(Calcium, 1, Chlorine, 2)).elecTicks(1024);
-        event.setMaterial(CalciumSulfate).mats(of(Calcium, 1, SiliconDioxide, 1, Oxygen, 2)).elecTicks(1460);
+        event.setMaterial(CalciumSulfate).mats(of(Calcium, 1, Sulfur, 1, Oxygen, 4));
         event.setMaterial(CobaltOxide).mats(of(Cobalt, 1, Oxygen, 1)).elecTicks(68);
         event.setMaterial(Concrete).mats(of(Stone, 1)).asFluid();
         event.setMaterial(DialuminiumTrioxide).mats(of(Aluminium,2,Oxygen,3));
@@ -693,6 +694,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumSulfide).mats(of(Sodium, 2, Sulfur, 1)).elecTicks(72);
         event.setMaterial(TungsticAcid).mats(of(Hydrogen, 2, Tungsten, 1, Oxygen, 4));
         event.setMaterial(TungstenTrioxide).mats(of(Tungsten, 1, Oxygen, 3));
+        event.setMaterial(Wollastonite).mats(of(Calcium, 1, SiliconDioxide, 1, Oxygen, 1)).elecTicks(1460);
         //Nuclear
 
         /**
@@ -1312,7 +1314,7 @@ public class GregTechMaterialEvents {
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke, PetroleumCoke, Flint, EnderEye, EnderPearl);
         ELEC30.add(Charcoal, Opal, Coal, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
-                SiliconDioxide, CalciumSulfate, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
+                SiliconDioxide, Wollastonite, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, Potash, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, PotassiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,

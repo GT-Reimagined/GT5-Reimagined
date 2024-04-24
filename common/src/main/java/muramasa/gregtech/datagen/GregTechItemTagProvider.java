@@ -1,6 +1,8 @@
 package muramasa.gregtech.datagen;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
@@ -40,5 +42,12 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(GregTechTags.GEM_SAPPHIRES).addTag(GEM.getMaterialTag(Sapphire)).addTag(GEM.getMaterialTag(GreenSapphire));
         this.tag(GregTechTags.DUST_SAPPHIRES).addTag(DUST.getMaterialTag(Sapphire)).addTag(DUST.getMaterialTag(GreenSapphire));
         this.tag(GregTechTags.DUST_SANDS).addTag(DUST.getMaterialTag(Sand)).addTag(DUST.getMaterialTag(RedSand));
+        this.tag(GregTechTags.DUST_SIO).addTag(DUST.getMaterialTag(SiliconDioxide))
+                .addTag(DUST.getMaterialTag(Quartzite)).addTag(DUST.getMaterialTag(Quartz))
+                .addTag(DUST.getMaterialTag(Glass)).addTag(DUST.getMaterialTag(Flint))
+                .addTag(DUST.getMaterialTag(MilkyQuartz));
+        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+            this.tag(GregTechTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
+        }
     }
 }
