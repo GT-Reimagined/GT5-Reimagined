@@ -10,6 +10,6 @@ public class BlockFakeCasing extends BlockFakeTile {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(getRegistryName().getNamespace(), "block/casing/" + getRegistryName().getPath().replaceAll("casing_", ""))};
+        return new Texture[]{new Texture(getDomain(), "block/casing/" + getRegistryName().getPath().replaceAll("casing_", ""))};
     }
 }
