@@ -166,7 +166,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
         if (type == Machines.LONG_DISTANCE_FLUID_ENDPOINT) return GregTechBlocks.LONG_DIST_FLUID_PIPE;
         if (type == Machines.LONG_DISTANCE_ITEM_ENDPOINT) return GregTechBlocks.LONG_DIST_ITEM_PIPE;
         if (type == Machines.LONG_DISTANCE_TRANSFORMER_ENDPOINT){
-            Block block = GregTech.get(BlockCasing.class, "long_distance_cable_" + this.tier.getId());
+            Block block = GregTech.get(BlockCasing.class, "long_distance_wire_" + this.tier.getId());
             if (block != null) return block;
         }
         return Blocks.DIAMOND_BLOCK;
