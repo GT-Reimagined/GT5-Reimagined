@@ -18,6 +18,9 @@ import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.tool.behaviour.BehaviourBlockTilling;
+import muramasa.antimatter.tool.behaviour.BehaviourLogStripping;
+import muramasa.antimatter.tool.behaviour.BehaviourVanillaShovel;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
@@ -26,6 +29,8 @@ import muramasa.gregtech.integration.forge.tfc.datagen.TFCItemTagProvider;
 import muramasa.gregtech.integration.forge.tfc.datagen.TFCLangProvider;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
+import net.dries007.tfc.common.blocks.soil.SoilBlockType;
+import net.dries007.tfc.common.blocks.wood.Wood;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.world.level.block.SoundType;
@@ -39,6 +44,7 @@ import java.util.function.BiConsumer;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.gregtech.data.Materials.*;
+import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 
 public class TFCRegistrar implements IAntimatterRegistrar {
 
@@ -92,6 +98,43 @@ public class TFCRegistrar implements IAntimatterRegistrar {
                 AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, AntimatterMaterialTypes.LIQUID.getId() + "_" + m.getId());
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return FluidPlatformUtils.createFluidStack(fluid.getFluid(), i);
+            });
+            // Make TFC logs strippable with AntiMatter tools
+            Helpers.mapOfKeys(Wood.class, (wood) -> {
+                var log = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, "wood/log/" + wood.name().toLowerCase());
+                var log_stripped = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, "wood/stripped_log/" + wood.name().toLowerCase());
+                BehaviourLogStripping.addStrippedBlock(log, log_stripped);
+                return true;
+            });
+            // Make TFC dirt hoe-able with AntiMatter hoes
+            Helpers.mapOfKeys(SoilBlockType.class, (soil) -> {
+                switch (soil) {
+                    case DIRT: case GRASS: case CLAY: case CLAY_GRASS:
+                        for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
+                            var dirt = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
+                            var farmland = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, "farmland/" + vary.name().toLowerCase());
+                            BehaviourBlockTilling.addStrippedBlock(dirt, farmland);
+                        } break;
+                    case ROOTED_DIRT:
+                        for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
+                            var rootdirt = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
+                            var dirt = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, "dirt/" + vary.name().toLowerCase());
+                            BehaviourBlockTilling.addStrippedBlock(rootdirt, dirt);
+                        } break;
+                    default: break;
+                }
+                return true;
+            });
+            // Make TFC dirt path-able with AntiMatter shovels
+            Helpers.mapOfKeys(SoilBlockType.class, (path) -> {
+                if (path == GRASS_PATH) {
+                    for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
+                        var grasstype = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, "grass/" + vary.name().toLowerCase());
+                        var pathtype = AntimatterPlatformUtils.getBlockFromId(Ref.MOD_TFC, "grass_path/" + vary.name().toLowerCase());
+                        BehaviourVanillaShovel.addStrippedBlock(grasstype, pathtype);
+                    }
+                }
+                return true;
             });
         }
     }
