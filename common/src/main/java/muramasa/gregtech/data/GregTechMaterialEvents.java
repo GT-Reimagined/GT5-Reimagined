@@ -35,7 +35,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Beryllium).asSolid(1560).asOre();
         event.setMaterial(Boron).asDust(2349);
         event.setMaterial(Carbon).asDust(PLATE, MOLTEN).asFluid();
-        event.setMaterial(Nitrogen).asGas();
+        event.setMaterial(Nitrogen).asGas().asFluid(0, 77);
         event.setMaterial(Oxygen).asGas();
         event.setMaterial(Fluorine).asGas();
         event.setMaterial(Neon).asGas().fluidDensity(-111);
