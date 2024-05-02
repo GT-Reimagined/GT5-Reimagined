@@ -264,7 +264,9 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
     @Override
     protected void invalidateStructure() {
         super.invalidateStructure();
-        successfulPositions.clear();
+        if (successfulPositions != null) {
+            successfulPositions.clear();
+        }
         if (target != null){
             target.validStructure = false;
             target.sender = null;
