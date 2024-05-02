@@ -495,8 +495,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Steam).asGas(1, 395).fluidDensity(-800);
         event.setMaterial(SuperheatedSteam).asGas(2, 600).fluidDensity(-3000);
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
-        event.setMaterial(SulfurTrioxide).asGas();
-        event.setMaterial(SulfurDioxide).asGas();
         event.setMaterial(Tar).asFluid();
         event.setMaterial(ThoriumSalt).asFluid(0, 600).flags(MOLTEN);
         event.setMaterial(TitaniumTetrachloride).asFluid().flags(ACID);
