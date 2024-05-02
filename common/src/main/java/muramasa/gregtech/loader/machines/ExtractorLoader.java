@@ -16,5 +16,11 @@ public class ExtractorLoader {
         EXTRACTOR.RB().ii(of(GTCoreBlocks.RUBBER_LEAVES.asItem(),1)).io(new ItemStack(DUST.get(RawRubber))).add("raw_rubber_1",150,8);
         EXTRACTOR.RB().ii(of(GTCoreBlocks.RUBBER_SAPLING.asItem(),1)).io(new ItemStack(DUST.get(RawRubber))).add("raw_rubber_2",150,8);
         EXTRACTOR.RB().ii(of(GTCoreItems.StickyResin,1)).io(new ItemStack(DUST.get(RawRubber),4)).add("raw_rubber_3",200,5);
+        EXTRACTOR.RB().ii(of(GTCoreItems.BatteryLargeAcid, 1).setIgnoreNbt()).io(new ItemStack(GTCoreItems.BatteryHullLarge)).add("large_acid_battery_recycling", 200, 5);
+        EXTRACTOR.RB().ii(of(GTCoreItems.BatteryLargeMercury, 1).setIgnoreNbt()).io(new ItemStack(GTCoreItems.BatteryHullLarge)).add("large_mercury_battery_recycling", 200, 5);
+        EXTRACTOR.RB().ii(of(GTCoreItems.BatteryMediumAcid, 1).setIgnoreNbt()).io(new ItemStack(GTCoreItems.BatteryHullMedium)).add("medium_acid_battery_recycling", 200, 5);
+        EXTRACTOR.RB().ii(of(GTCoreItems.BatteryMediumMercury, 1).setIgnoreNbt()).io(new ItemStack(GTCoreItems.BatteryHullMedium)).add("medium_mercury_battery_recycling", 200, 5);
+        EXTRACTOR.RB().ii(of(GTCoreItems.BatterySmallAcid, 1).setIgnoreNbt()).io(new ItemStack(GTCoreItems.BatteryHullSmall)).add("small_acid_battery_recycling", 200, 5);
+        EXTRACTOR.RB().ii(of(GTCoreItems.BatterySmallMercury, 1).setIgnoreNbt()).io(new ItemStack(GTCoreItems.BatteryHullSmall)).add("small_mercury_battery_recycling", 200, 5);
     }
 }
