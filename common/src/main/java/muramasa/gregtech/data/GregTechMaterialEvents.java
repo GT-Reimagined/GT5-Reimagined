@@ -541,7 +541,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(NitrogenDioxide).asGas();
         event.setMaterial(NobleGases).asGas(0,790);
         event.setMaterial(SulfurDioxide).asGas().fluidDensity(689);
-        event.setMaterial(SulfurTrioxide).asGas(0,344).fluidDensity(517);
+        event.setMaterial(SulfurTrioxide).asGas(0,300).fluidDensity(517);
         /**
          ** Fuels
          **/
