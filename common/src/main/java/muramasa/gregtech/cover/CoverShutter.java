@@ -8,12 +8,14 @@ import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,11 +39,11 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
         checkConnection = true;
     }
 
-    @Override
+    /*@Override
     public <T> boolean blocksCapability(Class<T> cap, @Nullable Direction side) {
-        if (side == null) return false;
+        if (side == null || this.handler.getTile().getLevel().isClientSide()) return false;
         return (mode == Mode.OPEN_NO_REDSTONE && isPowered) || (mode == Mode.OPEN_REDSTONE && !isPowered);
-    }
+    }*/
 
     @Override
     public <T> boolean blocksInput(Class<T> cap, @Nullable Direction side) {
@@ -60,36 +62,15 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
             this.handler.getTile().setChanged();
             switch (mode){
                 case OPEN_NO_REDSTONE -> {
-                    if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
-                        if (isPowered){
-                            pipe.clearConnection(this.side);
-                        } else {
-                            pipe.setConnection(this.side);
-                        }
-                    }
                     player.sendMessage(Utils.literal("Open if work disabled"), player.getUUID());
                 }
                 case OUTPUT_ONLY -> {
-                    if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
-                        pipe.setConnection(this.side);
-                    }
                     player.sendMessage(Utils.literal("Output only"), player.getUUID());
                 }
                 case INPUT_ONLY -> {
-                    if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
-                        pipe.setConnection(this.side);
-                    }
                     player.sendMessage(Utils.literal("Input only"), player.getUUID());
                 }
                 case OPEN_REDSTONE -> {
-                    if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
-                        if (isPowered){
-                            pipe.setConnection(this.side);
-                        } else {
-                            pipe.clearConnection(this.side);
-
-                        }
-                    }
                     player.sendMessage(Utils.literal("Open if work enabled"), player.getUUID());
                 }
             }
@@ -99,7 +80,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     }
 
     @Override
-    public void onBlockUpdate() {
+    public void onBlockUpdateAllSides() {
         checkConnection = true;
     }
 
@@ -107,14 +88,14 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     public void onUpdate() {
         super.onUpdate();
         if (checkConnection){
-            checkPipeConnection();
+            isPowered = isPowered(this.side);
             checkConnection = false;
         }
+        checkPipeConnection();
     }
 
     private void checkPipeConnection(){
         BlockEntityPipe<?> pipe = (BlockEntityPipe<?>) handler.getTile();
-        isPowered = isPowered(this.side);
         if (mode == Mode.OPEN_NO_REDSTONE || mode == Mode.OPEN_REDSTONE){
             boolean remove = (mode == Mode.OPEN_NO_REDSTONE && isPowered) || (mode == Mode.OPEN_REDSTONE && !isPowered);
             if (remove) pipe.clearConnection(this.side);
