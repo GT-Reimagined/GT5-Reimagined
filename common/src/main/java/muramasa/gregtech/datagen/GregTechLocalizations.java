@@ -115,6 +115,10 @@ public class GregTechLocalizations {
             add("message.gti.mini_portal.connect", "Target at: x: %s y: %s z: %s in %s");
             add("message.gti.redstone_mode.normal", "Redstone Mode: Normal");
             add("message.gti.redstone_mode.inverted", "Redstone Mode: Inverted");
+            add("message.gti.needs_maintenance.scaled.normal", "Outputs a scaled signal");
+            add("message.gti.needs_maintenance.scaled.inverted", "Outputs a scaled signal (Inverted)");
+            add("message.gti.needs_maintenance.unscaled.normal", "Outputs a flat signal");
+            add("message.gti.needs_maintenance.unscaled.inverted", "Outputs a flat signal (Inverted)");
             structureTranslations();
         }
 
