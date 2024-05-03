@@ -19,21 +19,28 @@ public class CompressorLoader {
         AntimatterMaterialTypes.INGOT.all().forEach(ingot -> {
             if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-                COMPRESSOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.get(ingot), count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
+                COMPRESSOR.RB().ii(INGOT.getMaterialIngredient(ingot, count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
                         .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
+            }
+        });
+        PLATE_DENSE.all().forEach(ingot -> {
+            if (ingot.has(AntimatterMaterialTypes.PLATE)) {
+                int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
+                COMPRESSOR.RB().ii(PLATE.getMaterialIngredient(ingot, count)).io(PLATE_DENSE.get(ingot, 1))
+                        .add("dense_plate_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
         AntimatterMaterialTypes.GEM.all().forEach(ingot -> {
             if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-                COMPRESSOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.GEM.get(ingot), count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
+                COMPRESSOR.RB().ii(GEM.getMaterialIngredient(ingot, count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
                         .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
         AntimatterMaterialTypes.RAW_ORE.all().forEach(raw_ore -> {
             if (raw_ore.has(AntimatterMaterialTypes.BLOCK)) {
                 int count = 9;
-                COMPRESSOR.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.RAW_ORE.get(raw_ore), count)).io(AntimatterMaterialTypes.RAW_ORE_BLOCK.get().get(raw_ore).asStack(1))
+                COMPRESSOR.RB().ii(RAW_ORE.getMaterialIngredient(raw_ore, count)).io(AntimatterMaterialTypes.RAW_ORE_BLOCK.get().get(raw_ore).asStack(1))
                         .add("block_raw_" + raw_ore.getId(),Math.max(80, raw_ore.getMass() * 2), 16);
             }
         });
