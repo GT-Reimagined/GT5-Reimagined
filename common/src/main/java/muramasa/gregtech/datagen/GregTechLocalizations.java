@@ -231,6 +231,8 @@ public class GregTechLocalizations {
                 override("fluid_type.antimatter_shared.liquid_" + s, Utils.lowerUnderscoreToUpperSpaced(s));
                 override("item.antimatter_shared.liquid_" + s + "_bucket", Utils.lowerUnderscoreToUpperSpaced(s) + " Bucket");
             }
+            override("fluid_type.antimatter_shared.liquid_nitrogen", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen"));
+            override("item.antimatter_shared.liquid_nitrogen_bucket", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen") + " Bucket");
 //            AntimatterAPI.all(ItemPowerUnit.class, domain).stream().filter(i -> i.getId().startsWith("power_unit") || i.getId().startsWith("small_power_unit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())));
             override(LARGE_TURBINE, HV, "Large Steam Turbine");
             override(LARGE_TURBINE, EV, "Large Gas Turbine");
