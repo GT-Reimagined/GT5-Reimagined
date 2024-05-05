@@ -160,6 +160,7 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
         ASSEMBLER.RB().ii(of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
 
+        ASSEMBLER.RB().ii(of(GregTechItems.EmitterMV), PLATE.getMaterialIngredient(Aluminium, 1)).io(GregTechCovers.COVER_NEEDS_MAINTENANCE_COVER.getItem()).add("needs_maintenance_cover", 600, 24);
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(GregTechCovers.COVER_DRAIN.getItem()).add("drain",800, 16);
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(GregTechCovers.COVER_PUMP.getItem(LV))).io(GregTechCovers.COVER_AIR_VENT .getItem()).add("air_vent",800, 16);
         addCoverRecipe(GregTechCovers.COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));

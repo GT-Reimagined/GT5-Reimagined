@@ -3,14 +3,13 @@ package muramasa.gregtech.data;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidItemHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.cover.CoverDynamo;
-import muramasa.antimatter.cover.CoverEnergy;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.cover.*;
+import muramasa.gregtech.cover.redstone.CoverNeedsMaintenance;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import muramasa.gregtech.items.ItemCoverCustomTooltip;
 import net.minecraft.nbt.CompoundTag;
@@ -78,9 +77,12 @@ public class GregTechCovers {
                     }
                 }
             }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_filter")).gui().build(GTIRef.ID, "fluid_filter");
-    public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).gui().item((a, b) -> {
+    public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");
+    public static final CoverFactory COVER_NEEDS_MAINTENANCE_COVER = CoverFactory.builder(CoverNeedsMaintenance::new).item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "needs_maintenance_cover");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/needs_maintenance_cover")).build(GTIRef.ID, "needs_maintenance_cover");
     public static final CoverFactory COVER_ENERGY_DETECTOR = CoverFactory.builder(CoverEnergyDetector::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "energy_detector");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/energy_detector")).build(GTIRef.ID, "energy_detector");

@@ -35,7 +35,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Beryllium).asSolid(1560).asOre();
         event.setMaterial(Boron).asDust(2349);
         event.setMaterial(Carbon).asDust(PLATE, MOLTEN).asFluid();
-        event.setMaterial(Nitrogen).asGas();
+        event.setMaterial(Nitrogen).asGas().asFluid(0, 77);
         event.setMaterial(Oxygen).asGas();
         event.setMaterial(Fluorine).asGas();
         event.setMaterial(Neon).asGas().fluidDensity(-111);
@@ -495,8 +495,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(Steam).asGas(1, 395).fluidDensity(-800);
         event.setMaterial(SuperheatedSteam).asGas(2, 600).fluidDensity(-3000);
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
-        event.setMaterial(SulfurTrioxide).asGas();
-        event.setMaterial(SulfurDioxide).asGas();
         event.setMaterial(Tar).asFluid();
         event.setMaterial(ThoriumSalt).asFluid(0, 600).flags(MOLTEN);
         event.setMaterial(TitaniumTetrachloride).asFluid().flags(ACID);
@@ -543,7 +541,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(NitrogenDioxide).asGas();
         event.setMaterial(NobleGases).asGas(0,790);
         event.setMaterial(SulfurDioxide).asGas().fluidDensity(689);
-        event.setMaterial(SulfurTrioxide).asGas(0,344).fluidDensity(517);
+        event.setMaterial(SulfurTrioxide).asGas(0,300).fluidDensity(517);
         /**
          ** Fuels
          **/

@@ -186,7 +186,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
         while (true){
             mut.move(to);
             BlockState state =  this.getLevel().getBlockState(mut);
-            if (state.getBlock() == this.getBlockState().getBlock()){
+            if (state.getBlock() == this.getBlockState().getBlock() && pipelinesFound > 0){
                 if (this.getLevel().getBlockEntity(mut) instanceof BlockEntityLongDistancePipeEndpoint endpoint && endpoint.getFacing() == to.getOpposite()){
                     endpoint.validStructure = true;
                     this.target = endpoint;
@@ -204,8 +204,9 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
             mut.move(to.getOpposite());
             int failed = 0;
             int succeeded = 0;
+            Direction oldTo = to;
             for (Direction dir : Direction.values()){
-                if (dir == to || dir == to.getOpposite()) continue;
+                if (dir == oldTo || dir == oldTo.getOpposite()) continue;
                 BlockState state2 =  this.getLevel().getBlockState(mut.immutable().relative(dir));
                 if (state2.getBlock() == getPipeline()){
                     if (succeeded == 0) to = dir;
@@ -264,7 +265,9 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
     @Override
     protected void invalidateStructure() {
         super.invalidateStructure();
-        successfulPositions.clear();
+        if (successfulPositions != null) {
+            successfulPositions.clear();
+        }
         if (target != null){
             target.validStructure = false;
             target.sender = null;

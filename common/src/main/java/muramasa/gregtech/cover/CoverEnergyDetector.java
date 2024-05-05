@@ -12,6 +12,7 @@ import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.cover.base.CoverBasicRedstoneOutput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -24,9 +25,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.gt.IEnergyHandler;
 
-public class CoverEnergyDetector extends BaseCover {
-    boolean inverted = false;
-    int outputRedstone = 0;
+public class CoverEnergyDetector extends CoverBasicRedstoneOutput {
     public CoverEnergyDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
     }
@@ -52,63 +51,12 @@ public class CoverEnergyDetector extends BaseCover {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.energyHandler.isPresent()){
             IEnergyHandler energyHandler = machine.energyHandler.get();
-            int oldRedstone = outputRedstone;
             long scale = energyHandler.getCapacity() / 15L;
             if (scale > 0){
-                outputRedstone = inverted ? (int) (15L - energyHandler.getEnergy() / scale) : (int) (energyHandler.getEnergy() / scale);
+                setOutputRedstone(inverted ? (int) (15L - energyHandler.getEnergy() / scale) : (int) (energyHandler.getEnergy() / scale));
             } else {
-                outputRedstone = inverted ? 15 : 0;
-            }
-            if (outputRedstone != oldRedstone){
-                markAndNotifySource();
-                BlockPos neighbor = this.source().getTile().getBlockPos().relative(this.side);
-                BlockState neighborState = this.source().getTile().getLevel().getBlockState(neighbor);
-                this.source().getTile().getLevel().updateNeighbourForOutputSignal(neighbor, neighborState.getBlock());
+                setOutputRedstone(inverted ? 15 : 0);
             }
         }
-    }
-
-    @Override
-    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
-        if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
-            inverted = !inverted;
-            player.sendMessage(Utils.translatable("message.gti.redstone_mode." + (inverted ? "inverted" : "normal")), player.getUUID());
-            return InteractionResult.SUCCESS;
-        }
-        return super.onInteract(player, hand, side, type);
-    }
-
-    @Override
-    public int getWeakPower() {
-        return outputRedstone;
-    }
-
-    @Override
-    public int getStrongPower() {
-        return outputRedstone;
-    }
-
-    @Override
-    public CompoundTag serialize() {
-        CompoundTag nbt =  super.serialize();
-        nbt.putBoolean("inverted", inverted);
-        return nbt;
-    }
-
-    @Override
-    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
-        if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
-            GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
-            if (ev.data[1] == 0){
-                inverted = !inverted;
-                this.handler.getTile().setChanged();
-            }
-        }
-    }
-
-    @Override
-    public void deserialize(CompoundTag nbt) {
-        super.deserialize(nbt);
-        inverted = nbt.getBoolean("inverted");
     }
 }

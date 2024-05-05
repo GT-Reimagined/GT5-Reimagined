@@ -115,6 +115,10 @@ public class GregTechLocalizations {
             add("message.gti.mini_portal.connect", "Target at: x: %s y: %s z: %s in %s");
             add("message.gti.redstone_mode.normal", "Redstone Mode: Normal");
             add("message.gti.redstone_mode.inverted", "Redstone Mode: Inverted");
+            add("message.gti.needs_maintenance.scaled.normal", "Outputs a scaled signal");
+            add("message.gti.needs_maintenance.scaled.inverted", "Outputs a scaled signal (Inverted)");
+            add("message.gti.needs_maintenance.unscaled.normal", "Outputs a flat signal");
+            add("message.gti.needs_maintenance.unscaled.inverted", "Outputs a flat signal (Inverted)");
             structureTranslations();
         }
 
@@ -227,6 +231,8 @@ public class GregTechLocalizations {
                 override("fluid_type.antimatter_shared.liquid_" + s, Utils.lowerUnderscoreToUpperSpaced(s));
                 override("item.antimatter_shared.liquid_" + s + "_bucket", Utils.lowerUnderscoreToUpperSpaced(s) + " Bucket");
             }
+            override("fluid_type.antimatter_shared.liquid_nitrogen", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen"));
+            override("item.antimatter_shared.liquid_nitrogen_bucket", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen") + " Bucket");
 //            AntimatterAPI.all(ItemPowerUnit.class, domain).stream().filter(i -> i.getId().startsWith("power_unit") || i.getId().startsWith("small_power_unit")).forEach(i -> override(i.getDescriptionId(), lowerUnderscoreToUpperSpaced(i.getId())));
             override(LARGE_TURBINE, HV, "Large Steam Turbine");
             override(LARGE_TURBINE, EV, "Large Gas Turbine");

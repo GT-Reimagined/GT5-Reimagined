@@ -31,9 +31,6 @@ public class BenderLoader {
             if (t.has(AntimatterMaterialTypes.INGOT)) {
                 BENDER.RB().ii(AntimatterMaterialTypes.INGOT.getMaterialIngredient(t,9),INT_CIRCUITS.get(9)).io(PLATE_DENSE.get(t,1)).add("plate_dense_" + t.getId(), baseDuration.applyAsLong(t) * 9, 96);
             }
-            if (t.has(PLATE)){
-                BENDER.RB().ii(PLATE.getMaterialIngredient(t,9),INT_CIRCUITS.get(9)).io(PLATE_DENSE.get(t,1)).add("plate_dense_" + t.getId() + "_from_plate", baseDuration.applyAsLong(t) * 9, 96);
-            }
         });
         AntimatterMaterialTypes.FOIL.all().forEach(foil -> {
             if (!foil.has(PLATE) || foil.has(MaterialTags.RUBBERTOOLS)) return;
