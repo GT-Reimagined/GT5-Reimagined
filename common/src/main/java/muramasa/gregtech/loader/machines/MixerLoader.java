@@ -40,8 +40,8 @@ public class MixerLoader {
         addDust(FerriteMixture, 8, 30*20);
         addDust(IndiumGalliumPhosphide, 8, 20*20);
         addDust(Energium, 8, 10*20);
-        //addDust(Lapotronium, 8, 10*20);
-        MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 6), of(GregTechTags.DUST_SAPPHIRES, 5), DUST.getMaterialIngredient(Redstone, 4)).io(DUST.get(Lapotronium, 15)).add("lapotronium_dust", 200, 8);
+        MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 6), DUST.getMaterialIngredient(Redstone, 4)).fi(Water.getLiquid(1000)).fo(Lapotronium.getLiquid(1000)).add("lapotronium_fluid", 200, 8);
+        MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 6), DUST.getMaterialIngredient(Redstone, 4)).fi(DistilledWater.getLiquid(1000)).fo(Lapotronium.getLiquid(1000)).add("lapotronium_fluid_from_distilled", 200, 8);
         addDust(GalliumArsenide, 8, 15*20);
         addDust(VanadiumSteel, 8, 50*20);
         addDust(CobaltBrass, 8, 45*20);
@@ -124,7 +124,9 @@ public class MixerLoader {
             MIXER.RB().fi(PolyvinylAcetate.getLiquid(1000),Acetone.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue",25 * 2, 8);
             MIXER.RB().fi(PolyvinylAcetate.getLiquid(1000),MethylAcetate.getLiquid(1500)).fo(Glue.getLiquid(2500)).add("glue_1",25 * 2, 8);
         }
-        MIXER.RB().ii(DUST.getMaterialIngredient(Apatite, 1), DUST.getMaterialIngredient(Ash, 1)).io(new ItemStack(GTCoreItems.Fertilizer, 2)).add("fertilizer", 200, 16);
+        MIXER.RB().ii(DUST.getMaterialIngredient(Apatite, 1), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 2)).add("fertilizer", 200, 16);
+        MIXER.RB().ii(DUST.getMaterialIngredient(TricalciumPhosphate, 3), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 4)).add("fertilizer_1", 200, 16);
+        MIXER.RB().ii(DUST.getMaterialIngredient(Phosphate, 3), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 5)).add("fertilizer_2", 200, 16);
         MIXER.RB().ii(of(DUST.get(Wood,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
         MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
         MIXER.RB().ii(of(DUST.get(Salt,2))).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);

@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.GregTechMaterialTags;
@@ -40,8 +41,7 @@ public class AutoclaveLoader {
         }
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(DistilledWater.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal_distilled_water", 250, 256);
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Energium, 9)).fi(Water.getLiquid(1000)).io(EnergyCrystal).add("energy_crystal", 500, 256);
-        AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Lapotronium, 15)).fi(DistilledWater.getLiquid(1000)).io(RawLapotronCrustal).add("raw_lapotron_crystal_distilled_water", 250, 256);
-        AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Lapotronium, 15)).fi(Water.getLiquid(1000)).io(RawLapotronCrustal).add("raw_lapotron_crystal", 500, 256);
+        AUTOCLAVE.RB().ii(RecipeIngredient.of(1, GEM_EXQUISITE.getMaterialTag(Sapphire), GEM_EXQUISITE.getMaterialTag(GreenSapphire))).fi(Lapotronium.getLiquid(1000)).io(RawLapotronCrustal).add("raw_lapotron_crystal", 250, 256);
         AUTOCLAVE.RB().ii(of(Items.NETHER_STAR)).fi(Neutronium.getLiquid(L * 2)).io(GregTechItems.GraviStar).add("gravistar", 480, 7680);
     }
 }
