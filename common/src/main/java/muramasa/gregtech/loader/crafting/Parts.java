@@ -131,8 +131,9 @@ public class Parts {
           Item conveyor = GregTech.get(ItemCover.class, "conveyor_" + t.getId());
           Item fieldGen = GregTech.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
+          Object wire = t == EV || t == IV ? GregTechBlocks.WIRE_ANNEALED_COPPER.getBlock(fromTier(t)) : WIRE_GETTER.apply(fromTier(t), LV);
           provider.addItemRecipe(output, "gtparts", motor,
-                  of('M', ROD.get(magnet), 'C', cable, 'W', WIRE_GETTER.apply(fromTier(t), LV), 'R', rod), "CWR", "WMW", "RWC");
+                  of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
           provider.addItemRecipe(output, "gtparts", piston,
                   of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
           provider.addItemRecipe(output, "gtparts", conveyor,
