@@ -237,7 +237,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(IridiumSodiumOxide).asDust();
         event.setMaterial(Kimberlite).asDust(ROCK);
         event.setMaterial(Komatiite).asDust(ROCK);
-        event.setMaterial(Lapotronium).asDust();
+        event.setMaterial(Lapotronium).asFluid();
         event.setMaterial(Limestone).asDust(ROCK);
         event.setMaterial(LithiumChloride).asDust(880, MOLTEN).asFluid();
         event.setMaterial(MagnesiumCarbonate).asDust();
