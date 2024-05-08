@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT_HOT;
+import static muramasa.gregtech.data.Materials.Nitrogen;
 import static muramasa.gregtech.data.RecipeMaps.VACUUM_FREEZER;
 
 public class VacuumFreezerLoader {
@@ -15,5 +16,6 @@ public class VacuumFreezerLoader {
             VACUUM_FREEZER.RB().ii(RecipeIngredient.of(INGOT_HOT.getMaterialTag(hi),1))
                     .io(new ItemStack(ingot,1)).add("ingot_hot_" + hi.getId(),hi.getMass(), 120);
         });
+        VACUUM_FREEZER.RB().fi(Nitrogen.getGas(1000)).fo(Nitrogen.getLiquid(1000)).add("liquid_nitrogen", Nitrogen.getMass(), 120);
     }
 }
