@@ -223,8 +223,8 @@ public class Structures {
 
         VACUUM_FREEZER.setStructure(BlockEntityVacuumFreezer.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
-            .at('C', GregTechBlocks.CASING_FROST_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
-            .offset(1, 1, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).build()
+            .at('C', GregTechBlocks.CASING_FROST_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY)
+            .offset(1, 1, 0).min(1, HATCH_ENERGY).build()
         );
 
         FUSION_REACTOR.setStructure(BlockEntityFusionReactor.class, b -> b.part("main")
