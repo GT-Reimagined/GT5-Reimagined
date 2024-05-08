@@ -134,12 +134,12 @@ public class BlockParts {
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
 
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_ENGINE_INTAKE, 2),
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_ENGINE_INTAKE, 1),
                 of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GregTechBlocks.CASING_TITANIUM, 'G', GregTechBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
 
-        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_BRONZE_PLATED_BRICK, 2),
+        provider.addStackRecipe(output, GTIRef.ID, "", "gtblockparts", new ItemStack(GregTechBlocks.CASING_BRONZE_PLATED_BRICK, 1),
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Bronze))
                         .put('B', Blocks.BRICKS)
