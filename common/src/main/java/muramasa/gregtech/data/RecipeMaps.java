@@ -248,14 +248,16 @@ public class RecipeMaps {
             String duration = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
             String extraBurntime = "HU/t: " + recipe.getPower();
             String heatIncreaseMultiplier = "Total HU: " + (recipe.getPower() * recipe.getDuration());
+            String heatExchanger = recipe.getSpecialValue() == 1 ? "Works in both Small and Large Heat Exchangers" : (recipe.getSpecialValue() == -1 ? "Small" : "Large") + " Heat Exchanger only";
             renderString(stack, duration, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
             renderString(stack, extraBurntime, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
             renderString(stack, heatIncreaseMultiplier, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
+            renderString(stack, heatExchanger, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
         }
 
         @Override
         public int getRows() {
-            return 3;
+            return 4;
         }
     };
 

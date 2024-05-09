@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.multi;
 
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
+import net.minecraft.world.item.Items;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Lava;
@@ -12,10 +13,11 @@ public class HeatExchangerLoader {
     public static void init() {
         HEAT_EXCHANGER.RB().fi(HotCoolant.getLiquid(1))
                 .fo(Coolant.getLiquid(1))
-                .add("hot_coolant",1, 20);
+                .add("hot_coolant",1, 20, 1);
         HEAT_EXCHANGER.RB().fi(Lava.getLiquid(1))
                 .fo(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), TesseractGraphWrappers.dropletMultiplier, null))
-                .add("lava", 1, 80);
+                .add("lava", 1, 80, 1);
+        HEAT_EXCHANGER.RB().ii(Items.MAGMA_BLOCK).io(Items.COBBLESTONE).add("magma_block", 1000, 40, -1);
         HEAT_EXCHANGER.RB().fi(HotCarbonDioxide.getGas(1)).fo(CarbonDioxide.getGas(1)).add("hot_carbon_dioxide", 1, 20);
         HEAT_EXCHANGER.RB().fi(HotMoltenSodium.getLiquid(1)).fo(Sodium.getLiquid(1)).add("hot_molten_sodium", 1, 30);
         HEAT_EXCHANGER.RB().fi(HotMoltenTin.getLiquid(1)).fo(Tin.getLiquid(1)).add("hot_molten_tin", 1, 40);

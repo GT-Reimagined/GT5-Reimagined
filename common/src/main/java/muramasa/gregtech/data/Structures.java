@@ -119,7 +119,7 @@ public class Structures {
                     }
                     return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
                 }).build());
-        HEAT_EXCHANGER.setStructure(BlockEntityHeatExchanger.class, b -> b.part("main")
+        HEAT_EXCHANGER.setStructure(BlockEntityLargeHeatExchanger.class, b -> b.part("main")
                 .of("DDD", "DOD", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DID", "DDD").build()
                 .at('D', GregTechBlocks.CASING_TITANIUM)
                 .at('C', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_O, HATCH_FLUID_I).at('P', GregTechBlocks.CASING_PIPE_TITANIUM)

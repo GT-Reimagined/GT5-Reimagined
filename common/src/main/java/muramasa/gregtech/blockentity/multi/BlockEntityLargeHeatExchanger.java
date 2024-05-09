@@ -16,8 +16,8 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
 import net.minecraft.client.gui.Font;
@@ -29,20 +29,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 import tesseract.api.heat.IHeatHandler;
 
-import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.gregtech.data.Materials.*;
 
-public class BlockEntityHeatExchanger extends BlockEntityMultiMachine<BlockEntityHeatExchanger> implements IFilterableHandler {
+public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<BlockEntityLargeHeatExchanger> implements IFilterableHandler {
 
     int superheatedThreshold = 80000;
     int efficiency = 1000;
     int dryHeatCounter = 0;
     int dryHeatMaximum = 100;
 
-    public BlockEntityHeatExchanger(Machine type, BlockPos pos, BlockState state) {
+    public BlockEntityLargeHeatExchanger(Machine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         heatHandler.set(() -> new DefaultHeatHandler(this, Integer.MAX_VALUE, 80, 0));
         recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
+
+            @Override
+            protected boolean validateRecipe(IRecipe r) {
+                return super.validateRecipe(r) && r.getSpecialValue() >= 0;
+            }
 
             @Override
             protected int maxSimultaneousRecipes() {
