@@ -44,11 +44,6 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
             private int excessProjectedEU = 0; //Eliminate rounding errors from throttling the boiler
             boolean explode = false;
             @Override
-            protected boolean validateRecipe(IRecipe r) {
-                return super.validateRecipe(r);
-            }
-
-            @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
                 if (processingBlocked) return false;
                 int tGeneratedEU = (int) (this.euPerTick * 2L * this.efficiency / 10000L);
