@@ -250,7 +250,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
             return;
         if (validStructure) {
             BlockState state = this.getLevel().getBlockState(pos);
-            if (successfulPositions.contains(pos.asLong()) && state.getBlock() != getPipeline()){
+            if (successfulPositions != null && successfulPositions.contains(pos.asLong()) && state.getBlock() != getPipeline()){
                 invalidateStructure();
             }
         } else {
