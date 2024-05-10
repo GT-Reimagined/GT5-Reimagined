@@ -1,6 +1,7 @@
 package muramasa.gregtech.blockentity.single;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.fluid.FluidTank;
@@ -33,7 +34,7 @@ import tesseract.api.heat.IHeatHandler;
 
 import static muramasa.gregtech.data.Materials.*;
 
-public class BlockEntitySmallHeatExchanger extends BlockEntityMultiMachine<BlockEntitySmallHeatExchanger> {
+public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<BlockEntitySmallHeatExchanger> {
     boolean hadNoWater = false;
 
     public BlockEntitySmallHeatExchanger(Machine type, BlockPos pos, BlockState state) {

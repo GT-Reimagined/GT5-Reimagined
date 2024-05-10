@@ -191,6 +191,8 @@ public class Machines {
         }
     });
     public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine SMALL_HEAT_EXCHANGER = new SecondaryOutputMachine(GTIRef.ID, "small_heat_exchanger").setSecondaryOutputCover(COVER_OUTPUT_SECONDARY).setTiers(NONE).setMap(HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySmallHeatExchanger::new);
+
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/

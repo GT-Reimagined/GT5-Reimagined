@@ -32,9 +32,9 @@ public class SecondaryOutputCoverHandler<T extends BlockEntityMachine<T>> extend
 
     public boolean setSecondaryOutputFacing(Player entity, Direction side) {
         Direction dir = getSecondaryOutputFacing();
-        if (dir == null) return false;
+        if (dir == null && getSecondaryOutputCoverFactory() == ICover.emptyFactory) return false;
         if (side == dir || side == getOutputFacing()) return false;
-        boolean ok = moveCover(entity, dir, side);
+        boolean ok = dir != null ? moveCover(entity, dir, side) : set(side, getSecondaryOutputCoverFactory().get().get(this, null, side, getSecondaryOutputCoverFactory()), true);
         if (ok) {
             getTile().invalidateCaps();
         }
