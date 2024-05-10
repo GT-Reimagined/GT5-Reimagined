@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.machine.DrumMachine;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
 import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
@@ -191,7 +192,7 @@ public class Machines {
         }
     });
     public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
-    public static BasicMachine SMALL_HEAT_EXCHANGER = new SecondaryOutputMachine(GTIRef.ID, "small_heat_exchanger").setSecondaryOutputCover(COVER_OUTPUT_SECONDARY).setTiers(NONE).setMap(HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySmallHeatExchanger::new);
+    public static BasicMachine SMALL_HEAT_EXCHANGER = new SecondaryOutputMachine(GTIRef.ID, "small_heat_exchanger").setSecondaryOutputCover(COVER_OUTPUT_SECONDARY).covers(ICover.emptyFactory, ICover.emptyFactory, ICover.emptyFactory, COVEROUTPUT, COVER_OUTPUT_SECONDARY, ICover.emptyFactory).setTiers(NONE).baseTexture(new Texture(GTIRef.ID, "block/machine/base/small_heat_exchanger")).setMap(HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySmallHeatExchanger::new);
 
     /**
      ** Multiblock Hatch Machines (Electrical Age)
