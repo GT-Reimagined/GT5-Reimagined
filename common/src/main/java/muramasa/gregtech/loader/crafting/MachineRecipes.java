@@ -495,6 +495,8 @@ public class MachineRecipes {
 
         provider.addItemRecipe(output, "machines", NUCLEAR_REACTOR_CORE.getItem(NONE),
                 of('C', TIER_CIRCUITS.apply(Tier.IV), 'P', GregTechItems.PistonEV, 'L', GregTechBlocks.CASING_DENSE_LEAD), "PCP", "CLC", "PCP");
+        provider.addItemRecipe(output, "machines", SMALL_HEAT_EXCHANGER.getItem(NONE),
+                of('L', PLATE.getMaterialTag(Lead), 'H', GregTechBlocks.CASING_HEAT_PROOF, 'P', GregTechBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.SMALL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
     }
 
     private static void addStorageTransformerRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
