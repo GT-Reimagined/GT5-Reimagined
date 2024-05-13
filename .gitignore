@@ -34,3 +34,4 @@ forge*changelog.txt
 
 .vscode/
 mcmodsrepo/
+.architectury-transformer/debug.log
