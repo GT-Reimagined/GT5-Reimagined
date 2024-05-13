@@ -14,6 +14,7 @@ import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemEnrichedRod;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -73,6 +74,9 @@ public class CentrifugeLoader {
         CENTRIFUGE.RB().fi(Water.getLiquid(100000)).fo(SemiheavyWater.getLiquid(100), HeavyWater.getLiquid(10), TritiatedWater.getLiquid(1)).add("heavy_water", 64, 64);
         CENTRIFUGE.RB().fi(SemiheavyWater.getLiquid(500)).fo(HeavyWater.getLiquid(50), TritiatedWater.getLiquid(5)).add("heavy_water_2", 32, 64);
         CENTRIFUGE.RB().ii(CRUSHED_REFINED.getMaterialIngredient(Cobalt, 1)).io(DUST.get(Cobalt, 1), DUST_TINY.get(Cobalt60, 2)).add("cobalt_60", 2304, 512);
+        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(Endstone, 1)).io(DUST.get(Sand), DUST_TINY.get(Platinum), DUST_TINY.get(TungstenTrioxide)).outputChances(.8, .01, .03)
+                .fo(Helium.getGas(120)).add("endstone_dust", 320, 20);
+        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(Netherrack, 1)).io(DUST.get(Stone, 1), DUST_TINY.get(Sulfur, 2), DUST_TINY.get(Redstone, 1), DUST_TINY.get(Coal, 1), DUST_TINY.get(Gold, 1)).outputChances(.8, .05, .05, .05, .01).add("netherrack_dust", 160, 20);
         //Cake Centrifuging
         /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/
