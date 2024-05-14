@@ -33,6 +33,10 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
         return concurrentRecipes > 0;
     }
 
+    protected boolean consumeSingleInput(){
+        return super.consumeInputs();
+    }
+
     @Override
     protected void addOutputs() {
         for (int i = 0; i < concurrentRecipes; i++) {
