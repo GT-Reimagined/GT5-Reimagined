@@ -47,7 +47,13 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
                         });
                         long euPerTick = boostEU ? 6144 : 2048;
                         lastEu = startup < 2000 ? 0 : euPerTick * (startup / 10000);
-                        energyHandler.ifPresent(e -> e.insertInternal(lastEu, simulate));
+                        energyHandler.ifPresent(e -> {
+                            e.insertInternal(lastEu, simulate);
+                            if (lastEu > e.getOutputVoltage()){
+                                explodeMultiblock();
+                            }
+                        });
+
                         if (startup < 10000){
                             startup += 15;
                             if (startup > 10000) startup = 10000;
