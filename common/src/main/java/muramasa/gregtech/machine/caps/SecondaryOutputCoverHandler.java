@@ -53,6 +53,11 @@ public class SecondaryOutputCoverHandler<T extends BlockEntityMachine<T>> extend
     }
 
     @Override
+    protected boolean isCoverDefault(ICover cover) {
+        return super.isCoverDefault(cover) || cover.getFactory() == getSecondaryOutputCoverFactory();
+    }
+
+    @Override
     public boolean isValid(@NotNull Direction side, @NotNull ICover replacement) {
         if (!validCovers.contains(replacement.getLoc())) return false;
         if (side == getOutputFacing()) return false;
