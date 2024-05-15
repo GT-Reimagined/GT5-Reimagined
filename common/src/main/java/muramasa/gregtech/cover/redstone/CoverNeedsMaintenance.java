@@ -44,9 +44,9 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
                         long scale = rotor.getMaxDamage() / 15L;
                         long damage = rotor.getMaxDamage() - rotor.getDamageValue();
                         if (scale > 0){
-                            setOutputRedstone(inverted ? (int) (15L - damage / scale) : (int) (damage / scale));
+                            setOutputRedstone(mode.inverted ? (int) (15L - damage / scale) : (int) (damage / scale));
                         } else {
-                            setOutputRedstone(inverted ? 15 : 0);
+                            setOutputRedstone(mode.inverted ? 15 : 0);
                         }
                     }
                 } else {
