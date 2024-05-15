@@ -53,7 +53,7 @@ public class Structures {
                 .of("VVV", "CMC", "CMC", "CCC").of("V~V", "HGH", "HGH", "CEC").of("VVV", "CCC", "CCC", "CCC").build()
                 .at('C', GregTechBlocks.CASING_TITANIUM).at('V', GregTechBlocks.CASING_ENGINE_INTAKE).at('M', GregTechBlocks.CASING_TITANIUM, HATCH_MUFFLER)
                 .at('H', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at('E', HATCH_DYNAMO).at('G', GregTechBlocks.CASING_GEARBOX_TITANIUM)
-                .offset(1, 1, 0).min(1, HATCH_FLUID_I).exact(1, HATCH_MUFFLER).build()
+                .offset(1, 1, 0).min(2, HATCH_FLUID_I).exact(1, HATCH_MUFFLER).build()
         );
 
         CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
