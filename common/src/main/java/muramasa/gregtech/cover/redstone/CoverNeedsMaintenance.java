@@ -38,12 +38,17 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
             turbine.itemHandler.ifPresent(i -> {
                 ItemStack rotor = i.getHandler(SlotType.STORAGE).getItem(0);
                 if (rotor.getItem() instanceof ItemTurbineRotor rotor1){
-                    /*if (!mode.scaled){
+                    if (!mode.scaled){
                         setOutputRedstone(mode.inverted ? 15 : 0);
                     } else {
                         long scale = rotor.getMaxDamage() / 15L;
-                    }*/
-                    setOutputRedstone(mode.inverted ? 15 : 0);
+                        long damage = rotor.getMaxDamage() - rotor.getDamageValue();
+                        if (scale > 0){
+                            setOutputRedstone(inverted ? (int) (15L - damage / scale) : (int) (damage / scale));
+                        } else {
+                            setOutputRedstone(inverted ? 15 : 0);
+                        }
+                    }
                 } else {
                     setOutputRedstone(mode.inverted ? 0 : 15);
                 }
