@@ -221,6 +221,7 @@ public class GregTech extends AntimatterMod {
                     IAntimatterTool screwdriver_mv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_mv");
                     IAntimatterTool screwdriver_hv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_hv");
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
+                    l.add(GTCoreItems.BatteryRE);
                     if (!GregTechConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic));
                         l.addAll(Arrays.asList(GregTechItems.CircuitWetware, GregTechItems.MicroProcessor, GregTechItems.IntegratedProcessor, GregTechItems.NanoProcessor, GregTechItems.QuantumProcessor));
