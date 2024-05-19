@@ -1,8 +1,11 @@
 package muramasa.gregtech.loader.machines;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.world.item.Items;
+import tesseract.FluidPlatformUtils;
+import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.Ref.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -16,5 +19,6 @@ public class FluidPressLoader {
         FLUID_PRESS.RB().ii(Items.SALMON).fo(FishOil.getLiquid(60)).add("fish_oil_salmon", 16, 4);
         FLUID_PRESS.RB().ii(Items.TROPICAL_FISH).fo(FishOil.getLiquid(70)).add("fish_oil_tropical_fish", 16, 4);
         FLUID_PRESS.RB().ii(Items.INK_SAC).fo(SquidInk.getLiquid(L)).add("squid_ink", 128, 4);
+        FLUID_PRESS.RB().ii(Items.BEETROOT).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 200 * TesseractGraphWrappers.dropletMultiplier)).add("beet_juice", 16, 16);
     }
 }

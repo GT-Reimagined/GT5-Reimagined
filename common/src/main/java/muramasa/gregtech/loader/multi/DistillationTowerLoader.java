@@ -1,11 +1,15 @@
 package muramasa.gregtech.loader.multi;
 
+import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.material.FluidProduct;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import tesseract.FluidPlatformUtils;
+import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -30,6 +34,14 @@ public class DistillationTowerLoader {
         addDistillingRecipe(FishOil, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
+        DISTILLERY.RB()
+                .ii(INT_CIRCUITS.get(0).setNoConsume())
+                .fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier))
+                .fo(DistilledWater.getLiquid(50)).io(Items.SUGAR).add("beet_juice", 80, 16);
+        DISTILLERY.RB()
+                .ii(INT_CIRCUITS.get(0).setNoConsume())
+                .fi(Honey.getLiquid(100))
+                .fo(DistilledWater.getLiquid(10)).io(Items.SUGAR).add("honey", 16, 16);
         addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
                 new FluidProduct(HydrochloricAcid, 1000),
                 new FluidProduct(Water, 1000));

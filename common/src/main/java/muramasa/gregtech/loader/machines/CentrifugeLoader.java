@@ -4,6 +4,7 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
@@ -83,6 +84,7 @@ public class CentrifugeLoader {
         CENTRIFUGE.RB().ii(of(GTCoreTags.RUBBER_LOGS)).io(new ItemStack(GTCoreItems.StickyResin), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).outputChances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
         CENTRIFUGE.RB().ii(of(GTCoreItems.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball)).fo(Glue.getLiquid(100)).outputChances(1.0, 0.1).add("sticky_resin", 300, 5);
+        CENTRIFUGE.RB().ii(HONEYCOMB).io(DUST.get(GTCoreMaterials.Beeswax)).fo(Honey.getLiquid(100)).add("honeycomb", 128, 5);
         //Methane
         addMethaneRecipe(MELON, 9, 72);
         addMethaneRecipe(BREAD, 9, 72);
