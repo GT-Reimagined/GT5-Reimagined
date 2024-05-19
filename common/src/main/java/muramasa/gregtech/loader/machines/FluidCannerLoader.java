@@ -32,6 +32,8 @@ public class FluidCannerLoader {
         FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Argon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_argon", 64, 16);
         FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Helium.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_helium", 64, 16);
         FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Neon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_neon", 64, 16);
+        FLUID_CANNER.RB().ii(Items.HONEY_BOTTLE).io(Items.GLASS_BOTTLE).fo(Honey.getLiquid(250)).add("honey_from_honey_bottle", 20, 8);
+        FLUID_CANNER.RB().ii(Items.GLASS_BOTTLE).fi(Honey.getLiquid(250)).io(Items.HONEY_BOTTLE).add("honey_bottle_from_honey", 20, 8);
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;
