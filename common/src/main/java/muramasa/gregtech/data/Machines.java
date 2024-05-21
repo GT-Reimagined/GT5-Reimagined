@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.machine.DrumMachine;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
 import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
@@ -24,6 +25,7 @@ import muramasa.gregtech.blockentity.multi.*;
 import muramasa.gregtech.blockentity.single.*;
 import muramasa.gregtech.machine.MiniPortalMachine;
 import muramasa.gregtech.machine.MultiblockTankMachine;
+import muramasa.gregtech.machine.SecondaryOutputMachine;
 import muramasa.gregtech.machine.SteamMachine;
 import net.minecraft.ChatFormatting;
 import net.minecraft.resources.ResourceLocation;
@@ -189,18 +191,20 @@ public class Machines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
-    public static BasicMachine NUCLEAR_REACTOR_CORE = new BasicMachine(GTIRef.ID, "nuclear_reactor_core").setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine SMALL_HEAT_EXCHANGER = new SecondaryOutputMachine(GTIRef.ID, "small_heat_exchanger").setSecondaryOutputCover(COVER_OUTPUT_SECONDARY).covers(ICover.emptyFactory, ICover.emptyFactory, ICover.emptyFactory, COVEROUTPUT, COVER_OUTPUT_SECONDARY, ICover.emptyFactory).setTiers(NONE).baseTexture(new Texture(GTIRef.ID, "block/machine/base/small_heat_exchanger")).setMap(HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySmallHeatExchanger::new).frontCovers().allowFrontIO();
+
     /**
      ** Multiblock Hatch Machines (Electrical Age)
      **/
     public static MultiMachine ADVANCED_MINER = new MultiMachine(GTIRef.ID, "advanced_miner").setTiers(LV).addFlags(GUI, ITEM, EU).setTile(BlockEntityAdvancedMiner::new).setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);
     public static MultiMachine BLAST_FURNACE = new MultiMachine(GTIRef.ID, "electric_blast_furnace").setTiers(LV).setMap(E_BLAST_FURNACE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityElectricBlastFurnace::new).custom().setTextureBlock(GregTechBlocks.CASING_HEAT_PROOF);
-    public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GTIRef.ID, "combustion_engine").setTiers(EV).setMap(COMBUSTION_FUELS).addFlags(GUI, FLUID, EU).addStructureTooltip(10).setTile(BlockEntityCombustionEngine::new).custom().setTextureBlock(GregTechBlocks.CASING_TITANIUM);
+    public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GTIRef.ID, "combustion_engine").setTiers(EV).setMap(COMBUSTION_FUELS).addFlags(GUI, FLUID, EU, GENERATOR).addStructureTooltip(10).setTile(BlockEntityCombustionEngine::new).custom().setTextureBlock(GregTechBlocks.CASING_TITANIUM);
     public static MultiMachine CRACKING_UNIT = new MultiMachine(GTIRef.ID, "cracking_unit").setTiers(HV).setMap(CRACKING).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityOilCrackingUnit::new).custom().setTextureBlock(GregTechBlocks.CASING_STAINLESS_STEEL);
     public static MultiMachine DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "distillation_tower").setTiers(HV).setMap(DISTILLATION).addStructureTooltip(8).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityDistillationTower::new).custom().setTextureBlock(GregTechBlocks.CASING_STAINLESS_STEEL);
     public static MultiMachine CRYO_DISTLLATION_TOWER = new MultiMachine(GTIRef.ID, "cryo_distillation_tower").setTiers(HV).setMap(CRYO_DISTILLATION).addStructureTooltip(8).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityDistillationTower::new).custom().setTextureBlock(GregTechBlocks.CASING_FROST_PROOF);
     public static MultiMachine FUSION_REACTOR = new MultiMachine(GTIRef.ID, "fusion_control_computer").setTiers(LUV).setMap(FUSION).addFlags(GUI, FLUID, ITEM, EU).setTile(BlockEntityFusionReactor::new).setTextureBlock(GregTechBlocks.CASING_FUSION);
-    public static MultiMachine HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "heat_exchanger").setTiers(EV).setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, FLUID, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityHeatExchanger::new).custom().setTextureBlock(GregTechBlocks.CASING_TITANIUM);
+    public static MultiMachine LARGE_HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "large_heat_exchanger").setTiers(NONE).setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, FLUID, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityLargeHeatExchanger::new).custom().setTextureBlock(GregTechBlocks.CASING_TITANIUM);
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(RecipeMaps.IMPLOSION_COMPRESSOR).addFlags(GUI, ITEM, EU).addStructureTooltip(8).setTile(BlockEntityImplosionCompressor::new).setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);
     public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom().setTierSpecificLang().addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;

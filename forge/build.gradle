@@ -60,8 +60,9 @@ dependencies {
     modRuntimeOnly("mezz.jei:jei-1.18.2:9.7.2.1001")
     modImplementation("com.github.Reforged-Mods:ARRP-forge:0.6.7-1.18.2")
     modImplementation "maven.modrinth:carbon-config:${project.carbon_config_forge_version}"
-    modImplementation("io.github.llamalad7:mixinextras-forge:0.2.0-beta.11")
-    implementation("io.github.gregtechintergalactical:gtcore-forge:${rootProject.gt_core_version}-${rootProject.minecraft_version}:dev-shadow"){
+    implementation("io.github.llamalad7:mixinextras-forge:0.3.5")
+    minecraftRuntimeLibraries(group: 'com.github.Speiger', name: 'Primitive-Collections', version: '[0.8,0.9)')
+    implementation("io.github.gregtechintergalactical:gtcore-forge:${rootProject.gt_core_version}-${rootProject.minecraft_version}:dev"){
         transitive = false
     }
     include("io.github.gregtechintergalactical:gtcore-forge:${rootProject.gt_core_version}-${rootProject.minecraft_version}")

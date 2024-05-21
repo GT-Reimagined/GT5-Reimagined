@@ -29,6 +29,7 @@ import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.ToolTypes;
 import muramasa.gregtech.items.IItemReactorRod;
+import muramasa.gregtech.machine.caps.SecondaryOutputCoverHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -56,7 +57,7 @@ import static muramasa.antimatter.Ref.B;
 import static muramasa.gregtech.data.Materials.*;
 import static net.minecraft.core.Direction.*;
 
-public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntityNuclearReactorCore> implements IFilterableHandler, IPostTickTile, IInventorySyncTile {
+public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<BlockEntityNuclearReactorCore> implements IFilterableHandler, IPostTickTile, IInventorySyncTile {
     public int[] mNeutronCounts = new int[]{0, 0, 0, 0};
     public int[] oNeutronCounts = new int[]{0, 0, 0, 0};
     public long oldHeat = 0;
@@ -85,7 +86,6 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             }
         });
         this.heatHandler.set(() -> new DefaultHeatHandler(this, Integer.MAX_VALUE, 0, 0));
-        this.coverHandler.set(() -> new ReactorCoverHandler(this));
     }
 
     public ItemStack getRod(int slot){
@@ -118,14 +118,6 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
     @Override
     public boolean wrenchMachine(Player player, BlockHitResult res, boolean crouch) {
         return setOutputFacing(player, Utils.getInteractSide(res)) || setFacing(Utils.getInteractSide(res));
-    }
-
-    public Direction getSecondaryOutputFacing() {
-        return coverHandler.map(c -> ((ReactorCoverHandler)c).getSecondaryOutputFacing()).orElse(this.getFacing().getOpposite());
-    }
-
-    public boolean setSecondaryOutput(Player player, BlockHitResult result){
-        return coverHandler.map(c -> ((ReactorCoverHandler)c).setSecondaryOutputFacing(player, Utils.getInteractSide(result))).orElse(false);
     }
 
     public void syncSlots(){
@@ -242,12 +234,6 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                     setRod(tSlot, ItemStack.EMPTY);
                     Utils.damageStack(held, player);
                 }
-            }
-        }
-        if (type == AntimatterDefaultTools.WRENCH_ALT) {
-            if (setSecondaryOutput(player, hit)) {
-                Utils.damageStack(held, hand, player);
-                return InteractionResult.SUCCESS;
             }
         }
         if (held.getItem() == GregTechItems.GeigerCounter){
@@ -465,48 +451,5 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
     @Override
     public boolean canPlayerOpenGui(Player playerEntity) {
         return playerEntity.isCreative();
-    }
-
-    public static class ReactorCoverHandler extends MachineCoverHandler<BlockEntityNuclearReactorCore> {
-        public ReactorCoverHandler(BlockEntityNuclearReactorCore tile) {
-            super(tile);
-        }
-
-        public Direction getSecondaryOutputFacing() {
-            return lookupSingle(GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY);
-        }
-
-        public ICover getSecondaryOutputCover() {
-            return get(lookupSingle(GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY));
-        }
-
-        public boolean setSecondaryOutputFacing(Player entity, Direction side) {
-            Direction dir = getSecondaryOutputFacing();
-            if (dir == null) return false;
-            if (side == dir || side == getOutputFacing()) return false;
-            boolean ok = moveCover(entity, dir, side);
-            if (ok) {
-                getTile().invalidateCaps();
-            }
-            return ok;
-        }
-
-        @Override
-        public boolean setOutputFacing(Player entity, Direction side) {
-            if (side == getSecondaryOutputFacing()) return false;
-            return super.setOutputFacing(entity, side);
-        }
-
-        @Override
-        protected boolean canRemoveCover(ICover cover) {
-            return super.canRemoveCover(cover) && cover.getFactory() != GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY;
-        }
-
-        @Override
-        public boolean isValid(@NotNull Direction side, @NotNull ICover replacement) {
-            if (!validCovers.contains(replacement.getLoc())) return false;
-            if (side == getOutputFacing()) return false;
-            return (get(side).isEmpty() && !replacement.isEmpty()) || super.isValid(side, replacement);
-        }
     }
 }

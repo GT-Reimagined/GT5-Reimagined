@@ -12,6 +12,7 @@ import muramasa.gregtech.cover.ImportExportMode;
 import muramasa.gregtech.cover.base.CoverBasicRedstoneOutput;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -26,17 +27,28 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
     }
 
     @Override
+    public ResourceLocation getModel(String type, Direction dir) {
+        if (type.equals("pipe")) return PIPE_COVER_MODEL;
+        return getBasicModel();
+    }
+
+    @Override
     public void onUpdate() {
         if (this.handler.getTile() instanceof BlockEntityLargeTurbine turbine){
             turbine.itemHandler.ifPresent(i -> {
                 ItemStack rotor = i.getHandler(SlotType.STORAGE).getItem(0);
                 if (rotor.getItem() instanceof ItemTurbineRotor rotor1){
-                    /*if (!mode.scaled){
+                    if (!mode.scaled){
                         setOutputRedstone(mode.inverted ? 15 : 0);
                     } else {
                         long scale = rotor.getMaxDamage() / 15L;
-                    }*/
-                    setOutputRedstone(mode.inverted ? 15 : 0);
+                        long damage = rotor.getMaxDamage() - rotor.getDamageValue();
+                        if (scale > 0){
+                            setOutputRedstone(mode.inverted ? (int) (15L - damage / scale) : (int) (damage / scale));
+                        } else {
+                            setOutputRedstone(mode.inverted ? 15 : 0);
+                        }
+                    }
                 } else {
                     setOutputRedstone(mode.inverted ? 0 : 15);
                 }

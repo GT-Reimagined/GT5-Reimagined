@@ -481,7 +481,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(HydrogenPeroxide).asFluid();
         event.setMaterial(HypochlorousAcid).asFluid().flags(ACID);
 
-        event.setMaterial(LiquidAir).asFluid(0, 79);
         event.setMaterial(Lubricant).asFluid();
         event.setMaterial(NickelSulfate).asFluid();
         event.setMaterial(NitricAcid).asFluid().flags(ACID);
@@ -874,7 +873,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(HydrogenPeroxide).mats(of(Hydrogen,2,Oxygen,2));
         event.setMaterial(HypochlorousAcid).mats(of(Hydrogen, 1, Chlorine, 1, Oxygen, 1)).elecTicks(192);
 
-        event.setMaterial(LiquidAir).mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
         event.setMaterial(NickelSulfate).mats(of(Nickel,1,Sulfur,1,Oxygen,4)).elecTicks(900);
         event.setMaterial(NitricAcid).mats(of(Hydrogen, 1, Nitrogen, 1, Oxygen, 3)).elecTicks(240);
         event.setMaterial(PeroxydisulfuricAcid).mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));

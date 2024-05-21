@@ -46,7 +46,7 @@ dependencies{
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
     include("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
-    implementation("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}:dev-shadow"){
+    modImplementation("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}"){
         transitive = false
     }
     modImplementation("com.terraformersmc.terraform-api:terraform-wood-api-v1:3.1.0")

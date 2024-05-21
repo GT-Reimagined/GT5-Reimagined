@@ -211,6 +211,8 @@ public class Guis {
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
         NAQUADAH_GENERATOR.add(BASIC_TANK.getSlots());
         NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43);
+        SMALL_HEAT_EXCHANGER.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_IN, 44, 63).add(FL_IN, 62, 63)
+                .add(FL_OUT,107,63).add(FL_OUT,125,63);
 
         CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
                 .add(IT_OUT, 62, 34).add(IT_OUT, 80, 34).add(IT_OUT, 98, 34)
@@ -310,7 +312,7 @@ public class Guis {
         LARGE_BOILER.add(MULTIBLOCK.getSlots());
         LARGE_CHEMICAL_REACTOR.add(MULTIBLOCK.getSlots());
         LARGE_TURBINE.add(MULTIBLOCK.getSlots());
-        HEAT_EXCHANGER.add(MULTIBLOCK.getSlots());
+        LARGE_HEAT_EXCHANGER.add(MULTIBLOCK.getSlots());
         OIL_DRILLING_RIG.add(MULTIBLOCK.getSlots());
         ADVANCED_MINER.add(MULTIBLOCK.getSlots());
         PROCESSING_ARRAY.add(MULTIBLOCK.getSlots());
@@ -350,7 +352,7 @@ public class Guis {
         LARGE_ELECTROLYZER.getGui().setBackgroundTexture("multiblock");
         LARGE_MACERATOR.getGui().setBackgroundTexture("multiblock");
         LARGE_TURBINE.getGui().setBackgroundTexture("multiblock");
-        HEAT_EXCHANGER.getGui().setBackgroundTexture("multiblock");
+        LARGE_HEAT_EXCHANGER.getGui().setBackgroundTexture("multiblock");
         OIL_DRILLING_RIG.getGui().setBackgroundTexture("multiblock");
         ADVANCED_MINER.getGui().setBackgroundTexture("multiblock");
         PROCESSING_ARRAY.getGui().setBackgroundTexture("multiblock");

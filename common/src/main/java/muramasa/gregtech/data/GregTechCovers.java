@@ -98,6 +98,8 @@ public class GregTechCovers {
             .addTextures(new Texture(GTIRef.ID, "block/cover/reactor_output")).build(GTIRef.ID, "reactor_output");
     public static final CoverFactory COVER_REACTOR_OUTPUT_SECONDARY = CoverFactory.builder(CoverReactorOutputSecondary::new)
             .addTextures(new Texture(GTIRef.ID, "block/cover/reactor_output_secondary")).build(GTIRef.ID, "reactor_output_secondary");
+    public static final CoverFactory COVER_OUTPUT_SECONDARY = CoverFactory.builder(CoverSecondaryOutput::new)
+            .addTextures(new Texture(GTIRef.ID, "block/cover/output_secondary")).build(GTIRef.ID, "output_secondary");
     public static CoverFactory COVER_DYNAMO_COLORED = CoverFactory.builder(CoverDynamoColored::new).addTextures(new Texture(Ref.ID, "block/cover/dynamo")).build(GTIRef.ID, "dynamo");
     public static CoverFactory COVER_ENERGY_COLORED = CoverFactory.builder(CoverEnergyColored::new).addTextures(new Texture(Ref.ID, "block/cover/energy")).build(GTIRef.ID, "energy");
     public static CoverFactory COVER_SHUTTER = CoverFactory.builder(CoverShutter::new).item((a, b) ->

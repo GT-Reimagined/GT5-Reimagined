@@ -32,7 +32,7 @@ public class CoverBasicRedstoneOutput extends BaseCover {
             markAndNotifySource();
             BlockPos neighbor = this.source().getTile().getBlockPos().relative(this.side);
             BlockState neighborState = this.source().getTile().getLevel().getBlockState(neighbor);
-            this.source().getTile().getLevel().updateNeighbourForOutputSignal(neighbor, neighborState.getBlock());
+            this.source().getTile().getLevel().updateNeighborsAtExceptFromFacing(neighbor, neighborState.getBlock(), this.side.getOpposite());
         }
     }
 

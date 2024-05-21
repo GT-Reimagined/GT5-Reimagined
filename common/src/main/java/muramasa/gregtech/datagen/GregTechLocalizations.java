@@ -174,13 +174,13 @@ public class GregTechLocalizations {
             add("tooltip.cryo_distillation_tower.6", "1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)");
             add("tooltip.cryo_distillation_tower.7", "19-82x Frostproof Casings, everywhere else.");
 
-            add("tooltip.heat_exchanger.0", "Controller for the Heat Exchanger");
-            add("tooltip.heat_exchanger.1", "Size(WxHxD): 3x4x3");
-            add("tooltip.heat_exchanger.2", "Controller (middle bottom front centered)");
-            add("tooltip.heat_exchanger.3", "2x Fluid Input Hatch, one center of bottom layer (facing down for Hot Fluid input), the other any exterior casing of mid layers");
-            add("tooltip.heat_exchanger.4", "2x Fluid Output Hatch, one center of top layer (facing up), the other any exterior casing of mid layers");
-            add("tooltip.heat_exchanger.5", "2x Titanium Pipe Casings (center two blocks of multi, not visible from outside)");
-            add("tooltip.heat_exchanger.6", "21-30x Titanium Casings, everywhere else.");
+            add("tooltip.large_heat_exchanger.0", "Controller for the Heat Exchanger");
+            add("tooltip.large_heat_exchanger.1", "Size(WxHxD): 3x4x3");
+            add("tooltip.large_heat_exchanger.2", "Controller (middle bottom front centered)");
+            add("tooltip.large_heat_exchanger.3", "2x Fluid Input Hatch, one center of bottom layer (facing down for Hot Fluid input), the other any exterior casing of mid layers");
+            add("tooltip.large_heat_exchanger.4", "2x Fluid Output Hatch, one center of top layer (facing up), the other any exterior casing of mid layers");
+            add("tooltip.large_heat_exchanger.5", "2x Titanium Pipe Casings (center two blocks of multi, not visible from outside)");
+            add("tooltip.large_heat_exchanger.6", "21-30x Titanium Casings, everywhere else.");
 
             add("tooltip.implosion_compressor.0", "Controller for the Implosion Compressor");
             add("tooltip.implosion_compressor.1", "Size(WxHxD): 3x3x3");

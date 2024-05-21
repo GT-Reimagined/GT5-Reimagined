@@ -53,7 +53,7 @@ public class Structures {
                 .of("VVV", "CMC", "CMC", "CCC").of("V~V", "HGH", "HGH", "CEC").of("VVV", "CCC", "CCC", "CCC").build()
                 .at('C', GregTechBlocks.CASING_TITANIUM).at('V', GregTechBlocks.CASING_ENGINE_INTAKE).at('M', GregTechBlocks.CASING_TITANIUM, HATCH_MUFFLER)
                 .at('H', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_I, HATCH_FLUID_O).at('E', HATCH_DYNAMO).at('G', GregTechBlocks.CASING_GEARBOX_TITANIUM)
-                .offset(1, 1, 0).min(1, HATCH_FLUID_I, HATCH_FLUID_O).exact(1, HATCH_MUFFLER).build()
+                .offset(1, 1, 0).min(2, HATCH_FLUID_I).exact(1, HATCH_MUFFLER).build()
         );
 
         CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
@@ -119,7 +119,7 @@ public class Structures {
                     }
                     return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
                 }).build());
-        HEAT_EXCHANGER.setStructure(BlockEntityHeatExchanger.class, b -> b.part("main")
+        LARGE_HEAT_EXCHANGER.setStructure(BlockEntityLargeHeatExchanger.class, b -> b.part("main")
                 .of("DDD", "DOD", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DID", "DDD").build()
                 .at('D', GregTechBlocks.CASING_TITANIUM)
                 .at('C', GregTechBlocks.CASING_TITANIUM, HATCH_FLUID_O, HATCH_FLUID_I).at('P', GregTechBlocks.CASING_PIPE_TITANIUM)
@@ -223,8 +223,8 @@ public class Structures {
 
         VACUUM_FREEZER.setStructure(BlockEntityVacuumFreezer.class, b -> b.part("main")
             .of("CCC", "CCC", "CCC").of("C~C", "C-C", "CCC").of(0).build()
-            .at('C', GregTechBlocks.CASING_FROST_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
-            .offset(1, 1, 0).min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).build()
+            .at('C', GregTechBlocks.CASING_FROST_PROOF, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY)
+            .offset(1, 1, 0).min(1, HATCH_ENERGY).build()
         );
 
         FUSION_REACTOR.setStructure(BlockEntityFusionReactor.class, b -> b.part("main")

@@ -21,7 +21,6 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -496,6 +495,8 @@ public class MachineRecipes {
 
         provider.addItemRecipe(output, "machines", NUCLEAR_REACTOR_CORE.getItem(NONE),
                 of('C', TIER_CIRCUITS.apply(Tier.IV), 'P', GregTechItems.PistonEV, 'L', GregTechBlocks.CASING_DENSE_LEAD), "PCP", "CLC", "PCP");
+        provider.addItemRecipe(output, "machines", SMALL_HEAT_EXCHANGER.getItem(NONE),
+                of('L', PLATE.getMaterialTag(Lead), 'H', GregTechBlocks.CASING_HEAT_PROOF, 'P', GregTechBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.SMALL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
     }
 
     private static void addStorageTransformerRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -831,7 +832,7 @@ public class MachineRecipes {
                         .put('H', HULL.getItem(HV))
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "CIC", "PHP", "CIC"));
-        add(HEAT_EXCHANGER, EV, (m,item) -> provider.addItemRecipe(output, "machines", item,
+        add(LARGE_HEAT_EXCHANGER, NONE, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', GregTechCovers.COVER_PUMP.getItem(EV).getItem())
                         .put('I', GregTechBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL))
