@@ -62,76 +62,63 @@ public class GregTechMaterialEvents {
         event.setMaterial(Gallium).asMetal(303, MOLTEN);
         event.setMaterial(Germanium).asMetal(1211);
         event.setMaterial(Arsenic).asMetal(1090, 1090);
-        event.setMaterial(Selenium).asMetal(494, 0);
+        //event.setMaterial(Selenium).asMetal(494, 0);
         //Bromine, not added
         event.setMaterial(Krypton).asGas().fluidDensity(3);
-        event.setMaterial(Rubidium).asMetal(312,0);
-        event.setMaterial(Strontium).asMetal(1050, 1050);
+        //rubidium, strontium
         event.setMaterial(Yttrium).asMetal(1799, 1799);
         event.setMaterial(Zirconium).asMetal(2130,2130);
         event.setMaterial(Niobium).asMetal(2750, 2750, GEAR);
         event.setMaterial(Molybdenum).asMetal(2896, 2896).asOre();
         event.setMaterial(Technetium).asMetal(2430,2430);
-        event.setMaterial(Ruthenium).asMetal(2607,2607);
-        event.setMaterial(Rhodium).asMetal(2237, 2237);
+        //event.setMaterial(Ruthenium).asMetal(2607,2607);
+        //event.setMaterial(Rhodium).asMetal(2237, 2237);
         event.setMaterial(Palladium).asMetal(1828, 1828).asOre();
         event.setMaterial(Silver).asMetal(1234, 0, PLATE, SCREW).asOre().harvestLevel(2);
         event.setMaterial(Cadmium).asDust(594);
         event.setMaterial(Indium).asSolid(430, 0, MOLTEN);
         event.setMaterial(Tin).asMetal(505, 505, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FOIL, WIRE_FINE, FRAME, ROTOR).asOre().harvestLevel(1);
         event.setMaterial(Antimony).asMetal(1449);
-        event.setMaterial(Tellurium).asMetal(723,0);
+        //Tellurium
         event.setMaterial(Iodine).asSolid(387,0);
         event.setMaterial(Xenon).asGas().fluidDensity(5);
         event.setMaterial(Caesium).asMetal(2349, 2349);
         event.setMaterial(Barium).asDust(1000);
-        event.setMaterial(Lanthanum).asMetal(1193, 1193);
-        event.setMaterial(Cerium).asMetal(1068, 1068);
-        event.setMaterial(Praseodymium).asMetal(1208,1208);
+        //Lanthanum
+        event.setMaterial(Cerium).asDust();
+        //Praseodymium
         event.setMaterial(Neodymium).asMetal(1297, 1297, PLATE, ROD_LONG).asOre().harvestLevel(2); // TODO: Bastnasite or Monazite for Ore For;
         event.setMaterial(Promethium).asMetal(1353,1353);
-        event.setMaterial(Samarium).asMetal(1345,1345);
+        //Samarium
         event.setMaterial(Europium).asMetal(1099, 1099, PLATE);
         event.setMaterial(Gadolinium).asMetal(1585,1585);
         event.setMaterial(Terbium).asMetal(1696,1696);
-        event.setMaterial(Dysprosium).asMetal(1680, 1680);
-        event.setMaterial(Holmium).asMetal(1734,1734);
-        event.setMaterial(Erbium).asMetal(1802,1802);
-        event.setMaterial(Thulium).asMetal(1818,1818);
-        event.setMaterial(Ytterbium).asMetal(1097,1097);
-        event.setMaterial(Lutetium).asMetal(1925, 1925);
+        //dysprosium, holmium, erbium, thulium, ytterbium, lutetium
         event.setMaterial(Hafnium).asMetal(2506);
         event.setMaterial(Tantalum).asSolid(3290, 0);
         event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL, RING, FRAME);
-        event.setMaterial(Rhenium).asMetal(3459,3459);
+        //event.setMaterial(Rhenium).asMetal(3459,3459);
         event.setMaterial(Osmium).asOre().asMetal(3306, 3306, SCREW, BOLT, RING, PLATE, FOIL, ROD_LONG, WIRE_FINE);
         event.setMaterial(Iridium).asMetal(2719, 2719, FRAME, PLATE).asOre();
         event.setMaterial(Platinum).asMetal(2041, 0, PLATE, FOIL, ROD_LONG, WIRE_FINE, FRAME).asOre();
         //Gold, added by vanilla
         event.setMaterial(Mercury).asFluid();
-        event.setMaterial(Thallium).asMetal(577, 0);
+        // thalium
         event.setMaterial(Lead).asMetal(600, 0, PLATE, PLATE_DENSE, FOIL, ROD_LONG, FRAME, BOLT, RING).asOre().harvestLevel(1);
         event.setMaterial(Bismuth).asOre();
-        event.setMaterial(Polonium).asMetal(527, 0);
-        event.setMaterial(Astatine).asMetal(575, 0);
+        //polonium
+        //event.setMaterial(Astatine).asMetal(575, 0);
         event.setMaterial(Radon).asGas().fluidDensity(9);
-        event.setMaterial(Francium).asMetal(298, 0);
-        event.setMaterial(Radium).asMetal(973, 0);
-        event.setMaterial(Actinium).asMetal(1323, 0);
+        //event.setMaterial(Francium).asMetal(298, 0);
+        //event.setMaterial(Radium).asMetal(973, 0);
+        //event.setMaterial(Actinium).asMetal(1323, 0);
         event.setMaterial(Thorium).asMetal(2115, PLATE_DENSE).asOre();
-        event.setMaterial(Protactinium).asMetal(1841, 0);
+        //protactinium
         event.setMaterial(Uranium).asMetal(1405).harvestLevel(2);
-        event.setMaterial(Neptunium).asMetal(912, 0);
+        //event.setMaterial(Neptunium).asMetal(912, 0);
         event.setMaterial(Plutonium).asMetal(912, 0);
         event.setMaterial(Americium).asMetal(1149, 0, ROD_LONG);
-        event.setMaterial(Curium).asMetal(1613, 0);
-        event.setMaterial(Berkelium).asMetal(1259, 0);
-        event.setMaterial(Californium).asMetal(1173, 0);
-        event.setMaterial(Einsteinium).asMetal(1133, 0);
-        event.setMaterial(Fermium).asMetal(1125, 0);
-        event.setMaterial(Mendelevium).asMetal(1111, 0);
-        //Elements 101 - 118 not added
-
+        //Elements 96 - 118 not added
         /**
          ***  Solids
          **/

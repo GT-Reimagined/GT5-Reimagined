@@ -34,7 +34,7 @@ public class FusionReactorLoader {
         FUSION.RB().fi(Magnesium.getLiquid(L / 9), Mercury.getLiquid(L / 9)).fo(Uranium.getLiquid(L / 9)).add("molten_uranium", 64, 49152, 240000000);
         FUSION.RB().fi(Aluminium.getLiquid(L / 9), Gold.getLiquid(L / 9)).fo(Uranium.getLiquid(L / 9)).add("molten_uranium_2", 64, 49152, 240000000);
         FUSION.RB().fi(Radon.getGas(125), EnrichedNaquadah.getLiquid(L / 9)).fo(Naquadria.getLiquid(3)).add("molten_naquadria", 64, 49152, 400000000);
-        FUSION.RB().fi(Chromium.getLiquid(L / 9), Lutetium.getLiquid(L / 9)).fo(Americium.getLiquid(L / 9)).add("molten_americium", 96, 49152, 200000000);
+        //FUSION.RB().fi(Chromium.getLiquid(L / 9), Lutetium.getLiquid(L / 9)).fo(Americium.getLiquid(L / 9)).add("molten_americium", 96, 49152, 200000000);
         FUSION.RB().fi(Helium.getGas(125), Uranium.getLiquid(L / 9)).fo(Plutonium239.getLiquid(L / 9)).add("molten_plutonium239", 128, 49152, 480000000);
         FUSION.RB().fi(Naquadria.getLiquid(L / 9), Americium.getLiquid(L / 9)).fo(Neutronium.getLiquid(1)).add("molten_neutronium", 1200, 98304, 600000000);
     }
