@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -36,7 +37,7 @@ public class ExtruderLoader {
             return m.getMass();
         };
         EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), of(GTCoreItems.ShapeCell, 1).setNoConsume()).io(GregTechItems.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96);
-        EXTRUDER.RB().ii(of(Items.HONEYCOMB), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(GTCoreItems.EmptyWaxPill).add("empty_wax_pill", 64, 16);
+        EXTRUDER.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Beeswax, 1), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(GTCoreItems.EmptyWaxPill).add("empty_wax_pill", 64, 16);
         EXTRUDER.RB().ii(DUST.getMaterialIngredient(Glass, 1), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(Items.GLASS_BOTTLE).add("glass_bottle", 64, 16);
         AntimatterMaterialTypes.RING.all().forEach(r -> {
             if (r.has(INGOT)) {
