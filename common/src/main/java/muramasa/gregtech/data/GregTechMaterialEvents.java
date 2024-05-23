@@ -19,6 +19,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.*;
+import static muramasa.gregtech.data.GregTechMaterialTypes.BOULE;
 import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechMaterialEvents {
@@ -42,7 +43,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Sodium).asDust(370, MOLTEN).asFluid();
         event.setMaterial(Magnesium).asMetal(1383, 0/*1383*/);
         event.setMaterial(Aluminium).asMetal(933, 0, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL, HAS_CUSTOM_SMELTING);
-        event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL);
+        event.setMaterial(Silicon).asMetal(1683, 1683, PLATE, FOIL, BOULE);
         event.setMaterial(Phosphor).asDust(933);
         event.setMaterial(Sulfur).asDust(388, MOLTEN).asOre().harvestLevel(2).asFluid();
         event.setMaterial(Chlorine).asGas().fluidDensity(3);
@@ -324,10 +325,10 @@ public class GregTechMaterialEvents {
          **/
         event.setMaterial(Amber).asGem(false).asOre(3, 7, true);
         event.setMaterial(Amethyst).asGem(false).replaceItem(GEM_FLAWED, Items.AMETHYST_SHARD).asOre(3, 7, true);
-        event.setMaterial(Sapphire).asGem(true).asOre(3, 7, true);
+        event.setMaterial(Sapphire).asGem(true, BOULE).asOre(3, 7, true);
         event.setMaterial(BlueTopaz).asGem(true).asOre(3, 7, true);
         event.setMaterial(Glass).asFluid(0, 1500).asDust(PLATE, LENS, MOLTEN);
-        event.setMaterial(GreenSapphire).asGem(true).asOre(3, 7, true);
+        event.setMaterial(GreenSapphire).asGem(true, BOULE).asOre(3, 7, true);
         event.setMaterial(Jade).asGem(false).asOre(3, 7, true);
         event.setMaterial(Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(LigniteCoke).asGemBasic(false);
@@ -337,7 +338,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(TricalciumPhosphate).asOre(3, 7, true).harvestLevel(2);
         event.setMaterial(MilkyQuartz).asGemBasic(false, BEARING_ROCK, ROD_LONG, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(RedGarnet).asGem(true).asOre(3, 7, true);
-        event.setMaterial(Ruby).asGem(true).asOre(3, 7, true);
+        event.setMaterial(Ruby).asGem(true, BOULE).asOre(3, 7, true);
         event.setMaterial(Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(Tanzanite).asGem(false).asOre(3, 7, true);
         event.setMaterial(Topaz).asGem(false).asOre(3, 7, true);

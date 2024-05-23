@@ -177,6 +177,7 @@ public class GregTech extends AntimatterMod {
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         switch (event) {
             case DATA_INIT -> {
+                GregTechMaterialTypes.init();
                 ToolTypes.init();
                 Materials.init();
                 TierMaps.init();

@@ -7,13 +7,10 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreTools;
 import io.github.gregtechintergalactical.gtcore.item.ItemPowerUnit;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.pipe.BlockPipe;
 import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
 import muramasa.antimatter.recipe.material.MaterialRecipe;
@@ -21,46 +18,32 @@ import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.tool.behaviour.BehaviourExtendedHighlight;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.block.BlockNuclearReactorCore;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import muramasa.gregtech.items.ItemPortableScanner;
 import muramasa.gregtech.items.ItemTurbineRotor;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.jetbrains.annotations.NotNull;
 import tesseract.TesseractCapUtils;
-import tesseract.api.gt.IEnergyHandlerItem;
 import tesseract.api.gt.IGTNode;
 
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH_ALT;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.SCREW;
 import static muramasa.antimatter.material.Material.NULL;
-import static muramasa.gregtech.data.GregTechData.*;
 
 public class ToolTypes {
 
-    public static final MaterialTypeItem<?> TURBINE_BLADE = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("turbine_blade", 2, true, (Ref.U * 3) + (Ref.U8 * 2)));//.unSplitName();
-    public static final MaterialTypeItem<?> SMALL_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("small_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 2));
-    public static final MaterialTypeItem<?> BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 4));
-    public static final MaterialTypeItem<?> LARGE_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("large_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 6));
-    public static final MaterialTypeItem<?> HUGE_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("huge_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 8));
-    public static final AntimatterToolType SMALL_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "small_turbine_rotor", 1, 1, 1, -1.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(SMALL_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType LARGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType HUGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
+    public static final AntimatterToolType SMALL_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "small_turbine_rotor", 1, 1, 1, -1.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GregTechMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setToolSupplier(ItemTurbineRotor::new);
+    public static final AntimatterToolType TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GregTechMaterialTypes.BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
+    public static final AntimatterToolType LARGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GregTechMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
+    public static final AntimatterToolType HUGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GregTechMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
     public static final AntimatterToolType PINCERS = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GTIRef.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
 
     public static final MaterialRecipe.Provider SCANNER_BUILDER = MaterialRecipe.registerProvider("portable-scanner", GTIRef.ID, id -> new MaterialRecipe.ItemBuilder() {
@@ -127,16 +110,6 @@ public class ToolTypes {
     }
 
     public static void init(){
-        TURBINE_BLADE.unSplitName().setIgnoreTextureSets();
-        SMALL_BROKEN_TURBINE_ROTOR.unSplitName().setIgnoreTextureSets();
-        BROKEN_TURBINE_ROTOR.unSplitName().setIgnoreTextureSets();
-        LARGE_BROKEN_TURBINE_ROTOR.unSplitName().setIgnoreTextureSets();
-        HUGE_BROKEN_TURBINE_ROTOR.unSplitName().setIgnoreTextureSets();
-        SMALL_BROKEN_TURBINE_ROTOR.dependents(TURBINE_BLADE);
-        BROKEN_TURBINE_ROTOR.dependents(TURBINE_BLADE);
-        LARGE_BROKEN_TURBINE_ROTOR.dependents(TURBINE_BLADE);
-        HUGE_BROKEN_TURBINE_ROTOR.dependents(TURBINE_BLADE);
-        TURBINE_BLADE.dependents(SCREW, PLATE);
         if (AntimatterAPI.getSIDE().isClient()){
             BiFunction<Direction, BlockEntity, Boolean> REACTOR_FUNCTION = (dir, tile) -> {
                 if (tile instanceof BlockEntityNuclearReactorCore machine) {
