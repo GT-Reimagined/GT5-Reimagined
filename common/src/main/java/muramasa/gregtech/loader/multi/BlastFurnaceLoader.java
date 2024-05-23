@@ -24,46 +24,6 @@ public class BlastFurnaceLoader {
     public static int mixedOreYield = GTIRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     public static void init() {
-        final int multiplier = 1;
-        /*CRUSHED.all().forEach(m -> {
-            boolean needsBF = m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) || DIRECT_SMELT_INTO.getMapping(m).has(GregTechMaterialTags.NEEDS_BLAST_FURNACE);
-            if (!m.has(ORE) || !m.has(INGOT)) return;
-            Item crushed = CRUSHED.get(m);
-            Item dust = DUST.get(m);
-            ItemStack ingot = m != DIRECT_SMELT_INTO.getMapping(m) ? INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(m, 1);
-            ItemStack aIngotSmeltInto = m == SMELT_INTO.getMapping(m) ? ingot : INGOT.get(SMELT_INTO.getMapping(m), 1);
-            if (needsBF) {
-                long aBlastDuration = Math.max(m.getMass() / 6, 1) * GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
-
-                ItemStack blastOut = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m) > 1750 && SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(MaterialTags.SMELT_INTO.getMapping(m), 1) : aIngotSmeltInto;
-
-                BLASTING.RB().ii(of(crushed,1), INT_CIRCUITS.get(1)).io(blastOut).add("crushed_" + m.getId(), aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(of(dust,1), INT_CIRCUITS.get(1)).io(blastOut).add("dust_" + m.getId(),aBlastDuration/4, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(CRUSHED_PURIFIED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("purified_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(CRUSHED_REFINED.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("refined_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(DUST_PURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_pure_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-                BLASTING.RB().ii(DUST_IMPURE.getIngredient(m, 1),INT_CIRCUITS.get(1)).io(blastOut).add("dust_impure_" + m.getId(),aBlastDuration, 120, GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m));
-            }
-
-
-        });*/
-
-        /*CRUSHED.all().forEach(m -> {
-            if (!m.has(ORE)) return;
-            ItemStack ingot = new ItemStack(Items.IRON_INGOT);
-            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
-            if (m.has(CALCITE3X)) {
-                ItemStack ingotMulti = Utils.mul(multiplier * 3, ingot);
-                ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
-                BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(ingotMulti, darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
-                BLASTING.RB().ii(ore, DUST.getIngredient(Quicklime, multiplier)).io(ingotMulti, darkAsh).add("ore_" + m.getId() +"_2",ingot.getCount() * 500L, 120, 1500);
-            } else if (m.has(CALCITE2X)) {
-                ItemStack darkAsh = DUST_SMALL.get(DarkAsh, 1);
-                BLASTING.RB().ii(ore, DUST.getIngredient(Calcite, multiplier)).io(Utils.mul(multiplier * 2, ingot), darkAsh).add("ore_" + m.getId(),ingot.getCount() * 500L, 120, 1500);
-                BLASTING.RB().ii(ore, DUST.getIngredient(Quicklime, multiplier)).io(Utils.mul(multiplier * 2, ingot), darkAsh).add("ore_" + m.getId() + "_2",ingot.getCount() * 500L, 120, 1500);
-            }
-        });*/
-
         /* PRIMITIVE */
         PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
         DUST.all().forEach(m -> {
@@ -118,9 +78,7 @@ public class BlastFurnaceLoader {
                     .add("aluminium_ingot_from_green_sapphire", 400, 100);
             int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(Aluminium);
             E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), INT_CIRCUITS.get(1)).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
-            E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Calcite, 1)).io(INGOT.get(Aluminium)).add("alumina_calcite", 4 * 100, 120);
-            E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Limestone, 1)).io(INGOT.get(Aluminium)).add("alumina_limestone", 4 * 100, 120);
-            E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Alumina, 4), DUST.getMaterialIngredient(Marble, 1)).io(INGOT.get(Aluminium)).add("alumina_marble", 4 * 100, 120);
+            E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Alumina, 4), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(INGOT.get(Aluminium)).add("alumina", 4 * 100, 120);
         }
 
         /* Stainless Steel*/
@@ -199,21 +157,9 @@ public class BlastFurnaceLoader {
     }
 
     private static void addCalciteRecipe(Material ore, int input, ItemStack... outputs){
-        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("crushed_" + ore.getId() + "_calcite", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("crushed_" + ore.getId() + "_limestone", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("crushed_" + ore.getId() + "_marble", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("impure_" + ore.getId() + "_calcite", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("impure_" + ore.getId() + "_limestone", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("impure_" + ore.getId() + "_marble", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add("dust_" + ore.getId() + "_calcite", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add("dust_" + ore.getId() + "_limestone", input * 1000);
-        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add("dust_" + ore.getId() + "_marble", input * 1000);
-        E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Calcite, 1)).io(outputs).add(ore.getId() + "_calcite", input * 500, 120);
-        E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Limestone, 1)).io(outputs).add(ore.getId() + "_limestone", input * 500, 120);
-        E_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), DUST.getMaterialIngredient(Marble, 1)).io(outputs).add(ore.getId() + "_marble", input * 500, 120);
-
+        PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add(ore.getId(), input * 1000L);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("crushed_" + ore.getId(), input * 1000L);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST_IMPURE.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("impure_" + ore.getId(), input * 1000L);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("dust_" + ore.getId(), input * 1000L);
     }
 }
