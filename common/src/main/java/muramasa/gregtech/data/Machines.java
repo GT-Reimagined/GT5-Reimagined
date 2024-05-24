@@ -91,6 +91,7 @@ public class Machines {
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(RecipeMaps.CIRCUIT_ASSEMBLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(RecipeMaps.COMPRESSOR).addFlags(GUI, ITEM);
+    public static BasicMachine CRYSTALLIZATION_CHAMBER = new BasicMachine(GTIRef.ID, "crystallization_chamber").setMap(RecipeMaps.CRYSTALLIZATION_CHAMBER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(RecipeMaps.CUTTER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(RecipeMaps.DISASSEMBLER).addFlags(GUI, ITEM).custom();
     public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setSound(GregTechSounds.EXTRACTOR,  0.6f);

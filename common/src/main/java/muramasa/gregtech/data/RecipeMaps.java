@@ -90,6 +90,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "combustion_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COMPRESSOR = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "compressor", new SteamBuilder(STEAM_COMPRESSOR)));
+    public static RecipeMap<RecipeBuilder> CRYSTALLIZATION_CHAMBER = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "crystallization_chamber", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CUTTER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "cutter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CRACKING = AntimatterAPI.register(RecipeMap.class,
@@ -228,7 +230,8 @@ public class RecipeMaps {
     public static final IRecipeInfoRenderer LARGE_BOILER_RENDERER = new IRecipeInfoRenderer() {
         @Override
         public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            String duration = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
+            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
+            String duration = "Duration: " + recipe.getDuration() + " ticks" + additional;
             String extraBurntime = "Extra saved Burntime: " + recipe.getPower();
             String heatIncreaseMultiplier = "Heat increase multiplier: " + (Math.max(recipe.getSpecialValue(), 1));
             renderString(stack, duration, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
@@ -245,7 +248,8 @@ public class RecipeMaps {
     public static final IRecipeInfoRenderer HEAT_EXCHANGER_RENDERER = new IRecipeInfoRenderer() {
         @Override
         public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            String duration = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
+            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
+            String duration = "Duration: " + recipe.getDuration() + " ticks" + additional;
             String extraBurntime = "HU/t: " + recipe.getPower();
             String heatIncreaseMultiplier = "Total HU: " + (recipe.getPower() * recipe.getDuration());
             String heatExchanger = recipe.getSpecialValue() == 1 ? "Works in both Small and Large Heat Exchangers" : (recipe.getSpecialValue() == -1 ? "Small" : "Large") + " Heat Exchanger only";
@@ -264,7 +268,8 @@ public class RecipeMaps {
     public static final IRecipeInfoRenderer FUSION_RENDERER = new IRecipeInfoRenderer() {
         public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
             if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String power = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
+            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
+            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
             String output = recipe.getPower() < 0 ? "Output: " : "Input: ";
             String euT = output + Math.abs(recipe.getPower()) + " " + (recipe.getPower() < 0 ? "H" : "E") + "U/t";
             String total = "Total: " + Math.abs(recipe.getPower()) * recipe.getDuration() + " EU";
@@ -288,7 +293,8 @@ public class RecipeMaps {
         @Override
         public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
             if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String power = "Duration: " + recipe.getDuration() + " ticks (" + (recipe.getDuration() / 20.0f) + " s)";
+            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
+            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
             String euT = "EU/t: " + recipe.getPower();
             String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
             String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : null;

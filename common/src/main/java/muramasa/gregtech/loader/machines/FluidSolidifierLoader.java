@@ -9,6 +9,7 @@ import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.world.item.Items;
 
 import static muramasa.antimatter.Ref.L;
+import static muramasa.antimatter.Ref.L9;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
@@ -28,7 +29,7 @@ public class FluidSolidifierLoader {
             }
             if (mat.has(INGOT)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldIngot, 1).setNoConsume())
-                        .fi(mat.getFluidIngredient(L)).io(INGOT.get(mat,1)).add(mat.getId() + "_ingot",32, 8);
+                        .fi(mat.getFluidIngredient(mat == Alumina ? (L * 7) / 2 : L)).io(INGOT.get(mat,1)).add(mat.getId() + "_ingot",32, 8);
             }
             if (mat.has(GEAR)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldGear, 1).setNoConsume())
@@ -40,7 +41,7 @@ public class FluidSolidifierLoader {
             }
             if (mat.has(NUGGET)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldNugget, 1).setNoConsume())
-                .fi(mat.getFluidIngredient(L / 9)).io(NUGGET.get(mat,1)).add(mat.getId() + "_nugget",16, 4);
+                .fi(mat.getFluidIngredient(mat == Alumina ? (L9 * 7) / 2 : L9)).io(NUGGET.get(mat,1)).add(mat.getId() + "_nugget",16, 4);
             }
             if (mat.has(ROD_LONG)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume())
@@ -48,7 +49,7 @@ public class FluidSolidifierLoader {
             }
             if (mat.has(BLOCK)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume())
-                .fi(mat.getFluidIngredient(L * 9)).io(BLOCK.get().get(mat).asStack(1)).add(mat.getId() + "_block",288, 8);
+                .fi(mat.getFluidIngredient(mat == Alumina ? (L * 9 * 7) / 2 : L * 9)).io(BLOCK.get().get(mat).asStack(1)).add(mat.getId() + "_block",288, 8);
             }
         });
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume()).fi(Lava.getLiquid(AntimatterPlatformUtils.isFabric() ? L : 111)).io(ROD_LONG.get(Obsidian)).add("long_obsidian_rod", 16, 8);

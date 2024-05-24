@@ -29,12 +29,14 @@ public class SmelterLoader {
         MaterialTypeItem<?>[] items = new MaterialTypeItem<?>[]{INGOT, NUGGET, PLATE, PLATE_DENSE, ROD, ROD_LONG, RING, FOIL, BOLT, SCREW, GEAR, GEAR_SMALL, WIRE_FINE, ROTOR};
         for (MaterialTypeItem<?> item : items) {
             item.all().forEach(m -> {
-                add(m, item, item.getUnitValue());
+                long amount = m == Alumina ? (item.getUnitValue() * 7) / 2 : item.getUnitValue();
+                add(m, item, amount);
             });
         }
         DUST.all().forEach(m -> {
             if (m.has(LIQUID) && m.has(MOLTEN) && !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
-                add(m, DUST, DUST.getUnitValue());
+                long amount = m == Alumina ? (DUST.getUnitValue() * 7) / 2 : DUST.getUnitValue();
+                add(m, DUST, amount);
             }
         });
         addLava(Obsidian, ROD_LONG, ROD_LONG.getUnitValue());

@@ -102,6 +102,7 @@ public class Guis {
         CANNER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         CIRCUIT_ASSEMBLER.add(ASSEMBLER);
         COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
+        CRYSTALLIZATION_CHAMBER.add(COMPRESSOR).add(FL_IN, 44, 63).add(FL_IN, 62, 63);
         CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
         FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         EXTRACTOR.add(COMPRESSOR);

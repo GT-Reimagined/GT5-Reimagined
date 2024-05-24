@@ -260,7 +260,7 @@ public class GregTechMaterialEvents {
          **  Ores
          **/
         event.setMaterial(Almandine).asOre().harvestLevel(1);
-        event.setMaterial(Alumina).asOre();
+        event.setMaterial(Alumina).asOre().asSolid(2345, MOLTEN);
         event.setMaterial(Andradite).asOre();
         event.setMaterial(Hematite).asOre().harvestLevel(2);
         event.setMaterial(Bastnasite).asOre().harvestLevel(2);
