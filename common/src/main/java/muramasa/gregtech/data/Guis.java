@@ -348,6 +348,7 @@ public class Guis {
         VACUUM_FREEZER.getGui().setBackgroundTexture("multiblock");
         MULTI_SMELTER.getGui().setBackgroundTexture("multiblock");
         LARGE_BOILER.getGui().setBackgroundTexture("multiblock");
+        LARGE_BATHING_VAT.getGui().setBackgroundTexture("multiblock");
         LARGE_CENTRIFUGE.getGui().setBackgroundTexture("multiblock");
         LARGE_CHEMICAL_REACTOR.getGui().setBackgroundTexture("multiblock");
         LARGE_ELECTROLYZER.getGui().setBackgroundTexture("multiblock");

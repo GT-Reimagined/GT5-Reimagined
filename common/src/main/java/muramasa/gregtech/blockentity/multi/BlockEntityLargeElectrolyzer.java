@@ -21,7 +21,7 @@ public class BlockEntityLargeElectrolyzer extends BlockEntityMultiMachine<BlockE
 
     public BlockEntityLargeElectrolyzer(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 1){
             @Override
             protected int maxSimultaneousRecipes(){
                 return coilData.maxSimultaneousRecipes();

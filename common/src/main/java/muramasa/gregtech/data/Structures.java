@@ -142,6 +142,11 @@ public class Structures {
                         ofHatch(HATCH_FLUID_O)))
                 .atElement('P', lazy(t -> ofBlock(t.getPipeCasing())))
                 .max(1, HATCH_ITEM_I).minMax(1, 2, HATCH_FLUID_I).exact(1, HATCH_MUFFLER).offset(1, 4, 0).build());
+        LARGE_BATHING_VAT.setStructure(BlockEntityLargeBath.class, b -> b.part("main")
+                .of("WWWWW", "WWWWW", "WWWWW", "WWWWW", "WWWWW")
+                .of("WW~WW", "WWWWW", "WWWWW", "WWWWW", "WWWWW").build()
+                .at('W', GregTechBlocks.STAINLESS_STEEL_WALL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O)
+                .offset(2, 1, 0).min(1, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ITEM_O).build());
         LARGE_CENTRIFUGE.setStructure(BlockEntityLargeCentrifuge.class, b -> b.part("main")
                 .of("CCC", "CcC", "CCC").of("C~C", "CCC", "CCC").build()
                 .at('C', GregTechBlocks.CASING_TUNGSTENSTEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_FLUID_I, HATCH_FLUID_O, HATCH_ENERGY)

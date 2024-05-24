@@ -46,7 +46,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
                 return super.createTrackedHandler(type, tile);
             }
         });
-        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 1){
             IRecipeMap recipeMap = null;
             Tier tier = null;
 

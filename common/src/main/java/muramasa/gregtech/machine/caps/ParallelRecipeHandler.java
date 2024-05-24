@@ -18,8 +18,10 @@ import static muramasa.antimatter.machine.MachineState.OUTPUT_FULL;
 
 public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends MachineRecipeHandler<T> {
     public int concurrentRecipes = 0;
-    public ParallelRecipeHandler(T tile) {
+    final int maxSimultaneousRecipes;
+    public ParallelRecipeHandler(T tile, int maxSimultaneousRecipes) {
         super(tile);
+        this.maxSimultaneousRecipes = maxSimultaneousRecipes;
     }
 
     @Override
@@ -137,7 +139,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     }
 
     protected int maxSimultaneousRecipes(){
-        return 1;
+        return maxSimultaneousRecipes;
     }
 
     @Override

@@ -19,12 +19,7 @@ public class BlockEntityLargeMacerator extends BlockEntityMultiMachine<BlockEnti
 
     public BlockEntityLargeMacerator(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
-            @Override
-            protected int maxSimultaneousRecipes(){
-                return 16;
-            }
-
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 16){
             @Override
             public long getPower() {
                 if (activeRecipe == null) return 0;

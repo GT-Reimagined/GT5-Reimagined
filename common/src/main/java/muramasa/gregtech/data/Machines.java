@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.machine.DrumMachine;
 import muramasa.antimatter.Data;
+import muramasa.antimatter.Ref;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
 import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
@@ -17,23 +19,29 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.block.BlockNuclearReactorCore;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniEndPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniTwilightPortal;
 import muramasa.gregtech.blockentity.multi.*;
 import muramasa.gregtech.blockentity.single.*;
+import muramasa.gregtech.items.IItemReactorRod;
 import muramasa.gregtech.machine.MiniPortalMachine;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import muramasa.gregtech.machine.SecondaryOutputMachine;
 import muramasa.gregtech.machine.SteamMachine;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
+import org.jetbrains.annotations.Nullable;
 
 import static muramasa.antimatter.Data.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -192,7 +200,7 @@ public class Machines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
-    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).setBlock(BlockNuclearReactorCore::new).setItemBlockClass(() -> BlockNuclearReactorCore.class).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).setTiers(NONE).addFlags(GUI, ITEM, FLUID).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(new Texture(GTIRef.ID, "block/machine/base/nuclear_reactor_core")).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(Machines::getBlockColorNuclear).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
     public static BasicMachine SMALL_HEAT_EXCHANGER = new SecondaryOutputMachine(GTIRef.ID, "small_heat_exchanger").setSecondaryOutputCover(COVER_OUTPUT_SECONDARY).covers(ICover.emptyFactory, ICover.emptyFactory, ICover.emptyFactory, COVEROUTPUT, COVER_OUTPUT_SECONDARY, ICover.emptyFactory).setTiers(NONE).baseTexture(new Texture(GTIRef.ID, "block/machine/base/small_heat_exchanger")).setMap(HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySmallHeatExchanger::new).frontCovers().allowFrontIO();
 
     /**
@@ -207,6 +215,7 @@ public class Machines {
     public static MultiMachine FUSION_REACTOR = new MultiMachine(GTIRef.ID, "fusion_control_computer").setTiers(LUV).setMap(FUSION).addFlags(GUI, FLUID, ITEM, EU).setTile(BlockEntityFusionReactor::new).setTextureBlock(GregTechBlocks.CASING_FUSION);
     public static MultiMachine LARGE_HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "large_heat_exchanger").setTiers(NONE).setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, FLUID, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityLargeHeatExchanger::new).custom().setTextureBlock(GregTechBlocks.CASING_TITANIUM);
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(RecipeMaps.IMPLOSION_COMPRESSOR).addFlags(GUI, ITEM, EU).addStructureTooltip(8).setTile(BlockEntityImplosionCompressor::new).setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);
+    public static MultiMachine LARGE_BATHING_VAT = new MultiMachine(GTIRef.ID, "large_bathing_vat").setTiers(NONE).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityLargeBath::new).setTextureBlock(GregTechBlocks.STAINLESS_STEEL_WALL).blockColorHandler((state, world, pos, machine, i) -> i == 0 ? StainlessSteel.getRGB() : -1).itemColorHandler((stack, block, i) -> i == 0 ? StainlessSteel.getRGB() : -1);
     public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom().setTierSpecificLang().addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;
         double production = machine.getTier() == LV ? 16000 : machine.getTier() == MV ? 24000 : machine.getTier() == HV ? 32000 : 40000;
@@ -281,5 +290,23 @@ public class Machines {
     public static void init() {
         BATH.removeFlags(EU);
         NUCLEAR_REACTOR_CORE.removeFlags(EU);
+    }
+
+    private static int getBlockColorNuclear(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, @Nullable BlockEntityMachine<?> machine, int i) {
+        if (i > 0 && i < 9 && world != null && pos != null && machine != null){
+            int slot = i > 4 ? i - 5 : i - 1;
+            if (machine instanceof BlockEntityNuclearReactorCore core){
+                if (i < 5){
+                    boolean on = core.getMachineState() == MachineState.ACTIVE && (core.mode & Ref.B[slot]) == 0;
+                    return on ? Lead.getRGB() : -1;
+                } else {
+                    ItemStack rod = core.getRod(slot);
+                    if (!rod.isEmpty() && rod.getItem() instanceof IItemReactorRod reactorRod){
+                        return reactorRod.getItemColor(rod, state.getBlock(), 0);
+                    }
+                }
+            }
+        }
+        return -1;
     }
 }

@@ -57,7 +57,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                 return a.getTile().getBlockPos().getY() == this.tile.getBlockPos().getY() ? 1 : 0;
             }
         });
-        recipeHandler.set(() -> new ParallelRecipeHandler<>(this){
+        recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 1){
 
             @Override
             protected boolean validateRecipe(IRecipe r) {
