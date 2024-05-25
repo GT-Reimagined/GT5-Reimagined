@@ -10,12 +10,12 @@ import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechMaterialTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
-import static muramasa.antimatter.Ref.L;
-import static muramasa.antimatter.Ref.U;
+import static muramasa.antimatter.Ref.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.Lava;
@@ -39,6 +39,9 @@ public class SmelterLoader {
                 add(m, DUST, amount);
             }
         });
+        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+            SMELTER.RB().ii(DUST.getMaterialIngredient(AluminiumHydroxide, 1)).fo(Alumina.getLiquid(((L9 * 7 * 3) / 2) + (L9 * 3 / 4))).add("aluminium_hydroxide_to_alumina", 55, 16);
+        }
         addLava(Obsidian, ROD_LONG, ROD_LONG.getUnitValue());
         addLava(Obsidian, PLATE, PLATE.getUnitValue());
         addLava(Obsidian, DUST, DUST.getUnitValue());

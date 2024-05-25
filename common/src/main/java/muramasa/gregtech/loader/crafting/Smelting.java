@@ -28,7 +28,7 @@ public class Smelting {
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Cassiterite, Tin);
         MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Garnierite, Nickel);
         if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
-            MaterialRecipes.addSmeltingRecipe(output, provider, DUST, DUST_TINY, 3, AluminiumHydroxide, Alumina);
+            MaterialRecipes.addSmeltingRecipe(output, provider, DUST, NUGGET, 3, AluminiumHydroxide, Alumina);
             MaterialRecipes.addSmeltingRecipe(output, provider, DUST, INGOT, 1, Aluminium);
         }
     }
