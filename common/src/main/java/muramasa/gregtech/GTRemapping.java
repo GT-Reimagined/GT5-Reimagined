@@ -24,6 +24,7 @@ public class GTRemapping {
             return r;
         });
         AntimatterRemapping.remapBlockEntity(new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_polyethylene"), new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_plastic"));
+        remap("bath_hv", "bath");
         remap("coke_oven_bronze", "coke_oven");
         remap("primitive_blast_furnace_bronze", "primitive_blast_furnace");
         remap("heat_exchanger_ev", "large_heat_exchanger");

@@ -124,13 +124,6 @@ public class MachineRecipes {
                             .put('G', glass)
                             .put('H', hull)
                             .put('P', pump).build(), "TGT", "THT", "CPC"));
-            add(BATH, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.<Character, Object>builder()
-                            .put('W', WRENCH.getTag())
-                            .put('H', hull)
-                            .put('C', ITEM_CASING.getMaterialTag(material))
-                            .put('S', PLATE.getMaterialTag(material))
-                            .build(), "CWC", "SHS", "SSS"));
             add(BENDER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of(
                             'P', piston,
@@ -482,6 +475,13 @@ public class MachineRecipes {
                             .put('C', circuit)
                             .build(), "CRC", "RHR", "MLM"));
         });
+        add(BATH, NONE, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('W', WRENCH.getTag())
+                        .put('H', GregTechBlocks.CASING_HV)
+                        .put('C', ITEM_CASING.getMaterialTag(StainlessSteel))
+                        .put('S', PLATE.getMaterialTag(StainlessSteel))
+                        .build(), "CWC", "SHS", "SSS"));
         provider.addItemRecipe(output, "trash_bin", GTCoreBlocks.ENDER_GARBAGE_BIN.getItem(NONE),
                 of('O', PLATE.getMaterialTag(Obsidian), 'I', PLATE.getMaterialTag(Iron), 'E', Items.ENDER_EYE), "OOO", "OEO", "III");
 
