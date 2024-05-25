@@ -38,6 +38,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.LV;
 import static muramasa.antimatter.machine.Tier.MV;
 import static muramasa.gregtech.data.GregTechMaterialTags.SOLDER;
+import static muramasa.gregtech.data.GregTechMaterialTypes.BOULE;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.*;
@@ -172,8 +173,8 @@ public class Circuitry {
     }
 
     private static void silicon(){
-        E_BLAST_FURNACE.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(GregTechItems.SiliconBoule).add("silicon_boule", 9000, 120);
-        addCuttingRecipe(GregTechItems.SiliconBoule, GregTechItems.Wafer, 16, 1600, 384, 1);
+        //E_BLAST_FURNACE.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(GregTechItems.SiliconBoule).add("silicon_boule", 9000, 120);
+        addCuttingRecipe(BOULE.get(Silicon), GregTechItems.Wafer, 16, 1600, 384, 1);
         addCuttingRecipe(GregTechItems.Wafer, GregTechItems.SiliconChip, 8, 600, 48, 22);
         if (GregTechConfig.HARDER_CIRCUITS){
             E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GregTechItems.GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
