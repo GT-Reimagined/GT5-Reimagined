@@ -20,6 +20,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GregTechMaterialTags.*;
 import static muramasa.gregtech.data.GregTechMaterialTypes.BOULE;
+import static muramasa.gregtech.data.GregTechMaterialTypes.CHAMBER;
 import static muramasa.gregtech.data.Materials.*;
 
 public class GregTechMaterialEvents {
@@ -100,7 +101,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Tungsten).asMetal(3695, 3000, FOIL, RING, FRAME);
         //event.setMaterial(Rhenium).asMetal(3459,3459);
         event.setMaterial(Osmium).asOre().asMetal(3306, 3306, SCREW, BOLT, RING, PLATE, FOIL, ROD_LONG, WIRE_FINE);
-        event.setMaterial(Iridium).asMetal(2719, 2719, FRAME, PLATE).asOre();
+        event.setMaterial(Iridium).asMetal(2719, 2719, FRAME, PLATE, CHAMBER).asOre();
         event.setMaterial(Platinum).asMetal(2041, 0, PLATE, FOIL, ROD_LONG, WIRE_FINE, FRAME).asOre();
         //Gold, added by vanilla
         event.setMaterial(Mercury).asFluid();
@@ -163,7 +164,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Steel).asMetal(1811, 1000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, WIRE_FINE);
         event.setMaterial(SteelMagnetic).asMetal(1000, 1000, ROD_LONG);
         event.setMaterial(SterlingSilver).asMetal(1700);
-        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING);
+        event.setMaterial(StainlessSteel).asMetal(1700, 1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING);
         event.setMaterial(TinAlloy).asMetal(1158);
         event.setMaterial(Tritanium).asMetal(295, FRAME, MOLTEN);
         event.setMaterial(TungstenCarbide).asMetal(2460, 2460);
@@ -1458,6 +1459,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Blaze).mats(of(Sulfur, 1, DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE, ROCK).mats(of(Carbon, 2));
         event.setMaterial(Copper).flags(PLATE, ROD_LONG, FOIL, WIRE_FINE, GEAR, BOLT);
+        event.setMaterial(Quartz).flags(CHAMBER);
         event.setMaterial(Diamond).asGem(true).mats(of(Carbon, 64), 1).elecTicks(768).harvestLevel(3);
         event.setMaterial(Emerald).asGem(true).mats(of(Alumina, 5, Beryllium, 3, SiliconDioxide, 18, Oxygen, 3)).elecTicks(540);
                 //.tool().toolDamage(3).toolSpeed(9).toolDurability(590).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();

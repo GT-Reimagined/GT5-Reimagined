@@ -15,9 +15,11 @@ public class GregTechMaterialTypes {
     public static final MaterialTypeItem<?> BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 4));
     public static final MaterialTypeItem<?> SMALL_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("small_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 2));
     public static final MaterialTypeItem<?> BOULE = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("boule", 2, true, Ref.U * 4));
+    public static final MaterialTypeItem<?> CHAMBER = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("chamber", 2, true, Ref.U * 7));
 
     public static void init(){
         BOULE.setIgnoreTextureSets();
+        CHAMBER.setIgnoreTextureSets();
         TURBINE_BLADE.unSplitName().setIgnoreTextureSets();
         SMALL_BROKEN_TURBINE_ROTOR.unSplitName().setIgnoreTextureSets();
         BROKEN_TURBINE_ROTOR.unSplitName().setIgnoreTextureSets();

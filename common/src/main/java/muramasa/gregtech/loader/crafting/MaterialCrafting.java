@@ -3,6 +3,7 @@ package muramasa.gregtech.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.pipe.PipeSize;
@@ -10,6 +11,8 @@ import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechMaterialTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -18,9 +21,9 @@ import java.util.function.Consumer;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Copper;
-import static muramasa.antimatter.data.AntimatterMaterials.Gold;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.gregtech.data.GregTechMaterialTypes.CHAMBER;
 import static muramasa.gregtech.data.Materials.*;
 
 public class MaterialCrafting {
@@ -56,6 +59,12 @@ public class MaterialCrafting {
                             .put('F', FILE.getTag())
                             .put('P', PLATE.getMaterialTag(m))
                             .put('s', SCREW.getMaterialTag(m)).build(), "FPS", "sPs", " P ");
+        });
+        CHAMBER.all().forEach(m -> {
+            if (!m.has(GEM) && !m.has(PLATE)) return;
+            TagKey<Item> input = m == Quartz ? ForgeCTags.GEMS_QUARTZ_ALL : m.has(GEM) ? GEM.getMaterialTag(m) :  PLATE.getMaterialTag(m);
+            provider.addItemRecipe(consumer, "chambers", CHAMBER.get(m),
+                    of('I', input, 'H', HAMMER.getTag() ,'W', WRENCH.getTag()), "IHI", "IWI", "III");
         });
         AntimatterAPI.all(ItemPipe.class, i -> {
             if (i.getSizes().contains(PipeSize.NORMAL)){
