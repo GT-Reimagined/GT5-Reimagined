@@ -161,6 +161,7 @@ public class GTRemapping {
         remap("casing_turbine_2", "stainless_steel_turbine_casing");
         remap("casing_turbine_3", "titanium_turbine_casing");
         remap("casing_turbine_4", "tungstensteel_turbine_casing");
+        AntimatterRemapping.remap(new ResourceLocation(GTIRef.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
     }
 
     private static void remap(String oldId, String newId){
