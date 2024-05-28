@@ -63,7 +63,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Zinc).asMetal(692, 0, PLATE, FOIL).asOre();
         event.setMaterial(Gallium).asMetal(303, MOLTEN);
         event.setMaterial(Germanium).asMetal(1211);
-        event.setMaterial(Arsenic).asMetal(1090, 1090);
+        event.setMaterial(Arsenic).asMetal(1090, 0);
         //event.setMaterial(Selenium).asMetal(494, 0);
         //Bromine, not added
         event.setMaterial(Krypton).asGas().fluidDensity(3);
@@ -84,7 +84,7 @@ public class GregTechMaterialEvents {
         //Tellurium
         event.setMaterial(Iodine).asSolid(387,0);
         event.setMaterial(Xenon).asGas().fluidDensity(5);
-        event.setMaterial(Caesium).asMetal(2349, 2349);
+        event.setMaterial(Caesium).asMetal(301, 0);
         event.setMaterial(Barium).asDust(1000);
         //Lanthanum
         event.setMaterial(Cerium).asDust();
@@ -912,7 +912,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(HydrogenSulfide).mats(of(Hydrogen, 2, Sulfur, 1));
         event.setMaterial(NitrogenMonoxide).mats(of(Nitrogen, 1, Oxygen, 1)).elecTicks(112);
         event.setMaterial(NitrogenDioxide).mats(of(Nitrogen, 1, Oxygen, 2)).elecTicks(168);
-        event.setMaterial(NobleGases).mats(of(Helium, 10, Neon, 10, Argon, 10, Xenon, 10));
         event.setMaterial(SulfurDioxide).mats(of(Sulfur, 1, Oxygen, 2));
         event.setMaterial(SulfurTrioxide).mats(of(Sulfur, 1, Oxygen, 3));
         /**
