@@ -265,7 +265,10 @@ public class Circuitry {
         ASSEMBLER.RB().ii(of(CIRCUITS_BASIC), of(NandChip, 2)).fi(Lead.getLiquid(L)).io(new ItemStack(CircuitGood)).add("good_circuit_lead", 32, 16);
         ASSEMBLER.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_tin", 32, 64);
         ASSEMBLER.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_soldering_alloy", 32, 64);
-        ASSEMBLER.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("adv_storage_circuit_lead", 32, 64);
+        ASSEMBLER.RB().ii(of(CircuitBoardAdvanced), of(AdvCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitAdv)).add("advanced_circuit_lead", 32, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(AdvCircuitParts, 2), of(EtchedWiringEV, 4)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitComplex)).add("complex_circuit_tin", 32, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(AdvCircuitParts, 2), of(EtchedWiringEV, 4)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitComplex)).add("complex_circuit_soldering_alloy", 32, 64);
+        ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(AdvCircuitParts, 2), of(EtchedWiringEV, 4)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitComplex)).add("complex_circuit_lead", 32, 64);
         ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(EngravedCrystalChip)).fi(Tin.getLiquid(L)).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_tin", 32, 64);
         ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage__circuit_soldering_alloy", 32, 64);
         ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(EngravedCrystalChip)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(CircuitDataStorage)).add("data_storage_circuit_lead", 32, 64);
