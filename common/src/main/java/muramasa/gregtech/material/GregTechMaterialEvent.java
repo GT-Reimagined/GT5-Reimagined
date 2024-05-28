@@ -17,10 +17,10 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     public GregTechMaterialEvent asSolid(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
         asSolid(meltingPoint, tags);
         GregTechMaterialTags.BLAST_FURNACE_TEMP.add(material, blastFurnaceTemp);
-        if (blastFurnaceTemp >= 1700){
+        if (blastFurnaceTemp >= 1200){
             flags(GregTechMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         }
-        if (blastFurnaceTemp > 2400) {
+        if (blastFurnaceTemp > 1750) {
             flags(AntimatterMaterialTypes.INGOT_HOT);
         }
         return this;
