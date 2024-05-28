@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
@@ -859,7 +860,8 @@ public class MachineRecipes {
                         .put('W', GregTechBlocks.STAINLESS_STEEL_WALL)
                         .put('D', PLATE_DENSE.getMaterialTag(StainlessSteel))
                         .put('R', GregTechCovers.COVER_ROBOT_ARM.getItem(MV))
-                        .put('C', TIER_CIRCUITS.apply(IV)).build(), "CCC", "DWD", "RDR"));
+                        .put('C', TIER_CIRCUITS.apply(EV))
+                        .put('c', CIRCUITS_COMPLEX).build(), "cCc", "DWD", "RDR"));
         add(LARGE_CENTRIFUGE, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('M', MotorEV)
