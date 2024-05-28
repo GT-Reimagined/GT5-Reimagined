@@ -906,7 +906,7 @@ public class GregTechMaterialEvents {
         /**
          *  Inorganic
          **/
-        event.setMaterial(Air).mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
+        //event.setMaterial(Air).mats(of(Nitrogen, 40, Oxygen, 11, Argon, 1, NobleGases, 1 ));
         event.setMaterial(Ammonia).mats(of(Nitrogen, 1, Hydrogen, 3)).elecTicks(64);
         event.setMaterial(DinitrogenTetroxide).mats(of(Nitrogen, 2, Oxygen, 4)).elecTicks(168);
         event.setMaterial(HydrogenSulfide).mats(of(Hydrogen, 2, Sulfur, 1));
@@ -1214,7 +1214,7 @@ public class GregTechMaterialEvents {
         BRITTLEG.add(Coal, Charcoal, Lignite, PetroleumCoke);
         CALCITE2X.add(Pyrite, YellowLimonite);
         CALCITE3X.add(Iron, BrownLimonite);
-        CENT5.add(/*Chrysolite*/ Flint, /*Niter*/ Glass, /*Perlite*/ WroughtIron, DarkAsh, AnnealedCopper, NobleGases,
+        CENT5.add(/*Chrysolite*/ Flint, /*Niter*/ Glass, /*Perlite*/ WroughtIron, DarkAsh, AnnealedCopper,
                 Cinnabar);
         CENT10.add(Magnalium, VanadiumMagnetite, BrownLimonite, YellowLimonite, BlackGranite, Cupronickel, NiobiumTitanium, BorosilicateGlass,
                 GalliumArsenide, Marble, Limestone, Invar, TinAlloy, TungstenCarbide, EnderEye, Powellite, VanadiumGallium, Blaze,
