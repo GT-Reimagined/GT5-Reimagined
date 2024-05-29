@@ -87,6 +87,10 @@ public class CoverRedstoneMachineController extends BaseCover {
         if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
             inverted = !inverted;
             player.sendMessage(Utils.translatable("message.gti.redstone_mode." + (inverted ? "inverted" : "normal")), player.getUUID());
+            for (Direction dir : Direction.values()) {
+                if (dir == this.side) continue;
+                source().get(dir).onBlockUpdate();
+            }
             return InteractionResult.SUCCESS;
         }
         return super.onInteract(player, hand, side, type);
