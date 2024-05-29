@@ -31,6 +31,7 @@ public class AutoclaveLoader {
                 dur = 400;
             }
             AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(m, 1)).fi(Water.getLiquid(200)).io(GEM.get(m, 1)).add(m.getId(), dur,8);
+            AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(m, 1)).fi(DistilledWater.getLiquid(200)).io(GEM.get(m, 1)).add(m.getId() + "_with_distilled_water", dur,8);
         });
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Bauxite, 2), DUST.getMaterialIngredient(SodiumHydroxide, 3)).fi(DistilledWater.getLiquid(1000)).io(DUST.get(SodiumAluminate, 4), DUST_TINY.get(Ilmenite, 1), DUST_TINY.get(Rutile, 1)).outputChances(1.0, 0.25, 0.5).add("bauxite_distilled_water", 1500, 16);
         AUTOCLAVE.RB().ii(DUST.getMaterialIngredient(Bauxite, 2), DUST.getMaterialIngredient(SodiumHydroxide, 3)).fi(Water.getLiquid(1000)).io(DUST.get(SodiumAluminate, 4), DUST_TINY.get(Ilmenite, 1), DUST_TINY.get(Rutile, 1)).outputChances(1.0, 0.25, 0.5).add("bauxite", 3000, 16);
