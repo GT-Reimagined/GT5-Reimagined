@@ -213,13 +213,13 @@ public class TierMaps {
                     return GTCoreTags.CIRCUITS_ADVANCED;
                 }
                 if (t == EV){
-                    return hardMode ? GTCoreTags.CIRCUITS_COMPLEX : GTCoreTags.CIRCUITS_ELITE;
+                    return GTCoreTags.CIRCUITS_COMPLEX;
                 }
                 if (t == IV){
-                    return hardMode ? GTCoreTags.CIRCUITS_ELITE : GTCoreTags.CIRCUITS_MASTER;
+                    return GTCoreTags.CIRCUITS_ELITE;
                 }
                 if (t == LUV){
-                    return hardMode ? GTCoreTags.CIRCUITS_MASTER : GTCoreTags.CIRCUITS_DATA_ORB;
+                    return GTCoreTags.CIRCUITS_MASTER;
                 }
                 if (t == ZPM){
                     return hardMode ? GTCoreTags.CIRCUITS_FUTURISTIC : GTCoreTags.CIRCUITS_DATA_ORB;

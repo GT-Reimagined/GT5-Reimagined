@@ -501,7 +501,7 @@ public class MachineRecipes {
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(ULV),
                 of('S', SOLAR_PANEL.getItem(NONE), 'C', CIRCUITS_ADVANCED), "SSS", "SCS", "SSS");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(LV),
-                of('S', SOLAR_PANEL.getItem(ULV), 'T', TRANSFORMER.getItem(ULV), 'C', TIER_CIRCUITS.apply(EV)), "CSC", "STS","CSC");
+                of('S', SOLAR_PANEL.getItem(ULV), 'T', TRANSFORMER.getItem(ULV), 'C', TIER_CIRCUITS.apply(IV)), "CSC", "STS","CSC");
 
         provider.addItemRecipe(output, "machines", NUCLEAR_REACTOR_CORE.getItem(NONE),
                 of('C', TIER_CIRCUITS.apply(Tier.IV), 'P', GregTechItems.PistonEV, 'L', GregTechBlocks.CASING_DENSE_LEAD), "PCP", "CLC", "PCP");
@@ -860,8 +860,8 @@ public class MachineRecipes {
                         .put('W', GregTechBlocks.STAINLESS_STEEL_WALL)
                         .put('D', PLATE_DENSE.getMaterialTag(StainlessSteel))
                         .put('R', GregTechCovers.COVER_ROBOT_ARM.getItem(MV))
-                        .put('C', TIER_CIRCUITS.apply(EV))
-                        .put('c', CIRCUITS_COMPLEX).build(), "cCc", "DWD", "RDR"));
+                        .put('C', TIER_CIRCUITS.apply(IV))
+                        .put('c', TIER_CIRCUITS.apply(EV)).build(), "cCc", "DWD", "RDR"));
         add(LARGE_CENTRIFUGE, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('M', MotorEV)
@@ -893,12 +893,12 @@ public class MachineRecipes {
                         .build(), "TGT", "PHP", "MCM"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
             Block firebox = tier == LV ? GregTechBlocks.CASING_FIREBOX_BRONZE : tier == MV ? GregTechBlocks.CASING_FIREBOX_STEEL : tier == HV ? GregTechBlocks.CASING_FIREBOX_TITANIUM : GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
-            TagKey<Item> circuit2 = tier == LV ? TIER_CIRCUITS.apply(tier) : tier == MV ? CIRCUITS_ADVANCED : tier == HV ? CIRCUITS_ELITE : CIRCUITS_MASTER;
+            Tier circuitTier = tier == LV ? tier : tier == MV ? HV : tier == HV ? EV : IV;
             add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('L', CABLE_GETTER.apply(PipeSize.VTINY, tier, true))
                             .put('H', firebox)
-                            .put('C', circuit2)
+                            .put('C', TIER_CIRCUITS.apply(circuitTier))
                             .build(), "LCL", "CHC", "LCL"));
         });
 
@@ -932,7 +932,7 @@ public class MachineRecipes {
                         .put('C', PLATE.getMaterialTag(Iron)).build(), "HHH", "HCH", "HHH");
         add(PROCESSING_ARRAY, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('C', TIER_CIRCUITS.apply(IV))
+                        .put('C', TIER_CIRCUITS.apply(LUV))
                         .put('R', GregTechCovers.COVER_ROBOT_ARM.getItem(EV))
                         .put('L', BatteryEnergyOrb)
                         .put('M', HULL.getItem(EV))
