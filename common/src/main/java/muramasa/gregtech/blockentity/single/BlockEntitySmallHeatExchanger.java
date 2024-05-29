@@ -32,6 +32,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 import tesseract.api.heat.IHeatHandler;
 
+import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.gregtech.data.Materials.*;
 
 public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<BlockEntitySmallHeatExchanger> {
@@ -51,6 +52,11 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
             protected boolean canRecipeContinue() {
                 return super.canRecipeContinue() && heatHandler.map(h -> h.getHeat() + (activeRecipe.getTotalPower()) <= h.getHeatCap()).orElse(false);
             }
+
+            @Override
+            public boolean consumeResourceForRecipe(boolean simulate) {
+                return tile.heatHandler.map(e -> e.insert((int) getPower(), simulate) >= getPower()).orElse(false);
+            }
         });
 
     }
@@ -64,14 +70,18 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
                     if (h.getHeat() >= 80){
                         int heatMultiplier = h.getHeat() / 80;
                         int waterToExtract = 0;
-                        FluidTank waterTank = f.getInputTanks().getTank(f.getInputTanks().getFirstAvailableTank(DistilledWater.getLiquid(1), true));
-                        if (waterTank != null) {
-                            waterToExtract = (int) Math.min(heatMultiplier, waterTank.getTankAmount() / TesseractGraphWrappers.dropletMultiplier);
+                        int waterTankId = f.getInputTanks().getFirstAvailableTank(DistilledWater.getLiquid(1), true);
+                        if (waterTankId < 0){
+                            waterTankId = f.getInputTanks().getFirstAvailableTank(Water.getLiquid(1), true);
+                        }
+                        FluidTank waterTank;
+                        if (waterTankId < 0){
+                            waterTank = null;
                         } else {
-                            waterTank = f.getInputTanks().getTank(f.getInputTanks().getFirstAvailableTank(DistilledWater.getLiquid(1), true));
-                            if (waterTank != null) {
-                                waterToExtract = (int) Math.min(heatMultiplier, waterTank.getTankAmount() / TesseractGraphWrappers.dropletMultiplier);
-                            }
+                            waterTank = f.getInputTanks().getTank(waterTankId);
+                        }
+                        if (waterTank != null) {
+                            waterToExtract = (int) Math.min(heatMultiplier, waterTank.getStoredFluid().getFluidAmount() / TesseractGraphWrappers.dropletMultiplier);
                         }
                         if (waterToExtract > 0){
                             if (hadNoWater){
