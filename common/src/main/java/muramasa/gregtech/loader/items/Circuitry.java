@@ -183,9 +183,9 @@ public class Circuitry {
             addCuttingRecipe(GregTechItems.NaquadahDopedSiliconBoule, GregTechItems.NaquadahDopedWafer, 64, 1600, 64, 240);
             addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.ASoCWafer, 1, 200, 1920, Amber, Topaz);
             addCuttingRecipe(GregTechItems.ASoCWafer, GregTechItems.ASoC, 8, 600, 48, 22);
-            addLensRecipe(GregTechItems.Wafer, GregTechItems.CentralProcessingUnitWafer, 1, 900, 120, Diamond, Glass, Dilithium);
-            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.CentralProcessingUnitWafer, 4, 500, 480, Diamond, Glass, Dilithium);
-            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.CentralProcessingUnitWafer, 8, 200, 1920, Diamond, Glass, Dilithium);
+            addLensRecipe(GregTechItems.Wafer, GregTechItems.CentralProcessingUnitWafer, 1, 900, 120, Diamond, Glass);
+            addLensRecipe(GregTechItems.GlowstoneDopedWafer, GregTechItems.CentralProcessingUnitWafer, 4, 500, 480, Diamond, Glass);
+            addLensRecipe(GregTechItems.NaquadahDopedWafer, GregTechItems.CentralProcessingUnitWafer, 8, 200, 1920, Diamond, Glass);
             addCuttingRecipe(GregTechItems.CentralProcessingUnitWafer, GregTechItems.CentralProcessingUnit, 8, 600, 48, 22);
             CHEMICAL_REACTOR.RB().ii(of(GregTechItems.PICWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 2)).fi(RedAlloy.getLiquid(L * 2)).io(GregTechItems.HPICWafer).add("hpic_wafer", 1200, 1920);
             addCuttingRecipe(GregTechItems.HPICWafer, GregTechItems.HighPowerIC, 2, 600, 48, 22);

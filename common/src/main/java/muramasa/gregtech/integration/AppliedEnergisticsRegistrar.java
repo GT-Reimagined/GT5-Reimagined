@@ -101,9 +101,8 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(BlueTopaz, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press_2", 2000, 1920);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Sapphire, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press_3", 2000, 1920);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(YellowGarnet, 1).setNoConsume()).io(new ItemStack(getAe2Item("engineering_processor_press"))).add("inscriber_engineering_press", 2000, 1920);
-        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Dilithium, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press", 2000, 1920);
-        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Diamond, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_2", 2000, 1920);
-        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Glass, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_3", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Diamond, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press", 2000, 1920);
+        LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Glass, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_2", 2000, 1920);
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){

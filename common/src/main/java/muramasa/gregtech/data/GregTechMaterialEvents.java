@@ -351,10 +351,8 @@ public class GregTechMaterialEvents {
         event.setMaterial(Fluix).asGemBasic(false, QUARTZ_LIKE_BLOCKS);
         event.setMaterial(Charcoal).asGemBasic(false);
         event.setMaterial(CoalCoke).asGemBasic(false);
-        event.setMaterial(Dilithium).asGemBasic(true);
         event.setMaterial(Apatite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
-        event.setMaterial(Monazite).asGemBasic(false, PLATE).asOre(3, 7, true).harvestLevel(1);
-        event.setMaterial(NetherStar).replaceItem(GEM, Items.NETHER_STAR).asGemBasic(false);
+        event.setMaterial(Monazite).asOre(3, 7, true).harvestLevel(1);
         /**
          **  Plastic Related
          **/
@@ -1294,7 +1292,7 @@ public class GregTechMaterialEvents {
         RADIOACTIVE.add(EnrichedNaquadah, 4);
         RADIOACTIVE.add(Naquadria, 5);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene);
-        CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Dilithium, Monazite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke, PetroleumCoke, Flint, EnderEye, EnderPearl);
+        CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Coal, CoalCoke, Charcoal, Lignite, LigniteCoke, PetroleumCoke, Flint, EnderEye, EnderPearl);
         ELEC30.add(Charcoal, Opal, Coal, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
                 SiliconDioxide, Wollastonite, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
@@ -1330,11 +1328,10 @@ public class GregTechMaterialEvents {
                 StyreneButadieneRubber, Plastic, PolyvinylChloride, Polystyrene, SiliconeRubber, Polytetrafluoroethylene, NitroDiesel,
                 Concrete, Redstone, Glowstone, Netherrack, Stone, Brick, Endstone, Marble, Basalt, Obsidian, Flint,
                 RedGranite, BlackGranite, Salt, RockSalt, Glass, Diamond, Emerald, Amethyst, Tanzanite, Topaz,
-                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, Phosphate,
-                NetherStar, EnderPearl, EnderEye, Silicon);
+                /* Amber, */ Sapphire, Ruby, Opal, Olivine, Lapis, MilkyQuartz, Quartz, Phosphate, EnderPearl, EnderEye, Silicon);
         NOSMELT.add(Wood/* , WoodSealed */, Sulfur, Saltpeter, Graphite, /* Paper, */Coal, Charcoal, Lignite,
                 NitroDiesel, Emerald, Amethyst, Tanzanite, Topaz, /* Amber, */ Sapphire, Ruby, Opal, Olivine,
-                Lapis, Sodalite, Lazurite, Monazite , MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate, NetherStar,
+                Lapis, Sodalite, Lazurite, Monazite , MilkyQuartz, Quartz, TricalciumPhosphate, Phosphate,
                 EnderPearl, EnderEye, Blaze);
         RUBBERTOOLS.add(Rubber, StyreneButadieneRubber, Plastic, PolyvinylChloride, Polytetrafluoroethylene, SiliconeRubber, EpoxyResin);
         SMELTF.add(Concrete, Redstone, Glowstone, Glass, Blaze);

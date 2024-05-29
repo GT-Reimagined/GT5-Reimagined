@@ -338,14 +338,12 @@ public class Materials {
     public static Material ChargedCertusQuartz = AntimatterAPI.register(Material.class,new Material(GTIRef.ID, "charged_certus_quartz", 0xd2d2e6, QUARTZ, Ref.MOD_AE));
     public static Material Fluix = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "fluix", 0x78468C, QUARTZ, Ref.MOD_AE));
     public static Material CoalCoke = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "coal_coke", 0x8c8caa, LIGNITE));
-    public static Material Dilithium = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "dilithium", 0xfffafa, DIAMOND));
     public static Material Glass = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "glass", 0xfafafa, SHINY));
     public static Material GreenSapphire = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "green_sapphire", 0x64c882, GEM_H));
     public static Material Jade = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "jade", 0x64ff7d, LAPIS));
     public static Material Lazurite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lazurite", 0x6478ff, LAPIS));
     public static Material LigniteCoke = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lignite_coke", 0x8c6464, LIGNITE));
     public static Material Monazite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "monazite", 0x324632, DIAMOND));
-    public static Material NetherStar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nether_star", 0xffffff, NONE));
     public static Material Olivine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "olivine", 0x96ff96, RUBY));
     public static Material Opal = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "opal", 0x0000ff, RUBY));
     public static Material RedGarnet = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_garnet", 0xc85050, GARNET));
