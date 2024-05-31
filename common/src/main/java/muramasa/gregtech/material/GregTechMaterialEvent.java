@@ -15,12 +15,12 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> {
     public GregTechMaterialEvent asSolid(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
-        asSolid(meltingPoint, tags);
+        super.asSolid(meltingPoint, tags);
         GregTechMaterialTags.BLAST_FURNACE_TEMP.add(material, blastFurnaceTemp);
-        if (blastFurnaceTemp >= 1200){
+        if (blastFurnaceTemp >= 2000){
             flags(GregTechMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         }
-        if (blastFurnaceTemp > 1750) {
+        if (blastFurnaceTemp > 2400) {
             flags(AntimatterMaterialTypes.INGOT_HOT);
         }
         return this;
@@ -30,6 +30,24 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
         flags(METAL);
         asSolid(meltingPoint, blastFurnaceTemp, tags);
         return this;
+    }
+
+    public GregTechMaterialEvent forceBF(boolean hotIngot) {
+        flags(GregTechMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
+        if (hotIngot) {
+            flags(AntimatterMaterialTypes.INGOT_HOT);
+        }
+        return this;
+    }
+
+    @Override
+    public GregTechMaterialEvent asSolid(int meltingPoint, IMaterialTag... tags) {
+        return asSolid(meltingPoint, meltingPoint, tags);
+    }
+
+    @Override
+    public GregTechMaterialEvent asMetal(int meltingPoint, IMaterialTag... tags) {
+        return asMetal(meltingPoint, meltingPoint, tags);
     }
 
     public GregTechMaterialEvent elecTicks(int ticks){

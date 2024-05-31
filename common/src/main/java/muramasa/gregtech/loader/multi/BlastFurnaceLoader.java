@@ -117,28 +117,6 @@ public class BlastFurnaceLoader {
         addBlastAlloyRecipes(HSSG, 9, 9000, 120, ImmutableMap.of(TungstenSteel, 5, Chromium, 1, Molybdenum, 2, Vanadium, 1));
         addBlastAlloyRecipes(HSSE, 9, 10800, 120, ImmutableMap.of(HSSG, 6, Cobalt, 1, Manganese, 1, Silicon, 1));
         addBlastAlloyRecipes(HSSS, 9, 810 * 20, 120, ImmutableMap.of(HSSG, 6, Iridium, 2, Osmium, 1));
-        //TODO figure out proper nuclear
-
-        //Nuclear Processing
-        /*BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium227Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium227,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium227_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium228Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium228,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium228_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium229Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium229,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium229_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium230Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium230,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium230_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium231Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium231,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium231_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium233Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium233,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium233_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Thorium234Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Thorium234,1)).fo(CarbonDioxide.getGas(1000)).add("hot_thorium234_ingot",40*20, 480);
-
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium232Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium232,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium232_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium233Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium233,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium233_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium234Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium234,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium234_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium235Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium235,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium235_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium236Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium236,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium236_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium237Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium237,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium237_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium238Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium238,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium238_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium239Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium239,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium239_ingot",40*20, 480);
-        BLASTING.RB().temperature(3000).ii(of(DUST.get(Uranium240Dioxide,1)), of(DUST.get(Carbon,1))).io(INGOT_HOT.get(Uranium240,1)).fo(CarbonDioxide.getGas(1000)).add("hot_uranium240_ingot",40*20, 480);*/
-
-
     }
 
     private static void addBlastAlloyRecipes(Material output, int amount, int duration, int power, ImmutableMap<Material, Integer> inputs){
