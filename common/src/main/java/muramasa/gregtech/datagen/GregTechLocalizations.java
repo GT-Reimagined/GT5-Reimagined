@@ -239,8 +239,8 @@ public class GregTechLocalizations {
             override(LARGE_TURBINE, IV, "Large HP Steam Turbine");
             override(LARGE_BOILER, LV, "Large Bronze Boiler");
             override(LARGE_BOILER, MV, "Large Steel Boiler");
-            override(LARGE_BOILER, HV, "Large HP Titanium Boiler");
-            override(LARGE_BOILER, EV, "Large HP Tungstensteel Boiler");
+            override(LARGE_BOILER, HV, "Large Titanium Boiler");
+            override(LARGE_BOILER, EV, "Large Tungstensteel Boiler");
             override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
             add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
             override("machine.hull", "%s " + HULL.getLang(locale));
