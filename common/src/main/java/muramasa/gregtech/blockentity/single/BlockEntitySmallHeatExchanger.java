@@ -80,7 +80,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
             fluidHandler.ifPresent(f -> {
                 heatHandler.ifPresent(h -> {
                     if (h.getHeat() >= 80){
-                        int heatMultiplier = h.getHeat() / 80;
+                        int heatMultiplier = Math.min(4, h.getHeat() / 80);
                         int waterToExtract = 0;
                         int waterTankId = f.getInputTanks().getFirstAvailableTank(DistilledWater.getLiquid(1), true);
                         if (waterTankId < 0){
