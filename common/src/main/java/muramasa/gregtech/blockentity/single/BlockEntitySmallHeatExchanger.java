@@ -1,11 +1,13 @@
 package muramasa.gregtech.blockentity.single;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
+import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.ICanSyncData;
@@ -57,8 +59,18 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
             public boolean consumeResourceForRecipe(boolean simulate) {
                 return tile.heatHandler.map(e -> e.insert((int) getPower(), simulate) >= getPower()).orElse(false);
             }
-        });
 
+            @Override
+            public boolean accepts(FluidHolder stack) {
+                return super.accepts(stack) || stack.getFluid() == Water.getLiquid() || stack.getFluid() == DistilledWater.getLiquid();
+            }
+        });
+        fluidHandler.set(() -> new MachineFluidHandler<>(this){
+            @Override
+            public boolean canFluidBeAutoOutput(FluidHolder fluid) {
+                return fluid.getFluid() != Steam.getGas();
+            }
+        });
     }
 
     @Override
@@ -96,7 +108,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
                                 waterToExtract = Math.min(waterToExtract, (int) (inserted / TesseractGraphWrappers.dropletMultiplier));
                                 waterTank.internalExtract(Utils.ca(waterToExtract, waterTank.getStoredFluid()), false);
                                 f.getOutputTanks().internalInsert(steam.getGas(steamToAdd), false);
-                                h.extract(waterToExtract * 80, false);
+                                h.extractInternal(waterToExtract * 80, false);
                             }
                             hadNoWater = false;
                         } else {
