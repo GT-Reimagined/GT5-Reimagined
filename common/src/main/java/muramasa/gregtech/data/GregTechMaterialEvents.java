@@ -1293,6 +1293,7 @@ public class GregTechMaterialEvents {
         RADIOACTIVE.add(Naquadria, 5);
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Flint, EnderEye, EnderPearl);
+        NON_GEMS.add(Coal, Charcoal, Lignite, CoalCoke, LigniteCoke, PetroleumCoke);
         ELEC30.add(Charcoal, Opal, Coal, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
                 SiliconDioxide, Wollastonite, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,

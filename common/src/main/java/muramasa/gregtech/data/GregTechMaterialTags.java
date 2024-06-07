@@ -27,7 +27,8 @@ public class GregTechMaterialTags {
 
     public static final MaterialTag SEMIFUELS = new MaterialTag("semi_fuels");
     public static final MaterialTag GRINDABLE = new MaterialTag("grindable"); //Is Grindable with the Mortar
-    public static final MaterialTag CRYSTALLIZE = new MaterialTag("crystallize"); //Allows Dust > Gem Recipes
+    public static final MaterialTag CRYSTALLIZE = new MaterialTag("crystallize"); //Allows Dust > Gem Recipes in autoclave
+    public static final MaterialTag NON_GEMS = new MaterialTag("non_gems"); //Gems that aren't really gems
     public static final MaterialTag CALCITE2X = new MaterialTag("calcite_2x"); //Blast Furnace Calcite 2x Multiplier
     public static final MaterialTag CALCITE3X = new MaterialTag("calcite_3x"); //Blast Furnace Calcite 3x Multiplier
     public static final MaterialTag NOSMELT = new MaterialTag("no_smelt"); //Material is not able to be smelted
