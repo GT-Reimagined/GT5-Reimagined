@@ -84,8 +84,12 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
         if (level.getGameTime() % 20 == 0){
             fluidHandler.ifPresent(f -> {
                 heatHandler.ifPresent(h -> {
+                    if (h.getHeat() >= 2560){
+                        Utils.createExplosion(this.level, worldPosition, 6.0F, Explosion.BlockInteraction.DESTROY);
+                        return;
+                    }
                     if (h.getHeat() >= 80){
-                        int heatMultiplier = Math.min(4, h.getHeat() / 80);
+                        int heatMultiplier = Math.min(6, h.getHeat() / 80);
                         int waterToExtract = 0;
                         int waterTankId = f.getInputTanks().getFirstAvailableTank(DistilledWater.getLiquid(1), true);
                         if (waterTankId < 0){
