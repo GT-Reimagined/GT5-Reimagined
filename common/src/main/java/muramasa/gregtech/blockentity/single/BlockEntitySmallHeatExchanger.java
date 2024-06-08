@@ -57,7 +57,12 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
 
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
-                return tile.heatHandler.map(e -> e.insert((int) getPower(), simulate) >= getPower()).orElse(false);
+                return tile.heatHandler.map(e -> e.insert((int) getPower() / 5, simulate) >= getPower() / 5).orElse(false);
+            }
+
+            @Override
+            protected void calculateDurations() {
+                maxProgress = activeRecipe.getDuration() * 5;
             }
 
             @Override
