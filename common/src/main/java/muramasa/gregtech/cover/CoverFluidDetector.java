@@ -3,6 +3,7 @@ package muramasa.gregtech.cover;
 import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
@@ -40,7 +41,7 @@ public class CoverFluidDetector extends CoverBasicRedstoneOutput {
 
     @Override
     public boolean canPlace() {
-        return handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent();
+        return (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent()) || handler.getTile() instanceof BlockEntityFluidPipe;
     }
 
     @Override
@@ -57,8 +58,8 @@ public class CoverFluidDetector extends CoverBasicRedstoneOutput {
     @Override
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
-        if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent()){
-            FluidContainer fluidContainer = machine.fluidHandler.side(side).get();
+        FluidContainer fluidContainer = handler.getTile() instanceof BlockEntityMachine<?> machine ? machine.fluidHandler.side(side).orElse(null) : ((BlockEntityFluidPipe<?>)handler.getTile()).getFluidHandler().orElse(null);
+        if (fluidContainer != null){
             long scale = IntStream.range(0, fluidContainer.getSize()).mapToLong(fluidContainer::getTankCapacity).sum() / 15L;
             long totalFluid = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
                 FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
