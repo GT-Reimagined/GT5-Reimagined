@@ -1,6 +1,7 @@
 package muramasa.gregtech.data;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -1081,7 +1082,9 @@ public class GregTechMaterialEvents {
                 GTCoreBlocks.createWorkbench(m, true);
                 GTCoreBlocks.createLocker(m, false);
                 GTCoreBlocks.createLocker(m, true);
-                GTCoreBlocks.createMassStorage(m, 1000000);
+                if (m != GTCoreMaterials.Ironwood) {
+                    GTCoreBlocks.createMassStorage(m, 1000000);
+                }
                 GTCoreBlocks.createChest(m, true);
                 m.flags(RING, SCREW);
                 GTCoreBlocks.createBarrel(m, true);
