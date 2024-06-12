@@ -275,7 +275,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Cinnabar).asOre().harvestLevel(1);
         event.setMaterial(Chromite).asOre().harvestLevel(2);
         event.setMaterial(Cobaltite).asOre().harvestLevel(2);
-        event.setMaterial(Sheldonite).asOre().harvestLevel(1);
+        event.setMaterial(Sheldonite).asOre().harvestLevel(2);
         event.setMaterial(Galena).asOre().harvestLevel(3);
         event.setMaterial(Garnierite).asOre().harvestLevel(3);
         event.setMaterial(Glauconite).asOre().harvestLevel(2); // TODO: Ore Gen;
