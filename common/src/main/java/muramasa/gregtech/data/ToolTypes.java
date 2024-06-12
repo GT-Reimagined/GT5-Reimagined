@@ -19,6 +19,7 @@ import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.tool.behaviour.BehaviourExtendedHighlight;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
+import muramasa.gregtech.blockentity.single.BlockEntitySecondaryOutput;
 import muramasa.gregtech.items.ItemPortableScanner;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.core.Direction;
@@ -112,7 +113,7 @@ public class ToolTypes {
     public static void init(){
         if (AntimatterAPI.getSIDE().isClient()){
             BiFunction<Direction, BlockEntity, Boolean> REACTOR_FUNCTION = (dir, tile) -> {
-                if (tile instanceof BlockEntityNuclearReactorCore machine) {
+                if (tile instanceof BlockEntitySecondaryOutput machine) {
                     Direction direction = machine.getSecondaryOutputFacing();
                     return direction != null && direction == dir;
                 }
