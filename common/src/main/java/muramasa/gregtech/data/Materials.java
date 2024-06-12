@@ -495,8 +495,6 @@ public class Materials {
     public static Material NitricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "nitric_acid", 0xe6e2ab, NONE));
     public static Material PeroxydisulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "peroxydisulfuricacid", 0xff9000, NONE));
     public static Material SaltWater = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "salt_water", 0x0760b9, NONE));
-    public static Material SodiumBicarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_bicarbonate_solution", 0xffffff, NONE));
-    public static Material SodiumCarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_carbonate_solution", 0xffffff, NONE));
     public static Material SodiumPersulfateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_perfulate_solution", 0x006646, NONE));
     public static Material SulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_acid", 0xff8000, NONE));
     public static Material Tar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tar", 0x0a0a0a, NONE));

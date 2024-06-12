@@ -478,8 +478,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(PhosphoricAcid).asFluid().flags(ACID);
         event.setMaterial(SaltWater).asFluid();
         event.setMaterial(SodiumPersulfateSolution).asFluid();
-        event.setMaterial(SodiumBicarbonateSolution).asFluid();
-        event.setMaterial(SodiumCarbonateSolution).asFluid();
         event.setMaterial(Steam).asGas(1, 395).fluidDensity(-800);
         event.setMaterial(SuperheatedSteam).asGas(2, 600).fluidDensity(-3000);
         event.setMaterial(SulfuricAcid).asFluid().flags(ACID);
@@ -870,8 +868,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(PeroxydisulfuricAcid).mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));
         event.setMaterial(PhosphoricAcid).mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4)).elecTicks(392);
         event.setMaterial(SaltWater).mats(of(Hydrogen,1,SodiumHydroxide,3,Chlorine,1), 8).elecTicks(720);
-        event.setMaterial(SodiumBicarbonateSolution).mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, Water, 1));
-        event.setMaterial(SodiumCarbonateSolution).mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, Water, 1));
         event.setMaterial(Steam).mats(of(Water,1));
         event.setMaterial(SuperheatedSteam).mats(of(Steam, 1));
         event.setMaterial(SulfuricAcid).mats(of(Hydrogen, 2, Sulfur, 1, Oxygen, 4)).elecTicks(392);
