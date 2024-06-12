@@ -202,6 +202,7 @@ public class WorldGenLoader {
             ).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite_ores").withStone(BLACK_GRANITE).withWeight(1).addOres(
                     new StoneLayerOre(Sheldonite, U32, -64, -48),
+                    new StoneLayerOre(Sperrylite, U32, -64, -48),
                     new StoneLayerOre(Iridium, U64, -64, -56),
                     new StoneLayerOre(Emerald, U64, -40, -16)
             ).buildVein());
