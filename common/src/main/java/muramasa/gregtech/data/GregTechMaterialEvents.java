@@ -1241,6 +1241,7 @@ public class GregTechMaterialEvents {
         CHEMBATH_MERCURY.add(Iridium, Platinum);
         CHEMBATH_MERCURY.add(Silver,Silver);
         CHEMBATH_MERCURY.add(Tungstate, Silver);
+        CHEMBATH_MERCURY.add(Sperrylite, Sheldonite);
         CHEMBATH_PERSULFATE.add(Pentlandite,Cobalt);
         CHEMBATH_PERSULFATE.add(Copper, Copper);
         CHEMBATH_PERSULFATE.add(Gold, Copper);
@@ -1256,6 +1257,7 @@ public class GregTechMaterialEvents {
         CHEMBATH_PERSULFATE.add(Platinum, Nickel);
         CHEMBATH_PERSULFATE.add(Iron, Nickel);
         CHEMBATH_PERSULFATE.add(Sheldonite, Nickel);
+        CHEMBATH_PERSULFATE.add(Sperrylite, Copper);
         FURNACE_FUELS.add(CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(CoalCoke, BLOCK, 32000);

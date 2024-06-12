@@ -113,7 +113,7 @@ public class BathLoader {
         addPSGRecipe(Iridium);
         addPSGRecipe(Nickel);
         addPSGRecipe(Osmium);
-        addPSGRecipe(Palladium);
+        addPSGRecipe(Sperrylite);
         addPSGRecipe(Platinum);
     }
     public static void mercurybathing(){
