@@ -1324,6 +1324,7 @@ public class GregTechMaterialEvents {
         ELEC.add(ELEC60.all().toArray(new Material[0]));
         ELEC.add(ELEC90.all().toArray(new Material[0]));
         ELEC.add(ELEC120.all().toArray(new Material[0]));
+        ELEC_CIRCUIT.add(Water, DistilledWater, SodiumBisulfate);
         ELECSEPG.add(VanadiumMagnetite, Magnetite);
         ELECSEPI.add(YellowLimonite, BrownLimonite, Tin, Chromium, Ilmenite, Hematite, Pyrite, Glauconite, Nickel, Chromite, Pentlandite, Manganese);
         ELECSEPN.add(Monazite, Bastnasite);
