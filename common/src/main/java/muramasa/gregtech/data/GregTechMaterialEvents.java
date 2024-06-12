@@ -298,6 +298,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Scheelite).asDust(2500).asOre().harvestLevel(3);
         event.setMaterial(Soapstone).asOre().harvestLevel(1); // TODO: Ore Gen;
         event.setMaterial(Spodumene).asOre().harvestLevel(2);
+        event.setMaterial(Sperrylite).asOre().harvestLevel(2);
         event.setMaterial(Spessartine).asOre().harvestLevel(2);
         event.setMaterial(Sphalerite).asOre().harvestLevel(1);
         event.setMaterial(Stibnite).asOre().harvestLevel(2);
@@ -720,6 +721,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Scheelite).mats(of(Tungsten, 1, Calcium, 2, Oxygen, 4)).elecTicks(120);
         event.setMaterial(Soapstone).mats(of(Magnesium, 3, Silicon, 4, Hydrogen, 2, Oxygen, 12)).elecTicks(378); // TODO: Ore Gen;
         event.setMaterial(Spodumene).mats(of(Lithium, 2, Alumina, 5, SiliconDioxide, 12, Oxygen, 1)).elecTicks(180);
+        event.setMaterial(Sperrylite).mats(of(Platinum, 1, Arsenic, 2)).elecTicks(1226);
         event.setMaterial(Spessartine).mats(of(Alumina, 5, Manganese, 3, SiliconDioxide, 9, Oxygen, 3)).elecTicks(440);
         event.setMaterial(Sphalerite).mats(of(Zinc, 1, Sulfur, 1)).elecTicks(92);
         event.setMaterial(Stibnite).mats(of(Antimony, 2, Sulfur, 3));
@@ -1188,6 +1190,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Scheelite).addByProduct(Manganese, Molybdenum, Calcium).elecTicks(120); //1920 eu/tick
         event.setMaterial(Silicon).addByProduct(SiliconDioxide);
         event.setMaterial(Silver).addByProduct(Lead, Sulfur);
+        event.setMaterial(Sperrylite).addByProduct(Antimony, Copper, Sheldonite, Hematite, Rhodium);
         event.setMaterial(Spessartine).addByProduct(RedGarnet, Manganese);
         event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Indium, Zinc);
         event.setMaterial(Spodumene).addByProduct(Alumina, Lithium);
@@ -1302,7 +1305,7 @@ public class GregTechMaterialEvents {
                 Phosphate, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, PotassiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,
-                NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride);
+                NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride, Sperrylite);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitrogenMonoxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,

@@ -354,7 +354,7 @@ public class WorldGenLoader {
                     BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("nickel").asOreVein(11, 56, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite,
                     NETHER, END, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
-            ev.vein(new WorldGenVeinLayerBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Sheldonite, Palladium, Platinum, Iridium,
+            ev.vein(new WorldGenVeinLayerBuilder("platinum").asOreVein(-24, -9, 5, 3, 16, Sheldonite, Sperrylite, Platinum, Iridium,
                     BE_MARS, AA_MARS).buildVein());
             /*ev.vein(new WorldGenVeinLayerBuilder("uranium").asOreVein(-44, -29, 20, 3, 16, Uraninite, Uraninite, Uraninite, Uraninite,
                 OVERWORLD, TWILIGHT_FOREST, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());*/
