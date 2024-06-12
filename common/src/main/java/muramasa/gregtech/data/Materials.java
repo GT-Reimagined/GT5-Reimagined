@@ -300,7 +300,7 @@ public class Materials {
     public static Material Sheldonite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sheldonite", 0xffffc8, METALLIC));
     public static Material Soapstone = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soapstone", 0x5f915f, DULL)); // TODO: Ore Gen;
     public static Material Spessartine = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "spessartine", 0xff6464, DULL));
-    public static Material Sphalerite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sphalerite", 0xffffff, DULL));
+    public static Material Sphalerite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sphalerite", 0xdede00, DULL));
     public static Material Spodumene = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "spodumene", 0xbeaaaa, DULL));
     public static Material Stibnite = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "stibnite", 0x464646, METALLIC));
     public static Material Talc = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "talc", 0x5ab45a, DULL));
