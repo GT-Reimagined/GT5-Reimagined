@@ -1190,7 +1190,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Scheelite).addByProduct(Manganese, Molybdenum, Calcium).elecTicks(120); //1920 eu/tick
         event.setMaterial(Silicon).addByProduct(SiliconDioxide);
         event.setMaterial(Silver).addByProduct(Lead, Sulfur);
-        event.setMaterial(Sperrylite).addByProduct(Antimony, Copper, Sheldonite, Hematite, Rhodium);
+        event.setMaterial(Sperrylite).addByProduct(Antimony, Copper, Sheldonite, Hematite);
         event.setMaterial(Spessartine).addByProduct(RedGarnet, Manganese);
         event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Indium, Zinc);
         event.setMaterial(Spodumene).addByProduct(Alumina, Lithium);
