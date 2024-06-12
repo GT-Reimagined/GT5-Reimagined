@@ -76,7 +76,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Technetium).asMetal(2430);
         //event.setMaterial(Ruthenium).asMetal(2607,2607);
         //event.setMaterial(Rhodium).asMetal(2237, 2237);
-        event.setMaterial(Palladium).asMetal(1828).forceBF(true).asOre();
+        event.setMaterial(Palladium).asMetal(1828).forceBF(true);
         event.setMaterial(Silver).asMetal(1234, PLATE, SCREW).asOre().harvestLevel(2);
         event.setMaterial(Cadmium).asDust(594);
         event.setMaterial(Indium).asSolid(430, MOLTEN);
