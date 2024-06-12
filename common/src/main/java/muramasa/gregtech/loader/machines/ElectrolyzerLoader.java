@@ -55,7 +55,7 @@ public class ElectrolyzerLoader {
             long duration = t.has(ELEC_TICKS) ? ELEC_TICKS.getInt(t) : t.getMass() * 20;
             b.io(items).fo(fluids).add(prefix + "_" + t.getId(),duration, euPerTick);
         });
-        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(SodiumBisulfate, 2), DUST_TINY.getMaterialIngredient(Platinum, 1).setNoConsume()).fo(SodiumPersulfate.getLiquid(1000), Hydrogen.getGas(1000)).add("sodium_persulfate_creation", 600, 30);
+        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(SodiumBisulfate, 2), DUST_TINY.getMaterialIngredient(Platinum, 1).setNoConsume()).io(DUST.get(SodiumPersulfate)).fo(Hydrogen.getGas(1000)).add("sodium_persulfate_creation", 600, 30);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(GregTechTags.DUST_SANDS, 32)).io(DUST.get(Materials.SiliconDioxide)).add("sand_dusts_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);

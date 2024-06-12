@@ -184,7 +184,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.Mercury,1000)).markInput().disableBackground());
             widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.CHEMBATH_MERCURY.getMapping(display.ore)),1)))).markOutput().disableBackground());
         }else{
-            widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.SodiumPersulfate,1000)).markInput().disableBackground());
+            widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.SodiumPersulfateSolution,1000)).markInput().disableBackground());
             widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.CHEMBATH_PERSULFATE.getMapping(display.ore)),1)))).markOutput().disableBackground());
         }
         widgets.add(Widgets.createSlot(xy(72, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(CRUSHED_PURIFIED.get(display.ore),1)))).markOutput().disableBackground());

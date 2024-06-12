@@ -250,6 +250,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Slate).asDust(ROCK);
         event.setMaterial(SodiumAluminate).asDust();
         event.setMaterial(SodiumBisulfate).asDust();
+        event.setMaterial(SodiumPersulfate).asDust();
         event.setMaterial(SodiumHydroxide).asDust();
         event.setMaterial(SodiumSulfate).asDust();
         event.setMaterial(SodiumSulfide).asDust();
@@ -476,7 +477,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(PeroxydisulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(PhosphoricAcid).asFluid().flags(ACID);
         event.setMaterial(SaltWater).asFluid();
-        event.setMaterial(SodiumPersulfate).asFluid();
+        event.setMaterial(SodiumPersulfateSolution).asFluid();
         event.setMaterial(SodiumBicarbonateSolution).asFluid();
         event.setMaterial(SodiumCarbonateSolution).asFluid();
         event.setMaterial(Steam).asGas(1, 395).fluidDensity(-800);
@@ -673,6 +674,7 @@ public class GregTechMaterialEvents {
         //event.setMaterial(Slate).mats(of())
         event.setMaterial(SodiumAluminate).mats(of(Sodium, 1, Aluminium, 1, Oxygen, 2));
         event.setMaterial(SodiumBisulfate).mats(of(Sodium, 1, Hydrogen, 1, Sulfur, 1, Oxygen, 4)).elecTicks(600);
+        event.setMaterial(SodiumPersulfate).mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8)).elecTicks(432);
         event.setMaterial(SodiumHydroxide).mats(of(Sodium, 1, Oxygen, 1, Hydrogen, 1)).elecTicks(36);
         event.setMaterial(SodiumSulfate).mats(of(Sodium, 2, Sulfur, 1, Oxygen, 4));
         event.setMaterial(SodiumSulfide).mats(of(Sodium, 2, Sulfur, 1)).elecTicks(72);
@@ -868,7 +870,6 @@ public class GregTechMaterialEvents {
         event.setMaterial(PeroxydisulfuricAcid).mats(of(Sulfur,2,Hydrogen,2,Oxygen,8));
         event.setMaterial(PhosphoricAcid).mats(of(Hydrogen, 3, Phosphor, 1, Oxygen, 4)).elecTicks(392);
         event.setMaterial(SaltWater).mats(of(Hydrogen,1,SodiumHydroxide,3,Chlorine,1), 8).elecTicks(720);
-        event.setMaterial(SodiumPersulfate).mats(of(Sodium, 2, Sulfur, 2, Oxygen, 8)).elecTicks(432);
         event.setMaterial(SodiumBicarbonateSolution).mats(of(Sodium, 1, Hydrogen,1 ,Carbon, 1, Oxygen, 3, Water, 1));
         event.setMaterial(SodiumCarbonateSolution).mats(of(Sodium, 2, Carbon, 1, Oxygen, 3, Water, 1));
         event.setMaterial(Steam).mats(of(Water,1));

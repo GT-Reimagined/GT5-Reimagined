@@ -340,6 +340,9 @@ public class RemappingEvents {
             if (id.contains("nitric_oxide")){
                 liquid = liquid.replace("nitric_oxide", "nitrogen_monoxide");
             }
+            if (id.contains("sodium_persulfate")){
+                liquid = liquid.replace("sodium_persulfate", "sodium_persulfate_solution");
+            }
             AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());

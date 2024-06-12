@@ -251,6 +251,7 @@ public class Materials {
     public static Material SodaAsh = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "soda_ash", 0xdcdcff, DULL));
     public static Material SodiumAluminate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_aluminate", 0xE6E6FA, NONE));
     public static Material SodiumBisulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_bisulfate", 0x004455, NONE));
+    public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0x82b4fa, NONE));
     public static Material SodiumHydroxide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_hydroxide", 0x003380, DULL));
     public static Material SodiumSulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfate", 0x004455, NONE));
     public static Material SodiumSulfide = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_sulfide", 0xffe680, NONE));
@@ -496,7 +497,7 @@ public class Materials {
     public static Material SaltWater = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "salt_water", 0x0760b9, NONE));
     public static Material SodiumBicarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_bicarbonate_solution", 0xffffff, NONE));
     public static Material SodiumCarbonateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_carbonate_solution", 0xffffff, NONE));
-    public static Material SodiumPersulfate = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_persulfate", 0x006646, NONE));
+    public static Material SodiumPersulfateSolution = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sodium_perfulate_solution", 0x006646, NONE));
     public static Material SulfuricAcid = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "sulfuric_acid", 0xff8000, NONE));
     public static Material Tar = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "tar", 0x0a0a0a, NONE));
     public static Material ThoriumSalt = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "thorium_salt", 0x001e00, NONE));

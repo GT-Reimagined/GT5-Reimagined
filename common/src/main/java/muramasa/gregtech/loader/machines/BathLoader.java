@@ -72,7 +72,7 @@ public class BathLoader {
         }
         mercurybathing();
         persulfatebathing();
-        BATH.RB().ii(CRUSHED.getMaterialIngredient(Cobaltite, 1)).fi(SodiumPersulfate.getLiquid(1000)).io(CRUSHED_PURIFIED.get(Cobaltite), CRUSHED_PURIFIED.get(Cobalt), DUST.get(Stone)).outputChances(1.0, 0.25, 1.0).add("persulfate_cobaltite", 144);
+        BATH.RB().ii(CRUSHED.getMaterialIngredient(Cobaltite, 1)).fi(SodiumPersulfateSolution.getLiquid(1000)).io(CRUSHED_PURIFIED.get(Cobaltite), CRUSHED_PURIFIED.get(Cobalt), DUST.get(Stone)).outputChances(1.0, 0.25, 1.0).add("persulfate_cobaltite", 144);
         addVitriolRecipe(Chalcopyrite, BlueVitriol);
         addVitriolRecipe(Copper, BlueVitriol);
         addVitriolRecipe(Gold, BlueVitriol);
@@ -129,7 +129,7 @@ public class BathLoader {
         CHEMBATH_PERSULFATE.getAll().forEach((main,side) ->
                 BATH.RB()
                         .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
-                        .fi(SodiumPersulfate.getLiquid(1000))
+                        .fi(SodiumPersulfateSolution.getLiquid(1000))
                         .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
                         .outputChances(1.0, 0.7, 1.0)
                         .add("persulfate_"+main.getId(),40*20));
