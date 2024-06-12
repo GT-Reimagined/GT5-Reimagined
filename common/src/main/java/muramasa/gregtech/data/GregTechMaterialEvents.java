@@ -229,7 +229,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Komatiite).asDust(ROCK);
         event.setMaterial(Lapotronium).asFluid();
         event.setMaterial(Limestone).asDust(ROCK);
-        event.setMaterial(LithiumChloride).asDust(880, MOLTEN).asFluid();
+        event.setMaterial(LithiumChloride).asSolid(880, MOLTEN);
         event.setMaterial(MagnesiumCarbonate).asDust();
         event.setMaterial(MagnesiumChloride).asDust();
         event.setMaterial(Marble).asDust(ROCK);
