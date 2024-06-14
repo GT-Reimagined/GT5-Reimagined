@@ -159,40 +159,47 @@ public class GregTechLocalizations {
             add("tooltip.cracking_unit.7", "Clean Stainless Steel Casings for the rest (18 at least!)");
             add("tooltip.cracking_unit.8", "Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings");
 
-            add("tooltip.distillation_tower.0", "Controller for the Distillation Tower");
-            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xNx3(where N is between three and twelve)");
-            add("tooltip.distillation_tower.2", "Controller (middle bottom front centered)");
-            add("tooltip.distillation_tower.3", "1x Energy Hatch any bottom layer casing");
-            add("tooltip.distillation_tower.4", "1x+ Item Output Hatch any bottom layer casing");
-            add("tooltip.distillation_tower.5", "1x+ Fluid Input Hatch any bottom layer casing");
-            add("tooltip.distillation_tower.6", "1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)");
-            add("tooltip.distillation_tower.7", "19-82x Stainless Steel  Casings, everywhere else.");
+            add("tooltip.distillation_tower.0", "Controller Block for the Distillation Tower");
+            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xhx3(with h ranging from 3 to 12)");
+            add("tooltip.distillation_tower.2", "Controller (Front bottom)");
+            add("tooltip.distillation_tower.3", "1x Fluid Input Hatch (Any bottom layer casing)");
+            add("tooltip.distillation_tower.4", "2-11x Fluid Output Hatch (One per layer except bottom layer)");
+            add("tooltip.distillation_tower.5", "1x Item Output Hatch (Any bottom layer casing)");
+            add("tooltip.distillation_tower.6", "1x Energy Hatch (Any bottom layer casing)");
+            add("tooltip.distillation_tower.7", "Clean Stainless Steel Casings for the rest (7 x h - 4 at least)");
 
-            add("tooltip.cryo_distillation_tower.0", "Controller for the Cryogenic Distillation Tower");
-            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xNx3(where N is between three and twelve)");
-            add("tooltip.cryo_distillation_tower.2", "Controller (middle bottom front centered)");
-            add("tooltip.cryo_distillation_tower.3", "1x Energy Hatch any bottom layer casing");
-            add("tooltip.cryo_distillation_tower.4", "1x+ Item Output Hatch any bottom layer casing");
-            add("tooltip.cryo_distillation_tower.5", "1x+ Fluid Input Hatch any bottom layer casing");
-            add("tooltip.cryo_distillation_tower.6", "1-11x Fluid Output Hatch exactly one per layer (except the bottom layer)");
-            add("tooltip.cryo_distillation_tower.7", "19-82x Frostproof Casings, everywhere else.");
+            add("tooltip.cryo_distillation_tower.0", "Controller Block for the Cryo Distillation Tower");
+            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xhx3(with h ranging from 3 to 12)");
+            add("tooltip.cryo_distillation_tower.2", "Controller (Front bottom)");
+            add("tooltip.cryo_distillation_tower.3", "1x Fluid Input Hatch (Any bottom layer casing)");
+            add("tooltip.cryo_distillation_tower.4", "2-11x Fluid Output Hatch (One per layer except bottom layer)");
+            add("tooltip.cryo_distillation_tower.5", "1x Item Output Hatch (Any bottom layer casing)");
+            add("tooltip.cryo_distillation_tower.6", "1x Energy Hatch (Any bottom layer casing)");
+            add("tooltip.cryo_distillation_tower.7", "Frostproof Casings for the rest (7 x h - 4 at least)");
 
-            add("tooltip.large_heat_exchanger.0", "Controller for the Heat Exchanger");
-            add("tooltip.large_heat_exchanger.1", "Size(WxHxD): 3x4x3");
-            add("tooltip.large_heat_exchanger.2", "Controller (middle bottom front centered)");
-            add("tooltip.large_heat_exchanger.3", "2x Fluid Input Hatch, one center of bottom layer (facing down for Hot Fluid input), the other any exterior casing of mid layers");
-            add("tooltip.large_heat_exchanger.4", "2x Fluid Output Hatch, one center of top layer (facing up), the other any exterior casing of mid layers");
-            add("tooltip.large_heat_exchanger.5", "2x Titanium Pipe Casings (center two blocks of multi, not visible from outside)");
-            add("tooltip.large_heat_exchanger.6", "21-30x Titanium Casings, everywhere else.");
+            add("tooltip.large_heat_exchanger.0", "Controller Block for the Heat Exchanger");
+            add("tooltip.large_heat_exchanger.1", "Size(WxHxD): 3x4x3, Controller (Front middle at bottom)");
+            add("tooltip.large_heat_exchanger.2", "3x3x4 of Stable Titanium Casings (hollow, min 24!)");
+            add("tooltip.large_heat_exchanger.3", "1x Distiller Water Input (Any mid layer casing)");
+            add("tooltip.large_heat_exchanger.4", "1x Steam Output (Any mid layer casing)");
+            add("tooltip.large_heat_exchanger.5", "1x Hot Fluid Input (Bottom Center)");
+            add("tooltip.large_heat_exchanger.6", "1x Cold Fluid Output (Top Center)");
 
-            add("tooltip.implosion_compressor.0", "Controller for the Implosion Compressor");
-            add("tooltip.implosion_compressor.1", "Size(WxHxD): 3x3x3");
-            add("tooltip.implosion_compressor.2", "Controller (middle front centered)");
-            add("tooltip.implosion_compressor.3", "17-20x  Solid Steel Casings (Hollow Cube)");
-            add("tooltip.implosion_compressor.4", "None or 1+ Item Output hatch on any Sides");
-            add("tooltip.implosion_compressor.5", "None or 1+ Item Input Hatch on any Sides");
-            add("tooltip.implosion_compressor.6", "1x+ Energy Hatch on any Sides");
-            add("tooltip.implosion_compressor.7", "1x Muffler Hatch on any Sides");
+            add("tooltip.implosion_compressor.0", "Controller Block for the Implosion Compressor");
+            add("tooltip.implosion_compressor.1", "Size(WxHxD): 3x3x3 (Hollow), Controller (Front centered)");
+            add("tooltip.implosion_compressor.2", "1x Item Input Hatch (Any casing)");
+            add("tooltip.implosion_compressor.3", "1x Item Output Hatch (Any casing)");
+            add("tooltip.implosion_compressor.4", "1x Muffler Hatch (Any casing)");
+            add("tooltip.implosion_compressor.5", "1x Energy Hatch (Any casing)");
+            add("tooltip.implosion_compressor.6", "Solid Steel Casings for the rest (17 at least!)");
+
+            add("tooltip.large_bathing_vat.0", "Controller Block for the Large Bathing Vat");
+            add("tooltip.large_bathing_vat.1", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
+            add("tooltip.large_bathing_vat.2", "1x Item Input Hatch (Any casing)");
+            add("tooltip.large_bathing_vat.3", "1x Item Output Hatch (Any casing)");
+            add("tooltip.large_bathing_vat.4", "1x Fluid Input Hatch (Any casing)");
+            add("tooltip.large_bathing_vat.5", "1-3x Fluid Output Hatch (Any casing, optional)");
+            add("tooltip.large_bathing_vat.6", "Stainless Steel Walls for the rest (46 at most!)");
         }
 
         @Override
