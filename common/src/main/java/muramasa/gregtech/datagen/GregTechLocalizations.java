@@ -123,38 +123,41 @@ public class GregTechLocalizations {
         }
 
         private void structureTranslations(){
-            add("tooltip.electric_blast_furnace.0", "Controller for the Electrical Blast Furnace");
-            add("tooltip.electric_blast_furnace.1", "Size(WxHxD): 3x4x3");
-            add("tooltip.electric_blast_furnace.2", "Controller (bottom Middle front centered)");
-            add("tooltip.electric_blast_furnace.3", "1x Item Input Hatch (Minimum 1) Bottom Layer outside ring");
-            add("tooltip.electric_blast_furnace.4", "1x Item Output Hatch Bottom Layer outside ring");
-            add("tooltip.electric_blast_furnace.5", "1x Energy Hatch Bottom Layer outside ring");
-            add("tooltip.electric_blast_furnace.6", "16x Coils Blocks, 2 layers of rings of x8  Coil Blocks, each middle layers (The center of both layers should be empty)");
-            add("tooltip.electric_blast_furnace.7", "8x Heat Proof Casings around a Muffler Hatch (facing up) on top Layer");
-            add("tooltip.electric_blast_furnace.8", "2 -4 Amps of power supply");
+            add("tooltip.electric_blast_furnace.0", "Controller Block for the Electric Blast Furnace");
+            add("tooltip.electric_blast_furnace.1", "Size(WxHxD): 3x4x3 (Hollow) Controller (Front middle bottom)");
+            add("tooltip.electric_blast_furnace.2", "16x Heating Coils (2 middle Layers, hollow)");
+            add("tooltip.electric_blast_furnace.3", "1x Item Input Hatch (Any bottom layer casing)");
+            add("tooltip.electric_blast_furnace.4", "1x Item Output Hatch (Any bottom layer casing)");
+            add("tooltip.electric_blast_furnace.5", "1x Energy Hatch (Any bottom layer casing)");
+            add("tooltip.electric_blast_furnace.6", "1x Muffler Hatch (Top middle)");
+            add("tooltip.electric_blast_furnace.7", "Heat Proof Casings for the rest");
+            add("tooltip.electric_blast_furnace.8", "Each 900K over the min. Heat Capacity grants 5% speedup (multiplicatively)");
+            add("tooltip.electric_blast_furnace.9", "Each 1800K over the min. Heat Capacity allows for one upgraded overclock");
+            add("tooltip.electric_blast_furnace.10", "Upgraded overclocks reduce recipe time to 25% and increase EU/t to 400%");
 
-            add("tooltip.combustion_engine.0", "Controller for the Large Combustion Engine");
-            add("tooltip.combustion_engine.1", "Size(WxHxD): 3x3x4");
-            add("tooltip.combustion_engine.2", "Controller (front centered)");
-            add("tooltip.combustion_engine.3", "3x3x4 of Stable Titanium Casing (hollow, Min 24!)");
-            add("tooltip.combustion_engine.4", "2x Titanium Gear Box Casing inside the Hollow Casing ");
-            add("tooltip.combustion_engine.5", "8x Engine Intake Casings (around controller Min 8!)");
-            add("tooltip.combustion_engine.6", "1x Input Hatch (one of the Casings)");
-            add("tooltip.combustion_engine.7", "1x Muffler Hatch (Top middle back)");
-            add("tooltip.combustion_engine.8", "1x Dynamo Hatch (back centered) ");
-            add("tooltip.combustion_engine.9", "Engine Intake Casings not obstructed (only air blocks)");
+            add("tooltip.combustion_engine.0", "Controller Block for the Large Combustion Engine");
+            add("tooltip.combustion_engine.1", "Size(WxHxD): 3x3x4, Controller (front centered)");
+            add("tooltip.combustion_engine.2", "3x3x4 of Stable Titanium Casing (hollow, Min 16!)");
+            add("tooltip.combustion_engine.3", "2x Titanium Gear Box Casing inside the Hollow Casing");
+            add("tooltip.combustion_engine.4", "8x Engine Intake Casings (around controller)");
+            add("tooltip.combustion_engine.5", "2x Input Hatch (one of the Casings next to a gearbox)");
+            add("tooltip.combustion_engine.6", "1x Muffler Hatch (Top middle back, next to the rear gearbox)");
+            add("tooltip.combustion_engine.7", "1x Dynamo Hatch (back centered) ");
+            add("tooltip.combustion_engine.8", "Engine Intake Casings not obstructed (only air blocks)");
+            add("tooltip.combustion_engine.9", "Supply Flammable Fuels and 1000L of Lubricant per hour to run");
+            add("tooltip.combustion_engine.10", "Supply 40L of Oxygen per second to boost output (optional)");
+            add("tooltip.combustion_engine.11", "Default: Produces 2048EU/t at 100% efficiency");
+            add("tooltip.combustion_engine.12", "Boosted: Produces 6144EU/t at 150% efficiency");
 
-            add("tooltip.cracking_unit.0", "Controller for the Oil Cracking Unit");
-            add("tooltip.cracking_unit.1", "Size(WxHxD): 5x3x3");
-            add("tooltip.cracking_unit.2", "Controller (middle front centered)");
-            add("tooltip.cracking_unit.3", "3x3x4 Titanium Casing (hollow, Min 22!)");
-            add("tooltip.cracking_unit.4", "16x Cupronickel Coils Blocks, two hollow vertical rings touching each side of the controller");
-            add("tooltip.cracking_unit.5", "1x Fluid Input Hatch on the Right Side Middle Center of Vertical Ring  the oil product");
-            add("tooltip.cracking_unit.6", "1x Fluid Input Hatch  on any of the center Casing Ring  For Steam input");
-            add("tooltip.cracking_unit.7", "1x Fluid Output Hatch on the Left Side Middle  Center of Vertical Ring  for Cracked Product");
-            add("tooltip.cracking_unit.8", "1x Energy Hatch (Any of the center Casing Ring)");
-            add("tooltip.cracking_unit.9", "18-21x Stainless Steel Casing Elsewhere");
-            add("tooltip.cracking_unit.10", "Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings");
+            add("tooltip.cracking_unit.0", "Controller Block for the Oil Cracking Unit");
+            add("tooltip.cracking_unit.1", "Size(WxHxD): 5x3x3 (Hollow) Controller (Front center)");
+            add("tooltip.cracking_unit.2", "Ring of 8 Cupronickel Coils (Each side of Controller)");
+            add("tooltip.cracking_unit.3", "1x Fluid Input Hatch (Left side center casing)(For hydrocarbons");
+            add("tooltip.cracking_unit.4", "1x Fluid Input Hatch (Any middle ring casing)(For steam/Hydrogen)");
+            add("tooltip.cracking_unit.5", "1x Fluid Output hatch (Right side center casing) (Outputs cracked product");
+            add("tooltip.cracking_unit.6", "1x Energy Hatch (Any middle ring casing)");
+            add("tooltip.cracking_unit.7", "Clean Stainless Steel Casings for the rest (18 at least!)");
+            add("tooltip.cracking_unit.8", "Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings");
 
             add("tooltip.distillation_tower.0", "Controller for the Distillation Tower");
             add("tooltip.distillation_tower.1", "Size(WxHxD): 3xNx3(where N is between three and twelve)");
