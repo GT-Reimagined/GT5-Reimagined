@@ -200,6 +200,22 @@ public class GregTechLocalizations {
             add("tooltip.large_bathing_vat.4", "1x Fluid Input Hatch (Any casing)");
             add("tooltip.large_bathing_vat.5", "1-3x Fluid Output Hatch (Any casing, optional)");
             add("tooltip.large_bathing_vat.6", "Stainless Steel Walls for the rest (46 at most!)");
+
+            add("tooltip.large_centrifuge.0", "Controller Block for the Large Centrifuge");
+            add("tooltip.large_centrifuge.1", "Size(WxHxD): 3x2x3, Controller (Front middle at bottom)");
+            add("tooltip.large_centrifuge.2", "1x Input Hatch (Any casing except top middle)");
+            add("tooltip.large_centrifuge.3", "1x Output Hatch (Any casing except top middle)");
+            add("tooltip.large_centrifuge.4", "1x Energy Hatch (Any casing except top middle)");
+            add("tooltip.large_centrifuge.6", "Tungstensteel Casings for the rest (14 at most!)");
+
+            add("tooltip.large_electrolyzer.0", "Controller Block for the Large Electrolyzer");
+            add("tooltip.large_electrolyzer.1", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
+            add("tooltip.large_electrolyzer.2", "3x3 of Electrolytic Cells in top middle");
+            add("tooltip.large_electrolyzer.3", "6 Nichrome coils to the left and right of the electrolytic cells(3 per side)");
+            add("tooltip.large_electrolyzer.4", "1x Input Hatch (Any casing except top middle)");
+            add("tooltip.large_electrolyzer.5", "1x Output Hatch (Any casing except top middle)");
+            add("tooltip.large_electrolyzer.6", "1x Energy Hatch (Any casing except top middle)");
+            add("tooltip.large_electrolyzer.7", "Stainless Steel Casings for the rest (32 at most!)");
         }
 
         @Override
