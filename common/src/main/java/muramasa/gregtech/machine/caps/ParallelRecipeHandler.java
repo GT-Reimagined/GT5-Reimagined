@@ -143,6 +143,11 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     }
 
     @Override
+    public int getOverclock() {
+        return 0;
+    }
+
+    @Override
     public CompoundTag serialize() {
         CompoundTag nbt = super.serialize();
         nbt.putInt("concurrentRecipes", concurrentRecipes);
