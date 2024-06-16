@@ -44,7 +44,7 @@ public class CoverBasicRedstone extends BaseCover {
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         if (nbt.contains("redstoneMode")) {
-            redstoneMode = RedstoneMode.values()[nbt.getInt("coverMode")];
+            redstoneMode = RedstoneMode.values()[nbt.getInt("redstoneMode")];
         }
     }
 }
