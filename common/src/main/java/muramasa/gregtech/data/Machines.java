@@ -19,6 +19,8 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GregTech;
+import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniEndPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniTwilightPortal;
@@ -216,11 +218,23 @@ public class Machines {
     public static MultiMachine LARGE_HEAT_EXCHANGER = new MultiMachine(GTIRef.ID, "large_heat_exchanger").setTiers(NONE).setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, FLUID, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityLargeHeatExchanger::new).custom().setTextureBlock(GregTechBlocks.CASING_TITANIUM);
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GTIRef.ID, "implosion_compressor").setTiers(HV).setMap(RecipeMaps.IMPLOSION_COMPRESSOR).addFlags(GUI, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityImplosionCompressor::new).setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);
     public static MultiMachine LARGE_BATHING_VAT = new MultiMachine(GTIRef.ID, "large_bathing_vat").setTiers(NONE).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).addStructureTooltip(7).setTile(BlockEntityLargeBath::new).setTextureBlock(GregTechBlocks.STAINLESS_STEEL_WALL).blockColorHandler((state, world, pos, machine, i) -> i == 0 ? StainlessSteel.getRGB() : -1).itemColorHandler((stack, block, i) -> i == 0 ? StainlessSteel.getRGB() : -1);
-    public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom().setTierSpecificLang().addTooltipInfo((machine, stack, world, tooltip, flag) -> {
-        double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;
-        double production = machine.getTier() == LV ? 16000 : machine.getTier() == MV ? 24000 : machine.getTier() == HV ? 32000 : 40000;
-        tooltip.add(Utils.translatable("machine.gti.large_boiler.production", total, production));
-        tooltip.add(Utils.translatable("machine.gti.large_boiler.circuit"));
+    public static MultiMachine LARGE_BOILER = new MultiMachine(GTIRef.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).custom().setTierSpecificLang().addStructureTooltip(13, (machine, stack, world, flag, i) -> {
+        if (i == 1){
+            double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;
+            double production = machine.getTier() == LV ? 16000 : machine.getTier() == MV ? 24000 : machine.getTier() == HV ? 32000 : 40000;
+            return new Object[]{total, production};
+        }
+        if (i >= 4 && i < 7){
+            String tier = machine.getTier() == LV ? "bronze" : machine.getTier() == MV ? "steel" : machine.getTier() == HV ? "titanium" : "tungstensteel";
+            String prefix = i == 5 && tier.equals("steel") ? "solid_" : "";
+            String suffix = i == 5 && tier.equals("bronze") ? "plated_brick_" : i == 4 ? "firebox_" : i == 6 ? "pipe_" : "";
+            return new Object[]{Utils.translatable(GregTech.get(BlockCasing.class, prefix + tier + "_" + suffix + "casing").getDescriptionId())};
+        }
+        if (i == 12){
+            double seconds = machine.getTier() == LV ? 31.25 : machine.getTier() == MV ? 47.67 : machine.getTier() == HV ? 62.50 : 125;
+            return new Object[]{seconds};
+        }
+        return new Object[0];
     });
     public static MultiMachine LARGE_CENTRIFUGE = new MultiMachine(GTIRef.ID, "large_centrifuge").setTiers(HV).setMap(RecipeMaps.CENTRIFUGE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(7).setTile(BlockEntityLargeCentrifuge::new).setTextureBlock(GregTechBlocks.CASING_TUNGSTENSTEEL);
     public static MultiMachine LARGE_CHEMICAL_REACTOR = new MultiMachine(GTIRef.ID, "large_chemical_reactor").setTiers(HV).setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(10).setTile(BlockEntityLargeChemicalReactor::new).custom().setTextureBlock(GregTechBlocks.CASING_CHEMICALLY_INERT);

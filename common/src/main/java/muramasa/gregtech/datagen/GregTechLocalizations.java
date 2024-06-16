@@ -37,8 +37,6 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
-            add("machine.gti.large_boiler.production", "Produces %sL of Steam with 1 Coal at %sL/s");
-            add("machine.gti.large_boiler.circuit", "A programmed circuit in the main block throttles the boiler (-1000L/s per config)");
             add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
             add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
             add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
@@ -201,6 +199,20 @@ public class GregTechLocalizations {
             add("tooltip.large_bathing_vat.5", "1-3x Fluid Output Hatch (Any casing, optional)");
             add("tooltip.large_bathing_vat.6", "Stainless Steel Walls for the rest (46 at most!)");
 
+            add("tooltip.large_boiler.0", "Controller Block for the Large Boiler");
+            add("tooltip.large_boiler.1", "Produces %sL of Steam with 1 Coal at %sL/s");
+            add("tooltip.large_boiler.2", "A programmed circuit in the main block throttles the boiler (-1000L/s per config)");
+            add("tooltip.large_boiler.3", "Size(WxHxD): 3x5x3, Controller (Front middle in fireboxes)");
+            add("tooltip.large_boiler.4", "3x1x3 of %s (Bottom layer, Min 4)");
+            add("tooltip.large_boiler.5", "3x4x3 of %s (above Fireboxes, hollow, Min 24!)");
+            add("tooltip.large_boiler.6", "1x3x1 of %s (Inside the Hollow Casings/Plated Bricks)");
+            add("tooltip.large_boiler.7", "1x Fuel Input Hatch (Any Firebox)");
+            add("tooltip.large_boiler.8", "1x Water Input Hatch (Any Firebox)");
+            add("tooltip.large_boiler.9", "1x Steam Output Hatch (Any Casing)");
+            add("tooltip.large_boiler.10", "1x Muffler Hatch (Any Firebox)");
+            add("tooltip.large_boiler.11", "Diesel fuels have 1/4 efficiency");
+            add("tooltip.large_boiler.12", "Takes %s seconds to heat up");
+
             add("tooltip.large_centrifuge.0", "Controller Block for the Large Centrifuge");
             add("tooltip.large_centrifuge.1", "Size(WxHxD): 3x2x3, Controller (Front middle at bottom)");
             add("tooltip.large_centrifuge.2", "1x Input Hatch (Any casing except top middle)");
@@ -227,7 +239,6 @@ public class GregTechLocalizations {
             add("tooltip.large_electrolyzer.5", "1x Output Hatch (Any casing except top middle)");
             add("tooltip.large_electrolyzer.6", "1x Energy Hatch (Any casing except top middle)");
             add("tooltip.large_electrolyzer.7", "Stainless Steel Casings for the rest (32 at most!)");
-
 
         }
 
