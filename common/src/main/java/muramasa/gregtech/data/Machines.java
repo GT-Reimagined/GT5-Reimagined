@@ -97,7 +97,9 @@ public class Machines {
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(RecipeMaps.CANNER).addFlags(GUI, ITEM);
     public static BasicMachine CENTRIFUGE = new BasicMachine(GTIRef.ID, "centrifuge").setMap(RecipeMaps.CENTRIFUGE).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine BATH = new BasicMachine(GTIRef.ID, "bath").setTiers(NONE).removeFlags(EU).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).baseTexture(new Texture(GTIRef.ID, "block/machine/base/hv"));
-    public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityDehydrator::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        tooltip.add(Utils.translatable("machine.dehydrator.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
+    });
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(RecipeMaps.CIRCUIT_ASSEMBLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(RecipeMaps.COMPRESSOR).addFlags(GUI, ITEM);
