@@ -148,6 +148,11 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     }
 
     @Override
+    public long getPower() {
+        return super.getPower() * (maxSimultaneousRecipes() > 1 ? 2 : 1);
+    }
+
+    @Override
     public CompoundTag serialize() {
         CompoundTag nbt = super.serialize();
         nbt.putInt("concurrentRecipes", concurrentRecipes);

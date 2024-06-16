@@ -26,13 +26,6 @@ public class BlockEntityLargeElectrolyzer extends BlockEntityMultiMachine<BlockE
             protected int maxSimultaneousRecipes(){
                 return coilData.maxSimultaneousRecipes();
             }
-
-            @Override
-            public long getPower() {
-                if (activeRecipe == null) return 0;
-                long power = activeRecipe.getPower();
-                return power * (concurrentRecipes == 0 ? 1 : concurrentRecipes);
-            }
         });
     }
 

@@ -14,6 +14,13 @@ public class BlockEntityDehydrator extends BlockEntityMachine<BlockEntityDehydra
             protected int maxSimultaneousRecipes() {
                 return 1 << (tier.getIntegerId() - 1);
             }
+
+            @Override
+            public long getPower() {
+                if (activeRecipe == null) return 0;
+                long power = activeRecipe.getPower();
+                return power * (concurrentRecipes == 0 ? 1 : maxSimultaneousRecipes());
+            }
         });
     }
 }
