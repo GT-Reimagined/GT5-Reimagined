@@ -24,7 +24,7 @@ public class BlockEntityLargeCentrifuge extends BlockEntityMultiMachine<BlockEnt
             @Override
             public long getPower() {
                 if (activeRecipe == null) return 0;
-                long power = overclock == 0 ? activeRecipe.getPower() : activeRecipe.getPower()  * (1L << overclock);
+                long power = activeRecipe.getPower();
                 return power * (concurrentRecipes == 0 ? 1 : concurrentRecipes);
             }
         });

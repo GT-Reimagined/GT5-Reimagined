@@ -37,6 +37,7 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
+            add("machine.dehydrator.parallel", "Runs up to %s recipes at a time");
             add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
             add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
             add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
@@ -214,10 +215,11 @@ public class GregTechLocalizations {
             add("tooltip.large_boiler.12", "Takes %s seconds to heat up");
 
             add("tooltip.large_centrifuge.0", "Controller Block for the Large Centrifuge");
-            add("tooltip.large_centrifuge.1", "Size(WxHxD): 3x2x3, Controller (Front middle at bottom)");
-            add("tooltip.large_centrifuge.2", "1x Input Hatch (Any casing except top middle)");
-            add("tooltip.large_centrifuge.3", "1x Output Hatch (Any casing except top middle)");
-            add("tooltip.large_centrifuge.4", "1x Energy Hatch (Any casing except top middle)");
+            add("tooltip.large_centrifuge.1", "Runs up to 16 recipes at a time");
+            add("tooltip.large_centrifuge.2", "Size(WxHxD): 3x2x3, Controller (Front middle at bottom)");
+            add("tooltip.large_centrifuge.3", "1x Input Hatch (Any casing except top middle)");
+            add("tooltip.large_centrifuge.4", "1x Output Hatch (Any casing except top middle)");
+            add("tooltip.large_centrifuge.5", "1x Energy Hatch (Any casing except top middle)");
             add("tooltip.large_centrifuge.6", "Tungstensteel Casings for the rest (14 at most!)");
 
             add("tooltip.large_chemical_reactor.0", "Controller Block for the Large Chemical Reactor");
@@ -232,13 +234,14 @@ public class GregTechLocalizations {
             add("tooltip.large_chemical_reactor.9", "1x Energy Hatch (Any inert casing)");
 
             add("tooltip.large_electrolyzer.0", "Controller Block for the Large Electrolyzer");
-            add("tooltip.large_electrolyzer.1", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
-            add("tooltip.large_electrolyzer.2", "3x3 of Electrolytic Cells in top middle");
-            add("tooltip.large_electrolyzer.3", "6 Nichrome coils to the left and right of the electrolytic cells(3 per side)");
-            add("tooltip.large_electrolyzer.4", "1x Input Hatch (Any casing except top middle)");
-            add("tooltip.large_electrolyzer.5", "1x Output Hatch (Any casing except top middle)");
-            add("tooltip.large_electrolyzer.6", "1x Energy Hatch (Any casing except top middle)");
-            add("tooltip.large_electrolyzer.7", "Stainless Steel Casings for the rest (32 at most!)");
+            add("tooltip.large_electrolyzer.1", "Runs up to x recipes at a time (x is dependent on the coils used)");
+            add("tooltip.large_electrolyzer.2", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
+            add("tooltip.large_electrolyzer.3", "3x3 of Electrolytic Cells in top middle");
+            add("tooltip.large_electrolyzer.4", "6 Nichrome coils to the left and right of the electrolytic cells(3 per side)");
+            add("tooltip.large_electrolyzer.5", "1x Input Hatch (Any casing except top middle)");
+            add("tooltip.large_electrolyzer.6", "1x Output Hatch (Any casing except top middle)");
+            add("tooltip.large_electrolyzer.7", "1x Energy Hatch (Any casing except top middle)");
+            add("tooltip.large_electrolyzer.8", "Stainless Steel Casings for the rest (32 at most!)");
 
             add("tooltip.large_macerator.0", "Controller Block for the Large Macerator");
             add("tooltip.large_macerator.1", "Runs up to 16 recipes at a time");
