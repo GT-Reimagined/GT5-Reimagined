@@ -293,6 +293,7 @@ public class GregTechLocalizations {
             override(LARGE_BOILER, EV, "Large Tungstensteel Boiler");
             override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
             add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
+            override(GregTechBlocks.CASING_BRONZE_PLATED_BRICK.getDescriptionId(), "Bronze Plated Bricks");
             override("machine.hull", "%s " + HULL.getLang(locale));
             HULL.getTiers().forEach(tier -> {
                 override(HULL, tier, tier.getId().toUpperCase() + " " + HULL.getLang(locale));
