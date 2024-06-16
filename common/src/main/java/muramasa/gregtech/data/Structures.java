@@ -169,7 +169,7 @@ public class Structures {
 
         LARGE_MACERATOR.setStructure(BlockEntityLargeMacerator.class, b -> b.part("main")
                 .of("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC").of(0).of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
-                .at('C', GregTechBlocks.CASING_TUNGSTENSTEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+                .at('C', GregTechBlocks.TUNGSTENSTEEL_WALL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
                 .at('G', GregTechBlocks.GRINDING_WHEELS)
                 .offset(2, 2, 0).min(1, HATCH_ENERGY, HATCH_ITEM_I, HATCH_ITEM_O).build()
         );

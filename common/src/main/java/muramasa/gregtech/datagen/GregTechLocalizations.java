@@ -240,6 +240,14 @@ public class GregTechLocalizations {
             add("tooltip.large_electrolyzer.6", "1x Energy Hatch (Any casing except top middle)");
             add("tooltip.large_electrolyzer.7", "Stainless Steel Casings for the rest (32 at most!)");
 
+            add("tooltip.large_macerator.0", "Controller Block for the Large Macerator");
+            add("tooltip.large_macerator.1", "Runs up to 16 recipes at a time");
+            add("tooltip.large_macerator.2", "Size(WxHxD): 5x3x5, Controller (Front middle at bottom)");
+            add("tooltip.large_macerator.3", "5x3x5 Basin of Tungstensteel Walls (Min 53!)");
+            add("tooltip.large_macerator.4", "3x2x3 of Grinding Wheels (Inside basin, exactly 18!)");
+            add("tooltip.large_macerator.5", "1x Item Input Hatch (Any Casing)");
+            add("tooltip.large_macerator.6", "1x Item Output Hatch (Any Casing)");
+            add("tooltip.large_macerator.7", "1x Energy Hatch (Any Casing)");
         }
 
         @Override
