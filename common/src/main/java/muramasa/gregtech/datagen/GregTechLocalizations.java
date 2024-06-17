@@ -251,6 +251,16 @@ public class GregTechLocalizations {
             add("tooltip.large_macerator.5", "1x Item Input Hatch (Any Casing)");
             add("tooltip.large_macerator.6", "1x Item Output Hatch (Any Casing)");
             add("tooltip.large_macerator.7", "1x Energy Hatch (Any Casing)");
+
+            add("tooltip.multi_smelter.0", "Controller Block for the Multi Smelter");
+            add("tooltip.multi_smelter.1", "Smelts up to 8-1024 Items at once");
+            add("tooltip.multi_smelter.2", "Size(WxHxD):3x3x3 (Hollow), Controller (Front middle at bottom)");
+            add("tooltip.multi_smelter.3", "8x Heating Coils (Middle layer, hollow)");
+            add("tooltip.multi_smelter.4", "1x Item Input Hatch (One of bottom)");
+            add("tooltip.multi_smelter.5", "1x Item Output Hatch (One of bottom)");
+            add("tooltip.multi_smelter.6", "1x Muffler Hatch (Top middle)");
+            add("tooltip.multi_smelter.7", "1x Energy Hatch (One of bottom)");
+            add("tooltip.multi_smelter.8", "Heat Proof Casings for the rest");
         }
 
         @Override
