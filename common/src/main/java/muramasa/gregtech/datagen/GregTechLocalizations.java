@@ -261,6 +261,18 @@ public class GregTechLocalizations {
             add("tooltip.multi_smelter.6", "1x Muffler Hatch (Top middle)");
             add("tooltip.multi_smelter.7", "1x Energy Hatch (One of bottom)");
             add("tooltip.multi_smelter.8", "Heat Proof Casings for the rest");
+
+            add("tooltip.oil_drilling_rig.0", "Controller Block for the Oil Drilling Rig");
+            add("tooltip.oil_drilling_rig.1", "Size(WxHxD):3x7x3");
+            add("tooltip.oil_drilling_rig.2", "Controller (Front middle at bottom)");
+            add("tooltip.oil_drilling_rig.3", "3x1x3 Base of Solid Steel Casings");
+            add("tooltip.oil_drilling_rig.4", "1x3x1 Solid Steel Casing Pillar (Center of base)");
+            add("tooltip.oil_drilling_rig.5", "1x3x1 Steel Frames (Each pillar side and on top)");
+            add("tooltip.oil_drilling_rig.6", "1x Fluid Output Hatch (Any bottom layer casing)");
+            add("tooltip.oil_drilling_rig.7", "1x MV+ Energy Hatch (Any bottom layer casing)");
+            add("tooltip.oil_drilling_rig.8", "1x Item Output Hatch (Any bottom layer casing, optional)");
+
+
         }
 
         @Override
