@@ -653,7 +653,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Komatiite).mats(of(Olivine, 1, MagnesiumCarbonate, 2, Flint, 6, DarkAsh, 3));
         event.setMaterial(Lapotronium).mats(of(Lapis, 6, Sapphire, 5, Redstone, 4));
         event.setMaterial(Limestone).mats(of(Calcite, 1));
-        event.setMaterial(LithiumChloride).mats(of(Lithium, 1, Chlorine, 1)).elecTicks(64);
+        event.setMaterial(LithiumChloride).mats(of(Lithium, 1, Chlorine, 1)).elecTicks(256);
         event.setMaterial(MagnesiumChloride).mats(of(Magnesium, 1, Chlorine, 2)).elecTicks(1024);
         event.setMaterial(Marble).mats(of(Magnesium, 1, Calcite, 7));
         event.setMaterial(Massicot).mats(of(Lead, 1, Oxygen, 1)).elecTicks(180);
@@ -1304,7 +1304,7 @@ public class GregTechMaterialEvents {
                 Phosphate, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
                 Salt, SodiumBisulfate, PotassiumBisulfate, HydrochloricAcid, SaltWater, HydrochloricAcid, Diamond,
-                NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride, Sperrylite);
+                NickelSulfate, Water, DistilledWater, HeavyWater, SemiheavyWater, TritiatedWater, MilkyQuartz, FerricChloride, Sperrylite, LithiumChloride);
         ELEC60.add(CalciumChloride, SodiumHydroxide, Propene, Ethylene, Butene, Benzene, Styrene, Ethane, Ammonia, SodiumSulfide, Methane,
                 Magnesite, HydrofluoricAcid, HydrogenFluoride, Sphalerite, /*NitroCarbon,*/ SodaAsh, Calcite, Saltpeter, Monazite,
                 /*Wollastonite,*/ NitrogenMonoxide, Butane, CarbonMonoxide, Pyrite, RedGranite, Ferrosilite, Butadiene, Amethyst,
