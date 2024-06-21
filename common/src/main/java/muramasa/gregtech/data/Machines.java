@@ -245,10 +245,10 @@ public class Machines {
     public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, EU, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(ELECTRIC_FURNACE).addFlags(GUI, ITEM, EU).addStructureTooltip(9).setTile(BlockEntityMultiSmelter::new).custom().setTextureBlock(GregTechBlocks.CASING_HEAT_PROOF);
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityOilDrillingRig::new).custom().setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);
-    public static MultiMachine PROCESSING_ARRAY = new MultiMachine(GTIRef.ID, "processing_array").setTiers(EV).addFlags(GUI, ITEM, FLUID, EU, RECIPE).setTile(BlockEntityProcessingArray::new).custom().setTextureBlock(GregTechBlocks.CASING_TUNGSTENSTEEL);
+    public static MultiMachine PROCESSING_ARRAY = new MultiMachine(GTIRef.ID, "processing_array").setTiers(EV).addFlags(GUI, ITEM, FLUID, EU, RECIPE).addStructureTooltip(8).setTile(BlockEntityProcessingArray::new).custom().setTextureBlock(GregTechBlocks.CASING_TUNGSTENSTEEL);
     public static MultiMachine PYROLYSIS_OVEN = new MultiMachine(GTIRef.ID, "pyrolysis_oven").setTiers(MV).setMap(RecipeMaps.PYROLYSIS_OVEN).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityPyrolysisOven::new).custom().setTextureBlock(GregTechBlocks.CASING_ULV);
     public static MultiMachine TREE_GROWTH_SIMULATOR = new MultiMachine(GTIRef.ID, "tree_growth_simulator").setTiers(LV).setMap(RecipeMaps.TREE_GROWTH_SIMULATOR).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityTreeGrowthSimulator::new).setTextureBlock(GregTechBlocks.CASING_PLASTIC);
-    public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(RecipeMaps.VACUUM_FREEZER).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityVacuumFreezer::new).setTextureBlock(GregTechBlocks.CASING_FROST_PROOF);
+    public static MultiMachine VACUUM_FREEZER = new MultiMachine(GTIRef.ID, "vacuum_freezer").setTiers(HV).setMap(RecipeMaps.VACUUM_FREEZER).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(7).setTile(BlockEntityVacuumFreezer::new).setTextureBlock(GregTechBlocks.CASING_FROST_PROOF);
     /**
      * Long distance pipelines
      */

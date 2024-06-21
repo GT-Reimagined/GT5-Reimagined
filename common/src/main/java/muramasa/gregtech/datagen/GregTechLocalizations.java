@@ -272,6 +272,22 @@ public class GregTechLocalizations {
             add("tooltip.oil_drilling_rig.7", "1x MV+ Energy Hatch (Any bottom layer casing)");
             add("tooltip.oil_drilling_rig.8", "1x Item Output Hatch (Any bottom layer casing, optional)");
 
+            add("tooltip.processing_array.0", "Controller Block for the Processing Array");
+            add("tooltip.processing_array.1", "Runs supplied machines as if placed in the world");
+            add("tooltip.processing_array.2", "Size(WxHxD):3x3x3 (Hollow), Controller (Front centered)");
+            add("tooltip.processing_array.3", "1x Input Hatch (Any casing)");
+            add("tooltip.processing_array.4", "1x Output Hatch (Any Casing)");
+            add("tooltip.processing_array.5", "1x Energy Hatch (Any Casing)");
+            add("tooltip.processing_array.6", "Robust Tungstensteel Casings for the rest");
+            add("tooltip.processing_array.7", "Place up to 16 Single Block Machines into the GUI Inventory");
+
+            add("tooltip.vacuum_freezer.0", "Controller Block for the Vacuum Freezer");
+            add("tooltip.vacuum_freezer.1", "Super cools hot ingots and gases like Nitrogen");
+            add("tooltip.vacuum_freezer.2", "Size(WxHxD):3x3x3 (Hollow), Controller (Front centered)");
+            add("tooltip.vacuum_freezer.3", "1x Input Hatch (Any casing)");
+            add("tooltip.vacuum_freezer.4", "1x Output Hatch (Any Casing)");
+            add("tooltip.vacuum_freezer.5", "1x Energy Hatch (Any Casing)");
+            add("tooltip.vacuum_freezer.6", "Frost Proof Casings for the rest");
 
         }
 
