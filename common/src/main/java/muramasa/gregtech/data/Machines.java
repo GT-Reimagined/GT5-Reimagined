@@ -242,7 +242,20 @@ public class Machines {
     public static MultiMachine LARGE_CHEMICAL_REACTOR = new MultiMachine(GTIRef.ID, "large_chemical_reactor").setTiers(HV).setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(10).setTile(BlockEntityLargeChemicalReactor::new).custom().setTextureBlock(GregTechBlocks.CASING_CHEMICALLY_INERT);
     public static MultiMachine LARGE_ELECTROLYZER = new MultiMachine(GTIRef.ID, "large_electrolyzer").setTiers(HV).setMap(RecipeMaps.ELECTROLYZER).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityLargeElectrolyzer::new).setTextureBlock(GregTechBlocks.CASING_STAINLESS_STEEL);
     public static MultiMachine LARGE_MACERATOR = new MultiMachine(GTIRef.ID, "large_macerator").setTiers(HV).setMap(RecipeMaps.MACERATOR).addFlags(GUI, ITEM, EU).addStructureTooltip(8).setTile(BlockEntityLargeMacerator::new).setTextureBlock(GregTechBlocks.TUNGSTENSTEEL_WALL).blockColorHandler((state, world, pos, machine, i) -> i == 0 ? TungstenSteel.getRGB() : -1).itemColorHandler((stack, block, i) -> i == 0 ? TungstenSteel.getRGB() : -1);
-    public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, EU, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang();
+    public static MultiMachine LARGE_TURBINE = new MultiMachine(GTIRef.ID, "large_turbine").setTiers(HV, EV, IV).setMap(STEAM_FUELS, HV).setMap(HP_STEAM_FUELS, IV).setMap(GAS_FUELS, EV).addFlags(GUI, ITEM, FLUID, EU, GENERATOR).setTile(BlockEntityLargeTurbine::new).custom(Textures.TURBINE).setTierSpecificLang().addStructureTooltip(8, (machine, stack, world, flag, i) -> {
+        if (i == 0){
+            return new Object[]{machine.getDisplayName(new ItemStack(machine))};
+        }
+        if (i == 5){
+            String tier = machine.getTier() == HV ? "steel" : machine.getTier() == EV ? "stainless_steel" : "titanium";
+            return new Object[]{Utils.translatable(GregTech.get(BlockCasing.class, tier + "_turbine_casing").getDescriptionId())};
+        }
+        if (i == 7){
+            String amount = machine.getTier() == HV ? "105-1680" : "210-3360";
+            return new Object[]{amount};
+        }
+        return new Object[0];
+    });
     public static MultiMachine MULTI_SMELTER = new MultiMachine(GTIRef.ID, "multi_smelter").setTiers(HV).setMap(ELECTRIC_FURNACE).addFlags(GUI, ITEM, EU).addStructureTooltip(9).setTile(BlockEntityMultiSmelter::new).custom().setTextureBlock(GregTechBlocks.CASING_HEAT_PROOF);
     public static MultiMachine OIL_DRILLING_RIG = new MultiMachine(GTIRef.ID, "oil_drilling_rig").setTiers(MV).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityOilDrillingRig::new).custom().setTextureBlock(GregTechBlocks.CASING_SOLID_STEEL);
     public static MultiMachine PROCESSING_ARRAY = new MultiMachine(GTIRef.ID, "processing_array").setTiers(EV).addFlags(GUI, ITEM, FLUID, EU, RECIPE).addStructureTooltip(8).setTile(BlockEntityProcessingArray::new).custom().setTextureBlock(GregTechBlocks.CASING_TUNGSTENSTEEL);

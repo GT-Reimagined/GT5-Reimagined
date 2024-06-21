@@ -252,6 +252,15 @@ public class GregTechLocalizations {
             add("tooltip.large_macerator.6", "1x Item Output Hatch (Any Casing)");
             add("tooltip.large_macerator.7", "1x Energy Hatch (Any Casing)");
 
+            add("tooltip.large_turbine.0", "Controller Block for the %s");
+            add("tooltip.large_turbine.1", "Size(WxHxD): 3x3x4 (Hollow), Controller (Front centered)");
+            add("tooltip.large_turbine.2", "1x Fluid Input Hatch (Side centered)");
+            add("tooltip.large_turbine.3", "1x Muffler Hatch (Side centered)");
+            add("tooltip.large_turbine.4", "1x Dynamo Hatch (Back centered)");
+            add("tooltip.large_turbine.5", "%s for the rest (24 at least!)");
+            add("tooltip.large_turbine.6", "Needs a Turbine Item (Inside controller GUI)");
+            add("tooltip.large_turbine.7", "Output depending on Rotor: %sEU/t");
+
             add("tooltip.multi_smelter.0", "Controller Block for the Multi Smelter");
             add("tooltip.multi_smelter.1", "Smelts up to 8-1024 Items at once");
             add("tooltip.multi_smelter.2", "Size(WxHxD):3x3x3 (Hollow), Controller (Front middle at bottom)");
@@ -288,6 +297,8 @@ public class GregTechLocalizations {
             add("tooltip.vacuum_freezer.4", "1x Output Hatch (Any Casing)");
             add("tooltip.vacuum_freezer.5", "1x Energy Hatch (Any Casing)");
             add("tooltip.vacuum_freezer.6", "Frost Proof Casings for the rest");
+
+
 
         }
 
