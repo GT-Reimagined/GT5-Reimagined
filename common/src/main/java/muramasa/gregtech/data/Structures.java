@@ -132,6 +132,11 @@ public class Structures {
                 .at('C', GregTechBlocks.CASING_SOLID_STEEL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY, HATCH_MUFFLER)
                 .min(1, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY).exact(1, HATCH_MUFFLER).offset(1, 1, 0).build()
         );
+        LARGE_AUTOCLAVE.setStructure(BlockEntityMultiSmelter.class, b -> b.part("main")
+                .of("CCC", "CCC", "CCC").of("CCC", "C-C", "CCC").of("C~C", "CCC", "CCC").build()
+                .at('C', GregTechBlocks.CASING_STAINLESS_STEEL, HATCH_FLUID_I, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+                .offset(1, 2, 0).min(1, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY).build()
+        );
         LARGE_BOILER.setStructure(BlockEntityLargeBoiler.class, b -> b.part("main")
                 .of("BBB", "BBB", "BBB").of("BBB", "BPB", "BBB").of(1).of(1).of("F~F", "FFF", "FFF").build()
                 .atElement('F', StructureUtility.<BlockEntityLargeBoiler>ofChain(

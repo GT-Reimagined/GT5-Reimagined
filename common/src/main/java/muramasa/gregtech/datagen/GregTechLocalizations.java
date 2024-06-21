@@ -192,6 +192,15 @@ public class GregTechLocalizations {
             add("tooltip.implosion_compressor.5", "1x Energy Hatch (Any casing)");
             add("tooltip.implosion_compressor.6", "Solid Steel Casings for the rest (17 at least!)");
 
+            add("tooltip.large_autoclave.0", "Controller Block for the LArge Autoclave");
+            add("tooltip.large_autoclave.1", "Runs up to 16 Items at once");
+            add("tooltip.large_autoclave.2", "Size(WxHxD):3x3x3 (Hollow), Controller (Front middle at bottom)");
+            add("tooltip.large_autoclave.3", "1x Item Input Hatch (Any casing)");
+            add("tooltip.large_autoclave.4", "1x Item Output Hatch (Any casing)");
+            add("tooltip.large_autoclave.5", "1x Fluid Input Hatch (Any casing)");
+            add("tooltip.large_autoclave.6", "1x Energy Hatch (Any casing)");
+            add("tooltip.large_autoclave.7", "Stainless Steel Casings for the rest");
+
             add("tooltip.large_bathing_vat.0", "Controller Block for the Large Bathing Vat");
             add("tooltip.large_bathing_vat.1", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
             add("tooltip.large_bathing_vat.2", "1x Item Input Hatch (Any casing)");
