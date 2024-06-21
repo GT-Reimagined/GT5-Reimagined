@@ -202,12 +202,13 @@ public class GregTechLocalizations {
             add("tooltip.large_autoclave.7", "Stainless Steel Casings for the rest");
 
             add("tooltip.large_bathing_vat.0", "Controller Block for the Large Bathing Vat");
-            add("tooltip.large_bathing_vat.1", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
-            add("tooltip.large_bathing_vat.2", "1x Item Input Hatch (Any casing)");
-            add("tooltip.large_bathing_vat.3", "1x Item Output Hatch (Any casing)");
-            add("tooltip.large_bathing_vat.4", "1x Fluid Input Hatch (Any casing)");
-            add("tooltip.large_bathing_vat.5", "1-3x Fluid Output Hatch (Any casing, optional)");
-            add("tooltip.large_bathing_vat.6", "Stainless Steel Walls for the rest (46 at most!)");
+            add("tooltip.large_bathing_vat.1", "Runs up to 64 Items at once");
+            add("tooltip.large_bathing_vat.2", "Size(WxHxD): 5x2x5, Controller (Front middle at bottom)");
+            add("tooltip.large_bathing_vat.3", "1x Item Input Hatch (Any casing)");
+            add("tooltip.large_bathing_vat.4", "1x Item Output Hatch (Any casing)");
+            add("tooltip.large_bathing_vat.5", "1x Fluid Input Hatch (Any casing)");
+            add("tooltip.large_bathing_vat.6", "1-3x Fluid Output Hatch (Any casing, optional)");
+            add("tooltip.large_bathing_vat.7", "Stainless Steel Walls for the rest (46 at most!)");
 
             add("tooltip.large_boiler.0", "Controller Block for the Large Boiler");
             add("tooltip.large_boiler.1", "Produces %sL of Steam with 1 Coal at %sL/s");
