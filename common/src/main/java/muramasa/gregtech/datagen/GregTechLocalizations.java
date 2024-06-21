@@ -298,7 +298,13 @@ public class GregTechLocalizations {
             add("tooltip.vacuum_freezer.5", "1x Energy Hatch (Any Casing)");
             add("tooltip.vacuum_freezer.6", "Frost Proof Casings for the rest");
 
-
+            add("tooltip.fusion_control_computer.0", "It's over 9000!!!");
+            add("tooltip.fusion_control_computer.1", "Fusion Casings around Fusion Coils");
+            add("tooltip.fusion_control_computer.2", "2-16 Input Hatches");
+            add("tooltip.fusion_control_computer.3", "1-16 Output Hatches");
+            add("tooltip.fusion_control_computer.4", "1-16 Energy Hatches");
+            add("tooltip.fusion_control_computer.5", "All Energy Hatches must be LuV or better");
+            add("tooltip.fusion_control_computer.6", "8192EU/t and 40mio EU Cap per Energy Hatch");
 
         }
 

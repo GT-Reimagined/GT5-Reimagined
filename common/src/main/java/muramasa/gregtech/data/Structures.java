@@ -20,7 +20,9 @@ import java.util.function.Function;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FRAME;
+import static muramasa.antimatter.machine.Tier.LUV;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
+import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatchMinTier;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.Lithium;
 import static muramasa.gregtech.data.Materials.Steel;
@@ -273,7 +275,7 @@ public class Structures {
                         ofBlock(GregTechBlocks.CASING_FUSION),
                         ofHatch(HATCH_FLUID_O),
                         ofHatch(HATCH_ITEM_O)))
-                .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(ofBlock(GregTechBlocks.CASING_FUSION), ofHatch(HATCH_ENERGY)))
+                .atElement('E', StructureUtility.<BlockEntityFusionReactor>ofChain(ofBlock(GregTechBlocks.CASING_FUSION), ofHatchMinTier(HATCH_ENERGY, LUV)))
             .offset(7, 1, 12).min(1, HATCH_FLUID_I).min(1, HATCH_FLUID_O).min(4, HATCH_ENERGY).build());
     }
 
