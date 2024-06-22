@@ -10,6 +10,7 @@ import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
@@ -17,9 +18,26 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BlockEntityLargeAutoclave extends BlockEntityMultiMachine<BlockEntityLargeAutoclave> {
 
+    private BlockCoil.CoilData coilData;
+
     public BlockEntityLargeAutoclave(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 16));
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 16){
+            @Override
+            protected void calculateDurations() {
+                super.calculateDurations();
+                float percentage = 1 + (.1f * coilData.autoclaveBoosts());
+                maxProgress = (int) (maxProgress / percentage);
+            }
+        });
+    }
+
+    public BlockCoil.CoilData getCoilData() {
+        return coilData;
+    }
+
+    public void setCoilData(BlockCoil.CoilData coilData) {
+        this.coilData = coilData;
     }
 
 //    @Override

@@ -62,6 +62,7 @@ public class GregTechLocalizations {
             add("tooltip.gti.data_stick.by", "By X: %s Z: %s Dim: %s");
             add("tooltip.gti.coil.percentage", "Pyrolysis oven processing speed percentage: %s");
             add("tooltip.gti.coil.maxSimultaneousRecipes", "Max simultaneous recipes in Multismelter: %s");
+            add("tooltip.gti.coil.autoclaveBoosts", "Large Autoclave processing speed: %s");
             add("tooltip.gti.depleted_rod.depleted", "Depleted");
             add("tooltip.gti.depleted_rod.0", "This Rod is %s and will not output or accept any Neutrons");
             add("tooltip.gti.depleted_rod.1", "Can be centrifuged to get valuable materials");

@@ -347,6 +347,7 @@ public class Guis {
         TREE_GROWTH_SIMULATOR.getGui().setBackgroundTexture("multiblock");
         VACUUM_FREEZER.getGui().setBackgroundTexture("multiblock");
         MULTI_SMELTER.getGui().setBackgroundTexture("multiblock");
+        LARGE_AUTOCLAVE.getGui().setBackgroundTexture("multiblock");
         LARGE_BOILER.getGui().setBackgroundTexture("multiblock");
         LARGE_BATHING_VAT.getGui().setBackgroundTexture("multiblock");
         LARGE_CENTRIFUGE.getGui().setBackgroundTexture("multiblock");

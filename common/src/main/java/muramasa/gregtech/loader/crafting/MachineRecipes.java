@@ -857,6 +857,12 @@ public class MachineRecipes {
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('S', GregTechBlocks.CASING_SOLID_STEEL)
                         .build(), "OOO", "CSC", "LCL"));
+        add(LARGE_AUTOCLAVE, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('W', GregTechBlocks.CASING_STAINLESS_STEEL)
+                        .put('D', PLATE_DENSE.getMaterialTag(StainlessSteel))
+                        .put('C', TIER_CIRCUITS.apply(IV))
+                        .put('c', TIER_CIRCUITS.apply(EV)).build(), "cCc", "DWD", "DDD"));
         add(LARGE_BATHING_VAT, NONE, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('W', GregTechBlocks.STAINLESS_STEEL_WALL)

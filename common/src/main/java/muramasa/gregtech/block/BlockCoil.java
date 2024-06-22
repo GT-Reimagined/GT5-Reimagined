@@ -42,7 +42,8 @@ public class BlockCoil extends BlockBasic {
         tooltip.add(Utils.translatable("antimatter.tooltip.heat_capacity").append(": ").append(String.valueOf(this.coilData.heat)));
         tooltip.add(Utils.translatable("tooltip.gti.coil.percentage", (int)(this.coilData.percentage * 100) + "%"));
         tooltip.add(Utils.translatable("tooltip.gti.coil.maxSimultaneousRecipes", this.coilData.maxSimultaneousRecipes));
+        tooltip.add(Utils.translatable("tooltip.gti.coil.autoclaveBoosts", ((this.coilData.autoclaveBoosts * 10) + 100) + "%"));
     }
 
-    public record CoilData(int heat, float percentage, int maxSimultaneousRecipes){}
+    public record CoilData(int heat, float percentage, int maxSimultaneousRecipes, int autoclaveBoosts){}
 }
