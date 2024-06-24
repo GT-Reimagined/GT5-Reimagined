@@ -166,6 +166,7 @@ public class GregTechBlocks {
     //todo make these active
     public static final BlockSidedCasing GRINDING_WHEELS = new BlockSidedCasing(GTIRef.ID, "grinding_wheels", "tungstensteel", "grinding_wheels_top");
     public static final BlockCasing ELECTROLYTIC_CELL = new BlockCasing(GTIRef.ID, "electrolytic_cell");
+    public static final BlockSidedCasing ORE_WASHING_PARTS = new BlockSidedCasing(GTIRef.ID, "ore_washing_parts", "titanium", "ore_washing_parts_top");
     public static final BlockCoil COIL_CUPRONICKEL = new BlockCoil(GTIRef.ID, "cupronickel_coil", new BlockCoil.CoilData(1800, 0.5f, 8, 0));
     public static final BlockCoil COIL_KANTHAL = new BlockCoil(GTIRef.ID, "kanthal_coil", new BlockCoil.CoilData(2700, 1.0f, 16, 1));
     public static final BlockCoil COIL_NICHROME = new BlockCoil(GTIRef.ID, "nichrome_coil", new BlockCoil.CoilData(3600, 1.5f, 32, 2));

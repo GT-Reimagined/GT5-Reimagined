@@ -12,6 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
@@ -181,7 +183,16 @@ public class Structures {
                 .at('G', GregTechBlocks.GRINDING_WHEELS)
                 .offset(2, 2, 0).min(1, HATCH_ENERGY, HATCH_ITEM_I, HATCH_ITEM_O).build()
         );
-
+        LARGE_ORE_WASHER.setStructure(BlockEntityLargeOreWasher.class, b -> b.part("main")
+                .of("OOO", "OOO", "OOO", "OOO", "OOO", "OOO", "OOO")
+                .of("CCC", "CCC", "CCC", "CCC", "CCC", "CCC", "CCC")
+                .of("C~C", "CCC", "CCC", "CCC", "CCC", "CCC", "CCC").build()
+                .atElement('O', onElementPass((el, t, w, x, y, z) -> {
+                    BlockState state = w.getBlockState(new BlockPos(x, y, z));
+                    w.setBlock(new BlockPos(x, y, z), state.setValue(BlockStateProperties.HORIZONTAL_FACING, t.getFacing()), 3);
+                }, ofBlock(GregTechBlocks.ORE_WASHING_PARTS)))
+                .at('C', GregTechBlocks.TITANIUM_WALL, HATCH_ITEM_I, HATCH_FLUID_I, HATCH_ITEM_O, HATCH_ENERGY)
+                .offset(1, 2, 0).min(1, HATCH_ENERGY, HATCH_FLUID_I, HATCH_ITEM_I, HATCH_ITEM_O).build());
         LARGE_TURBINE.setStructure(BlockEntityLargeTurbine.class, b -> b.part("main")
                 .of("CCC", "CCC", "CCC", "CCC").of("C~C", "H-H", "H-H", "CEC").of(0).build()
                 .atElement('C', StructureUtility.lazy(t -> ofBlock(t.getCasing())))
