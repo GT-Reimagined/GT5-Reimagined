@@ -101,7 +101,8 @@ public class BlockParts {
                 of('W', GregTechBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.VTINY), 'M', GregTechBlocks.CASING_STAINLESS_STEEL, 'C', TIER_CIRCUITS.apply(EV)), "WWW", "WMW", "CCC");
         provider.addItemRecipe(output, "casings", GregTechBlocks.GRINDING_WHEELS,
                 of('G', GEAR.getMaterialTag(TungstenSteel), 'M', GregTechBlocks.CASING_TUNGSTENSTEEL, 'D', GregTechTags.GRIND_HEADS), "GDG", "GMG");
-
+        provider.addItemRecipe(output, "casings", GregTechBlocks.ORE_WASHING_PARTS,
+                of('G', GEAR.getMaterialTag(Titanium), 'P', GregTechBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL),'C', GregTechBlocks.CASING_TITANIUM, 'W', WRENCH.getTag()), "GGG", "PCP", "PWP");
 
         addCoil(output, provider, GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_CUPRONICKEL);
         addCoil(output, provider, GregTechBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GregTechBlocks.COIL_KANTHAL);

@@ -899,6 +899,13 @@ public class MachineRecipes {
                         .put('H', HULL.getItem(IV))
                         .put('C', TIER_CIRCUITS.apply(IV))
                         .build(), "TGT", "PHP", "MCM"));
+        add(LARGE_ORE_WASHER, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('G', GEAR.getMaterialTag(Titanium))
+                        .put('R', ROD.getMaterialTag(Titanium))
+                        .put('W', GregTechBlocks.TITANIUM_WALL)
+                        .put('C', TIER_CIRCUITS.apply(IV))
+                        .put('c', TIER_CIRCUITS.apply(EV)).build(), "GGG", "RWR", "cCc"));
         Arrays.stream(getStandard()).filter(t -> t !=IV).forEach(tier -> {
             Block firebox = tier == LV ? GregTechBlocks.CASING_FIREBOX_BRONZE : tier == MV ? GregTechBlocks.CASING_FIREBOX_STEEL : tier == HV ? GregTechBlocks.CASING_FIREBOX_TITANIUM : GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
             Tier circuitTier = tier == LV ? tier : tier == MV ? HV : tier == HV ? EV : IV;
