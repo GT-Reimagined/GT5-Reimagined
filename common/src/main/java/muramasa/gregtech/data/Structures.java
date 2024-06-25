@@ -180,7 +180,10 @@ public class Structures {
         LARGE_MACERATOR.setStructure(BlockEntityLargeMacerator.class, b -> b.part("main")
                 .of("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC").of(0).of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
                 .at('C', GregTechBlocks.TUNGSTENSTEEL_WALL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
-                .at('G', GregTechBlocks.GRINDING_WHEELS)
+                .atElement('G', onElementPass((el, t, w, x, y, z) -> {
+                    BlockState state = w.getBlockState(new BlockPos(x, y, z));
+                    w.setBlock(new BlockPos(x, y, z), state.setValue(BlockStateProperties.HORIZONTAL_FACING, t.getFacing()), 3);
+                }, ofBlock(GregTechBlocks.GRINDING_WHEELS)))
                 .offset(2, 2, 0).min(1, HATCH_ENERGY, HATCH_ITEM_I, HATCH_ITEM_O).build()
         );
         LARGE_ORE_WASHER.setStructure(BlockEntityLargeOreWasher.class, b -> b.part("main")
