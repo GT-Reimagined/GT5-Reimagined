@@ -37,7 +37,7 @@ public class GregTechLocalizations {
             add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
-            add("machine.dehydrator.parallel", "Runs up to %s recipes at a time");
+            add("machine.upgraded_batch.parallel", "Runs up to %s recipes at a time");
             add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
             add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
             add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");

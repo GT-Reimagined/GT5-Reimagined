@@ -3,7 +3,6 @@ package muramasa.gregtech.data;
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.machine.DrumMachine;
-import muramasa.antimatter.Data;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
@@ -39,7 +38,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -97,8 +95,8 @@ public class Machines {
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(RecipeMaps.CANNER).addFlags(GUI, ITEM);
     public static BasicMachine CENTRIFUGE = new BasicMachine(GTIRef.ID, "centrifuge").setMap(RecipeMaps.CENTRIFUGE).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine BATH = new BasicMachine(GTIRef.ID, "bath").setTiers(NONE).removeFlags(EU).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).baseTexture(new Texture(GTIRef.ID, "block/machine/base/hv"));
-    public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityDehydrator::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
-        tooltip.add(Utils.translatable("machine.dehydrator.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
+    public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        tooltip.add(Utils.translatable("machine.upgraded_batch.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
     });
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(RecipeMaps.CIRCUIT_ASSEMBLER).addFlags(GUI, ITEM, FLUID);
@@ -129,7 +127,9 @@ public class Machines {
     public static BasicMachine PACKAGER = new BasicMachine(GTIRef.ID, "packager").setMap(RecipeMaps.PACKAGER).addFlags(GUI, ITEM);
     public static BasicMachine POLARIZER = new BasicMachine(GTIRef.ID, "polarizer").setMap(RecipeMaps.POLARIZER).addFlags(GUI, ITEM);
     public static BasicMachine PRINTER = new BasicMachine(GTIRef.ID, "printer").setTiers(Tier.LV).setMap(PRINTING).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityPrinter::new);
-    public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setMap(RecipeMaps.ROASTER).addFlags(GUI, ITEM, FLUID).amps(3);
+    public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setMap(RecipeMaps.ROASTER).addFlags(GUI, ITEM, FLUID).amps(3).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+        tooltip.add(Utils.translatable("machine.upgraded_batch.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
+    });
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RecipeMaps.RECYCLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setMap(RecipeMaps.REPLICATOR).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setMap(RecipeMaps.SCANNER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityScanner::new).setSound(GregTechSounds.MAGNETIZER,  0.6f);
