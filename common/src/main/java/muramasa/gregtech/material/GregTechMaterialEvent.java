@@ -1,15 +1,11 @@
 package muramasa.gregtech.material;
 
-import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.IMaterialTag;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.data.ToolData;
-import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.gregtech.data.GregTechMaterialTags;
-import net.minecraft.world.item.enchantment.Enchantment;
-
-import java.util.Arrays;
 
 import static muramasa.antimatter.material.MaterialTags.*;
 
@@ -59,5 +55,20 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     protected GregTechMaterialEvent buildTool(ToolData builder) {
         flags(AntimatterMaterialTypes.ROD_LONG);
         return super.buildTool(builder);
+    }
+
+    public GregTechMaterialEvent thermal(Material byProduct){
+        GregTechMaterialTags.THERMAL_CENTRIFUGE_EXPLICIT.add(this.material, byProduct);
+        return this;
+    }
+
+    public GregTechMaterialEvent bathMercury(Material byProduct){
+        GregTechMaterialTags.BATH_MERCURY.add(this.material, byProduct);
+        return this;
+    }
+
+    public GregTechMaterialEvent bathPersulfate(Material byProduct){
+        GregTechMaterialTags.BATH_PERSULFATE.add(this.material, byProduct);
+        return this;
     }
 }

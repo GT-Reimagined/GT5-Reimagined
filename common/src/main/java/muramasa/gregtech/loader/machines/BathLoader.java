@@ -24,8 +24,8 @@ import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_MERCURY;
-import static muramasa.gregtech.data.GregTechMaterialTags.CHEMBATH_PERSULFATE;
+import static muramasa.gregtech.data.GregTechMaterialTags.BATH_MERCURY;
+import static muramasa.gregtech.data.GregTechMaterialTags.BATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
@@ -117,7 +117,7 @@ public class BathLoader {
         addPSGRecipe(Platinum);
     }
     public static void mercurybathing(){
-        CHEMBATH_MERCURY.getAll().forEach((main,side) ->
+        BATH_MERCURY.getAll().forEach((main, side) ->
             BATH.RB()
                     .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
@@ -126,7 +126,7 @@ public class BathLoader {
                     .add("mercury_" + main.getId(),40*20));
     }
     public static void persulfatebathing(){
-        CHEMBATH_PERSULFATE.getAll().forEach((main,side) ->
+        BATH_PERSULFATE.getAll().forEach((main, side) ->
                 BATH.RB()
                         .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
                         .fi(SodiumPersulfateSolution.getLiquid(1000))

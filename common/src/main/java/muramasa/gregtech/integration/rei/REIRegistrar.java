@@ -33,11 +33,11 @@ public class REIRegistrar {
         });
         REIUtils.addExtraDisplay(r -> {
             AntimatterMaterialTypes.ORE.all().forEach(m -> {
-                if (m.has(GregTechMaterialTags.CHEMBATH_PERSULFATE) || m.has(GregTechMaterialTags.CHEMBATH_MERCURY)){
-                    if (m.has(GregTechMaterialTags.CHEMBATH_MERCURY)){
+                if (m.has(GregTechMaterialTags.BATH_PERSULFATE) || m.has(GregTechMaterialTags.BATH_MERCURY)){
+                    if (m.has(GregTechMaterialTags.BATH_MERCURY)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.MERCURY));
                     }
-                    if (m.has(GregTechMaterialTags.CHEMBATH_PERSULFATE)){
+                    if (m.has(GregTechMaterialTags.BATH_PERSULFATE)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.PERSULFATE));
                     }
                 } else {
