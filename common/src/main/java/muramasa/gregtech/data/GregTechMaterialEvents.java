@@ -768,6 +768,7 @@ public class GregTechMaterialEvents {
          *  Basic
          **/
         event.setMaterial(Charcoal).mats(of(Carbon, 1)).elecTicks(12);
+        event.setMaterial(CoalCoke).mats(of(Carbon, 2)).elecTicks(12);
         event.setMaterial(Apatite).mats(of(Calcium, 5, Phosphate, 3, Chlorine, 1)).elecTicks(288);
         event.setMaterial(Monazite).mats(of(RareEarth, 1, Phosphate, 1)).elecTicks(104);
         /**
@@ -1212,7 +1213,7 @@ public class GregTechMaterialEvents {
     }
 
     private static void flags(GregTechMaterialEvent event){
-        BRITTLEG.add(Coal, Charcoal, Lignite, PetroleumCoke);
+        BRITTLEG.add(Coal, Charcoal, Lignite, PetroleumCoke, CoalCoke, LigniteCoke);
         CALCITE2X.add(Pyrite, YellowLimonite);
         CALCITE3X.add(Iron, BrownLimonite);
         CENT5.add(/*Chrysolite*/ Flint, /*Niter*/ Glass, /*Perlite*/ WroughtIron, DarkAsh, AnnealedCopper,
@@ -1269,7 +1270,7 @@ public class GregTechMaterialEvents {
         CRACK.add(RefineryGas, Naphtha, Ethane, Ethylene, Propane, Propene, Butane, Butene, Butadiene);
         CRYSTALLIZE.add(Lapis, Lazurite, Sodalite, MilkyQuartz, Quartz, CertusQuartz, Fluix, Jade, Amber, Apatite, Flint, EnderEye, EnderPearl);
         NON_GEMS.add(Coal, Charcoal, Lignite, CoalCoke, LigniteCoke, PetroleumCoke);
-        ELEC30.add(Charcoal, Opal, Coal, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
+        ELEC30.add(Charcoal, Opal, Coal, CoalCoke, Lignite, SteelMagnetic, IronMagnetic, Quicklime, Quartzite,
                 SiliconDioxide, Wollastonite, CobaltOxide, Garnierite, CupricOxide, RockSalt, /*Zincite,*/Pyrolusite, /*ChromiumDioxide,*/
                 Phosphate, /*NiobiumNitride,*/ GreenSapphire, Sapphire, NeodymiumMagnetic, Cassiterite,
                 PhosphorousPentoxide, Hematite, Massicot, ArsenicTrioxide, Sugar, Magnetite, AntimonyTrioxide,
