@@ -616,14 +616,14 @@ public class MachineRecipes {
                             .put('H', hull)
                             .put('C', TIER_CIRCUITS.apply(HV))
                             .put('F', GregTechCovers.COVER_ITEM_FILTER.getItem())
-                            .put('E', ForgeCTags.CHESTS)
+                            .put('E', ForgeCTags.CHESTS_WOODEN)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
                             .put('C', TIER_CIRCUITS.apply(LV))
                             .put('F', GregTechCovers.COVER_ITEM_FILTER.getItem())
-                            .put('E', ForgeCTags.CHESTS)
+                            .put('E', ForgeCTags.CHESTS_WOODEN)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
         provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', ROD_LONG.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
