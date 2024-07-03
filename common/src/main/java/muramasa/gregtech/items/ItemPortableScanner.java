@@ -28,14 +28,14 @@ public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
     }
 
     @Override
-    public @NotNull InteractionResult useOn(UseOnContext context) {
+    public @NotNull InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
         long energy = context.getItemInHand().getOrCreateTagElement(Ref.TAG_ITEM_ENERGY_DATA).getLong(Ref.KEY_ITEM_ENERGY);
         if (energy < 2200) return InteractionResult.PASS;
-        InteractionResult result = super.useOn(context);
+        InteractionResult result = super.onItemUseFirst(stack, context);
         if (result == InteractionResult.SUCCESS){
             TesseractCapUtils.INSTANCE.getEnergyHandlerItem(context.getItemInHand()).ifPresent(i -> i.extractEu(2200, false));
         }
-        return super.useOn(context);
+        return result;
     }
 
     @Override
