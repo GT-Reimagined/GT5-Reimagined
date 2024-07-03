@@ -168,9 +168,10 @@ public class AssemblerLoader {
         addCoverRecipe(GregTechCovers.COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
         addCoverRecipe(GregTechCovers.COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
         ASSEMBLER.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
-        ASSEMBLER.RB().ii(of(GregTechCovers.COVER_SHUTTER.getItem()), of(CIRCUITS_GOOD, 2)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 800, 4);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter_cheap", 1600, 32);
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GregTechCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
