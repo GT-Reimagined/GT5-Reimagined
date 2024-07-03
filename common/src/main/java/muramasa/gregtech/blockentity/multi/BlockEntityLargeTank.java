@@ -29,6 +29,7 @@ import tesseract.FluidPlatformUtils;
 import tesseract.TesseractCapUtils;
 import tesseract.TesseractGraphWrappers;
 
+import java.util.List;
 import java.util.Optional;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
@@ -51,6 +52,17 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
         Block block = AntimatterAPI.get(Block.class, material.getId() + "_wall", GTIRef.ID);
         if (block != null) return block;
         return Blocks.AIR;
+    }
+
+    @Override
+    public List<String> getInfo(boolean simple) {
+        List<String> list = super.getInfo(simple);
+        fluidHandler.ifPresent(f -> {
+            FluidHolder stack = f.getInputTanks().getFluidInTank(0);
+            String addition = AntimatterPlatformUtils.isFabric() && !stack.isEmpty() ? "/" + stack.getFluidAmount() + "droplets" : "";
+            list.add("Fluid: " + (stack.isEmpty() ? "Empty" : (stack.getFluidAmount() / TesseractGraphWrappers.dropletMultiplier) + "mb" + addition + " of " + FluidPlatformUtils.INSTANCE.getFluidDisplayName(stack).getString()));
+        });
+        return list;
     }
 
     public static class LargeTankFluidHandler extends MachineFluidHandler<BlockEntityLargeTank> {
