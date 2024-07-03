@@ -6,6 +6,7 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
+import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
@@ -29,6 +30,7 @@ import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTools.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.material.MaterialTags.TOOLS;
 import static muramasa.gregtech.data.Materials.*;
@@ -48,6 +50,8 @@ public class ElectricToolRecipes {
                         builder.build(), "PHP", last, "RSR");
             }
         });
+        provider.addItemRecipe(output, "tools", GTCoreItems.GlassMagnifyingGlass, of('G', LENS.getMaterialTag(Glass), 'S', ForgeCTags.RODS_WOODEN), "G", "S");
+        provider.addItemRecipe(output, "tools", GTCoreItems.DiamondMagnifyingGlass, of('G', LENS.getMaterialTag(Diamond), 'S', ForgeCTags.RODS_WOODEN), "G", "S");
         PLATE.all().forEach(m -> {
             if (m.has(DRILLBIT)){
                 provider.addItemRecipe(output, "bits", DRILLBIT.get(m),
