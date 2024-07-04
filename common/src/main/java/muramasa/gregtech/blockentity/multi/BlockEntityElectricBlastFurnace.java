@@ -22,8 +22,8 @@ public class BlockEntityElectricBlastFurnace extends BlockEntityMultiMachine<Blo
                 super.calculateDurations();
                 maxProgress = activeRecipe.getDuration();
                 overclock = 0;
-                //Divide by 2, for amps.
-                int tier = Utils.getVoltageTier(getMaxInputVoltage() / 2);
+                long voltage = getMaxInputVoltage();
+                int tier = Math.max(1, Utils.getVoltageTier(voltage));
                 int recipeTier = Utils.getVoltageTier(activeRecipe.getPower());
                 if (recipeTier == tier) {
                     EUt = activeRecipe.getPower();
@@ -37,10 +37,14 @@ public class BlockEntityElectricBlastFurnace extends BlockEntityMultiMachine<Blo
                     } else {
                         EUt = activeRecipe.getPower();
                         maxProgress = activeRecipe.getDuration();
-                        for (int i = 2; i < Ref.V.length; i += 2) {
-                            if (EUt > Ref.V[tier - 1]) break;
+                        int i = 2;
+                        while (EUt <= Ref.V[tier - 1]){
                             EUt *= 4;
                             maxProgress /= (heatDiv >= i ? 4 : 2);
+                            i += 2;
+                        }
+                        if (heatDiv > 0){
+                            EUt = (long) (EUt * Math.pow(0.95, heatDiv));
                         }
                     }
                 }
