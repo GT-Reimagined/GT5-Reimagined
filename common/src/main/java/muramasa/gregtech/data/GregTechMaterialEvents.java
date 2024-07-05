@@ -115,7 +115,7 @@ public class GregTechMaterialEvents {
         //event.setMaterial(Francium).asMetal(298, 0);
         //event.setMaterial(Radium).asMetal(973, 0);
         //event.setMaterial(Actinium).asMetal(1323, 0);
-        event.setMaterial(Thorium).asMetal(2115, PLATE_DENSE).asOre();
+        event.setMaterial(Thorium).asMetal(2115, 0, PLATE_DENSE).asOre();
         //protactinium
         event.setMaterial(Uranium).asMetal(1405).harvestLevel(2);
         //event.setMaterial(Neptunium).asMetal(912, 0);
@@ -1041,7 +1041,7 @@ public class GregTechMaterialEvents {
          *** Isotopes (Solids)
          **/
         event.setMaterial(Cobalt60).asMetal(1768, ROD);
-        event.setMaterial(Thorium230).asMetal(2028, ROD);
+        event.setMaterial(Thorium230).asMetal(2028, 0, ROD);
         event.setMaterial(Uranium233).asMetal(1406, ROD);
         event.setMaterial(Uranium235).asMetal(1406, ROD);
         event.setMaterial(Plutonium239).asMetal(912, ROD);
