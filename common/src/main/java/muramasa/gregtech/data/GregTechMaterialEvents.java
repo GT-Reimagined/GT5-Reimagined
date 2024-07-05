@@ -678,7 +678,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(SodiumSulfide).mats(of(Sodium, 2, Sulfur, 1)).elecTicks(72);
         event.setMaterial(TungsticAcid).mats(of(Hydrogen, 2, Tungsten, 1, Oxygen, 4));
         event.setMaterial(TungstenTrioxide).mats(of(Tungsten, 1, Oxygen, 3));
-        event.setMaterial(Wollastonite).mats(of(Calcium, 1, SiliconDioxide, 1, Oxygen, 1)).elecTicks(1460);
+        event.setMaterial(Wollastonite).mats(of(Calcium, 1, SiliconDioxide, 3, Oxygen, 1)).elecTicks(1460);
         //Nuclear
 
         /**
