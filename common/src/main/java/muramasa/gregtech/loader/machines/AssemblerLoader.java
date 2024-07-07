@@ -109,7 +109,7 @@ public class AssemblerLoader {
         addCasing(Lead, GregTechBlocks.CASING_RADIATION_PROOF);
         addCasing(Plastic, GregTechBlocks.CASING_PLASTIC);
         addCasing(BlackBronze, GregTechBlocks.CASING_BLACK_BRONZE);
-        ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), INT_CIRCUITS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
+        ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
     }
 
     private static void cables(){
@@ -123,11 +123,11 @@ public class AssemblerLoader {
                 int ct = size.getCableThickness();
                 int multiplier = ct == 16 ?  5 : ct == 12 ? 4 : ct == 8 ? 3 : ct == 4 ? 2 : 1;
                 long amount = L * multiplier;
-                ASSEMBLER.RB().ii(of(wireItem,1), INT_CIRCUITS.get(1)).fi(Rubber.getLiquid(amount)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_rubber",size.getCableThickness()* 20L,8);
-                ASSEMBLER.RB().ii(of(wireItem,1), INT_CIRCUITS.get(1)).fi(StyreneButadieneRubber.getLiquid((amount * 3) / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber",100,8);
+                ASSEMBLER.RB().ii(of(wireItem,1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(Rubber.getLiquid(amount)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_rubber",size.getCableThickness()* 20L,8);
+                ASSEMBLER.RB().ii(of(wireItem,1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(StyreneButadieneRubber.getLiquid((amount * 3) / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber",100,8);
                 ASSEMBLER.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(PolyvinylChloride, multiplier)).fi(StyreneButadieneRubber.getLiquid(amount / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber_2",100,8);
                 ASSEMBLER.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(Polydimethylsiloxane, multiplier)).fi(StyreneButadieneRubber.getLiquid(amount / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber_3",100,8);
-                ASSEMBLER.RB().ii(of(wireItem,1), INT_CIRCUITS.get(1)).fi(SiliconeRubber.getLiquid(amount /2)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber",100,8);
+                ASSEMBLER.RB().ii(of(wireItem,1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(SiliconeRubber.getLiquid(amount /2)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber",100,8);
                 ASSEMBLER.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(PolyvinylChloride, multiplier)).fi(SiliconeRubber.getLiquid(amount /4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber_2",100,8);
                 ASSEMBLER.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(Polydimethylsiloxane, multiplier)).fi(SiliconeRubber.getLiquid(amount /4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_silicone_rubber_3",100,8);
             });
@@ -149,7 +149,7 @@ public class AssemblerLoader {
     private static void frames(){
         FRAME.all().forEach(m -> {
             MaterialTypeBlock.Container f = FRAME.get().get(m);
-            ASSEMBLER.RB().ii(of(ROD.get(m),4), INT_CIRCUITS.get(4)).io(f.asItem()).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
+            ASSEMBLER.RB().ii(of(ROD.get(m),4), SELECTOR_TAG_INGREDIENTS.get(4)).io(f.asItem()).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
         });
     }
 
@@ -158,7 +158,7 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(ULV), 8), of(Machines.TRANSFORMER.getItem(LV), 4), of(Machines.TRANSFORMER.getItem(MV), 2),
                 of(Machines.TRANSFORMER.getItem(HV), 1), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(EV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV)).add("ev_adjustable_transformer", 50, 1920);
         ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
-        ASSEMBLER.RB().ii(of(ItemTags.PLANKS,8), INT_CIRCUITS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
+        ASSEMBLER.RB().ii(of(ItemTags.PLANKS,8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
 
         ASSEMBLER.RB().ii(of(GregTechItems.EmitterMV), PLATE.getMaterialIngredient(Aluminium, 1)).io(GregTechCovers.COVER_NEEDS_MAINTENANCE_COVER.getItem()).add("needs_maintenance_cover", 600, 24);
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(GregTechCovers.COVER_DRAIN.getItem()).add("drain",800, 16);
@@ -167,11 +167,11 @@ public class AssemblerLoader {
         addCoverRecipe(GregTechCovers.COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
         addCoverRecipe(GregTechCovers.COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
         addCoverRecipe(GregTechCovers.COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
-        ASSEMBLER.RB().ii(of(CarbonFibre, 2), INT_CIRCUITS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 1600, 32);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), INT_CIRCUITS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter_cheap", 1600, 32);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter_cheap", 1600, 32);
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GregTechCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
@@ -247,7 +247,7 @@ public class AssemblerLoader {
     }
 
     private static void addTierCasing (Tier tier) {
-        ASSEMBLER.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), INT_CIRCUITS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),50, 16);
+        ASSEMBLER.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),50, 16);
     }
 
     private static void addTierHull(Tier tier) {
@@ -261,10 +261,10 @@ public class AssemblerLoader {
     }
 
     private static void addWall(Material mat, BlockColoredWall casing) {
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(mat, 4), INT_CIRCUITS.get(24)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(mat, 4), SELECTOR_TAG_INGREDIENTS.get(24)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire) {
-        ASSEMBLER.RB().ii(of(wire,8), INT_CIRCUITS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100, 30);
+        ASSEMBLER.RB().ii(of(wire,8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100, 30);
     }
 }

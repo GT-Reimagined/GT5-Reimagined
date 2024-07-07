@@ -53,13 +53,8 @@ public class Parts {
       provider.addStackRecipe(output, GTIRef.ID, "drain_expensive", "parts",
               new ItemStack(GregTech.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
-    provider.shapeless(output, "int_circuit", "gtparts",
-            INT_CIRCUITS.get(0).getItems()[0], GTCoreTags.CIRCUITS_BASIC);
-    // INT_CIRCUITS.forEach((k, v) -> {
-    Ingredient ing = INT_CIRCUITS.get(0);
-    provider.shapeless(output, "int_circuit_to_circuit", "gtparts",
-        CircuitBasic.getDefaultInstance(), ing);
-    // });
+      provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
+              of('G', GEAR_SMALL.getMaterialTag(Iron), 'R', ROD.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
 
       provider.shapeless(output, GTIRef.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
       provider.addItemRecipe(output, GTIRef.ID, "", "carbon", CoalBall,

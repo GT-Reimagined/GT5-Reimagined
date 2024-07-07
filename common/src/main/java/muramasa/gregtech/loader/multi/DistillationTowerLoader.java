@@ -11,11 +11,11 @@ import net.minecraft.world.item.Items;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
-import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class DistillationTowerLoader {
 
@@ -35,11 +35,11 @@ public class DistillationTowerLoader {
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
         DISTILLERY.RB()
-                .ii(INT_CIRCUITS.get(0).setNoConsume())
+                .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
                 .fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier))
                 .fo(DistilledWater.getLiquid(50)).io(Items.SUGAR).add("beet_juice", 80, 16);
         DISTILLERY.RB()
-                .ii(INT_CIRCUITS.get(0).setNoConsume())
+                .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
                 .fi(Honey.getLiquid(100))
                 .fo(DistilledWater.getLiquid(10)).io(Items.SUGAR).add("honey", 16, 16);
         addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
@@ -160,7 +160,7 @@ public class DistillationTowerLoader {
         addDistillationRecipe(input, amount, ticks, euPerTick, itemStack, outputs);
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
-                    .ii(INT_CIRCUITS.get(i + 1).setNoConsume())
+                    .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).setNoConsume())
                     .fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);
@@ -175,7 +175,7 @@ public class DistillationTowerLoader {
     private static void addDistillingRecipe(Material input, int amount, int ticks, int euPerTick, ItemStack itemStack, FluidProduct... outputs){
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
-                    .ii(INT_CIRCUITS.get(i + 1).setNoConsume())
+                    .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).setNoConsume())
                     .fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);

@@ -1,8 +1,8 @@
 package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.github.gregtechintergalactical.gtcore.item.ItemSelectorTag;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.IComponentHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
@@ -21,7 +21,6 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
@@ -31,8 +30,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 import tesseract.api.heat.IHeatHandler;
-
-import java.util.Optional;
 
 import static muramasa.gregtech.data.Materials.*;
 
@@ -187,7 +184,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE) return stack.getItem() instanceof ItemIntCircuit;
+        if (slotType == SlotType.STORAGE) return stack.getItem() instanceof ItemSelectorTag;
         return true;
     }
 
@@ -195,7 +192,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     public void onMachineEvent(IMachineEvent event, Object... data) {
         if (event == SlotType.STORAGE){
             ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0)).orElse(ItemStack.EMPTY);
-            if (circuit.getItem() instanceof ItemIntCircuit circuit1){
+            if (circuit.getItem() instanceof ItemSelectorTag circuit1){
                 superheatedThreshold = 80000 - (circuit1.circuitId * 3000);
                 efficiency = 1000 - (circuit1.circuitId * 15);
             } else {

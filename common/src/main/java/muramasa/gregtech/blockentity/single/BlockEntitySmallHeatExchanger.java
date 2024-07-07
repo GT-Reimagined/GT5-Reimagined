@@ -1,38 +1,19 @@
 package muramasa.gregtech.blockentity.single;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.ICanSyncData;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.gui.widget.InfoRenderWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
-import muramasa.antimatter.machine.event.IMachineEvent;
-import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.items.ItemIntCircuit;
-import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
-import tesseract.api.heat.IHeatHandler;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.gregtech.data.Materials.*;

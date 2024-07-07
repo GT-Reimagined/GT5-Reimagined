@@ -1,6 +1,7 @@
 package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import io.github.gregtechintergalactical.gtcore.item.ItemSelectorTag;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
@@ -11,14 +12,12 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.data.GregTechBlocks;
-import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -67,7 +66,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 super.checkRecipe();
                 itemHandler.ifPresent(i -> {
                     ItemStack circuit = i.getHandler(SlotType.STORAGE).getItem(0);
-                    if (circuit.getItem() instanceof ItemIntCircuit intCircuit){
+                    if (circuit.getItem() instanceof ItemSelectorTag intCircuit){
                         if (intCircuit.circuitId > 0 && intCircuit.circuitId <= 24){
                             integratedCircuitConfig = intCircuit.circuitId;
                         }

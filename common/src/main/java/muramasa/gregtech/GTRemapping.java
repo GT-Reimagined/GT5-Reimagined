@@ -23,6 +23,9 @@ public class GTRemapping {
             }
             return r;
         });
+        for (int i = 0; i < 25; i++) {
+            remapGTCore("int_circuit_" + i, "selector_tag_"+i);
+        }
         AntimatterRemapping.remapBlockEntity(new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_polyethylene"), new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_plastic"));
         remap("bath_hv", "bath");
         remap("coke_oven_bronze", "coke_oven");

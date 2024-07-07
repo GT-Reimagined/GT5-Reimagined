@@ -13,7 +13,6 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.items.ItemIntCircuit;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -25,13 +24,11 @@ import java.util.function.Function;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ROTOR;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Materials.*;
 
 public class TierMaps {
 
-    public static final ImmutableMap<Integer, RecipeIngredient> INT_CIRCUITS;
     public static final ImmutableMap<Tier, Material> TIER_MATERIALS;
     public static final ImmutableMap<Tier, Material> TIER_PIPE_MATERIAL;
     public static ImmutableMap<Tier, PipeItemBlock> TIER_WIRES;
@@ -50,13 +47,6 @@ public class TierMaps {
     public static final TriFunction<PipeSize, Tier, Boolean, Object> CABLE_GETTER;
 
     static {
-        {
-            ImmutableMap.Builder<Integer, RecipeIngredient> builder = ImmutableMap.builder();
-            for (int i = 0; i <= 24; i++) {
-                builder.put(i, RecipeIngredient.of(new ItemIntCircuit(GTIRef.ID, "int_circuit_"+i,i),1).setNoConsume());
-            }
-            INT_CIRCUITS = builder.build();
-        }
         {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, WroughtIron);

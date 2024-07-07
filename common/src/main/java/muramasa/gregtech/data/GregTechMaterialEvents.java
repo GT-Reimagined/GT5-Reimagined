@@ -1440,7 +1440,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(EnderEye).asGemBasic(false, ROD_LONG, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         event.setMaterial(EnderPearl).mats(of(Beryllium, 1, Potassium, 4, Nitrogen, 5, Chlorine, 6)).elecTicks(220);
         event.setMaterial(Gold).flags(FOIL, ROD_LONG, WIRE_FINE, GEAR);
-        event.setMaterial(Iron).flags(RING, ROD_LONG, GEAR, FRAME);
+        event.setMaterial(Iron).flags(RING, ROD_LONG, GEAR, FRAME, GEAR_SMALL);
         event.setMaterial(Wood).flags(FRAME);
         event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300, RING);
         event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Lazurite, 12, Sodalite, 2, Pyrite, 1, Calcite, 1));

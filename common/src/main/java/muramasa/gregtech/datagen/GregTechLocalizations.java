@@ -4,17 +4,13 @@ package muramasa.gregtech.datagen;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.items.ItemDepletedRod;
-import muramasa.gregtech.items.ItemIntCircuit;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
-
-import java.util.Locale;
 
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.util.Utils.*;
@@ -351,7 +347,6 @@ public class GregTechLocalizations {
                     .replace("Hv", "(HV)")
                     .replace("Ev", "(EV)")
                     .replace("Iv", "(IV)")));
-            AntimatterAPI.all(ItemIntCircuit.class, domain).forEach(i -> override(i.getDescriptionId(), "Integrated Circuit (" + i.circuitId + ")"));
             AntimatterAPI.all(ItemNuclearFuelRod.class, domain).forEach(i -> override(i.getDescriptionId(), Utils.getLocalizedType(i.getMaterial()) + " Fuel Rod"));
             AntimatterAPI.all(ItemDepletedRod.class, domain).forEach(i -> override(i.getDescriptionId(), "Depleted " + Utils.getLocalizedType(i.getMaterial()) + " Fuel Rod"));
             String[] fluids = new String[]{"hot_molten_lithium_chloride", "hot_molten_tin", "hot_molten_sodium"};

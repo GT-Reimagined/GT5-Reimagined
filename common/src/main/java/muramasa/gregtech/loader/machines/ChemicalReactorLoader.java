@@ -10,13 +10,13 @@ import muramasa.gregtech.data.GregTechTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CHEMICAL_REACTOR;
-import static muramasa.gregtech.data.TierMaps.INT_CIRCUITS;
 
 public class ChemicalReactorLoader {
 
@@ -41,10 +41,10 @@ public class ChemicalReactorLoader {
         //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000),VinylChloride.getGas(1000)).fo(PolyvinylChloride.getLiquid(1500)).add("vinylchloride_to_polyvinylchloride_1",1120, 30);
         //POLYTETRAFLUOROETHYLENE
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000),Tetrafluoroethylene.getGas(144)).fo(Polytetrafluoroethylene.getLiquid(216)).add("tetrafluoroethylene_to_polytetrafluoroethylene",160, 30);
-        //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000),Tetrafluoroethylene.getGas(1000)).ii(INT_CIRCUITS.get(2)).fo(Polytetrafluoroethylene.getLiquid(1500)).add("tetrafluoroethylene_to_polytetrafluoroethylene_1",1120, 30);
+        //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(7000),Tetrafluoroethylene.getGas(1000)).ii(SELECTOR_TAG_INGREDIENTS.get(2)).fo(Polytetrafluoroethylene.getLiquid(1500)).add("tetrafluoroethylene_to_polytetrafluoroethylene_1",1120, 30);
         CHEMICAL_REACTOR.RB().fi(Naphtha.getLiquid(3000),Fluorine.getGas(1000),Epichlorohydrin.getLiquid(432)).fo(Polytetrafluoroethylene.getLiquid(432)).add("tetrafluoroethylene_to_polytetrafluoroethylene_2",240, 256);
         //POLYSTYRENE
-        //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000),Styrene.getLiquid(144)).ii(INT_CIRCUITS.get(1)).fo(Polystyrene.getLiquid(216)).add("styrene_to_polystyrene",160, 30);
+        //CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000),Styrene.getLiquid(144)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).fo(Polystyrene.getLiquid(216)).add("styrene_to_polystyrene",160, 30);
         //TETRAFLUOROETHYLENE
         CHEMICAL_REACTOR.RB().fi(Fluorine.getGas(2000),Ethylene.getGas(1000)).fo(Tetrafluoroethylene.getGas(3000)).add("ethylene_to_tetrafluoroethylene",180, 180);
         //EPICHLOROHYDRIN
@@ -87,7 +87,7 @@ public class ChemicalReactorLoader {
         //ETHYLENE
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).fo(Ethylene.getGas(2000), DilutedSulfuricAcid.getLiquid(3000)).add("ethylene_2",400, 120);
         //ACETIC ACID
-        CHEMICAL_REACTOR.RB().ii(INT_CIRCUITS.get(9)).fi(Oxygen.getGas(1000), Ethylene.getGas(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid",50, 30);
+        CHEMICAL_REACTOR.RB().ii(SELECTOR_TAG_INGREDIENTS.get(9)).fi(Oxygen.getGas(1000), Ethylene.getGas(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid",50, 30);
         CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Methanol.getLiquid(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid_1",150, 30);
         CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Hydrogen.getGas(1000)).fo(AceticAcid.getLiquid(2000)).add("acetic_acid_2",80, 30);
         //METHANOL
@@ -167,9 +167,9 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(500), Ethylene.getGas(3000), AceticAcid.getLiquid(4000)).fo(VinylAcetate.getLiquid(6000)).add("vinyl_acetate", 90, 30, -1);
         addPolymerRecipe(VinylAcetate, PolyvinylAcetate);
         //CHLOROFORM
-        CHEMICAL_REACTOR.RB().fi(Methane.getGas(6000), Chlorine.getGas(5000)).ii(INT_CIRCUITS.get(13)).fo(HydrochloricAcid.getLiquid(6000), Chloroform.getLiquid(5000)).add("hydrochloric_acid_1", 16, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(Methane.getGas(6000), Chlorine.getGas(5000)).ii(SELECTOR_TAG_INGREDIENTS.get(13)).fo(HydrochloricAcid.getLiquid(6000), Chloroform.getLiquid(5000)).add("hydrochloric_acid_1", 16, 30, -1);
         //CHLOROBENZENE
-        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(6000)).ii(INT_CIRCUITS.get(4)).fo(Chlorobenzene.getLiquid(6000), HydrochloricAcid.getLiquid(1000)).add("chlorobenzene", 120, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(6000)).ii(SELECTOR_TAG_INGREDIENTS.get(4)).fo(Chlorobenzene.getLiquid(6000), HydrochloricAcid.getLiquid(1000)).add("chlorobenzene", 120, 30, -1);
         //HYPOCHLOROUS ACID
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Water.getLiquid(1000)).fo(HydrochloricAcid.getLiquid(1000), HypochlorousAcid.getLiquid(1000)).add("hypochlorous_acid", 60, 30, -1);
         //EPICHLOROHYDRIN
@@ -194,7 +194,7 @@ public class ChemicalReactorLoader {
         //EPOXY RESIN
         CHEMICAL_REACTOR.RB().fi(BisphenolA.getLiquid(12000), Epichlorohydrin.getLiquid(4000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 1)).fo(EpoxyResin.getLiquid(16000), SaltWater.getLiquid(1000)).add("complicated_epoxy_resin", 200, 30, -1);
         //CHLOROMETHANE
-        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(2000), Methane.getGas(5000)).ii(INT_CIRCUITS.get(1)).fo(Chloromethane.getGas(5000), HydrochloricAcid.getLiquid(2000)).add("chloromethane", 80, 30, -1);
+        CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(2000), Methane.getGas(5000)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).fo(Chloromethane.getGas(5000), HydrochloricAcid.getLiquid(2000)).add("chloromethane", 80, 30, -1);
         CHEMICAL_REACTOR.RB().fi(Methanol.getLiquid(6000), HydrochloricAcid.getLiquid(2000)).fo(Chloromethane.getGas(5000), Water.getLiquid(3000)).add("chloromethane_1",160, 30, -1);
         //ALLYL CHLORIDE
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(9000), Chlorine.getGas(2000)).fo(AllylChloride.getLiquid(9000), HydrochloricAcid.getLiquid(2000)).add("hydrochloric_acid_5", 160, 30, -1);
