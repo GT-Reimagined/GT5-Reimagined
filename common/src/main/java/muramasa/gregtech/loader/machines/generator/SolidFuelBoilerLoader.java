@@ -25,6 +25,8 @@ public class SolidFuelBoilerLoader {
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_crushed",90);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.getMaterialTag(Coal), 1)).io(DUST.get(DarkAsh, 1)).add("coal_crushed_purified",200);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_crushed_purified",100);
+        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(Coal), 1)).io(DUST.get(DarkAsh, 1)).add("coal_raw_ore",160);
+        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_raw_ore",80);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_dust",40);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_raw",40);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ForgeCTags.STORAGE_BLOCKS_COAL, 1)).io(DUST.get(DarkAsh, 9)).add("coal_block", 1600);
