@@ -175,6 +175,8 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GregTechCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gold, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.LIGHT_WEIGHTED_PRESSURE_PLATE).add("light_weighted_pressure_plate", 800, 16);
     }
 
     private static void addCoverRecipe(ItemStack cover, Ingredient... inputs){
