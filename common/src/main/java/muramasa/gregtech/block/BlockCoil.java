@@ -24,7 +24,7 @@ public class BlockCoil extends BlockBasic {
     }
 
     public BlockCoil(String domain, String id, CoilData coilData) {
-        this(domain, id, coilData, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).isValidSpawn((blockState, blockGetter, blockPos, object) -> false));
+        this(domain, id, coilData, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).isValidSpawn((blockState, blockGetter, blockPos, object) -> false).requiresCorrectToolForDrops());
     }
 
     public CoilData getCoilData() {
