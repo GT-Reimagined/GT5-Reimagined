@@ -394,7 +394,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                 }
                 if (isExploding && !itemHandler.get().getHandler(SlotType.STORAGE).isEmpty()){
                     level.playSound(null, pos, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                    /*tCalc *= 2;
+                    tCalc *= 2;
                     setRod(0, ItemStack.EMPTY);
                     setRod(1, ItemStack.EMPTY);
                     setRod(2, ItemStack.EMPTY);
@@ -402,7 +402,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     for (LivingEntity tEntity : level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.offset(-500, 0, -500).atY(level.getMinBuildHeight()), pos.offset(500, 0, 500).atY(level.getMaxBuildHeight())))){
                         int tStrength = CodeUtils.bindInt((long)(tCalc - tEntity.distanceToSqr(pos.getX(), pos.getY(), pos.getZ())));
                         if (tStrength > 0) Utils.applyRadioactivity(tEntity, (int)CodeUtils.divup(tStrength, 10), tStrength);
-                    }*/
+                    }
                 }
 
             }
