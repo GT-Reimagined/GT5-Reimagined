@@ -381,17 +381,20 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     isExploding = true;
                 } else {
                     tEnergy = handler.getHeat() / heatPerCoolant;
+                    int multiplier = hotCoolant == Steam ? 160 : 1;
                     int toFill = hotCoolant == Steam ? tEnergy * 160 : tEnergy;
-                    FluidHolder fluidHolder = hotCoolant.has(AntimatterMaterialTypes.GAS) ? hotCoolant.getGas(toFill) : hotCoolant.getLiquid(toFill);
-                    if (coldCoolant.getFluidAmount() >= tEnergy * TesseractGraphWrappers.dropletMultiplier && fluidHandler1.fillOutput(fluidHolder.copyHolder(), true) == toFill * TesseractGraphWrappers.dropletMultiplier){
-                        fluidHandler1.fillOutput(fluidHolder, false);
-                        handler.extractInternal(tEnergy * heatPerCoolant, false);
-                        fluidHandler1.drainInput(tEnergy * TesseractGraphWrappers.dropletMultiplier, false);
-                    } else if (tEnergy > 0) isExploding = true;
+                    if (tEnergy > 0){
+                        FluidHolder fluidHolder = hotCoolant.has(AntimatterMaterialTypes.GAS) ? hotCoolant.getGas(tEnergy * multiplier) : hotCoolant.getLiquid(tEnergy);
+                        if (coldCoolant.getFluidAmount() >= tEnergy * TesseractGraphWrappers.dropletMultiplier && fluidHandler1.fillOutput(fluidHolder.copyHolder(), true) == tEnergy * multiplier * TesseractGraphWrappers.dropletMultiplier){
+                            fluidHandler1.fillOutput(fluidHolder, false);
+                            handler.extractInternal(tEnergy * heatPerCoolant, false);
+                            fluidHandler1.drainInput(tEnergy * TesseractGraphWrappers.dropletMultiplier, false);
+                        }
+                    }
                 }
                 if (isExploding && !itemHandler.get().getHandler(SlotType.STORAGE).isEmpty()){
                     level.playSound(null, pos, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                    tCalc *= 2;
+                    /*tCalc *= 2;
                     setRod(0, ItemStack.EMPTY);
                     setRod(1, ItemStack.EMPTY);
                     setRod(2, ItemStack.EMPTY);
@@ -399,7 +402,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     for (LivingEntity tEntity : level.getEntitiesOfClass(LivingEntity.class, new AABB(pos.offset(-500, 0, -500).atY(level.getMinBuildHeight()), pos.offset(500, 0, 500).atY(level.getMaxBuildHeight())))){
                         int tStrength = CodeUtils.bindInt((long)(tCalc - tEntity.distanceToSqr(pos.getX(), pos.getY(), pos.getZ())));
                         if (tStrength > 0) Utils.applyRadioactivity(tEntity, (int)CodeUtils.divup(tStrength, 10), tStrength);
-                    }
+                    }*/
                 }
 
             }

@@ -211,7 +211,7 @@ public class Guis {
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
         NAQUADAH_GENERATOR.add(BASIC_TANK.getSlots());
-        NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43);
+        NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43).add(FL_IN, 70, 61).add(FL_OUT, 88, 61);
         SMALL_HEAT_EXCHANGER.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_IN, 44, 63).add(FL_IN, 62, 63)
                 .add(FL_OUT,107,63).add(FL_OUT,125,63);
 
