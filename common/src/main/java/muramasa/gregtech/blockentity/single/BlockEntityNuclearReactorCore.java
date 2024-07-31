@@ -387,7 +387,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                         fluidHandler1.fillOutput(fluidHolder, false);
                         handler.extractInternal(tEnergy * heatPerCoolant, false);
                         fluidHandler1.drainInput(tEnergy * TesseractGraphWrappers.dropletMultiplier, false);
-                    } else isExploding = true;
+                    } else if (tEnergy > 0) isExploding = true;
                 }
                 if (isExploding && !itemHandler.get().getHandler(SlotType.STORAGE).isEmpty()){
                     level.playSound(null, pos, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
