@@ -44,6 +44,8 @@ import org.apache.logging.log4j.Logger;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
+
 public class GregTech extends AntimatterMod {
 
     public static GregTech INSTANCE;
@@ -225,7 +227,7 @@ public class GregTech extends AntimatterMod {
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     l.add(GTCoreItems.BatteryRE);
                     if (!GregTechConfig.HARDER_CIRCUITS){
-                        l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic));
+                        l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic, PLATE.get(Materials.FiberReinforcedEpoxyResin)));
                         l.addAll(Arrays.asList(GregTechItems.CircuitWetware, GregTechItems.MicroProcessor, GregTechItems.IntegratedProcessor, GregTechItems.NanoProcessor, GregTechItems.QuantumProcessor));
                     }
                 });
