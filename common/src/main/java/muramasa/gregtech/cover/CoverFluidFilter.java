@@ -2,6 +2,7 @@ package muramasa.gregtech.cover;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
@@ -47,7 +48,9 @@ public class CoverFluidFilter extends CoverFilter {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 blacklist = !blacklist;
-                this.handler.getTile().setChanged();
+                if (this.handler.getTile() instanceof BlockEntityBase<?> base){
+                    base.sidedSync(true);
+                }
             } else if (ev.data[1] == 1){
                 if (filterMode == 0){
                     filterMode = 1;
@@ -56,7 +59,9 @@ public class CoverFluidFilter extends CoverFilter {
                 } else {
                     filterMode = 0;
                 }
-                this.handler.getTile().setChanged();
+                if (this.handler.getTile() instanceof BlockEntityBase<?> base){
+                    base.sidedSync(true);
+                }
             }
         }
     }

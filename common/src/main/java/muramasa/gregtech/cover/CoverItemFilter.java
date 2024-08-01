@@ -1,5 +1,6 @@
 package muramasa.gregtech.cover;
 
+import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
@@ -86,10 +87,14 @@ public class CoverItemFilter extends CoverFilter {
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
                 blacklist = !blacklist;
-                this.handler.getTile().setChanged();
+                if (this.handler.getTile() instanceof BlockEntityBase<?> base){
+                    base.sidedSync(true);
+                }
             } else if (ev.data[1] == 1){
                 ignoreNBT = !ignoreNBT;
-                this.handler.getTile().setChanged();
+                if (this.handler.getTile() instanceof BlockEntityBase<?> base){
+                    base.sidedSync(true);
+                }
             } else if (ev.data[1] == 2){
                 if (filterMode == 0){
                     filterMode = 1;
@@ -98,7 +103,9 @@ public class CoverItemFilter extends CoverFilter {
                 } else {
                     filterMode = 0;
                 }
-                this.handler.getTile().setChanged();
+                if (this.handler.getTile() instanceof BlockEntityBase<?> base){
+                    base.sidedSync(true);
+                }
             }
         }
     }

@@ -56,7 +56,7 @@ public class GregTechCovers {
                         }
                     }
                 }
-            }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter")).gui().build(GTIRef.ID, "item_filter");
+            }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/item_filter"), new Texture(GTIRef.ID, "block/cover/item_filter_inverted")).gui().build(GTIRef.ID, "item_filter");
     public static final CoverFactory COVER_FLUID_FILTER = CoverFactory.builder(CoverFluidFilter::new).item((a, b) ->
             new ItemCoverCustomTooltip(GTIRef.ID, "fluid_filter", (stack, world, tooltip, flag) -> {
                 CompoundTag nbt = stack.getTag();
@@ -76,7 +76,7 @@ public class GregTechCovers {
                         }
                     }
                 }
-            }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_filter")).gui().build(GTIRef.ID, "fluid_filter");
+            }).tip("Can be placed as cover")).addTextures(new Texture(GTIRef.ID, "block/cover/fluid_filter"),new Texture(GTIRef.ID, "block/cover/fluid_filter_inverted")).gui().build(GTIRef.ID, "fluid_filter");
     public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");

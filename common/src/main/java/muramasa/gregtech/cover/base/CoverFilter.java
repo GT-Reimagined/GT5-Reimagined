@@ -1,14 +1,18 @@
 package muramasa.gregtech.cover.base;
 
+import muramasa.antimatter.capability.CoverHandler;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.texture.Texture;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.BiConsumer;
 
 public class CoverFilter extends BaseCover {
     protected boolean blacklist = false;
@@ -57,10 +61,24 @@ public class CoverFilter extends BaseCover {
         this.blacklist = nbt.getBoolean("blacklist");
         this.ignoreNBT = nbt.getBoolean("ignoreNBT");
         this.filterMode = nbt.getByte("filterMode");
+        if (this.handler.getTile().getLevel() != null && this.handler.getTile().getLevel().isClientSide()) {
+            if (this.handler instanceof CoverHandler<?> coverHandler && coverHandler.coverTexturer != null && coverHandler.coverTexturer.get(this.side) != null){
+                coverHandler.coverTexturer.get(this.side).invalidate();
+            }
+        }
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
+    }
+
+    @Override
+    public void setTextures(BiConsumer<String, Texture> texer) {
+        if (factory.getTextures().size() == 2){
+            texer.accept("overlay", factory.getTextures().get(blacklist ? 1 : 0));
+        } else {
+            super.setTextures(texer);
+        }
     }
 }
