@@ -134,7 +134,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(BlackBronze).asMetal(2000, FRAME);
         event.setMaterial(BlackSteel).asMetal(1200, 1200, FRAME, PLATE).forceBF(false);
         event.setMaterial(BlueSteel).asMetal(1400, 1400, FRAME).forceBF(false);
-        event.setMaterial(Brass).asMetal(1170, FRAME, ROD_LONG, PLATE);
+        event.setMaterial(Brass).asMetal(1170, FRAME, ROD_LONG, PLATE, GEAR_SMALL);
         event.setMaterial(Bronze).asMetal(1125, GEAR, FRAME, ROTOR);
         event.setMaterial(CdInAGAlloy).asMetal(752, ROD);
         event.setMaterial(CobaltBrass).asMetal(1500, GEAR);

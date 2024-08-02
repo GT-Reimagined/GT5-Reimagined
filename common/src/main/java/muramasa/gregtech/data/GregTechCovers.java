@@ -10,6 +10,7 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.cover.*;
 import muramasa.gregtech.cover.redstone.CoverNeedsMaintenance;
+import muramasa.gregtech.cover.redstone.CoverProgressSensor;
 import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
 import muramasa.gregtech.items.ItemCoverCustomTooltip;
 import net.minecraft.nbt.CompoundTag;
@@ -83,6 +84,9 @@ public class GregTechCovers {
     public static final CoverFactory COVER_NEEDS_MAINTENANCE_COVER = CoverFactory.builder(CoverNeedsMaintenance::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "needs_maintenance_cover");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/needs_maintenance_cover")).build(GTIRef.ID, "needs_maintenance_cover");
+    public static final CoverFactory COVER_PROGRESS_SENSOR = CoverFactory.builder(CoverProgressSensor::new).item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "progress_sensor");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/progress_sensor")).build(GTIRef.ID, "progress_sensor");
     public static final CoverFactory COVER_ENERGY_DETECTOR = CoverFactory.builder(CoverEnergyDetector::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "energy_detector");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/energy_detector")).build(GTIRef.ID, "energy_detector");

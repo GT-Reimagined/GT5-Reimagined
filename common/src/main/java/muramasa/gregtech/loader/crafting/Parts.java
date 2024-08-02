@@ -32,8 +32,7 @@ import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.CIRCUITS_ADVANCED;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.PLATES_IRON_ALUMINIUM;
+import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
@@ -91,6 +90,7 @@ public class Parts {
       provider.shapeless(output, GTIRef.ID, "data_stick_clearing", "data_sticks", new ItemStack(GregTechItems.DataStick), GregTechItems.DataStick);
       provider.shapeless(output, GTIRef.ID, "fluid_filter_reset", "filters", GregTechCovers.COVER_FLUID_FILTER.getItem(), GregTechCovers.COVER_FLUID_FILTER.getItem().getItem());
       provider.shapeless(output, GTIRef.ID, "item_filter_reset", "filters", GregTechCovers.COVER_ITEM_FILTER.getItem(), GregTechCovers.COVER_ITEM_FILTER.getItem().getItem());
+      provider.addItemRecipe(output, "covers", GregTechCovers.COVER_PROGRESS_SENSOR.getItem().getItem(), of('W', CABLE_GETTER.apply(PipeSize.VTINY, LV, false), 'A', PLATE.getMaterialTag(Aluminium), 'G', GEAR_SMALL.getMaterialTag(Brass), 'C', CIRCUITS_GOOD), "WAW", "GCG");
       provider.addItemRecipe(output, "misc", DiamondGrindHead, of('D', DUST.getMaterialTag(Diamond), 'G', GEM.getMaterialTag(Diamond), 'S', PLATE.getMaterialTag(Steel)), "DSD", "SGS", "DSD");
       provider.addItemRecipe(output, "misc", TungstenGrindHead, of('D', PLATE.getMaterialTag(Tungsten), 'G', GEM.getMaterialTag(Diamond), 'S', PLATE.getMaterialTag(Steel)), "DSD", "SGS", "DSD");
       provider.addItemRecipe(output, "hazmat", UniversalHazardSuitMask, of('L', PLATE.getMaterialTag(Lead), 'A', PLATE.getMaterialTag(Aluminium), 'C', Items.CHAINMAIL_HELMET, 'G', Items.GLASS_PANE), "ALA", "LCL", "AGA");
