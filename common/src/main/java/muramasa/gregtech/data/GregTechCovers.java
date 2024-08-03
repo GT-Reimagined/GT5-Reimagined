@@ -9,9 +9,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.cover.*;
-import muramasa.gregtech.cover.redstone.CoverNeedsMaintenance;
-import muramasa.gregtech.cover.redstone.CoverProgressSensor;
-import muramasa.gregtech.cover.redstone.CoverRedstoneMachineController;
+import muramasa.gregtech.cover.redstone.*;
 import muramasa.gregtech.items.ItemCoverCustomTooltip;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -81,6 +79,12 @@ public class GregTechCovers {
     public static final CoverFactory COVER_REDSTONE_MACHINE_CONTROLLER = CoverFactory.builder(CoverRedstoneMachineController::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "redstone_machine_controller");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_machine_controller")).build(GTIRef.ID, "redstone_machine_controller");
+    public static final CoverFactory COVER_REDSTONE_CONDUCTOR_ACCEPT = CoverFactory.builder(CoverRedstoneConductorAccept::new).item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "redstone_conductor_accept");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_conductor_accept")).build(GTIRef.ID, "redstone_conductor_accept");
+    public static final CoverFactory COVER_REDSTONE_CONDUCTOR_EMIT = CoverFactory.builder(CoverRedstoneConductorEmit::new).item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "redstone_conductor_emit");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/redstone_conductor_emit")).build(GTIRef.ID, "redstone_conductor_emit");
     public static final CoverFactory COVER_NEEDS_MAINTENANCE_COVER = CoverFactory.builder(CoverNeedsMaintenance::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "needs_maintenance_cover");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/needs_maintenance_cover")).build(GTIRef.ID, "needs_maintenance_cover");

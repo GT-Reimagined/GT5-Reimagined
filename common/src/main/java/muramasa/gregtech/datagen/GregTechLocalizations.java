@@ -8,6 +8,7 @@ import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
@@ -368,6 +369,8 @@ public class GregTechLocalizations {
             add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
             override(GregTechBlocks.CASING_BRONZE_PLATED_BRICK.getDescriptionId(), "Bronze Plated Bricks");
             override("machine.hull", "%s " + HULL.getLang(locale));
+            override(GregTechCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getDescriptionId(), "Redstone Conductor (Accept)");
+            override(GregTechCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getDescriptionId(), "Redstone Conductor (Emit)");
             HULL.getTiers().forEach(tier -> {
                 override(HULL, tier, tier.getId().toUpperCase() + " " + HULL.getLang(locale));
             });
