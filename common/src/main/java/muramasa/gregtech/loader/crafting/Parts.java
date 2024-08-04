@@ -2,6 +2,7 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
+import io.github.gregtechintergalactical.gtcore.data.GTCoreCables;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.AntimatterAPI;
@@ -91,6 +92,8 @@ public class Parts {
       provider.shapeless(output, GTIRef.ID, "fluid_filter_reset", "filters", GregTechCovers.COVER_FLUID_FILTER.getItem(), GregTechCovers.COVER_FLUID_FILTER.getItem().getItem());
       provider.shapeless(output, GTIRef.ID, "item_filter_reset", "filters", GregTechCovers.COVER_ITEM_FILTER.getItem(), GregTechCovers.COVER_ITEM_FILTER.getItem().getItem());
       provider.addItemRecipe(output, "covers", GregTechCovers.COVER_PROGRESS_SENSOR.getItem().getItem(), of('W', CABLE_GETTER.apply(PipeSize.VTINY, LV, false), 'A', PLATE.getMaterialTag(Aluminium), 'G', GEAR_SMALL.getMaterialTag(Brass), 'C', CIRCUITS_GOOD), "WAW", "GCG");
+      provider.addItemRecipe(output, "covers", GregTechCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "W", "A");
+      provider.addItemRecipe(output, "covers", GregTechCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "A", "W");
       provider.addItemRecipe(output, "misc", DiamondGrindHead, of('D', DUST.getMaterialTag(Diamond), 'G', GEM.getMaterialTag(Diamond), 'S', PLATE.getMaterialTag(Steel)), "DSD", "SGS", "DSD");
       provider.addItemRecipe(output, "misc", TungstenGrindHead, of('D', PLATE.getMaterialTag(Tungsten), 'G', GEM.getMaterialTag(Diamond), 'S', PLATE.getMaterialTag(Steel)), "DSD", "SGS", "DSD");
       provider.addItemRecipe(output, "hazmat", UniversalHazardSuitMask, of('L', PLATE.getMaterialTag(Lead), 'A', PLATE.getMaterialTag(Aluminium), 'C', Items.CHAINMAIL_HELMET, 'G', Items.GLASS_PANE), "ALA", "LCL", "AGA");
