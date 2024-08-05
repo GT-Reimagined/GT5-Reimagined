@@ -3,6 +3,7 @@ package muramasa.gregtech.data;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidItemHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
@@ -24,6 +25,9 @@ public class GregTechCovers {
     public static final CoverFactory COVER_ITEM_REGULATOR = CoverFactory.builder(CoverItemRegulator::new).gui().item((a, b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %dt(%ss), with configurable stack size limits (as Cover)", CoverConveyor.speeds.get(b), (float)CoverConveyor.speeds.get(b) / 20))
     ).addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "item_regulator");
+    public static final CoverFactory COVER_ITEM_RETRIEVER = CoverFactory.builder(CoverItemRetriever::new).item((a, b) -> {
+        return new ItemCover(GTIRef.ID, "item_retriever");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/item_retriever")).setIsValid(b -> b instanceof BlockEntityItemPipe<?>).build(GTIRef.ID, "item_retriever");
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a, b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/t (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "pump");
