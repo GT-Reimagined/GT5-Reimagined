@@ -95,6 +95,15 @@ public class GregTechCovers {
     public static final CoverFactory COVER_PROGRESS_SENSOR = CoverFactory.builder(CoverProgressSensor::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "progress_sensor");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/progress_sensor")).build(GTIRef.ID, "progress_sensor");
+    public static final CoverFactory COVER_ACTIVITY_DETECTOR_PROCESSING = CoverFactory.builder(CoverActivityDetectorProcessing::new).item((a,b) -> {
+        return new ItemCover(GTIRef.ID, "activity_detector_processing");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/activity_detector_processing")).build(GTIRef.ID, "activity_detector_processing");
+    public static final CoverFactory COVER_ACTIVITY_DETECTOR_SUCCESSFUL = CoverFactory.builder(CoverActivityDetectorSuccessful::new).item((a,b) -> {
+        return new ItemCover(GTIRef.ID, "activity_detector_successful");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/activity_detector_successful")).build(GTIRef.ID, "activity_detector_successful");
+    public static final CoverFactory COVER_ACTIVITY_DETECTOR_POSSIBLE = CoverFactory.builder(CoverActivityDetectorPossible::new).item((a,b) -> {
+        return new ItemCover(GTIRef.ID, "activity_detector_possible");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/activity_detector_possible")).build(GTIRef.ID, "activity_detector_possible");
     public static final CoverFactory COVER_ENERGY_DETECTOR = CoverFactory.builder(CoverEnergyDetector::new).item((a, b) -> {
         return new ItemCover(GTIRef.ID, "energy_detector");
     }).addTextures(new Texture(GTIRef.ID, "block/cover/energy_detector")).build(GTIRef.ID, "energy_detector");

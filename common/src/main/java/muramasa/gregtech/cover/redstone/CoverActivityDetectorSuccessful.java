@@ -16,10 +16,10 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class CoverActivityDetectorRecipeFinish extends CoverBasicRedstoneOutput {
+public class CoverActivityDetectorSuccessful extends CoverBasicRedstoneOutput {
     boolean redstoneNextTick = false;
 
-    public CoverActivityDetectorRecipeFinish(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
+    public CoverActivityDetectorSuccessful(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
     }
 
