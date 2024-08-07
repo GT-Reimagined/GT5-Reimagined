@@ -94,6 +94,8 @@ public class Parts {
       provider.addItemRecipe(output, "covers", GregTechCovers.COVER_PROGRESS_SENSOR.getItem().getItem(), of('W', CABLE_GETTER.apply(PipeSize.VTINY, LV, false), 'A', PLATE.getMaterialTag(Aluminium), 'G', GEAR_SMALL.getMaterialTag(Brass), 'C', CIRCUITS_GOOD), "WAW", "GCG");
       provider.addItemRecipe(output, "covers", GregTechCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "W", "A");
       provider.addItemRecipe(output, "covers", GregTechCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "A", "W");
+      provider.shapeless(output, GTIRef.ID, "redstone_conductor_accept_conversion", "covers", GregTechCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem(), GregTechCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem());
+      provider.shapeless(output, GTIRef.ID, "redstone_conductor_emit_conversion", "covers", GregTechCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem(), GregTechCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem());
       provider.addItemRecipe(output, "covers", GregTechCovers.COVER_ITEM_RETRIEVER.getItem().getItem(),
               of('C', CIRCUITS_ADVANCED, 'F', GregTechCovers.COVER_ITEM_FILTER.getItem().getItem(), 'E', PLATE.getMaterialTag(Electrum), 'P', PistonLV), "EPE", "CFC");
       provider.addItemRecipe(output, "misc", DiamondGrindHead, of('D', DUST.getMaterialTag(Diamond), 'G', GEM.getMaterialTag(Diamond), 'S', PLATE.getMaterialTag(Steel)), "DSD", "SGS", "DSD");
