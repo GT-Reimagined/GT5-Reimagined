@@ -307,6 +307,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                 }
             }
         } else {
+            if (machineState == MachineState.DISABLED) return;
             if (level.getGameTime() % 20 == 19) {
                 updateReactorRodModeration(0);
                 updateReactorRodModeration(1);
