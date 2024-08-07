@@ -233,6 +233,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     }
                     setRod(tSlot, ItemStack.EMPTY);
                     Utils.damageStack(held, player);
+                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
+                    return InteractionResult.SUCCESS;
                 }
             }
         }
