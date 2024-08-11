@@ -23,6 +23,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.network.AntimatterNetwork;
 import muramasa.antimatter.pipe.TileTicker;
+import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
@@ -54,6 +55,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractGraphWrappers;
 import tesseract.api.item.ExtendedItemContainer;
+
+import java.util.function.Function;
 
 import static muramasa.antimatter.Ref.B;
 import static muramasa.gregtech.data.Materials.*;
@@ -249,6 +252,14 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
     @Override
     public void onUnregisterPost() {
 
+    }
+
+    @Override
+    public Function<Direction, Texture> getMultiTexture() {
+        return direction -> {
+            Direction direction1 = coverHandler.map(c -> c.get(direction).isEmpty() ? direction : Direction.UP).orElse(direction);
+            return type.getBaseTexture(this.tier, direction1, this.machineState);
+        };
     }
 
     @Override

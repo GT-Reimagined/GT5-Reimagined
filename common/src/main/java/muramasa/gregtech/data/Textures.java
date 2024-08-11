@@ -145,14 +145,23 @@ public class Textures {
         };
     };
 
+    public static final ITextureHandler REACTOR_CORE_BASE_HANDLER = (m, t, s) -> new Texture[] {
+            new Texture(GTIRef.ID, "block/machine/base/" + m.getId()),
+            new Texture(GTIRef.ID, "block/machine/base/" + m.getId()),
+            new Texture(GTIRef.ID, "block/machine/base/" + m.getId() + "_window"),
+            new Texture(GTIRef.ID, "block/machine/base/" + m.getId() + "_window"),
+            new Texture(GTIRef.ID, "block/machine/base/" + m.getId() + "_window"),
+            new Texture(GTIRef.ID, "block/machine/base/" + m.getId() + "_window"),
+    };
+
     public static final IOverlayTexturer REACTOR_CORE_OVERLAY_HANDLER = (type, state, tier, i) -> {
         return new Texture[] {
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
                 new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "top"),
-                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
-                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
-                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
-                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side_window"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side_window"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side_window"),
+                new Texture(type.getDomain(), "block/machine/overlay/" + type.getId() + "/" + "side_window"),
         };
     };
 
