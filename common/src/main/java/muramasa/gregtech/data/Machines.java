@@ -328,7 +328,7 @@ public class Machines {
             if (machine instanceof BlockEntityNuclearReactorCore core){
                 if (i < 5){
                     boolean on = core.getMachineState() == MachineState.ACTIVE && (core.mode & Ref.B[slot]) == 0;
-                    return on ? Lead.getRGB() : -1;
+                    return on ? -1 : Lead.getRGB();
                 } else {
                     ItemStack rod = core.getRod(slot);
                     if (!rod.isEmpty() && rod.getItem() instanceof IItemReactorRod reactorRod){
