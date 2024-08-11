@@ -257,8 +257,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
     @Override
     public Function<Direction, Texture> getMultiTexture() {
         return direction -> {
-            Direction direction1 = coverHandler.map(c -> c.get(direction).isEmpty() ? direction : Direction.UP).orElse(direction);
-            return type.getBaseTexture(this.tier, direction1, this.machineState);
+            return type.getBaseTexture(this.tier, UP, this.machineState);
         };
     }
 

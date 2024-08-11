@@ -7,6 +7,7 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import muramasa.gregtech.blockentity.single.BlockEntitySteamMachine;
 import net.fabricmc.api.EnvType;
@@ -39,7 +40,7 @@ public class CoverReactorOutput extends CoverOutput {
     @Override
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;
-        return getBasicModel();
+        return new ResourceLocation(GTIRef.ID + ":block/cover/nuclear");
     }
 
     @Override
