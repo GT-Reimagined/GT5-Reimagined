@@ -40,7 +40,12 @@ public class ReactorModelLoader extends AntimatterModelLoader<ReactorModel> {
         //northwest is 0, southwest is 1, northeast is 2, southeast is 3
         for (int i = 0; i < 4; i++) {
             ResourceLocation modelLocation = new ResourceLocation(GTIRef.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
-            rods[i] = ModelUtils.getModel(modelLocation);
+            try {
+                rods[i] = ModelUtils.getModel(modelLocation);
+            } catch (IllegalStateException e){
+                rods[i] = ModelUtils.getModel(modelLocation);
+            }
+
         }
         return new ReactorModel(m, particle, rods);
     }
