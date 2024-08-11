@@ -33,7 +33,7 @@ public class ReactorBakedModel extends MachineBakedModel {
     @Override
     public List<BakedQuad> getBlockQuads(BlockState state, Direction side, Random rand, BlockAndTintGetter level, @NotNull BlockPos pos) {
         List<BakedQuad> superBlockQuads = super.getBlockQuads(state, side, rand, level, pos);
-        if (side == null){
+        if (side == Direction.UP){
             List<BakedQuad> list = new ArrayList<>();
             BlockEntity tile = level.getBlockEntity(pos);
             if (!(tile instanceof BlockEntityNuclearReactorCore core)) return Collections.emptyList();
@@ -46,6 +46,7 @@ public class ReactorBakedModel extends MachineBakedModel {
                 }
                 list.addAll(ModelUtils.getQuadsFromBaked(model, state, null, rand, level, pos));
             }
+            list.addAll(superBlockQuads);
             return list;
         }
         return superBlockQuads;

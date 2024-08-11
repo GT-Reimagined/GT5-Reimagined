@@ -19,6 +19,7 @@ import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.block.BlockAsphalt;
+import muramasa.gregtech.client.GregTechModelManager;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
@@ -242,7 +243,10 @@ public class GregTech extends AntimatterMod {
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();
             }
-            case CLIENT_DATA_INIT -> ClientData.init();
+            case CLIENT_DATA_INIT -> {
+                ClientData.init();
+                GregTechModelManager.init();
+            }
         }
     }
 
