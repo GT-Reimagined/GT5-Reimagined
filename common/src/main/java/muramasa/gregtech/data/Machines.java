@@ -99,19 +99,19 @@ public class Machines {
     public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.add(Utils.translatable("machine.upgraded_batch.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
     });
-    public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids().custom();
+    public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids(true).custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GTIRef.ID, "circuit_assembler").setMap(RecipeMaps.CIRCUIT_ASSEMBLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine COMPRESSOR = new BasicMachine(GTIRef.ID, "compressor").setMap(RecipeMaps.COMPRESSOR).addFlags(GUI, ITEM);
     public static BasicMachine CRYSTALLIZATION_CHAMBER = new BasicMachine(GTIRef.ID, "crystallization_chamber").setMap(RecipeMaps.CRYSTALLIZATION_CHAMBER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine CUTTER = new BasicMachine(GTIRef.ID, "cutter").setMap(RecipeMaps.CUTTER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DISASSEMBLER = new BasicMachine(GTIRef.ID, "disassembler").setMap(RecipeMaps.DISASSEMBLER).addFlags(GUI, ITEM).custom();
-    public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids().setSound(GregTechSounds.EXTRACTOR,  0.6f);
+    public static BasicMachine DISTILLERY = new BasicMachine(GTIRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids(true).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine ELECTRIC_OVEN = new BasicMachine(GTIRef.ID, "electric_oven").setMap(RecipeMaps.ELECTRIC_OVEN).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE, 0.6f);
     public static BasicMachine ELECTROLYZER = new BasicMachine(GTIRef.ID, "electrolyzer").setMap(RecipeMaps.ELECTROLYZER).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.MAGNETIZER, 0.6f);
     public static BasicMachine ELECTROMAGNETIC_SEPARATOR = new BasicMachine(GTIRef.ID, "electromagnetic_separator").setMap(RecipeMaps.ELECTROMAGNETIC_SEPARATOR).addFlags(GUI, ITEM);
     public static BasicMachine EXTRACTOR = new BasicMachine(GTIRef.ID, "extractor").setMap(RecipeMaps.EXTRACTOR).addFlags(GUI, ITEM).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine EXTRUDER = new BasicMachine(GTIRef.ID, "extruder").setMap(RecipeMaps.EXTRUDER).addFlags(GUI, ITEM).custom();
-    public static BasicMachine FERMENTER = new BasicMachine(GTIRef.ID, "fermenter").setMap(RecipeMaps.FERMENTER).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids();
+    public static BasicMachine FERMENTER = new BasicMachine(GTIRef.ID, "fermenter").setMap(RecipeMaps.FERMENTER).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids(true);
     public static BasicMachine FLUID_CANNER = new BasicMachine(GTIRef.ID, "fluid_canner").setMap(RecipeMaps.FLUID_CANNER).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.EXTRACTOR,  0.6f);
     public static BasicMachine FLUID_PRESS = new BasicMachine(GTIRef.ID, "fluid_press").setMap(RecipeMaps.FLUID_PRESS).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine FLUID_HEATER = new BasicMachine(GTIRef.ID, "fluid_heater").setMap(RecipeMaps.FLUID_HEATER).addFlags(GUI, ITEM, FLUID);
@@ -205,7 +205,7 @@ public class Machines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
-    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).removeFlags(EU).setTiers(NONE).addFlags(GUI, ITEM, FLUID, UNCULLED).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(Textures.REACTOR_CORE_BASE_HANDLER).modelLoader(GregTechModelManager.LOADER_REACTOR).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(Machines::getBlockColorNuclear).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GTIRef.ID, "nuclear_reactor_core").setSecondaryOutputCover(COVER_REACTOR_OUTPUT_SECONDARY).removeFlags(EU).setTiers(NONE).addFlags(GUI, ITEM, FLUID, UNCULLED).renderContainedLiquids(false).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(Textures.REACTOR_CORE_BASE_HANDLER).modelLoader(GregTechModelManager.LOADER_REACTOR).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(Machines::getBlockColorNuclear).itemColorHandler((stack, block, i) -> i == 0 ? Lead.getRGB() : -1).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GregTechCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GregTechCovers.COVER_REACTOR_OUTPUT, GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
     public static BasicMachine SMALL_HEAT_EXCHANGER = new SecondaryOutputMachine(GTIRef.ID, "small_heat_exchanger").setSecondaryOutputCover(COVER_OUTPUT_SECONDARY).removeFlags(EU).covers(ICover.emptyFactory, ICover.emptyFactory, ICover.emptyFactory, COVEROUTPUT, COVER_OUTPUT_SECONDARY, ICover.emptyFactory).setTiers(NONE).baseTexture(new Texture(GTIRef.ID, "block/machine/base/small_heat_exchanger")).setMap(HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySmallHeatExchanger::new).frontCovers().allowFrontIO();
 
     /**
