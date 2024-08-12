@@ -61,7 +61,7 @@ public class CoverFilter extends BaseCover {
         this.blacklist = nbt.getBoolean("blacklist");
         this.ignoreNBT = nbt.getBoolean("ignoreNBT");
         this.filterMode = nbt.getByte("filterMode");
-        if (this.handler.getTile().getLevel() != null && this.handler.getTile().getLevel().isClientSide()) {
+        if (this.handler.getTile().getLevel() != null && this.handler.getTile().getLevel().isClientSide() && factory.getTextures().size() == 2) {
             if (this.handler instanceof CoverHandler<?> coverHandler && coverHandler.coverTexturer != null && coverHandler.coverTexturer.get(this.side) != null){
                 coverHandler.coverTexturer.get(this.side).invalidate();
             }

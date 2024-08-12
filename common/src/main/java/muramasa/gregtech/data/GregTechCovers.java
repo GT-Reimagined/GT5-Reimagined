@@ -26,8 +26,25 @@ public class GregTechCovers {
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %dt(%ss), with configurable stack size limits (as Cover)", CoverConveyor.speeds.get(b), (float)CoverConveyor.speeds.get(b) / 20))
     ).addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "item_regulator");
     public static final CoverFactory COVER_ITEM_RETRIEVER = CoverFactory.builder(CoverItemRetriever::new).item((a, b) -> {
-        return new ItemCover(GTIRef.ID, "item_retriever");
-    }).addTextures(new Texture(GTIRef.ID, "block/cover/item_retriever")).setIsValid(b -> b instanceof BlockEntityItemPipe<?>).build(GTIRef.ID, "item_retriever");
+        return new ItemCoverCustomTooltip(GTIRef.ID, "item_filter", (stack, world, tooltip, flag) -> {
+            CompoundTag nbt = stack.getTag();
+            if (nbt != null && nbt.contains("coverInventories")){
+                CompoundTag coverInventories = nbt.getCompound("coverInventories");
+                if (coverInventories.contains("display_settable")){
+                    CompoundTag displayManager = coverInventories.getCompound("display_settable");
+                    if (displayManager.contains("Items")){
+                        ListTag items = displayManager.getList("Items", Tag.TAG_COMPOUND);
+                        if (!items.isEmpty()){
+                            ItemStack contained = ItemStack.of(items.getCompound(0));
+                            if (!contained.isEmpty()){
+                                tooltip.add(contained.getHoverName());
+                            }
+                        }
+                    }
+                }
+            }
+        }).tip("Can be placed as cover");
+    }).addTextures(new Texture(GTIRef.ID, "block/cover/item_retriever")).setIsValid(b -> b instanceof BlockEntityItemPipe<?>).gui().build(GTIRef.ID, "item_retriever");
     public static final CoverFactory COVER_PUMP = CoverFactory.builder(CoverPump::new).gui().item((a, b) ->
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("%d L/t (as Cover)", CoverPump.speeds.get(b))))
             .addTextures(new Texture(GTIRef.ID, "block/cover/pump")).setTiers(Tier.getStandard()).build(GTIRef.ID, "pump");
