@@ -1,5 +1,4 @@
 {
-    "loader": "antimatter:machine_side",
 	"credit": "Made with Blockbench",
 	"elements": [
 		{
@@ -19,8 +18,9 @@
 			}
 		},
 		{
-			"from": [2, 2, 2],
-			"to": [2, 14, 14],
+			"from": [1.99, 2, 2],
+			"to": [1.99, 14, 14],
+			"color": 4,
 			"faces": {
 				"west": {"uv": [2, 2, 14, 14], "texture": "#missing"}
 			}
@@ -35,5 +35,6 @@
 			"color": 0,
 			"children": [2]
 		}
-	]
+	],
+	"loader": "antimatter:machine_side"
 }

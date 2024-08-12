@@ -1,6 +1,5 @@
 {
-	"loader": "antimatter:machine_side",
-    "credit": "Made with Blockbench",
+	"credit": "Made with Blockbench",
 	"elements": [
 		{
 			"from": [14, 0, 0],
@@ -19,9 +18,10 @@
 			}
 		},
 		{
-			"from": [14, 2, 2],
-			"to": [14, 14, 14],
+			"from": [14.01, 2, 2],
+			"to": [14.01, 14, 14],
 			"rotation": {"angle": 0, "axis": "y", "origin": [14, 0, 0]},
+			"color": 1,
 			"faces": {
 				"east": {"uv": [2, 2, 14, 14], "texture": "#missing"}
 			}
@@ -36,5 +36,6 @@
 			"color": 0,
 			"children": [2]
 		}
-	]
+	],
+	"loader": "antimatter:machine_side"
 }
