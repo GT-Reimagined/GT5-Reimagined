@@ -77,12 +77,10 @@ public class CoverItemRetriever extends CoverFilter {
     private boolean itemMatches(ItemStack item, ItemStack filter) {
         boolean empty = filter.isEmpty();
         if (empty) {
-            if (!blacklist) {
-                return true;
-            }
+            return blacklist;
         }
         boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
-        return blacklist == matches;
+        return blacklist != matches;
     }
 
     @Override
