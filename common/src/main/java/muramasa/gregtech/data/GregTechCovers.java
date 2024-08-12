@@ -26,7 +26,7 @@ public class GregTechCovers {
             new ItemCover(a.getDomain(), a.getId(), b).tip(String.format("1 Stack every %dt(%ss), with configurable stack size limits (as Cover)", CoverConveyor.speeds.get(b), (float)CoverConveyor.speeds.get(b) / 20))
     ).addTextures(new Texture(GTIRef.ID, "block/cover/conveyor")).setTiers(Tier.getStandard()).build(GTIRef.ID, "item_regulator");
     public static final CoverFactory COVER_ITEM_RETRIEVER = CoverFactory.builder(CoverItemRetriever::new).item((a, b) -> {
-        return new ItemCoverCustomTooltip(GTIRef.ID, "item_filter", (stack, world, tooltip, flag) -> {
+        return new ItemCoverCustomTooltip(GTIRef.ID, "item_retriever", (stack, world, tooltip, flag) -> {
             CompoundTag nbt = stack.getTag();
             if (nbt != null && nbt.contains("coverInventories")){
                 CompoundTag coverInventories = nbt.getCompound("coverInventories");
