@@ -2,6 +2,7 @@ package muramasa.gregtech.cover;
 
 import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
+import muramasa.antimatter.capability.CoverHandler;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
@@ -10,10 +11,12 @@ import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverFilter;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -25,21 +28,55 @@ import tesseract.util.ItemHandlerUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.function.BiConsumer;
 
-public class CoverItemRetriever extends CoverFilter {
+public class CoverItemRetriever extends BaseCover {
+    protected boolean whitelist = false;
+    protected boolean ignoreNBT = false;
     public CoverItemRetriever(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 79, 53);
         addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> blacklist, true, b -> "tooltip.gti." + (b ? "blacklist" : "whitelist"));
+            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> !whitelist, true, b -> "tooltip.gti." + (b ? "blacklist" : "whitelist"));
             t.addSwitchButton(88, 34, 16, 16, ButtonOverlays.NBT_OFF, ButtonOverlays.NBT_ON, h -> !ignoreNBT, true, b -> "tooltip.gti.nbt." + (b ? "on" : "off"));
         });;
     }
 
     @Override
-    public void clearFilter(){
-        super.clearFilter();
-        getInventory(SlotType.DISPLAY_SETTABLE).clearContent();
+    public ItemStack getDroppedStack() {
+        ItemStack stack =  super.getDroppedStack();
+        stack.getOrCreateTag().putBoolean("whitelist", whitelist);
+        stack.getOrCreateTag().putBoolean("ignoreNBT", ignoreNBT);
+        return stack;
+    }
+
+    @Override
+    public void addInfoFromStack(ItemStack stack) {
+        super.addInfoFromStack(stack);
+        if (stack.getTag() == null) return;
+        CompoundTag tag = stack.getTag();
+        whitelist = tag.getBoolean("whitelist");
+        ignoreNBT = tag.getBoolean("ignoreNBT");
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag tag = super.serialize();
+        tag.putBoolean("whitelist", whitelist);
+        tag.putBoolean("ignoreNBT", ignoreNBT);
+        return tag;
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        this.whitelist = nbt.getBoolean("whitelist");
+        this.ignoreNBT = nbt.getBoolean("ignoreNBT");
+        if (this.handler.getTile().getLevel() != null && this.handler.getTile().getLevel().isClientSide() && factory.getTextures().size() == 2) {
+            if (this.handler instanceof CoverHandler<?> coverHandler && coverHandler.coverTexturer != null && coverHandler.coverTexturer.get(this.side) != null){
+                coverHandler.coverTexturer.get(this.side).invalidate();
+            }
+        }
     }
 
     @Override
@@ -77,10 +114,10 @@ public class CoverItemRetriever extends CoverFilter {
     private boolean itemMatches(ItemStack item, ItemStack filter) {
         boolean empty = filter.isEmpty();
         if (empty) {
-            return blacklist;
+            return !whitelist;
         }
         boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
-        return blacklist != matches;
+        return whitelist == matches;
     }
 
     @Override
@@ -88,7 +125,7 @@ public class CoverItemRetriever extends CoverFilter {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
             if (ev.data[1] == 0){
-                blacklist = !blacklist;
+                whitelist = !whitelist;
                 if (this.handler.getTile() instanceof BlockEntityBase<?> base){
                     base.sidedSync(true);
                 }
@@ -98,6 +135,15 @@ public class CoverItemRetriever extends CoverFilter {
                     base.sidedSync(true);
                 }
             }
+        }
+    }
+
+    @Override
+    public void setTextures(BiConsumer<String, Texture> texer) {
+        if (factory.getTextures().size() == 2){
+            texer.accept("overlay", factory.getTextures().get(whitelist ? 0 : 1));
+        } else {
+            super.setTextures(texer);
         }
     }
 }
