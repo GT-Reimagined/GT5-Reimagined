@@ -15,11 +15,16 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverFilter;
 import muramasa.gregtech.gui.ButtonOverlays;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
@@ -28,6 +33,8 @@ import tesseract.util.ItemHandlerUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
 import java.util.function.BiConsumer;
 
 public class CoverItemRetriever extends BaseCover {
@@ -84,11 +91,40 @@ public class CoverItemRetriever extends BaseCover {
         if (!source().getTile().getLevel().isClientSide() && source().getTile() instanceof BlockEntityItemPipe<?> pipe){
             if (pipe.getLevel().getGameTime() % 20 == 15 && pipe.pipeCapacityCheck()){
                 ArrayList<BlockEntityItemPipe<?>> tUsedPipes = new ArrayList<>();
+                Set<BlockEntityItemPipe<?>> pipes = BlockEntityItemPipe.scanPipes(pipe, new HashMap<>(), 0, true, false).keySet();
+                BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
+                if (state == Blocks.AIR.defaultBlockState()){
+                    for (BlockEntityItemPipe<?> p : pipes){
+                        if (tUsedPipes.add(p)){
+                            for (Direction dir : Direction.values()){
+                                if (p.canAcceptItemsFrom(dir, pipe) && (dir != this.side || p != pipe)){
+                                    BlockEntity a = p.getCachedBlockEntity(dir);
+                                    if (!(a instanceof BlockEntityItemPipe) && a != null){
+                                        PlatformItemHandler itemHandler = TesseractCapUtils.INSTANCE.getItemHandler(a, dir.getOpposite()).orElse(null);
+                                        if (itemHandler != null) {
+                                            Level world = handler.getTile().getLevel();
+                                            BlockPos pos = handler.getTile().getBlockPos();
+                                            ItemStack stack = Utils.extractAny(itemHandler);
+                                            if (!stack.isEmpty()){
+                                                world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
+                                                for (BlockEntityItemPipe<?> tUsedPipe : tUsedPipes) {
+                                                    tUsedPipe.incrementTransferCounter(1);
+                                                }
+                                                return;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    return;
+                }
                 BlockEntity adjacent = pipe.getCachedBlockEntity(this.side);
                 if (adjacent == null) return;
                 PlatformItemHandler to = TesseractCapUtils.INSTANCE.getItemHandler(adjacent, this.side.getOpposite()).orElse(null);
                 if (to == null) return;
-                for (BlockEntityItemPipe<?> p : BlockEntityItemPipe.scanPipes(pipe, new HashMap<>(), 0, true, false).keySet()){
+                for (BlockEntityItemPipe<?> p : pipes){
                     if (tUsedPipes.add(p)){
                         for (Direction dir : Direction.values()){
                             if (p.canAcceptItemsFrom(dir, pipe) && (dir != this.side || p != pipe)){
