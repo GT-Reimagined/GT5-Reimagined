@@ -12,6 +12,7 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverFilter;
 import muramasa.gregtech.gui.ButtonOverlays;
@@ -91,7 +92,7 @@ public class CoverItemRetriever extends BaseCover {
         if (!source().getTile().getLevel().isClientSide() && source().getTile() instanceof BlockEntityItemPipe<?> pipe){
             if (pipe.getLevel().getGameTime() % 20 == 15 && pipe.pipeCapacityCheck()){
                 ArrayList<BlockEntityItemPipe<?>> tUsedPipes = new ArrayList<>();
-                Set<BlockEntityItemPipe<?>> pipes = BlockEntityItemPipe.scanPipes(pipe, new HashMap<>(), 0, true, false).keySet();
+                Set<BlockEntityItemPipe<?>> pipes = CodeUtils.sortByValuesAcending(BlockEntityItemPipe.scanPipes(pipe, new HashMap<>(), 0, true, false)).keySet();
                 BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
                 if (state == Blocks.AIR.defaultBlockState()){
                     for (BlockEntityItemPipe<?> p : pipes){
