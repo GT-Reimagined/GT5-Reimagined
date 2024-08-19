@@ -13,18 +13,24 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
+import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
 import tesseract.api.item.ExtendedItemContainer;
 
@@ -49,6 +55,29 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
                 }
             });
         }
+    }
+
+    @Override
+    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (stack.getItem() == GregTechItems.DataStick){
+            if (stack.getTagElement("displaySlots") == null){
+                CompoundTag displaySlots = stack.getOrCreateTagElement("displaySlots");
+                this.itemHandler.ifPresent(i -> {
+                    i.getHandler(SlotType.DISPLAY_SETTABLE).serialize(displaySlots);
+                });
+                displaySlots.putString("machineType", this.getMachineType().getLoc().toString());
+                return InteractionResult.SUCCESS;
+            } else {
+                CompoundTag displaySlots = stack.getTagElement("displaySlots");
+                if (!displaySlots.isEmpty() && displaySlots.getString("machineType").equals(this.getMachineType().getLoc().toString())){
+                    this.itemHandler.ifPresent(i -> i.getHandler(SlotType.DISPLAY_SETTABLE).deserialize(displaySlots));
+                    return InteractionResult.SUCCESS;
+                }
+
+            }
+        }
+        return super.onInteractServer(state, world, pos, player, hand, hit, type);
     }
 
     @Override
