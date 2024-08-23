@@ -2,6 +2,7 @@ package muramasa.gregtech.cover;
 
 import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
+import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.CoverHandler;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
@@ -48,6 +49,15 @@ public class CoverItemRetriever extends BaseCover {
             t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> !whitelist, true, b -> "tooltip.gti." + (b ? "blacklist" : "whitelist"));
             t.addSwitchButton(88, 34, 16, 16, ButtonOverlays.NBT_OFF, ButtonOverlays.NBT_ON, h -> !ignoreNBT, true, b -> "tooltip.gti.nbt." + (b ? "on" : "off"));
         });;
+    }
+
+    @Override
+    public void onPlace() {
+        super.onPlace();
+        if (handler.getTile().getLevel() == null) return;
+        if (handler.getTile() instanceof BlockEntityPipe<?> pipe){
+            pipe.setConnection(this.side);
+        }
     }
 
     @Override
