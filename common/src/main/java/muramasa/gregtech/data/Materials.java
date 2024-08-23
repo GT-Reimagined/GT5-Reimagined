@@ -7,6 +7,7 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.gregtech.GTIRef;
+import net.minecraft.world.item.DyeColor;
 
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.TextureSet.*;
@@ -400,6 +401,26 @@ public class Materials {
     /**
      *** Fluids
      **/
+
+    /**
+     * Dye Fluids
+     */
+    public static Material WhiteDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "white_dye", DyeColor.WHITE.getTextColor(), NONE));
+    public static Material OrangeDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "orange_dye", DyeColor.ORANGE.getTextColor(), NONE));
+    public static Material MagentaDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "magenta_dye", DyeColor.MAGENTA.getTextColor(), NONE));
+    public static Material LightBlueDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_blue_dye", DyeColor.LIGHT_BLUE.getTextColor(), NONE));
+    public static Material YellowDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "yellow_dye", DyeColor.YELLOW.getTextColor(), NONE));
+    public static Material LimeDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "lime_dye", DyeColor.LIME.getTextColor(), NONE));
+    public static Material PinkDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "pink_dye", DyeColor.PINK.getTextColor(), NONE));
+    public static Material GrayDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "gray_dye", DyeColor.GRAY.getTextColor(), NONE));
+    public static Material LightGrayDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "light_gray_dye", DyeColor.LIGHT_GRAY.getTextColor(), NONE));
+    public static Material CyanDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "cyan_dye", DyeColor.CYAN.getTextColor(), NONE));
+    public static Material PurpleDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "purple_dye", DyeColor.PURPLE.getTextColor(), NONE));
+    public static Material BlueDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "blue_dye", DyeColor.BLUE.getTextColor(), NONE));
+    public static Material BrownDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "brown_dye", DyeColor.BROWN.getTextColor(), NONE));
+    public static Material GreenDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "green_dye", DyeColor.GREEN.getTextColor(), NONE));
+    public static Material RedDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "red_dye", DyeColor.RED.getTextColor(), NONE));
+    public static Material BlackDye = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "black_dye", DyeColor.BLACK.getTextColor(), NONE));
 
     /**
      ** Organic

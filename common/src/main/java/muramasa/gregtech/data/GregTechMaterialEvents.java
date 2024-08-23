@@ -377,6 +377,26 @@ public class GregTechMaterialEvents {
          ***  Fluids
          **/
         /**
+         * Dyes
+         */
+        event.setMaterial(WhiteDye).asFluid();
+        event.setMaterial(OrangeDye).asFluid();
+        event.setMaterial(MagentaDye).asFluid();
+        event.setMaterial(LightBlueDye).asFluid();
+        event.setMaterial(YellowDye).asFluid();
+        event.setMaterial(LimeDye).asFluid();
+        event.setMaterial(PinkDye).asFluid();
+        event.setMaterial(GrayDye).asFluid();
+        event.setMaterial(LightGrayDye).asFluid();
+        event.setMaterial(CyanDye).asFluid();
+        event.setMaterial(PurpleDye).asFluid();
+        event.setMaterial(BlueDye).asFluid();
+        event.setMaterial(BrownDye).asFluid();
+        event.setMaterial(GreenDye).asFluid();
+        event.setMaterial(RedDye).asFluid();
+        event.setMaterial(BlackDye).asFluid();
+
+        /**
          *  Organic
          **/
         event.setMaterial(Acetone).asFluid();

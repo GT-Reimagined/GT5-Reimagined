@@ -12,6 +12,8 @@ import muramasa.gregtech.block.BlockAsphalt;
 import muramasa.gregtech.data.GregTechBlocks;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.GregTechTags;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -88,6 +90,12 @@ public class MixerLoader {
         addAsphaltRecipe(Slate, GregTechBlocks.GRAY_ASPHALT);
         addAsphaltRecipe(Talc, GregTechBlocks.GRAY_ASPHALT);
         addAsphaltRecipe(GreenSchist, GregTechBlocks.GREEN_ASPHALT);
+        for (DyeColor dye : DyeColor.values()) {
+            String dyeName = dye.getName() + "_dye";
+            Material dyeMaterial = Material.get(dyeName);
+            MIXER.RB().ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dyeName))).fi(Water.getLiquid(216)).fo(dyeMaterial.getLiquid(192)).add(dyeName, 16, 4);
+            MIXER.RB().ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dyeName))).fi(Water.getLiquid(288)).fo(dyeMaterial.getLiquid(216)).add(dyeName + "_distilled_water", 16, 4);
+        }
     }
 
     private static void addAsphaltRecipe(Material dust, BlockAsphalt asphalt){
