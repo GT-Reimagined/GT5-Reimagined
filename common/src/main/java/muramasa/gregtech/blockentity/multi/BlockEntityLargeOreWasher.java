@@ -9,6 +9,7 @@ import muramasa.antimatter.gui.widget.InfoRenderWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
+import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
 import net.minecraft.client.gui.Font;
@@ -19,7 +20,13 @@ public class BlockEntityLargeOreWasher extends BlockEntityMultiMachine<BlockEnti
 
     public BlockEntityLargeOreWasher(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 64));
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 64){
+            @Override
+            protected int maxSimultaneousRecipes() {
+                Tier powerLevel = getPowerLevel();
+                return 8 * (1 << powerLevel.getIntegerId());
+            }
+        });
     }
 
 //    @Override
