@@ -42,8 +42,8 @@ public class ReactorModelLoader extends AntimatterModelLoader<ReactorModel> {
             ResourceLocation modelLocation = new ResourceLocation(GTIRef.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
             try {
                 rods[i] = ModelUtils.getModel(modelLocation);
-            } catch (IllegalStateException e){
-                rods[i] = ModelUtils.getModel(modelLocation);
+            } catch (Exception ignored){
+                //rods[i] = ModelUtils.getModel(modelLocation);
             }
 
         }

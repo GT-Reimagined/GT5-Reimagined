@@ -7,6 +7,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.items.*;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 
 import static muramasa.gregtech.data.Materials.*;
@@ -47,6 +48,22 @@ public class GregTechItems {
     public static ItemBasic<?> SensorHV = new ItemBasic<>(GTIRef.ID, "sensor_hv");
     public static ItemBasic<?> SensorEV = new ItemBasic<>(GTIRef.ID, "sensor_ev");
     public static ItemBasic<?> SensorIV = new ItemBasic<>(GTIRef.ID, "sensor_iv");
+    public static ItemBasic<?> WhiteSprayCan = new ItemSprayCan(DyeColor.WHITE);
+    public static ItemBasic<?> OrangeSprayCan = new ItemSprayCan(DyeColor.ORANGE);
+    public static ItemBasic<?> MagentaSprayCan = new ItemSprayCan(DyeColor.MAGENTA);
+    public static ItemBasic<?> LightBlueSprayCan = new ItemSprayCan(DyeColor.LIGHT_BLUE);
+    public static ItemBasic<?> YellowSprayCan = new ItemSprayCan(DyeColor.YELLOW);
+    public static ItemBasic<?> LimeSprayCan = new ItemSprayCan(DyeColor.LIME);
+    public static ItemBasic<?> PinkSprayCan = new ItemSprayCan(DyeColor.PINK);
+    public static ItemBasic<?> GraySprayCan = new ItemSprayCan(DyeColor.GRAY);
+    public static ItemBasic<?> LightGraySprayCan = new ItemSprayCan(DyeColor.LIGHT_GRAY);
+    public static ItemBasic<?> CyanSprayCan = new ItemSprayCan(DyeColor.CYAN);
+    public static ItemBasic<?> PurpleSprayCan = new ItemSprayCan(DyeColor.PURPLE);
+    public static ItemBasic<?> BlueSprayCan = new ItemSprayCan(DyeColor.BLUE);
+    public static ItemBasic<?> BrownSprayCan = new ItemSprayCan(DyeColor.BROWN);
+    public static ItemBasic<?> GreenSprayCan = new ItemSprayCan(DyeColor.GREEN);
+    public static ItemBasic<?> RedSprayCan = new ItemSprayCan(DyeColor.RED);
+    public static ItemBasic<?> BlackSprayCan = new ItemSprayCan(DyeColor.BLACK);
     /** CIRCUIT ITEMS **/
 
     public static ItemBasic<?> MicroProcessor = new ItemBasic<>(GTIRef.ID, "microprocessor", "circuits/").tip("A Basic Circuit");
