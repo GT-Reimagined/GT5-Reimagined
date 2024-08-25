@@ -5,8 +5,13 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.GregTech;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechTags;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -140,6 +145,13 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(RecipeIngredient.of(Items.ENDER_PEARL), RecipeIngredient.of(Items.BLAZE_POWDER)).io(Items.ENDER_EYE).add("ender_eye",50,30);
         //Golden CARROT
         CHEMICAL_REACTOR.RB().ii(of(NUGGET.getMaterialTag(Gold), 8), RecipeIngredient.of(Items.CARROT)).io(Items.GOLDEN_CARROT).add("golden_carrot",50,30);
+        //CHEMICAL DYES
+        for (DyeColor color : DyeColor.values()) {
+            String dyeName = color.getName() + "_dye";
+            Material chemDye = Material.get("chemical_" + dyeName);
+            CHEMICAL_REACTOR.RB().ii(of(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dyeName))), DUST.getMaterialIngredient(Salt, 2))
+                    .fi(SulfuricAcid.getLiquid(432)).fo(chemDye.getLiquid(288)).add(chemDye.getId(), 600, 48);
+        }
     }
 
     private static void addComplicated(){
