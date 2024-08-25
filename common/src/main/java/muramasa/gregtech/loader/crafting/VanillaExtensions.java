@@ -70,5 +70,7 @@ public class VanillaExtensions {
         provider.shapeless(consumer, "green_dye_from_malachite", "dyes", Items.GREEN_DYE.getDefaultInstance(), DUST.getMaterialTag(Malachite));
         provider.shapeless(consumer, "blue_dye_from_sodalite_dust", "dyes", Items.BLUE_DYE.getDefaultInstance(), DUST.getMaterialTag(Sodalite));
         provider.shapeless(consumer, "blue_dye_from_sodalite_gem", "dyes", Items.BLUE_DYE.getDefaultInstance(), GEM.getMaterialTag(Sodalite));
+        provider.shapeless(consumer, "cyan_dye_from_lazurite_dust", "dyes", Items.CYAN_DYE.getDefaultInstance(), DUST.getMaterialTag(Lazurite));
+        provider.shapeless(consumer, "cyan_dye_from_lazurite_gem", "dyes", Items.CYAN_DYE.getDefaultInstance(), GEM.getMaterialTag(Lazurite));
     }
 }
