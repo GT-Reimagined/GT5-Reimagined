@@ -21,6 +21,8 @@ import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -67,11 +69,13 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
                     i.getHandler(SlotType.DISPLAY_SETTABLE).serialize(displaySlots);
                 });
                 displaySlots.putString("machineType", this.getMachineType().getLoc().toString());
+                level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
                 return InteractionResult.SUCCESS;
             } else {
                 CompoundTag displaySlots = stack.getTagElement("displaySlots");
                 if (!displaySlots.isEmpty() && displaySlots.getString("machineType").equals(this.getMachineType().getLoc().toString())){
                     this.itemHandler.ifPresent(i -> i.getHandler(SlotType.DISPLAY_SETTABLE).deserialize(displaySlots));
+                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 }
 
