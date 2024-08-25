@@ -67,10 +67,10 @@ public class VanillaExtensions {
                 of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), DUST_IMPURE.get(Lignite), DUST_PURE.get(Lignite), CRUSHED.get(Lignite),CRUSHED_PURIFIED.get(Lignite), CRUSHED_REFINED.get(Lignite)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GTIRef.ID, "torch_from_creosote", "torches", new ItemStack(Items.TORCH, 6),
                 of('W', ItemTags.WOOL, 'C', Creosote.getLiquid().getBucket(), 'S', Items.STICK), "C", "W", "S");
-        provider.shapeless(consumer, "green_dye_from_malachite", "dyes", Items.GREEN_DYE.getDefaultInstance(), DUST.getMaterialTag(Malachite));
-        provider.shapeless(consumer, "blue_dye_from_sodalite_dust", "dyes", Items.BLUE_DYE.getDefaultInstance(), DUST.getMaterialTag(Sodalite));
-        provider.shapeless(consumer, "blue_dye_from_sodalite_gem", "dyes", Items.BLUE_DYE.getDefaultInstance(), GEM.getMaterialTag(Sodalite));
-        provider.shapeless(consumer, "cyan_dye_from_lazurite_dust", "dyes", Items.CYAN_DYE.getDefaultInstance(), DUST.getMaterialTag(Lazurite));
-        provider.shapeless(consumer, "cyan_dye_from_lazurite_gem", "dyes", Items.CYAN_DYE.getDefaultInstance(), GEM.getMaterialTag(Lazurite));
+        provider.shapeless(consumer, GTIRef.ID, "green_dye_from_malachite", "dyes", Items.GREEN_DYE.getDefaultInstance(), DUST.getMaterialTag(Malachite));
+        provider.shapeless(consumer, GTIRef.ID, "blue_dye_from_sodalite_dust", "dyes", Items.BLUE_DYE.getDefaultInstance(), DUST.getMaterialTag(Sodalite));
+        provider.shapeless(consumer, GTIRef.ID, "blue_dye_from_sodalite_gem", "dyes", Items.BLUE_DYE.getDefaultInstance(), GEM.getMaterialTag(Sodalite));
+        provider.shapeless(consumer, GTIRef.ID, "cyan_dye_from_lazurite_dust", "dyes", Items.CYAN_DYE.getDefaultInstance(), DUST.getMaterialTag(Lazurite));
+        provider.shapeless(consumer, GTIRef.ID, "cyan_dye_from_lazurite_gem", "dyes", Items.CYAN_DYE.getDefaultInstance(), GEM.getMaterialTag(Lazurite));
     }
 }
