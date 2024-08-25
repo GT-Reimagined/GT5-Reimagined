@@ -6,10 +6,13 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemFluidCell;
+import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.gregtech.GregTech;
 import muramasa.gregtech.data.GregTechItems;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -34,6 +37,12 @@ public class FluidCannerLoader {
         FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Neon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_neon", 64, 16);
         FLUID_CANNER.RB().ii(Items.HONEY_BOTTLE).io(Items.GLASS_BOTTLE).fo(Honey.getLiquid(250)).add("honey_from_honey_bottle", 20, 8);
         FLUID_CANNER.RB().ii(Items.GLASS_BOTTLE).fi(Honey.getLiquid(250)).io(Items.HONEY_BOTTLE).add("honey_bottle_from_honey", 20, 8);
+        for (DyeColor dye : DyeColor.values()) {
+            String dyeName = dye.getName();
+            Item sprayCan = GregTech.get(Item.class, dyeName + "_spray_can");
+            Material chemDye = Material.get("chemical_" + dyeName + "_dye");
+            FLUID_CANNER.RB().ii(GregTechItems.EmptySprayCan).fi(chemDye.getLiquid(2304)).io(sprayCan).add(dyeName +"_spray_can", 37, 1);
+        }
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();
             if (bucket == Items.AIR) return;
