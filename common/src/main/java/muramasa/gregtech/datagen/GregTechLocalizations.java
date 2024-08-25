@@ -116,6 +116,10 @@ public class GregTechLocalizations {
             add("message.gti.needs_maintenance.scaled.inverted", "Outputs a scaled signal (Inverted)");
             add("message.gti.needs_maintenance.unscaled.normal", "Outputs a flat signal");
             add("message.gti.needs_maintenance.unscaled.inverted", "Outputs a flat signal (Inverted)");
+            add("tooltip.gti.spray_can.full", "Full");
+            add("tooltip.gti.spray_can.used", "Used");
+            add("tooltip.gti.spray_can.0", "Can color things in %s");
+            add("tooltip.gti.spray_can.1", "Remaining uses: %s");
             structureTranslations();
         }
 

@@ -48,6 +48,7 @@ public class GregTechItems {
     public static ItemBasic<?> SensorHV = new ItemBasic<>(GTIRef.ID, "sensor_hv");
     public static ItemBasic<?> SensorEV = new ItemBasic<>(GTIRef.ID, "sensor_ev");
     public static ItemBasic<?> SensorIV = new ItemBasic<>(GTIRef.ID, "sensor_iv");
+    public static ItemBasic<?> EmptySprayCan = new ItemBasic<>(GTIRef.ID, "empty_spray_can", "spray_cans/").tip("Used for making Sprays");
     public static ItemBasic<?> WhiteSprayCan = new ItemSprayCan(DyeColor.WHITE);
     public static ItemBasic<?> OrangeSprayCan = new ItemSprayCan(DyeColor.ORANGE);
     public static ItemBasic<?> MagentaSprayCan = new ItemSprayCan(DyeColor.MAGENTA);

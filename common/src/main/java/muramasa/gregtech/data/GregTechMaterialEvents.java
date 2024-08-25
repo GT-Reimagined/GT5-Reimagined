@@ -379,22 +379,38 @@ public class GregTechMaterialEvents {
         /**
          * Dyes
          */
-        event.setMaterial(WhiteDye).asFluid();
-        event.setMaterial(OrangeDye).asFluid();
-        event.setMaterial(MagentaDye).asFluid();
-        event.setMaterial(LightBlueDye).asFluid();
-        event.setMaterial(YellowDye).asFluid();
-        event.setMaterial(LimeDye).asFluid();
-        event.setMaterial(PinkDye).asFluid();
-        event.setMaterial(GrayDye).asFluid();
-        event.setMaterial(LightGrayDye).asFluid();
-        event.setMaterial(CyanDye).asFluid();
-        event.setMaterial(PurpleDye).asFluid();
-        event.setMaterial(BlueDye).asFluid();
-        event.setMaterial(BrownDye).asFluid();
-        event.setMaterial(GreenDye).asFluid();
-        event.setMaterial(RedDye).asFluid();
-        event.setMaterial(BlackDye).asFluid();
+        event.setMaterial(WaterMixedWhiteDye).asFluid();
+        event.setMaterial(WaterMixedOrangeDye).asFluid();
+        event.setMaterial(WaterMixedMagentaDye).asFluid();
+        event.setMaterial(WaterMixedLightBlueDye).asFluid();
+        event.setMaterial(WaterMixedYellowDye).asFluid();
+        event.setMaterial(WaterMixedLimeDye).asFluid();
+        event.setMaterial(WaterMixedPinkDye).asFluid();
+        event.setMaterial(WaterMixedGrayDye).asFluid();
+        event.setMaterial(WaterMixedLightGrayDye).asFluid();
+        event.setMaterial(WaterMixedCyanDye).asFluid();
+        event.setMaterial(WaterMixedPurpleDye).asFluid();
+        event.setMaterial(WaterMixedBlueDye).asFluid();
+        event.setMaterial(WaterMixedBrownDye).asFluid();
+        event.setMaterial(WaterMixedGreenDye).asFluid();
+        event.setMaterial(WaterMixedRedDye).asFluid();
+        event.setMaterial(WaterMixedBlackDye).asFluid();
+        event.setMaterial(ChemicalWhiteDye).asFluid();
+        event.setMaterial(ChemicalOrangeDye).asFluid();
+        event.setMaterial(ChemicalMagentaDye).asFluid();
+        event.setMaterial(ChemicalLightBlueDye).asFluid();
+        event.setMaterial(ChemicalYellowDye).asFluid();
+        event.setMaterial(ChemicalLimeDye).asFluid();
+        event.setMaterial(ChemicalPinkDye).asFluid();
+        event.setMaterial(ChemicalGrayDye).asFluid();
+        event.setMaterial(ChemicalLightGrayDye).asFluid();
+        event.setMaterial(ChemicalCyanDye).asFluid();
+        event.setMaterial(ChemicalPurpleDye).asFluid();
+        event.setMaterial(ChemicalBlueDye).asFluid();
+        event.setMaterial(ChemicalBrownDye).asFluid();
+        event.setMaterial(ChemicalGreenDye).asFluid();
+        event.setMaterial(ChemicalRedDye).asFluid();
+        event.setMaterial(ChemicalBlackDye).asFluid();
 
         /**
          *  Organic
