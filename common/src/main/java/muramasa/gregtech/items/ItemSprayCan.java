@@ -39,15 +39,17 @@ public class ItemSprayCan extends ItemBasic<ItemSprayCan> implements ICustomDura
         BlockEntity be = context.getLevel().getBlockEntity(context.getClickedPos());
         if (!context.getLevel().isClientSide() && be instanceof BlockEntityPipe<?> pipe && (pipe.getPipeType() instanceof FluidPipe || pipe.getPipeType() instanceof ItemPipe)){
             int rgb = GregTechData.getColorFromDyeColor(color);
-            pipe.setPipeColor(rgb);
-            pipe.checkConnections();
-            pipe.sidedSync(true);
-            Utils.damageStack(1, context.getItemInHand(), context.getPlayer());
-            context.getItemInHand().hurtAndBreak(1, context.getPlayer(), p -> {
-                p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
-                if (!p.addItem(new ItemStack(EmptySprayCan))) p.drop(new ItemStack(EmptySprayCan), true);
-            });
-            return InteractionResult.SUCCESS;
+            if (pipe.getPipeColor() != rgb){
+                pipe.setPipeColor(rgb);
+                pipe.checkConnections();
+                pipe.sidedSync(true);
+                Utils.damageStack(1, context.getItemInHand(), context.getPlayer());
+                context.getItemInHand().hurtAndBreak(1, context.getPlayer(), p -> {
+                    p.broadcastBreakEvent(EquipmentSlot.MAINHAND);
+                    if (!p.addItem(new ItemStack(EmptySprayCan))) p.drop(new ItemStack(EmptySprayCan), true);
+                });
+                return InteractionResult.SUCCESS;
+            }
         }
         return super.useOn(context);
     }
