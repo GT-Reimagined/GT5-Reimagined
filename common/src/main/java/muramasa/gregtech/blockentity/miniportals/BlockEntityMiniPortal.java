@@ -1,6 +1,7 @@
 package muramasa.gregtech.blockentity.miniportals;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.IExtendingBlockEntity;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
@@ -17,6 +18,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +26,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPortal> {
+public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEntityMiniPortal> implements IExtendingBlockEntity {
 
     public static List<BlockEntityMiniPortal>
             sListWorldSide  = new ArrayList<>();
@@ -104,6 +106,16 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     @Override
     protected boolean allowExplosionsInRain() {
         return false;
+    }
+
+    @Override
+    public void onBlockUpdate(BlockPos neighbor) {
+        super.onBlockUpdate(neighbor);
+        Direction facing = Utils.getOffsetFacing(this.getBlockPos(), neighbor);
+        if (otherSide != null && !otherSide.isRemoved()){
+            BlockPos offset = otherSide.getBlockPos().relative(facing.getOpposite());
+            otherSide.getLevel().neighborChanged(offset, otherSide.getLevel().getBlockState(offset).getBlock(), otherSide.getBlockPos());
+        }
     }
 
     @Override
@@ -218,6 +230,14 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     @Override
     public boolean toggleMachine() {
         return false;
+    }
+
+    @Override
+    public BlockEntity getExtendedBlockEntity(Direction side) {
+        if (otherSide != null && !otherSide.isRemoved()){
+            return otherSide.getCachedBlockEntity(side);
+        }
+        return this;
     }
 
     @Override
