@@ -149,7 +149,7 @@ public class ChemicalReactorLoader {
         for (DyeColor color : DyeColor.values()) {
             String dyeName = color.getName() + "_dye";
             Material chemDye = Material.get("chemical_" + dyeName);
-            CHEMICAL_REACTOR.RB().ii(of(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dyeName))), DUST.getMaterialIngredient(Salt, 2))
+            CHEMICAL_REACTOR.RB().ii(of(color.getTag()), DUST.getMaterialIngredient(Salt, 2))
                     .fi(SulfuricAcid.getLiquid(432)).fo(chemDye.getLiquid(288)).add(chemDye.getId(), 600, 48);
         }
     }

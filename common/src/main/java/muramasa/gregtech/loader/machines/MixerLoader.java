@@ -93,8 +93,8 @@ public class MixerLoader {
         for (DyeColor dye : DyeColor.values()) {
             String dyeName = dye.getName() + "_dye";
             Material dyeMaterial = Material.get("water_mixed_" + dyeName);
-            MIXER.RB().ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dyeName))).fi(Water.getLiquid(216)).fo(dyeMaterial.getLiquid(192)).add("water_mixed_" + dyeName, 16, 4);
-            MIXER.RB().ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dyeName))).fi(Water.getLiquid(288)).fo(dyeMaterial.getLiquid(216)).add("water_mixed_" + dyeName + "_distilled_water", 16, 4);
+            MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(216)).fo(dyeMaterial.getLiquid(192)).add("water_mixed_" + dyeName, 16, 4);
+            MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(288)).fo(dyeMaterial.getLiquid(216)).add("water_mixed_" + dyeName + "_distilled_water", 16, 4);
         }
     }
 

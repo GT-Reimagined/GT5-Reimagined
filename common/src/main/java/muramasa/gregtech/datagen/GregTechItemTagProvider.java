@@ -49,5 +49,10 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             this.tag(GregTechTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
         }
+        this.tag(ForgeCTags.DYES_BLACK).add(Items.INK_SAC);
+        this.tag(ForgeCTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite)).addTag(DUST.getMaterialTag(Sodalite));
+        this.tag(ForgeCTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite)).addTag(DUST.getMaterialTag(Lazurite));
+        this.tag(ForgeCTags.DYES_GREEN).addTag(DUST.getMaterialTag(Malachite));
+        this.tag(ForgeCTags.DYES_WHITE).add(Items.BONE_MEAL);
     }
 }
