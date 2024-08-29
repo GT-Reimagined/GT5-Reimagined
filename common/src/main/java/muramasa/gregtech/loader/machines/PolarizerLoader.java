@@ -22,7 +22,7 @@ public class PolarizerLoader {
                 if (!in.has(t)) return;
                 Item output = t instanceof MaterialTypeItem<?> typeItem ? typeItem.get(out) : t instanceof MaterialTypeBlock<?> typeBlock && typeBlock.get() instanceof MaterialTypeBlock.IBlockGetter getter ? getter.get(out).asItem() : null;
                 if (output != null){
-                    RecipeMaps.POLARIZER.RB().ii(t.getMaterialIngredient(in, 1)).io(output).add(in.getId() + "_" + t.getId() + "_to_" + out.getId(), Math.max(1, (128 * t.getUnitValue()) / Ref.U), 16);
+                    RecipeMaps.POLARIZER.RB().ii(t.getMaterialIngredient(in, 1)).io(output).add(in.getId() + "_" + t.getId() + "_to_" + out.getId(), Math.max(1, (128 * t.getUnitValue()) / Ref.U), (in == Neodymium ? 64 : 16));
                 }
             });
         }
