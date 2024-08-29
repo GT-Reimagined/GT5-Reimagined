@@ -7,6 +7,7 @@ import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.event.MaterialEvent;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -18,19 +19,25 @@ import muramasa.gregtech.data.RecipeMaps;
 import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.function.Consumer;
 
+import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
-import static muramasa.gregtech.data.RecipeMaps.LASER_ENGRAVER;
+import static muramasa.gregtech.data.RecipeMaps.*;
+import static muramasa.gregtech.data.RecipeMaps.BATH;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
@@ -104,6 +111,15 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(YellowGarnet, 1).setNoConsume()).io(new ItemStack(getAe2Item("engineering_processor_press"))).add("inscriber_engineering_press", 2000, 1920);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Diamond, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press", 2000, 1920);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Glass, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_2", 2000, 1920);
+        for (DyeColor dye : DyeColor.values()){
+            String dyeName = dye.getName() + "_dye";
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_smart_cable")).io(getAe2Item(dye.getName() + "_smart_cable")).add(dye.getName() + "_smart_cable", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_covered_cable")).io(getAe2Item(dye.getName() + "_covered_cable")).add(dye.getName() + "_covered_cable", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_glass_cable")).io(getAe2Item(dye.getName() + "_glass_cable")).add(dye.getName() + "_glass_cable", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_smart_dense_cable")).io(getAe2Item(dye.getName() + "_smart_dense_cable")).add(dye.getName() + "_smart_dense_cable", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_covered_dense_cable")).io(getAe2Item(dye.getName() + "_covered_dense_cable")).add(dye.getName() + "_covered_dense_cable", 64);
+        }
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
