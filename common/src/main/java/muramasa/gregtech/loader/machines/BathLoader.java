@@ -9,15 +9,21 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeBlock;
 import muramasa.antimatter.material.MaterialTypeItem;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.TagUtils;
+import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTechConfig;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.integration.SpaceModRegistrar;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluid;
 import tesseract.FluidPlatformUtils;
 
 import static muramasa.antimatter.Ref.L;
@@ -71,6 +77,21 @@ public class BathLoader {
                     }
                 }
             });
+        }
+        for (DyeColor dye : DyeColor.values()){
+            String dyeName = dye.getName() + "_dye";
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass"))).add(dye.getName() + "_stained_glass", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.TERRACOTTA).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_terracotta"))).add(dye.getName() + "_terracotta", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.CANDLE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_candle"))).add(dye.getName() + "_candle", 64);
+
+            if (dye != DyeColor.WHITE){
+                BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_WOOL).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).add(dye.getName() + "_wool", 64);
+                BATH.RB().fi(Chlorine.getGas(50)).ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).io(Items.WHITE_WOOL).add("white_wool_from_" + dyeName, 400);
+                BATH.RB().fi(Chlorine.getGas(25)).ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet"))).io(Items.WHITE_CARPET).add("white_carpet_from_" + dyeName, 400);
+                BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_BED).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_bed"))).add(dye.getName() + "_bed", 64);
+                BATH.RB().fi(Chlorine.getGas(50)).ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_bed"))).io(Items.WHITE_BED).add("white_bed_from_" + dyeName, 400);
+            }
         }
         mercurybathing();
         persulfatebathing();

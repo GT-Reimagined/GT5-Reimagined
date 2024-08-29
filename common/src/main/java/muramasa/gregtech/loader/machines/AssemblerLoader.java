@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
@@ -13,24 +14,31 @@ import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.TagUtils;
 import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.GregTech;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.material.Fluid;
 
 import java.util.Arrays;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.Ref.L;
+import static muramasa.antimatter.Ref.L9;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.machine.Tier.*;
@@ -39,6 +47,7 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
 import static muramasa.gregtech.data.Machines.HULL;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
+import static muramasa.gregtech.data.RecipeMaps.BATH;
 import static muramasa.gregtech.data.TierMaps.*;
 import static muramasa.gregtech.loader.crafting.Parts.fromTier;
 
@@ -47,6 +56,7 @@ public class AssemblerLoader {
         batteries();
         casings();
         cables();
+        carpet();
         coils();
         frames();
         misc();
@@ -177,6 +187,14 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gold, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.LIGHT_WEIGHTED_PRESSURE_PLATE).add("light_weighted_pressure_plate", 800, 16);
+    }
+
+    private static void carpet(){
+        for (DyeColor dye : DyeColor.values()){
+            String dyeName = dye.getName() + "_dye";
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
+            ASSEMBLER.RB().ii(of(Items.STRING), SELECTOR_TAG_INGREDIENTS.get(3)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 2)).add(dye.getName() + " carpet", 128, 5);
+        }
     }
 
     private static void addCoverRecipe(ItemStack cover, Ingredient... inputs){

@@ -82,7 +82,7 @@ public class GregTech extends AntimatterMod {
         });
         ev.addProvider(GTIRef.ID, () -> new GregTechItemTagProvider(GTIRef.ID, GTIRef.NAME.concat(" Item Tags"),
                 false, p[0]));
-        ev.addProvider(GTIRef.ID, () -> new AntimatterFluidTagProvider(GTIRef.ID,
+        ev.addProvider(GTIRef.ID, () -> new GregTechFluidTagProvider(GTIRef.ID,
                 GTIRef.NAME.concat(" Fluid Tags"), false));
         ev.addProvider(GTIRef.ID, () -> new AntimatterAdvancementProvider(GTIRef.ID,
                 GTIRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));

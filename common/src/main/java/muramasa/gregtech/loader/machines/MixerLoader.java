@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.DUST_LAPIS_LAZURITE;
 import static muramasa.antimatter.Ref.L;
+import static muramasa.antimatter.Ref.L9;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
@@ -93,8 +94,8 @@ public class MixerLoader {
         for (DyeColor dye : DyeColor.values()) {
             String dyeName = dye.getName() + "_dye";
             Material dyeMaterial = Material.get("water_mixed_" + dyeName);
-            MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(216)).fo(dyeMaterial.getLiquid(192)).add("water_mixed_" + dyeName, 16, 4);
-            MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(288)).fo(dyeMaterial.getLiquid(216)).add("water_mixed_" + dyeName + "_distilled_water", 16, 4);
+            MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(L + (L / 2))).fo(dyeMaterial.getLiquid(L + (L9 * 3))).add("water_mixed_" + dyeName, 16, 4);
+            MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(L * 2)).fo(dyeMaterial.getLiquid(L + (L / 2))).add("water_mixed_" + dyeName + "_distilled_water", 16, 4);
         }
     }
 
