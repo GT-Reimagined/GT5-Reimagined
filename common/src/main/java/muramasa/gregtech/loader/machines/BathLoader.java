@@ -82,6 +82,7 @@ public class BathLoader {
             String dyeName = dye.getName() + "_dye";
             TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass"))).add(dye.getName() + "_stained_glass", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS_PANE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass_pane"))).add(dye.getName() + "_stained_glass_pane", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.TERRACOTTA).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_terracotta"))).add(dye.getName() + "_terracotta", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.CANDLE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_candle"))).add(dye.getName() + "_candle", 64);
 
