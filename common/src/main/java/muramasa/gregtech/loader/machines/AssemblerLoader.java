@@ -193,7 +193,7 @@ public class AssemblerLoader {
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
             TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
-            ASSEMBLER.RB().ii(of(Items.STRING), SELECTOR_TAG_INGREDIENTS.get(3)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 2)).add(dye.getName() + " carpet", 128, 5);
+            ASSEMBLER.RB().ii(of(Items.STRING), SELECTOR_TAG_INGREDIENTS.get(3)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 2)).add(dye.getName() + "_carpet", 128, 5);
         }
     }
 
