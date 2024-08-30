@@ -85,6 +85,8 @@ public class BathLoader {
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS_PANE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass_pane"))).add(dye.getName() + "_stained_glass_pane", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.TERRACOTTA).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_terracotta"))).add(dye.getName() + "_terracotta", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.CANDLE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_candle"))).add(dye.getName() + "_candle", 64);
+            BATH.RB().fake().ii(Items.SHULKER_BOX).fi(FluidIngredient.of(dyeLiquid, L / 2)).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_shulker_box"))).add(dye.getName() + "_shulker_box", 64);
+            BATH.RB().fake().ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_shulker_box"))).fi(Chlorine.getGas(50)).io(Items.SHULKER_BOX).add("shulker_box_from_" + dye.getName(), 64);
 
             if (dye != DyeColor.WHITE){
                 BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_WOOL).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).add(dye.getName() + "_wool", 64);
