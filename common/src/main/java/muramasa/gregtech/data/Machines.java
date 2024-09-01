@@ -88,7 +88,7 @@ public class Machines {
      * Processors
      **/
     public static BasicMachine ALLOY_SMELTER = new BasicMachine(GTIRef.ID, "alloy_smelter").setMap(RecipeMaps.ALLOY_SMELTER).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static BasicMachine AMP_FABRICATOR = new BasicMachine(GTIRef.ID, "amp_fabricator").setMap(RecipeMaps.AMP_FABRICATOR).addFlags(GUI, ITEM);
+    public static BasicMachine AMP_FABRICATOR = new BasicMachine(GTIRef.ID, "amp_fabricator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.AMP_FABRICATOR).addFlags(GUI, ITEM);
     public static BasicMachine ARC_FURNACE = new BasicMachine(GTIRef.ID, "arc_furnace").setMap(RecipeMaps.ARC_FURNACE).addFlags(GUI, ITEM, FLUID).setSound(GregTechSounds.FURNACE,  0.6f).amps(3);
     public static BasicMachine ASSEMBLER = new BasicMachine(GTIRef.ID, "assembler").setMap(RecipeMaps.ASSEMBLER).setTile(BlockEntityAssembler::new).addFlags(GUI, ITEM, FLUID).custom();
     public static BasicMachine AUTOCLAVE = new BasicMachine(GTIRef.ID, "autoclave").setMap(RecipeMaps.AUTOCLAVE).addFlags(GUI, ITEM, FLUID);
@@ -96,7 +96,7 @@ public class Machines {
     public static BasicMachine CANNER = new BasicMachine(GTIRef.ID, "canner").setMap(RecipeMaps.CANNER).addFlags(GUI, ITEM);
     public static BasicMachine CENTRIFUGE = new BasicMachine(GTIRef.ID, "centrifuge").setMap(RecipeMaps.CENTRIFUGE).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine BATH = new BasicMachine(GTIRef.ID, "bath").setTiers(NONE).removeFlags(EU).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityBath::new).baseTexture(new Texture(GTIRef.ID, "block/machine/base/hv"));
-    public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine DEHYDRATOR = new BasicMachine(GTIRef.ID, "dehydrator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.DEHYDRATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.add(Utils.translatable("machine.upgraded_batch.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
     });
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GTIRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids(true).custom();
@@ -119,21 +119,21 @@ public class Machines {
     public static BasicMachine FORGE_HAMMER = new BasicMachine(GTIRef.ID, "forge_hammer").setMap(RecipeMaps.FORGE_HAMMER).addFlags(GUI, ITEM).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
     public static BasicMachine FORMING_PRESS = new BasicMachine(GTIRef.ID, "forming_press").setMap(RecipeMaps.FORMING_PRESS).addFlags(GUI, ITEM);
     public static BasicMachine FURNACE = new BasicMachine(GTIRef.ID, "furnace").setMap(ELECTRIC_FURNACE).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
-    public static BasicMachine LASER_ENGRAVER = new BasicMachine(GTIRef.ID, "laser_engraver").setMap(RecipeMaps.LASER_ENGRAVER).addFlags(GUI, ITEM).setSound(GregTechSounds.MAGNETIZER,  0.6f);
+    public static BasicMachine LASER_ENGRAVER = new BasicMachine(GTIRef.ID, "laser_engraver").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.LASER_ENGRAVER).addFlags(GUI, ITEM).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine LATHE = new BasicMachine(GTIRef.ID, "lathe").setMap(RecipeMaps.LATHE).addFlags(GUI, ITEM);
     public static BasicMachine MACERATOR = new BasicMachine(GTIRef.ID, "macerator").setTiers(LV, MV, HV, EV).setMap(PULVERIZER).setTile(BlockEntityMacerator::new).addTooltipInfo("tooltip.macerator.0").setTierSpecificLang().custom().addFlags(GUI, ITEM).setSound(GregTechSounds.MACERATOR,  0.6f);
-    public static BasicMachine MASS_FABRICATOR = new BasicMachine(GTIRef.ID, "mass_fabricator").setMap(RecipeMaps.MASS_FABRICATOR).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine MASS_FABRICATOR = new BasicMachine(GTIRef.ID, "mass_fabricator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.MASS_FABRICATOR).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine MIXER = new BasicMachine(GTIRef.ID, "mixer").setMap(RecipeMaps.MIXER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine ORE_WASHER = new BasicMachine(GTIRef.ID, "ore_washer").setMap(RecipeMaps.ORE_WASHER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine PACKAGER = new BasicMachine(GTIRef.ID, "packager").setMap(RecipeMaps.PACKAGER).addFlags(GUI, ITEM);
     public static BasicMachine POLARIZER = new BasicMachine(GTIRef.ID, "polarizer").setMap(RecipeMaps.POLARIZER).addFlags(GUI, ITEM);
     public static BasicMachine PRINTER = new BasicMachine(GTIRef.ID, "printer").setTiers(Tier.LV).setMap(PRINTING).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityPrinter::new);
-    public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setMap(RecipeMaps.ROASTER).addFlags(GUI, ITEM, FLUID).amps(3).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine ROASTER = new BasicMachine(GTIRef.ID, "roaster").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.ROASTER).addFlags(GUI, ITEM, FLUID).amps(3).setTile(BlockEntityIUpgradedBatchMachine::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.add(Utils.translatable("machine.upgraded_batch.parallel", 1 << (machine.getTier().getIntegerId() - 1)));
     });
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RecipeMaps.RECYCLER).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setMap(RecipeMaps.REPLICATOR).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setMap(RecipeMaps.SCANNER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityScanner::new).setSound(GregTechSounds.MAGNETIZER,  0.6f);
+    public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.REPLICATOR).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.SCANNER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityScanner::new).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine SEISMIC_PROSPECTOR = new BasicMachine(GTIRef.ID, "seismic_prospector").setTiers(LV, EV).setTile(BlockEntitySeismicProspector::new).setOutputCover(ICover.emptyFactory);
     public static BasicMachine SIFTER = new BasicMachine(GTIRef.ID, "sifter").setMap(RecipeMaps.SIFTER).addFlags(GUI, ITEM);
     public static BasicMachine SMELTER = new BasicMachine(GTIRef.ID, "smelter").setMap(RecipeMaps.SMELTER).addFlags(GUI, ITEM, FLUID);
@@ -286,7 +286,7 @@ public class Machines {
     /**
      ** Tanks
      **/
-    public static TankMachine QUANTUM_TANK = new TankMachine(GTIRef.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).addFlags(BASIC, GUI, CELL).frontCovers();
+    public static TankMachine QUANTUM_TANK = new TankMachine(GTIRef.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).setTiers(Tier.getStandardWithIV()).addFlags(BASIC, GUI, CELL).frontCovers();
 
     public static BasicMachine PUMP = new BasicMachine(GTIRef.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noCovers();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GTIRef.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
