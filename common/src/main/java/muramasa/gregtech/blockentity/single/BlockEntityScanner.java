@@ -1,5 +1,7 @@
 package muramasa.gregtech.blockentity.single;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
@@ -9,10 +11,12 @@ import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
@@ -51,6 +55,29 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
             @Override
             public boolean accepts(ItemStack stack) {
                 return super.accepts(stack) || stack.getItem() == GregTechItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK;
+            }
+
+            @Override
+            public CompoundTag serialize() {
+                CompoundTag nbt = super.serialize();
+                if (activeRecipe != null) {
+                    nbt.putString("activeRecipe", activeRecipe.toJson().toString());
+                }
+                if (lastRecipe != null) {
+                    nbt.putString("lastRecipe", lastRecipe.toJson().toString());
+                }
+                return nbt;
+            }
+
+            @Override
+            public void deserialize(CompoundTag nbt) {
+                super.deserialize(nbt);
+                if (nbt.contains("activeRecipe")) {
+                    activeRecipe = AntimatterRecipeSerializer.INSTANCE.fromJson(new ResourceLocation(nbt.getString("AR")), (JsonObject) JsonParser.parseString(nbt.getString("activeRecipe")));
+                }
+                if (nbt.contains("lastRecipe")) {
+                    lastRecipe = AntimatterRecipeSerializer.INSTANCE.fromJson(new ResourceLocation(nbt.getString("LR")), (JsonObject) JsonParser.parseString(nbt.getString("lastRecipe")));
+                }
             }
         });
     }

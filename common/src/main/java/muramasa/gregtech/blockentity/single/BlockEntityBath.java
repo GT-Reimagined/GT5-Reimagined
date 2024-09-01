@@ -1,5 +1,8 @@
 package muramasa.gregtech.blockentity.single;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
@@ -7,6 +10,7 @@ import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
@@ -14,6 +18,7 @@ import muramasa.gregtech.GTIRef;
 import muramasa.gregtech.data.GregTechItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
@@ -62,6 +67,29 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
             public boolean accepts(ItemStack stack) {
                 ResourceLocation id = AntimatterPlatformUtils.getIdFromItem(stack.getItem());
                 return super.accepts(stack) || (id.getPath().contains("shulker_box") && id.getNamespace().equals("minecraft"));
+            }
+
+            @Override
+            public CompoundTag serialize() {
+                CompoundTag nbt = super.serialize();
+                if (activeRecipe != null) {
+                    nbt.putString("activeRecipe", activeRecipe.toJson().toString());
+                }
+                if (lastRecipe != null) {
+                    nbt.putString("lastRecipe", lastRecipe.toJson().toString());
+                }
+                return nbt;
+            }
+
+            @Override
+            public void deserialize(CompoundTag nbt) {
+                super.deserialize(nbt);
+                if (nbt.contains("activeRecipe")) {
+                    activeRecipe = AntimatterRecipeSerializer.INSTANCE.fromJson(new ResourceLocation(nbt.getString("AR")), (JsonObject) JsonParser.parseString(nbt.getString("activeRecipe")));
+                }
+                if (nbt.contains("lastRecipe")) {
+                    lastRecipe = AntimatterRecipeSerializer.INSTANCE.fromJson(new ResourceLocation(nbt.getString("LR")), (JsonObject) JsonParser.parseString(nbt.getString("lastRecipe")));
+                }
             }
         });
     }
