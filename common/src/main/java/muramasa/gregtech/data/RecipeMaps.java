@@ -151,7 +151,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> LATHE = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "lathe", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MACERATOR = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "macerator", new SteamBuilder(STEAM_MACERATOR)).setGuiTier(Tier.EV));
+            new RecipeMap<>(GTIRef.ID, "macerator", new SteamBuilder(STEAM_MACERATOR)));
     public static RecipeMap<RecipeBuilder> MASS_FABRICATOR = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "mass_fabricator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MIXER = AntimatterAPI.register(RecipeMap.class,
@@ -168,6 +168,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "polarizer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PLASMA_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "plasma_fuels", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> PULVERIZER = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "pulverizer", new PulverizerBulder()).setGuiTier(Tier.HV));
     public static RecipeMap<RecipeBuilder> FORMING_PRESS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "forming_press", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRINTING = AntimatterAPI.register(RecipeMap.class,
@@ -366,5 +368,21 @@ public class RecipeMaps {
         HEAT_EXCHANGER.setInfoRenderer(HEAT_EXCHANGER_RENDERER);
         FUSION.setInfoRenderer(FUSION_RENDERER);
         CHEMICAL_REACTOR.setInfoRenderer(CHEM_RENDERER);
+    }
+
+    public static class PulverizerBulder extends RecipeBuilder{
+        @Override
+        public IRecipe add(String domain, String id) {
+            IRecipe recipe = super.add(domain, id);
+            var  recipeBuilder = MACERATOR.RB().hide().ii(recipe.getInputItems());
+            if (recipe.hasOutputItems() && recipe.getOutputItems().length > 0) {
+                recipeBuilder.io(recipe.getOutputItems(false)[0]);
+            }
+            if (recipe.hasOutputChances() && recipe.getOutputChances().length > 0) {
+                recipeBuilder.outputChances(recipe.getOutputChances()[0]);
+            }
+            recipeBuilder.inputChances(recipe.getInputChances()).add(domain, id, recipe.getDuration(), recipe.getPower(), recipe.getSpecialValue(), recipe.getAmps());
+            return recipe;
+        }
     }
 }

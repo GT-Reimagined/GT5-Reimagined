@@ -216,7 +216,7 @@ public class ArcFurnaceLoader {
 
     private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, String id){
         RecipeBuilder arc = RecipeMaps.ARC_FURNACE.RB();
-        RecipeBuilder mac = RecipeMaps.MACERATOR.RB();
+        RecipeBuilder mac = RecipeMaps.PULVERIZER.RB();
         arc.ii(input);
         mac.ii(input);
         long[] totalMassArc = new long[]{0};

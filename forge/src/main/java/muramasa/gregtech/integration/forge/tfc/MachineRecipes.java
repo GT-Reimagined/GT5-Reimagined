@@ -84,11 +84,11 @@ public class MachineRecipes {
         ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
         if (input.isGraded()){
-            RecipeMaps.MACERATOR.RB().ii(TFCItems.GRADED_ORES.get(input).get(Ore.Grade.POOR).get()).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
-            RecipeMaps.MACERATOR.RB().ii(TFCItems.GRADED_ORES.get(input).get(Ore.Grade.NORMAL).get()).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
-            RecipeMaps.MACERATOR.RB().ii(TFCItems.GRADED_ORES.get(input).get(Ore.Grade.RICH).get()).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).add("rich_" + material.getId() + "_tfc", 400, 2);
+            RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Ore.Grade.POOR).get()).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
+            RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Ore.Grade.NORMAL).get()).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
+            RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Ore.Grade.RICH).get()).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).add("rich_" + material.getId() + "_tfc", 400, 2);
         } else {
-            RecipeMaps.MACERATOR.RB().ii(TFCItems.ORES.get(input).get()).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
+            RecipeMaps.PULVERIZER.RB().ii(TFCItems.ORES.get(input).get()).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
         }
 
 
@@ -98,8 +98,8 @@ public class MachineRecipes {
         int multiplier = ORE_MULTI.getInt(material);
         ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
-        RecipeMaps.MACERATOR.RB().ii(GregTech.get(Item.class, "poor_" + material.getId())).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
-        RecipeMaps.MACERATOR.RB().ii(GregTech.get(Item.class, "normal_" + material.getId())).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
-        RecipeMaps.MACERATOR.RB().ii(GregTech.get(Item.class, "rich_" + material.getId())).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).add("rich_" + material.getId() + "_tfc", 400, 2);
+        RecipeMaps.PULVERIZER.RB().ii(GregTech.get(Item.class, "poor_" + material.getId())).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
+        RecipeMaps.PULVERIZER.RB().ii(GregTech.get(Item.class, "normal_" + material.getId())).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
+        RecipeMaps.PULVERIZER.RB().ii(GregTech.get(Item.class, "rich_" + material.getId())).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).add("rich_" + material.getId() + "_tfc", 400, 2);
     }
 }

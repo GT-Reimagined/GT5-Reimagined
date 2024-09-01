@@ -2,6 +2,7 @@ package muramasa.gregtech.datagen;
 
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.util.Utils;
@@ -369,6 +370,8 @@ public class GregTechLocalizations {
             override(LARGE_BOILER, MV, "Large Steel Boiler");
             override(LARGE_BOILER, HV, "Large Titanium Boiler");
             override(LARGE_BOILER, EV, "Large Tungstensteel Boiler");
+            override(MACERATOR, HV, "Pulverizer (%s)");
+            override(MACERATOR, EV, "Pulverizer (%s)");
             override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
             add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
             override(GregTechBlocks.CASING_BRONZE_PLATED_BRICK.getDescriptionId(), "Bronze Plated Bricks");
@@ -378,6 +381,11 @@ public class GregTechLocalizations {
             HULL.getTiers().forEach(tier -> {
                 override(HULL, tier, tier.getId().toUpperCase() + " " + HULL.getLang(locale));
             });
+        }
+
+        @Override
+        protected void overrides() {
+            override(Ref.ID, "jei.category.pulverizer", "Macerator/Pulverizer");
         }
     }
 
