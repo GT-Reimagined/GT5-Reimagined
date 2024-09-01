@@ -121,6 +121,7 @@ public class GregTechLocalizations {
             add("tooltip.gti.spray_can.used", "Used");
             add("tooltip.gti.spray_can.0", "Can color things in %s");
             add("tooltip.gti.spray_can.1", "Remaining uses: %s");
+            add("tooltip.macerator.0", "Crushes Raw ores down to crushed ore and byproducts. Macerator gives no byproducts, Pulverizer gives byproducts");
             structureTranslations();
         }
 

@@ -121,7 +121,7 @@ public class Machines {
     public static BasicMachine FURNACE = new BasicMachine(GTIRef.ID, "furnace").setMap(ELECTRIC_FURNACE).addFlags(GUI, ITEM).setSound(GregTechSounds.FURNACE,  0.6f);
     public static BasicMachine LASER_ENGRAVER = new BasicMachine(GTIRef.ID, "laser_engraver").setMap(RecipeMaps.LASER_ENGRAVER).addFlags(GUI, ITEM).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine LATHE = new BasicMachine(GTIRef.ID, "lathe").setMap(RecipeMaps.LATHE).addFlags(GUI, ITEM);
-    public static BasicMachine MACERATOR = new BasicMachine(GTIRef.ID, "macerator").setTiers(LV, MV, HV, EV).setMap(PULVERIZER).setTile(BlockEntityMacerator::new).setTierSpecificLang().custom().addFlags(GUI, ITEM).setSound(GregTechSounds.MACERATOR,  0.6f);
+    public static BasicMachine MACERATOR = new BasicMachine(GTIRef.ID, "macerator").setTiers(LV, MV, HV, EV).setMap(PULVERIZER).setTile(BlockEntityMacerator::new).addTooltipInfo("tooltip.macerator.0").setTierSpecificLang().custom().addFlags(GUI, ITEM).setSound(GregTechSounds.MACERATOR,  0.6f);
     public static BasicMachine MASS_FABRICATOR = new BasicMachine(GTIRef.ID, "mass_fabricator").setMap(RecipeMaps.MASS_FABRICATOR).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine MIXER = new BasicMachine(GTIRef.ID, "mixer").setMap(RecipeMaps.MIXER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine ORE_WASHER = new BasicMachine(GTIRef.ID, "ore_washer").setMap(RecipeMaps.ORE_WASHER).addFlags(GUI, ITEM, FLUID);
