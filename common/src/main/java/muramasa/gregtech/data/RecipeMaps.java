@@ -169,7 +169,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> PLASMA_FUELS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "plasma_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PULVERIZER = AntimatterAPI.register(RecipeMap.class,
-            new RecipeMap<>(GTIRef.ID, "pulverizer", new PulverizerBulder()).setGuiTier(Tier.HV));
+            new RecipeMap<>(GTIRef.ID, "pulverizer", new PulverizerBuilder()).setGuiTier(Tier.HV));
     public static RecipeMap<RecipeBuilder> FORMING_PRESS = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "forming_press", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRINTING = AntimatterAPI.register(RecipeMap.class,
@@ -395,7 +395,7 @@ public class RecipeMaps {
         PULVERIZER.setInfoRenderer(MACERATOR_RENDERER);
     }
 
-    public static class PulverizerBulder extends RecipeBuilder{
+    public static class PulverizerBuilder extends RecipeBuilder{
         @Override
         public IRecipe add(String domain, String id) {
             IRecipe recipe = super.add(domain, id);
