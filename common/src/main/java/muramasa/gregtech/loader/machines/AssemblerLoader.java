@@ -204,7 +204,7 @@ public class AssemblerLoader {
     }
 
     private static void motors(){
-        Arrays.stream(Tier.getStandard()).forEach(t -> {
+        Arrays.stream(Tier.getStandardWithIV()).forEach(t -> {
             Material magnet = (t == Tier.ULV || t == Tier.LV) ? IronMagnetic : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
             ASSEMBLER.RB().ii(ofObject(WIRE_GETTER.apply(fromTier(t), LV),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
@@ -215,7 +215,7 @@ public class AssemblerLoader {
     }
 
     private static void pistons(){
-        Arrays.stream(Tier.getStandard()).forEach(t -> {
+        Arrays.stream(Tier.getStandardWithIV()).forEach(t -> {
             ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false),2),
                             of(ROD.get(TIER_MATERIALS.get(t)),2),
                             of(PLATE.get(TIER_MATERIALS.get(t)),3),
@@ -226,7 +226,7 @@ public class AssemblerLoader {
         });
     }
     private static void pumps(){
-        Arrays.stream(Tier.getStandard()).forEach(t -> {
+        Arrays.stream(Tier.getStandardWithIV()).forEach(t -> {
             ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false),1),
                             SCREW.getMaterialIngredient(TIER_ROTORS.get(t), 1),
                             ROTOR.getMaterialIngredient(TIER_ROTORS.get(t), 1),

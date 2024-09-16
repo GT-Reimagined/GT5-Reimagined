@@ -114,7 +114,7 @@ public class Parts {
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-      Arrays.stream(Tier.getStandard()).forEach(t -> {
+      Arrays.stream(Tier.getStandardWithIV()).forEach(t -> {
           Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
                   : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
           Object cable = CABLE_GETTER.apply(PipeSize.VTINY, t, false);
