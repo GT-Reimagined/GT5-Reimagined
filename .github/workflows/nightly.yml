@@ -38,11 +38,19 @@ jobs:
       run: ./gradlew build --stacktrace
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-    - name: Upload Artifact
-      uses: actions/upload-artifact@v2
+    - name: Upload Forge Artifact
+      uses: actions/upload-artifact@v4
       with:
-        name: GregTech JAR
-        path: ./*/build/libs
+        name: GTI-forge-nightly-${{ steps.vars.outputs.sha_short }}
+        path: forge/build/libs
+      env:
+        USERNAME: ${{ github.actor }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload Fabric Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: GTI-fabric-nightly-${{ steps.vars.outputs.sha_short }}
+        path: fabric/build/libs
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
