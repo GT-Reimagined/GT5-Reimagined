@@ -22,6 +22,7 @@ import java.util.function.Function;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FRAME;
+import static muramasa.antimatter.machine.Tier.HV;
 import static muramasa.antimatter.machine.Tier.LUV;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatchMinTier;
@@ -179,7 +180,7 @@ public class Structures {
 
         LARGE_PULVERIZER.setStructure(BlockEntityLargeMacerator.class, b -> b.part("main")
                 .of("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC").of(0).of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
-                .at('C', GregTechBlocks.TUNGSTENSTEEL_WALL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
+                .at('C', GregTechBlocks.TUNGSTENSTEEL_WALL, HATCH_ITEM_I, HATCH_ITEM_O, ofHatchMinTier(HATCH_ENERGY, HV))
                 .atElement('G', onElementPass((el, t, w, x, y, z) -> {
                     BlockState state = w.getBlockState(new BlockPos(x, y, z));
                     w.setBlock(new BlockPos(x, y, z), state.setValue(BlockStateProperties.HORIZONTAL_FACING, t.getFacing()), 3);

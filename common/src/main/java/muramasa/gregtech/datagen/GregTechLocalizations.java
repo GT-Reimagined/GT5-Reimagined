@@ -265,7 +265,7 @@ public class GregTechLocalizations {
             add("tooltip.large_pulverizer.4", "3x2x3 of Grinding Wheels (Inside basin, exactly 18!)");
             add("tooltip.large_pulverizer.5", "1x Item Input Hatch (Any Casing)");
             add("tooltip.large_pulverizer.6", "1x Item Output Hatch (Any Casing)");
-            add("tooltip.large_pulverizer.7", "1x Energy Hatch (Any Casing)");
+            add("tooltip.large_pulverizer.7", "1x HV+ Energy Hatch (Any Casing)");
 
             add("tooltip.large_turbine.0", "Controller Block for the %s");
             add("tooltip.large_turbine.1", "Size(WxHxD): 3x3x4 (Hollow), Controller (Front centered)");
