@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableMap;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import io.github.gregtechintergalactical.gtcore.machine.*;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
@@ -890,7 +889,7 @@ public class MachineRecipes {
                         .put('H', HULL.getItem(HV))
                         .put('C', TIER_CIRCUITS.apply(EV))
                         .build(), "OPO", "CHC", "OPO"));
-        add(LARGE_MACERATOR, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
+        add(LARGE_PULVERIZER, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', GregTechItems.PistonIV)
                         .put('M', MotorIV)

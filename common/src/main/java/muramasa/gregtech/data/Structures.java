@@ -177,7 +177,7 @@ public class Structures {
                 .offset(2, 1, 0).min(1, HATCH_ENERGY).build()
         );
 
-        LARGE_MACERATOR.setStructure(BlockEntityLargeMacerator.class, b -> b.part("main")
+        LARGE_PULVERIZER.setStructure(BlockEntityLargeMacerator.class, b -> b.part("main")
                 .of("CCCCC", "CGGGC", "CGGGC", "CGGGC", "CCCCC").of(0).of("CC~CC", "CCCCC", "CCCCC", "CCCCC", "CCCCC").build()
                 .at('C', GregTechBlocks.TUNGSTENSTEEL_WALL, HATCH_ITEM_I, HATCH_ITEM_O, HATCH_ENERGY)
                 .atElement('G', onElementPass((el, t, w, x, y, z) -> {

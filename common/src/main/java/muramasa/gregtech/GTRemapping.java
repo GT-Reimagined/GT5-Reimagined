@@ -34,6 +34,7 @@ public class GTRemapping {
         AntimatterRemapping.remapBlockEntity(new ResourceLocation(GTIRef.ID, "heat_exchanger"), new ResourceLocation(GTIRef.ID, "large_heat_exchanger"));
         AntimatterRemapping.remapMachine("coal_boiler", SOLID_FUEL_BOILER);
         AntimatterRemapping.remapMachine("pulverizer", MACERATOR);
+        AntimatterRemapping.remapMachine("large_macerator", LARGE_PULVERIZER);
         AntimatterRemapping.remapMachine("fluid_extractor", FLUID_PRESS);
         AntimatterRemapping.remapMachine("hatch_item_input", HATCH_ITEM_I);
         AntimatterRemapping.remapMachine("hatch_item_output", HATCH_ITEM_O);
