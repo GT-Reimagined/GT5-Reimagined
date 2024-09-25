@@ -1224,6 +1224,7 @@ public class GregTechMaterialEvents {
         event.setMaterial(Sheldonite).addByProduct(Palladium, Nickel, Iridium).bathMercury(Sheldonite).bathPersulfate(Nickel);
         event.setMaterial(Silicon).addByProduct(SiliconDioxide);
         event.setMaterial(Silver).addByProduct(Lead, Sulfur).bathMercury(Silver);
+        event.setMaterial(Sodalite).addByProduct(Lazurite, Lapis);
         event.setMaterial(Sperrylite).addByProduct(Antimony, Copper, Sheldonite, Hematite).bathMercury(Sheldonite).bathPersulfate(Copper);
         event.setMaterial(Spessartine).addByProduct(RedGarnet, Manganese);
         event.setMaterial(Sphalerite).addByProduct(YellowGarnet, Cadmium, Indium, Zinc).bathPersulfate(Zinc);
