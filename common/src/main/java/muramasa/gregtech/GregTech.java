@@ -34,7 +34,6 @@ import muramasa.gregtech.loader.machines.generator.Fuels;
 import muramasa.gregtech.loader.machines.generator.LargeBoilerLoader;
 import muramasa.gregtech.loader.multi.*;
 import muramasa.gregtech.proxy.CommonHandler;
-import muramasa.gregtech.proxy.ServerHandler;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -63,7 +62,6 @@ public class GregTech extends AntimatterMod {
         new SpaceModRegistrar();
         LOGGER.info("Loading GregTech");
         INSTANCE = this;
-        ServerHandler.setup();
 
 
         AntimatterDynamics.clientProvider(GTIRef.ID,
