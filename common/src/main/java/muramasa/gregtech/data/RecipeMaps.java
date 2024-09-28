@@ -183,6 +183,8 @@ public class RecipeMaps {
             new RecipeMap<>(GTIRef.ID, "recycler", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> REPLICATOR = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "replicating", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> ROCK_BREAKER = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GTIRef.ID, "rock_breaker", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SCANNER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GTIRef.ID, "scanning", new RecipeBuilder()));
 

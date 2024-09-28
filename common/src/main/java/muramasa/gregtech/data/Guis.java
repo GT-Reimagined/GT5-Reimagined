@@ -143,6 +143,7 @@ public class Guis {
         MASS_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         AMP_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         REPLICATOR.add(FLUID_CANNER);
+        ROCK_BREAKER.add(COMPRESSOR);
         FERMENTER.add(FLUID_CANNER);
         FLUID_PRESS.add(IT_IN, 53, 25).add(ENERGY, 80, 63).add(FL_OUT, 107, 63);
         SMELTER.add(FLUID_PRESS);
@@ -325,6 +326,7 @@ public class Guis {
 
     public static void backgroundTextures(){
         MACERATOR.getGui().setBackgroundTexture("machine_macerator");
+        ROCK_BREAKER.getGui().setBackgroundTexture("machine_macerator");
         //FORGE_HAMMER.getGui().setBackgroundTexture("machine_forge_hammer");
         CENTRIFUGE.getGui().setBackgroundTexture("centrifuge");
         ELECTROLYZER.getGui().setBackgroundTexture("centrifuge");
@@ -379,6 +381,7 @@ public class Guis {
         EXTRUDER.getGui().getMachineData().setProgressLocation("extruder");
         LATHE.getGui().getMachineData().setProgressLocation("lathe");
         MACERATOR.getGui().getMachineData().setProgressLocation("macerator");
+        ROCK_BREAKER.getGui().getMachineData().setProgressLocation("macerator");
         WIRE_MILL.getGui().getMachineData().setProgressLocation("wiremill");
         CENTRIFUGE.getGui().getMachineData().setProgressLocation("extractor");
         ELECTROLYZER.getGui().getMachineData().setProgressLocation("extractor");
