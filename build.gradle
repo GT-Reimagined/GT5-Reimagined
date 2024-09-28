@@ -45,7 +45,7 @@ subprojects {
     processResources {
         exclude('gtuassets1.14')
     }
-    ocompileKotlin {
+    compileKotlin {
         kotlinOptions.jvmTarget = "17"
     }
 }
