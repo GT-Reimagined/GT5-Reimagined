@@ -1,6 +1,7 @@
 package muramasa.gregtech.datagen;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
+import muramasa.antimatter.Data;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
@@ -26,6 +27,7 @@ import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvide
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.util.TagUtils.getForgelikeItemTag;
 import static muramasa.antimatter.util.Utils.hasItem;
+import static muramasa.antimatter.util.Utils.hasItems;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
 
@@ -35,11 +37,13 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
 
     @Override
     public void accept(Consumer<Advancement> consumer) {
-        progressionRoot = buildRootAdvancement(AntimatterMaterialTypes.ROCK.get(Stone), new ResourceLocation("textures/gui/advancements/backgrounds/stone.png"),
-                GTIRef.ID + ".advancements.rock.title", GTIRef.ID + ".advancements.rock.desc", FrameType.TASK, true, true, false)
+        progressionRoot = buildRootAdvancement(Data.DEBUG_SCANNER, new ResourceLocation(GTIRef.ID, "textures/block/machine/base/lv.png"),
+                GTIRef.ID + ".advancements.gti.title", GTIRef.ID + ".advancements.gti.desc", FrameType.TASK, false, false, false)
                 .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(GTIRef.ID, "progression/root"));
+        Advancement rock = buildBasicAdvancement(progressionRoot, AntimatterMaterialTypes.ROCK.get(Stone), "rock", FrameType.TASK)
+                .addCriterion("has_rocks", hasItems(getForgelikeItemTag("rocks"), getForgelikeItemTag("bearing_rocks"))).save(consumer, getLoc(GTIRef.ID, "progression/rock"));
         Item pickaxe = PICKAXE.getToolItem(Flint);
-        Advancement flintPick = buildBasicAdvancement(progressionRoot, pickaxe, "flint_pickaxe", FrameType.TASK)
+        Advancement flintPick = buildBasicAdvancement(rock, pickaxe, "flint_pickaxe", FrameType.TASK)
                 .addCriterion("has_flint_pick", hasItem(pickaxe)).save(consumer, getLoc(GTIRef.ID, "progression/flint_pickaxe"));
         Advancement rawCopper = buildBasicAdvancement(flintPick, RAW_ORE.get(Copper), "raw_copper", FrameType.TASK)
                 .addCriterion("has_raw_copper", hasItem(RAW_ORE.getMaterialTag(Copper))).save(consumer, getLoc(GTIRef.ID, "progression/raw_copper"));

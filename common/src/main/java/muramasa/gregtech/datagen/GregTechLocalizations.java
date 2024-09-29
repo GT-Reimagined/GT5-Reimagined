@@ -123,6 +123,7 @@ public class GregTechLocalizations {
             add("tooltip.gti.spray_can.1", "Remaining uses: %s");
             add("tooltip.macerator.0", "Crushes Raw ores down to crushed ore and byproducts. Macerator gives no byproducts, Pulverizer gives byproducts");
             structureTranslations();
+            advancements();
         }
 
         private void structureTranslations(){
@@ -321,6 +322,32 @@ public class GregTechLocalizations {
             add("tooltip.fusion_control_computer.5", "All Energy Hatches must be LuV or better");
             add("tooltip.fusion_control_computer.6", "8192EU/t and 40mio EU Cap per Energy Hatch");
 
+        }
+
+        private void advancements(){
+            addAdvancement("gti", "GTI", "Advancements of GTI");
+            addAdvancement("rock", "Pickup a rock of some kind");
+            addAdvancement("flint_pickaxe", "No wood tools allowed!", "Craft a flint pickaxe");
+            addAdvancement("raw_copper", "Find some copper ore and mine it");
+            addAdvancement("raw_tin", "Find some tin ore and mine it");
+            addAdvancement("mortar", "Craft a mortar");
+            addAdvancement("bronze_dust", "Make some bronze dust using a mortar");
+            addAdvancement("hammer", "Craft a hammer");
+            addAdvancement("bronze_solid_fuel_boiler", "Craft a Solid Fuel Boiler");
+            addAdvancement("bronze_steam_forge_hammer", "Craft a Steam Forge Hammer");
+            addAdvancement("bronze_steam_compressor", "Craft a Steam Compressor");
+            addAdvancement("fire_brick", "Craft a Fire Brick");
+            addAdvancement("coke_oven", "Craft a Coke Oven");
+        }
+
+        private void addAdvancement(String key, String translatedTitle, String translatedDesc){
+            add("gti.advancements." + key + ".title", translatedTitle);
+            add("gti.advancements." + key + ".desc", translatedDesc);
+        }
+
+        private void addAdvancement(String key, String translatedDesc){
+            add("gti.advancements." + key + ".title", Utils.lowerUnderscoreToUpperSpaced(key));
+            add("gti.advancements." + key + ".desc", translatedDesc);
         }
 
         @Override
