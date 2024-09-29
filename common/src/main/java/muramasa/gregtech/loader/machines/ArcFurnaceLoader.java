@@ -53,8 +53,28 @@ public class ArcFurnaceLoader {
                     t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE) continue;
             double amount = (double) t.getUnitValue() / U;
             t.all().forEach(m -> {
-                if (!m.has(DUST) || m.has(MaterialTags.RUBBERTOOLS) || m == Bone || m == Carbon || m == Blaze) return;
-                addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), m.getId() + "_" + t.getId() + "_recycling");
+                if (!m.has(DUST) || m == Bone || m == Carbon || m == Blaze) return;
+                if (m.has(MaterialTags.RUBBERTOOLS)) {
+                    int i = (int) amount;
+                    float leftover = (float) (amount - i);
+                    var mac = RecipeMaps.PULVERIZER.RB().ii(t.getMaterialIngredient(m, 1));
+                    if (leftover > 0){
+                        float mExtraF = leftover * 4;
+                        int mExtra = (int) (mExtraF);
+                        float mLeftover = mExtraF - mExtra;
+                        int aExtra = (int) (leftover * 9);
+                        if (mLeftover > 0){
+                            mac.io(DUST_TINY.get(m, (i * 9) + aExtra));
+                        } else {
+                            mac.io(DUST_SMALL.get(m, (i * 4) + mExtra));
+                        }
+                    } else {
+                        mac.io(DUST.get(m, i));
+                    }
+                    mac.add(m.getId() + "_" + t.getId() + "_recycling", m.getMass() * 2, 4);
+                } else {
+                    addRecyclingRecipe(t.getMaterialIngredient(m, 1), of(m, (float) amount), m.getId() + "_" + t.getId() + "_recycling");
+                }
             });
         }
         AntimatterAPI.all(BlockColoredWall.class).forEach(b -> {
