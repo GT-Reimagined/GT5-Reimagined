@@ -147,6 +147,7 @@ public class GregTech extends AntimatterMod {
         loader.accept("polarizer", PolarizerLoader::init);
         loader.accept("printer", PrinterLoader::init);
         loader.accept("roaster", RoasterLoader::init);
+        loader.accept("rock_breaker", RockBreakerLoader::init);
         loader.accept("scanner", ScannerLoader::init);
         loader.accept("sifter", SifterLoader::init);
         loader.accept("smelter", SmelterLoader::init);
