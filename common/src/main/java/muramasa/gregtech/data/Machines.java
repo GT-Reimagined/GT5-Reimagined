@@ -132,7 +132,7 @@ public class Machines {
     });
     public static BasicMachine RECYCLER = new BasicMachine(GTIRef.ID, "recycler").setMap(RecipeMaps.RECYCLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine REPLICATOR = new BasicMachine(GTIRef.ID, "replicator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.REPLICATOR).addFlags(GUI, ITEM, FLUID);
-    public static BasicMachine ROCK_BREAKER = new BasicMachine(GTIRef.ID, "rock_breaker").setMap(RecipeMaps.ROCK_BREAKER).addFlags(GUI, ITEM);
+    public static BasicMachine ROCK_BREAKER = new BasicMachine(GTIRef.ID, "rock_breaker").setMap(RecipeMaps.ROCK_BREAKER).addFlags(GUI, ITEM).setTile(BlockEntityRockBreaker::new);
     public static BasicMachine SCANNER = new BasicMachine(GTIRef.ID, "scanner").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.SCANNER).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityScanner::new).setSound(GregTechSounds.MAGNETIZER,  0.6f);
     public static BasicMachine SEISMIC_PROSPECTOR = new BasicMachine(GTIRef.ID, "seismic_prospector").setTiers(LV, EV).setTile(BlockEntitySeismicProspector::new).setOutputCover(ICover.emptyFactory);
     public static BasicMachine SIFTER = new BasicMachine(GTIRef.ID, "sifter").setMap(RecipeMaps.SIFTER).addFlags(GUI, ITEM);
