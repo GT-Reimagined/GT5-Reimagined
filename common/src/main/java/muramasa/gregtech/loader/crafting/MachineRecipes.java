@@ -400,6 +400,15 @@ public class MachineRecipes {
                             .put('C', circuit)
                             .put('H', hull)
                             .put('W', WIRE_GETTER.apply(PipeSize.TINY, tier)).build(), "SVS", "CHC", "WWW"));
+            add(ROCK_BREAKER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('P', piston)
+                            .put('M', motor)
+                            .put('G', GregTechTags.GRIND_HEADS)
+                            .put('C', cable)
+                            .put('H', hull)
+                            .put('g', glass)
+                            .build(), "PMG", "CHC", "ggg"));
             add(SCANNER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('S', sensor)
