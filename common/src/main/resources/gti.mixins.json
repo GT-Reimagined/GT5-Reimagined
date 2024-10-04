@@ -1,6 +1,0 @@
-{
-  "required": true,
-  "package": "muramasa.gregtech.mixin",
-  "compatibilityLevel": "JAVA_8",
-  "minVersion": "0.8"
-}
