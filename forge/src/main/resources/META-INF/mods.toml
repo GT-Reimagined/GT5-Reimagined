@@ -1,18 +1,18 @@
 modLoader="javafml"
 license="LGPLv3"
 loaderVersion="[31,)"
-issueTrackerURL="https://github.com/GregTech-Intergalactical/GregTech/issues"
+issueTrackerURL="https://github.com/GT-Reimagined/GT5-Reimagined/issues"
 
 [[mods]]
 modId="gti"
 version="${version}"
-displayName="GTI"
+displayName="GT5 Reimagined"
 #updateJSONURL="http://myurl.me/"
-displayURL="https://github.com/GregTech-Intergalactical/GregTech"
+displayURL="https://github.com/GT-Reimagined/GT5-Reimagined"
 #logoFile="gregtech.png"
-credits="GregoriusTechneticies for his previous versions of GregTech. And the current GregTech community for suggestions and ideas."
-authors="Muramasa, Rongmario, Abbe, Trinsdar"
-description='''The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5'''
+credits="GregoriusTechneticies for his previous versions of GregTech, the current GregTech community for suggestions and ideas, and Muramasa for the original GTI this is based off."
+authors="Trinsdar"
+description='''A Reimagining of GregTech 5U for modern minecraft versions'''
 [[dependencies.gti]]
     modId="antimatter"
     mandatory=true

@@ -2,18 +2,15 @@
   "schemaVersion": 1,
   "id": "gti",
   "version": "${version}",
-  "name": "GTI",
-  "description": "The Approved Continuation. Rewrite. And Re-envisioning of GregTech 5",
+  "name": "GT5-Reimagined",
+  "description": "A Reimagining of GregTech 5U for modern minecraft versions",
   "authors": [
-    "Muramasa",
-    "Rongmario",
-    "Abbe",
     "Trinsdar"
   ],
   "contact": {
-    "sources": "https://github.com/GregTech-Intergalactical/GregTech",
-    "issues": "https://github.com/GregTech-Intergalactical/GregTech/issues",
-    "discord": "https://discord.gg/9kM4bRj"
+    "sources": "https://github.com/GT-Reimagined/GT5-Reimagined",
+    "issues": "https://github.com/GT-Reimagined/GT5-Reimagined/issues",
+    "discord": "https://discord.gg/sZFzQrBA33"
   },
   "mixins": ["gti.mixins.json"],
   "license": "LGPL-3.0",
