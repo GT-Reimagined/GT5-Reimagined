@@ -3,7 +3,7 @@ package muramasa.gregtech.block;
 import muramasa.antimatter.block.BlockBasicSlab;
 import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -32,6 +32,6 @@ public class BlockAsphaltSlab extends BlockBasicSlab implements IColorHandler {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GTIRef.ID, "block/stone/asphalt")};
+        return new Texture[]{new Texture(GT5RRef.ID, "block/stone/asphalt")};
     }
 }

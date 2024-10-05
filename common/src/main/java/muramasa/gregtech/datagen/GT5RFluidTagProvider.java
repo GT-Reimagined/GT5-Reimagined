@@ -8,8 +8,8 @@ import net.minecraft.world.item.DyeColor;
 
 import static muramasa.gregtech.data.Materials.Oil;
 
-public class GregTechFluidTagProvider extends AntimatterFluidTagProvider {
-    public GregTechFluidTagProvider(String providerDomain, String providerName, boolean replace) {
+public class GT5RFluidTagProvider extends AntimatterFluidTagProvider {
+    public GT5RFluidTagProvider(String providerDomain, String providerName, boolean replace) {
         super(providerDomain, providerName, replace);
     }
 

@@ -12,7 +12,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -35,15 +35,15 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                     ItemStack input0 = inputHandler.getItem(0);
                     ItemStack input1 = inputHandler.getItem(1);
                     if (!input0.isEmpty()) {
-                        if (input0.getItem() == GregTechItems.DataStick) {
+                        if (input0.getItem() == GT5RItems.DataStick) {
                             CompoundTag prospect = input0.getTagElement("prospectData");
                             if (prospect != null) {
                                 ItemStack output = input0.copy();
                                 output.getTagElement("prospectData").putBoolean("analyzed", true);
                                 return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("data_stick_prospection", 1000, 32);
                             }
-                        } else if (input0.getItem() == Items.WRITTEN_BOOK && input0.getTag() != null && input1.getItem() == GregTechItems.DataStick && input1.getTag() == null){
-                            ItemStack output = new ItemStack(GregTechItems.DataStick);
+                        } else if (input0.getItem() == Items.WRITTEN_BOOK && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
+                            ItemStack output = new ItemStack(GT5RItems.DataStick);
                             output.getOrCreateTag().put("bookData", input0.getTag().copy());
                             return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("book_copying", 128, 32);
                         }
@@ -54,7 +54,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == GregTechItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK;
+                return super.accepts(stack) || stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK;
             }
 
             @Override
@@ -85,7 +85,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         if (slotType == SlotType.IT_IN && slot == 1){
-            return stack.getItem() == GregTechItems.DataStick || stack.getItem() == GTCoreItems.DataOrb;
+            return stack.getItem() == GT5RItems.DataStick || stack.getItem() == GTCoreItems.DataOrb;
         }
         return true;
     }

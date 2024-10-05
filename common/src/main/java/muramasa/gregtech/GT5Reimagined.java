@@ -19,7 +19,7 @@ import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tool.IAntimatterTool;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.block.BlockAsphalt;
-import muramasa.gregtech.client.GregTechModelManager;
+import muramasa.gregtech.client.GT5RModelManager;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.*;
 import muramasa.gregtech.datagen.*;
@@ -46,12 +46,12 @@ import java.util.function.BiConsumer;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
 
-public class GregTech extends AntimatterMod {
+public class GT5Reimagined extends AntimatterMod {
 
-    public static GregTech INSTANCE;
-    public static Logger LOGGER = LogManager.getLogger(GTIRef.ID);
+    public static GT5Reimagined INSTANCE;
+    public static Logger LOGGER = LogManager.getLogger(GT5RRef.ID);
 
-    public GregTech() {
+    public GT5Reimagined() {
         super();
     }
 
@@ -60,32 +60,32 @@ public class GregTech extends AntimatterMod {
         super.onRegistrarInit();
         new AppliedEnergisticsRegistrar();
         new SpaceModRegistrar();
-        LOGGER.info("Loading GregTech");
+        LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
 
 
-        AntimatterDynamics.clientProvider(GTIRef.ID,
-                () -> new AntimatterBlockStateProvider(GTIRef.ID, GTIRef.NAME + " BlockStates"));
-        AntimatterDynamics.clientProvider(GTIRef.ID,
-                () -> new AntimatterItemModelProvider(GTIRef.ID, GTIRef.NAME + " Item Models"));
-        AntimatterDynamics.clientProvider(GTIRef.ID, GregTechLocalizations.en_US::new);
-        GregTechConfig.createConfig();
+        AntimatterDynamics.clientProvider(GT5RRef.ID,
+                () -> new AntimatterBlockStateProvider(GT5RRef.ID, GT5RRef.NAME + " BlockStates"));
+        AntimatterDynamics.clientProvider(GT5RRef.ID,
+                () -> new AntimatterItemModelProvider(GT5RRef.ID, GT5RRef.NAME + " Item Models"));
+        AntimatterDynamics.clientProvider(GT5RRef.ID, GT5RLocalizations.en_US::new);
+        GT5RConfig.createConfig();
     }
 
     public static void onProviders(ProvidersEvent ev) {
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
-        ev.addProvider(GTIRef.ID, () -> {
-            p[0] = new GregTechBlockTagProvider(GTIRef.ID, GTIRef.NAME.concat(" Block Tags"), false);
+        ev.addProvider(GT5RRef.ID, () -> {
+            p[0] = new GT5RBlockTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Block Tags"), false);
             return p[0];
         });
-        ev.addProvider(GTIRef.ID, () -> new GregTechItemTagProvider(GTIRef.ID, GTIRef.NAME.concat(" Item Tags"),
+        ev.addProvider(GT5RRef.ID, () -> new GT5RItemTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Item Tags"),
                 false, p[0]));
-        ev.addProvider(GTIRef.ID, () -> new GregTechFluidTagProvider(GTIRef.ID,
-                GTIRef.NAME.concat(" Fluid Tags"), false));
-        ev.addProvider(GTIRef.ID, () -> new AntimatterAdvancementProvider(GTIRef.ID,
-                GTIRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));
-        ev.addProvider(GTIRef.ID,
-                () -> new GregtechBlockLootProvider(GTIRef.ID, GTIRef.NAME.concat(" Loot generator")));
+        ev.addProvider(GT5RRef.ID, () -> new GT5RFluidTagProvider(GT5RRef.ID,
+                GT5RRef.NAME.concat(" Fluid Tags"), false));
+        ev.addProvider(GT5RRef.ID, () -> new AntimatterAdvancementProvider(GT5RRef.ID,
+                GT5RRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));
+        ev.addProvider(GT5RRef.ID,
+                () -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
     }
     
     public static void registerCraftingLoaders(CraftingEvent event) {
@@ -107,7 +107,7 @@ public class GregTech extends AntimatterMod {
     }
 
     public static void registerRecipeLoaders(IAntimatterRegistrar registrar, IRecipeRegistrate reg) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> reg.add(GTIRef.ID, a, b);
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> reg.add(GT5RRef.ID, a, b);
         loader.accept("alloy_smelter", AlloySmelterLoader::init);
         loader.accept("arc_furnace", ArcFurnaceLoader::init);
         loader.accept("assembler", AssemblerLoader::init);
@@ -173,26 +173,26 @@ public class GregTech extends AntimatterMod {
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {
-        return AntimatterAPI.get(clazz, id, GTIRef.ID);
+        return AntimatterAPI.get(clazz, id, GT5RRef.ID);
     }
 
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         switch (event) {
             case DATA_INIT -> {
-                GregTechMaterialTypes.init();
+                GT5RMaterialTypes.init();
                 ToolTypes.init();
                 Materials.init();
                 TierMaps.init();
-                GregTechData.init(side);
-                GregTechCovers.init();
-                GregTechItems.init();
-                GregTechBlocks.init();
+                GT5RData.init(side);
+                GT5RCovers.init();
+                GT5RItems.init();
+                GT5RBlocks.init();
                 Machines.init();
                 MenuHandlers.init();
                 Guis.init(side);
                 Models.init();
-                GregTechSounds.init();
+                GT5RSounds.init();
                 if (AntimatterAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
@@ -204,9 +204,9 @@ public class GregTech extends AntimatterMod {
                         if (attributeinstance == null) {
                             return;
                         }
-                        if (state.is(GregTechTags.ASPHALT)){
+                        if (state.is(GT5RTags.ASPHALT)){
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) == null){
-                                attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", GregTechConfig.ASPHALT_MULTIPLIER.get(), AttributeModifier.Operation.MULTIPLY_BASE));
+                                attributeinstance.addTransientModifier(new AttributeModifier(BlockAsphalt.SPEED_MODIFIER, "Asphalt speed modification", GT5RConfig.ASPHALT_MULTIPLIER.get(), AttributeModifier.Operation.MULTIPLY_BASE));
                             } 
                         } else {
                             if (attributeinstance.getModifier(BlockAsphalt.SPEED_MODIFIER) != null){
@@ -218,25 +218,25 @@ public class GregTech extends AntimatterMod {
             }
             case DATA_READY -> {
                 Structures.init();
-                GregTechTwilightStalctites.init();
+                GT5RTwilightStalctites.init();
                 GTRemapping.init();
-                AntimatterJEIREIPlugin.addItemsToHide(GregTechBlocks.LAVA);
+                AntimatterJEIREIPlugin.addItemsToHide(GT5RBlocks.LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
                     IAntimatterTool screwdriver_mv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_mv");
                     IAntimatterTool screwdriver_hv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_hv");
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     l.add(GTCoreItems.BatteryRE);
-                    if (!GregTechConfig.HARDER_CIRCUITS){
+                    if (!GT5RConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GTCoreItems.CircuitBoardPhenolic, PLATE.get(Materials.FiberReinforcedEpoxyResin)));
-                        l.addAll(Arrays.asList(GregTechItems.CircuitWetware, GregTechItems.MicroProcessor, GregTechItems.IntegratedProcessor, GregTechItems.NanoProcessor, GregTechItems.QuantumProcessor));
+                        l.addAll(Arrays.asList(GT5RItems.CircuitWetware, GT5RItems.MicroProcessor, GT5RItems.IntegratedProcessor, GT5RItems.NanoProcessor, GT5RItems.QuantumProcessor));
                     }
                 });
                 AntimatterJEIREIPlugin.addFluidsToHide(l -> {
                     l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                 });
-                AntimatterPlatformUtils.setBurnTime(GregTechBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
-                AntimatterPlatformUtils.setBurnTime(GregTechItems.WoodPellet, 200);
-                AntimatterPlatformUtils.setFlammability(GregTechBlocks.WOOD_WALL, 5, 20);
+                AntimatterPlatformUtils.setBurnTime(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
+                AntimatterPlatformUtils.setBurnTime(GT5RItems.WoodPellet, 200);
+                AntimatterPlatformUtils.setFlammability(GT5RBlocks.WOOD_WALL, 5, 20);
                 AntimatterPlatformUtils.setFlammability(Machines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
                 CommonHandler.setup();
               //  if (side == Dist.CLIENT) StructureInfo.init();
@@ -244,13 +244,13 @@ public class GregTech extends AntimatterMod {
             }
             case CLIENT_DATA_INIT -> {
                 ClientData.init();
-                GregTechModelManager.init();
+                GT5RModelManager.init();
             }
         }
     }
 
     @Override
     public String getId() {
-        return GTIRef.ID;
+        return GT5RRef.ID;
     }
 }

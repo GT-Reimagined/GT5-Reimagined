@@ -11,7 +11,7 @@ import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
-import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.GT5RCovers;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
@@ -49,7 +49,7 @@ public class ReactorBakedModel extends MachineBakedModel {
         List<BakedQuad> superBlockQuads = new ObjectArrayList<>(20);
         List<BakedQuad> coverQuads = getCoverQuads(state, side, rand, props, core, level, pos);
         ICover cover = props.covers[side.get3DDataValue()];
-        boolean isOutputCover = cover.getFactory() == GregTechCovers.COVER_REACTOR_OUTPUT || cover.getFactory() == GregTechCovers.COVER_REACTOR_OUTPUT_SECONDARY;
+        boolean isOutputCover = cover.getFactory() == GT5RCovers.COVER_REACTOR_OUTPUT || cover.getFactory() == GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY;
         if (!coverQuads.isEmpty()) {
             if (isOutputCover) {
                 return coverQuads;

@@ -4,7 +4,7 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.gregtech.GregTechConfig;
+import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.material.FluidProduct;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -20,12 +20,12 @@ import static muramasa.gregtech.data.RecipeMaps.*;
 public class DistillationTowerLoader {
 
     public static void init() {
-        /*if (GregTechConfig.GT5U_OIL.get()){
+        /*if (GT5RConfig.GT5U_OIL.get()){
             init5U();
         } else {
             initBasic();
         }*/
-        if (GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
+        if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
             initComplicated();
         }
         initBasic();
@@ -53,7 +53,7 @@ public class DistillationTowerLoader {
                 new FluidProduct(Glycerol, 20),
                 new FluidProduct(Methane, 4),
                 new FluidProduct(DistilledWater,50));
-        Material ethane = GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get() ? Ethane : Ethylene;
+        Material ethane = GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get() ? Ethane : Ethylene;
         addDistillationDistillingRecipe(RefineryGas, 1000, 240, 120,
                 new FluidProduct(Butane, 60),
                 new FluidProduct(Propane, 70),

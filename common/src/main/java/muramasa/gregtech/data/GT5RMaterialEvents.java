@@ -19,12 +19,12 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
 import static muramasa.antimatter.material.MaterialTags.*;
-import static muramasa.gregtech.data.GregTechMaterialTags.*;
-import static muramasa.gregtech.data.GregTechMaterialTypes.BOULE;
-import static muramasa.gregtech.data.GregTechMaterialTypes.CHAMBER;
+import static muramasa.gregtech.data.GT5RMaterialTags.*;
+import static muramasa.gregtech.data.GT5RMaterialTypes.BOULE;
+import static muramasa.gregtech.data.GT5RMaterialTypes.CHAMBER;
 import static muramasa.gregtech.data.Materials.*;
 
-public class GregTechMaterialEvents {
+public class GT5RMaterialEvents {
     public static void onMaterialEvent(GregTechMaterialEvent event){
         flags(event);
         antimatterMaterials(event);

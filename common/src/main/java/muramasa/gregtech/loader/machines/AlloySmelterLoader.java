@@ -4,7 +4,7 @@ import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialStack;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -22,7 +22,7 @@ public class AlloySmelterLoader {
 
     public static void init() {
         INGOT.all().forEach(t -> {
-            if (t.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)) return;
+            if (t.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)) return;
             if (!t.has(METAL)) return;
             List<MaterialStack> stacks = t.getProcessInto();
             if (stacks.size() != 2) return;
@@ -48,14 +48,14 @@ public class AlloySmelterLoader {
         //pre Chemical Reactor Rubber
         ALLOY_SMELTER.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
                 .io(INGOT.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);
-        PLATE.all().stream().filter(m -> !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && m.has(INGOT)).forEach(m ->{
+        PLATE.all().stream().filter(m -> !m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(INGOT)).forEach(m ->{
             int euPerTick = m.has(RUBBERTOOLS) ? 8 : 32;
             ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(m, 2), RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate", m.getMass() * 2, euPerTick);
             if (m.has(RUBBERTOOLS)) {
                 ALLOY_SMELTER.RB().ii(DUST.getMaterialIngredient(m, 2), RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).io(PLATE.get(m, 1)).add(m.getId() + "_plate_from_dust", m.getMass() * 2, euPerTick);
             }
         });
-        INGOT.all().stream().filter(m -> !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)).forEach(m -> { //TODO other ingot recipes
+        INGOT.all().stream().filter(m -> !m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)).forEach(m -> { //TODO other ingot recipes
             if (m.has(NUGGET)){
                 ALLOY_SMELTER.RB().ii(NUGGET.getMaterialIngredient(m, 9), RecipeIngredient.of(GTCoreItems.MoldIngot, 1).setNoConsume()).io(INGOT.get(m, 1)).add(m.getId() + "_ingot_from_nugget", 200, 2);
             }
@@ -66,7 +66,7 @@ public class AlloySmelterLoader {
         ITEM_CASING.all().forEach(m -> {
             ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(m, 2), of(GTCoreItems.MoldCasing, 1).setNoConsume()).io(ITEM_CASING.get(m, 3)).add(m.getId() + "_item_casing", Math.max(m.getMass() * 2 / 3, 1), 16);
         });
-        GEAR.all().stream().filter(m -> !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && m.has(INGOT)).forEach(m ->{
+        GEAR.all().stream().filter(m -> !m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(INGOT)).forEach(m ->{
             int euPerTick = m.has(RUBBERTOOLS) ? 8 : 32;
             ALLOY_SMELTER.RB().ii(INGOT.getMaterialIngredient(m, 8), RecipeIngredient.of(GTCoreItems.MoldGear, 1).setNoConsume()).io(GEAR.get(m, 1)).add(m.getId() + "_gear", m.getMass() * 8, euPerTick);
             if (m.has(RUBBERTOOLS)) {

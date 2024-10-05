@@ -6,10 +6,8 @@ import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.AntimatterDynamics;
-import muramasa.antimatter.ore.BlockOre;
-import muramasa.antimatter.registration.IAntimatterObject;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
@@ -21,7 +19,7 @@ import static io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE;
 import static muramasa.antimatter.data.AntimatterStoneTypes.STONE;
 
-public class GregTechTwilightStalctites {
+public class GT5RTwilightStalctites {
     private static Map<Integer, List<ResourceLocation>> hollowHillEntries = new Object2ObjectOpenHashMap<>();
 
     public static void init(){
@@ -61,7 +59,7 @@ public class GregTechTwilightStalctites {
         object.addProperty("ore", AntimatterPlatformUtils.getIdFromBlock(ore).toString());
         object.addProperty("size_variation", sizeVariation);
         object.addProperty("weight", weight);
-        ResourceLocation id = new ResourceLocation(GTIRef.ID, name);
+        ResourceLocation id = new ResourceLocation(GT5RRef.ID, name);
         hollowHillEntries.computeIfAbsent(hillSize, i -> new ArrayList<>()).add(id);
         AntimatterDynamics.RUNTIME_DATA_PACK.addData(AntimatterDynamics.fix(id, "stalactite/entries", ".json"), object.toString().getBytes());
     }

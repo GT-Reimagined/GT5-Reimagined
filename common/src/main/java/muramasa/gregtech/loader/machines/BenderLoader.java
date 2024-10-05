@@ -4,8 +4,8 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.gregtech.data.GregTechItems;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RItems;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,7 +19,7 @@ import static muramasa.gregtech.data.RecipeMaps.BENDER;
 public class BenderLoader {
     public static void init() {
         ToLongFunction<Material> baseDuration = m -> {
-            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
         PLATE.all().forEach(t -> {
@@ -42,10 +42,10 @@ public class BenderLoader {
         RING.all().stream().filter(m -> !m.has(MaterialTags.RUBBERTOOLS)).forEach(ring -> {
             BENDER.RB().ii(ROD.getMaterialIngredient(ring, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(RING.get(ring, 2)).add(ring.getId() + "_ring", 200, 16);
         });
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GregTechItems.CellTin.getDefaultInstance()).add("tin_cell",80,24);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GregTechItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GregTechItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), SELECTOR_TAG_INGREDIENTS.get(1)).io(GregTechItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellTin.getDefaultInstance()).add("tin_cell",80,24);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), SELECTOR_TAG_INGREDIENTS.get(1)).io(GT5RItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
         BENDER.RB().ii(PLATE.getMaterialIngredient(AntimatterMaterials.Iron, 3), SELECTOR_TAG_INGREDIENTS.get(3)).io(new ItemStack(Items.BUCKET)).add("bucket", 200, 16);
     }
 }

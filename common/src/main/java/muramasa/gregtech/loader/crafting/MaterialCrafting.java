@@ -8,8 +8,8 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.ItemPipe;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechMaterialTypes;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.data.GT5RMaterialTypes;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -23,7 +23,7 @@ import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.material.MaterialTags.*;
-import static muramasa.gregtech.data.GregTechMaterialTypes.CHAMBER;
+import static muramasa.gregtech.data.GT5RMaterialTypes.CHAMBER;
 import static muramasa.gregtech.data.Materials.*;
 
 public class MaterialCrafting {
@@ -41,20 +41,20 @@ public class MaterialCrafting {
                 DUST.getMaterialTag(Steel), DUST.getMaterialTag(Steel), DUST.getMaterialTag(BismuthBronze), DUST.getMaterialTag(SterlingSilver));
         addShapelessDustRecipe(output, provider, "cobalt_brass", DUST.get(CobaltBrass, 9), DUST.getMaterialTag(Brass), DUST.getMaterialTag(Brass), DUST.getMaterialTag(Brass),
                 DUST.getMaterialTag(Brass), DUST.getMaterialTag(Brass), DUST.getMaterialTag(Brass), DUST.getMaterialTag(Brass), DUST.getMaterialTag(Aluminium), DUST.getMaterialTag(Cobalt));
-        provider.shapeless(output, GTIRef.ID, "", "dusts", AntimatterMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        provider.shapeless(output, GT5RRef.ID, "", "dusts", AntimatterMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
         loadAutoRecipes(output, provider);
     }
 
     public static void loadAutoRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider){
         DUST.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GTIRef.ID, m.getId() + "_small_dust", "antimatter_materials", DUST_SMALL.get(m, 4),
+            provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_small_dust", "antimatter_materials", DUST_SMALL.get(m, 4),
                     of('D', DUST.getMaterialTag(m)), " D");
-            /*provider.addStackRecipe(consumer, GTIRef.ID, m.getId() + "_tiny_dust", "antimatter_materials", "has_wrench", in, DUST_TINY.get(m, 9),
+            /*provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_tiny_dust", "antimatter_materials", "has_wrench", in, DUST_TINY.get(m, 9),
                     of('D', DUST.getMaterialTag(m)), "D ");*/
         });
-        GregTechMaterialTypes.TURBINE_BLADE.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_materials",
-                    GregTechMaterialTypes.TURBINE_BLADE.get(m, 1), ImmutableMap.<Character, Object>builder()
+        GT5RMaterialTypes.TURBINE_BLADE.all().forEach(m -> {
+            provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_materials",
+                    GT5RMaterialTypes.TURBINE_BLADE.get(m, 1), ImmutableMap.<Character, Object>builder()
                             .put('S', SCREWDRIVER.getTag())
                             .put('F', FILE.getTag())
                             .put('P', PLATE.getMaterialTag(m))
@@ -68,13 +68,13 @@ public class MaterialCrafting {
         });
         AntimatterAPI.all(ItemPipe.class, i -> {
             if (i.getSizes().contains(PipeSize.NORMAL)){
-                provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
+                provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
             }
             if (i.getSizes().contains(PipeSize.LARGE)){
-                provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
+                provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
             }
             if (i.getSizes().contains(PipeSize.HUGE)) {
-                provider.addStackRecipe(consumer, GTIRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
+                provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
             }
         });
         //todo move to gt core
@@ -84,8 +84,8 @@ public class MaterialCrafting {
                 String typeID = m.has(GEM) ? "gem" : "ingot";
                 int output = m.has(QUARTZ_LIKE_BLOCKS) ? 4 : 9;
                 String[] strings = m.has(QUARTZ_LIKE_BLOCKS) ? new String[]{"II", "II"} : new String[]{"III", "III", "III"};
-                provider.addItemRecipe(consumer, GTIRef.ID, m.getId() + "_block", "blocks", BLOCK.get().get(m).asItem(), of('I', input.getMaterialTag(m)), strings);
-                provider.shapeless(consumer, GTIRef.ID, m.getId() + "_" + typeID, "blocks", input.get(m, output), BLOCK.getMaterialTag(m));
+                provider.addItemRecipe(consumer, GT5RRef.ID, m.getId() + "_block", "blocks", BLOCK.get().get(m).asItem(), of('I', input.getMaterialTag(m)), strings);
+                provider.shapeless(consumer, GT5RRef.ID, m.getId() + "_" + typeID, "blocks", input.get(m, output), BLOCK.getMaterialTag(m));
             }
         });
         RAW_ORE_BLOCK.all().forEach(m -> {
@@ -97,6 +97,6 @@ public class MaterialCrafting {
     }
 
     private static void addShapelessDustRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, String recipeName, ItemStack outputItem, Object... inputs) {
-        provider.shapeless(output, GTIRef.ID, recipeName, "misc", outputItem, inputs);
+        provider.shapeless(output, GT5RRef.ID, recipeName, "misc", outputItem, inputs);
     }
 }

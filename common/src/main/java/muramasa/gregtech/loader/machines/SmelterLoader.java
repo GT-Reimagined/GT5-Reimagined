@@ -2,17 +2,14 @@ package muramasa.gregtech.loader.machines;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechMaterialTags;
-import net.minecraft.world.item.Items;
+import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.level.block.Blocks;
 
 import static muramasa.antimatter.Ref.*;
@@ -21,7 +18,6 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.Lava;
 import static muramasa.antimatter.material.MaterialTags.MOLTEN;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.FLUID_PRESS;
 import static muramasa.gregtech.data.RecipeMaps.SMELTER;
 
 public class SmelterLoader {
@@ -34,12 +30,12 @@ public class SmelterLoader {
             });
         }
         DUST.all().forEach(m -> {
-            if (m.has(LIQUID) && m.has(MOLTEN) && !m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
+            if (m.has(LIQUID) && m.has(MOLTEN) && !m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
                 long amount = m == Alumina ? (DUST.getUnitValue() * 7) / 2 : DUST.getUnitValue();
                 add(m, DUST, amount);
             }
         });
-        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+        if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             SMELTER.RB().ii(DUST.getMaterialIngredient(AluminiumHydroxide, 1)).fo(Alumina.getLiquid(((L9 * 7 * 3) / 2) + (L9 * 3 / 4))).add("aluminium_hydroxide_to_alumina", 55, 16);
         }
         addLava(Obsidian, ROD_LONG, ROD_LONG.getUnitValue());

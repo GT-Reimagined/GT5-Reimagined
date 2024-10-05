@@ -11,7 +11,7 @@ import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.data.AntimatterTags;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.machine.MultiblockTankMachine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,13 +20,11 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
-import tesseract.TesseractCapUtils;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.List;
@@ -49,7 +47,7 @@ public class BlockEntityLargeTank extends BlockEntityMaterialBasicMultiMachine<B
     }
 
     public Block getCasing(){
-        Block block = AntimatterAPI.get(Block.class, material.getId() + "_wall", GTIRef.ID);
+        Block block = AntimatterAPI.get(Block.class, material.getId() + "_wall", GT5RRef.ID);
         if (block != null) return block;
         return Blocks.AIR;
     }

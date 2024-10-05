@@ -7,9 +7,8 @@ import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.pipe.types.FluidPipe;
 import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechData;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.data.GT5RData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -23,14 +22,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.LighterEmpty;
-import static muramasa.gregtech.data.GregTechItems.EmptySprayCan;
+import static muramasa.gregtech.data.GT5RItems.EmptySprayCan;
 
 public class ItemSprayCan extends ItemBasic<ItemSprayCan> implements ICustomDurability {
     private final DyeColor color;
 
     public ItemSprayCan(DyeColor color) {
-        super(GTIRef.ID, color.getName() + "_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(512));
+        super(GT5RRef.ID, color.getName() + "_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(512));
         this.color = color;
     }
 
@@ -38,7 +36,7 @@ public class ItemSprayCan extends ItemBasic<ItemSprayCan> implements ICustomDura
     public InteractionResult useOn(UseOnContext context) {
         BlockEntity be = context.getLevel().getBlockEntity(context.getClickedPos());
         if (!context.getLevel().isClientSide() && be instanceof BlockEntityPipe<?> pipe && (pipe.getPipeType() instanceof FluidPipe || pipe.getPipeType() instanceof ItemPipe)){
-            int rgb = GregTechData.getColorFromDyeColor(color);
+            int rgb = GT5RData.getColorFromDyeColor(color);
             if (pipe.getPipeColor() != rgb){
                 pipe.setPipeColor(rgb);
                 pipe.checkConnections();

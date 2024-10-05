@@ -4,8 +4,7 @@ import muramasa.antimatter.event.fabric.CraftingEvents;
 import muramasa.antimatter.event.fabric.LoaderEvents;
 import muramasa.antimatter.event.fabric.ProviderEvents;
 import muramasa.antimatter.event.fabric.WorldGenEvents;
-import muramasa.antimatter.structure.StructureCache;
-import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
 import muramasa.gregtech.blockentity.multi.MiningPipeStructureCache;
 import muramasa.gregtech.loader.WorldGenLoader;
@@ -17,13 +16,13 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import team.reborn.energy.api.EnergyStorage;
 import tesseract.api.fabric.TesseractLookups;
 
-public class GregTechFabric implements ModInitializer {
+public class GT5RFabric implements ModInitializer {
     @Override
     public void onInitialize() {
         WorldGenEvents.WORLD_GEN.register(WorldGenLoader::init);
-        LoaderEvents.LOADER.register(GregTech::registerRecipeLoaders);
-        CraftingEvents.CRAFTING.register(GregTech::registerCraftingLoaders);
-        ProviderEvents.PROVIDERS.register(GregTech::onProviders);
+        LoaderEvents.LOADER.register(GT5Reimagined::registerRecipeLoaders);
+        CraftingEvents.CRAFTING.register(GT5Reimagined::registerCraftingLoaders);
+        ProviderEvents.PROVIDERS.register(GT5Reimagined::onProviders);
         ServerWorldEvents.UNLOAD.register((server, world) -> MiningPipeStructureCache.onWorldUnload(world));
         EnergyStorage.SIDED.registerFallback(((world, pos, state, blockEntity, context) -> {
             if (blockEntity instanceof BlockEntityMiniPortal miniPortal && context != null){

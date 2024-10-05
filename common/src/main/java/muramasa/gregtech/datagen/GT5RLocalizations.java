@@ -6,11 +6,11 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.block.*;
-import muramasa.gregtech.data.GregTechBlocks;
-import muramasa.gregtech.data.GregTechCovers;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GT5RBlocks;
+import muramasa.gregtech.data.GT5RCovers;
+import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
 
@@ -19,26 +19,26 @@ import static muramasa.antimatter.util.Utils.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Machines.LARGE_BOILER;
 
-public class GregTechLocalizations {
+public class GT5RLocalizations {
 
     public static class en_US extends AntimatterLanguageProvider {
 
         public en_US() {
-            super(GTIRef.ID, GTIRef.NAME + " en_us Localization", "en_us");
+            super(GT5RRef.ID, GT5RRef.NAME + " en_us Localization", "en_us");
         }
 
         @Override
         protected void addTranslations() {
             super.addTranslations();
-            add(GTIRef.ID + ".advancements.greg", "GregTech Intergalactical");
-            add(GTIRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
-            add(GTIRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
-            add(GTIRef.ID + ".rei.tooltip.material_tree", "Material Tree");
+            add(GT5RRef.ID + ".advancements.greg", "GT5Reimagined Intergalactical");
+            add(GT5RRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
+            add(GT5RRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
+            add(GT5RRef.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
             add("machine.upgraded_batch.parallel", "Runs up to %s recipes at a time");
-            add(GTIRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
-            add(GTIRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
-            add(GTIRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
+            add(GT5RRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
+            add(GT5RRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
+            add(GT5RRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
             add("tooltip.gti.redstone_mode.2", "Ignore Redstone");
             add("tooltip.gti.redstone_mode.1", "Invert Conditional");
             add("tooltip.gti.redstone_mode.0", "Conditional");
@@ -365,10 +365,10 @@ public class GregTechLocalizations {
                 add(i, lowerUnderscoreToUpperSpaced(i.getId()));
             });
 
-            add(GregTechBlocks.MINING_PIPE, "Mining Pipe");
-            add(GregTechBlocks.MINING_PIPE_THIN, "Mining Pipe");
-            add(GregTechBlocks.BRITTLE_CHARCOAL, "Brittle Charcoal");
-            add(GregTechBlocks.SOLID_SUPER_FUEL, "Solid Super Fuel");
+            add(GT5RBlocks.MINING_PIPE, "Mining Pipe");
+            add(GT5RBlocks.MINING_PIPE_THIN, "Mining Pipe");
+            add(GT5RBlocks.BRITTLE_CHARCOAL, "Brittle Charcoal");
+            add(GT5RBlocks.SOLID_SUPER_FUEL, "Solid Super Fuel");
             AntimatterAPI.all(BlockFakeCasing.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockColoredWall.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
             AntimatterAPI.all(BlockAsphalt.class, domain).forEach(i -> add(i, lowerUnderscoreToUpperSpaced(i.getId())));
@@ -400,12 +400,12 @@ public class GregTechLocalizations {
             override(LARGE_BOILER, EV, "Large Tungstensteel Boiler");
             override(MACERATOR, HV, "Pulverizer (%s)");
             override(MACERATOR, EV, "Pulverizer (%s)");
-            override(GregTechItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
-            add(GregTechBlocks.POWDER_BARREL, "Powder Barrel");
-            override(GregTechBlocks.CASING_BRONZE_PLATED_BRICK.getDescriptionId(), "Bronze Plated Bricks");
+            override(GT5RItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
+            add(GT5RBlocks.POWDER_BARREL, "Powder Barrel");
+            override(GT5RBlocks.CASING_BRONZE_PLATED_BRICK.getDescriptionId(), "Bronze Plated Bricks");
             override("machine.hull", "%s " + HULL.getLang(locale));
-            override(GregTechCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getDescriptionId(), "Redstone Conductor (Accept)");
-            override(GregTechCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getDescriptionId(), "Redstone Conductor (Emit)");
+            override(GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getDescriptionId(), "Redstone Conductor (Accept)");
+            override(GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getDescriptionId(), "Redstone Conductor (Emit)");
             HULL.getTiers().forEach(tier -> {
                 override(HULL, tier, tier.getId().toUpperCase() + " " + HULL.getLang(locale));
             });

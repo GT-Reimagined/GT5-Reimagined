@@ -22,8 +22,8 @@ public class BlockEntityVacuumFreezer extends BlockEntityMultiMachine<BlockEntit
 //        } else {
 //            EUt = activeRecipe.getPower();
 //            maxProgress = activeRecipe.getDuration();
-//            for (int i = 0; i < GTIRef.V.length; i++) {
-//                if (EUt > GTIRef.V[tier - 1]) break;
+//            for (int i = 0; i < GT5RRef.V.length; i++) {
+//                if (EUt > GT5RRef.V[tier - 1]) break;
 //                EUt *= 4;
 //                maxProgress /= 2;
 //            }

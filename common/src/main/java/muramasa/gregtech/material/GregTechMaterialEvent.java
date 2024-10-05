@@ -5,16 +5,16 @@ import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.IMaterialTag;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.data.ToolData;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RMaterialTags;
 
 import static muramasa.antimatter.material.MaterialTags.*;
 
 public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> {
     public GregTechMaterialEvent asSolid(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
         super.asSolid(meltingPoint, tags);
-        GregTechMaterialTags.BLAST_FURNACE_TEMP.add(material, blastFurnaceTemp);
+        GT5RMaterialTags.BLAST_FURNACE_TEMP.add(material, blastFurnaceTemp);
         if (blastFurnaceTemp >= 2000){
-            flags(GregTechMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
+            flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         }
         if (blastFurnaceTemp > 2400) {
             flags(AntimatterMaterialTypes.INGOT_HOT);
@@ -29,7 +29,7 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     }
 
     public GregTechMaterialEvent forceBF(boolean hotIngot) {
-        flags(GregTechMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
+        flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         if (hotIngot) {
             flags(AntimatterMaterialTypes.INGOT_HOT);
         }
@@ -47,7 +47,7 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     }
 
     public GregTechMaterialEvent elecTicks(int ticks){
-        GregTechMaterialTags.ELEC_TICKS.add(material, ticks);
+        GT5RMaterialTags.ELEC_TICKS.add(material, ticks);
         return this;
     }
 
@@ -58,17 +58,17 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     }
 
     public GregTechMaterialEvent thermal(Material byProduct){
-        GregTechMaterialTags.THERMAL_CENTRIFUGE_EXPLICIT.add(this.material, byProduct);
+        GT5RMaterialTags.THERMAL_CENTRIFUGE_EXPLICIT.add(this.material, byProduct);
         return this;
     }
 
     public GregTechMaterialEvent bathMercury(Material byProduct){
-        GregTechMaterialTags.BATH_MERCURY.add(this.material, byProduct);
+        GT5RMaterialTags.BATH_MERCURY.add(this.material, byProduct);
         return this;
     }
 
     public GregTechMaterialEvent bathPersulfate(Material byProduct){
-        GregTechMaterialTags.BATH_PERSULFATE.add(this.material, byProduct);
+        GT5RMaterialTags.BATH_PERSULFATE.add(this.material, byProduct);
         return this;
     }
 }

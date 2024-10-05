@@ -1,16 +1,14 @@
 package muramasa.gregtech.loader.machines;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.data.GT5RTags;
 import muramasa.gregtech.data.Materials;
-import muramasa.gregtech.data.TierMaps;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -22,14 +20,14 @@ import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.SELECTOR
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.gregtech.data.GregTechMaterialTags.*;
+import static muramasa.gregtech.data.GT5RMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ELECTROLYZER;
 
 public class ElectrolyzerLoader {
     public static void init() {
         List<Material> elecMaterials = new ArrayList<>(ELEC.all().stream().toList());
-        if (!GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+        if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             elecMaterials.add(Alumina);
         }
         elecMaterials.forEach(t -> {
@@ -59,11 +57,11 @@ public class ElectrolyzerLoader {
         });
         ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(SodiumBisulfate, 2), WIRE_FINE.getMaterialIngredient(Platinum, 1).setNoConsume()).io(DUST.get(SodiumPersulfate)).fo(Hydrogen.getGas(1000)).add("sodium_persulfate_creation", 600, 30);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
-        ELECTROLYZER.RB().ii(RecipeIngredient.of(GregTechTags.DUST_SANDS, 32)).io(DUST.get(Materials.SiliconDioxide)).add("sand_dusts_to_silicon_dioxide", 500, 25);
+        ELECTROLYZER.RB().ii(RecipeIngredient.of(GT5RTags.DUST_SANDS, 32)).io(DUST.get(Materials.SiliconDioxide)).add("sand_dusts_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
         ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Bentonite, 33)).io(DUST_SMALL.get(Sodium, 2), DUST.get(Magnesium, 3), DUST.get(Silicon, 6))
                 .fo(Hydrogen.getGas(3000), Water.getLiquid(2500), Oxygen.getGas(18000)).add("dust_bentonite", 240, 120);
-        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
+        if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Carbon, 3), DUST.getMaterialIngredient(Alumina, 10))
                     .fi(AluminiumFluoride.getLiquid(L / 36), Cryolite.getLiquid(L / 72)).io(DUST.get(Aluminium, 4))
                     .fo(CarbonDioxide.getGas(9000), Fluorine.getGas(29)).add("alumina_carbon", 2040, 16);

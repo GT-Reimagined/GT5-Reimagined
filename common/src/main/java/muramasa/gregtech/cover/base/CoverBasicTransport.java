@@ -7,7 +7,7 @@ import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.cover.ICoverRedstoneSensitive;
 import muramasa.gregtech.cover.ImportExportMode;
 import muramasa.gregtech.cover.RedstoneMode;
@@ -41,7 +41,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
 
     @Override
     public String getDomain() {
-        return GTIRef.ID;
+        return GT5RRef.ID;
     }
 
     @Override

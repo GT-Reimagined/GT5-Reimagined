@@ -6,9 +6,9 @@ import muramasa.antimatter.material.IMaterialObject;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GT5RItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -39,10 +39,10 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
 
     @Override
     public Texture[] getTextures() {
-        if (this == GregTechItems.EmptyNuclearFuelRod){
-            return new Texture[]{new Texture(GTIRef.ID, "item/basic/empty_nuclear_fuel_rod")};
+        if (this == GT5RItems.EmptyNuclearFuelRod){
+            return new Texture[]{new Texture(GT5RRef.ID, "item/basic/empty_nuclear_fuel_rod")};
         }
-        return new Texture[]{new Texture(GTIRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GTIRef.ID, "item/basic/empty_nuclear_fuel_rod")};
+        return new Texture[]{new Texture(GT5RRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GT5RRef.ID, "item/basic/empty_nuclear_fuel_rod")};
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
 
     @Override
     public boolean isModerated(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
-        return this == GregTechItems.NeutronModeratorRod;
+        return this == GT5RItems.NeutronModeratorRod;
     }
 
     @Override
@@ -75,11 +75,11 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
 
     @Override
     public boolean getReactorRodNeutronReaction(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack) {
-        if (this == GregTechItems.NeutronAbsorberRod){
+        if (this == GT5RItems.NeutronAbsorberRod){
             reactor.heatHandler.ifPresent(h -> h.insertInternal(reactor.oNeutronCounts[slot] * 2, false));
             return true;
         }
-        if (this == GregTechItems.NeutronModeratorRod && reactor.getLevel().getGameTime() % 20 == 19){
+        if (this == GT5RItems.NeutronModeratorRod && reactor.getLevel().getGameTime() % 20 == 19){
             short moderation = stack.getTag() == null || !stack.getTag().contains("moderation") ? 0 : stack.getTag().getShort("moderation");
             stack.getOrCreateTag().putShort("oldModeration", moderation);
             stack.getOrCreateTag().putShort("moderation", (short) 0);
@@ -89,10 +89,10 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
 
     @Override
     public int getReactorRodNeutronReflection(BlockEntityNuclearReactorCore reactor, int slot, ItemStack stack, int neutrons, boolean moderated) {
-        if (this == GregTechItems.NeutronAbsorberRod){
+        if (this == GT5RItems.NeutronAbsorberRod){
             reactor.mNeutronCounts[slot] += neutrons;
         }
-        if (this == GregTechItems.NeutronModeratorRod){
+        if (this == GT5RItems.NeutronModeratorRod){
             short oldModeration = stack.getTag() == null || !stack.getTag().contains("oldModeration") ? 0 : stack.getTag().getShort("oldModeration");
             if (neutrons > 0){
                 short moderation = stack.getTag() == null || !stack.getTag().contains("moderation") ? 0 : stack.getTag().getShort("moderation");
@@ -101,7 +101,7 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
             }
             return oldModeration * neutrons;
         }
-        if (this == GregTechItems.NeutronReflectorRod) return neutrons;
+        if (this == GT5RItems.NeutronReflectorRod) return neutrons;
         return 0;
     }
 

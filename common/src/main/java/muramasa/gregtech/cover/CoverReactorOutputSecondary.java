@@ -1,17 +1,14 @@
 package muramasa.gregtech.cover;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -32,7 +29,7 @@ public class CoverReactorOutputSecondary extends BaseCover {
     @Override
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;
-        return new ResourceLocation(GTIRef.ID + ":block/cover/nuclear");
+        return new ResourceLocation(GT5RRef.ID + ":block/cover/nuclear");
     }
 
     @Override

@@ -12,20 +12,16 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechData;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 
-import static muramasa.antimatter.data.AntimatterMaterials.Water;
-import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Materials.DistilledWater;
 import static muramasa.gregtech.data.Materials.Steam;
 
@@ -150,7 +146,7 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
     }
 
     public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){
-        return new Texture(GTIRef.ID, "block/casing/fusion_1");
+        return new Texture(GT5RRef.ID, "block/casing/fusion_1");
     }
 
     @Override

@@ -11,7 +11,7 @@ import muramasa.antimatter.worldgen.object.WorldGenStoneLayerBuilder;
 import muramasa.antimatter.worldgen.smallore.WorldGenSmallOreBuilder;
 import muramasa.antimatter.worldgen.vanillaore.WorldGenVanillaOreBuilder;
 import muramasa.antimatter.worldgen.vein.WorldGenVeinLayerBuilder;
-import muramasa.gregtech.GregTechConfig;
+import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.worldgen.OilSpoutFluid;
 import muramasa.gregtech.worldgen.OilSpoutSavedData;
 import net.minecraft.core.Registry;
@@ -149,7 +149,7 @@ public class WorldGenLoader {
         ev.stoneLayer(new WorldGenStoneLayerBuilder("diorite").withStone(DIORITE).withWeight(1).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("andesite").withStone(ANDESITE).withWeight(1).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff").withStone(TUFF).withWeight(1).buildVein());
-        if (GregTechConfig.GT6_ORE_GEN.get()){
+        if (GT5RConfig.GT6_ORE_GEN.get()){
             ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite_2").withStone(KIMBERLITE).withWeight(1).buildVein());
             ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores").withStone(STONE).withWeight(1).addOres(
                     new StoneLayerOre(Emerald, U48, -16, 128).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
@@ -320,7 +320,7 @@ public class WorldGenLoader {
     }
 
     private static void initOreVeins(WorldGenEvent ev) {
-        if (AntimatterAPI.isModLoaded(MOD_TFC) || GregTechConfig.GT6_ORE_GEN.get()){
+        if (AntimatterAPI.isModLoaded(MOD_TFC) || GT5RConfig.GT6_ORE_GEN.get()){
             ev.vein(new WorldGenVeinLayerBuilder("gold").asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold,
                     BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("iron").asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite,
@@ -340,7 +340,7 @@ public class WorldGenLoader {
                     OVERWORLD, NETHER, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());
         }
         Material sporadic = !AntimatterConfig.STONE_LAYERS.get() ? Calcite : Alumina;
-        if (GregTechConfig.GT6_ORE_GEN.get()){
+        if (GT5RConfig.GT6_ORE_GEN.get()){
             ev.vein(new WorldGenVeinLayerBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite,
                     NETHER, BE_MARS, AA_MARS).buildVein());
             ev.vein(new WorldGenVeinLayerBuilder("copper").asOreVein(36, 66, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper,
@@ -449,7 +449,7 @@ public class WorldGenLoader {
                 END).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("beryllium_end").asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
                 END).buildVein());
-        if (GregTechConfig.GT6_ORE_GEN.get()) return;
+        if (GT5RConfig.GT6_ORE_GEN.get()) return;
         if (AntimatterAPI.isModLoaded(MOD_TFC) || !AntimatterConfig.STONE_LAYERS.get()){
             ev.vein(new WorldGenVeinLayerBuilder("bauxite").asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite,
                     OVERWORLD, BE_MARS, AA_MARS, BE_MOON, AA_MOON).buildVein());

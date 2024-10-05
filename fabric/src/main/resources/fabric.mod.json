@@ -21,14 +21,14 @@
   },
   "entrypoints": {
     "antimatter_client": [
-      "muramasa.gregtech.client.fabric.GregTechFabricClient"
+      "muramasa.gregtech.client.fabric.GT5RFabricClient"
     ],
     "main": [
-      "muramasa.gregtech.fabric.GregTechFabric"
+      "muramasa.gregtech.fabric.GT5RFabric"
     ],
     "antimatter": [
-      "muramasa.gregtech.GregTech",
-      "muramasa.gregtech.GregTechPostRegistrar"
+      "muramasa.gregtech.GT5Reimagined",
+      "muramasa.gregtech.GT5RPostRegistrar"
     ]
   }
 }

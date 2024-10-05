@@ -1,6 +1,5 @@
 package muramasa.gregtech.blockentity.single;
 
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
@@ -14,8 +13,7 @@ import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -29,7 +27,6 @@ import tesseract.api.item.ExtendedItemContainer;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.gregtech.data.Materials.Chlorine;
-import static muramasa.gregtech.data.Materials.Glue;
 
 public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
     public BlockEntityBath(Machine<?> type, BlockPos pos, BlockState state) {
@@ -96,7 +93,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
 
     private DyeColor fromFluid(FluidHolder f) {
         for (DyeColor color : DyeColor.values()) {
-            if (f.getFluid().is(TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, color.getName() + "_dye")))){
+            if (f.getFluid().is(TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, color.getName() + "_dye")))){
                 return color;
             }
         }

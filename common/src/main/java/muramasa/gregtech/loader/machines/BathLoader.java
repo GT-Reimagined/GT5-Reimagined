@@ -13,9 +13,9 @@ import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.integration.SpaceModRegistrar;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -30,8 +30,8 @@ import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.gregtech.data.GregTechMaterialTags.BATH_MERCURY;
-import static muramasa.gregtech.data.GregTechMaterialTags.BATH_PERSULFATE;
+import static muramasa.gregtech.data.GT5RMaterialTags.BATH_MERCURY;
+import static muramasa.gregtech.data.GT5RMaterialTags.BATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
 
@@ -50,7 +50,7 @@ public class BathLoader {
         BATH.RB()
                 .ii(RecipeIngredient.of(Items.NETHER_STAR,1))
                 .fi(Radon.getGas(1250))
-                .io(new ItemStack(GregTechItems.QuantumStar))
+                .io(new ItemStack(GT5RItems.QuantumStar))
                 .add("quantum_star",96*20);
         BATH.RB()
                 .ii(GEM.getMaterialIngredient(Diamond, 1))
@@ -59,10 +59,10 @@ public class BathLoader {
                 .add("netherized_diamond_recipe",144);
         BATH.RB().ii(DUST.getMaterialIngredient(Tungstate, 7)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(LithiumChloride, 4), DUST.get(TungsticAcid, 7)).add("tungstate", 512);
         BATH.RB().ii(DUST.getMaterialIngredient(Scheelite, 6)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(CalciumChloride, 3), DUST.get(TungsticAcid, 7)).add("scheelite", 512);
-        if (GregTechConfig.HARDER_CIRCUITS) {
+        if (GT5RConfig.HARDER_CIRCUITS) {
             BATH.RB().ii(GTCoreItems.CarbonFibre).fi(EpoxyResin.getLiquid(L)).io(PLATE.get(FiberReinforcedEpoxyResin)).add("fiber_reinforced_epoxy_resin", 240);
         }
-        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+        if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             BATH.RB().ii(DUST.getMaterialIngredient(SodiumAluminate, 4)).fi(Water.getLiquid(6000)).io(DUST.get(AluminiumHydroxide, 7), DUST.get(SodiumHydroxide, 3)).add("aluminium_hydroxide", 102 * 20);
             BATH.RB().ii(DUST.getMaterialIngredient(SodiumAluminate, 4)).fi(DistilledWater.getLiquid(6000)).io(DUST.get(AluminiumHydroxide, 7), DUST.get(SodiumHydroxide, 3)).add("aluminium_hydroxide_distilled_water", 102 * 20);
         }
@@ -80,7 +80,7 @@ public class BathLoader {
         }
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
-            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass"))).add(dye.getName() + "_stained_glass", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS_PANE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass_pane"))).add(dye.getName() + "_stained_glass_pane", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.TERRACOTTA).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_terracotta"))).add(dye.getName() + "_terracotta", 64);

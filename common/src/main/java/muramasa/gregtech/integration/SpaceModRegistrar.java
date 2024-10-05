@@ -3,7 +3,6 @@ package muramasa.gregtech.integration;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.TextureSet;
@@ -12,8 +11,7 @@ import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.GTIRef;
-import net.minecraft.tags.BlockTags;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -38,12 +36,12 @@ public class SpaceModRegistrar extends AntimatterMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Side side) {
         if (event == RegistrationEvent.DATA_INIT){
-            Desh = AntimatterAPI.register(Material.class, new Material(GTIRef.ID, "desh", 0x282828, TextureSet.DULL));
+            Desh = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "desh", 0x282828, TextureSet.DULL));
             String block = AntimatterAPI.isModLoaded("ad_astra") ? "block" : "blocks";
-            AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "moon_sand", Material.NULL, new Texture(getMod(), block + "/moon_sand"), SoundType.SAND, false).setState(getSpaceBlock("moon_sand")).setSandLike(true));
-            var moonStone = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "moon_stone", Material.NULL, new Texture(getMod(), block + "/moon_stone"), SoundType.STONE, false).setState(getSpaceBlock("moon_stone")));
-            AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "mars_sand", Material.NULL, new Texture(getMod(), block + "/mars_sand"), SoundType.SAND, false).setState(getSpaceBlock("mars_sand")).setSandLike(true));
-            var marsStone = AntimatterAPI.register(StoneType.class, new StoneType(GTIRef.ID, "mars_stone", Material.NULL, new Texture(getMod(), block + "/mars_stone"), SoundType.STONE, false).setState(getSpaceBlock("mars_stone")));
+            AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_sand", Material.NULL, new Texture(getMod(), block + "/moon_sand"), SoundType.SAND, false).setState(getSpaceBlock("moon_sand")).setSandLike(true));
+            var moonStone = AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_stone", Material.NULL, new Texture(getMod(), block + "/moon_stone"), SoundType.STONE, false).setState(getSpaceBlock("moon_stone")));
+            AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_sand", Material.NULL, new Texture(getMod(), block + "/mars_sand"), SoundType.SAND, false).setState(getSpaceBlock("mars_sand")).setSandLike(true));
+            var marsStone = AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_stone", Material.NULL, new Texture(getMod(), block + "/mars_stone"), SoundType.STONE, false).setState(getSpaceBlock("mars_stone")));
             ORE.replacement(Iron, moonStone, () -> getSpaceBlock("moon_iron_ore").asItem());
             ORE.replacement(Iron, marsStone, () -> getSpaceBlock("mars_iron_ore").asItem());
             ORE.replacement(Diamond, marsStone, () -> getSpaceBlock("mars_diamond_ore").asItem());

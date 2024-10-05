@@ -2,13 +2,12 @@ package muramasa.gregtech.loader.machines;
 
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.data.GregTechMaterialTypes;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.ItemStack;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.gregtech.data.GregTechMaterialTypes.BOULE;
+import static muramasa.gregtech.data.GT5RMaterialTypes.BOULE;
 import static muramasa.gregtech.data.Materials.*;
 
 public class LaserEngraverLoader {

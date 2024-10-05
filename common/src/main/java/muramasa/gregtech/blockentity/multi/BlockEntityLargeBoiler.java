@@ -14,10 +14,10 @@ import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GT5RBlocks;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -159,13 +159,13 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
     public BlockBasic getCasing(){
         if (tier == LV){
-            return GregTechBlocks.CASING_BRONZE_PLATED_BRICK;
+            return GT5RBlocks.CASING_BRONZE_PLATED_BRICK;
         } else if (tier == MV){
-            return GregTechBlocks.CASING_SOLID_STEEL;
+            return GT5RBlocks.CASING_SOLID_STEEL;
         } else if (tier == HV){
-            return GregTechBlocks.CASING_TITANIUM;
+            return GT5RBlocks.CASING_TITANIUM;
         }
-        return GregTechBlocks.CASING_TUNGSTENSTEEL;
+        return GT5RBlocks.CASING_TUNGSTENSTEEL;
     }
 
     public int getEUt(){
@@ -198,37 +198,37 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
     public Block getFireboxCasing(){
         if (tier == LV){
-            return GregTechBlocks.CASING_FIREBOX_BRONZE;
+            return GT5RBlocks.CASING_FIREBOX_BRONZE;
         } else if (tier == MV){
-            return GregTechBlocks.CASING_FIREBOX_STEEL;
+            return GT5RBlocks.CASING_FIREBOX_STEEL;
         } else if (tier == HV){
-            return GregTechBlocks.CASING_FIREBOX_TITANIUM;
+            return GT5RBlocks.CASING_FIREBOX_TITANIUM;
         }
-        return GregTechBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
+        return GT5RBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
     }
 
     public Block getPipeCasing(){
         if (tier == LV){
-            return GregTechBlocks.CASING_PIPE_BRONZE;
+            return GT5RBlocks.CASING_PIPE_BRONZE;
         } else if (tier == MV){
-            return GregTechBlocks.CASING_PIPE_STEEL;
+            return GT5RBlocks.CASING_PIPE_STEEL;
         } else if (tier == HV){
-            return GregTechBlocks.CASING_PIPE_TITANIUM;
+            return GT5RBlocks.CASING_PIPE_TITANIUM;
         }
-        return GregTechBlocks.CASING_PIPE_TUNGSTENSTEEL;
+        return GT5RBlocks.CASING_PIPE_TUNGSTENSTEEL;
     }
 
     public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){
         if (hatchPos.getY() != this.getBlockPos().getY()) return super.getTextureForHatches(dir, hatchPos);
         String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
-        return new Texture(GTIRef.ID, "block/casing/" + prefix + "_firebox");
+        return new Texture(GT5RRef.ID, "block/casing/" + prefix + "_firebox");
     }
 
     @Override
     public ITextureProvider getHatchBlock(BlockPos hatchPos) {
         if (hatchPos.getY() != this.getBlockPos().getY()) return this.getCasing();
         String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
-        return GregTech.get(BlockCasing.class, prefix + "_firebox_casing");
+        return GT5Reimagined.get(BlockCasing.class, prefix + "_firebox_casing");
     }
 
     @Override

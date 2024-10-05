@@ -17,7 +17,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
@@ -191,11 +191,11 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
 
     public BlockBasic getCasing(){
         if (tier == HV) {
-            return GregTechBlocks.CASING_TURBINE_STEEL;
+            return GT5RBlocks.CASING_TURBINE_STEEL;
         } else if (tier == EV) {
-            return GregTechBlocks.CASING_TURBINE_STAINLESS;
+            return GT5RBlocks.CASING_TURBINE_STAINLESS;
         } else {
-            return GregTechBlocks.CASING_TURBINE_TITANIUM;
+            return GT5RBlocks.CASING_TURBINE_TITANIUM;
         }
     }
 

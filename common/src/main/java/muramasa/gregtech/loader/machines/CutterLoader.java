@@ -11,7 +11,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -31,7 +31,7 @@ import static muramasa.gregtech.data.RecipeMaps.CUTTER;
 public class CutterLoader {
     public static void init() {
         ToLongFunction<Material> baseDuration = m -> {
-            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
         for (Material mat : AntimatterMaterialTypes.PLATE.all()) {

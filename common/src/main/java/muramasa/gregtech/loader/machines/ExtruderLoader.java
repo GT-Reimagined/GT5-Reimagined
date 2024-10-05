@@ -10,8 +10,8 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.*;
 import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.gregtech.data.GregTechItems;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RItems;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -33,10 +33,10 @@ public class ExtruderLoader {
     public static void init() {
         ToLongFunction<Material> energyPerTick = m -> m.has(RUBBERTOOLS) ? 16 : 128;
         ToLongFunction<Material> baseDuration = m -> {
-            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
-        EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), of(GTCoreItems.ShapeCell, 1).setNoConsume()).io(GregTechItems.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96);
+        EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), of(GTCoreItems.ShapeCell, 1).setNoConsume()).io(GT5RItems.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96);
         EXTRUDER.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Beeswax, 1), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(GTCoreItems.EmptyWaxPill).add("empty_wax_pill", 64, 16);
         EXTRUDER.RB().ii(DUST.getMaterialIngredient(Glass, 1), of(GTCoreItems.ShapeBottle, 1).setNoConsume()).io(Items.GLASS_BOTTLE).add("glass_bottle", 64, 16);
         AntimatterMaterialTypes.RING.all().forEach(r -> {
@@ -209,7 +209,7 @@ public class ExtruderLoader {
 
     private static void addPipeRecipe(Material material, int countIn, int countOut, PipeSize size, PipeType<?> pipe, int durationMultiplier){
         if (pipe.getSizes().contains(size)) {
-            long duration = material.has(GregTechMaterialTags.RECIPE_MASS) ? GregTechMaterialTags.RECIPE_MASS.get(material) : Math.max(material.getMass(), 1);
+            long duration = material.has(GT5RMaterialTags.RECIPE_MASS) ? GT5RMaterialTags.RECIPE_MASS.get(material) : Math.max(material.getMass(), 1);
             EXTRUDER.RB().ii(INGOT.getMaterialIngredient(material, countIn), of(getPipeMold(size), 1).setNoConsume()).io(new ItemStack(pipe.getBlockItem(size), countOut)).add(size.getId() + "_" + pipe.getType() + "_" + material.getId(), duration * durationMultiplier, 30);
         }
     }

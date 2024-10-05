@@ -9,11 +9,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.material.data.ToolData;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTech;
-import muramasa.gregtech.integration.forge.tfc.TFCRegistrar;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
@@ -53,7 +49,7 @@ public class TFCItemTagProvider extends AntimatterItemTagProvider {
 
         });
         /*for (Material material : TFCRegistrar.array) {
-            this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "ore_pieces"))).add(GregTech.get(Item.class, "poor_" + material.getId()), GregTech.get(Item.class, "normal_" + material.getId()), GregTech.get(Item.class, "rich_" + material.getId()));
+            this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "ore_pieces"))).add(GT5Reimagined.get(Item.class, "poor_" + material.getId()), GT5Reimagined.get(Item.class, "normal_" + material.getId()), GT5Reimagined.get(Item.class, "rich_" + material.getId()));
         }*/
     }
 }

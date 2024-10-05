@@ -20,8 +20,8 @@ import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.client.gui.GuiComponent;
@@ -41,8 +41,8 @@ import static muramasa.antimatter.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);
-    private static final Component title = Utils.translatable(GTIRef.ID + ".rei.tooltip.ore.byproducts");
-    static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(GTIRef.ID, "ore_byproducts");
+    private static final Component title = Utils.translatable(GT5RRef.ID + ".rei.tooltip.ore.byproducts");
+    static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(GT5RRef.ID, "ore_byproducts");
 
     @Override
     public CategoryIdentifier<? extends OreProcessingDisplay> getCategoryIdentifier() {
@@ -54,25 +54,25 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
-                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(AntimatterMaterialTypes.GEM)){
-                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
-                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            if (!display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
-                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            if (!display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(DUST) && display.ore.has(INGOT)){
-                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/smelt2.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/smelt2.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            if (display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
-                drawTexture(matrices, new ResourceLocation(GTIRef.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            if (display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
         }));
         widgets.addAll(setupSlots(display, bounds));
@@ -83,7 +83,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createSlot(xy(4, 4, bounds)).entries(EntryIngredients.ofIngredient(ORE.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
         widgets.addAll(setupBaseMachineSlots(display, bounds));
-        if (!display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
+        if (!display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.addAll(setupPrimaryFurnaceSlot(display, bounds));
         }
         if (display.ore.has(INGOT)){
@@ -107,7 +107,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
     private List<Widget> setupPrimaryFurnaceSlot(OreProcessingDisplay display, Rectangle bounds){
         Item ingot, gem, dust;
         if (!SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM) && !SMELT_INTO.getMapping(display.ore).has(DUST)) return List.of();
-        if (display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)) return List.of();
+        if (display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)) return List.of();
         if(SMELT_INTO.getMapping(display.ore).has(INGOT) && !SMELT_INTO.getMapping(display.ore).has(GEM)){
             ingot = INGOT.get(SMELT_INTO.getMapping(display.ore));
             return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(ingot, SMELTING_MULTI.getInt(display.ore))))).markOutput().disableBackground());
@@ -123,7 +123,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
 
     private List<Widget> setupSecondaryFurnaceSlots(OreProcessingDisplay display, Rectangle bounds){
         List<Widget> widgets = new ArrayList<>();
-        if (display.ore.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE)){
+        if (display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.add(Widgets.createSlot(xy(122, 111, bounds)).entries(ofMachine(Machines.BLAST_FURNACE)).markOutput().disableBackground());
             widgets.add(Widgets.createSlot(xy(72, 146, bounds)).entries(ofMachine(Machines.BLAST_FURNACE)).markOutput().disableBackground());
             if(display.ore.has(INGOT_HOT)){
@@ -182,10 +182,10 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(29, 48, bounds)).entries(ofMachine(Machines.BATH)).markInput().disableBackground());
         if(display.bathingMode == OreProcessingDisplay.BathingMode.MERCURY){
             widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.Mercury,1000)).markInput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.BATH_MERCURY.getMapping(display.ore)),1)))).markOutput().disableBackground());
+            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GT5RMaterialTags.BATH_MERCURY.getMapping(display.ore)),1)))).markOutput().disableBackground());
         }else{
             widgets.add(Widgets.createSlot(xy(50, 48, bounds)).entries(ofFluid(Materials.SodiumPersulfateSolution,1000)).markInput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GregTechMaterialTags.BATH_PERSULFATE.getMapping(display.ore)),1)))).markOutput().disableBackground());
+            widgets.add(Widgets.createSlot(xy(90, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(GT5RMaterialTags.BATH_PERSULFATE.getMapping(display.ore)),1)))).markOutput().disableBackground());
         }
         widgets.add(Widgets.createSlot(xy(72, 48, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(CRUSHED_PURIFIED.get(display.ore),1)))).markOutput().disableBackground());
         return widgets;

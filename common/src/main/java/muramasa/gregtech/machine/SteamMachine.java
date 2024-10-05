@@ -7,7 +7,7 @@ import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.single.BlockEntitySteamMachine;
 import net.minecraft.resources.ResourceLocation;
 
@@ -51,8 +51,8 @@ public class SteamMachine extends Machine<SteamMachine> {
         List<SlotData<?>> list = provider.getAnySlots();
         for (SlotData<?> slot : list) {
             String suffix = slot.getType() == SlotType.FL_IN ? "fluid" : "item";
-            add(BRONZE, slot.getType(), slot.getX(), slot.getY(), new ResourceLocation(GTIRef.ID, "bronze_"+suffix));
-            add(STEEL, slot.getType(), slot.getX(), slot.getY(), new ResourceLocation(GTIRef.ID, "steel_"+suffix));
+            add(BRONZE, slot.getType(), slot.getX(), slot.getY(), new ResourceLocation(GT5RRef.ID, "bronze_"+suffix));
+            add(STEEL, slot.getType(), slot.getX(), slot.getY(), new ResourceLocation(GT5RRef.ID, "steel_"+suffix));
         }
         return this;
     }
@@ -60,8 +60,8 @@ public class SteamMachine extends Machine<SteamMachine> {
     @Override
     public Machine<SteamMachine> add(SlotType<?> type, int x, int y) {
         String suffix = type == SlotType.FL_IN ? "fluid" : "item";
-        add(BRONZE, type, x, y, new ResourceLocation(GTIRef.ID, "bronze_"+suffix));
-        add(STEEL, type, x, y, new ResourceLocation(GTIRef.ID, "steel_"+suffix));
+        add(BRONZE, type, x, y, new ResourceLocation(GT5RRef.ID, "bronze_"+suffix));
+        add(STEEL, type, x, y, new ResourceLocation(GT5RRef.ID, "steel_"+suffix));
         return this;
     }
 }

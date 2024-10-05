@@ -9,8 +9,8 @@ import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.GregTech;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.GT5Reimagined;
+import muramasa.gregtech.data.GT5RItems;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -31,17 +31,17 @@ public class FluidCannerLoader {
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullMedium, 1)).fi(SulfuricAcid.getLiquid(4000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryMediumAcid)).add("battery_medium_acid",64, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryLargeAcid)).add("battery_large_acid",258, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.LighterEmpty)).fi(Butane.getGas(100)).io(GTCoreItems.Lighter).add("lighter", 1, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GregTechItems.TritiumEnrichedRod)).io(GregTechItems.EmptyNuclearFuelRod).fo(Tritium.getGas(500)).add("tritium_enriched_rod", 16, 16);
-        FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Argon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_argon", 64, 16);
-        FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Helium.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_helium", 64, 16);
-        FLUID_CANNER.RB().ii(GregTechItems.EmptyGeigerCounter).fi(Neon.getGas(1000)).io(GregTechItems.GeigerCounter).add("geiger_counter_neon", 64, 16);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(GT5RItems.TritiumEnrichedRod)).io(GT5RItems.EmptyNuclearFuelRod).fo(Tritium.getGas(500)).add("tritium_enriched_rod", 16, 16);
+        FLUID_CANNER.RB().ii(GT5RItems.EmptyGeigerCounter).fi(Argon.getGas(1000)).io(GT5RItems.GeigerCounter).add("geiger_counter_argon", 64, 16);
+        FLUID_CANNER.RB().ii(GT5RItems.EmptyGeigerCounter).fi(Helium.getGas(1000)).io(GT5RItems.GeigerCounter).add("geiger_counter_helium", 64, 16);
+        FLUID_CANNER.RB().ii(GT5RItems.EmptyGeigerCounter).fi(Neon.getGas(1000)).io(GT5RItems.GeigerCounter).add("geiger_counter_neon", 64, 16);
         FLUID_CANNER.RB().ii(Items.HONEY_BOTTLE).io(Items.GLASS_BOTTLE).fo(Honey.getLiquid(250)).add("honey_from_honey_bottle", 20, 8);
         FLUID_CANNER.RB().ii(Items.GLASS_BOTTLE).fi(Honey.getLiquid(250)).io(Items.HONEY_BOTTLE).add("honey_bottle_from_honey", 20, 8);
         for (DyeColor dye : DyeColor.values()) {
             String dyeName = dye.getName();
-            Item sprayCan = GregTech.get(Item.class, dyeName + "_spray_can");
+            Item sprayCan = GT5Reimagined.get(Item.class, dyeName + "_spray_can");
             Material chemDye = Material.get("chemical_" + dyeName + "_dye");
-            FLUID_CANNER.RB().ii(GregTechItems.EmptySprayCan).fi(chemDye.getLiquid(2304)).io(sprayCan).add(dyeName +"_spray_can", 37, 1);
+            FLUID_CANNER.RB().ii(GT5RItems.EmptySprayCan).fi(chemDye.getLiquid(2304)).io(sprayCan).add(dyeName +"_spray_can", 37, 1);
         }
         AntimatterPlatformUtils.getAllFluids().forEach(fluid -> {
             Item bucket = fluid.getBucket();

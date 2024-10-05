@@ -1,14 +1,9 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.registration.Side;
-import muramasa.gregtech.GTIRef;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 
-import java.util.HashSet;
-import java.util.Set;
-
-public class GregTechData {
+public class GT5RData {
 
     public static void init(Side side) {
         if (side == Side.CLIENT)
@@ -19,7 +14,7 @@ public class GregTechData {
             //TODO: add better check
             if (t == AntimatterMaterialTypes.ORE_STONE) return;
             CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Material.NULL.getSet().getTextures(t)).item((a, b) -> {
-            return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Material.NULL.getSet().getTextures(t));}).build(GTIRef.ID, "cover_type_" + t.getId());
+            return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Material.NULL.getSet().getTextures(t));}).build(GT5RRef.ID, "cover_type_" + t.getId());
         });*/
     }
 
@@ -31,8 +26,8 @@ public class GregTechData {
         return rgb;
     }
 
-    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
-    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GTIRef.ID, "anthracite_coal", new Texture(GTIRef.ID, "block/basic/anthracite_coal");
+    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GT5RRef.ID, "anthracite_coal", new Texture(GT5RRef.ID, "block/basic/anthracite_coal");
+    //public static BlockBasic ANTHRACITE_COAL = new BlockBasic(GT5RRef.ID, "anthracite_coal", new Texture(GT5RRef.ID, "block/basic/anthracite_coal");
 
 
 }

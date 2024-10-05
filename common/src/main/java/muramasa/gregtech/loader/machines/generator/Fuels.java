@@ -9,7 +9,7 @@ import muramasa.gregtech.data.Materials;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GAS;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.LIQUID;
-import static muramasa.gregtech.data.GregTechMaterialTags.SEMIFUELS;
+import static muramasa.gregtech.data.GT5RMaterialTags.SEMIFUELS;
 import static muramasa.gregtech.data.Materials.Steam;
 import static muramasa.gregtech.data.Materials.SuperheatedSteam;
 import static muramasa.gregtech.data.RecipeMaps.*;

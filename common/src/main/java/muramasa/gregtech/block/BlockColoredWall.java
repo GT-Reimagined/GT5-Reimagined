@@ -1,11 +1,10 @@
 package muramasa.gregtech.block;
 
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.block.BlockFakeTile;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -33,9 +32,9 @@ public class BlockColoredWall  extends BlockFakeTile implements IColorHandler {
 
     @Override
     public Texture[] getTextures() {
-        Texture side = material == Wood ? new Texture(GTIRef.ID, "block/casing/wall/wood") : new Texture(GTIRef.ID, "block/casing/wall/metal");
-        Texture overlay = new Texture(GTIRef.ID, "block/machine/empty");
-        Texture sideOverlay = material == Wood ? new Texture(GTIRef.ID, "block/casing/wall/wood_overlay_side") : overlay;
+        Texture side = material == Wood ? new Texture(GT5RRef.ID, "block/casing/wall/wood") : new Texture(GT5RRef.ID, "block/casing/wall/metal");
+        Texture overlay = new Texture(GT5RRef.ID, "block/machine/empty");
+        Texture sideOverlay = material == Wood ? new Texture(GT5RRef.ID, "block/casing/wall/wood_overlay_side") : overlay;
         return new Texture[]{side, side, side, side, side, side, overlay, overlay, sideOverlay, sideOverlay, sideOverlay, sideOverlay};
     }
 

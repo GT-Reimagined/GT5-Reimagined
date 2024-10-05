@@ -16,7 +16,7 @@ public class GTRemapping {
     public static void init(){
         AntimatterRemapping.getBeRemappingFunctionList().add(r -> {
             if (r.getNamespace().equals("gregtech")){
-                var r2 = new ResourceLocation(GTIRef.ID, r.getPath());
+                var r2 = new ResourceLocation(GT5RRef.ID, r.getPath());
                 if (AntimatterRemapping.getBeRemappingMap().containsKey(r2)){
                     return AntimatterRemapping.getBeRemappingMap().get(r2);
                 }
@@ -31,7 +31,7 @@ public class GTRemapping {
         remap("coke_oven_bronze", "coke_oven");
         remap("primitive_blast_furnace_bronze", "primitive_blast_furnace");
         remap("heat_exchanger_ev", "large_heat_exchanger");
-        AntimatterRemapping.remapBlockEntity(new ResourceLocation(GTIRef.ID, "heat_exchanger"), new ResourceLocation(GTIRef.ID, "large_heat_exchanger"));
+        AntimatterRemapping.remapBlockEntity(new ResourceLocation(GT5RRef.ID, "heat_exchanger"), new ResourceLocation(GT5RRef.ID, "large_heat_exchanger"));
         AntimatterRemapping.remapMachine("coal_boiler", SOLID_FUEL_BOILER);
         AntimatterRemapping.remapMachine("pulverizer", MACERATOR);
         AntimatterRemapping.remapMachine("large_macerator", LARGE_PULVERIZER);
@@ -165,15 +165,15 @@ public class GTRemapping {
         remap("casing_turbine_2", "stainless_steel_turbine_casing");
         remap("casing_turbine_3", "titanium_turbine_casing");
         remap("casing_turbine_4", "tungstensteel_turbine_casing");
-        AntimatterRemapping.remap(new ResourceLocation(GTIRef.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
+        AntimatterRemapping.remap(new ResourceLocation(GT5RRef.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
     }
 
     private static void remap(String oldId, String newId){
-        AntimatterRemapping.remap(GTIRef.ID, oldId, newId);
+        AntimatterRemapping.remap(GT5RRef.ID, oldId, newId);
     }
 
     private static void remapGTCore(String oldId, String newId){
-        AntimatterRemapping.remap(new ResourceLocation(GTIRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
+        AntimatterRemapping.remap(new ResourceLocation(GT5RRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
     }
 
     public static Map<String, String> getRemappingMap() {

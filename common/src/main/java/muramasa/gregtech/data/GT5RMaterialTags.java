@@ -7,7 +7,7 @@ import muramasa.antimatter.material.tags.ListMaterialTag;
 import muramasa.antimatter.material.tags.NumberMaterialTag;
 import muramasa.gregtech.material.FluidProduct;
 
-public class GregTechMaterialTags {
+public class GT5RMaterialTags {
     public static final MaterialTag ELEC = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
 
     public static final MaterialTag ELEC30 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec30", true));

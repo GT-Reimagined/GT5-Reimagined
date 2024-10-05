@@ -4,13 +4,10 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.IMaterialObject;
 import muramasa.antimatter.material.Material;
-import muramasa.antimatter.registration.IAntimatterObject;
-import muramasa.antimatter.registration.IColorHandler;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.single.BlockEntityNuclearReactorCore;
-import muramasa.gregtech.data.GregTechData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
@@ -38,7 +35,7 @@ public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IItem
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GTIRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GTIRef.ID, "item/basic/empty_nuclear_fuel_rod")};
+        return new Texture[]{new Texture(GT5RRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GT5RRef.ID, "item/basic/empty_nuclear_fuel_rod")};
     }
 
     @Override

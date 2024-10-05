@@ -7,7 +7,7 @@ import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -29,7 +29,7 @@ public class CoverAirVent extends BaseCover {
 
     @Override
     public String getDomain() {
-        return GTIRef.ID;
+        return GT5RRef.ID;
     }
 
     @Override

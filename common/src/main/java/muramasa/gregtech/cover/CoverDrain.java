@@ -10,7 +10,7 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
@@ -45,7 +45,7 @@ public class CoverDrain extends BaseCover {
 
     @Override
     public String getDomain() {
-        return GTIRef.ID;
+        return GT5RRef.ID;
     }
 
     @Override

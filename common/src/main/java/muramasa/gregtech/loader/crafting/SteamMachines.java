@@ -6,7 +6,7 @@ import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.data.Machines;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -29,12 +29,12 @@ public class SteamMachines {
         Object piston = TagUtils.getForgelikeItemTag("pistons");
         Object diamond = Items.DIAMOND;
         Object glass = Items.GLASS;
-        Object steelPipe = GregTechBlocks.FLUID_PIPE_STEEL.getBlock(PipeSize.SMALL);
-        Object bronzePipe = GregTechBlocks.FLUID_PIPE_BRONZE.getBlock(PipeSize.SMALL);
-        Object hullBronze = GregTechBlocks.CASING_BRONZE;
-        Object hullSteel = GregTechBlocks.CASING_STEEL;
-        Object brickedBronzeHull = GregTechBlocks.CASING_BRICKED_BRONZE;
-        Object brickedSteelHull = GregTechBlocks.CASING_BRICKED_STEEL;
+        Object steelPipe = GT5RBlocks.FLUID_PIPE_STEEL.getBlock(PipeSize.SMALL);
+        Object bronzePipe = GT5RBlocks.FLUID_PIPE_BRONZE.getBlock(PipeSize.SMALL);
+        Object hullBronze = GT5RBlocks.CASING_BRONZE;
+        Object hullSteel = GT5RBlocks.CASING_STEEL;
+        Object brickedBronzeHull = GT5RBlocks.CASING_BRICKED_BRONZE;
+        Object brickedSteelHull = GT5RBlocks.CASING_BRICKED_STEEL;
         provider.addItemRecipe(output, "steam_machines", Machines.SOLID_FUEL_BOILER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'P', bronzePlate,
@@ -42,7 +42,7 @@ public class SteamMachines {
                         'B', bricks,
                         'F', furnace
                 ), "PPP", "PWP", "BFB");
-        provider.addItemRecipe(output, "steam_machines", GregTechBlocks.CASING_BRONZE,
+        provider.addItemRecipe(output, "steam_machines", GT5RBlocks.CASING_BRONZE,
                 ImmutableMap.of(
                         'P', bronzePlate,
                         'W', HAMMER.getTag()
@@ -105,7 +105,7 @@ public class SteamMachines {
                         'B', bronzePipe,
                         'H', hullBronze,
                         'P', piston,
-                        'S', GregTechBlocks.WIRE_STEEL.getBlock(PipeSize.VTINY)
+                        'S', GT5RBlocks.WIRE_STEEL.getBlock(PipeSize.VTINY)
                 ), "SSS", "PHP", "BBB");
         provider.addItemRecipe(output, "steam_machines", Machines.STEAM_FURNACE.getItem(Tier.BRONZE),
                 ImmutableMap.of(
@@ -162,7 +162,7 @@ public class SteamMachines {
                         'B', steelPipe,
                         'H', hullSteel,
                         'P', piston,
-                        'S', GregTechBlocks.WIRE_STEEL.getBlock(PipeSize.VTINY)
+                        'S', GT5RBlocks.WIRE_STEEL.getBlock(PipeSize.VTINY)
                 ), "SSS", "PHP", "BBB");
     }
 }

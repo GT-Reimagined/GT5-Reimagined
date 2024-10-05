@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.material.Material;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -15,7 +15,7 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 public class LatheLoader {
     public static void init() {
         ToLongFunction<Material> baseDuration = m -> {
-            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
         ROD_LONG.all().forEach(t -> {

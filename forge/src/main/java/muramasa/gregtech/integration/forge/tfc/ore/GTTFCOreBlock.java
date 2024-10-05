@@ -4,10 +4,9 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
-import net.dries007.tfc.util.registry.RegistryRock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
 
@@ -31,6 +30,6 @@ public class GTTFCOreBlock extends BlockBasic {
     @Override
     public Texture[] getTextures() {
         String prefix = grade == null ? "" : grade.name().toLowerCase() + "_";
-        return new Texture[]{new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), new Texture(GTIRef.ID, "block/tfc/ore/" + prefix + material.getId())};
+        return new Texture[]{new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), new Texture(GT5RRef.ID, "block/tfc/ore/" + prefix + material.getId())};
     }
 }

@@ -1,6 +1,6 @@
 //package muramasa.gtu.integration;
 //
-//import muramasa.gtu.GTIRef;
+//import muramasa.gtu.GT5RRef;
 //import muramasa.antimatter.blocks.BlockStorage;
 //import muramasa.gtu.data.Materials;
 //import muramasa.antimatter.materials.Material;
@@ -20,12 +20,12 @@
 //
 //    @Override
 //    public String getId() {
-//        return GTIRef.MOD_GC;
+//        return GT5RRef.MOD_GC;
 //    }
 //
 //    @Override
 //    public boolean isEnabled() {
-//        return ModList.get().isLoaded(GTIRef.MOD_GC) && ModList.get().isLoaded(GTIRef.MOD_GC_PLANETS);
+//        return ModList.get().isLoaded(GT5RRef.MOD_GC) && ModList.get().isLoaded(GT5RRef.MOD_GC_PLANETS);
 //    }
 //
 //

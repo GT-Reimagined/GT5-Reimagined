@@ -4,7 +4,6 @@ import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineCoverHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.cover.ICover;
-import muramasa.gregtech.data.GregTechCovers;
 import muramasa.gregtech.machine.ISecondaryOutputMachine;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;

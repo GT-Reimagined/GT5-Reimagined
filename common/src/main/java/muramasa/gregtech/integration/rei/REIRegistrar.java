@@ -5,7 +5,7 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.integration.rei.REIUtils;
 import muramasa.antimatter.machine.Tier;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.world.item.ItemStack;
 
@@ -33,11 +33,11 @@ public class REIRegistrar {
         });
         REIUtils.addExtraDisplay(r -> {
             AntimatterMaterialTypes.ORE.all().forEach(m -> {
-                if (m.has(GregTechMaterialTags.BATH_PERSULFATE) || m.has(GregTechMaterialTags.BATH_MERCURY)){
-                    if (m.has(GregTechMaterialTags.BATH_MERCURY)){
+                if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
+                    if (m.has(GT5RMaterialTags.BATH_MERCURY)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.MERCURY));
                     }
-                    if (m.has(GregTechMaterialTags.BATH_PERSULFATE)){
+                    if (m.has(GT5RMaterialTags.BATH_PERSULFATE)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.PERSULFATE));
                     }
                 } else {

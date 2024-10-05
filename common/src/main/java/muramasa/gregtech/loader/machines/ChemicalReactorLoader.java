@@ -1,17 +1,11 @@
 package muramasa.gregtech.loader.machines;
 
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.GregTech;
-import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechTags;
-import net.minecraft.resources.ResourceLocation;
+import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.data.GT5RTags;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -27,7 +21,7 @@ public class ChemicalReactorLoader {
 
     public static void init() {
         addShared();
-        if (GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
+        if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
             addComplicated();
         }
         nuclearProcessing();
@@ -105,7 +99,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(9000), Water.getLiquid(3000)).fo(NitricAcid.getLiquid(10000), NitrogenMonoxide.getGas(2000)).add("nitric_acid", 240, 30);
         //CHEMICAL_REACTOR.RB().fi(NitrogenDioxide.getGas(6000), Water.getLiquid(3000), Oxygen.getGas(1000)).fo(NitricAcid.getLiquid(10000)).add("nitric_acid_3", 240, 30);
         //WOLLASTONITE
-        CHEMICAL_REACTOR.RB().ii(of(GregTechTags.DUST_SIO, 3), DUST.getMaterialIngredient(CalciumSulfate, 6)).io(DUST.get(Wollastonite, 5)).fo(SulfurTrioxide.getGas(4000)).add("wollastonite", 144, 16);
+        CHEMICAL_REACTOR.RB().ii(of(GT5RTags.DUST_SIO, 3), DUST.getMaterialIngredient(CalciumSulfate, 6)).io(DUST.get(Wollastonite, 5)).fo(SulfurTrioxide.getGas(4000)).add("wollastonite", 144, 16);
         //SULFURIC ACID chain
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(3000), SulfurTrioxide.getGas(4000)).fo(SulfuricAcid.getLiquid(7000)).add("sulfuric_acid_",320, 8);
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_1",320, 30);
@@ -126,8 +120,8 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Fluorite, 3)).fo(HydrogenFluoride.getGas(4000)).io(DUST.get(CalciumSulfate, 6)).add("hydrogen_fluoride", 160, 16);
         CHEMICAL_REACTOR.RB().fi(Fluorine.getGas(1000), Hydrogen.getGas(1000)).fo(HydrogenFluoride.getGas(2000)).add("hydrogen_fluoride_1", 16, 16);
         CHEMICAL_REACTOR.RB().fi(Fluorine.getGas(2000)).ii(DUST.getMaterialIngredient(Calcium, 1)).io(DUST.get(Fluorite, 3)).add("fluorite", 48, 16);
-        CHEMICAL_REACTOR.RB().fi(HydrogenFluoride.getGas(4000)).ii(of(GregTechTags.DUST_SIO)).fo(Water.getLiquid(2000), HexafluorosilicicAcid.getLiquid(3000)).add("hexafluorosilicic_acid", 80, 16);
-        if (GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+        CHEMICAL_REACTOR.RB().fi(HydrogenFluoride.getGas(4000)).ii(of(GT5RTags.DUST_SIO)).fo(Water.getLiquid(2000), HexafluorosilicicAcid.getLiquid(3000)).add("hexafluorosilicic_acid", 80, 16);
+        if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             CHEMICAL_REACTOR.RB().fi(HexafluorosilicicAcid.getLiquid(9000)).ii(DUST.getMaterialIngredient(Alumina, 5)).io(DUST.get(SiliconDioxide, 3)).fo(AluminiumFluoride.getLiquid(L * 8), Water.getLiquid(3000)).add("aluminium_fluoride", 224, 16);
             CHEMICAL_REACTOR.RB().fi(Fluorine.getGas(3000)).ii(DUST.getMaterialIngredient(Aluminium, 1)).fo(AluminiumFluoride.getLiquid(L * 4)).add("aluminium_fluoride_pure", 64, 16);
             CHEMICAL_REACTOR.RB().fi(HydrogenFluoride.getGas(24000)).ii(DUST.getMaterialIngredient(SodiumHydroxide, 18), DUST.getMaterialIngredient(Alumina, 5)).fo(Cryolite.getLiquid(L * 20), Water.getLiquid(27000)).add("cryolite", 752, 16);

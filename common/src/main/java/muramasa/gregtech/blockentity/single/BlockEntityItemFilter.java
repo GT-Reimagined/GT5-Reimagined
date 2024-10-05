@@ -3,7 +3,6 @@ package muramasa.gregtech.blockentity.single;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityCache;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.gui.GuiInstance;
@@ -16,7 +15,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -62,7 +61,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
     @Override
     public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.getItem() == GregTechItems.DataStick){
+        if (stack.getItem() == GT5RItems.DataStick){
             if (stack.getTagElement("displaySlots") == null){
                 CompoundTag displaySlots = stack.getOrCreateTagElement("displaySlots");
                 this.itemHandler.ifPresent(i -> {

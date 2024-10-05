@@ -7,7 +7,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
 import muramasa.antimatter.client.model.loader.AntimatterModelLoader;
 import muramasa.antimatter.machine.MachineState;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.resources.model.UnbakedModel;
@@ -39,7 +39,7 @@ public class ReactorModelLoader extends AntimatterModelLoader<ReactorModel> {
         String[] array = new String[]{"north-west", "south-west", "north-east", "south-east"};
         //northwest is 0, southwest is 1, northeast is 2, southeast is 3
         for (int i = 0; i < 4; i++) {
-            ResourceLocation modelLocation = new ResourceLocation(GTIRef.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
+            ResourceLocation modelLocation = new ResourceLocation(GT5RRef.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
             try {
                 rods[i] = ModelUtils.getModel(modelLocation);
             } catch (Exception ignored){

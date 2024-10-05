@@ -6,8 +6,8 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
-import muramasa.gregtech.data.GregTechItems;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.GT5RItems;
+import muramasa.gregtech.data.GT5RTags;
 import net.minecraft.world.item.Items;
 
 import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
@@ -15,17 +15,17 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
 
-public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
-    public GregTechItemTagProvider(String providerDomain, String providerName, boolean replace, AntimatterBlockTagProvider p) {
+public class GT5RItemTagProvider extends AntimatterItemTagProvider {
+    public GT5RItemTagProvider(String providerDomain, String providerName, boolean replace, AntimatterBlockTagProvider p) {
         super(providerDomain, providerName, replace, p);
     }
 
     @Override
     protected void processTags(String domain) {
         super.processTags(domain);
-        //this.tag(GregTechTags.CIRCUITS_EXTREME).add(GregTechData.CircuitDataStorage);
-        this.tag(CIRCUITS_ELITE).add(GregTechItems.NanoProcessor);
-        this.tag(CIRCUITS_MASTER).add(GregTechItems.QuantumProcessor);
+        //this.tag(GT5RTags.CIRCUITS_EXTREME).add(GT5RData.CircuitDataStorage);
+        this.tag(CIRCUITS_ELITE).add(GT5RItems.NanoProcessor);
+        this.tag(CIRCUITS_MASTER).add(GT5RItems.QuantumProcessor);
         this.tag(RESISTORS).add(GTCoreItems.Resistor, GTCoreItems.SMDResistor);
         this.tag(CAPACITORS).add(GTCoreItems.Capacitor, GTCoreItems.SMDCapacitor);
         this.tag(TRANSISTORS).add(GTCoreItems.Transistor, GTCoreItems.SMDTransistor);
@@ -36,18 +36,18 @@ public class GregTechItemTagProvider  extends AntimatterItemTagProvider {
         this.tag(BLOCK.getMaterialTag(Amethyst)).remove(Items.AMETHYST_BLOCK);
         this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(Iron)).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
         this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
-        this.tag(GregTechTags.GRIND_HEADS).add(GTCoreItems.DiamondGrindHead, GTCoreItems.TungstenGrindHead);
+        this.tag(GT5RTags.GRIND_HEADS).add(GTCoreItems.DiamondGrindHead, GTCoreItems.TungstenGrindHead);
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));
         this.tag(ForgeCTags.GEMS_QUARTZ_ALL).addTag(GEM.getMaterialTag(MilkyQuartz));
-        this.tag(GregTechTags.GEM_SAPPHIRES).addTag(GEM.getMaterialTag(Sapphire)).addTag(GEM.getMaterialTag(GreenSapphire));
-        this.tag(GregTechTags.DUST_SAPPHIRES).addTag(DUST.getMaterialTag(Sapphire)).addTag(DUST.getMaterialTag(GreenSapphire));
-        this.tag(GregTechTags.DUST_SANDS).addTag(DUST.getMaterialTag(Sand)).addTag(DUST.getMaterialTag(RedSand));
-        this.tag(GregTechTags.DUST_SIO).addTag(DUST.getMaterialTag(SiliconDioxide))
+        this.tag(GT5RTags.GEM_SAPPHIRES).addTag(GEM.getMaterialTag(Sapphire)).addTag(GEM.getMaterialTag(GreenSapphire));
+        this.tag(GT5RTags.DUST_SAPPHIRES).addTag(DUST.getMaterialTag(Sapphire)).addTag(DUST.getMaterialTag(GreenSapphire));
+        this.tag(GT5RTags.DUST_SANDS).addTag(DUST.getMaterialTag(Sand)).addTag(DUST.getMaterialTag(RedSand));
+        this.tag(GT5RTags.DUST_SIO).addTag(DUST.getMaterialTag(SiliconDioxide))
                 .addTag(DUST.getMaterialTag(Quartzite)).addTag(DUST.getMaterialTag(Quartz))
                 .addTag(DUST.getMaterialTag(Glass)).addTag(DUST.getMaterialTag(Flint))
                 .addTag(DUST.getMaterialTag(MilkyQuartz));
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
-            this.tag(GregTechTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
+            this.tag(GT5RTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
         }
         this.tag(ForgeCTags.DYES_BLACK).add(Items.INK_SAC);
         this.tag(ForgeCTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite));

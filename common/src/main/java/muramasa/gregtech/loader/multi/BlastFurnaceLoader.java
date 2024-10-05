@@ -4,9 +4,9 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTechConfig;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -21,15 +21,15 @@ import static muramasa.gregtech.data.RecipeMaps.PRIMITIVE_BLAST_FURNACE;
 import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
 
 public class BlastFurnaceLoader {
-    public static int mixedOreYield = GTIRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
+    public static int mixedOreYield = GT5RRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     public static void init() {
         /* PRIMITIVE */
         PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(AntimatterMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
         DUST.all().forEach(m -> {
-            if (m.has(GregTechMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GregTechMaterialTags.BLAST_FURNACE_TEMP)){
+            if (m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GT5RMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
-                int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
+                int heat = GT5RMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
                 E_BLAST_FURNACE.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
             }
         });
@@ -65,7 +65,7 @@ public class BlastFurnaceLoader {
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh))
                 .add("steel_ingot_2", 100, 120);
-        if (!GregTechConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+        if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             /* Aluminium*/
             E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
                     .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
@@ -76,7 +76,7 @@ public class BlastFurnaceLoader {
             E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(GreenSapphire, 1))
                     .io(NUGGET.get(Aluminium, 3), DUST_TINY.get(DarkAsh, 1))
                     .add("aluminium_ingot_from_green_sapphire", 400, 100);
-            int heat = GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(Aluminium);
+            int heat = GT5RMaterialTags.BLAST_FURNACE_TEMP.getInt(Aluminium);
             E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
             E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Alumina, 4), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(INGOT.get(Aluminium)).add("alumina", 4 * 100, 120);
         }
@@ -120,7 +120,7 @@ public class BlastFurnaceLoader {
     }
 
     private static void addBlastAlloyRecipes(Material output, int amount, int duration, int power, ImmutableMap<Material, Integer> inputs){
-        RecipeBuilder b = E_BLAST_FURNACE.RB().temperature(GregTechMaterialTags.BLAST_FURNACE_TEMP.getInt(output));
+        RecipeBuilder b = E_BLAST_FURNACE.RB().temperature(GT5RMaterialTags.BLAST_FURNACE_TEMP.getInt(output));
         b.io((output.has(INGOT_HOT) ?  INGOT_HOT : INGOT).get(output, amount));
         inputs.forEach((m, i) -> {
             if (m.has(INGOT_HOT)){

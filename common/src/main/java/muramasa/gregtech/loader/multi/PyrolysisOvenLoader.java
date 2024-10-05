@@ -3,9 +3,8 @@ package muramasa.gregtech.loader.multi;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.gregtech.GregTechConfig;
+import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.data.Materials;
-import muramasa.gregtech.data.TierMaps;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -30,7 +29,7 @@ public class PyrolysisOvenLoader {
         PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(2)).io(new ItemStack(Items.CHARCOAL, 20)).fi(Nitrogen.getGas(1000)).fo(Creosote.getLiquid(4000)).add("creosote_oil_nitrogen", 320, 64);
         PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(new ItemStack(Items.CHARCOAL, 20)).fi(Nitrogen.getGas(1000)).fo(WoodGas.getGas(1500)).add("wood_gas_nitrogen", 320, 64);
         PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(3)).io(DUST.get(Ash, 4)).fo(OilHeavy.getLiquid(4000)).add("oil_heavy", 320, 64);
-        if (GregTechConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
+        if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
             PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(7)).io(new ItemStack(Items.CHARCOAL, 20)).fo(WoodVinegar.getLiquid(3000)).add("wood_vinegar", 640, 64);
             PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(9)).io(new ItemStack(Items.CHARCOAL, 20)).fo(WoodTar.getLiquid(1500)).add("wood_tar", 640, 64);
             PYROLYSIS_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(6)).io(new ItemStack(Items.CHARCOAL, 20)).fi(Nitrogen.getGas(1000)).fo(WoodGas.getGas(1500)).add("wood_gas_2", 320, 64);

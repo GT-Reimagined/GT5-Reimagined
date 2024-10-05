@@ -10,7 +10,7 @@ import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.GT5RTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
@@ -116,7 +116,7 @@ public class BlockEntityInfiniteFluid extends BlockEntityMachine<BlockEntityInfi
 
         @Override
         public FluidHolder extractFluid(FluidHolder fluid, boolean simulate) {
-            if (!fluid.getFluid().is(GregTechTags.STEAM)) return FluidHooks.emptyFluid();
+            if (!fluid.getFluid().is(GT5RTags.STEAM)) return FluidHooks.emptyFluid();
             return fluid.copyHolder();
         }
 

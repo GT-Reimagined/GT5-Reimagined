@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableSet;
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
@@ -17,8 +16,8 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
@@ -47,7 +46,6 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
 import static muramasa.gregtech.data.Machines.HULL;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
-import static muramasa.gregtech.data.RecipeMaps.BATH;
 import static muramasa.gregtech.data.TierMaps.*;
 import static muramasa.gregtech.loader.crafting.Parts.fromTier;
 
@@ -72,7 +70,7 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,1), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, LV, false) ,1)).fi(Plastic.getLiquid(L)).io(GTCoreItems.BatteryHullSmall.getDefaultInstance()).add("battery_hull_small",800, 1);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,3), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, MV, false) ,2)).fi(Plastic.getLiquid(L * 3)).io(GTCoreItems.BatteryHullMedium.getDefaultInstance()).add("battery_hull_medium",1600, 2);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(BatteryAlloy,9), ofObject(CABLE_GETTER.apply(PipeSize.VTINY, HV, false) ,4)).fi(Plastic.getLiquid(L * 9)).io(GTCoreItems.BatteryHullLarge.getDefaultInstance()).add("battery_hull_large",3200, 4);
-        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Plastic.getLiquid(L)).io(new ItemStack(GregTechItems.BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
+        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Tantalum, 1), FOIL.getMaterialIngredient(Manganese, 1)).fi(Plastic.getLiquid(L)).io(new ItemStack(GT5RItems.BatteryTantalum, 8)).add("tantalum_capacitor", 100, 4);
         ASSEMBLER.RB().ii(of(RawLapotronCrustal), of(CIRCUITS_ADVANCED, 2)).io(LapotronCrystal).add("lapotron_crystal", 16, 256);
 
     }
@@ -101,25 +99,25 @@ public class AssemblerLoader {
         addTierHull(Tier.UV);
         addTierHull(Tier.UHV);
 
-        addWall(Steel, GregTechBlocks.STEEL_WALL);
-        addWall(Invar, GregTechBlocks.INVAR_WALL);
-        addWall(StainlessSteel, GregTechBlocks.STAINLESS_STEEL_WALL);
-        addWall(Tungsten, GregTechBlocks.TUNGSTEN_WALL);
-        addWall(Titanium, GregTechBlocks.TITANIUM_WALL);
-        addWall(TungstenSteel, GregTechBlocks.TUNGSTENSTEEL_WALL);
-        addWall(Netherite, GregTechBlocks.NETHERITE_WALL);
+        addWall(Steel, GT5RBlocks.STEEL_WALL);
+        addWall(Invar, GT5RBlocks.INVAR_WALL);
+        addWall(StainlessSteel, GT5RBlocks.STAINLESS_STEEL_WALL);
+        addWall(Tungsten, GT5RBlocks.TUNGSTEN_WALL);
+        addWall(Titanium, GT5RBlocks.TITANIUM_WALL);
+        addWall(TungstenSteel, GT5RBlocks.TUNGSTENSTEEL_WALL);
+        addWall(Netherite, GT5RBlocks.NETHERITE_WALL);
 
-        addCasing(Bronze, GregTechBlocks.CASING_BRONZE);
-        addCasing(Steel, GregTechBlocks.CASING_SOLID_STEEL);
-        addCasing(StainlessSteel, GregTechBlocks.CASING_STAINLESS_STEEL);
-        addCasing(Titanium, GregTechBlocks.CASING_TITANIUM);
-        addCasing(TungstenSteel, GregTechBlocks.CASING_TUNGSTENSTEEL);
-        addCasing(Invar, GregTechBlocks.CASING_HEAT_PROOF);
-        addCasing(Aluminium, GregTechBlocks.CASING_FROST_PROOF);
-        addCasing(Lead, GregTechBlocks.CASING_RADIATION_PROOF);
-        addCasing(Plastic, GregTechBlocks.CASING_PLASTIC);
-        addCasing(BlackBronze, GregTechBlocks.CASING_BLACK_BRONZE);
-        ASSEMBLER.RB().ii(of(GregTechBlocks.CASING_SOLID_STEEL), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GregTechBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
+        addCasing(Bronze, GT5RBlocks.CASING_BRONZE);
+        addCasing(Steel, GT5RBlocks.CASING_SOLID_STEEL);
+        addCasing(StainlessSteel, GT5RBlocks.CASING_STAINLESS_STEEL);
+        addCasing(Titanium, GT5RBlocks.CASING_TITANIUM);
+        addCasing(TungstenSteel, GT5RBlocks.CASING_TUNGSTENSTEEL);
+        addCasing(Invar, GT5RBlocks.CASING_HEAT_PROOF);
+        addCasing(Aluminium, GT5RBlocks.CASING_FROST_PROOF);
+        addCasing(Lead, GT5RBlocks.CASING_RADIATION_PROOF);
+        addCasing(Plastic, GT5RBlocks.CASING_PLASTIC);
+        addCasing(BlackBronze, GT5RBlocks.CASING_BLACK_BRONZE);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.CASING_SOLID_STEEL), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GT5RBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
     }
 
     private static void cables(){
@@ -146,14 +144,14 @@ public class AssemblerLoader {
 
 
     private static void coils(){
-        addCoil(GregTechBlocks.COIL_CUPRONICKEL, GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_KANTHAL, GregTechBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_NICHROME, GregTechBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_TUNGSTENSTEEL, GregTechBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_HSSG, GregTechBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_NAQUADAH, GregTechBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_NAQUADAH_ALLOY, GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
-        addCoil(GregTechBlocks.COIL_SUPERCONDUCTOR, GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_CUPRONICKEL, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_KANTHAL, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_NICHROME, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_TUNGSTENSTEEL, GT5RBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_HSSG, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_NAQUADAH, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_NAQUADAH_ALLOY, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.COIL_SUPERCONDUCTOR, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
     }
 
     private static void frames(){
@@ -164,30 +162,30 @@ public class AssemblerLoader {
     }
 
     private static void misc(){
-        ASSEMBLER.RB().ii(GregTechItems.PrintedPages, Items.LEATHER).fi(Glue.getLiquid(20)).io(Items.WRITTEN_BOOK).fake().add("written_book", 32, 8);
+        ASSEMBLER.RB().ii(GT5RItems.PrintedPages, Items.LEATHER).fi(Glue.getLiquid(20)).io(Items.WRITTEN_BOOK).fake().add("written_book", 32, 8);
         ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(ULV), 8), of(Machines.TRANSFORMER.getItem(LV), 4), of(Machines.TRANSFORMER.getItem(MV), 2),
-                of(Machines.TRANSFORMER.getItem(HV), 1), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(EV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV)).add("ev_adjustable_transformer", 50, 1920);
-        ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(GregTechItems.ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
+                of(Machines.TRANSFORMER.getItem(HV), 1), of(GT5RItems.ComputerMonitor), of(TIER_CIRCUITS.apply(EV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV)).add("ev_adjustable_transformer", 50, 1920);
+        ASSEMBLER.RB().ii(of(Machines.TRANSFORMER.getItem(EV), 1), of(Machines.ADJUSTABLE_TRANSFORMER.getItem(EV), 2), of(GT5RItems.ComputerMonitor), of(TIER_CIRCUITS.apply(IV), 4)).io(Machines.ADJUSTABLE_TRANSFORMER.getItem(IV)).add("iv_adjustable_transformer", 50, 1920);
         ASSEMBLER.RB().ii(of(ItemTags.PLANKS,8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(Items.CHEST,1)).add("chest",100,4);
 
-        ASSEMBLER.RB().ii(of(GregTechItems.EmitterMV), PLATE.getMaterialIngredient(Aluminium, 1)).io(GregTechCovers.COVER_NEEDS_MAINTENANCE_COVER.getItem()).add("needs_maintenance_cover", 600, 24);
-        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(GregTechCovers.COVER_DRAIN.getItem()).add("drain",800, 16);
-        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(GregTechCovers.COVER_PUMP.getItem(LV))).io(GregTechCovers.COVER_AIR_VENT .getItem()).add("air_vent",800, 16);
-        addCoverRecipe(GregTechCovers.COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));
-        addCoverRecipe(GregTechCovers.COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
-        addCoverRecipe(GregTechCovers.COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
-        addCoverRecipe(GregTechCovers.COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
+        ASSEMBLER.RB().ii(of(GT5RItems.EmitterMV), PLATE.getMaterialIngredient(Aluminium, 1)).io(GT5RCovers.COVER_NEEDS_MAINTENANCE_COVER.getItem()).add("needs_maintenance_cover", 600, 24);
+        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_BARS, 2)).io(GT5RCovers.COVER_DRAIN.getItem()).add("drain",800, 16);
+        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(GT5RCovers.COVER_PUMP.getItem(LV))).io(GT5RCovers.COVER_AIR_VENT .getItem()).add("air_vent",800, 16);
+        addCoverRecipe(GT5RCovers.COVER_REDSTONE_MACHINE_CONTROLLER.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LEVER, 1));
+        addCoverRecipe(GT5RCovers.COVER_ENERGY_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(CIRCUITS_BASIC, 1));
+        addCoverRecipe(GT5RCovers.COVER_FLUID_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.HEAVY_WEIGHTED_PRESSURE_PLATE, 1));
+        addCoverRecipe(GT5RCovers.COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
         ASSEMBLER.RB().ii(of(CarbonFibre, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(CarbonMesh).add("carbon_mesh", 800, 2);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0)).io(GregTechCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 1600, 32);
-        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(GregTechCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter_cheap", 1600, 32);
-        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GregTechCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0)).io(GT5RCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0)).io(GT5RCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
+        ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(GT5RCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 1600, 32);
+        ASSEMBLER.RB().ii(WIRE_FINE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1)).io(GT5RCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter_cheap", 1600, 32);
+        ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GT5RCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gold, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.LIGHT_WEIGHTED_PRESSURE_PLATE).add("light_weighted_pressure_plate", 800, 16);
-        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Redstone, 1), of(GregTechItems.CellTin)).io(GregTechItems.EmptySprayCan).add("empty_spray_can", 800, 1);
+        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Redstone, 1), of(GT5RItems.CellTin)).io(GT5RItems.EmptySprayCan).add("empty_spray_can", 800, 1);
         ASSEMBLER.RB().ii(of(Items.PAPER, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(Tape).add("tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Tungsten, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(FALDuctTape).add("fal_duct_tape", 200, 16);
@@ -196,7 +194,7 @@ public class AssemblerLoader {
     private static void carpet(){
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
-            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
             ASSEMBLER.RB().ii(of(Items.STRING, 2), SELECTOR_TAG_INGREDIENTS.get(2)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 1)).add(dye.getName() + "_carpet", 128, 5);
         }
     }
@@ -213,8 +211,8 @@ public class AssemblerLoader {
             ASSEMBLER.RB().ii(ofObject(WIRE_GETTER.apply(fromTier(t), LV),4), of(ROD.get(TIER_MATERIALS.get(t)),2),
                     of(ROD.get(magnet),1)
                     , ofObject(CABLE_GETTER.apply(PipeSize.VTINY, t, false), 2)).io(new ItemStack(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID))).add("motor_"+t.getId(),150,16);
-            ASSEMBLER.RB().ii(of(GregTechCovers.COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(GregTechCovers.COVER_FLUID_REGULATOR.getItem(t)).add("fluid_regulator_" + t.getId(), 800, 8);
-            ASSEMBLER.RB().ii(of(GregTechCovers.COVER_CONVEYOR.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(GregTechCovers.COVER_ITEM_REGULATOR.getItem(t)).add("item_regulator_" + t.getId(), 800, 8);
+            ASSEMBLER.RB().ii(of(GT5RCovers.COVER_PUMP.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(GT5RCovers.COVER_FLUID_REGULATOR.getItem(t)).add("fluid_regulator_" + t.getId(), 800, 8);
+            ASSEMBLER.RB().ii(of(GT5RCovers.COVER_CONVEYOR.getItem(t)), of(TIER_CIRCUITS.apply(t), 2)).io(GT5RCovers.COVER_ITEM_REGULATOR.getItem(t)).add("item_regulator_" + t.getId(), 800, 8);
         });
     }
 
@@ -225,7 +223,7 @@ public class AssemblerLoader {
                             of(PLATE.get(TIER_MATERIALS.get(t)),3),
                             of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID),1),
                             of(GEAR.get(TIER_MATERIALS.get(t)),1))
-                    .io(new ItemStack(GregTech.get(ItemBasic.class,"piston_"+t.getId())))
+                    .io(new ItemStack(GT5Reimagined.get(ItemBasic.class,"piston_"+t.getId())))
                     .add("piston_"+t.getId(),150,16);
         });
     }
@@ -238,7 +236,7 @@ public class AssemblerLoader {
                             of(TIER_PIPES.get(t).apply(PipeSize.NORMAL), 1),
                             of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID),1)
                             )
-                    .io(GregTechCovers.COVER_PUMP.getItem(t))
+                    .io(GT5RCovers.COVER_PUMP.getItem(t))
                     .add("pump_"+t.getId(),150,16);
         });
     }
@@ -252,31 +250,31 @@ public class AssemblerLoader {
     private static void turbines(){
         MaterialTags.TOOLS.getAll().forEach((m,t) -> {
             if (t.toolTypes().contains(ToolTypes.SMALL_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), ROD_LONG.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 2), GregTechMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor_from_broken", 160, 16);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), ROD_LONG.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 2), GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor_from_broken", 160, 16);
             }
             if (t.toolTypes().contains(ToolTypes.TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), ROD_LONG.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 480, 64);
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), GregTechMaterialTypes.BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor_from_broken", 240, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), ROD_LONG.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 480, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), GT5RMaterialTypes.BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor_from_broken", 240, 64);
             }
             if (t.toolTypes().contains(ToolTypes.LARGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), ROD_LONG.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 640, 64);
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GregTechMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), ROD_LONG.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 640, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
             }
             if (t.toolTypes().contains(ToolTypes.HUGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Americium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
-                ASSEMBLER.RB().ii(GregTechMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GregTechMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Americium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
             }
         });
     }
 
     private static void addTierCasing (Tier tier) {
-        ASSEMBLER.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID))).add("casing_" + tier.getId(),50, 16);
+        ASSEMBLER.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID))).add("casing_" + tier.getId(),50, 16);
     }
 
     private static void addTierHull(Tier tier) {
         Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Plastic;
-        ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GTIRef.ID)))
+        ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID)))
                 .fi(liquid.getLiquid(L * 2)).io(new ItemStack(HULL.getItem(tier))).add("hull_" + tier.getId(), 50, 16);
     }
 

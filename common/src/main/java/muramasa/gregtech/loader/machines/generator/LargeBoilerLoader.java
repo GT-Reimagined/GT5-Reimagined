@@ -1,18 +1,13 @@
 package muramasa.gregtech.loader.machines.generator;
 
-import com.google.common.collect.ImmutableList;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.ItemLike;
 
-import java.util.List;
-
-import static muramasa.gregtech.data.GregTechMaterialTags.SEMIFUELS;
+import static muramasa.gregtech.data.GT5RMaterialTags.SEMIFUELS;
 
 public class LargeBoilerLoader {
     public static void init(){

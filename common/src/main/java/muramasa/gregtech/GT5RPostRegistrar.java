@@ -6,11 +6,11 @@ import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.data.GregTechMaterialEvents;
+import muramasa.gregtech.data.GT5RMaterialEvents;
 import muramasa.gregtech.material.GregTechMaterialEvent;
 
-public class GregTechPostRegistrar implements IAntimatterRegistrar {
-    public GregTechPostRegistrar(){
+public class GT5RPostRegistrar implements IAntimatterRegistrar {
+    public GT5RPostRegistrar(){
         if (AntimatterPlatformUtils.isForge()){
             onRegistrarInit();
         }
@@ -18,7 +18,7 @@ public class GregTechPostRegistrar implements IAntimatterRegistrar {
 
     @Override
     public String getId() {
-        return GTIRef.ID + "_post";
+        return GT5RRef.ID + "_post";
     }
 
     @Override
@@ -29,7 +29,7 @@ public class GregTechPostRegistrar implements IAntimatterRegistrar {
     @Override
     public void onMaterialEvent(MaterialEvent event) {
         event = new GregTechMaterialEvent();
-        GregTechMaterialEvents.onMaterialEvent((GregTechMaterialEvent) event);
+        GT5RMaterialEvents.onMaterialEvent((GregTechMaterialEvent) event);
     }
 
     @Override

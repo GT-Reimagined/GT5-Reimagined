@@ -10,7 +10,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.data.RecipeMaps;
 import muramasa.gregtech.loader.machines.CutterLoader;
 import net.dries007.tfc.common.blocks.rock.Ore;
@@ -98,8 +98,8 @@ public class MachineRecipes {
         int multiplier = ORE_MULTI.getInt(material);
         ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
-        RecipeMaps.PULVERIZER.RB().ii(GregTech.get(Item.class, "poor_" + material.getId())).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
-        RecipeMaps.PULVERIZER.RB().ii(GregTech.get(Item.class, "normal_" + material.getId())).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
-        RecipeMaps.PULVERIZER.RB().ii(GregTech.get(Item.class, "rich_" + material.getId())).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).add("rich_" + material.getId() + "_tfc", 400, 2);
+        RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "poor_" + material.getId())).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
+        RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "normal_" + material.getId())).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);
+        RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "rich_" + material.getId())).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).add("rich_" + material.getId() + "_tfc", 400, 2);
     }
 }

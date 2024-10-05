@@ -3,7 +3,7 @@ package muramasa.gregtech.block;
 import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.texture.Texture;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -33,7 +33,7 @@ import static net.minecraft.world.level.block.TntBlock.UNSTABLE;
 
 public class BlockPowderBarrel extends BlockBasic {
     public BlockPowderBarrel() {
-        super(GTIRef.ID, "powder_barrel", Properties.of(Material.WOOD).strength(1.0f, 1.0f).sound(SoundType.WOOD));
+        super(GT5RRef.ID, "powder_barrel", Properties.of(Material.WOOD).strength(1.0f, 1.0f).sound(SoundType.WOOD));
         this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, false));
     }
 

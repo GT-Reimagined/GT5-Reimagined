@@ -10,7 +10,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -36,7 +36,7 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
                     boolean leather = false;
                     for (int i = 0; i < container.getContainerSize(); i++) {
                         ItemStack stack = container.getItem(i);
-                        if (stack.getItem() == GregTechItems.PrintedPages && printedPages.isEmpty()){
+                        if (stack.getItem() == GT5RItems.PrintedPages && printedPages.isEmpty()){
                             printedPages = stack;
                         } else if (stack.getItem() == Items.LEATHER){
                             leather = true;
@@ -56,7 +56,7 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == GregTechItems.PrintedPages;
+                return super.accepts(stack) || stack.getItem() == GT5RItems.PrintedPages;
             }
 
             @Override

@@ -1,9 +1,8 @@
 package muramasa.gregtech;
 
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 
-public class GTIRef {
+public class GT5RRef {
 
     /** Mod Data **/
     public static final String ID = "gti";

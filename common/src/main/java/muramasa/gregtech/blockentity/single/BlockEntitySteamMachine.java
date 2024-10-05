@@ -9,7 +9,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.gregtech.data.GregTechTags;
+import muramasa.gregtech.data.GT5RTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
@@ -38,7 +38,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
 
         @Override
         public boolean consumeResourceForRecipe(boolean simulate) {
-            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GregTechTags.STEAM, getPower() * TesseractGraphWrappers.dropletMultiplier, simulate).getFluidAmount() > 0)
+            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GT5RTags.STEAM, getPower() * TesseractGraphWrappers.dropletMultiplier, simulate).getFluidAmount() > 0)
                     .orElse(false);
         }
         //Allow up to 16 .
@@ -84,7 +84,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
 
         @Override
         public boolean accepts(FluidHolder stack) {
-            return stack.getFluid().builtInRegistryHolder().is(GregTechTags.STEAM);
+            return stack.getFluid().builtInRegistryHolder().is(GT5RTags.STEAM);
         }
 
         @Override
@@ -97,7 +97,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
             super.onMachineEvent(event, data);
             if (event == SlotType.FL_IN) {
                 if (data != null && data.length > 0) {
-                    if (data[0] instanceof FluidHolder && ((FluidHolder) data[0]).getFluid().builtInRegistryHolder().is(GregTechTags.STEAM)) {
+                    if (data[0] instanceof FluidHolder && ((FluidHolder) data[0]).getFluid().builtInRegistryHolder().is(GT5RTags.STEAM)) {
                         checkRecipe();
                     }
                 }

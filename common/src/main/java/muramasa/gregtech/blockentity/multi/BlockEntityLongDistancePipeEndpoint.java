@@ -15,10 +15,9 @@ import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.structure.StructureCache;
-import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GregTech;
+import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.block.BlockCasing;
-import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.data.Machines;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -163,10 +162,10 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
     }
 
     protected Block getPipeline(){
-        if (type == Machines.LONG_DISTANCE_FLUID_ENDPOINT) return GregTechBlocks.LONG_DIST_FLUID_PIPE;
-        if (type == Machines.LONG_DISTANCE_ITEM_ENDPOINT) return GregTechBlocks.LONG_DIST_ITEM_PIPE;
+        if (type == Machines.LONG_DISTANCE_FLUID_ENDPOINT) return GT5RBlocks.LONG_DIST_FLUID_PIPE;
+        if (type == Machines.LONG_DISTANCE_ITEM_ENDPOINT) return GT5RBlocks.LONG_DIST_ITEM_PIPE;
         if (type == Machines.LONG_DISTANCE_TRANSFORMER_ENDPOINT){
-            Block block = GregTech.get(BlockCasing.class, "long_distance_wire_" + this.tier.getId());
+            Block block = GT5Reimagined.get(BlockCasing.class, "long_distance_wire_" + this.tier.getId());
             if (block != null) return block;
         }
         return Blocks.DIAMOND_BLOCK;

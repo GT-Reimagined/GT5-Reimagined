@@ -4,7 +4,7 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.energy.ItemEnergyHandler;
 import muramasa.antimatter.item.ScannerItem;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
     public ItemPortableScanner() {
-        super(GTIRef.ID, "portable_scanner", false, new Properties().stacksTo(1).tab(Ref.TAB_ITEMS));
+        super(GT5RRef.ID, "portable_scanner", false, new Properties().stacksTo(1).tab(Ref.TAB_ITEMS));
     }
 
     @Override

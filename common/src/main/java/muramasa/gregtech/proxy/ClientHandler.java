@@ -4,8 +4,8 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.GregTech;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5Reimagined;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.Machines;
@@ -26,8 +26,8 @@ public class ClientHandler {
     }
 
     private static void copyProgrammerArtIfMissing() {
-        writeResourcePack("GregTech-Old-Machine-Textures", "gt5u-machine-base");
-        writeResourcePack("GregTech-New-Machine-Textures", "new-machine-base");
+        writeResourcePack("GT5Reimagined-Old-Machine-Textures", "gt5u-machine-base");
+        writeResourcePack("GT5Reimagined-New-Machine-Textures", "new-machine-base");
         writeResourcePack("New-Stone-Textures", "new-stone-textures");
         writeResourcePack("Former-Gui-Textures", "new-gui-textures");
     }
@@ -40,7 +40,7 @@ public class ClientHandler {
         //if(!target.exists())
         try {
             dir.mkdirs();
-            InputStream in = GregTech.class.getResourceAsStream("/assets/" + GTIRef.ID + "/" + readName + ".zip");
+            InputStream in = GT5Reimagined.class.getResourceAsStream("/assets/" + GT5RRef.ID + "/" + readName + ".zip");
             FileOutputStream out = new FileOutputStream(target);
 
             byte[] buf = new byte[16384];

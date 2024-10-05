@@ -9,7 +9,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.structure.FakeTileElement;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.multi.BlockEntityLargeTank;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
@@ -40,10 +40,10 @@ public class MultiblockTankMachine extends MaterialBasicMultiMachine {
         this.capacity = capacity;
         this.small = small;
         String prefix = material == Wood ? "wood" : "metal";
-        baseTexture(new Texture(GTIRef.ID, "block/casing/wall/" + prefix));
+        baseTexture(new Texture(GT5RRef.ID, "block/casing/wall/" + prefix));
         overlayTexture((type, state, tier, i) -> {
-            Texture blank = new Texture(GTIRef.ID, "block/machine/empty");
-            return new Texture[]{blank, blank, blank, new Texture(GTIRef.ID, "block/casing/wall/" + prefix + "_tank_side_overlay"), blank, blank};
+            Texture blank = new Texture(GT5RRef.ID, "block/machine/empty");
+            return new Texture[]{blank, blank, blank, new Texture(GT5RRef.ID, "block/casing/wall/" + prefix + "_tank_side_overlay"), blank, blank};
         });
         setVerticalFacingAllowed(true);
         AntimatterAPI.register(MultiblockTankMachine.class, this);

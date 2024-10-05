@@ -9,7 +9,7 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.Arrays;
@@ -26,7 +26,7 @@ public class OreProcessingDisplay implements Display {
 
         this.ore = material;
         this.bathingMode = bathingMode;
-        this.sepMode = material.has(GregTechMaterialTags.ELECSEPI) ? SepMode.IRON : material.has(GregTechMaterialTags.ELECSEPG) ? SepMode.GOLD : material.has(GregTechMaterialTags.ELECSEPN) ? SepMode.NEODYMIUM : SepMode.NONE;
+        this.sepMode = material.has(GT5RMaterialTags.ELECSEPI) ? SepMode.IRON : material.has(GT5RMaterialTags.ELECSEPG) ? SepMode.GOLD : material.has(GT5RMaterialTags.ELECSEPN) ? SepMode.NEODYMIUM : SepMode.NONE;
         this.input = createInputEntries(List.of(AntimatterMaterialTypes.ORE.getMaterialIngredient(material, 1)));
         Material aOreByProduct1 = ore.getByProducts().size() >= 1 ? ore.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(ore);
         Material aOreByProduct2 = ore.getByProducts().size() >= 2 ? ore.getByProducts().get(1) : aOreByProduct1;

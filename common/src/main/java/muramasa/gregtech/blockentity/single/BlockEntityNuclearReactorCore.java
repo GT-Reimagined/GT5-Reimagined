@@ -2,19 +2,14 @@ package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import io.github.gregtechintergalactical.gtcore.blockentity.IInventorySyncTile;
-import io.github.gregtechintergalactical.gtcore.network.MessageInventorySync;
 import io.github.gregtechintergalactical.gtcore.network.MessageTriggerInventorySync;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.IPostTickTile;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
-import muramasa.antimatter.capability.machine.MachineCoverHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
-import muramasa.antimatter.cover.ICover;
-import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.MachineState;
@@ -27,11 +22,9 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.data.GregTechCovers;
-import muramasa.gregtech.data.GregTechItems;
+import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.data.ToolTypes;
 import muramasa.gregtech.items.IItemReactorRod;
-import muramasa.gregtech.machine.caps.SecondaryOutputCoverHandler;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -236,7 +229,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                 }
             }
         }
-        if (held.getItem() == GregTechItems.GeigerCounter){
+        if (held.getItem() == GT5RItems.GeigerCounter){
             player.sendMessage(Utils.translatable("message.gti.nuclear_reactor.neutron_levels", oNeutronCounts[0], oNeutronCounts[1], oNeutronCounts[2], oNeutronCounts[3]), player.getUUID());
             player.sendMessage(Utils.translatable("message.gti.nuclear_reactor." + (getMachineState() == MachineState.DISABLED ? "off": "on")), player.getUUID());
             return InteractionResult.SUCCESS;

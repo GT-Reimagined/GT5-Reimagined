@@ -8,7 +8,7 @@ import muramasa.antimatter.gui.Widget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.multi.BlockEntityFusionReactor;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
@@ -16,8 +16,8 @@ import org.jetbrains.annotations.Nullable;
 
 
 public class FusionButtonWidget extends Widget {
-    ResourceLocation middle = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
-    ResourceLocation top_bottom = new ResourceLocation(GTIRef.ID, "textures/gui/background/fusion_computer_top_bottom_overlay.png");
+    ResourceLocation middle = new ResourceLocation(GT5RRef.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
+    ResourceLocation top_bottom = new ResourceLocation(GT5RRef.ID, "textures/gui/background/fusion_computer_top_bottom_overlay.png");
 
     BlockEntityFusionReactor.Display display = BlockEntityFusionReactor.Display.REGULAR;
 

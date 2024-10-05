@@ -1,14 +1,13 @@
 package muramasa.gregtech.loader.machines;
 
 import muramasa.antimatter.material.Material;
-import muramasa.gregtech.data.RecipeMaps;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.L9;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_TINY;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
-import static muramasa.gregtech.data.GregTechMaterialTypes.BOULE;
+import static muramasa.gregtech.data.GT5RMaterialTypes.BOULE;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CRYSTALLIZATION_CHAMBER;
 

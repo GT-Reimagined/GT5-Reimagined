@@ -1,37 +1,28 @@
 package muramasa.gregtech.cover;
 
-import com.google.common.collect.ImmutableMap;
 import earth.terrarium.botarium.common.fluid.base.FluidContainer;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
-import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.SyncableTextWidget;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicTransport;
-import muramasa.gregtech.data.GregTechData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
-import tesseract.TesseractCapUtils;
 import tesseract.TesseractGraphWrappers;
 
-import java.util.Map;
 import java.util.Objects;
 
 import static muramasa.gregtech.cover.CoverPump.speeds;

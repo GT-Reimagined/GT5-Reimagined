@@ -10,8 +10,7 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.ore.BlockOre;
-import muramasa.antimatter.structure.StructureCache;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.miniportals.BlockEntityMiniPortal;
 import muramasa.gregtech.blockentity.multi.MiningPipeStructureCache;
 import muramasa.gregtech.data.Materials;
@@ -57,7 +56,7 @@ public class RemappingEvents {
     @SubscribeEvent
     public static void onAttackCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
         if (event.getObject() instanceof BlockEntityMiniPortal miniPortal){
-            event.addCapability(new ResourceLocation(GTIRef.ID, "mini_portal"), new ICapabilityProvider() {
+            event.addCapability(new ResourceLocation(GT5RRef.ID, "mini_portal"), new ICapabilityProvider() {
                 @NotNull
                 @Override
                 public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
@@ -193,12 +192,12 @@ public class RemappingEvents {
                     continue;
                 }
             }
-            Block replacement = AntimatterAPI.get(Block.class, id, GTIRef.ANTIMATTER_SHARED);
+            Block replacement = AntimatterAPI.get(Block.class, id, GT5RRef.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
-            replacement = AntimatterAPI.get(Block.class, id, GTIRef.ID);
+            replacement = AntimatterAPI.get(Block.class, id, GT5RRef.ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
@@ -212,8 +211,8 @@ public class RemappingEvents {
             if (id.equals("rubber_sapling")){
                 map.remap(GTCoreBlocks.RUBBER_SAPLING);
             }
-            if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
-                Block block = AntimatterAPI.get(Block.class, AntimatterRemapping.getRemappingMap().get(GTIRef.ID).get(id));
+            if (AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
+                Block block = AntimatterAPI.get(Block.class, AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -312,19 +311,19 @@ public class RemappingEvents {
         });
         for (var map : event.getMappings("gregtech")) {
             String id = map.key.getPath();
-            Item replacement = AntimatterAPI.get(Item.class, id, GTIRef.ANTIMATTER_SHARED);
+            Item replacement = AntimatterAPI.get(Item.class, id, GT5RRef.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
-            replacement = AntimatterAPI.get(Item.class, id, GTIRef.ID);
+            replacement = AntimatterAPI.get(Item.class, id, GT5RRef.ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
 
-            if (AntimatterRemapping.getRemappingMap().get(GTIRef.ID).containsKey(id)){
-                Item block = AntimatterAPI.get(Item.class, AntimatterRemapping.getRemappingMap().get(GTIRef.ID).get(id));
+            if (AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
+                Item block = AntimatterAPI.get(Item.class, AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -334,7 +333,7 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingFluids(final RegistryEvent.MissingMappings<Fluid> event){
-        for (var map : event.getMappings(GTIRef.ID)) {
+        for (var map : event.getMappings(GT5RRef.ID)) {
             String id = map.key.getPath();
             String liquid = id.startsWith("flowing_") ? id.replace("flowing_", "") : id;
             if (id.contains("polethylene")){
@@ -367,7 +366,7 @@ public class RemappingEvents {
     @SubscribeEvent
     public static void onAttachCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
         /*if (event.getObject() instanceof BlockEntityHatchHeat<?> heat){
-            event.addCapability(new ResourceLocation(GTIRef.ID, "heat_hatch"), new ICapabilityProvider() {
+            event.addCapability(new ResourceLocation(GT5RRef.ID, "heat_hatch"), new ICapabilityProvider() {
                 @NotNull
                 @Override
                 public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {

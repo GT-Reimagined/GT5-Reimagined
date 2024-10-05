@@ -14,9 +14,8 @@ import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.data.RecipeMaps;
-import muramasa.gregtech.data.TierMaps;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +24,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
@@ -113,7 +111,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Glass, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_2", 2000, 1920);
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
-            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GTIRef.ID, dyeName));
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_smart_cable")).io(getAe2Item(dye.getName() + "_smart_cable")).add(dye.getName() + "_smart_cable", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_covered_cable")).io(getAe2Item(dye.getName() + "_covered_cable")).add(dye.getName() + "_covered_cable", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_glass_cable")).io(getAe2Item(dye.getName() + "_glass_cable")).add(dye.getName() + "_glass_cable", 64);
@@ -123,8 +121,8 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GTIRef.ID + ":silicon");
-        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GTIRef.ID + ":silicon_blasting");
+        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5RRef.ID + ":silicon");
+        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5RRef.ID + ":silicon_blasting");
     }
 
     @Override

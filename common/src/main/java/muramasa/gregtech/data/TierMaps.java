@@ -9,10 +9,9 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.GregTechConfig;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.GT5RConfig;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -75,35 +74,35 @@ public class TierMaps {
 
         WIRE_GETTER = (size, tier) -> {
             if (tier == LV) {
-                return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(GT5RRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
             }
             if (tier == MV) {
-                return GregTechBlocks.WIRE_CUPRONICKEL.getBlockItem(size);
+                return GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(size);
             }
             if (tier == HV) {
-                return GregTechBlocks.WIRE_KANTHAL.getBlockItem(size);
+                return GT5RBlocks.WIRE_KANTHAL.getBlockItem(size);
             }
             if (tier == EV) {
-                return GregTechBlocks.WIRE_NICHROME.getBlockItem(size);
+                return GT5RBlocks.WIRE_NICHROME.getBlockItem(size);
             }
             if (tier == IV) {
-                return GregTechBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(size);
+                return GT5RBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(size);
             }
             throw new IllegalArgumentException("Too high tier in WIRE_GETTER");
         };
         CABLE_GETTER = (size, tier, machine) -> {
-            if (tier == ULV) return GregTechBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(size);
-            if (tier == LV) return GregTechBlocks.CABLE_TIN.getBlockItem(size);
+            if (tier == ULV) return GT5RBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(size);
+            if (tier == LV) return GT5RBlocks.CABLE_TIN.getBlockItem(size);
             if (tier == MV){
-                return TagUtils.getItemTag(new ResourceLocation(GTIRef.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(GT5RRef.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
             }
-            if (tier == HV) return GregTechBlocks.CABLE_GOLD.getBlockItem(size);
-            if (tier == EV) return GregTechBlocks.CABLE_ALUMINIUM.getBlockItem(size);
-            if (tier == IV) return machine ? GregTechBlocks.CABLE_PLATINUM.getBlockItem(size) : GregTechBlocks.CABLE_TUNGSTEN.getBlockItem(size);
-            if(tier == LUV) return GregTechBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(size);
-            if(tier == ZPM) return GregTechBlocks.CABLE_NAQUADAH.getBlockItem(size);
-            if(tier == UV) return GregTechBlocks.CABLE_NAQUADAH_ALLOY.getBlockItem(size);
-            if(tier == UHV) return GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(size);
+            if (tier == HV) return GT5RBlocks.CABLE_GOLD.getBlockItem(size);
+            if (tier == EV) return GT5RBlocks.CABLE_ALUMINIUM.getBlockItem(size);
+            if (tier == IV) return machine ? GT5RBlocks.CABLE_PLATINUM.getBlockItem(size) : GT5RBlocks.CABLE_TUNGSTEN.getBlockItem(size);
+            if(tier == LUV) return GT5RBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(size);
+            if(tier == ZPM) return GT5RBlocks.CABLE_NAQUADAH.getBlockItem(size);
+            if(tier == UV) return GT5RBlocks.CABLE_NAQUADAH_ALLOY.getBlockItem(size);
+            if(tier == UHV) return GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(size);
             throw new IllegalArgumentException("Invalid tier in CABLE_GETTER");
         };
     }
@@ -118,16 +117,16 @@ public class TierMaps {
         doneMaps = true;
         {
             ImmutableMap.Builder<Tier, PipeItemBlock> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, GregTechBlocks.WIRE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.LV, GregTechBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.MV, GregTechBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.HV, GregTechBlocks.WIRE_GOLD.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.EV, GregTechBlocks.WIRE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
-            builder.put(Tier.IV, GregTechBlocks.WIRE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
-            builder.put(LUV, GregTechBlocks.WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
-            builder.put(ZPM, GregTechBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
-            builder.put(UV, GregTechBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
-            builder.put(UHV, GregTechBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.ULV, GT5RBlocks.WIRE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.LV, GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.MV, GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.HV, GT5RBlocks.WIRE_GOLD.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.EV, GT5RBlocks.WIRE_ALUMINIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(Tier.IV, GT5RBlocks.WIRE_TUNGSTEN.getBlockItem(PipeSize.VTINY));
+            builder.put(LUV, GT5RBlocks.WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
+            builder.put(ZPM, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
+            builder.put(UV, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
+            builder.put(UHV, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY));
             TIER_WIRES = builder.build();
         }
         /*{
@@ -174,12 +173,12 @@ public class TierMaps {
         }
         {
             ImmutableMap.Builder<Tier, Function<PipeSize, Item>> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, GregTechBlocks.FLUID_PIPE_COPPER::getBlockItem);
-            builder.put(Tier.LV, GregTechBlocks.FLUID_PIPE_BRONZE::getBlockItem);
-            builder.put(Tier.MV, GregTechBlocks.FLUID_PIPE_STEEL::getBlockItem);
-            builder.put(Tier.HV, GregTechBlocks.FLUID_PIPE_STAINLESS_STEEL::getBlockItem);
-            builder.put(Tier.EV, GregTechBlocks.FLUID_PIPE_TITANIUM::getBlockItem);
-            builder.put(Tier.IV, GregTechBlocks.FLUID_PIPE_TUNGSTEN_STEEL::getBlockItem);
+            builder.put(Tier.ULV, GT5RBlocks.FLUID_PIPE_COPPER::getBlockItem);
+            builder.put(Tier.LV, GT5RBlocks.FLUID_PIPE_BRONZE::getBlockItem);
+            builder.put(Tier.MV, GT5RBlocks.FLUID_PIPE_STEEL::getBlockItem);
+            builder.put(Tier.HV, GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL::getBlockItem);
+            builder.put(Tier.EV, GT5RBlocks.FLUID_PIPE_TITANIUM::getBlockItem);
+            builder.put(Tier.IV, GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL::getBlockItem);
             TIER_PIPES = builder.build();
         }
         {
@@ -192,7 +191,7 @@ public class TierMaps {
             builder.put(Tier.LUV, GTCoreTags.CIRCUITS_DATA_ORB);
             builder.put(Tier.ZPM, GTCoreTags.CIRCUITS_DATA_ORB);
             TIER_CIRCUITS = t ->{
-                boolean hardMode = GregTechConfig.HARDER_CIRCUITS;
+                boolean hardMode = GT5RConfig.HARDER_CIRCUITS;
                 if (t == LV){
                     return GTCoreTags.CIRCUITS_BASIC;
                 }

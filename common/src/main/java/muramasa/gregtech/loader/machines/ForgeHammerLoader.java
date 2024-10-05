@@ -11,8 +11,8 @@ import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.GTIRef;
-import muramasa.gregtech.data.GregTechMaterialTags;
+import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -45,7 +45,7 @@ public class ForgeHammerLoader {
             }
         });
         ToLongFunction<Material> baseDuration = m -> {
-            if (m.has(GregTechMaterialTags.RECIPE_MASS)) return GregTechMaterialTags.RECIPE_MASS.get(m);
+            if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
         PLATE.all().forEach(plate -> {
@@ -61,7 +61,7 @@ public class ForgeHammerLoader {
             FORGE_HAMMER.RB().ii(GEM.getMaterialIngredient(m, 1)).io(GEM_FLAWED.get(m, 2)).add(m.getId() + "_flawed", 64, 16);
             FORGE_HAMMER.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(GEM_CHIPPED.get(m, 2)).add(m.getId() + "_chipped", 64, 16);
         });
-        AntimatterAPI.all(StoneType.class, GTIRef.ID, s -> {
+        AntimatterAPI.all(StoneType.class, GT5RRef.ID, s -> {
             if (!(s instanceof CobbleStoneType)) return;
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock(""), 1)).io(new ItemStack(((CobbleStoneType)s).getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add("cobbled_" + s.getMaterial().getId() + "_dust",10, 16);

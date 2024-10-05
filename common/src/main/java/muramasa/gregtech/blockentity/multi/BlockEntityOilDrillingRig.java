@@ -18,11 +18,9 @@ import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import muramasa.antimatter.util.int3;
-import muramasa.gregtech.blockentity.single.BlockEntityBuffer;
-import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.gui.ButtonOverlays;
 import muramasa.gregtech.worldgen.OilSpoutEntry;
 import muramasa.gregtech.worldgen.OilSpoutSavedData;
@@ -42,7 +40,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
@@ -50,8 +47,8 @@ import tesseract.TesseractGraphWrappers;
 import java.util.List;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
-import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE;
-import static muramasa.gregtech.data.GregTechBlocks.MINING_PIPE_THIN;
+import static muramasa.gregtech.data.GT5RBlocks.MINING_PIPE;
+import static muramasa.gregtech.data.GT5RBlocks.MINING_PIPE_THIN;
 
 public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEntityOilDrillingRig> implements IFilterableHandler, IMiningPipeTile {
     boolean foundBottom = false;
@@ -92,7 +89,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityMultiMachine<BlockEnti
         }
         if (!validStructure || stopped) return;
         ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
-        if ((stack.getItem() == GregTechBlocks.MINING_PIPE_THIN.asItem() || foundBottom || pullingUp) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
+        if ((stack.getItem() == GT5RBlocks.MINING_PIPE_THIN.asItem() || foundBottom || pullingUp) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
             if (pullingUp){
                 if (level.getGameTime() % 5 != 0) return;
                 BlockState block = level.getBlockState(miningPos.above());

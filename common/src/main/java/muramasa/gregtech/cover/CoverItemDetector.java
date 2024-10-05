@@ -13,7 +13,7 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
-import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.GT5RCovers;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +30,7 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     private final CoverItemFilter filter;
     public CoverItemDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.filter = new CoverItemFilter(source, null, side, GregTechCovers.COVER_ITEM_FILTER);
+        this.filter = new CoverItemFilter(source, null, side, GT5RCovers.COVER_ITEM_FILTER);
         filter.onCreate();
         addGuiCallback(t -> {
             t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
@@ -145,6 +145,6 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        return stack.getItem() == GregTechCovers.COVER_ITEM_FILTER.getItem().getItem();
+        return stack.getItem() == GT5RCovers.COVER_ITEM_FILTER.getItem().getItem();
     }
 }

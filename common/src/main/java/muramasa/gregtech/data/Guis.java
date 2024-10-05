@@ -10,7 +10,7 @@ import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.*;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
-import muramasa.gregtech.GTIRef;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.gui.widgets.*;
 import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
 import net.minecraft.world.entity.player.Inventory;
@@ -24,34 +24,34 @@ import static muramasa.gregtech.data.Machines.*;
 public class Guis {
 
     // TODO move these to the API somehow
-    public static GuiData MULTI_DISPLAY = new GuiData(GTIRef.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiData MULTI_DISPLAY = new GuiData(GT5RRef.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
             .add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34)
             .add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
 
-    public static GuiData SIMPLE_DISPLAY = new GuiData(GTIRef.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiData SIMPLE_DISPLAY = new GuiData(GT5RRef.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 53, 25).add(IT_OUT, 107, 25));
 
-    public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GTIRef.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
+    public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GT5RRef.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7)
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
 
-    public static GuiData MULTI_DISPLAY_DISTILLATION = new GuiData(GTIRef.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
+    public static GuiData MULTI_DISPLAY_DISTILLATION = new GuiData(GT5RRef.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 53, 43)
             .add(IT_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7));
-    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GTIRef.ID, "multi_display")
+    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GT5RRef.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
-    public static GuiData BASIC_TANK = new GuiData(GTIRef.ID, "basic_tank").setBackgroundTexture("basic_tank")
-            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GTIRef.ID, "blank")));
+    public static GuiData BASIC_TANK = new GuiData(GT5RRef.ID, "basic_tank").setBackgroundTexture("basic_tank")
+            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5RRef.ID, "blank")));
 
-    public static GuiData MULTIBLOCK = new GuiData(GTIRef.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiData MULTIBLOCK = new GuiData(GT5RRef.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
     public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
         @Override
@@ -73,7 +73,7 @@ public class Guis {
 
         @Override
         public String screenDomain() {
-            return GTIRef.ID;
+            return GT5RRef.ID;
         }
 
         @Override
@@ -179,10 +179,10 @@ public class Guis {
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
-        COKE_OVEN.add(IT_IN, 53, 25, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
-                .add(IT_OUT, 107, 25, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
-                .add(FL_OUT, 125, 25, new ResourceLocation(GTIRef.ID, "primitive_cell"));
-        ResourceLocation bat = new ResourceLocation(GTIRef.ID, "battery");
+        COKE_OVEN.add(IT_IN, 53, 25, new ResourceLocation(GT5RRef.ID, "primitive_ingot"))
+                .add(IT_OUT, 107, 25, new ResourceLocation(GT5RRef.ID, "primitive_ingot"))
+                .add(FL_OUT, 125, 25, new ResourceLocation(GT5RRef.ID, "primitive_cell"));
+        ResourceLocation bat = new ResourceLocation(GT5RRef.ID, "battery");
         BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27, bat).add(ENERGY, 89, 27, bat).add(ENERGY, 71, 45, bat).add(ENERGY, 89, 45, bat);
         BATTERY_BUFFER_ONE.add(ENERGY, 80, 40, bat);
         BATTERY_BUFFER_EIGHT
@@ -222,12 +222,12 @@ public class Guis {
         INFINITE_STEAM.add(BASIC_TANK.getSlots());
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots());
-        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
-                .add(IT_IN, 53, 34, new ResourceLocation(GTIRef.ID, "primitive_fire"))
-                .add(IT_IN, 53, 52, new ResourceLocation(GTIRef.ID, "primitive_fire"))
-                .add(IT_OUT, 107, 25, new ResourceLocation(GTIRef.ID, "primitive_ingot"))
-                .add(IT_OUT, 125, 25, new ResourceLocation(GTIRef.ID, "primitive_dust"))
-                .add(IT_OUT, 143, 25, new ResourceLocation(GTIRef.ID, "primitive_dust"));
+        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, new ResourceLocation(GT5RRef.ID, "primitive_ingot"))
+                .add(IT_IN, 53, 34, new ResourceLocation(GT5RRef.ID, "primitive_fire"))
+                .add(IT_IN, 53, 52, new ResourceLocation(GT5RRef.ID, "primitive_fire"))
+                .add(IT_OUT, 107, 25, new ResourceLocation(GT5RRef.ID, "primitive_ingot"))
+                .add(IT_OUT, 125, 25, new ResourceLocation(GT5RRef.ID, "primitive_dust"))
+                .add(IT_OUT, 143, 25, new ResourceLocation(GT5RRef.ID, "primitive_dust"));
 
         HATCH_MUFFLER.add(IT_IN, 79, 34);
 
@@ -289,9 +289,9 @@ public class Guis {
                 .add(UV, FL_OUT, 97, 52);
         HATCH_FLUID_O.add(UHV, HATCH_FLUID_O, ULV);
         ELECTRIC_ITEM_FILTER
-                .add(DISPLAY_SETTABLE, 18, 6, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 6, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 6, new ResourceLocation(GTIRef.ID, "blank"))
-                .add(DISPLAY_SETTABLE, 18, 23, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 23, new ResourceLocation(GTIRef.ID, "blank"))
-                .add(DISPLAY_SETTABLE, 18, 40, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 40, new ResourceLocation(GTIRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 40, new ResourceLocation(GTIRef.ID, "blank"))
+                .add(DISPLAY_SETTABLE, 18, 6, new ResourceLocation(GT5RRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 6, new ResourceLocation(GT5RRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 6, new ResourceLocation(GT5RRef.ID, "blank"))
+                .add(DISPLAY_SETTABLE, 18, 23, new ResourceLocation(GT5RRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GT5RRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 23, new ResourceLocation(GT5RRef.ID, "blank"))
+                .add(DISPLAY_SETTABLE, 18, 40, new ResourceLocation(GT5RRef.ID, "blank")).add(DISPLAY_SETTABLE, 35, 40, new ResourceLocation(GT5RRef.ID, "blank")).add(DISPLAY_SETTABLE, 52, 40, new ResourceLocation(GT5RRef.ID, "blank"))
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -300,7 +300,7 @@ public class Guis {
                 .add(STORAGE, 98 + 18 * 2, 41);
 
         ELECTRIC_TYPE_FILTER
-                .add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GTIRef.ID, "blank"))
+                .add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GT5RRef.ID, "blank"))
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -409,7 +409,7 @@ public class Guis {
 
     public static void widgets(){
         FORGE_HAMMER.addGuiCallback(t -> {
-            t.addWidget(IconWidget.build(new ResourceLocation(GTIRef.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
+            t.addWidget(IconWidget.build(new ResourceLocation(GT5RRef.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
         });
         SOLID_FUEL_BOILER.addGuiCallback(t -> {
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))

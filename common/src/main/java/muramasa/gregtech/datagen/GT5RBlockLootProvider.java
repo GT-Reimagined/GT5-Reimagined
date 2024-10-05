@@ -6,7 +6,7 @@ import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.datagen.providers.AntimatterBlockLootProvider;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.gregtech.block.*;
-import muramasa.gregtech.data.GregTechBlocks;
+import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.integration.AppliedEnergisticsRegistrar;
 import muramasa.gregtech.integration.SpaceModRegistrar;
@@ -18,8 +18,8 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.RAW_ORE;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 
-public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
-    public GregtechBlockLootProvider(String providerDomain, String providerName) {
+public class GT5RBlockLootProvider extends AntimatterBlockLootProvider {
+    public GT5RBlockLootProvider(String providerDomain, String providerName) {
         super(providerDomain, providerName);
     }
 
@@ -33,10 +33,10 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         AntimatterAPI.all(BlockAsphalt.class, providerDomain, this::add);
         AntimatterAPI.all(BlockAsphaltSlab.class, providerDomain, b -> tables.put(b, BlockLoot::createSlabItemTable));
         AntimatterAPI.all(BlockAsphaltStair.class, providerDomain, this::add);
-        this.add(GregTechBlocks.MINING_PIPE_THIN);
-        this.add(GregTechBlocks.SOLID_SUPER_FUEL);
-        this.add(GregTechBlocks.POWDER_BARREL);
-        tables.put(GregTechBlocks.MINING_PIPE, b -> this.build(GregTechBlocks.MINING_PIPE_THIN));
+        this.add(GT5RBlocks.MINING_PIPE_THIN);
+        this.add(GT5RBlocks.SOLID_SUPER_FUEL);
+        this.add(GT5RBlocks.POWDER_BARREL);
+        tables.put(GT5RBlocks.MINING_PIPE, b -> this.build(GT5RBlocks.MINING_PIPE_THIN));
         tables.put(Blocks.LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
         tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
         tables.put(Blocks.REDSTONE_ORE, b -> createOreDrop(b, RAW_ORE.get(Redstone)));
@@ -49,7 +49,7 @@ public class GregtechBlockLootProvider extends AntimatterBlockLootProvider {
         tables.put(Blocks.DEEPSLATE_COPPER_ORE, b -> createOreDrop(b, RAW_ORE.get(Copper)));
         tables.put(Blocks.COAL_ORE, b -> createOreDrop(b, RAW_ORE.get(Coal)));
         tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDrop(b, RAW_ORE.get(Coal)));
-        tables.put(GregTechBlocks.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
+        tables.put(GT5RBlocks.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
         tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDrop(b, RAW_ORE.get(NetheriteScrap)));
         tables.put(Blocks.ANDESITE, b -> createSingleItemTableWithSilkTouch(Blocks.ANDESITE, ((CobbleStoneType)AntimatterStoneTypes.ANDESITE).getBlock("cobble")));
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType)AntimatterStoneTypes.DIORITE).getBlock("cobble")));

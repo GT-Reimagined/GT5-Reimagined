@@ -13,7 +13,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicTransport;
-import muramasa.gregtech.data.GregTechCovers;
+import muramasa.gregtech.data.GT5RCovers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -39,7 +39,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     public CoverPump(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         Objects.requireNonNull(tier);
-        this.filter = new CoverFluidFilter(source, null, side, GregTechCovers.COVER_FLUID_FILTER);
+        this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
         this.gui.getSlots().add(SlotType.STORAGE, 79, 53);
     }
@@ -93,7 +93,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
 
     @Override
     public boolean test(SlotType<?> type, int slot, ItemStack stack) {
-        return stack.getItem() == GregTechCovers.COVER_FLUID_FILTER.getItem().getItem();
+        return stack.getItem() == GT5RCovers.COVER_FLUID_FILTER.getItem().getItem();
     }
 
     @Override
