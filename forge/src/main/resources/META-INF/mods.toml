@@ -4,7 +4,7 @@ loaderVersion="[31,)"
 issueTrackerURL="https://github.com/GT-Reimagined/GT5-Reimagined/issues"
 
 [[mods]]
-modId="gti"
+modId="gt5r"
 version="${version}"
 displayName="GT5 Reimagined"
 #updateJSONURL="http://myurl.me/"
@@ -13,19 +13,19 @@ displayURL="https://github.com/GT-Reimagined/GT5-Reimagined"
 credits="GregoriusTechneticies for his previous versions of GregTech, the current GregTech community for suggestions and ideas, and Muramasa for the original GTI this is based off."
 authors="Trinsdar"
 description='''A Reimagining of GregTech 5U for modern minecraft versions'''
-[[dependencies.gti]]
+[[dependencies.gt5r]]
     modId="antimatter"
     mandatory=true
     versionRange="[0.2,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.gti]]
+[[dependencies.gt5r]]
     modId="forge"
     mandatory=true
     versionRange="[36.1.0,)"
     ordering="AFTER"
     side="BOTH"
-[[dependencies.gti]]
+[[dependencies.gt5r]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.18,)"

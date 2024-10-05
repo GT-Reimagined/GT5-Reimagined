@@ -2,8 +2,11 @@ package muramasa.gregtech;
 
 import io.github.gregtechintergalactical.gtcore.GTCore;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterRemapping;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.cover.CoverFactory;
+import muramasa.antimatter.cover.ICover;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.Map;
@@ -15,14 +18,18 @@ public class GTRemapping {
 
     public static void init(){
         AntimatterRemapping.getBeRemappingFunctionList().add(r -> {
-            if (r.getNamespace().equals("gregtech")){
+            if (r.getNamespace().equals("gregtech") || r.getNamespace().equals("gti")){
                 var r2 = new ResourceLocation(GT5RRef.ID, r.getPath());
                 if (AntimatterRemapping.getBeRemappingMap().containsKey(r2)){
                     return AntimatterRemapping.getBeRemappingMap().get(r2);
                 }
+                return r2;
             }
             return r;
         });
+        for (CoverFactory cover : AntimatterAPI.all(CoverFactory.class, GT5RRef.ID)){
+            AntimatterRemapping.remapCover(new ResourceLocation("gti", cover.getId()), cover.getLoc());
+        }
         for (int i = 0; i < 25; i++) {
             remapGTCore("int_circuit_" + i, "selector_tag_"+i);
         }

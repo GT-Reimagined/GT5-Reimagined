@@ -33,9 +33,9 @@ public class ItemEnrichedRod extends ItemBasic<ItemEnrichedRod> implements IItem
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
         super.appendHoverText(stack, level, tooltipComponents, isAdvanced);
-        tooltipComponents.add(Utils.translatable("tooltip.gti.enriched_rod.0").withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.depleted_rod.1").withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.enriched_rod.1", breederRod.get().getDefaultInstance().getHoverName()).withStyle(ChatFormatting.GREEN));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.enriched_rod.0").withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.depleted_rod.1").withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.enriched_rod.1", breederRod.get().getDefaultInstance().getHoverName()).withStyle(ChatFormatting.GREEN));
     }
 
     @Override

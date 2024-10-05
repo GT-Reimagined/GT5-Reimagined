@@ -46,8 +46,8 @@ public class CoverItemRetriever extends BaseCover {
         super(source, tier, side, factory);
         getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 79, 53);
         addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> !whitelist, true, b -> "tooltip.gti." + (b ? "blacklist" : "whitelist"));
-            t.addSwitchButton(88, 34, 16, 16, ButtonOverlays.NBT_OFF, ButtonOverlays.NBT_ON, h -> !ignoreNBT, true, b -> "tooltip.gti.nbt." + (b ? "on" : "off"));
+            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> !whitelist, true, b -> "tooltip.gt5r." + (b ? "blacklist" : "whitelist"));
+            t.addSwitchButton(88, 34, 16, 16, ButtonOverlays.NBT_OFF, ButtonOverlays.NBT_ON, h -> !ignoreNBT, true, b -> "tooltip.gt5r.nbt." + (b ? "on" : "off"));
         });;
     }
 

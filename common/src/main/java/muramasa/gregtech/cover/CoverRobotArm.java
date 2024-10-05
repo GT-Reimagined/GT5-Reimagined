@@ -38,8 +38,8 @@ public class CoverRobotArm extends CoverBasicTransport {
     @Override
     protected void addButtons() {
         addGuiCallback(t -> {
-            t.addCycleButton(70, 16, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), true, i -> "tooltip.gti.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
-            t.addCycleButton(88, 16, 16, 16, h -> ((CoverRobotArm)h).exportMode.ordinal(), true, i -> "tooltip.gti.export_mode." + i, ButtonOverlay.EXPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT_EXPORT);
+            t.addCycleButton(70, 16, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), true, i -> "tooltip.gt5r.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
+            t.addCycleButton(88, 16, 16, 16, h -> ((CoverRobotArm)h).exportMode.ordinal(), true, i -> "tooltip.gt5r.export_mode." + i, ButtonOverlay.EXPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT_EXPORT);
             t.addTextButton(70, 53, 36, 12, h -> ((CoverRobotArm)h).slot, i -> Utils.literal("Slot: ").append("" + i), 0, true);
             t.addButton(61,34, ButtonOverlay.MINUS, true);
             t.addButton(97,34, ButtonOverlay.PLUS, true);

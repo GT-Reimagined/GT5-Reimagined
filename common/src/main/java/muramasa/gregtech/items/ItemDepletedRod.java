@@ -29,8 +29,8 @@ public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IItem
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
         super.appendHoverText(stack, level, tooltipComponents, isAdvanced);
-        tooltipComponents.add(Utils.translatable("tooltip.gti.depleted_rod.0", Utils.translatable("tooltip.gti.depleted_rod.depleted").withStyle(ChatFormatting.RED)).withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.depleted_rod.1").withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.depleted_rod.0", Utils.translatable("tooltip.gt5r.depleted_rod.depleted").withStyle(ChatFormatting.RED)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.depleted_rod.1").withStyle(ChatFormatting.AQUA));
     }
 
     @Override

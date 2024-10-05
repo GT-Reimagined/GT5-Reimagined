@@ -61,7 +61,7 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
         if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
             mode = player.isShiftKeyDown() ? mode.previous() : mode.next();
             this.handler.getTile().setChanged();
-            player.sendMessage(Utils.translatable("message.gti.needs_maintenance." + (mode.scaled ? "scaled" : "unscaled") + "." + (mode.inverted ? "inverted" : "normal")), player.getUUID());
+            player.sendMessage(Utils.translatable("message.gt5r.needs_maintenance." + (mode.scaled ? "scaled" : "unscaled") + "." + (mode.inverted ? "inverted" : "normal")), player.getUUID());
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;

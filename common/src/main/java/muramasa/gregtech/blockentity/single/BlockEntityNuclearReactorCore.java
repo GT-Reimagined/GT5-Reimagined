@@ -230,8 +230,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
             }
         }
         if (held.getItem() == GT5RItems.GeigerCounter){
-            player.sendMessage(Utils.translatable("message.gti.nuclear_reactor.neutron_levels", oNeutronCounts[0], oNeutronCounts[1], oNeutronCounts[2], oNeutronCounts[3]), player.getUUID());
-            player.sendMessage(Utils.translatable("message.gti.nuclear_reactor." + (getMachineState() == MachineState.DISABLED ? "off": "on")), player.getUUID());
+            player.sendMessage(Utils.translatable("message.gt5r.nuclear_reactor.neutron_levels", oNeutronCounts[0], oNeutronCounts[1], oNeutronCounts[2], oNeutronCounts[3]), player.getUUID());
+            player.sendMessage(Utils.translatable("message.gt5r.nuclear_reactor." + (getMachineState() == MachineState.DISABLED ? "off": "on")), player.getUUID());
             return InteractionResult.SUCCESS;
         }
         return super.onInteractServer(state, world, pos, player, hand, hit, type);

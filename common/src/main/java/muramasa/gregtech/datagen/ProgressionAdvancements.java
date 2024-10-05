@@ -34,7 +34,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
     @Override
     public void accept(Consumer<Advancement> consumer) {
         progressionRoot = buildRootAdvancement(Data.DEBUG_SCANNER, new ResourceLocation(GT5RRef.ID, "textures/block/machine/base/lv.png"),
-                GT5RRef.ID + ".advancements.gti.title", GT5RRef.ID + ".advancements.gti.desc", FrameType.TASK, false, false, false)
+                GT5RRef.ID + ".advancements.gt5r.title", GT5RRef.ID + ".advancements.gt5r.desc", FrameType.TASK, false, false, false)
                 .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(GT5RRef.ID, "progression/root"));
         Advancement rock = buildBasicAdvancement(progressionRoot, AntimatterMaterialTypes.ROCK.get(Stone), "rock", FrameType.TASK)
                 .addCriterion("has_rocks", hasItems(getForgelikeItemTag("rocks"), getForgelikeItemTag("bearing_rocks"))).save(consumer, getLoc(GT5RRef.ID, "progression/rock"));

@@ -128,7 +128,7 @@ public class BlockPowderBarrel extends BlockBasic {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture("gti:block/powder_barrel")};
+        return new Texture[]{new Texture(GT5RRef.ID, "block/powder_barrel")};
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

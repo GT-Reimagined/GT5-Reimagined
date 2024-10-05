@@ -130,7 +130,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
                 }
             }
             if (otherSide != null){
-                player.sendMessage(Utils.translatable("message.gti.mini_portal.connect", otherSide.getBlockPos().getX(), otherSide.getBlockPos().getY(), otherSide.getBlockPos().getZ(), otherSide.getLevel().dimension().location()), player.getUUID());
+                player.sendMessage(Utils.translatable("message.gt5r.mini_portal.connect", otherSide.getBlockPos().getX(), otherSide.getBlockPos().getY(), otherSide.getBlockPos().getZ(), otherSide.getLevel().dimension().location()), player.getUUID());
             }
             if (level.isClientSide()) {
                 playActivationSound(player);

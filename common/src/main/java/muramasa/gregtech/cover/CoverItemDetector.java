@@ -33,7 +33,7 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
         this.filter = new CoverItemFilter(source, null, side, GT5RCovers.COVER_ITEM_FILTER);
         filter.onCreate();
         addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gti.redstone_mode." + (b ? "inverted" : "normal"));
+            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gt5r.redstone_mode." + (b ? "inverted" : "normal"));
         });
         this.gui.getSlots().add(SlotType.STORAGE, 88, 34);
     }

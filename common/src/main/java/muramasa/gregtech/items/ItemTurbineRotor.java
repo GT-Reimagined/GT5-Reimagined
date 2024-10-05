@@ -50,9 +50,9 @@ public class ItemTurbineRotor extends MaterialTool {
     @Override
     public void onGenericAddInformation(ItemStack stack, List<Component> tooltip, TooltipFlag flag) {
         super.onGenericAddInformation(stack, tooltip, flag);
-        tooltip.add(Utils.translatable("gti.rotor.tooltip.efficiency", Utils.literal("" + getEfficiency()).withStyle(ChatFormatting.BLUE)));
-        tooltip.add(Utils.translatable("gti.rotor.tooltip.steam_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 1000)).withStyle(ChatFormatting.LIGHT_PURPLE)));
-        tooltip.add(Utils.translatable("gti.rotor.tooltip.gas_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 50)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+        tooltip.add(Utils.translatable("gt5r.rotor.tooltip.efficiency", Utils.literal("" + getEfficiency()).withStyle(ChatFormatting.BLUE)));
+        tooltip.add(Utils.translatable("gt5r.rotor.tooltip.steam_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 1000)).withStyle(ChatFormatting.LIGHT_PURPLE)));
+        tooltip.add(Utils.translatable("gt5r.rotor.tooltip.gas_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 50)).withStyle(ChatFormatting.LIGHT_PURPLE)));
     }
 
     @Override

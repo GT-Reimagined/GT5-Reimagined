@@ -26,11 +26,11 @@ public class ItemDataStick extends ItemBasic<ItemDataStick> {
             if (nbt.contains("prospectData")){
                 CompoundTag prospect = nbt.getCompound("prospectData");
                 String raw = prospect.contains("analyzed") ? "analyzed" : "raw";
-                tooltipComponents.add(Utils.translatable("tooltip.gti.data_stick." + raw + "_prospection_data"));
+                tooltipComponents.add(Utils.translatable("tooltip.gt5r.data_stick." + raw + "_prospection_data"));
                 if (prospect.contains("analyzed")){
                     BlockPos pos = BlockPos.of(prospect.getLong("pos"));
                     String dimension = prospect.getString("dimension");
-                    tooltipComponents.add(Utils.translatable("tooltip.gti.data_stick.by", pos.getX(), pos.getZ(), dimension));
+                    tooltipComponents.add(Utils.translatable("tooltip.gt5r.data_stick.by", pos.getX(), pos.getZ(), dimension));
                 }
             }
             if (nbt.contains("bookData")){

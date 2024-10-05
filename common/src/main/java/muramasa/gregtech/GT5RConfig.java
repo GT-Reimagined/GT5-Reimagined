@@ -21,7 +21,7 @@ public class GT5RConfig {
     static ConfigHandler CONFIG;
 
     public static void createConfig(){
-        Config config = new Config("gti");
+        Config config = new Config("gt5r");
         ConfigSection section = config.add("general");
         /*MORE_COMPLICATED_CHEMICAL_RECIPES = section.addBool("more_complicated_chemical_recipes", false, "Enables more complicated chemical recipes. - Default: false");
         HARDER_CIRCUITS = section.addBool("harder_circuits", false, "Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false");*/

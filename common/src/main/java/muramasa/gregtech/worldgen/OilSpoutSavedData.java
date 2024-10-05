@@ -31,7 +31,14 @@ public class OilSpoutSavedData extends SavedData {
     private final ServerLevel serverLevel;
 
     public static OilSpoutSavedData getOrCreate(ServerLevel serverLevel) {
-        return serverLevel.getDataStorage().computeIfAbsent(tag -> new OilSpoutSavedData(serverLevel, tag), () -> new OilSpoutSavedData(serverLevel), "gti_oil_spouts");
+        var dataStorage = serverLevel.getDataStorage();
+        var data = dataStorage.get(tag -> new OilSpoutSavedData(serverLevel, tag), "gti_oil_sprouts");
+        if (data != null){
+            dataStorage.set("gt5r_oil_sprouts", data);
+            dataStorage.set("gti_oil_sprouts", null);
+            return data;
+        }
+        return serverLevel.getDataStorage().computeIfAbsent(tag -> new OilSpoutSavedData(serverLevel, tag), () -> new OilSpoutSavedData(serverLevel), "gt5r_oil_spouts");
     }
 
     public OilSpoutSavedData(ServerLevel serverLevel) {

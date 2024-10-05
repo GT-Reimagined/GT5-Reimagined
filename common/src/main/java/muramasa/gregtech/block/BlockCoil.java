@@ -40,9 +40,9 @@ public class BlockCoil extends BlockBasic {
     public void appendHoverText(ItemStack p_49816_, @Nullable BlockGetter p_49817_, List<Component> tooltip, TooltipFlag p_49819_) {
         super.appendHoverText(p_49816_, p_49817_, tooltip, p_49819_);
         tooltip.add(Utils.translatable("antimatter.tooltip.heat_capacity").append(": ").append(String.valueOf(this.coilData.heat)));
-        tooltip.add(Utils.translatable("tooltip.gti.coil.percentage", (int)(this.coilData.percentage * 100) + "%"));
-        tooltip.add(Utils.translatable("tooltip.gti.coil.maxSimultaneousRecipes", this.coilData.maxSimultaneousRecipes));
-        tooltip.add(Utils.translatable("tooltip.gti.coil.autoclaveBoosts", ((this.coilData.autoclaveBoosts * 10) + 100) + "%"));
+        tooltip.add(Utils.translatable("tooltip.gt5r.coil.percentage", (int)(this.coilData.percentage * 100) + "%"));
+        tooltip.add(Utils.translatable("tooltip.gt5r.coil.maxSimultaneousRecipes", this.coilData.maxSimultaneousRecipes));
+        tooltip.add(Utils.translatable("tooltip.gt5r.coil.autoclaveBoosts", ((this.coilData.autoclaveBoosts * 10) + 100) + "%"));
     }
 
     public record CoilData(int heat, float percentage, int maxSimultaneousRecipes, int autoclaveBoosts){}

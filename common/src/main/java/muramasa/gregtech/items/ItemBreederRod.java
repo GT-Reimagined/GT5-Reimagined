@@ -37,16 +37,16 @@ public class ItemBreederRod extends ItemBasic<ItemBreederRod> implements IItemRe
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
         super.appendHoverText(stack, level, tooltipComponents, isAdvanced);
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.0", Utils.translatable("tooltip.gti.breeder_rod.enriched").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.1").withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.2", Utils.translatable("tooltip.gti.nuclear_rod.moderated.1").withStyle(ChatFormatting.RED)).withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.3", Utils.translatable("tooltip.gti.breeder_rod.loss").withStyle(ChatFormatting.YELLOW)).withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.4").withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.5").withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.6", enrichedRod.get().getDefaultInstance().getHoverName().copy().withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GREEN));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.0", Utils.translatable("tooltip.gt5r.breeder_rod.enriched").withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.1").withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.2", Utils.translatable("tooltip.gt5r.nuclear_rod.moderated.1").withStyle(ChatFormatting.RED)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.3", Utils.translatable("tooltip.gt5r.breeder_rod.loss").withStyle(ChatFormatting.YELLOW)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.4").withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.5").withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.6", enrichedRod.get().getDefaultInstance().getHoverName().copy().withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GREEN));
         long needed = stack.getTag() != null && stack.getTag().contains("neededNeutrons") ? stack.getTag().getLong("neededNeutrons") : this.needed;
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.7", Utils.literal("" + needed).withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.breeder_rod.neutrons").withStyle(ChatFormatting.LIGHT_PURPLE)).withStyle(ChatFormatting.AQUA));
-        tooltipComponents.add(Utils.translatable("tooltip.gti.breeder_rod.8", Utils.literal("" + loss).withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gti.breeder_rod.neutrons").withStyle(ChatFormatting.LIGHT_PURPLE)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.7", Utils.literal("" + needed).withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gt5r.breeder_rod.neutrons").withStyle(ChatFormatting.LIGHT_PURPLE)).withStyle(ChatFormatting.AQUA));
+        tooltipComponents.add(Utils.translatable("tooltip.gt5r.breeder_rod.8", Utils.literal("" + loss).withStyle(ChatFormatting.WHITE), Utils.translatable("tooltip.gt5r.breeder_rod.neutrons").withStyle(ChatFormatting.LIGHT_PURPLE)).withStyle(ChatFormatting.AQUA));
     }
 
     @Override

@@ -40,7 +40,7 @@ public class CoverBasicRedstoneOutput extends BaseCover {
     public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
         if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
             inverted = !inverted;
-            player.sendMessage(Utils.translatable("message.gti.redstone_mode." + (inverted ? "inverted" : "normal")), player.getUUID());
+            player.sendMessage(Utils.translatable("message.gt5r.redstone_mode." + (inverted ? "inverted" : "normal")), player.getUUID());
             return InteractionResult.SUCCESS;
         }
         return super.onInteract(player, hand, side, type);

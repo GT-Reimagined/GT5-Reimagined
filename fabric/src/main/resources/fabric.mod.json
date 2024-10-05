@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "gti",
+  "id": "gt5r",
   "version": "${version}",
   "name": "GT5-Reimagined",
   "description": "A Reimagining of GregTech 5U for modern minecraft versions",
@@ -13,7 +13,7 @@
     "discord": "https://discord.gg/sZFzQrBA33"
   },
   "license": "LGPL-3.0",
-  "icon": "assets/gti/icon.png",
+  "icon": "assets/gt5r/icon.png",
   "depends": {
     "fabricloader": ">=0.14.0",
     "tesseractapi": ">=0.1",

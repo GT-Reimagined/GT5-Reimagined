@@ -33,8 +33,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.Random;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static muramasa.antimatter.material.Material.NULL;
 
@@ -167,8 +169,7 @@ public class RemappingEvents {
             }
 
         });
-        for (var map : event.getMappings("gregtech")) {
-
+        for (var map : Stream.of(event.getMappings("gregtech"), event.getMappings("gti")).flatMap(Collection::stream).toList()) {
             String id = map.key.getPath();
             if (id.startsWith("block_")){
                 Material mat = Material.get(id.replace("block_", ""));
@@ -309,7 +310,7 @@ public class RemappingEvents {
                 }
             }
         });
-        for (var map : event.getMappings("gregtech")) {
+        for (var map : Stream.of(event.getMappings("gregtech"), event.getMappings("gti")).flatMap(Collection::stream).toList()) {
             String id = map.key.getPath();
             Item replacement = AntimatterAPI.get(Item.class, id, GT5RRef.ANTIMATTER_SHARED);
             if (replacement != null){
