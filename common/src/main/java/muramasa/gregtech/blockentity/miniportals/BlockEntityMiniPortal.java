@@ -60,7 +60,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     public void onFirstTick() {
         super.onFirstTick();
         if (otherSidePos != null && otherSideDimension != null){
-            Level dimension = AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+            Level dimension = AntimatterPlatformUtils.INSTANCE.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
             if (dimension != null && dimension.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                 this.otherSide = portal;
                 otherSideDimension = null;
@@ -174,7 +174,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
             } else if (otherSide == null){
                 if (level.getGameTime() % 100 == 5){
                     if (otherSidePos != null && otherSideDimension != null){
-                        Level dimension = AntimatterPlatformUtils.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+                        Level dimension = AntimatterPlatformUtils.INSTANCE.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
                         if (dimension != null && level.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                             this.otherSide = portal;
                             otherSideDimension = null;

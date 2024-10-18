@@ -116,17 +116,17 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
                 case 0 -> {
                     emitEnergy = !emitEnergy;
                     playerEntity.sendMessage(Utils.literal((emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
-                    AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                    AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                 }
                 case 1 -> {
                     outputRedstone = !outputRedstone;
                     playerEntity.sendMessage(Utils.literal( (outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
-                    AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                    AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                 }
                 case 2 -> {
                     invertRedstone = !invertRedstone;
                     playerEntity.sendMessage(Utils.literal( (invertRedstone ? "I" : "Don't i") + "nvert redstone"), playerEntity.getUUID());
-                    AntimatterPlatformUtils.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                    AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                 }
             }
         }

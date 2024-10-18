@@ -33,7 +33,7 @@ public class ClientHandler {
     }
 
     private static void writeResourcePack(String writeName, String readName){
-        File dir = new File(AntimatterPlatformUtils.getConfigDir().getParent().toFile(), "resourcepacks");
+        File dir = new File(AntimatterPlatformUtils.INSTANCE.getConfigDir().getParent().toFile(), "resourcepacks");
         File target = new File(dir, writeName + ".zip");
 
 

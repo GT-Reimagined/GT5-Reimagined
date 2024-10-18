@@ -234,10 +234,10 @@ public class GT5Reimagined extends AntimatterMod {
                 AntimatterJEIREIPlugin.addFluidsToHide(l -> {
                     l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                 });
-                AntimatterPlatformUtils.setBurnTime(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
-                AntimatterPlatformUtils.setBurnTime(GT5RItems.WoodPellet, 200);
-                AntimatterPlatformUtils.setFlammability(GT5RBlocks.WOOD_WALL, 5, 20);
-                AntimatterPlatformUtils.setFlammability(Machines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
+                AntimatterPlatformUtils.INSTANCE.setBurnTime(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
+                AntimatterPlatformUtils.INSTANCE.setBurnTime(GT5RItems.WoodPellet, 200);
+                AntimatterPlatformUtils.INSTANCE.setFlammability(GT5RBlocks.WOOD_WALL, 5, 20);
+                AntimatterPlatformUtils.INSTANCE.setFlammability(Machines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
                 CommonHandler.setup();
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();

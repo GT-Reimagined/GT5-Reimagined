@@ -11,8 +11,8 @@ import static muramasa.gregtech.data.GT5RMaterialTags.SEMIFUELS;
 
 public class LargeBoilerLoader {
     public static void init(){
-        AntimatterPlatformUtils.getAllBurnables().forEach((i, b) -> {
-            ResourceLocation id = AntimatterPlatformUtils.getIdFromItem(i);
+        AntimatterPlatformUtils.INSTANCE.getAllBurnables().forEach((i, b) -> {
+            ResourceLocation id = AntimatterPlatformUtils.INSTANCE.getIdFromItem(i);
             RecipeMaps.LARGE_BOILERS.RB().ii(RecipeIngredient.of(i)).add(id.getNamespace() + "." + id.getPath(), b / 80, b % 80);
         });
         AntimatterMaterialTypes.LIQUID.all().forEach(mat -> {
