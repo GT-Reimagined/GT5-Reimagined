@@ -157,7 +157,7 @@ public class AssemblerLoader {
     private static void frames(){
         FRAME.all().forEach(m -> {
             MaterialTypeBlock.Container f = FRAME.get().get(m);
-            ASSEMBLER.RB().ii(of(ROD.get(m),4), SELECTOR_TAG_INGREDIENTS.get(4)).io(f.asItem()).add(AntimatterPlatformUtils.getIdFromBlock(f.asBlock()).getPath(),40,24);
+            ASSEMBLER.RB().ii(of(ROD.get(m),4), SELECTOR_TAG_INGREDIENTS.get(4)).io(f.asItem()).add(AntimatterPlatformUtils.INSTANCE.getIdFromBlock(f.asBlock()).getPath(),40,24);
         });
     }
 
@@ -195,14 +195,14 @@ public class AssemblerLoader {
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
             TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
-            ASSEMBLER.RB().ii(of(Items.STRING, 2), SELECTOR_TAG_INGREDIENTS.get(2)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 1)).add(dye.getName() + "_carpet", 128, 5);
+            ASSEMBLER.RB().ii(of(Items.STRING, 2), SELECTOR_TAG_INGREDIENTS.get(2)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 1)).add(dye.getName() + "_carpet", 128, 5);
         }
     }
 
     private static void addCoverRecipe(ItemStack cover, Ingredient... inputs){
-        ASSEMBLER.RB().ii(inputs).fi(SolderingAlloy.getLiquid(L / 2)).io(cover).add(AntimatterPlatformUtils.getIdFromItem(cover.getItem()).getPath() + "_soldering_alloy", 800, 16);
-        ASSEMBLER.RB().ii(inputs).fi(Lead.getLiquid(L * 2)).io(cover).add(AntimatterPlatformUtils.getIdFromItem(cover.getItem()).getPath() + "_lead", 800, 16);
-        ASSEMBLER.RB().ii(inputs).fi(Tin.getLiquid(L)).io(cover).add(AntimatterPlatformUtils.getIdFromItem(cover.getItem()).getPath() + "_tin", 800, 16);
+        ASSEMBLER.RB().ii(inputs).fi(SolderingAlloy.getLiquid(L / 2)).io(cover).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(cover.getItem()).getPath() + "_soldering_alloy", 800, 16);
+        ASSEMBLER.RB().ii(inputs).fi(Lead.getLiquid(L * 2)).io(cover).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(cover.getItem()).getPath() + "_lead", 800, 16);
+        ASSEMBLER.RB().ii(inputs).fi(Tin.getLiquid(L)).io(cover).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(cover.getItem()).getPath() + "_tin", 800, 16);
     }
 
     private static void motors(){
@@ -279,14 +279,14 @@ public class AssemblerLoader {
     }
 
     private static void addCasing (Material mat, BlockCasing casing) {
-        ASSEMBLER.RB().ii(of(FRAME.get().get(mat).asItem(), 1), of(PLATE.get(mat), 6)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
+        ASSEMBLER.RB().ii(of(FRAME.get().get(mat).asItem(), 1), of(PLATE.get(mat), 6)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.INSTANCE.getIdFromBlock(casing).getPath(),80, 30);
     }
 
     private static void addWall(Material mat, BlockColoredWall casing) {
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(mat, 4), SELECTOR_TAG_INGREDIENTS.get(24)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.getIdFromBlock(casing).getPath(),80, 30);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(mat, 4), SELECTOR_TAG_INGREDIENTS.get(24)).io(new ItemStack(casing,1)).add(AntimatterPlatformUtils.INSTANCE.getIdFromBlock(casing).getPath(),80, 30);
     }
 
     private static void addCoil (BlockCoil coil, PipeItemBlock wire) {
-        ASSEMBLER.RB().ii(of(wire,8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.getIdFromBlock(coil).getPath(), 100, 30);
+        ASSEMBLER.RB().ii(of(wire,8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(coil,1)).add(AntimatterPlatformUtils.INSTANCE.getIdFromBlock(coil).getPath(), 100, 30);
     }
 }

@@ -231,7 +231,7 @@ public class ArcFurnaceLoader {
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
-        addRecyclingRecipe(RecipeIngredient.of(input), outputs, AntimatterPlatformUtils.getIdFromItem(input.asItem()).getPath());
+        addRecyclingRecipe(RecipeIngredient.of(input), outputs, AntimatterPlatformUtils.INSTANCE.getIdFromItem(input.asItem()).getPath());
     }
 
     private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, String id){

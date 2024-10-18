@@ -22,10 +22,10 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
                         for (int i = 0; i < container.getContainerSize(); i++) {
                             ItemStack stack = container.getItem(i);
                             if (stack.getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof SaplingBlock){
-                                ResourceLocation id = AntimatterPlatformUtils.getIdFromBlock(blockItem.getBlock());
+                                ResourceLocation id = AntimatterPlatformUtils.INSTANCE.getIdFromBlock(blockItem.getBlock());
                                 ResourceLocation logId = new ResourceLocation(id.getNamespace(), id.getPath().replace("_sapling", "_log"));
-                                if (AntimatterPlatformUtils.blockExists(logId)){
-                                    return RecipeMaps.TREE_GROWTH_SIMULATOR.RB().recipeMapOnly().ii(RecipeIngredient.of(stack.getItem(), 1).setNoConsume()).io(new ItemStack(AntimatterPlatformUtils.getItemFromID(logId), 10)).add(id.getPath(), 10, 16);
+                                if (AntimatterPlatformUtils.INSTANCE.blockExists(logId)){
+                                    return RecipeMaps.TREE_GROWTH_SIMULATOR.RB().recipeMapOnly().ii(RecipeIngredient.of(stack.getItem(), 1).setNoConsume()).io(new ItemStack(AntimatterPlatformUtils.INSTANCE.getItemFromID(logId), 10)).add(id.getPath(), 10, 16);
                                 }
                             }
                         }

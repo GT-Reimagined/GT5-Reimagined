@@ -156,7 +156,7 @@ public class MixerLoader {
         MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 1)).fi(DistilledWater.getLiquid(1000)).fo(Coolant.getLiquid(1000)).add("cold_coolant", 256, 48);
         MIXER.RB().ii(DUST.getMaterialIngredient(SodiumPersulfate, 1)).fi(Water.getLiquid(1000)).fo(SodiumPersulfateSolution.getLiquid(1000)).add("sodium_persulfate_solution", 20, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(SodiumPersulfate, 1)).fi(DistilledWater.getLiquid(1000)).fo(SodiumPersulfateSolution.getLiquid(1000)).add("sodium_persulfate_solution_distilled", 20, 16);
-        long oneThird = AntimatterPlatformUtils.isFabric() ? 27000 : 333;
+        long oneThird = AntimatterPlatformUtils.INSTANCE.isFabric() ? 27000 : 333;
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Lithium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(GT5RItems.SuperFuelBinder, 8)).add("super_fuel_binder", 40 * 20, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Sodium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(GT5RItems.SuperFuelBinder, 8)).add("super_fuel_binder_1", 40 * 20, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 4), DUST.getMaterialIngredient(Sulfur, 1), DUST.getMaterialIngredient(Caesium, 1)).fi(Glue.getLiquid(oneThird)).io(new ItemStack(GT5RItems.SuperFuelBinder, 12)).add("super_fuel_binder_2", 40 * 20, 16);

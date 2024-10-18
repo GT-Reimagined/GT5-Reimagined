@@ -11,7 +11,7 @@ import muramasa.gregtech.material.GregTechMaterialEvent;
 
 public class GT5RPostRegistrar implements IAntimatterRegistrar {
     public GT5RPostRegistrar(){
-        if (AntimatterPlatformUtils.isForge()){
+        if (AntimatterPlatformUtils.INSTANCE.isForge()){
             onRegistrarInit();
         }
     }

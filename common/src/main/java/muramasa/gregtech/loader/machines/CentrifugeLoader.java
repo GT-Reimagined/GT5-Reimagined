@@ -154,11 +154,11 @@ public class CentrifugeLoader {
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks){
-        CENTRIFUGE.RB().ii(of(input, 1)).fo(Methane.getGas(methane)).add(AntimatterPlatformUtils.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
+        CENTRIFUGE.RB().ii(of(input, 1)).fo(Methane.getGas(methane)).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks, ItemStack extra){
-        CENTRIFUGE.RB().ii(of(input, 1)).io(extra).fo(Methane.getGas(methane)).add(AntimatterPlatformUtils.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
+        CENTRIFUGE.RB().ii(of(input, 1)).io(extra).fo(Methane.getGas(methane)).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
     }
 }
 

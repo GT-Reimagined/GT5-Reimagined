@@ -38,13 +38,13 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
                 if (recipe == null){
                     ExtendedItemContainer container = itemHandler.get().getInputHandler();
                     ItemStack input = container != null ? container.getItem(0) : ItemStack.EMPTY;
-                    ResourceLocation id = AntimatterPlatformUtils.getIdFromItem(input.getItem());
+                    ResourceLocation id = AntimatterPlatformUtils.INSTANCE.getIdFromItem(input.getItem());
                     FluidHolder fluidInput = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
                     if (!fluidInput.isEmpty()) {
                         if (input.getItem() == Items.SHULKER_BOX){
                             DyeColor color = fromFluid(fluidInput);
                             if (color != null && fluidInput.getFluidAmount() >= L / 2) {
-                                ItemStack output = new ItemStack(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(color.getName() + "_shulker_box")));
+                                ItemStack output = new ItemStack(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(color.getName() + "_shulker_box")));
                                 output.setTag(input.getTag());
                                 return RecipeMaps.BATH.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).fi(Utils.ca(L / 2, fluidInput)).io(output).add(color.getName() + "_shulker_box", 64);
                             }
@@ -62,7 +62,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
 
             @Override
             public boolean accepts(ItemStack stack) {
-                ResourceLocation id = AntimatterPlatformUtils.getIdFromItem(stack.getItem());
+                ResourceLocation id = AntimatterPlatformUtils.INSTANCE.getIdFromItem(stack.getItem());
                 return super.accepts(stack) || (id.getPath().contains("shulker_box") && id.getNamespace().equals("minecraft"));
             }
 

@@ -199,13 +199,13 @@ public class BlockParts {
     private static void addSlabRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block slab){
         provider.addStackRecipe(output, "slabs", new ItemStack(slab, 6), ImmutableMap.of('F', full), "FFF");
         provider.addItemRecipe(output, "slabs", full, ImmutableMap.of('S', slab), "S", "S");
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + AntimatterPlatformUtils.getIdFromItem(slab.asItem()).getPath()));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + AntimatterPlatformUtils.INSTANCE.getIdFromItem(slab.asItem()).getPath()));
     }
 
     private static void addStairRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block stair){
         provider.addStackRecipe(output, "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "F  ", "FF ", "FFF");
-        provider.addStackRecipe(output, GT5RRef.ID, AntimatterPlatformUtils.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + AntimatterPlatformUtils.getIdFromItem(stair.asItem()).getPath()));
+        provider.addStackRecipe(output, GT5RRef.ID, AntimatterPlatformUtils.INSTANCE.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + AntimatterPlatformUtils.INSTANCE.getIdFromItem(stair.asItem()).getPath()));
     }
 
     private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {

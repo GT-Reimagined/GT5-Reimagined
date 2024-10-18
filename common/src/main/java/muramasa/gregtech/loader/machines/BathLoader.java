@@ -81,19 +81,19 @@ public class BathLoader {
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
             TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
-            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass"))).add(dye.getName() + "_stained_glass", 64);
-            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS_PANE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass_pane"))).add(dye.getName() + "_stained_glass_pane", 64);
-            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.TERRACOTTA).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_terracotta"))).add(dye.getName() + "_terracotta", 64);
-            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.CANDLE).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_candle"))).add(dye.getName() + "_candle", 64);
-            BATH.RB().fake().ii(Items.SHULKER_BOX).fi(FluidIngredient.of(dyeLiquid, L / 2)).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_shulker_box"))).add(dye.getName() + "_shulker_box", 64);
-            BATH.RB().fake().ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_shulker_box"))).fi(Chlorine.getGas(50)).io(Items.SHULKER_BOX).add("shulker_box_from_" + dye.getName(), 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass"))).add(dye.getName() + "_stained_glass", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.GLASS_PANE).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_stained_glass_pane"))).add(dye.getName() + "_stained_glass_pane", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(Items.TERRACOTTA).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_terracotta"))).add(dye.getName() + "_terracotta", 64);
+            BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.CANDLE).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_candle"))).add(dye.getName() + "_candle", 64);
+            BATH.RB().fake().ii(Items.SHULKER_BOX).fi(FluidIngredient.of(dyeLiquid, L / 2)).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_shulker_box"))).add(dye.getName() + "_shulker_box", 64);
+            BATH.RB().fake().ii(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_shulker_box"))).fi(Chlorine.getGas(50)).io(Items.SHULKER_BOX).add("shulker_box_from_" + dye.getName(), 64);
 
             if (dye != DyeColor.WHITE){
-                BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_WOOL).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).add(dye.getName() + "_wool", 64);
-                BATH.RB().fi(Chlorine.getGas(50)).ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).io(Items.WHITE_WOOL).add("white_wool_from_" + dyeName, 400);
-                BATH.RB().fi(Chlorine.getGas(25)).ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet"))).io(Items.WHITE_CARPET).add("white_carpet_from_" + dyeName, 400);
-                BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_BED).io(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_bed"))).add(dye.getName() + "_bed", 64);
-                BATH.RB().fi(Chlorine.getGas(50)).ii(AntimatterPlatformUtils.getItemFromID(new ResourceLocation(dye.getName() + "_bed"))).io(Items.WHITE_BED).add("white_bed_from_" + dyeName, 400);
+                BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_WOOL).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).add(dye.getName() + "_wool", 64);
+                BATH.RB().fi(Chlorine.getGas(50)).ii(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_wool"))).io(Items.WHITE_WOOL).add("white_wool_from_" + dyeName, 400);
+                BATH.RB().fi(Chlorine.getGas(25)).ii(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_carpet"))).io(Items.WHITE_CARPET).add("white_carpet_from_" + dyeName, 400);
+                BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 2)).ii(Items.WHITE_BED).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_bed"))).add(dye.getName() + "_bed", 64);
+                BATH.RB().fi(Chlorine.getGas(50)).ii(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_bed"))).io(Items.WHITE_BED).add("white_bed_from_" + dyeName, 400);
             }
         }
         mercurybathing();
@@ -163,8 +163,8 @@ public class BathLoader {
 
     private static void addFieryBathing(TagKey<Item> in, Item out, long materialAmount) {
         long amount = (L * materialAmount) / U;
-        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), amount)).add(in.location().getPath() + "_to_" + AntimatterPlatformUtils.getIdFromItem(out).getPath() + "_tears", amount);
-        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), amount)).add(in.location().getPath() + "_to_" + AntimatterPlatformUtils.getIdFromItem(out).getPath() + "_blood", amount);
+        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), amount)).add(in.location().getPath() + "_to_" + AntimatterPlatformUtils.INSTANCE.getIdFromItem(out).getPath() + "_tears", amount);
+        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), amount)).add(in.location().getPath() + "_to_" + AntimatterPlatformUtils.INSTANCE.getIdFromItem(out).getPath() + "_blood", amount);
     }
 
     private static void addVitriolRecipe(Material input, Material vitriol){

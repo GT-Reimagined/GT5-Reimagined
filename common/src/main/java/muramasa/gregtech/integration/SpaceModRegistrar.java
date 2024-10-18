@@ -23,7 +23,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 public class SpaceModRegistrar extends AntimatterMod {
     public static Material Desh;
     public SpaceModRegistrar(){
-        if (AntimatterPlatformUtils.isFabric()) {
+        if (AntimatterPlatformUtils.INSTANCE.isFabric()) {
             onRegistrarInit();
         }
     }
@@ -71,9 +71,9 @@ public class SpaceModRegistrar extends AntimatterMod {
     }
 
     public static Block getSpaceBlock(String id){
-        return AntimatterPlatformUtils.getBlockFromId(getMod(), id);
+        return AntimatterPlatformUtils.INSTANCE.getBlockFromId(getMod(), id);
     }
     public static Item getSpaceItem(String id){
-        return AntimatterPlatformUtils.getItemFromID(getMod(), id);
+        return AntimatterPlatformUtils.INSTANCE.getItemFromID(getMod(), id);
     }
 }

@@ -56,7 +56,7 @@ public class GT5RTwilightStalctites {
     private static void addStalctite(String name, int hillSize, int maxLength, Block ore, float sizeVariation, int weight){
         JsonObject object = new JsonObject();
         object.addProperty("max_length", maxLength);
-        object.addProperty("ore", AntimatterPlatformUtils.getIdFromBlock(ore).toString());
+        object.addProperty("ore", AntimatterPlatformUtils.INSTANCE.getIdFromBlock(ore).toString());
         object.addProperty("size_variation", sizeVariation);
         object.addProperty("weight", weight);
         ResourceLocation id = new ResourceLocation(GT5RRef.ID, name);
