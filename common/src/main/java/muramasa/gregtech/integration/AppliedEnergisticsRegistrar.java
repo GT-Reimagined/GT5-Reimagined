@@ -1,6 +1,5 @@
 package muramasa.gregtech.integration;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterStoneTypes;
@@ -26,6 +25,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 
@@ -35,7 +35,6 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.*;
-import static muramasa.gregtech.data.RecipeMaps.BATH;
 
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 

@@ -16,7 +16,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
-import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.Materials.DistilledWater;
+import static muramasa.gregtech.data.Materials.Steam;
 
 public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<BlockEntitySmallHeatExchanger> {
     boolean hadNoWater = false;

@@ -9,9 +9,9 @@ import muramasa.antimatter.gui.screen.ScreenMachine;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.gregtech.blockentity.single.BlockEntityCoalBoiler;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Inventory;
 import tesseract.TesseractGraphWrappers;
 
 public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>> extends ScreenMachine<BlockEntityCoalBoiler, T> {

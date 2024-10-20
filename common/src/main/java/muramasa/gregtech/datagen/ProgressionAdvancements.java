@@ -1,6 +1,5 @@
 package muramasa.gregtech.datagen;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.machine.types.Machine;
@@ -12,6 +11,7 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -20,7 +20,8 @@ import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.*;
-import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.antimatter.machine.Tier.BRONZE;
+import static muramasa.antimatter.machine.Tier.NONE;
 import static muramasa.antimatter.util.TagUtils.getForgelikeItemTag;
 import static muramasa.antimatter.util.Utils.hasItem;
 import static muramasa.antimatter.util.Utils.hasItems;

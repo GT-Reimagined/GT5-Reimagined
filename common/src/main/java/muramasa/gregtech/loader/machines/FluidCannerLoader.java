@@ -1,7 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.item.ItemBattery;
@@ -16,6 +14,8 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreFluids;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 

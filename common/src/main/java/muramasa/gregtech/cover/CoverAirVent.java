@@ -2,11 +2,11 @@ package muramasa.gregtech.cover;
 
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.gregtech.GT5RRef;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

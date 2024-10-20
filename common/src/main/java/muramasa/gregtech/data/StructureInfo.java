@@ -1,8 +1,8 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.structure.PatternBuilder;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.Blocks;
 
 import static muramasa.gregtech.data.Machines.*;
 

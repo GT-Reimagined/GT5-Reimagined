@@ -1,7 +1,5 @@
 package muramasa.gregtech.events.forge;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.events.GTCommonEvents;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterRemapping;
 import muramasa.antimatter.Ref;
@@ -30,6 +28,8 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
+import org.gtreimagined.gtcore.events.GTCommonEvents;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

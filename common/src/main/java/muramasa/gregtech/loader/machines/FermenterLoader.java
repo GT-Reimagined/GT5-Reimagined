@@ -1,6 +1,7 @@
 package muramasa.gregtech.loader.machines;
-import static muramasa.gregtech.data.Materials.*;
 
+import static muramasa.gregtech.data.Materials.Biomass;
+import static muramasa.gregtech.data.Materials.FermentedBiomass;
 import static muramasa.gregtech.data.RecipeMaps.FERMENTER;
 
 public class FermenterLoader {

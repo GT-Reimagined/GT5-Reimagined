@@ -45,8 +45,8 @@ dependencies{
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
     modImplementation("com.github.Trinsdar:ARRP:0.6.7-hotfix")
-    include("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
-    modImplementation("io.github.gregtechintergalactical:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}"){
+    include("org.gt-reimagined:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
+    modImplementation("org.gt-reimagined:gtcore-fabric:${rootProject.gt_core_version}-${rootProject.minecraft_version}"){
         transitive = false
     }
     modImplementation("com.terraformersmc.terraform-api:terraform-wood-api-v1:3.1.0")

@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.Plantball;
+import static org.gtreimagined.gtcore.data.GTCoreItems.Plantball;
 
 public class Miscellaneous {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {

@@ -1,7 +1,6 @@
 package muramasa.gregtech.machine;
 
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
-import io.github.gregtechintergalactical.gtcore.machine.MaterialBasicMultiMachine;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.machine.Tier;
@@ -11,6 +10,7 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.multi.BlockEntityLargeTank;
+import org.gtreimagined.gtcore.machine.MaterialBasicMultiMachine;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 

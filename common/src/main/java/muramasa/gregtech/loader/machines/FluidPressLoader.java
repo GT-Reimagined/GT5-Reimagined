@@ -1,13 +1,13 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreFluids;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
-import static muramasa.antimatter.Ref.*;
+import static muramasa.antimatter.Ref.L;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FLUID_PRESS;
 

@@ -1,6 +1,5 @@
 package muramasa.gregtech.blockentity.multi;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
@@ -25,6 +24,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;

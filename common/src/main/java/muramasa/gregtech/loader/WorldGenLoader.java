@@ -21,16 +21,15 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks.*;
 import static muramasa.antimatter.Ref.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE_STONE;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterStoneTypes.*;
-import static muramasa.antimatter.data.AntimatterStoneTypes.DIORITE;
 import static muramasa.gregtech.data.Materials.*;
 import static net.minecraft.world.level.Level.END;
 import static net.minecraft.world.level.Level.NETHER;
 import static net.minecraft.world.level.Level.OVERWORLD;
+import static org.gtreimagined.gtcore.data.GTCoreBlocks.*;
 
 public class WorldGenLoader {
 

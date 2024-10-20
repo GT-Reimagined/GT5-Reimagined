@@ -1,8 +1,6 @@
 package muramasa.gregtech.loader.items;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreCables;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.ForgeCTags;
@@ -24,24 +22,26 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
+import org.gtreimagined.gtcore.data.GTCoreCables;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.function.Consumer;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.LV;
 import static muramasa.antimatter.machine.Tier.MV;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.GT5RMaterialTags.SOLDER;
 import static muramasa.gregtech.data.GT5RMaterialTypes.BOULE;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.*;
-import static muramasa.gregtech.data.TierMaps.*;
+import static muramasa.gregtech.data.TierMaps.CABLE_GETTER;
+import static org.gtreimagined.gtcore.data.GTCoreItems.*;
+import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class Circuitry {
     public static void loadCraftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){

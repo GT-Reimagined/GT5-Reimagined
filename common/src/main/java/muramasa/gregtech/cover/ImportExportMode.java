@@ -1,7 +1,5 @@
 package muramasa.gregtech.cover;
 
-import muramasa.antimatter.cover.ICoverMode;
-
 public enum ImportExportMode {
     EXPORT(true),
     IMPORT(false),

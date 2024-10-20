@@ -1,7 +1,5 @@
 package muramasa.gregtech.data;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.machine.DrumMachine;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.single.BlockEntityBatteryBuffer;
@@ -41,10 +39,13 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
+import org.gtreimagined.gtcore.machine.DrumMachine;
 import org.jetbrains.annotations.Nullable;
 
 import static muramasa.antimatter.Data.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Netherite;
+import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GT5RCovers.*;

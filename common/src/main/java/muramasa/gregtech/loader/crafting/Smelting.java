@@ -1,16 +1,16 @@
 package muramasa.gregtech.loader.crafting;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.datagen.loaders.MaterialRecipes;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.data.Materials;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 

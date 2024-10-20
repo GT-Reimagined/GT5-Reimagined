@@ -1,10 +1,6 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTools;
-import io.github.gregtechintergalactical.gtcore.item.ItemPowerUnit;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -29,6 +25,10 @@ import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtcore.data.GTCoreTools;
+import org.gtreimagined.gtcore.item.ItemPowerUnit;
 import org.jetbrains.annotations.NotNull;
 import tesseract.TesseractCapUtils;
 import tesseract.api.gt.IGTNode;

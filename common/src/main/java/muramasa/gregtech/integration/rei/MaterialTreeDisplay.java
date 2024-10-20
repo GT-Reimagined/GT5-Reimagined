@@ -1,6 +1,5 @@
 package muramasa.gregtech.integration.rei;
 
-import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
@@ -15,7 +14,6 @@ import muramasa.antimatter.pipe.types.*;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +22,6 @@ import java.util.List;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.integration.rei.REIUtils.toREIFLuidStack;
 import static muramasa.antimatter.material.MaterialTags.*;
-import static muramasa.antimatter.material.MaterialTags.ITEMPIPE;
 
 public class MaterialTreeDisplay implements Display {
     Material mat;

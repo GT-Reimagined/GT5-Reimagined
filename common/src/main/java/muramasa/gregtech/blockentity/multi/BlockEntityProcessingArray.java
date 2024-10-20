@@ -24,7 +24,6 @@ import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.map.IRecipeMap;
 import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.machine.caps.ParallelRecipeHandler;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;

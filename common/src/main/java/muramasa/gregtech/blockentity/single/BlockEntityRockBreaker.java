@@ -7,7 +7,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
-import org.jetbrains.annotations.Nullable;
 
 public class BlockEntityRockBreaker extends BlockEntityMachine<BlockEntityRockBreaker> {
     public BlockEntityRockBreaker(Machine<?> type, BlockPos pos, BlockState state) {

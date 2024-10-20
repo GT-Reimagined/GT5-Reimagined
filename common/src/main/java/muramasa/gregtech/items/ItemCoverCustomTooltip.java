@@ -1,7 +1,6 @@
 package muramasa.gregtech.items;
 
 import muramasa.antimatter.item.ItemCover;
-import muramasa.antimatter.machine.ITooltipInfo;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

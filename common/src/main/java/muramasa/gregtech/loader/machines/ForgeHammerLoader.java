@@ -21,7 +21,8 @@ import java.util.function.ToLongFunction;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.material.MaterialTags.MACERATE_INTO;
 import static muramasa.antimatter.material.MaterialTags.ORE_MULTI;
-import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.Materials.Brick;
+import static muramasa.gregtech.data.Materials.Glass;
 import static muramasa.gregtech.data.RecipeMaps.FORGE_HAMMER;
 
 public class ForgeHammerLoader {

@@ -8,7 +8,6 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.blockentity.multi.BlockEntityLargeTurbine;
-import muramasa.gregtech.cover.ImportExportMode;
 import muramasa.gregtech.cover.base.CoverBasicRedstoneOutput;
 import muramasa.gregtech.items.ItemTurbineRotor;
 import net.minecraft.core.Direction;

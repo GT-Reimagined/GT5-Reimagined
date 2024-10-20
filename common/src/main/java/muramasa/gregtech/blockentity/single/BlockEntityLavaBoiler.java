@@ -16,7 +16,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 import tesseract.FluidPlatformUtils;
-import tesseract.TesseractCapUtils;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.Arrays;

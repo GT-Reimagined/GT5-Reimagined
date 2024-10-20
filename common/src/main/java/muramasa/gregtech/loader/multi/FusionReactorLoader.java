@@ -1,11 +1,11 @@
 package muramasa.gregtech.loader.multi;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterials.Gold;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.FUSION;
+import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 
 public class FusionReactorLoader {
     public static void init(){

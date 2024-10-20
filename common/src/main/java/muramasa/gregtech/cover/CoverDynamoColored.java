@@ -4,7 +4,6 @@ import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.client.RenderHelper;
 import muramasa.antimatter.cover.CoverDynamo;
-import muramasa.antimatter.cover.CoverEnergy;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import muramasa.gregtech.data.TierMaps;

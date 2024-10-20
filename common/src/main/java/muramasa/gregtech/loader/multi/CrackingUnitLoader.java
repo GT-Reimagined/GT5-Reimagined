@@ -1,8 +1,9 @@
 package muramasa.gregtech.loader.multi;
+
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_TINY;
-import static muramasa.gregtech.data.RecipeMaps.CRACKING;
 import static muramasa.gregtech.data.Materials.*;
+import static muramasa.gregtech.data.RecipeMaps.CRACKING;
 
 public class CrackingUnitLoader {
     public static void init() {

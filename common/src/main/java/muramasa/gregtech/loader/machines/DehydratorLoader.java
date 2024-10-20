@@ -2,8 +2,8 @@ package muramasa.gregtech.loader.machines;
 
 import muramasa.gregtech.GT5RConfig;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.DEHYDRATOR;
 

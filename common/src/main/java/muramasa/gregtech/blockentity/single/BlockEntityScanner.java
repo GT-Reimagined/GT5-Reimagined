@@ -2,7 +2,6 @@ package muramasa.gregtech.blockentity.single;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -20,6 +19,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import tesseract.api.item.ExtendedItemContainer;
 
 public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> implements IFilterableHandler {

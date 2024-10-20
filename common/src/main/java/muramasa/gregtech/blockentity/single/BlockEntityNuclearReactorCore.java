@@ -1,8 +1,6 @@
 package muramasa.gregtech.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import io.github.gregtechintergalactical.gtcore.blockentity.IInventorySyncTile;
-import io.github.gregtechintergalactical.gtcore.network.MessageTriggerInventorySync;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.IPostTickTile;
 import muramasa.antimatter.capability.IFilterableHandler;
@@ -44,6 +42,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import org.gtreimagined.gtcore.blockentity.IInventorySyncTile;
+import org.gtreimagined.gtcore.network.MessageTriggerInventorySync;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractGraphWrappers;

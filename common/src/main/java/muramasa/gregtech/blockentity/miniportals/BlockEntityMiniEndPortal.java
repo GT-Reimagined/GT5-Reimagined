@@ -1,11 +1,8 @@
 package muramasa.gregtech.blockentity.miniportals;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

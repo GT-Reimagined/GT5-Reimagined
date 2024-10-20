@@ -1,6 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
@@ -11,10 +10,10 @@ import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.level.block.Blocks;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 
 import static muramasa.antimatter.Ref.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.Lava;
 import static muramasa.antimatter.material.MaterialTags.MOLTEN;
 import static muramasa.gregtech.data.Materials.*;

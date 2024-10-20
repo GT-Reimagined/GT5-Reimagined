@@ -1,7 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.block.RedstoneWire;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Wire;
@@ -10,11 +8,13 @@ import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.data.GT5RBlocks;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gtcore.block.RedstoneWire;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.GT5RBlocks.FLUID_PIPE_STEEL;
 import static muramasa.gregtech.data.Materials.Carbon;
 import static muramasa.gregtech.data.RecipeMaps.WIRE_MILL;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 
 public class WiremillLoader {
     public static void init() {

@@ -2,7 +2,6 @@ package muramasa.gregtech.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
-import muramasa.antimatter.client.baked.MachineBakedModel;
 import muramasa.antimatter.client.model.IModelConfiguration;
 import muramasa.antimatter.client.model.MachineModel;
 import muramasa.antimatter.machine.MachineState;

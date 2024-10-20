@@ -1,6 +1,5 @@
 package muramasa.gregtech.blockentity.single;
 
-import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
@@ -11,10 +10,8 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
-import tesseract.api.item.ExtendedItemContainer;
 
 import java.util.List;
-import java.util.Objects;
 
 public class BlockEntityTypeFilter extends BlockEntityItemFilter {
     public BlockEntityTypeFilter(Machine<?> type, BlockPos pos, BlockState state) {

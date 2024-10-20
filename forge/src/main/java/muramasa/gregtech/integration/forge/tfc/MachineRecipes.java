@@ -1,8 +1,6 @@
 package muramasa.gregtech.integration.forge.tfc;
 
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
-import io.github.gregtechintergalactical.gtcore.integration.tfc.TFCRubberData;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
@@ -19,6 +17,8 @@ import net.dries007.tfc.util.Helpers;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtcore.integration.tfc.TFCRubberData;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static muramasa.antimatter.data.AntimatterMaterials.*;

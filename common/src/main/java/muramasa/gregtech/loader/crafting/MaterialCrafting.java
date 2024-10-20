@@ -22,7 +22,7 @@ import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.antimatter.material.MaterialTags.QUARTZ_LIKE_BLOCKS;
 import static muramasa.gregtech.data.GT5RMaterialTypes.CHAMBER;
 import static muramasa.gregtech.data.Materials.*;
 

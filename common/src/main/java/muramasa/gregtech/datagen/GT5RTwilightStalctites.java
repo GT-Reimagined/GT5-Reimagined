@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE;
 import static muramasa.antimatter.data.AntimatterStoneTypes.STONE;
+import static org.gtreimagined.gtcore.data.GTCoreMaterials.*;
 
 public class GT5RTwilightStalctites {
     private static Map<Integer, List<ResourceLocation>> hollowHillEntries = new Object2ObjectOpenHashMap<>();

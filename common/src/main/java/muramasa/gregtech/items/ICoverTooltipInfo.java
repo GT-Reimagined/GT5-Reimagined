@@ -1,6 +1,5 @@
 package muramasa.gregtech.items;
 
-import muramasa.antimatter.machine.BlockMachine;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

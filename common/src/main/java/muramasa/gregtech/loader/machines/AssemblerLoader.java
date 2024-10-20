@@ -1,8 +1,6 @@
 package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableSet;
-import io.github.gregtechintergalactical.gtcore.GTCore;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
@@ -23,23 +21,23 @@ import muramasa.gregtech.block.BlockCoil;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
+import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.Arrays;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.L9;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.ofObject;
@@ -48,6 +46,8 @@ import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.ASSEMBLER;
 import static muramasa.gregtech.data.TierMaps.*;
 import static muramasa.gregtech.loader.crafting.Parts.fromTier;
+import static org.gtreimagined.gtcore.data.GTCoreItems.*;
+import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class AssemblerLoader {
     public static void init() {

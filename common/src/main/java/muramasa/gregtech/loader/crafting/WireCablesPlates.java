@@ -2,7 +2,6 @@ package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
-import io.github.gregtechintergalactical.gtcore.block.RedstoneWire;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -15,6 +14,7 @@ import muramasa.gregtech.GT5RRef;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gtcore.block.RedstoneWire;
 
 import java.util.Map;
 import java.util.function.Consumer;
@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
 import static muramasa.antimatter.pipe.PipeSize.*;
-import static muramasa.antimatter.pipe.PipeSize.HUGE;
 import static muramasa.gregtech.data.Materials.Rubber;
 
 public class WireCablesPlates {

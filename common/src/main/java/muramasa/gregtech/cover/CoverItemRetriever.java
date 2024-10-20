@@ -15,7 +15,6 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.CodeUtils;
 import muramasa.antimatter.util.Utils;
-import muramasa.gregtech.cover.base.CoverFilter;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,7 +34,6 @@ import tesseract.util.ItemHandlerUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Set;
 import java.util.function.BiConsumer;
 

@@ -1,10 +1,10 @@
 package muramasa.gregtech.loader.multi;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.gregtech.data.RecipeMaps.TREE_GROWTH_SIMULATOR;

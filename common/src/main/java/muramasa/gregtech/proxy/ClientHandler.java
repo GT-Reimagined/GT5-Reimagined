@@ -4,8 +4,8 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
-import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.GT5RRef;
+import muramasa.gregtech.GT5Reimagined;
 import muramasa.gregtech.block.BlockCasing;
 import muramasa.gregtech.block.BlockColoredWall;
 import muramasa.gregtech.data.Machines;
@@ -19,9 +19,9 @@ import java.io.InputStream;
 public class ClientHandler {
 
     public static void setup() {
-        AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
-        AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
-        ModelUtils.setRenderLayer(Machines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
+        AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.INSTANCE.setRenderLayer(t, RenderType.cutout()));
+        AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.INSTANCE.setRenderLayer(t, RenderType.cutout()));
+        ModelUtils.INSTANCE.setRenderLayer(Machines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
     }
 

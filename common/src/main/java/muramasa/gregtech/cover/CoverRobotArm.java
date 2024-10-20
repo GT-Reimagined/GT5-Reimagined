@@ -1,8 +1,6 @@
 package muramasa.gregtech.cover;
 
-import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.cover.CoverFactory;
@@ -11,7 +9,6 @@ import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.SyncableTextWidget;
-import muramasa.antimatter.gui.widget.TextBoxWidget;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.cover.base.CoverBasicRedstone;
@@ -21,11 +18,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import org.jetbrains.annotations.Nullable;
-import tesseract.api.item.PlatformItemHandler;
-
-import java.util.function.Predicate;
 
 public class CoverRobotArm extends CoverBasicTransport {
     int slot = 0;

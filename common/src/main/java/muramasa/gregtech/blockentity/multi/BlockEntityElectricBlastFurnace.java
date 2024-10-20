@@ -1,10 +1,10 @@
 package muramasa.gregtech.blockentity.multi;
 
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.util.Utils;
 import muramasa.gregtech.block.BlockCoil;
 import net.minecraft.core.BlockPos;

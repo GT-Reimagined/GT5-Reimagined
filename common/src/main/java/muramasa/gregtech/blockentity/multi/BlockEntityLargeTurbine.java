@@ -3,6 +3,7 @@ package muramasa.gregtech.blockentity.multi;
 import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.block.BlockBasic;
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.GuiInstance;
@@ -15,7 +16,6 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.registration.ITextureProvider;
 import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.items.ItemTurbineRotor;
@@ -27,7 +27,8 @@ import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.ROD_LONG;
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
-import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.antimatter.machine.Tier.EV;
+import static muramasa.antimatter.machine.Tier.HV;
 import static muramasa.gregtech.data.Materials.DistilledWater;
 import static muramasa.gregtech.data.Materials.Steam;
 

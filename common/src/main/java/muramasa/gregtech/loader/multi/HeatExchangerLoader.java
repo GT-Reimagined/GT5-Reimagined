@@ -1,8 +1,8 @@
 package muramasa.gregtech.loader.multi;
 
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreFluids;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterials.Lava;

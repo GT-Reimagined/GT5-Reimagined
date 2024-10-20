@@ -1,6 +1,5 @@
 package muramasa.gregtech.datagen;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.ForgeCTags;
@@ -9,11 +8,12 @@ import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.data.GT5RTags;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.Materials.*;
+import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class GT5RItemTagProvider extends AntimatterItemTagProvider {
     public GT5RItemTagProvider(String providerDomain, String providerName, boolean replace, AntimatterBlockTagProvider p) {

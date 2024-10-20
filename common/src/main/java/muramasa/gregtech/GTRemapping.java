@@ -1,13 +1,12 @@
 package muramasa.gregtech;
 
-import io.github.gregtechintergalactical.gtcore.GTCore;
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterRemapping;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.cover.ICover;
 import net.minecraft.resources.ResourceLocation;
+import org.gtreimagined.gtcore.GTCore;
 
 import java.util.Map;
 

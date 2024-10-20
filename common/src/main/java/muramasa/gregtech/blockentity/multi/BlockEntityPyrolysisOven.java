@@ -1,8 +1,8 @@
 package muramasa.gregtech.blockentity.multi;
 
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.gregtech.block.BlockCoil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;

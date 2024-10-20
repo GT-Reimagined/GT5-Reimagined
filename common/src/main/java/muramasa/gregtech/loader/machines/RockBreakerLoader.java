@@ -1,7 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static muramasa.gregtech.data.RecipeMaps.ROCK_BREAKER;
 

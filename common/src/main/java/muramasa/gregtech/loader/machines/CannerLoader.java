@@ -1,16 +1,16 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.data.GT5RItems;
 import muramasa.gregtech.items.ItemBreederRod;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.gregtech.data.RecipeMaps.CANNER;
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
+import static muramasa.gregtech.data.RecipeMaps.CANNER;
 
 public class CannerLoader {
 

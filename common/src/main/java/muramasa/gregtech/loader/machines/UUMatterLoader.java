@@ -1,12 +1,12 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.gregtech.data.Materials;
 import muramasa.gregtech.data.RecipeMaps;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;

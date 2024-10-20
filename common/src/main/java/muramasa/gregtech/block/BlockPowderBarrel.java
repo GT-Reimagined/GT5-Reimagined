@@ -1,6 +1,5 @@
 package muramasa.gregtech.block;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.texture.Texture;
 import muramasa.gregtech.GT5RRef;
@@ -27,6 +26,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.jetbrains.annotations.Nullable;
 
 import static net.minecraft.world.level.block.TntBlock.UNSTABLE;

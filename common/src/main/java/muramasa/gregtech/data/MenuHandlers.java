@@ -1,10 +1,10 @@
 package muramasa.gregtech.data;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IGuiHandler;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerMultiMachine;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.multi.BlockEntityFusionReactor;
 import net.minecraft.world.entity.player.Inventory;

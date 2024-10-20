@@ -1,18 +1,14 @@
 package muramasa.gregtech.cover;
 
 import muramasa.antimatter.blockentity.BlockEntityBase;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
-import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.gregtech.cover.base.CoverFilter;
 import muramasa.gregtech.gui.ButtonOverlays;
 import net.minecraft.core.Direction;

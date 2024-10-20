@@ -1,7 +1,5 @@
 package muramasa.gregtech.data;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreBlocks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterials;
@@ -11,13 +9,14 @@ import muramasa.antimatter.material.SubTag;
 import muramasa.gregtech.material.GregTechMaterialEvent;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
+import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
 import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Charcoal;
 import static muramasa.antimatter.material.MaterialTags.*;
 import static muramasa.gregtech.data.GT5RMaterialTags.*;
 import static muramasa.gregtech.data.GT5RMaterialTypes.BOULE;

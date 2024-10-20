@@ -15,9 +15,9 @@ import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemNuclearFuelRod;
 
 import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.antimatter.util.Utils.*;
+import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
+import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpacedRotated;
 import static muramasa.gregtech.data.Machines.*;
-import static muramasa.gregtech.data.Machines.LARGE_BOILER;
 
 public class GT5RLocalizations {
 

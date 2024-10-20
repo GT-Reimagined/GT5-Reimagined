@@ -2,10 +2,6 @@ package muramasa.gregtech.loader.machines;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
@@ -15,6 +11,10 @@ import muramasa.gregtech.items.ItemDepletedRod;
 import muramasa.gregtech.items.ItemEnrichedRod;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gtcore.data.GTCoreFluids;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreMaterials;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -24,7 +24,6 @@ import static muramasa.gregtech.data.GT5RMaterialTags.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.CENTRIFUGE;
 import static net.minecraft.world.item.Items.*;
-import static net.minecraft.world.item.Items.GOLD_NUGGET;
 
 public class CentrifugeLoader {
     public static void init() {

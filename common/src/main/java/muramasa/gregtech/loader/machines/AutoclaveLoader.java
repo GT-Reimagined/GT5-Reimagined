@@ -1,6 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.gregtech.GT5RConfig;
 import muramasa.gregtech.data.GT5RItems;
@@ -8,15 +7,16 @@ import muramasa.gregtech.data.GT5RMaterialTags;
 import muramasa.gregtech.data.Materials;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.EnergyCrystal;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.RawLapotronCrustal;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.AUTOCLAVE;
+import static org.gtreimagined.gtcore.data.GTCoreItems.EnergyCrystal;
+import static org.gtreimagined.gtcore.data.GTCoreItems.RawLapotronCrustal;
 
 public class AutoclaveLoader {
     public static void init() {

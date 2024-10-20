@@ -1,9 +1,9 @@
 package muramasa.gregtech.blockentity.multi;
 
+import muramasa.antimatter.blockentity.multi.BlockEntityBasicMultiMachine;
 import muramasa.antimatter.capability.machine.CookingRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.blockentity.multi.BlockEntityBasicMultiMachine;
 import muramasa.antimatter.util.int3;
 import muramasa.gregtech.data.GT5RBlocks;
 import net.minecraft.core.BlockPos;

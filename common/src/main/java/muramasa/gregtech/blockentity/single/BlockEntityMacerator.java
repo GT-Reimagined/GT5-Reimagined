@@ -8,7 +8,8 @@ import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 
-import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.antimatter.machine.Tier.LV;
+import static muramasa.antimatter.machine.Tier.MV;
 
 public class BlockEntityMacerator extends BlockEntityMachine<BlockEntityMacerator> {
     public BlockEntityMacerator(Machine<?> type, BlockPos pos, BlockState state) {

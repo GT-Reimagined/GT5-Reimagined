@@ -1,9 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.GTCore;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreCables;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.ForgeCTags;
@@ -19,23 +16,27 @@ import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.data.GT5RCovers;
 import muramasa.gregtech.data.GT5RItems;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.tags.TagKey;
+import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtcore.data.GTCoreCables;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+
 import java.util.Arrays;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.*;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.GT5RItems.*;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.TierMaps.*;
+import static org.gtreimagined.gtcore.data.GTCoreItems.*;
+import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class Parts {
   public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {

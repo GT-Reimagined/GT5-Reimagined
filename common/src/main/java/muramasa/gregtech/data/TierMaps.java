@@ -1,8 +1,6 @@
 package muramasa.gregtech.data;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
@@ -10,19 +8,21 @@ import muramasa.antimatter.material.SubTag;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.util.TagUtils;
-import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.GT5RRef;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.resources.ResourceLocation;
 import org.apache.commons.lang3.function.TriFunction;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
+import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Materials.*;
 

@@ -1,12 +1,12 @@
 package muramasa.gregtech.data;
 
-import io.github.gregtechintergalactical.gtcore.GTCore;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;
 import muramasa.gregtech.GT5RRef;
 import net.minecraft.world.item.DyeColor;
+import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
 import static muramasa.antimatter.material.Element.*;
 import static muramasa.antimatter.material.TextureSet.*;

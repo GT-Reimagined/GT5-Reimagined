@@ -1,9 +1,7 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
-import muramasa.gregtech.data.TierMaps;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.RecipeMaps.UNPACKAGER;

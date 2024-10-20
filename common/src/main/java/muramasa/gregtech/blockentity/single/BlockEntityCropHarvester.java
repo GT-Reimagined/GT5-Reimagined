@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BlockEntityCropHarvester extends BlockEntityMachine<BlockEntityCropHarvester> {

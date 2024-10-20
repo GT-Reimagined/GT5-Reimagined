@@ -2,12 +2,13 @@ package muramasa.gregtech.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import io.github.gregtechintergalactical.gtcore.block.RedstoneWire;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.*;
+import muramasa.antimatter.material.Material;
+import muramasa.antimatter.material.MaterialTags;
+import muramasa.antimatter.material.MaterialType;
+import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.FluidPipe;
@@ -26,6 +27,8 @@ import muramasa.gregtech.data.RecipeMaps;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import org.gtreimagined.gtcore.block.RedstoneWire;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import tesseract.TesseractGraphWrappers;
 
 import static com.google.common.collect.ImmutableMap.of;
@@ -35,8 +38,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Machines.*;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.Materials.Rubber;
-import static muramasa.gregtech.data.TierMaps.*;
+import static muramasa.gregtech.data.TierMaps.TIER_MATERIALS;
 
 public class ArcFurnaceLoader {
     public static void init() {

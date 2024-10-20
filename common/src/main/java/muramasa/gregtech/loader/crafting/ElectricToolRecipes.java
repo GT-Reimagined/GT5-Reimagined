@@ -1,8 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.GTCore;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -20,19 +18,21 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.Map;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.*;
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTools.*;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
 import static muramasa.antimatter.data.AntimatterMaterials.Wood;
 import static muramasa.antimatter.material.MaterialTags.TOOLS;
 import static muramasa.gregtech.data.Materials.*;
+import static org.gtreimagined.gtcore.data.GTCoreTags.*;
+import static org.gtreimagined.gtcore.data.GTCoreTools.*;
 
 public class ElectricToolRecipes {
 

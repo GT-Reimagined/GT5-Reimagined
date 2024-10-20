@@ -1,8 +1,9 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.item.ItemBasic;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.RecipeMaps.FORMING_PRESS;
 

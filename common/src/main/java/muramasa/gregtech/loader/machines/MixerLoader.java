@@ -1,6 +1,5 @@
 package muramasa.gregtech.loader.machines;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
@@ -15,18 +14,18 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreTags.DUST_LAPIS_LAZURITE;
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.*;
-
+import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static muramasa.gregtech.data.Materials.*;
 import static muramasa.gregtech.data.RecipeMaps.MIXER;
+import static org.gtreimagined.gtcore.data.GTCoreTags.DUST_LAPIS_LAZURITE;
 
 
 public class MixerLoader {

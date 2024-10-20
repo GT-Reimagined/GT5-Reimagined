@@ -65,9 +65,9 @@ public class ReactorBakedModel extends MachineBakedModel {
         }
         BakedModel model = getModel(state, side, props.state, props.type);
         for (Direction dir : Ref.DIRS) {
-            superBlockQuads.addAll(ModelUtils.getQuadsFromBaked(model, state, dir, rand, level, pos));
+            superBlockQuads.addAll(ModelUtils.INSTANCE.getQuadsFromBaked(model, state, dir, rand, level, pos));
         }
-        superBlockQuads.addAll(ModelUtils.getQuadsFromBaked(model, state, null, rand, level, pos));
+        superBlockQuads.addAll(ModelUtils.INSTANCE.getQuadsFromBaked(model, state, null, rand, level, pos));
         if (side == Direction.UP){
             List<BakedQuad> list = new ArrayList<>();
             for (int i = 0; i < 4; i++) {
@@ -75,9 +75,9 @@ public class ReactorBakedModel extends MachineBakedModel {
                 if (rod.isEmpty()) continue;
                 BakedModel rodModel = rodModels[i];
                 for (Direction dir : Ref.DIRS) {
-                    list.addAll(ModelUtils.getQuadsFromBaked(rodModel, state, dir, rand, level, pos));
+                    list.addAll(ModelUtils.INSTANCE.getQuadsFromBaked(rodModel, state, dir, rand, level, pos));
                 }
-                list.addAll(ModelUtils.getQuadsFromBaked(rodModel, state, null, rand, level, pos));
+                list.addAll(ModelUtils.INSTANCE.getQuadsFromBaked(rodModel, state, null, rand, level, pos));
             }
             list.addAll(superBlockQuads);
             return list;

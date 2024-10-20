@@ -4,21 +4,21 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.GT5RConfig;
+import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.data.GT5RMaterialTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Copper;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
-import static muramasa.antimatter.material.MaterialTags.*;
+import static muramasa.antimatter.material.MaterialTags.DIRECT_SMELT_INTO;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.PRIMITIVE_BLAST_FURNACE;
 import static muramasa.gregtech.data.RecipeMaps.E_BLAST_FURNACE;
+import static muramasa.gregtech.data.RecipeMaps.PRIMITIVE_BLAST_FURNACE;
+import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 
 public class BlastFurnaceLoader {
     public static int mixedOreYield = GT5RRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;

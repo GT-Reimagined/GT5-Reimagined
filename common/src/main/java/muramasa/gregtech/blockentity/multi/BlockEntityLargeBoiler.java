@@ -1,7 +1,6 @@
 package muramasa.gregtech.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import io.github.gregtechintergalactical.gtcore.item.ItemSelectorTag;
 import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
@@ -25,6 +24,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import org.gtreimagined.gtcore.item.ItemSelectorTag;
 
 import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.gregtech.data.Materials.DistilledWater;

@@ -5,7 +5,10 @@ import muramasa.antimatter.gui.SlotData;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
-import muramasa.antimatter.gui.widget.*;
+import muramasa.antimatter.gui.widget.MachineStateWidget;
+import muramasa.antimatter.gui.widget.ProgressWidget;
+import muramasa.antimatter.gui.widget.TextWidget;
+import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.blockentity.single.BlockEntitySteamMachine;
@@ -14,7 +17,8 @@ import net.minecraft.resources.ResourceLocation;
 import java.util.List;
 
 import static muramasa.antimatter.machine.MachineFlag.*;
-import static muramasa.antimatter.machine.Tier.*;
+import static muramasa.antimatter.machine.Tier.BRONZE;
+import static muramasa.antimatter.machine.Tier.STEEL;
 
 public class SteamMachine extends Machine<SteamMachine> {
 

@@ -1,7 +1,5 @@
 package muramasa.gregtech.loader.machines;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreFluids;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreMaterials;
+
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -24,6 +22,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
+import org.gtreimagined.gtcore.data.GTCoreFluids;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import tesseract.FluidPlatformUtils;
 
 import static muramasa.antimatter.Ref.L;
@@ -33,7 +34,7 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.gregtech.data.GT5RMaterialTags.BATH_MERCURY;
 import static muramasa.gregtech.data.GT5RMaterialTags.BATH_PERSULFATE;
 import static muramasa.gregtech.data.Materials.*;
-import static muramasa.gregtech.data.RecipeMaps.*;
+import static muramasa.gregtech.data.RecipeMaps.BATH;
 
 public class BathLoader {
     public static void init() {

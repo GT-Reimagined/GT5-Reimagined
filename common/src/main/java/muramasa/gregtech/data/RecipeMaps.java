@@ -1,8 +1,6 @@
 package muramasa.gregtech.data;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders;
-import io.github.gregtechintergalactical.gtcore.data.RecipeBuilders.SteamBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.integration.jeirei.renderer.IRecipeInfoRenderer;
@@ -24,6 +22,8 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.gtreimagined.gtcore.data.RecipeBuilders;
+import org.gtreimagined.gtcore.data.RecipeBuilders.SteamBuilder;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package muramasa.gregtech.blockentity.miniportals;
 
-import io.github.gregtechintergalactical.gtcore.data.GTCoreTags;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import net.minecraft.core.BlockPos;
@@ -10,6 +9,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import java.util.ArrayList;
 import java.util.List;

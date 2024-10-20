@@ -2,11 +2,8 @@ package muramasa.gregtech.items;
 
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.util.Utils;
-import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.StringUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

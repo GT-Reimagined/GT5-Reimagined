@@ -1,7 +1,6 @@
 package muramasa.gregtech.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import io.github.gregtechintergalactical.gtcore.data.GTCoreItems;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
@@ -16,15 +15,16 @@ import muramasa.gregtech.GT5RRef;
 import muramasa.gregtech.block.*;
 import muramasa.gregtech.data.GT5RBlocks;
 import muramasa.gregtech.data.GT5RTags;
+import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 

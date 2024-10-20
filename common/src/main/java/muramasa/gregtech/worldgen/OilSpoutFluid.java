@@ -2,8 +2,6 @@ package muramasa.gregtech.worldgen;
 
 import net.minecraft.world.level.material.Fluid;
 
-import java.util.Objects;
-
 public final class OilSpoutFluid {
     private static int totalWeight = 0;
     private final String id;

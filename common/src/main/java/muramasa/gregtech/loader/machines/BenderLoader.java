@@ -12,9 +12,9 @@ import net.minecraft.world.item.Items;
 
 import java.util.function.ToLongFunction;
 
-import static io.github.gregtechintergalactical.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.gregtech.data.RecipeMaps.BENDER;
+import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
 
 public class BenderLoader {
     public static void init() {
