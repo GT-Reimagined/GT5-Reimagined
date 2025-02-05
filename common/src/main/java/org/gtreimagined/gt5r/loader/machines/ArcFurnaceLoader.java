@@ -54,7 +54,7 @@ public class ArcFurnaceLoader {
         });
         for (MaterialType<?> t : AntimatterAPI.all(MaterialType.class)) {
             if (t.getUnitValue() <= 0 || t == DUST || t == DUST_TINY || t == DUST_SMALL || t == INGOT || t == NUGGET || t == CHUNK ||
-                    t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE) continue;
+                    t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE || t == ROCK || t == BEARING_ROCK) continue;
             double amount = (double) t.getUnitValue() / U;
             t.all().forEach(m -> {
                 if (!m.has(DUST) || m == Bone || m == Carbon || m == Blaze) return;
