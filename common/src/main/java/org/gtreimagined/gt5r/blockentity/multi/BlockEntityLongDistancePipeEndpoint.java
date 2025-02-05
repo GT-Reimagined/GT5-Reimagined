@@ -43,7 +43,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
             this.fluidHandler.set(() -> new MachineFluidHandler<>(this, 0, 0, 0){
                 @Override
                 public boolean canInput(Direction direction) {
-                    return direction == tile.getFacing();
+                    return direction == tile.getFacing().getOpposite();
                 }
 
                 @Override
@@ -190,8 +190,13 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                 Direction compare = switchDirection ? to.getOpposite() : to;
                 if (this.getLevel().getBlockEntity(mut) instanceof BlockEntityLongDistancePipeEndpoint endpoint && endpoint.getFacing() == compare){
                     endpoint.validStructure = true;
-                    this.target = endpoint;
-                    this.target.sender = this;
+                    if (switchDirection){
+                        this.sender = endpoint;
+                        this.sender.target = this;
+                    } else {
+                        this.target = endpoint;
+                        this.target.sender = this;
+                    }
                     successfulPositions.add(mut.asLong());
                     succeed = true;
                 }
