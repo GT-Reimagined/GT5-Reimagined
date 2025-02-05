@@ -181,13 +181,6 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
         int startZ = (miningPos.getZ() >> 4) << 4;
         for (int x = startX - 16; x < (startX + 32); ++x)
             for (int z = startZ - 16; z < (startZ + 32); ++z) tryAddOreBlockToMineList(level,new BlockPos(x, miningPos.getY() + 1, z));
-        /*if (mChunkLoadingEnabled) {
-
-        } else {
-            int radius = chunkRadiusConfig << 4;
-            for (int xOff = -radius; xOff <= radius; xOff++) for (int zOff = -radius; zOff <= radius; zOff++)
-                tryAddOreBlockToMineList(xDrill + xOff, yHead, zDrill + zOff);
-        }*/
     }
 
     private void tryAddOreBlockToMineList(Level level, BlockPos pos) {
