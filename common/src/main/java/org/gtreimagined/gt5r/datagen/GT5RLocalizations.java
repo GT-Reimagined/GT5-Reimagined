@@ -347,7 +347,7 @@ public class GT5RLocalizations {
             add("tooltip.ore_mining_rig.7", "1x Input Hatch for drilling fluid (Any bottom layer casing)");
             add("tooltip.ore_mining_rig.8", "1x MV+ Energy Hatch (Any bottom layer casing)");
             add("tooltip.ore_mining_rig.9", "1x Output Bus (Any bottom layer casing)");
-            add("tooltip.ore_mining_rig.10", "Radius is 48 blocks");
+            add("tooltip.ore_mining_rig.10", "Mines a 3x3 chunk area around the mining pipe");
 
             add("tooltip.processing_array.0", "Controller Block for the Processing Array");
             add("tooltip.processing_array.1", "Runs supplied machines as if placed in the world");
