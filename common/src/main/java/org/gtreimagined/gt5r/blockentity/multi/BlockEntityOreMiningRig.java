@@ -140,7 +140,7 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
                 if (getMachineState() == MachineState.ACTIVE) setMachineState(MachineState.IDLE);
                 return;
             }
-            if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
+            setActive();
             runningState = RunningState.MINING;
             energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
             if (progress < cycle) {
@@ -153,10 +153,11 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
             progress = 0;
             currentDrops = null;
         } else {
-            if (getMachineState() == MachineState.ACTIVE) setMachineState(MachineState.IDLE);
+            inactiveTicks++;
             BlockState blockState = level.getBlockState(miningPos);
             if (blockState.getBlock() == Blocks.BEDROCK || blockState.getBlock() == Blocks.VOID_AIR){
                 runningState = RunningState.FINISHED;
+                if (getMachineState() == MachineState.ACTIVE) setMachineState(MachineState.IDLE);
                 return;
             }
             foundBottom = false;

@@ -40,6 +40,7 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
     protected BlockPos miningPos;
     protected int euPerTick;
     protected int cycle = 160;
+    protected int inactiveTicks = 0;
     public BlockEntityDrillingRigBase(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         miningPos = new int3(pos, this.getFacing(state)).back(1).immutable().below();
@@ -60,6 +61,11 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
+        if (inactiveTicks > 2){
+            if (getMachineState() == MachineState.ACTIVE){
+                setMachineState(MachineState.IDLE);
+            }
+        }
         boolean wasStopped = false;
         if (stopped && level.getGameTime() % 200 == 0){
             wasStopped = true;
@@ -90,21 +96,17 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
                         if (miningPos.getY() + 1 < this.getBlockPos().getY()){
                             level.setBlock(miningPos.above(), MINING_PIPE.defaultBlockState(), 3);
                         }
-                        if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
+                        setActive();
                         energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
-                    } else if (getMachineState() == MachineState.ACTIVE){
-                        setMachineState(MachineState.IDLE);
-                    }
-                } else if (getMachineState() == MachineState.ACTIVE){
-                    setMachineState(MachineState.IDLE);
-                }
+                    } else inactiveTicks++;
+                } else inactiveTicks++;
             } else if (!foundBottom){
                 if (level.getGameTime() % 20 != 0) return;
                 MineResult breakResult = mineBelowBlock(level, miningPos, true, getMiningPickaxe());
                 if (breakResult == BlockEntityDrillingRigBase.MineResult.PIPE_BROKEN){
                     return;
                 }
-                if (getMachineState() == MachineState.IDLE) setMachineState(MachineState.ACTIVE);
+                setActive();
                 energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
                 if (breakResult == BlockEntityDrillingRigBase.MineResult.FOUND_BOTTOM || breakResult == MineResult.FOUND_BOTTOM_MINING_PIPE){
                     foundBottom = true;
@@ -127,6 +129,13 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
             } else {
                 run(level, pos, state);
             }
+        }
+    }
+
+    protected void setActive(){
+        inactiveTicks = 0;
+        if (getMachineState() == MachineState.IDLE) {
+            setMachineState(MachineState.ACTIVE);
         }
     }
 

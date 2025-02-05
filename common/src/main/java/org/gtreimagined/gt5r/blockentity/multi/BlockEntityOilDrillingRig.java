@@ -69,9 +69,7 @@ public class BlockEntityOilDrillingRig extends BlockEntityDrillingRigBase<BlockE
                 return;
             }
         }
-        if (getMachineState() != MachineState.ACTIVE){
-            setMachineState(MachineState.ACTIVE);
-        }
+        setActive();
         energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
         if (++progress == cycle){
             progress = 0;
