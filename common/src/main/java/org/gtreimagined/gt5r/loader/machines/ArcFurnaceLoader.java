@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.loader.machines;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
@@ -241,6 +242,24 @@ public class ArcFurnaceLoader {
         addRecyclingRecipe(GT5RBlocks.LONG_DIST_WIRE_LUV, of(Electrum, 16f, Rubber, 4f, Copper, 2f, Aluminium, 2f));
         addRecyclingRecipe(GT5RBlocks.LONG_DIST_WIRE_ZPM, of(Aluminium, 18f, Rubber, 4f, Copper, 2f));
         addRecyclingRecipe(GT5RBlocks.LONG_DIST_WIRE_UV, of(Platinum, 16f, Rubber, 4f, Copper, 2f, Aluminium, 2f));
+        addRecyclingRecipe(Items.IRON_HELMET, of(Iron, 5f));
+        addRecyclingRecipe(Items.IRON_CHESTPLATE, of(Iron, 8f));
+        addRecyclingRecipe(Items.IRON_LEGGINGS, of(Iron, 7f));
+        addRecyclingRecipe(Items.IRON_BOOTS, of(Iron, 4f));
+        addRecyclingRecipe(Items.GOLDEN_HELMET, of(Gold, 5f));
+        addRecyclingRecipe(Items.GOLDEN_CHESTPLATE, of(Gold, 8f));
+        addRecyclingRecipe(Items.GOLDEN_LEGGINGS, of(Gold, 7f));
+        addRecyclingRecipe(Items.GOLDEN_BOOTS, of(Gold, 4f));
+        addRecyclingRecipe(Items.DIAMOND_HELMET, of(Diamond, 5f));
+        addRecyclingRecipe(Items.DIAMOND_CHESTPLATE, of(Diamond, 8f));
+        addRecyclingRecipe(Items.DIAMOND_LEGGINGS, of(Diamond, 7f));
+        addRecyclingRecipe(Items.DIAMOND_BOOTS, of(Diamond, 4f));
+        MaterialTags.ARMOR.all().forEach(m -> {
+            addRecyclingRecipe(AntimatterDefaultTools.HELMET.getToolStack(m).getItem(), of(m, 5f));
+            addRecyclingRecipe(AntimatterDefaultTools.CHESTPLATE.getToolStack(m).getItem(), of(m, 8f));
+            addRecyclingRecipe(AntimatterDefaultTools.LEGGINGS.getToolStack(m).getItem(), of(m, 7f));
+            addRecyclingRecipe(AntimatterDefaultTools.BOOTS.getToolStack(m).getItem(), of(m, 4f));
+        });
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
