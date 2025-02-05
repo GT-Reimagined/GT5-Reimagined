@@ -136,7 +136,7 @@ public class GT5RMaterialEvents {
         /**
          **  Metals
          **/
-        event.setMaterial(Materials.AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD_LONG, WIRE_FINE, SCREW);
+        event.setMaterial(Materials.AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD_LONG, WIRE_FINE, SCREW).remove(DUST, DUST_SMALL, DUST_TINY);
         event.setMaterial(Materials.BatteryAlloy).asMetal(295, PLATE, ALLOY);
         event.setMaterial(Materials.BismuthBronze).asMetal(1100, PLATE, ALLOY);
         event.setMaterial(Materials.BlackBronze).asMetal(2000, FRAME, ALLOY);
@@ -185,7 +185,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.VanadiumGallium).asMetal(4500, 4500, ROD_LONG, PLATE);
         event.setMaterial(Materials.VanadiumSteel).asMetal(1453, 1453).forceBF(false);
         event.setMaterial(Materials.Vibranium).asMetal(295, FRAME);
-        event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, ROD_LONG, SCREW, BOLT, RING, FRAME);
+        event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, ROD_LONG, SCREW, BOLT, RING, FRAME).remove(DUST, DUST_SMALL, DUST_TINY);
         event.setMaterial(Materials.YttriumBariumCuprate).asMetal(4500, PLATE, FOIL, ROD_LONG, WIRE_FINE, ALLOY);
 
         event.setMaterial(GTCoreMaterials.Lumium).flags(PLATE);
