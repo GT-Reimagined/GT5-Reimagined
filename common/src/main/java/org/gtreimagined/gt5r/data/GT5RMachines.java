@@ -222,6 +222,7 @@ public class GT5RMachines {
     public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(AntimatterMaterials.Netherite, 128000).acidProof();
     public static DrumMachine TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000);
     public static DrumMachine TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000);
+    public static DrumMachine ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof();
 
     public static MultiblockTankMachine WOOD_TANK;
     public static MultiblockTankMachine[] STEEL_TANKS;
@@ -231,6 +232,7 @@ public class GT5RMachines {
     public static MultiblockTankMachine[] NETHERITE_TANKS;
     public static MultiblockTankMachine[] TUNGSTENSTEEL_TANKS;
     public static MultiblockTankMachine[] TUNGSTEN_TANKS;
+    public static MultiblockTankMachine[] ADAMANTIUM_TANKS;
 
     public static void initTanks() {
         WOOD_TANK = new MultiblockTankMachine(GT5RRef.ID, Wood, true, 432000, () -> GT5RBlocks.WOOD_WALL).maxHeat(350);
@@ -241,6 +243,7 @@ public class GT5RMachines {
         NETHERITE_TANKS = createTankMachine(Netherite, 8);
         TUNGSTENSTEEL_TANKS = createTankMachine(Materials.TungstenSteel, 16);
         TUNGSTEN_TANKS = createTankMachine(Materials.Tungsten, 16);
+        ADAMANTIUM_TANKS = createTankMachine(Materials.Adamantium, 256);
     }
 
 

@@ -130,6 +130,12 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Plutonium).asMetal(912);
         event.setMaterial(Materials.Americium).asMetal(1149, ROD_LONG);
         //Elements 96 - 118 not added
+
+        event.setMaterial(Materials.Neutronium).asMetal(10000, SCREW, BOLT, RING, FRAME);
+        event.setMaterial(Materials.Naquadah).asOre().asMetal(5400);
+        event.setMaterial(Materials.EnrichedNaquadah).asMetal(4500, POSITIVE_CHANGING_RGB);
+        event.setMaterial(Materials.Naquadria).asMetal(9000, POSITIVE_CHANGING_RGB);
+        event.setMaterial(Adamantium).asMetal(5225);
         /**
          ***  Solids
          **/
@@ -140,8 +146,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.BatteryAlloy).asMetal(295, PLATE, ALLOY);
         event.setMaterial(Materials.BismuthBronze).asMetal(1100, PLATE, ALLOY);
         event.setMaterial(Materials.BlackBronze).asMetal(2000, FRAME, ALLOY);
-        event.setMaterial(Materials.BlackSteel).asMetal(1200, 1200, FRAME, PLATE).forceBF(false);
-        event.setMaterial(Materials.BlueSteel).asMetal(1400, 1400, FRAME).forceBF(false);
+        event.setMaterial(Materials.BlackSteel).asMetal(1200, FRAME, PLATE).forceBF(false);
+        event.setMaterial(Materials.BlueSteel).asMetal(1400, FRAME).forceBF(false);
         event.setMaterial(Materials.Brass).asMetal(1170, FRAME, ROD_LONG, PLATE, GEAR_SMALL, ALLOY);
         event.setMaterial(Materials.Bronze).asMetal(1125, GEAR, FRAME, ROTOR, ALLOY);
         event.setMaterial(Materials.CdInAGAlloy).asMetal(752, ROD, ALLOY);
@@ -150,40 +156,36 @@ public class GT5RMaterialEvents {
         event.setMaterial(DamascusSteel).asMetal(2000, 1500, PLATE).forceBF(false);
         event.setMaterial(Materials.Duranium).asMetal(295, MOLTEN);
         event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, ROD_LONG, WIRE_FINE, ALLOY);
-        event.setMaterial(Materials.EnrichedNaquadah).asMetal(4500, 4500, POSITIVE_CHANGING_RGB);
         event.setMaterial(Materials.GalliumArsenide).asMetal(295, 1200, PLATE, ALLOY);
-        event.setMaterial(Materials.HSSE).asMetal(5400, 5400, FRAME);
-        event.setMaterial(Materials.HSSG).asMetal(4500, 4500, FRAME);
-        event.setMaterial(Materials.HSSS).asMetal(5400, 5400);
+        event.setMaterial(Materials.HSSE).asMetal(5400, FRAME);
+        event.setMaterial(Materials.HSSG).asMetal(4500, FRAME);
+        event.setMaterial(Materials.HSSS).asMetal(5400);
         event.setMaterial(Materials.Invar).asMetal(1700, FRAME, RING, ALLOY);
         event.setMaterial(Materials.IronMagnetic).asMetal(1811, ROD_LONG);
         event.setMaterial(Materials.Kanthal).asMetal(1800).forceBF(true);
         event.setMaterial(GTCoreMaterials.LeadedRedstone).asMetal(600, ALLOY);
         event.setMaterial(Materials.Magnalium).asMetal(870, PLATE, ROD_LONG, ALLOY);
         event.setMaterial(Materials.NeodymiumMagnetic).asMetal(1297, ROD_LONG);
-        event.setMaterial(Materials.Neutronium).asMetal(10000, 10000, SCREW, BOLT, RING, FRAME);
-        event.setMaterial(Materials.Naquadah).asOre().asMetal(5400, 5400);
-        event.setMaterial(Materials.NaquadahAlloy).asMetal(7200, 7200);
-        event.setMaterial(Materials.Naquadria).asMetal(9000, 9000, POSITIVE_CHANGING_RGB);
-        event.setMaterial(Materials.Nichrome).asMetal(2700, 2700);
+        event.setMaterial(Materials.NaquadahAlloy).asMetal(7200);
+        event.setMaterial(Materials.Nichrome).asMetal(2700);
         event.setMaterial(Materials.NickelZincFerrite).asMetal(1500);
-        event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, 4500, PLATE, FOIL, ROD_LONG, WIRE_FINE);
+        event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD_LONG, WIRE_FINE);
         event.setMaterial(Materials.Osmiridium).asMetal(3333, 2500, FRAME);
         event.setMaterial(Materials.RedAlloy).asMetal(295, PLATE, FOIL, ROD_LONG, WIRE_FINE, ALLOY);
         event.setMaterial(Materials.RedSteel).asMetal(1300, 1300).forceBF(false);
         event.setMaterial(Materials.RoseGold).asMetal(1600, WIRE_FINE, ALLOY);
         event.setMaterial(Materials.SolderingAlloy).asMetal(400, PLATE, ROD_LONG, ALLOY);
         event.setMaterial(Materials.Steel).asMetal(1811, 1000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, WIRE_FINE).forceBF(false);
-        event.setMaterial(Materials.SteelMagnetic).asMetal(1000, 1000, ROD_LONG).forceBF(false);
+        event.setMaterial(Materials.SteelMagnetic).asMetal(1000, ROD_LONG).forceBF(false);
         event.setMaterial(Materials.SterlingSilver).asMetal(1700, ALLOY);
-        event.setMaterial(Materials.StainlessSteel).asMetal(1700, 1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).forceBF(false);
+        event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).forceBF(false);
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
         event.setMaterial(Materials.Tritanium).asMetal(295, FRAME, MOLTEN);
-        event.setMaterial(Materials.TungstenCarbide).asMetal(2460, 2460);
-        event.setMaterial(Materials.TungstenSteel).asMetal(3000, 3000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
-        event.setMaterial(Materials.Ultimet).asMetal(2700, 2700, PLATE);
-        event.setMaterial(Materials.VanadiumGallium).asMetal(4500, 4500, ROD_LONG, PLATE);
-        event.setMaterial(Materials.VanadiumSteel).asMetal(1453, 1453).forceBF(false);
+        event.setMaterial(Materials.TungstenCarbide).asMetal(2460);
+        event.setMaterial(Materials.TungstenSteel).asMetal(3000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
+        event.setMaterial(Materials.Ultimet).asMetal(2700, PLATE);
+        event.setMaterial(Materials.VanadiumGallium).asMetal(4500, ROD_LONG, PLATE);
+        event.setMaterial(Materials.VanadiumSteel).asMetal(1453).forceBF(false);
         event.setMaterial(Materials.Vibranium).asMetal(295, FRAME);
         event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, ROD_LONG, SCREW, BOLT, RING, FRAME).remove(DUST, DUST_SMALL, DUST_TINY);
         event.setMaterial(Materials.YttriumBariumCuprate).asMetal(4500, PLATE, FOIL, ROD_LONG, WIRE_FINE, ALLOY);
@@ -1017,6 +1019,10 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Uranium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build();
         event.setMaterial(Materials.Plutonium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build(); // TODO: Enchantment: Radioactivity;
 
+        event.setMaterial(Materials.Neutronium).tool().toolDamage(9).toolSpeed(24).toolDurability(655360).toolQuality(6).build();
+        event.setMaterial(Materials.Naquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
+        event.setMaterial(Adamantium).tool().toolDamage(5).toolSpeed(10).toolDurability(5120).toolQuality(5).toolEnchantments(of(Enchantments.SILK_TOUCH, 1, Enchantments.SHARPNESS, 7, Enchantments.POWER_ARROWS, 7)).build();
+
         /**
          **  Metals
          **/
@@ -1031,7 +1037,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Bronze).tool().toolDamage(2).toolSpeed(6).toolDurability(448).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 1)).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 12);
         event.setMaterial(Materials.CobaltBrass).tool().toolDamage(2).toolSpeed(8).toolDurability(256).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 2)).build();
-        event.setMaterial(DamascusSteel).tool().toolDamage(6).toolDurability(1280).toolSpeed(8).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 5)).build();
+        event.setMaterial(DamascusSteel).tool().toolDamage(2).toolDurability(1280).toolSpeed(8).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 5)).build();
         //event.setMaterial(Duranium).addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1))
                 //.addTools(6.5F, 16.0F, 5120, 5);
         event.setMaterial(Materials.Electrum).tool().toolDamage(2).toolSpeed(12).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 3)).build();
@@ -1043,8 +1049,6 @@ public class GT5RMaterialEvents {
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 15, of(Enchantments.FIRE_PROTECTION, 1));
         event.setMaterial(Materials.IronMagnetic).tool(Iron).toolEnchantments(of(Enchantments.SHARPNESS, 1)).build();
         event.setMaterial(Materials.Kanthal).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).build();
-        event.setMaterial(Materials.Neutronium).tool().toolDamage(9).toolSpeed(24).toolDurability(655360).toolQuality(6).build();
-        event.setMaterial(Materials.Naquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
         event.setMaterial(Materials.NaquadahAlloy).tool().toolDamage(4.5f).toolSpeed(8).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.Nichrome).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 2)).build();
         event.setMaterial(Materials.NickelZincFerrite).tool().toolDamage(0).toolSpeed(3).toolDurability(32).toolQuality(1).build();
@@ -1197,7 +1201,7 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Iridium, 36);
         GTCoreBlocks.createHopper(Osmium, 36);
         //GTCoreBlocks.createHopper(TritaniumAlloy, 36);
-        //GTCoreBlocks.createHopper(Adamantium, 36);
+        GTCoreBlocks.createHopper(Adamantium, 36);
     }
 
     public static void byproducts(GregTechMaterialEvent event){

@@ -145,6 +145,7 @@ public class GT5RBlocks {
     public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GT5RRef.ID, AntimatterMaterials.Netherite);
     public static final BlockColoredWall TUNGSTENSTEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.TungstenSteel);
     public static final BlockColoredWall TUNGSTEN_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Tungsten);
+    public static final BlockColoredWall ADAMANTIUM_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Adamantium);
     public static final BlockCasing LONG_DIST_ITEM_PIPE = new BlockCasing(GT5RRef.ID, "long_distance_item_pipe");
     public static final BlockCasing LONG_DIST_FLUID_PIPE = new BlockCasing(GT5RRef.ID, "long_distance_fluid_pipe");
     public static final BlockCasing LONG_DIST_WIRE_EV = new BlockCasing(GT5RRef.ID, "long_distance_wire_ev", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
@@ -287,6 +288,7 @@ public class GT5RBlocks {
     public static final FluidPipe<?> FLUID_PIPE_RUBBER = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Rubber, 350, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_PLASTIC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Plastic, 370, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_PVC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.PolyvinylChloride, 333, true).caps(1).pressures(getPressures(450)));
+    public static final FluidPipe<?> FLUID_PIPE_ADAMANTIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Adamantium, 6531, true).acidProof(true).pressures(getPressures(30000)));
     public static final FluidPipe<?> FLUID_PIPE_HP = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(1).pressures(10000));
     public static final FluidPipe<?> FLUID_PIPE_PLASMA = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(1).pressures(100000));
     public static final ItemPipe<?> ITEM_PIPE_BRASS = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Brass).stepsize(32768).caps(0, 0, 0, 1, 2, 4));

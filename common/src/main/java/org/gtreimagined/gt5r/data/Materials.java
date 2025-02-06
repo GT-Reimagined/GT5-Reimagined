@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
+import muramasa.antimatter.material.Element;
 import muramasa.antimatter.material.Material;
 import net.minecraft.world.item.DyeColor;
 import org.gtreimagined.gt5r.GT5RRef;
@@ -118,6 +119,15 @@ public class Materials {
     public static Material Mendelevium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "mendelevium", 0x183dab, RAD, Md));
 
     /**
+     * Fantasy/SciFi elements
+     */
+
+    public static Material Naquadah = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "naquadah", 0x323232, METALLIC, Elements.Nq));
+    public static Material EnrichedNaquadah = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "enriched_naquadah", 0x323232, SHINY, Elements.Nq528));
+    public static Material Naquadria = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "naquadria", 0x1e1e1e, SHINY, Elements.Nq522));
+    public static Material Neutronium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "neutronium", 0xfafafa, DULL, Elements.Nt));
+    public static Material Adamantium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "adamantium", 0xffffff, SHINY, Elements.Ad));
+    /**
      *** Isotopes
      **/
 
@@ -157,7 +167,6 @@ public class Materials {
     public static Material DamascusSteel = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "damascus_steel", 0x6e6e6e, METALLIC));
     public static Material Duranium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "duranium", 0xffffff, METALLIC));
     public static Material Electrum = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "electrum", 0xffff64, SHINY));
-    public static Material EnrichedNaquadah = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "enriched_naquadah", 0x323232, SHINY));
     public static Material HSSE = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "hsse", 0x336600, METALLIC)).setDisplayNameString("HSS-E");
     public static Material HSSG = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "hssg", 0x999900, METALLIC)).setDisplayNameString("HSS-G");
     public static Material HSSS = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "hsss", 0x660033, METALLIC)).setDisplayNameString("HSS-S");
@@ -165,11 +174,8 @@ public class Materials {
     public static Material IronMagnetic = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "magnetic_iron", 0xc8c8c8, MAGNETIC)).setMassMultiplierAndDivider(51, 50);
     public static Material Kanthal = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "kanthal", 0xc2d2df, METALLIC));
     public static Material Magnalium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "magnalium", 0xc8beff, DULL));
-    public static Material Naquadah = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "naquadah", 0x323232, METALLIC, Naq));
     public static Material NaquadahAlloy = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "naquadah_alloy", 0x282828, METALLIC));
-    public static Material Naquadria = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "naquadria", 0x1e1e1e, SHINY));
     public static Material NeodymiumMagnetic = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "magnetic_neodymium", 0x646464, MAGNETIC)).setMassMultiplierAndDivider(51, 50);
-    public static Material Neutronium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "neutronium", 0xfafafa, DULL, Nt));
     public static Material Nichrome = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "nichrome", 0xcdcef6, METALLIC));
     public static Material NickelZincFerrite = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "nickel_zinc_ferrite", 0x3c3c3c, ROUGH));
     public static Material NiobiumTitanium = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "niobium_titanium", 0x1d1d29, DULL));
