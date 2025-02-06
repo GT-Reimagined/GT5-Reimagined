@@ -37,8 +37,7 @@ import java.util.function.Consumer;
 import static com.google.common.collect.ImmutableMap.of;
 import static muramasa.antimatter.data.AntimatterDefaultTools.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Copper;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.HULL;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -110,6 +109,8 @@ public class BlockParts {
         provider.addItemRecipe(output, "casings", GT5RBlocks.ORE_WASHING_PARTS,
                 of('G', GEAR.getMaterialTag(Titanium), 'P', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL),'C', GT5RBlocks.CASING_TITANIUM, 'W', WRENCH.getTag()), "GGG", "PCP", "PWP");
         provider.addItemRecipe(output, "casings", GT5RBlocks.FILTER_CASING, of('C', GT5RBlocks.CASING_TITANIUM, 'I', GT5RCovers.COVER_ITEM_FILTER.getItem()), " I ", "ICI", " I ");
+        provider.addItemRecipe(output, "casings", GT5RBlocks.BEDROCK_DRILL_HEAD,
+                of('D', GEM.getMaterialTag(Diamond), 'd', DRILLBIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.CASING_TUNGSTENSTEEL), "DdD", "GCG", "DdD");
         addCoil(output, provider, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_CUPRONICKEL);
         addCoil(output, provider, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_KANTHAL);
         addCoil(output, provider, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_NICHROME);

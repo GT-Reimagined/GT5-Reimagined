@@ -74,6 +74,8 @@ public class RecipeMaps {
             new RecipeMap<>(GT5RRef.ID, "autoclave", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRIMITIVE_BLAST_FURNACE = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "primitive_blast_furnace", new RecipeBuilder()));
+    public static RecipeMap<RecipeBuilder> BEDROCK_DRILL = AntimatterAPI.register(RecipeMap.class,
+            new RecipeMap<>(GT5RRef.ID, "bedrock_drill", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> BENDER = AntimatterAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "bender", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CANNER = AntimatterAPI.register(RecipeMap.class,

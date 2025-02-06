@@ -4,6 +4,7 @@ import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.structure.FakeTileElement;
+import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.int3;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -14,6 +15,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.gtreimagined.gt5r.block.BlockCoil;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBedrockDrill;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCokeOven;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCombustionEngine;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityDistillationTower;
@@ -62,6 +64,22 @@ public class Structures {
     public static IStructureElement<?> LITHIUM_BLOCK = ofBlock(BLOCK.getBlockMaterialTag(Materials.Lithium));
     public static final FakeTileElement<BlockEntityCokeOven> FAKE_CASING = new FakeTileElement<>(GT5RBlocks.CASING_FIRE_BRICK);
     public static void init() {
+
+        BEDROCK_DRILL.setStructure(BlockEntityBedrockDrill.class, b -> b.part("main")
+                .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").of("DDD", "DDD", "DDD").of("BBB", "BBB", "BBB").build()
+                .at('F', FRAME.get().get(Materials.Titanium).asBlock()).at('C', GT5RBlocks.CASING_TITANIUM)
+                .at('H', GT5RBlocks.CASING_TITANIUM, ENERGY_HATCH, OUTPUT_BUS, INPUT_HATCH)
+                .at('D', GT5RBlocks.BEDROCK_DRILL_HEAD)
+                .atElement('B', StructureUtility.ofChain(StructureUtility.ofBlock(Blocks.BEDROCK), StructureUtility.onElementPass((e, c, w, x, y, z) -> {
+                    c.setBedrockOresFound(c.getBedrockOresFound() + 1);
+                }, StructureUtility.ofBlock(TagUtils.getForgelikeBlockTag("bedrock_ores"))), StructureUtility.onElementPass((e, c, w, x, y, z) -> {
+                    c.setBedrockOresFound(c.getBedrockOresFound() + 1);
+                }, StructureUtility.ofBlock(TagUtils.getForgelikeBlockTag("bedrock_small_ores")))))
+                .offset(1, 6, 0).min(1, INPUT_HATCH, OUTPUT_BUS, ENERGY_HATCH)
+                .setStructurePartCheckCallback((structureDefinition, tile, part, i, newOffset) -> {
+                    boolean check = structureDefinition.check(tile, part, tile.getLevel(), tile.getExtendedFacing(), tile.getBlockPos().getX(), tile.getBlockPos().getY(), tile.getBlockPos().getZ(), newOffset.getX(), newOffset.getY(), newOffset.getZ(), !tile.isStructureValid());
+                    return check && tile.getBedrockOresFound() > 0;
+                }).build());
 
         BLAST_FURNACE.setStructure(BlockEntityElectricBlastFurnace.class, b -> b.part("main")
                 .of("CCC", "CFC", "CCC").of("BBB", "B-B", "BBB").of(1).of("H~H", "HCH", "HHH").build()

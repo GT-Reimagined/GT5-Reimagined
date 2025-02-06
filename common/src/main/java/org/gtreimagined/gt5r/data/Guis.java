@@ -322,6 +322,7 @@ public class Guis {
         QUANTUM_TANK.getGui().setBackgroundTexture("basic_tank");
         ELECTRIC_ITEM_FILTER.getGui().setBackgroundTexture("electric_item_filter");
         ELECTRIC_TYPE_FILTER.getGui().setBackgroundTexture("electric_type_filter");
+        BEDROCK_DRILL.getGui().setBackgroundTexture("multiblock");
         BLAST_FURNACE.getGui().setBackgroundTexture("multiblock");
         IMPLOSION_COMPRESSOR.getGui().setBackgroundTexture("multiblock");
         TREE_GROWTH_SIMULATOR.getGui().setBackgroundTexture("multiblock");

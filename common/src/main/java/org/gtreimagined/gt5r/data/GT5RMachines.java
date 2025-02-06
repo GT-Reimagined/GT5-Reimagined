@@ -39,6 +39,7 @@ import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniEndPortal;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniTwilightPortal;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBedrockDrill;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityOreMiningRig;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCokeOven;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCombustionEngine;
@@ -285,6 +286,7 @@ public class GT5RMachines {
      ** Multiblock Hatch Machines (Electrical Age)
      **/
 
+    public static MultiMachine BEDROCK_DRILL = new MultiMachine(GT5RRef.ID, "bedrock_drill").setTiers(EV).setMap(RecipeMaps.BEDROCK_DRILL).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityBedrockDrill::new).setTextureBlock(GT5RBlocks.CASING_TITANIUM);
     public static MultiMachine BLAST_FURNACE = new MultiMachine(GT5RRef.ID, "electric_blast_furnace").setTiers(LV).setMap(RecipeMaps.E_BLAST_FURNACE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityElectricBlastFurnace::new).custom().setTextureBlock(GT5RBlocks.CASING_HEAT_PROOF);
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GT5RRef.ID, "combustion_engine").setTiers(EV).setMap(RecipeMaps.COMBUSTION_FUELS).addFlags(GUI, FLUID, EU, GENERATOR).addStructureTooltip(13).setTile(BlockEntityCombustionEngine::new).custom().setTextureBlock(GT5RBlocks.CASING_TITANIUM);
     public static MultiMachine CRACKING_UNIT = new MultiMachine(GT5RRef.ID, "cracking_unit").setTiers(HV).setMap(RecipeMaps.CRACKING).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityOilCrackingUnit::new).custom().setTextureBlock(GT5RBlocks.CASING_STAINLESS_STEEL);
