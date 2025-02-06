@@ -1560,5 +1560,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Glowstone).asFluid(0, 1000).flags(MOLTEN);
         event.setMaterial(Endstone).flags(ROD_LONG);
         event.setMaterial(Flint).mats(of(Materials.SiliconDioxide, 1)).elecTicks(80);
+        event.setMaterial(Bedrock).asDust();
     }
 }
