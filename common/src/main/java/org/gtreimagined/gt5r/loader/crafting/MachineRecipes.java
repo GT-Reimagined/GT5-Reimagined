@@ -833,6 +833,14 @@ public class MachineRecipes {
     }
 
     private static void addMultiblockRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+        add(BEDROCK_DRILL, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('c', CIRCUITS_COMPLEX)
+                        .put('C', CIRCUITS_ELITE)
+                        .put('I', GT5RCovers.COVER_CONVEYOR.getItem(EV))
+                        .put('H', GT5RBlocks.CASING_TITANIUM)
+                        .put('G', GEAR.getMaterialTag(Titanium))
+                        .put('D', DRILLBIT.getMaterialTag(TungstenSteel)).build(), "cIc", "CHC", "GDG"));
         add(BLAST_FURNACE, LV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, LV, true))
