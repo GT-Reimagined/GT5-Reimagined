@@ -133,6 +133,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                     if (tile.target.getNeighbor() == null) return 0;
                     IEnergyHandler handler = TesseractCapUtils.INSTANCE.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing().getOpposite()).orElse(null);
                     if (handler == null) return 0;
+                    if (tile.successfulPositions == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
                     if (loss >= voltage) return 0;
                     return handler.insertEu(Math.max(0, voltage - loss), simulate) + loss;
@@ -144,6 +145,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                     if (tile.target.getNeighbor() == null) return 0;
                     IEnergyHandler handler = TesseractCapUtils.INSTANCE.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing().getOpposite()).orElse(null);
                     if (handler == null) return 0;
+                    if (tile.successfulPositions == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
                     return handler.availableAmpsInput(Math.max(0, voltage - loss));
                 }
@@ -235,6 +237,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                     switchDirection = true;
                     mut = this.getBlockPos().mutable();
                     to = this.getFacing().getOpposite();
+                    successfulPositions = new LongArrayList();
                     continue;
                 }
                 break;
@@ -290,9 +293,14 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
             successfulPositions.clear();
         }
         if (target != null){
-            target.validStructure = false;
             target.sender = null;
+            target.invalidateStructure();
             target = null;
+        }
+        if (sender != null){
+            sender.target = null;
+            sender.invalidateStructure();
+            sender = null;
         }
     }
 }
