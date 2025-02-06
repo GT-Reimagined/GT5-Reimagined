@@ -427,6 +427,7 @@ public class RecipeMaps {
         DISTILLATION.setGuiData(Guis.MULTI_DISPLAY_DISTILLATION);
         CRYO_DISTILLATION.setGuiData(Guis.MULTI_DISPLAY_DISTILLATION);
         ALLOY_SMELTER.setGuiData(Guis.ALLOY_SMELTER_DISPLAY);
+        BEDROCK_DRILL.setGuiData(Guis.BEDROCK_DRILL_DISPLAY);
     }
 
     public static void clientMaps() {

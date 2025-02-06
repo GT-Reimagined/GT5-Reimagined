@@ -21,8 +21,10 @@ import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
 import static muramasa.antimatter.data.AntimatterMaterials.Iron;
 
 public class SpaceModRegistrar extends AntimatterMod {
+    public static SpaceModRegistrar INSTANCE;
     public static Material Desh;
     public SpaceModRegistrar(){
+        INSTANCE = this;
         if (AntimatterPlatformUtils.INSTANCE.isFabric()) {
             onRegistrarInit();
         }

@@ -120,6 +120,7 @@ import org.gtreimagined.gt5r.loader.machines.WiremillLoader;
 import org.gtreimagined.gt5r.loader.machines.generator.Fuels;
 import org.gtreimagined.gt5r.loader.machines.generator.LargeBoilerLoader;
 import org.gtreimagined.gt5r.loader.machines.generator.SolidFuelBoilerLoader;
+import org.gtreimagined.gt5r.loader.multi.BedrockDrillLoader;
 import org.gtreimagined.gt5r.loader.multi.BlastFurnaceLoader;
 import org.gtreimagined.gt5r.loader.multi.CokeOvenLoader;
 import org.gtreimagined.gt5r.loader.multi.CrackingUnitLoader;
@@ -251,6 +252,7 @@ public class GT5Reimagined extends AntimatterMod {
         loader.accept("unpackager", UnpackagerLoader::init);
         loader.accept("wiremill", WiremillLoader::init);
         //multiblocks
+        loader.accept("bedrock_drill", BedrockDrillLoader::init);
         loader.accept("blast_furnace", BlastFurnaceLoader::init);
         loader.accept("coke_oven", CokeOvenLoader::init);
         loader.accept("cracking_unit", CrackingUnitLoader::init);

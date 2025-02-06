@@ -45,6 +45,12 @@ public class Guis {
 
     public static GuiData SIMPLE_DISPLAY = new GuiData(GT5RRef.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 53, 25).add(IT_OUT, 107, 25));
+    public static GuiData BEDROCK_DRILL_DISPLAY = new GuiData(GT5RRef.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+            .add(IT_IN, 53, 25).add(FL_IN, 53, 63)
+            .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
+            .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
+            .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
+            .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61));
 
     public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GT5RRef.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
