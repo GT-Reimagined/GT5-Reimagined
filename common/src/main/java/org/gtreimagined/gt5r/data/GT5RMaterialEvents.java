@@ -753,6 +753,7 @@ public class GT5RMaterialEvents {
         /**
          **  Ores
          **/
+        event.setMaterial(Adamantine).mats(of(Adamantium, 3, Oxygen, 4)).elecTicks(2040);
         event.setMaterial(Materials.Almandine).mats(of(Materials.Alumina, 5, Iron, 3, Materials.SiliconDioxide, 9, Materials.Oxygen, 3)).elecTicks(480);
         event.setMaterial(Materials.Alumina).mats(of(Materials.Aluminium, 2, Materials.Oxygen, 3)).elecTicks(480);
         event.setMaterial(Materials.Andradite).mats(of(Materials.Calcium, 3, Iron, 2, Materials.Silicon, 3, Materials.Oxygen, 12)).elecTicks(480);
@@ -1400,7 +1401,7 @@ public class GT5RMaterialEvents {
                 /*Dymethylamine,*/ Materials.Chalcopyrite, /*Mirabilite,*/ Materials.Spodumene, /*Dolomite,*/ Materials.HypochlorousAcid, Materials.Chloramine, Materials.Bastnasite,
                 Materials.Chloromethane, Materials.Malachite, /*Borax, */ /*Kaolinite,*/ Materials.Obsidian, Materials.NitricAcid, Materials.VinylChloride, Materials.Acetone, /*Asbestos,*/ Materials.PotassiumFeldspar,
                 Materials.MethylAcetate, Materials.Sodalite, Materials.AllylChloride, Materials.Phenol, Materials.Glycerol, Materials.Talc, Materials.Soapstone, Materials.PhosphoricAcid,
-                Materials.Chlorobenzene, Materials.SulfuricAcid, Materials.Pyrope, Materials.SodiumPersulfate, Materials.Chloroform, Materials.Grossular, Materials.Spessartine, Materials.Almandine, Materials.Uvarovite, Materials.Andradite,
+                Materials.Chlorobenzene, Materials.SulfuricAcid, Materials.Pyrope, Materials.SodiumPersulfate, Materials.Chloroform, Materials.Grossular, Materials.Spessartine, Adamantine, Materials.Almandine, Materials.Uvarovite, Materials.Andradite,
                 Emerald, Materials.Galena, Materials.Zircon);
         GT5RMaterialTags.ELEC120.add(Materials.Clay, /*Trona,*/ Materials.BlueTopaz, Materials.Topaz, /*Pollucite,*/ Materials.CarbonDioxide, Materials.SulfurDioxide, Materials.Epichlorohydrin, Materials.Lepidolite, /*FullersEarth, Alunite,*/ Materials.Glauconite,
                 /*Mica,*/ Materials.Lazurite, Materials.Tanzanite, Materials.Biotite, Materials.StainlessSteel, Materials.Ultimet, Materials.CalciumAcetateSolution, Materials.Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ Materials.GlycerylTrinitrate);
