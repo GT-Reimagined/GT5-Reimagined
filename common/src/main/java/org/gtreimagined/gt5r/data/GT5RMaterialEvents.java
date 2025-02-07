@@ -277,6 +277,7 @@ public class GT5RMaterialEvents {
         /**
          **  Ores
          **/
+        event.setMaterial(Adamantine).asOre().harvestLevel(5);
         event.setMaterial(Materials.Almandine).asOre().harvestLevel(1);
         event.setMaterial(Materials.Alumina).asOre().asSolid(2345, MOLTEN);
         event.setMaterial(Materials.Andradite).asOre();

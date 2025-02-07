@@ -273,6 +273,7 @@ public class Materials {
      ** Ores
      **/
 
+    public static Material Adamantine = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "adamantine", 0xff0040, METALLIC));
     public static Material Almandine = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "almandine", 0xff0000, ROUGH));
     public static Material Alumina = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "alumina", 0x78C3EB, METALLIC));
     public static Material Andradite = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "andradite", 0x967800, ROUGH));
