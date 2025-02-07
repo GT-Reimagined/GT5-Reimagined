@@ -19,6 +19,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.worldgen.OilSpoutFluid;
 import org.gtreimagined.gt5r.worldgen.OilSpoutSavedData;
 
@@ -96,6 +97,11 @@ public class WorldGenLoader {
         ev.bedrockOre(WorldGenBedrockVein.create("bauxite", 2000, Bauxite, true, ORECHID, OVERWORLD.location()));
         ev.bedrockOre(WorldGenBedrockVein.create("cassiterite", 2000, Cassiterite, true, ORECHID, OVERWORLD.location()));
         ev.bedrockOre(WorldGenBedrockVein.create("chalcopyrite", 2000, Chalcopyrite, true, ALPINE_CATCHFLY, OVERWORLD.location()));
+        ev.bedrockOre(WorldGenBedrockVein.create("naquadah", 10000, Naquadah, true, BE_MARS.location(), AA_MARS.location()));
+        ev.bedrockOre(WorldGenBedrockVein.create("adamantine", 10000, Adamantine, true, BE_MARS.location(), AA_MARS.location()));
+        if (SpaceModRegistrar.INSTANCE.isEnabled()){
+            ev.bedrockOre(WorldGenBedrockVein.create("desh", 2000, SpaceModRegistrar.Desh, true, BE_MARS.location(), AA_MARS.location()));
+        }
     }
 
     private static void initTwilightForestOres(WorldGenEvent event){

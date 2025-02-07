@@ -21,7 +21,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.BEDROCK_DRILL;
 
 public class BedrockDrillLoader {
     public static void init(){
-        //addBedrockDrillRecipe(Materials.Adamantite, 0);
+        addBedrockDrillRecipe(Materials.Adamantine, 105, Adamantium);
         //addBedrockDrillRecipe(AntimatterMaterials.NetheriteScrap, 63,);
         addBedrockDrillRecipe(Bastnasite, 63, Monazite, RareEarth, Neodymium/*, Nikolite*/);
         addBedrockDrillRecipe(Bauxite, 53, Ilmenite, Hematite, Alumina);
