@@ -5,6 +5,9 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static muramasa.antimatter.data.AntimatterMaterials.Bedrock;
+import static muramasa.antimatter.data.AntimatterMaterials.Deepslate;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.ELECTROMAGNETIC_SEPARATOR;
 
 public class ElectromagneticSeparatorLoader {
@@ -24,5 +27,6 @@ public class ElectromagneticSeparatorLoader {
                     .outputChances(1.0, 0.4, 0.2)
                     .add(m.getId() + "_neodymium", 400, 24);
         });
+        ELECTROMAGNETIC_SEPARATOR.RB().ii(DUST.getMaterialIngredient(Bedrock, 1)).io(DUST.get(Deepslate), DUST_TINY.get(Adamantine), DUST_TINY.get(Monazite), DUST_TINY.get(Zircon), DUST_TINY.get(Graphite)).outputChances(7000, 3000, 4200, 4410, 4410).add("bedrock_dust", 144, 64);
     }
 }
