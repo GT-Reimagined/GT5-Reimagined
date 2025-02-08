@@ -59,6 +59,8 @@ public class BathLoader {
                 .fi(Netherite.getLiquid(L/4))
                 .io(GEM.get(NetherizedDiamond))
                 .add("netherized_diamond_recipe",144);
+        BATH.RB().fi(FluidIngredient.of(TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, "blue_dye")), L))
+                .ii(Items.PAPER).io(GTCoreItems.EmptyBlueprint).add("empty_blueprint", 16);
         BATH.RB().ii(DUST.getMaterialIngredient(Tungstate, 7)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(LithiumChloride, 4), DUST.get(TungsticAcid, 7)).add("tungstate", 512);
         BATH.RB().ii(DUST.getMaterialIngredient(Scheelite, 6)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(CalciumChloride, 3), DUST.get(TungsticAcid, 7)).add("scheelite", 512);
         BATH.RB().ii(RecipeIngredient.of(FRAME.getMaterialTag(Steel))).fi(Concrete.getLiquid(L)).io(GTCoreBlocks.REINFORCED_STONE.asItem()).add("reinforced_stone", 200, 4);
