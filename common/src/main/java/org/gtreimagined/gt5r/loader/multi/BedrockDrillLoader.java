@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.loader.multi;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.material.Material;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.world.item.ItemStack;
@@ -59,7 +60,7 @@ public class BedrockDrillLoader {
         RecipeBuilder rb = BEDROCK_DRILL.RB();
         List<Integer> chances = new ArrayList<>();
         chances.add(9687);
-        rb.ii(ORE.getMaterialIngredient(main, AntimatterStoneTypes.BEDROCK, 1)).fi(Materials.Lubricant.getLiquid(100)).io(RAW_ORE.get(main));
+        rb.ii(RecipeIngredient.of(1, ORE.getMaterialTag(main, AntimatterStoneTypes.BEDROCK), ORE_SMALL.getMaterialTag(main, AntimatterStoneTypes.BEDROCK))).fi(Materials.Lubricant.getLiquid(100)).io(RAW_ORE.get(main));
         for (Material m : byproduct){
             if (m.has(RAW_ORE)) {
                 rb.io(RAW_ORE.get(m));
@@ -75,6 +76,6 @@ public class BedrockDrillLoader {
         rb.io(cobble);
         chances.add(10000);
         rb.outputChances(chances.stream().mapToInt(i -> i).toArray());
-        rb.add("bedrock_" + main.getId() + "_ore", 10000, 2048);
+        rb.add("bedrock_" + main.getId() + "_ore", 1, 32768);
     }
 }
