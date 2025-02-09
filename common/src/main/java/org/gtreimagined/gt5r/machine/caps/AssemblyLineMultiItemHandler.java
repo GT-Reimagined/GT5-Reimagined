@@ -36,13 +36,13 @@ public class AssemblyLineMultiItemHandler<T extends BlockEntityMultiMachine<T>> 
      */
     @Override
     public List<ItemStack> consumeInputs(IRecipe recipe, boolean simulate) {
-        if (recipe.getInputItems().size() != inputList.size()) return Collections.emptyList();
+        if (recipe.getInputItems().size() > inputList.size()) return Collections.emptyList();
         boolean chance = !simulate && recipe.hasInputChances();
         int[] chances = recipe.getInputChances();
         List<ItemStack> consumed = new ArrayList<>();
         for (int i = 0; i < recipe.getInputItems().size(); i++) {
             if (!chance || Ref.RNG.nextInt(10000) < chances[i]){
-                consumed.addAll(consumeInput(recipe.getInputItems().get(i), inputList.get(i), false));
+                consumed.addAll(consumeInput(recipe.getInputItems().get(i), inputList.get(i), !chance && simulate));
             } else {
                 consumed.add(Data.DEBUG_SCANNER.get(1)); //so the consumeInputs returns true
             }
@@ -90,7 +90,7 @@ public class AssemblyLineMultiItemHandler<T extends BlockEntityMultiMachine<T>> 
 
     @Override
     protected ITrackedHandler calculateInputs() {
-        inputList = tile.getComponentsByHandlerId(outputComponentString()).stream().filter(t -> t.getItemHandler().isPresent()).map(t -> t.getItemHandler().get()).sorted(this::compareInputBuses).map(MachineItemHandler::getInputHandler).collect(Collectors.toList());
+        inputList = tile.getComponentsByHandlerId(inputComponentString()).stream().filter(t -> t.getItemHandler().isPresent()).map(t -> t.getItemHandler().get()).sorted(this::compareInputBuses).map(MachineItemHandler::getInputHandler).collect(Collectors.toList());
         return new MultiTrackedItemHandler(inputList.toArray(new ExtendedItemContainer[0]));
     }
 }
