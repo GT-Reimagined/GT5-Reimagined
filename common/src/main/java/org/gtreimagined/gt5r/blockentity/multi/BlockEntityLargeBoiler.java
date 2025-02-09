@@ -225,7 +225,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
     }
 
     @Override
-    public ITextureProvider getHatchBlock(BlockPos hatchPos) {
+    public BlockBasic getHatchBlock(BlockPos hatchPos) {
         if (hatchPos.getY() != this.getBlockPos().getY()) return this.getCasing();
         String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
         return GT5Reimagined.get(BlockCasing.class, prefix + "_firebox_casing");

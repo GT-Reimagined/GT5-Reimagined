@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
+import muramasa.antimatter.block.BlockBasic;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
@@ -37,7 +38,7 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
     }
 
     @Override
-    public ITextureProvider getHatchBlock(BlockPos pos) {
+    public BlockBasic getHatchBlock(BlockPos pos) {
         if (pos.getY() == this.getBlockPos().getY()) return GT5RBlocks.BLACK_BRONZE_CASING;
         return super.getHatchBlock(pos);
     }

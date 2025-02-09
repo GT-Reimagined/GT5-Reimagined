@@ -201,7 +201,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
     }
 
     @Override
-    public ITextureProvider getHatchBlock(BlockPos pos) {
+    public BlockBasic getHatchBlock(BlockPos pos) {
         return getCasing();
     }
 
