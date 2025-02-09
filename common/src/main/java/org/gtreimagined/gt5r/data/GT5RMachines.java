@@ -290,7 +290,7 @@ public class GT5RMachines {
      ** Multiblock Hatch Machines (Electrical Age)
      **/
 
-    public static MultiMachine ASSEMBLY_LINE = new MultiMachine(GT5RRef.ID, "assembly_line").setTiers(IV).setMap(RecipeMaps.ASSEMBLY_LINE).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityAssemblyLine::new);
+    public static MultiMachine ASSEMBLY_LINE = new MultiMachine(GT5RRef.ID, "assembly_line").setTiers(IV).setMap(RecipeMaps.ASSEMBLY_LINE).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityAssemblyLine::new).setTextureBlock(GT5RBlocks.SOLID_STEEL_CASING);
     public static MultiMachine BASIC_ASSEMBLY_LINE = new MultiMachine(GT5RRef.ID, "basic_assembly_line").setTiers(HV).addFlags(GUI, ITEM, EU);
     public static MultiMachine BEDROCK_DRILL = new MultiMachine(GT5RRef.ID, "bedrock_drill").setTiers(EV).setMap(RecipeMaps.BEDROCK_DRILL).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityBedrockDrill::new).setTextureBlock(GT5RBlocks.TITANIUM_CASING);
     public static MultiMachine BLAST_FURNACE = new MultiMachine(GT5RRef.ID, "electric_blast_furnace").setTiers(LV).setMap(RecipeMaps.E_BLAST_FURNACE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityElectricBlastFurnace::new).custom().setTextureBlock(GT5RBlocks.HEAT_PROOF_CASING);

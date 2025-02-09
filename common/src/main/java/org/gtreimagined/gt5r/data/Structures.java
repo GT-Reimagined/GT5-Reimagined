@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.gtreimagined.gt5r.block.BlockCoil;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityAssemblyLine;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBedrockDrill;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCokeOven;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCombustionEngine;
@@ -42,6 +43,7 @@ import org.gtreimagined.gt5r.blockentity.multi.BlockEntityProcessingArray;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityPyrolysisOven;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityTreeGrowthSimulator;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityVacuumFreezer;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 
 import java.util.function.BiConsumer;
 import java.util.function.BiPredicate;
@@ -64,7 +66,20 @@ public class Structures {
     public static IStructureElement<?> LITHIUM_BLOCK = ofBlock(BLOCK.getBlockMaterialTag(Materials.Lithium));
     public static final FakeTileElement<BlockEntityCokeOven> FAKE_CASING = new FakeTileElement<>(GT5RBlocks.FIRE_BRICKS);
     public static void init() {
-
+        ASSEMBLY_LINE.setStructure(BlockEntityAssemblyLine.class, b -> b.part("left")
+                .of(" ", "E", " ").of("~", "A", "G").of("R", "L", "R").of("C", "I", "C").build()
+                .part("middle").max(15).offsetFunction((i, int3) -> int3.right(i))
+                .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "I", "C").build()
+                .part("right").offsetFunction((i, int3) -> int3.right(i))
+                .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "O", "C").build()
+                .at('E', GT5RBlocks.SOLID_STEEL_CASING, ENERGY_HATCH)
+                .at('A', GT5RBlocks.ASSEMBLER_CASING)
+                .at('G', GT5RBlocks.GRATE_CASING)
+                .at('R', GTCoreBlocks.REINFORCED_GLASS)
+                .at('L', GT5RBlocks.ASSEMBLY_LINE_CASING)
+                .at('C', GT5RBlocks.SOLID_STEEL_CASING, INPUT_HATCH)
+                .at('I', INPUT_BUS)
+                .at('O', OUTPUT_BUS).offset(0, 1, 0).min(1, ENERGY_HATCH).build());
         BEDROCK_DRILL.setStructure(BlockEntityBedrockDrill.class, b -> b.part("main")
                 .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").of("DDD", "DDD", "DDD").of("BBB", "BBB", "BBB").build()
                 .at('F', FRAME.get().get(Materials.Titanium).asBlock()).at('C', GT5RBlocks.TITANIUM_CASING)
