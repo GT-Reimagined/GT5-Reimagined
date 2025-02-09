@@ -185,12 +185,12 @@ public class GT5RBlocks {
     public static final BlockCasing TITANIUM_PIPE_CASING = new BlockCasing(GT5RRef.ID, "titanium_pipe_casing");
     public static final BlockCasing TUNGSTENSTEEL_PIPE_CASING = new BlockCasing(GT5RRef.ID, "tungstensteel_pipe_casing");
     public static final BlockCasing PTFE_PIPE_CASING = new BlockCasing(GT5RRef.ID, "ptfe_pipe_casing");
-    public static final BlockCasing ENGINE_INTAKE_CASING = new BlockCasing(GT5RRef.ID, "engine_intake_casing");
-    public static final BlockCasing FUSION_CASING = new BlockCasing(GT5RRef.ID, "fusion_casing");
     public static final BlockCasing STEEL_TURBINE_CASING = new BlockCasing(GT5RRef.ID, "steel_turbine_casing");
     public static final BlockCasing STAINLESS_STEEL_TURBINE_CASING = new BlockCasing(GT5RRef.ID, "stainless_steel_turbine_casing");
     public static final BlockCasing TITANIUM_TURBINE_CASING = new BlockCasing(GT5RRef.ID, "titanium_turbine_casing");
     public static final BlockCasing TUNGSTENSTEEL_TURBINE_CASING = new BlockCasing(GT5RRef.ID, "tungstensteel_turbine_casing");
+    public static final BlockCasing ENGINE_INTAKE_CASING = new BlockCasing(GT5RRef.ID, "engine_intake_casing");
+    public static final BlockCasing FUSION_CASING = new BlockCasing(GT5RRef.ID, "fusion_casing");
     //todo make these active
     public static final BlockSidedCasing GRINDING_WHEELS = new BlockSidedCasing(GT5RRef.ID, "grinding_wheels", "tungstensteel", "grinding_wheels_top");
     public static final BlockCasing ELECTROLYTIC_CELL = new BlockCasing(GT5RRef.ID, "electrolytic_cell");
