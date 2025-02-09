@@ -33,7 +33,7 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
 
     @Override
     protected boolean canRecipeContinue() {
-        return super.canRecipeContinue() && (activeRecipe.getMapId().isEmpty() || (tile.getRecipe() != null && tile.getRecipe().getId().equals(activeRecipe.getId())));
+        return super.canRecipeContinue() && (!activeRecipe.getMapId().isEmpty() || (tile.getRecipe() != null && tile.getRecipe().getId().equals(activeRecipe.getId())));
     }
 
     @Override
