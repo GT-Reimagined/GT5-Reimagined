@@ -146,6 +146,16 @@ public class BlockParts {
                 of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLY_LINE_CASING,
+                of('S', PLATE.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(TungstenSteel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLER_CASING,
+                of('C', TIER_CIRCUITS.apply(EV), 'c', TIER_CIRCUITS.apply(IV), 'F', FRAME.getMaterialTag(TungstenSteel), 'M', GTCoreItems.MotorIV), "CcC", "CFC", "CMC");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.BASIC_ASSEMBLY_LINE_CASING,
+                of('S', PLATE.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(Steel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(HV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.BASIC_ASSEMBLER_CASING,
+                of('C', TIER_CIRCUITS.apply(MV), 'c', TIER_CIRCUITS.apply(HV), 'F', FRAME.getMaterialTag(Steel), 'M', GTCoreItems.MotorHV), "CcC", "CFC", "CMC");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.GRATE_CASING,
+                of('B', Items.IRON_BARS, 'R', ROTOR.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(Steel), 'M', GTCoreItems.MotorMV), "BRB", "BFB", "BMB");
 
         provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.BRONZE_PLATED_BRICK_CASING, 1),
                 ImmutableMap.<Character, Object>builder()

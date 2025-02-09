@@ -191,6 +191,11 @@ public class GT5RBlocks {
     public static final BlockCasing TUNGSTENSTEEL_TURBINE_CASING = new BlockCasing(GT5RRef.ID, "tungstensteel_turbine_casing");
     public static final BlockCasing ENGINE_INTAKE_CASING = new BlockCasing(GT5RRef.ID, "engine_intake_casing");
     public static final BlockCasing FUSION_CASING = new BlockCasing(GT5RRef.ID, "fusion_casing");
+    public static final BlockCasing ASSEMBLER_CASING = new BlockCasing(GT5RRef.ID, "assembler_casing");
+    public static final BlockCasing ASSEMBLY_LINE_CASING = new BlockCasing(GT5RRef.ID, "assembly_line_casing");
+    public static final BlockCasing BASIC_ASSEMBLER_CASING = new BlockCasing(GT5RRef.ID, "basic_assembler_casing");
+    public static final BlockCasing BASIC_ASSEMBLY_LINE_CASING = new BlockCasing(GT5RRef.ID, "basic_assembly_line_casing");
+    public static final BlockCasing GRATE_CASING = new BlockCasing(GT5RRef.ID, "grate_casing");
     //todo make these active
     public static final BlockSidedCasing GRINDING_WHEELS = new BlockSidedCasing(GT5RRef.ID, "grinding_wheels", "tungstensteel", "grinding_wheels_top");
     public static final BlockCasing ELECTROLYTIC_CELL = new BlockCasing(GT5RRef.ID, "electrolytic_cell");
