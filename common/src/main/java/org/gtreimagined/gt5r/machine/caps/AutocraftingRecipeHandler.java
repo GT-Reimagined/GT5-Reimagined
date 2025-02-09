@@ -1,13 +1,25 @@
 package org.gtreimagined.gt5r.machine.caps;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
+import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.serializer.MachineRecipeSerializer;
+import muramasa.antimatter.util.Utils;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.blockentity.IAutocrafter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocrafter> extends ParallelRecipeHandler<T>{
     public AutocraftingRecipeHandler(T tile, int maxSimultaneousRecipes) {
@@ -16,7 +28,7 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
 
     @Override
     protected boolean canRecipeContinue() {
-        return super.canRecipeContinue() && (tile.getRecipe() != null && tile.getRecipe().getId().equals(tile.getOldRecipe().getId()));
+        return super.canRecipeContinue() && (tile.getRecipe() != null && tile.getRecipe().getId().equals(activeRecipe.getId()));
     }
 
     @Override
@@ -24,11 +36,72 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
         IRecipe recipe = super.findRecipe();
         if (recipe == null) {
             if (tile.getRecipe() != null) {
-                List<Ingredient> ingredients = tile.getRecipe().getIngredients().stream().filter(i -> !i.isEmpty()).toList();
-                recipe = new Recipe(ingredients, new ItemStack[]{tile.getRecipe().getResultItem()}, List.of(), null, 1024, 16, 0, 1);
+                List<Ingredient> condensed = new ArrayList<>();
+                Map<Ingredient, Integer> condensedMap = new HashMap<>();
+                for (Ingredient i : tile.getRecipe().getIngredients()) {
+                    if (i.isEmpty()) continue;
+                    if (!condensedMap.containsKey(i)) {
+                        condensedMap.put(i, Math.max(1, RecipeIngredient.count(i)));
+                    } else {
+                        condensedMap.compute(i, (k, currentCount) -> currentCount + Math.max(1, RecipeIngredient.count(i)));
+                    }
+                }
+                condensedMap.forEach((k, v) -> {
+                    condensed.add(RecipeIngredient.of(k, v));
+                });
+                recipe = new Recipe(condensed, new ItemStack[]{tile.getRecipe().getResultItem()}, List.of(), null, 1024, 16, 0, 1);
                 recipe.setId(tile.getRecipe().getId());
             }
         }
         return recipe;
+    }
+
+    public int getOverclock() {
+        if (maxSimultaneousRecipes() > 1) return 0;
+        if (activeRecipe == null) return 0;
+        int oc = 0;
+        if (activeRecipe.getPower() > 0 && this.tile.getPowerLevel().getVoltage() > activeRecipe.getPower()) {
+            long voltage = this.activeRecipe.getPower();
+            int tier = Utils.getVoltageTier(voltage);
+            long tempoverclock = (this.tile.getPowerLevel().getVoltage() / Ref.V[tier]);
+            while (tempoverclock > 1) {
+                tempoverclock >>= 2;
+                oc++;
+            }
+        }
+        return oc;
+    }
+
+    public long getPower() {
+        if (maxSimultaneousRecipes() > 1) return super.getPower();
+        if (activeRecipe == null) return 0;
+        if (overclock == 0 || tile.has(MachineFlag.RF)) return activeRecipe.getPower();
+        //half the duration => overclock ^ 2.
+        //so if overclock is 2 tiers, we have 1/4 the duration(200 -> 50) but for e.g. 8eu/t this would be
+        //8*4*4 = 128eu/t.
+        return (activeRecipe.getPower() * (1L << overclock) * (1L << overclock));
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag nbt = super.serialize();
+        if (activeRecipe != null) {
+            nbt.putString("activeRecipe", activeRecipe.toJson().toString());
+        }
+        if (lastRecipe != null) {
+            nbt.putString("lastRecipe", lastRecipe.toJson().toString());
+        }
+        return nbt;
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        if (nbt.contains("activeRecipe")) {
+            activeRecipe = MachineRecipeSerializer.INSTANCE.fromJson(new ResourceLocation(nbt.getString("AR")), (JsonObject) JsonParser.parseString(nbt.getString("activeRecipe")));
+        }
+        if (nbt.contains("lastRecipe")) {
+            lastRecipe = MachineRecipeSerializer.INSTANCE.fromJson(new ResourceLocation(nbt.getString("LR")), (JsonObject) JsonParser.parseString(nbt.getString("lastRecipe")));
+        }
     }
 }

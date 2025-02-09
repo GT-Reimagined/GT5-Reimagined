@@ -1,6 +1,6 @@
-package org.gtreimagined.gt5r.blockentity.single;
+package org.gtreimagined.gt5r.blockentity.multi;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.event.IMachineEvent;
@@ -12,17 +12,19 @@ import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.blockentity.IAutocrafter;
+import org.gtreimagined.gt5r.machine.caps.AssemblyLineMultiItemHandler;
 import org.gtreimagined.gt5r.machine.caps.AutocraftingRecipeHandler;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.Optional;
 
-public class BlockEntityAutocrafter extends BlockEntityMachine<BlockEntityAutocrafter> implements IAutocrafter, IFilterableHandler {
+public class BlockEntityBasicAssemblyLine extends BlockEntityMultiMachine<BlockEntityBasicAssemblyLine> implements IAutocrafter, IFilterableHandler {
     CraftingRecipe recipe;
     CraftingRecipe oldRecipe;
-    public BlockEntityAutocrafter(Machine<?> type, BlockPos pos, BlockState state) {
+    public BlockEntityBasicAssemblyLine(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.recipeHandler.set(() -> new AutocraftingRecipeHandler<>(this, 1));
+        this.itemHandler.set(() -> new AssemblyLineMultiItemHandler<>(this));
+        this.recipeHandler.set(() -> new AutocraftingRecipeHandler<>(this, 16));
     }
 
     @Override
@@ -52,6 +54,6 @@ public class BlockEntityAutocrafter extends BlockEntityMachine<BlockEntityAutocr
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         if (slotType == SlotType.STORAGE) return stack.getItem() == GTCoreItems.Blueprint;
-        return stack.getItem() != GTCoreItems.Blueprint;
+        return true;
     }
 }
