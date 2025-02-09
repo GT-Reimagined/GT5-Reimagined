@@ -173,6 +173,15 @@ public class Guis {
         DISTILLERY.add(FLUID_CANNER);
         BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
         AUTOCLAVE.add(ALLOY_SMELTER).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63);
+        ResourceLocation craft = new ResourceLocation(GT5RRef.ID, "crafting");
+        AUTOCRAFTER.add(IT_IN, 17, 7, craft).add(IT_IN, 35, 7).add(IT_IN, 53, 7, craft)
+                .add(IT_IN, 17, 25).add(IT_IN, 35, 25, craft).add(IT_IN, 53, 25)
+                .add(IT_IN, 17, 43, craft).add(IT_IN, 35, 43).add(IT_IN, 53, 43, craft)
+                .add(STORAGE, 53, 63, new ResourceLocation(GT5RRef.ID, "blueprint"))
+                .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
+                .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
+                .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
+                .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR);
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 44, 63)
@@ -312,6 +321,7 @@ public class Guis {
         MACERATOR.getGui().setBackgroundTexture("machine_macerator");
         ROCK_BREAKER.getGui().setBackgroundTexture("machine_macerator");
         //FORGE_HAMMER.getGui().setBackgroundTexture("machine_forge_hammer");
+        AUTOCRAFTER.getGui().setBackgroundTexture("centrifuge");
         CENTRIFUGE.getGui().setBackgroundTexture("centrifuge");
         ELECTROLYZER.getGui().setBackgroundTexture("centrifuge");
         COKE_OVEN.getGui().setBackgroundTexture("coke_oven");

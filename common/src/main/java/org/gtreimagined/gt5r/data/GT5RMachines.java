@@ -69,6 +69,7 @@ import org.gtreimagined.gt5r.blockentity.multi.BlockEntityPyrolysisOven;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityTreeGrowthSimulator;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityVacuumFreezer;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityAssembler;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityAutocrafter;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityBath;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityBuffer;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
@@ -149,6 +150,7 @@ public class GT5RMachines {
     public static BasicMachine ARC_FURNACE = new BasicMachine(GT5RRef.ID, "arc_furnace").setMap(RecipeMaps.ARC_FURNACE).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).amps(3);
     public static BasicMachine ASSEMBLER = new BasicMachine(GT5RRef.ID, "assembler").setMap(RecipeMaps.ASSEMBLER).setTile(BlockEntityAssembler::new).addFlags(GUI, ITEM, FLUID).custom();
     public static BasicMachine AUTOCLAVE = new BasicMachine(GT5RRef.ID, "autoclave").setMap(RecipeMaps.AUTOCLAVE).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine AUTOCRAFTER = new BasicMachine(GT5RRef.ID, "autocrafter").addFlags(GUI, ITEM, RECIPE).setTile(BlockEntityAutocrafter::new);
     public static BasicMachine BENDER = new BasicMachine(GT5RRef.ID, "bender").setMap(RecipeMaps.BENDER).addFlags(GUI, ITEM);
     public static BasicMachine CANNER = new BasicMachine(GT5RRef.ID, "canner").setMap(RecipeMaps.CANNER).addFlags(GUI, ITEM);
     public static BasicMachine CENTRIFUGE = new BasicMachine(GT5RRef.ID, "centrifuge").setMap(RecipeMaps.CENTRIFUGE).addFlags(GUI, ITEM, FLUID);

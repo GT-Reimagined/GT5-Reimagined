@@ -135,6 +135,13 @@ public class MachineRecipes {
                             .put('G', glass)
                             .put('H', hull)
                             .put('P', pump).build(), "TGT", "THT", "CPC"));
+            add(AUTOCRAFTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', cable)
+                            .put('R', arm)
+                            .put('c', circuit)
+                            .put('H', hull)
+                            .put('W', WRENCH.getTag()).build(), "CRC", "RWR", "cHc"));
             add(BENDER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of(
                             'P', piston,
