@@ -41,6 +41,7 @@ import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniEndPortal;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniTwilightPortal;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityAssemblyLine;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBasicAssemblyLine;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBedrockDrill;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityOreMiningRig;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCokeOven;
@@ -295,7 +296,7 @@ public class GT5RMachines {
      **/
 
     public static MultiMachine ASSEMBLY_LINE = new MultiMachine(GT5RRef.ID, "assembly_line").setTiers(IV).setMap(RecipeMaps.ASSEMBLY_LINE).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityAssemblyLine::new).setTextureBlock(GT5RBlocks.SOLID_STEEL_CASING);
-    public static MultiMachine BASIC_ASSEMBLY_LINE = new MultiMachine(GT5RRef.ID, "basic_assembly_line").setTiers(HV).addFlags(GUI, ITEM, EU);
+    public static MultiMachine BASIC_ASSEMBLY_LINE = new MultiMachine(GT5RRef.ID, "basic_assembly_line").setTiers(HV).addFlags(GUI, ITEM, EU).setTile(BlockEntityBasicAssemblyLine::new).setTextureBlock(GT5RBlocks.SOLID_STEEL_CASING);
     public static MultiMachine BEDROCK_DRILL = new MultiMachine(GT5RRef.ID, "bedrock_drill").setTiers(EV).setMap(RecipeMaps.BEDROCK_DRILL).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityBedrockDrill::new).setTextureBlock(GT5RBlocks.TITANIUM_CASING);
     public static MultiMachine BLAST_FURNACE = new MultiMachine(GT5RRef.ID, "electric_blast_furnace").setTiers(LV).setMap(RecipeMaps.E_BLAST_FURNACE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityElectricBlastFurnace::new).custom().setTextureBlock(GT5RBlocks.HEAT_PROOF_CASING);
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GT5RRef.ID, "combustion_engine").setTiers(EV).setMap(RecipeMaps.COMBUSTION_FUELS).addFlags(GUI, FLUID, EU, GENERATOR).addStructureTooltip(13).setTile(BlockEntityCombustionEngine::new).custom().setTextureBlock(GT5RBlocks.TITANIUM_CASING);
@@ -410,7 +411,10 @@ public class GT5RMachines {
 
     public static void init() {
         AntimatterAPI.registerJEICategoryWorkstation(RecipeMaps.ALLOY_SMELTER, MULTI_SMELTER, HV);
-        AntimatterJEIREIPlugin.addWorkstations(new ResourceLocation("crafting"), l -> l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList()));
+        AntimatterJEIREIPlugin.addWorkstations(new ResourceLocation("crafting"), l -> {
+            l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList());
+            l.add(BASIC_ASSEMBLY_LINE.getItem(HV));
+        });
     }
 
     private static int getBlockColorNuclear(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, @Nullable BlockEntityMachine<?> machine, int i) {

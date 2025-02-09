@@ -308,6 +308,7 @@ public class Guis {
                 .add(STORAGE, 98 + 18 * 2, 23)
                 .add(STORAGE, 98, 41).add(STORAGE, 98 + 18, 41)
                 .add(STORAGE, 98 + 18 * 2, 41);
+        BASIC_ASSEMBLY_LINE.add(MULTIBLOCK.getSlots());
         BLAST_FURNACE.add(MULTIBLOCK.getSlots());
         IMPLOSION_COMPRESSOR.add(MULTIBLOCK.getSlots());
         VACUUM_FREEZER.add(MULTIBLOCK.getSlots());
@@ -347,6 +348,7 @@ public class Guis {
         ELECTRIC_ITEM_FILTER.getGui().setBackgroundTexture("electric_item_filter");
         ELECTRIC_TYPE_FILTER.getGui().setBackgroundTexture("electric_type_filter");
         ASSEMBLY_LINE.getGui().setBackgroundTexture("multiblock");
+        BASIC_ASSEMBLY_LINE.getGui().setBackgroundTexture("multiblock");
         BEDROCK_DRILL.getGui().setBackgroundTexture("multiblock");
         BLAST_FURNACE.getGui().setBackgroundTexture("multiblock");
         IMPLOSION_COMPRESSOR.getGui().setBackgroundTexture("multiblock");

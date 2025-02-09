@@ -16,6 +16,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityAssemblyLine;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBasicAssemblyLine;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityBedrockDrill;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCokeOven;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCombustionEngine;
@@ -69,6 +70,20 @@ public class Structures {
         ASSEMBLY_LINE.setStructure(BlockEntityAssemblyLine.class, b -> b.part("left")
                 .of(" ", "E", " ").of("~", "A", "G").of("R", "L", "R").of("C", "I", "C").build()
                 .part("middle").max(15).offsetFunction((i, int3) -> int3.right(i))
+                .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "I", "C").build()
+                .part("right").offsetFunction((i, int3) -> int3.right(i))
+                .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "O", "C").build()
+                .at('E', GT5RBlocks.SOLID_STEEL_CASING, ENERGY_HATCH)
+                .at('A', GT5RBlocks.ASSEMBLER_CASING)
+                .at('G', GT5RBlocks.GRATE_CASING)
+                .at('R', GTCoreBlocks.REINFORCED_GLASS)
+                .at('L', GT5RBlocks.ASSEMBLY_LINE_CASING)
+                .at('C', GT5RBlocks.SOLID_STEEL_CASING, INPUT_HATCH)
+                .at('I', INPUT_BUS)
+                .at('O', OUTPUT_BUS).offset(0, 1, 0).min(1, ENERGY_HATCH).build());
+        BASIC_ASSEMBLY_LINE.setStructure(BlockEntityBasicAssemblyLine.class, b -> b.part("left")
+                .of(" ", "E", " ").of("~", "A", "G").of("R", "L", "R").of("C", "I", "C").build()
+                .part("middle").min(0).max(8).offsetFunction((i, int3) -> int3.right(i))
                 .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "I", "C").build()
                 .part("right").offsetFunction((i, int3) -> int3.right(i))
                 .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "O", "C").build()
