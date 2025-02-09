@@ -192,11 +192,11 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
 
     public BlockBasic getCasing(){
         if (tier == HV) {
-            return GT5RBlocks.CASING_TURBINE_STEEL;
+            return GT5RBlocks.STEEL_TURBINE_CASING;
         } else if (tier == EV) {
-            return GT5RBlocks.CASING_TURBINE_STAINLESS;
+            return GT5RBlocks.STAINLESS_STEEL_TURBINE_CASING;
         } else {
-            return GT5RBlocks.CASING_TURBINE_TITANIUM;
+            return GT5RBlocks.TITANIUM_TURBINE_CASING;
         }
     }
 

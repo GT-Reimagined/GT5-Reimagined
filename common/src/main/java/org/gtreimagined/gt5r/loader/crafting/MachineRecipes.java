@@ -523,13 +523,13 @@ public class MachineRecipes {
                 of('W', GT5RItems.Wafer, 'G', GTCoreBlocks.REINFORCED_GLASS, 'C', TIER_CIRCUITS.apply(IV), 'g', GT5RBlocks.WIRE_GRAPHENE.getBlock(PipeSize.HUGE), 'P', PLATE.getMaterialTag(IndiumGalliumPhosphide), 'H', HULL.getItem(LV)), "WGW", "CgC", "PHP");
 
         provider.addItemRecipe(output, "machines", NUCLEAR_REACTOR_CORE.getItem(NONE),
-                of('C', TIER_CIRCUITS.apply(Tier.IV), 'P', GT5RItems.PistonEV, 'L', GT5RBlocks.CASING_DENSE_LEAD), "PCP", "CLC", "PCP");
+                of('C', TIER_CIRCUITS.apply(Tier.IV), 'P', GT5RItems.PistonEV, 'L', GT5RBlocks.DENSE_LEAD_CASING), "PCP", "CLC", "PCP");
         provider.addItemRecipe(output, "machines", INVAR_SMALL_HEAT_EXCHANGER.getItem(NONE),
-                of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.CASING_HEAT_PROOF, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.SMALL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
+                of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.HEAT_PROOF_CASING, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.SMALL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
         provider.addItemRecipe(output, "machines", TUNGSTEN_SMALL_HEAT_EXCHANGER.getItem(NONE),
-                of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.CASING_TUNGSTEN, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
+                of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.TUNGSTEN_CASING, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
         provider.addItemRecipe(output, "machines", TUNGSTENSTEEL_SMALL_HEAT_EXCHANGER.getItem(NONE),
-                of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.CASING_TUNGSTENSTEEL, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
+                of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.TUNGSTENSTEEL_CASING, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
     }
 
     private static void addStorageTransformerRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -703,9 +703,9 @@ public class MachineRecipes {
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_TRANSFORMER_ENDPOINT.getItem(UV),
                 of('T', TRANSFORMER.getItem(UV), 'C', CABLE_GETTER.apply(PipeSize.SMALL, MV, false), 'W', WIRE_CUTTER.getTag()), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_FLUID_ENDPOINT.getItem(NONE),
-                of('T', GT5RBlocks.FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GT5RBlocks.CASING_TUNGSTEN), "CTC", "TWT", "CTC");
+                of('T', GT5RBlocks.FLUID_PIPE_TUNGSTEN.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GT5RBlocks.TUNGSTEN_CASING), "CTC", "TWT", "CTC");
         provider.addItemRecipe(output, "machines", LONG_DISTANCE_ITEM_ENDPOINT.getItem(NONE),
-                of('T', GT5RBlocks.ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GT5RBlocks.CASING_PLATINUM), "CTC", "TWT", "CTC");
+                of('T', GT5RBlocks.ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GT5RBlocks.PLATINUM_CASING), "CTC", "TWT", "CTC");
         AntimatterAPI.all(WorkbenchMachine.class).forEach(m -> {
             if (!m.getId().contains("charging")) {
                 provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
@@ -721,7 +721,7 @@ public class MachineRecipes {
             if (material.has(SCREW) && chest != null){
                 if (!m.getId().contains("charging")) {
                     provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
-                            of('s', SCREW.getMaterialTag(m.getMaterial()), 'C', chest.getItem(NONE), 'c', GT5RBlocks.CASING_SOLID_STEEL, 'S', SCREWDRIVER.getTag(), 'R', ROD.getMaterialTag(material), 'L', Items.LEATHER), "RSR", "LCL", "scs");
+                            of('s', SCREW.getMaterialTag(m.getMaterial()), 'C', chest.getItem(NONE), 'c', GT5RBlocks.SOLID_STEEL_CASING, 'S', SCREWDRIVER.getTag(), 'R', ROD.getMaterialTag(material), 'L', Items.LEATHER), "RSR", "LCL", "scs");
                 } else {
                     provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(HV),
                             of('W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.VTINY, HV, false), 'C', CIRCUITS_ADVANCED), "cCc", "cWc", "cCc");
@@ -748,7 +748,7 @@ public class MachineRecipes {
             ChestMachine chest = AntimatterAPI.get(ChestMachine.class, material.getId() + "_chest", GTCore.ID);
             if (material.has(SCREW) && material.has(PLATE) && !material.has(MaterialTags.WOOD) && chest != null){
                 provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
-                        of('C', chest.getItem(NONE), 'S', SCREW.getMaterialTag(material), 'c', GT5RBlocks.CASING_SOLID_STEEL, 's', SCREWDRIVER.getTag(), 'W', WRENCH.getTag()), "SCS", "Wcs", "SCS");
+                        of('C', chest.getItem(NONE), 'S', SCREW.getMaterialTag(material), 'c', GT5RBlocks.SOLID_STEEL_CASING, 's', SCREWDRIVER.getTag(), 'W', WRENCH.getTag()), "SCS", "Wcs", "SCS");
             }
         });
 
@@ -838,13 +838,13 @@ public class MachineRecipes {
                         .put('c', CIRCUITS_COMPLEX)
                         .put('C', CIRCUITS_ELITE)
                         .put('I', GT5RCovers.COVER_CONVEYOR.getItem(EV))
-                        .put('H', GT5RBlocks.CASING_TITANIUM)
+                        .put('H', GT5RBlocks.TITANIUM_CASING)
                         .put('G', GEAR.getMaterialTag(Titanium))
                         .put('D', DRILLBIT.getMaterialTag(TungstenSteel)).build(), "cIc", "CHC", "GDG"));
         add(BLAST_FURNACE, LV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, LV, true))
-                        .put('H', GT5RBlocks.CASING_HEAT_PROOF)
+                        .put('H', GT5RBlocks.HEAT_PROOF_CASING)
                         .put('C', TIER_CIRCUITS.apply(LV))
                         .put('F', Items.FURNACE)
                         .build(), "FFF", "CHC", "LCL"));
@@ -863,7 +863,7 @@ public class MachineRecipes {
         add(CRACKING_UNIT, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', GT5RCovers.COVER_PUMP.getItem(HV).getItem())
-                        .put('O', GT5RBlocks.COIL_CUPRONICKEL)
+                        .put('O', GT5RBlocks.CUPRONICKEL_COIL)
                         .put('H', HULL.getItem(HV))
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .build(), "OPO", "CHC", "OPO"));
@@ -885,18 +885,18 @@ public class MachineRecipes {
                 ImmutableMap.<Character, Object>builder()
                         .put('P', GT5RCovers.COVER_PUMP.getItem(EV).getItem())
                         .put('I', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL))
-                        .put('H', GT5RBlocks.CASING_PIPE_TITANIUM)
+                        .put('H', GT5RBlocks.TITANIUM_PIPE_CASING)
                         .build(), "PIP", "IHI", "PIP"));
         add(IMPLOSION_COMPRESSOR, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
                         .put('O', Items.OBSIDIAN)
                         .put('C', TIER_CIRCUITS.apply(HV))
-                        .put('S', GT5RBlocks.CASING_SOLID_STEEL)
+                        .put('S', GT5RBlocks.SOLID_STEEL_CASING)
                         .build(), "OOO", "CSC", "LCL"));
         add(LARGE_AUTOCLAVE, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', GT5RBlocks.CASING_STAINLESS_STEEL)
+                        .put('W', GT5RBlocks.STAINLESS_STEEL_CASING)
                         .put('D', PLATE_DENSE.getMaterialTag(StainlessSteel))
                         .put('C', TIER_CIRCUITS.apply(IV))
                         .put('c', TIER_CIRCUITS.apply(EV)).build(), "cCc", "DWD", "DDD"));
@@ -923,7 +923,7 @@ public class MachineRecipes {
         add(LARGE_ELECTROLYZER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', GT5RBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.SMALL))
-                        .put('O', GT5RBlocks.COIL_NICHROME)
+                        .put('O', GT5RBlocks.NICHROME_COIL)
                         .put('H', HULL.getItem(HV))
                         .put('C', TIER_CIRCUITS.apply(EV))
                         .build(), "OPO", "CHC", "OPO"));
@@ -944,9 +944,9 @@ public class MachineRecipes {
                         .put('C', TIER_CIRCUITS.apply(IV))
                         .put('c', TIER_CIRCUITS.apply(EV)).build(), "GGG", "RWR", "cCc"));
         add(LARGE_SIFTER, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                of('C', TIER_CIRCUITS.apply(IV), 'M', MotorHV, 'c', GT5RCovers.COVER_CONVEYOR.getItem(HV), 'T', GT5RBlocks.CASING_TITANIUM), "McM", "cTc", "MCM"));
+                of('C', TIER_CIRCUITS.apply(IV), 'M', MotorHV, 'c', GT5RCovers.COVER_CONVEYOR.getItem(HV), 'T', GT5RBlocks.TITANIUM_CASING), "McM", "cTc", "MCM"));
         Arrays.stream(getStandard()).forEach(tier -> {
-            Block firebox = tier == LV ? GT5RBlocks.CASING_FIREBOX_BRONZE : tier == MV ? GT5RBlocks.CASING_FIREBOX_STEEL : tier == HV ? GT5RBlocks.CASING_FIREBOX_TITANIUM : GT5RBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
+            Block firebox = tier == LV ? GT5RBlocks.BRONZE_FIREBOX_CASING : tier == MV ? GT5RBlocks.STEEL_FIREBOX_CASING : tier == HV ? GT5RBlocks.TITANIUM_FIREBOX_CASING : GT5RBlocks.TUNGSTENSTEEL_FIREBOX_CASING;
             Tier circuitTier = tier == LV ? tier : tier == MV ? HV : tier == HV ? EV : IV;
             add(LARGE_BOILER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -972,7 +972,7 @@ public class MachineRecipes {
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, false))
                         .put('F', Items.FURNACE)
                         .put('C', TIER_CIRCUITS.apply(HV))
-                        .put('H', GT5RBlocks.CASING_HEAT_PROOF)
+                        .put('H', GT5RBlocks.HEAT_PROOF_CASING)
                         .build(), "FFF", "CHC", "LCL"));
         add(OIL_DRILLING_RIG, MV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
@@ -1008,14 +1008,14 @@ public class MachineRecipes {
                 ImmutableMap.<Character, Object>builder()
                         .put('E', GT5RItems.EmitterLV)
                         .put('S', GT5RItems.SensorLV)
-                        .put('H', GT5RBlocks.CASING_BLACK_BRONZE)
+                        .put('H', GT5RBlocks.BLACK_BRONZE_CASING)
                         .put('R', DiamondSawBlade)
                         .put('P', GT5RBlocks.FLUID_PIPE_PLASTIC.getBlockItem(PipeSize.SMALL))
                         .put('N', PLATE.getMaterialTag(Nickel)).build(), "ERE", "NHN", "SPS");
         add(VACUUM_FREEZER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, HV, true))
-                        .put('F', GT5RBlocks.CASING_FROST_PROOF)
+                        .put('F', GT5RBlocks.FROST_PROOF_CASING)
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('P', GT5RCovers.COVER_PUMP.getItem(HV).getItem())
                         .build(), "PPP", "CFC", "LCL"));

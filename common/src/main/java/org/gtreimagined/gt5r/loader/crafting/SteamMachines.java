@@ -31,10 +31,10 @@ public class SteamMachines {
         Object glass = Items.GLASS;
         Object steelPipe = GT5RBlocks.FLUID_PIPE_STEEL.getBlock(PipeSize.SMALL);
         Object bronzePipe = GT5RBlocks.FLUID_PIPE_BRONZE.getBlock(PipeSize.SMALL);
-        Object hullBronze = GT5RBlocks.CASING_BRONZE;
-        Object hullSteel = GT5RBlocks.CASING_STEEL;
-        Object brickedBronzeHull = GT5RBlocks.CASING_BRICKED_BRONZE;
-        Object brickedSteelHull = GT5RBlocks.CASING_BRICKED_STEEL;
+        Object hullBronze = GT5RBlocks.BRONZE_CASING;
+        Object hullSteel = GT5RBlocks.STEEL_CASING;
+        Object brickedBronzeHull = GT5RBlocks.BRICKED_BRONZE_CASING;
+        Object brickedSteelHull = GT5RBlocks.BRICKED_STEEL_CASING;
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.SOLID_FUEL_BOILER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'P', bronzePlate,
@@ -42,7 +42,7 @@ public class SteamMachines {
                         'B', bricks,
                         'F', furnace
                 ), "PPP", "PWP", "BFB");
-        provider.addItemRecipe(output, "steam_machines", GT5RBlocks.CASING_BRONZE,
+        provider.addItemRecipe(output, "steam_machines", GT5RBlocks.BRONZE_CASING,
                 ImmutableMap.of(
                         'P', bronzePlate,
                         'W', HAMMER.getTag()

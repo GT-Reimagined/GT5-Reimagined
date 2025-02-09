@@ -114,18 +114,18 @@ public class AssemblerLoader {
         addWall(Netherite, GT5RBlocks.NETHERITE_WALL);
         addWall(Adamantium, GT5RBlocks.ADAMANTIUM_WALL);
 
-        addCasing(Bronze, GT5RBlocks.CASING_BRONZE);
-        addCasing(Steel, GT5RBlocks.CASING_SOLID_STEEL);
-        addCasing(StainlessSteel, GT5RBlocks.CASING_STAINLESS_STEEL);
-        addCasing(Titanium, GT5RBlocks.CASING_TITANIUM);
-        addCasing(TungstenSteel, GT5RBlocks.CASING_TUNGSTENSTEEL);
-        addCasing(Invar, GT5RBlocks.CASING_HEAT_PROOF);
-        addCasing(Aluminium, GT5RBlocks.CASING_FROST_PROOF);
-        addCasing(Lead, GT5RBlocks.CASING_RADIATION_PROOF);
-        addCasing(Plastic, GT5RBlocks.CASING_PLASTIC);
-        addCasing(BlackBronze, GT5RBlocks.CASING_BLACK_BRONZE);
-        addCasing(Tungsten, GT5RBlocks.CASING_TUNGSTEN);
-        ASSEMBLER.RB().ii(of(GT5RBlocks.CASING_SOLID_STEEL), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GT5RBlocks.CASING_CHEMICALLY_INERT.asItem()).add("chemically_inert_casing", 50, 16);
+        addCasing(Bronze, GT5RBlocks.BRONZE_CASING);
+        addCasing(Steel, GT5RBlocks.SOLID_STEEL_CASING);
+        addCasing(StainlessSteel, GT5RBlocks.STAINLESS_STEEL_CASING);
+        addCasing(Titanium, GT5RBlocks.TITANIUM_CASING);
+        addCasing(TungstenSteel, GT5RBlocks.TUNGSTENSTEEL_CASING);
+        addCasing(Invar, GT5RBlocks.HEAT_PROOF_CASING);
+        addCasing(Aluminium, GT5RBlocks.FROST_PROOF_CASING);
+        addCasing(Lead, GT5RBlocks.RADIATION_PROOF_CASING);
+        addCasing(Plastic, GT5RBlocks.PLASTIC_CASING);
+        addCasing(BlackBronze, GT5RBlocks.BLACK_BRONZE_CASING);
+        addCasing(Tungsten, GT5RBlocks.TUNGSTEN_CASING);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.SOLID_STEEL_CASING), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GT5RBlocks.CHEMICALLY_INERT_CASING.asItem()).add("chemically_inert_casing", 50, 16);
     }
 
     private static void cables(){
@@ -155,14 +155,14 @@ public class AssemblerLoader {
 
 
     private static void coils(){
-        addCoil(GT5RBlocks.COIL_CUPRONICKEL, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_KANTHAL, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_NICHROME, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_TUNGSTENSTEEL, GT5RBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_HSSG, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_NAQUADAH, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_NAQUADAH_ALLOY, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.COIL_SUPERCONDUCTOR, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.CUPRONICKEL_COIL, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.KANTHAL_COIL, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.NICHROME_COIL, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.TUNGSTENSTEEL_COIL, GT5RBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.HSSG_COIL, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.NAQUADAH_COIL, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.NAQUADAH_ALLOY_COIL, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.SUPERCONDUCTOR_COIL, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
     }
 
     private static void frames(){

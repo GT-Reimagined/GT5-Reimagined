@@ -159,13 +159,13 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
     public BlockBasic getCasing(){
         if (tier == LV){
-            return GT5RBlocks.CASING_BRONZE_PLATED_BRICK;
+            return GT5RBlocks.BRONZE_PLATED_BRICK_CASING;
         } else if (tier == MV){
-            return GT5RBlocks.CASING_SOLID_STEEL;
+            return GT5RBlocks.SOLID_STEEL_CASING;
         } else if (tier == HV){
-            return GT5RBlocks.CASING_TITANIUM;
+            return GT5RBlocks.TITANIUM_CASING;
         }
-        return GT5RBlocks.CASING_TUNGSTENSTEEL;
+        return GT5RBlocks.TUNGSTENSTEEL_CASING;
     }
 
     public int getEUt(){
@@ -198,24 +198,24 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
 
     public Block getFireboxCasing(){
         if (tier == LV){
-            return GT5RBlocks.CASING_FIREBOX_BRONZE;
+            return GT5RBlocks.BRONZE_FIREBOX_CASING;
         } else if (tier == MV){
-            return GT5RBlocks.CASING_FIREBOX_STEEL;
+            return GT5RBlocks.STEEL_FIREBOX_CASING;
         } else if (tier == HV){
-            return GT5RBlocks.CASING_FIREBOX_TITANIUM;
+            return GT5RBlocks.TITANIUM_FIREBOX_CASING;
         }
-        return GT5RBlocks.CASING_FIREBOX_TUNGSTENSTEEL;
+        return GT5RBlocks.TUNGSTENSTEEL_FIREBOX_CASING;
     }
 
     public Block getPipeCasing(){
         if (tier == LV){
-            return GT5RBlocks.CASING_PIPE_BRONZE;
+            return GT5RBlocks.BRONZE_PIPE_CASING;
         } else if (tier == MV){
-            return GT5RBlocks.CASING_PIPE_STEEL;
+            return GT5RBlocks.STEEL_PIPE_CASING;
         } else if (tier == HV){
-            return GT5RBlocks.CASING_PIPE_TITANIUM;
+            return GT5RBlocks.TITANIUM_PIPE_CASING;
         }
-        return GT5RBlocks.CASING_PIPE_TUNGSTENSTEEL;
+        return GT5RBlocks.TUNGSTENSTEEL_PIPE_CASING;
     }
 
     public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){

@@ -62,63 +62,63 @@ public class BlockParts {
             }
         });
 
-        addBrickedCasing(output, provider, Bronze, GT5RBlocks.CASING_BRICKED_BRONZE);
+        addBrickedCasing(output, provider, Bronze, GT5RBlocks.BRICKED_BRONZE_CASING);
         provider.addStackRecipe(output, GT5RRef.ID, "firebricks", "blocks",
-                new ItemStack(GT5RBlocks.CASING_FIRE_BRICK), of('F', GTCoreItems.FireBrick), "FF", "FF");
-        addBrickedCasing(output, provider, Steel, GT5RBlocks.CASING_BRICKED_STEEL);
+                new ItemStack(GT5RBlocks.FIRE_BRICKS), of('F', GTCoreItems.FireBrick), "FF", "FF");
+        addBrickedCasing(output, provider, Steel, GT5RBlocks.BRICKED_STEEL_CASING);
 
-        addFirebox(output, provider, Bronze, GT5RBlocks.CASING_FIREBOX_BRONZE);
-        addFirebox(output, provider, Steel, GT5RBlocks.CASING_FIREBOX_STEEL);
-        addFirebox(output, provider, Titanium, GT5RBlocks.CASING_FIREBOX_TITANIUM);
-        addFirebox(output, provider, TungstenSteel, GT5RBlocks.CASING_FIREBOX_TUNGSTENSTEEL);
+        addFirebox(output, provider, Bronze, GT5RBlocks.BRONZE_FIREBOX_CASING);
+        addFirebox(output, provider, Steel, GT5RBlocks.STEEL_FIREBOX_CASING);
+        addFirebox(output, provider, Titanium, GT5RBlocks.TITANIUM_FIREBOX_CASING);
+        addFirebox(output, provider, TungstenSteel, GT5RBlocks.TUNGSTENSTEEL_FIREBOX_CASING);
 
-        addGearbox(output, provider, Bronze, GT5RBlocks.CASING_GEARBOX_BRONZE);
-        addGearbox(output, provider, Steel, GT5RBlocks.CASING_GEARBOX_STEEL);
-        addGearbox(output, provider, Titanium, GT5RBlocks.CASING_GEARBOX_TITANIUM);
-        addGearbox(output, provider, TungstenSteel, GT5RBlocks.CASING_GEARBOX_TUNGSTENSTEEL);
+        addGearbox(output, provider, Bronze, GT5RBlocks.BRONZE_GEARBOX_CASING);
+        addGearbox(output, provider, Steel, GT5RBlocks.STEEL_GEARBOX_CASING);
+        addGearbox(output, provider, Titanium, GT5RBlocks.TITANIUM_GEARBOX_CASING);
+        addGearbox(output, provider, TungstenSteel, GT5RBlocks.TUNGSTENSTEEL_GEARBOX_CASING);
 
-        addPipeCasing(output, provider, Bronze, GT5RBlocks.FLUID_PIPE_BRONZE, GT5RBlocks.CASING_PIPE_BRONZE);
-        addPipeCasing(output, provider, Steel, GT5RBlocks.FLUID_PIPE_STEEL, GT5RBlocks.CASING_PIPE_STEEL);
-        addPipeCasing(output, provider, Titanium, GT5RBlocks.FLUID_PIPE_TITANIUM, GT5RBlocks.CASING_PIPE_TITANIUM);
-        addPipeCasing(output, provider, TungstenSteel, GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL, GT5RBlocks.CASING_PIPE_TUNGSTENSTEEL);
-        addPipeCasing(output, provider, Polytetrafluoroethylene, GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL, GT5RBlocks.CASING_PIPE_PTFE);
+        addPipeCasing(output, provider, Bronze, GT5RBlocks.FLUID_PIPE_BRONZE, GT5RBlocks.BRONZE_PIPE_CASING);
+        addPipeCasing(output, provider, Steel, GT5RBlocks.FLUID_PIPE_STEEL, GT5RBlocks.STEEL_PIPE_CASING);
+        addPipeCasing(output, provider, Titanium, GT5RBlocks.FLUID_PIPE_TITANIUM, GT5RBlocks.TITANIUM_PIPE_CASING);
+        addPipeCasing(output, provider, TungstenSteel, GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL, GT5RBlocks.TUNGSTENSTEEL_PIPE_CASING);
+        addPipeCasing(output, provider, Polytetrafluoroethylene, GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL, GT5RBlocks.PTFE_PIPE_CASING);
 
-        addTurbine(output, provider, Steel, GT5RBlocks.CASING_TURBINE_STEEL);
-        addTurbine(output, provider, StainlessSteel, GT5RBlocks.CASING_TURBINE_STAINLESS);
-        addTurbine(output, provider, Titanium, GT5RBlocks.CASING_TURBINE_TITANIUM);
-        addTurbine(output, provider, TungstenSteel, GT5RBlocks.CASING_TURBINE_TUNGSTENSTEEL);
+        addTurbine(output, provider, Steel, GT5RBlocks.STEEL_TURBINE_CASING);
+        addTurbine(output, provider, StainlessSteel, GT5RBlocks.STAINLESS_STEEL_TURBINE_CASING);
+        addTurbine(output, provider, Titanium, GT5RBlocks.TITANIUM_TURBINE_CASING);
+        addTurbine(output, provider, TungstenSteel, GT5RBlocks.TUNGSTENSTEEL_TURBINE_CASING);
 
-        addCasing(output, provider, Invar, GT5RBlocks.CASING_HEAT_PROOF);
-        addCasing(output, provider, Aluminium, GT5RBlocks.CASING_FROST_PROOF);
-        addCasing(output, provider, Steel, GT5RBlocks.CASING_SOLID_STEEL);
-        addCasing(output, provider, StainlessSteel, GT5RBlocks.CASING_STAINLESS_STEEL);
-        addCasing(output, provider, Titanium, GT5RBlocks.CASING_TITANIUM);
-        addCasing(output, provider, Lead, GT5RBlocks.CASING_RADIATION_PROOF);
-        addCasing(output, provider, TungstenSteel, GT5RBlocks.CASING_TUNGSTENSTEEL);
-        addCasing(output, provider, Tungsten, GT5RBlocks.CASING_TUNGSTEN);
-        addCasing(output, provider, Platinum, GT5RBlocks.CASING_PLATINUM);
-        addCasing(output, provider, BlackBronze, GT5RBlocks.CASING_BLACK_BRONZE);
-        addCasing(output, provider, Plastic, GT5RBlocks.CASING_PLASTIC);
-        provider.addItemRecipe(output, "casings", GT5RBlocks.CASING_DENSE_LEAD,
+        addCasing(output, provider, Invar, GT5RBlocks.HEAT_PROOF_CASING);
+        addCasing(output, provider, Aluminium, GT5RBlocks.FROST_PROOF_CASING);
+        addCasing(output, provider, Steel, GT5RBlocks.SOLID_STEEL_CASING);
+        addCasing(output, provider, StainlessSteel, GT5RBlocks.STAINLESS_STEEL_CASING);
+        addCasing(output, provider, Titanium, GT5RBlocks.TITANIUM_CASING);
+        addCasing(output, provider, Lead, GT5RBlocks.RADIATION_PROOF_CASING);
+        addCasing(output, provider, TungstenSteel, GT5RBlocks.TUNGSTENSTEEL_CASING);
+        addCasing(output, provider, Tungsten, GT5RBlocks.TUNGSTEN_CASING);
+        addCasing(output, provider, Platinum, GT5RBlocks.PLATINUM_CASING);
+        addCasing(output, provider, BlackBronze, GT5RBlocks.BLACK_BRONZE_CASING);
+        addCasing(output, provider, Plastic, GT5RBlocks.PLASTIC_CASING);
+        provider.addItemRecipe(output, "casings", GT5RBlocks.DENSE_LEAD_CASING,
                 of('L', PLATE_DENSE.getMaterialTag(Lead), 'R', ROD_LONG.getMaterialTag(Lead), 'W', WRENCH.getTag()), "RLL", "LWL", "LLR");
 
         provider.addItemRecipe(output, "casings", GT5RBlocks.ELECTROLYTIC_CELL,
-                of('W', GT5RBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.VTINY), 'M', GT5RBlocks.CASING_STAINLESS_STEEL, 'C', TIER_CIRCUITS.apply(EV)), "WWW", "WMW", "CCC");
+                of('W', GT5RBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.VTINY), 'M', GT5RBlocks.STAINLESS_STEEL_CASING, 'C', TIER_CIRCUITS.apply(EV)), "WWW", "WMW", "CCC");
         provider.addItemRecipe(output, "casings", GT5RBlocks.GRINDING_WHEELS,
-                of('G', GEAR.getMaterialTag(TungstenSteel), 'M', GT5RBlocks.CASING_TUNGSTENSTEEL, 'D', GT5RTags.GRIND_HEADS), "GDG", "GMG");
+                of('G', GEAR.getMaterialTag(TungstenSteel), 'M', GT5RBlocks.TUNGSTENSTEEL_CASING, 'D', GT5RTags.GRIND_HEADS), "GDG", "GMG");
         provider.addItemRecipe(output, "casings", GT5RBlocks.ORE_WASHING_PARTS,
-                of('G', GEAR.getMaterialTag(Titanium), 'P', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL),'C', GT5RBlocks.CASING_TITANIUM, 'W', WRENCH.getTag()), "GGG", "PCP", "PWP");
-        provider.addItemRecipe(output, "casings", GT5RBlocks.FILTER_CASING, of('C', GT5RBlocks.CASING_TITANIUM, 'I', GT5RCovers.COVER_ITEM_FILTER.getItem()), " I ", "ICI", " I ");
+                of('G', GEAR.getMaterialTag(Titanium), 'P', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL),'C', GT5RBlocks.TITANIUM_CASING, 'W', WRENCH.getTag()), "GGG", "PCP", "PWP");
+        provider.addItemRecipe(output, "casings", GT5RBlocks.FILTER_CASING, of('C', GT5RBlocks.TITANIUM_CASING, 'I', GT5RCovers.COVER_ITEM_FILTER.getItem()), " I ", "ICI", " I ");
         provider.addItemRecipe(output, "casings", GT5RBlocks.BEDROCK_DRILL_HEAD,
-                of('D', GEM.getMaterialTag(Diamond), 'd', DRILLBIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.CASING_TUNGSTENSTEEL), "DdD", "GCG", "DdD");
-        addCoil(output, provider, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_CUPRONICKEL);
-        addCoil(output, provider, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_KANTHAL);
-        addCoil(output, provider, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_NICHROME);
-        addCoil(output, provider, GT5RBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_TUNGSTENSTEEL);
-        addCoil(output, provider, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_HSSG);
-        addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_NAQUADAH);
-        addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_NAQUADAH_ALLOY);
-        addCoil(output, provider, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), GT5RBlocks.COIL_SUPERCONDUCTOR);
+                of('D', GEM.getMaterialTag(Diamond), 'd', DRILLBIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.TUNGSTENSTEEL_CASING), "DdD", "GCG", "DdD");
+        addCoil(output, provider, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GT5RBlocks.CUPRONICKEL_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GT5RBlocks.KANTHAL_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY), GT5RBlocks.NICHROME_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_TUNGSTEN_STEEL.getBlockItem(PipeSize.TINY), GT5RBlocks.TUNGSTENSTEEL_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY), GT5RBlocks.HSSG_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), GT5RBlocks.NAQUADAH_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), GT5RBlocks.NAQUADAH_ALLOY_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), GT5RBlocks.SUPERCONDUCTOR_COIL);
 
         addTierCasing(output, provider, Tier.ULV);
         addTierCasing(output, provider, LV);
@@ -142,22 +142,22 @@ public class BlockParts {
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
 
-        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.CASING_ENGINE_INTAKE, 1),
-                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.CASING_TITANIUM, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
+        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.ENGINE_INTAKE_CASING, 1),
+                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
 
-        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.CASING_BRONZE_PLATED_BRICK, 1),
+        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.BRONZE_PLATED_BRICK_CASING, 1),
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Bronze))
                         .put('B', Blocks.BRICKS)
                         .put('W', WRENCH.getTag()).put('H', HAMMER.getTag()).build(), "PHP", "PBP", "PWP");
 
-        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.CASING_STEEL,
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.STEEL_CASING,
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Steel))
                         .put('W', HAMMER.getTag()).build(), "PPP", "PWP", "PPP");
-        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.CASING_FUSION, 1),
+        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.FUSION_CASING, 1),
                 of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.CASING_LUV)
                 ,
                 "PHP", "PFP", "PWP");

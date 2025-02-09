@@ -471,7 +471,7 @@ public class GT5RLocalizations {
             override(MACERATOR, EV, "Pulverizer (%s)");
             override(GT5RItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
             add(GT5RBlocks.POWDER_BARREL, "Powder Barrel");
-            override(GT5RBlocks.CASING_BRONZE_PLATED_BRICK.getDescriptionId(), "Bronze Plated Bricks");
+            override(GT5RBlocks.BRONZE_PLATED_BRICK_CASING.getDescriptionId(), "Bronze Plated Bricks");
             override("machine.hull", "%s " + HULL.getLang(locale));
             override(GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getDescriptionId(), "Redstone Conductor (Accept)");
             override(GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getDescriptionId(), "Redstone Conductor (Emit)");

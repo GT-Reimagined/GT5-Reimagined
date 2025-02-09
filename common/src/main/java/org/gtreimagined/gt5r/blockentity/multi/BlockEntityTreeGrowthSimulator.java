@@ -38,7 +38,7 @@ public class BlockEntityTreeGrowthSimulator extends BlockEntityMultiMachine<Bloc
 
     @Override
     public ITextureProvider getHatchBlock(BlockPos pos) {
-        if (pos.getY() == this.getBlockPos().getY()) return GT5RBlocks.CASING_BLACK_BRONZE;
+        if (pos.getY() == this.getBlockPos().getY()) return GT5RBlocks.BLACK_BRONZE_CASING;
         return super.getHatchBlock(pos);
     }
 }
