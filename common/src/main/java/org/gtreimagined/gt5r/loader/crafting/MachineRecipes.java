@@ -839,6 +839,12 @@ public class MachineRecipes {
                         .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV))
                         .put('C', TIER_CIRCUITS.apply(IV))
                         .put('H', HULL.getItem(IV)).build(), "ARA", "CHC", "ARA"));
+        add(BASIC_ASSEMBLY_LINE, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('A', GT5RBlocks.BASIC_ASSEMBLER_CASING)
+                        .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(HV))
+                        .put('C', TIER_CIRCUITS.apply(HV))
+                        .put('H', HULL.getItem(HV)).build(), "ARA", "CHC", "ARA"));
         add(BEDROCK_DRILL, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('c', CIRCUITS_COMPLEX)
