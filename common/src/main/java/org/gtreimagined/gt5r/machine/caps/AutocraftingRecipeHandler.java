@@ -9,6 +9,7 @@ import muramasa.antimatter.machine.MachineFlag;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.recipe.map.IRecipeMap;
 import muramasa.antimatter.recipe.serializer.MachineRecipeSerializer;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.nbt.CompoundTag;
@@ -32,30 +33,45 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
 
     @Override
     protected boolean canRecipeContinue() {
-        return super.canRecipeContinue() && (tile.getRecipe() != null && tile.getRecipe().getId().equals(activeRecipe.getId()));
+        return super.canRecipeContinue() && (activeRecipe.getMapId().isEmpty() || (tile.getRecipe() != null && tile.getRecipe().getId().equals(activeRecipe.getId())));
     }
 
     @Override
     public IRecipe findRecipe() {
-        IRecipe recipe = super.findRecipe();
-        if (recipe == null) {
-            if (tile.getRecipe() != null) {
-                List<Ingredient> condensed = new ArrayList<>();
-                Map<Ingredient, Integer> condensedMap = new HashMap<>();
-                for (Ingredient i : tile.getRecipe().getIngredients()) {
-                    if (i.isEmpty()) continue;
-                    if (!condensedMap.containsKey(i)) {
-                        condensedMap.put(i, Math.max(1, RecipeIngredient.count(i)));
-                    } else {
-                        condensedMap.compute(i, (k, currentCount) -> currentCount + Math.max(1, RecipeIngredient.count(i)));
-                    }
-                }
-                condensedMap.forEach((k, v) -> {
-                    condensed.add(RecipeIngredient.of(k, v));
-                });
-                recipe = new Recipe(condensed, new ItemStack[]{tile.getRecipe().getResultItem()}, List.of(), null, 1024, 16, 0, 1);
-                recipe.setId(tile.getRecipe().getId());
+        if (lastRecipe != null) {
+            activeRecipe = lastRecipe;
+            if (canRecipeContinue()) {
+                activeRecipe = null;
+                return lastRecipe;
             }
+            activeRecipe = null;
+        }
+        IRecipe recipe = null;
+        if (tile.getRecipe() != null) {
+            List<Ingredient> condensed = new ArrayList<>();
+            Map<Ingredient, Integer> condensedMap = new HashMap<>();
+            for (Ingredient i : tile.getRecipe().getIngredients()) {
+                if (i.isEmpty()) continue;
+                if (!condensedMap.containsKey(i)) {
+                    condensedMap.put(i, Math.max(1, RecipeIngredient.count(i)));
+                } else {
+                    condensedMap.compute(i, (k, currentCount) -> currentCount + Math.max(1, RecipeIngredient.count(i)));
+                }
+            }
+            condensedMap.forEach((k, v) -> {
+                condensed.add(RecipeIngredient.of(k, v));
+            });
+            recipe = new Recipe(condensed, new ItemStack[]{tile.getRecipe().getResultItem()}, List.of(), null, 1024, 16, 0, 1);
+            recipe.setId(tile.getRecipe().getId());
+            recipe.setMapId("");
+            boolean valid = validateRecipe(recipe);
+            if (!valid) {
+                recipe = null;
+            }
+        }
+        if (recipe == null) {
+            IRecipeMap map = getRecipeMap();
+            recipe = map != null ? map.find(tile.itemHandler, tile.fluidHandler, tile.getMachineTier(), this::validateRecipe) : null;
         }
         return recipe;
     }
