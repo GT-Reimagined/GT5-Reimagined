@@ -2,16 +2,22 @@ package org.gtreimagined.gt5r.data;
 
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IGuiHandler;
+import muramasa.antimatter.cover.CoverOutput;
 import muramasa.antimatter.gui.BarDir;
 import muramasa.antimatter.gui.ButtonOverlay;
 import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
+import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
+import muramasa.antimatter.gui.widget.IOWidget;
 import muramasa.antimatter.gui.widget.IconWidget;
+import muramasa.antimatter.gui.widget.MachineStateWidget;
 import muramasa.antimatter.gui.widget.ProgressWidget;
+import muramasa.antimatter.gui.widget.TextWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
@@ -19,6 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
+import org.gtreimagined.gt5r.gui.widgets.AutocrafterProgressWidget;
 import org.gtreimagined.gt5r.gui.widgets.CoalBoilerFuelWidget;
 import org.gtreimagined.gt5r.gui.widgets.CoalBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
@@ -27,6 +34,7 @@ import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
 
 import static muramasa.antimatter.gui.SlotType.*;
 import static muramasa.antimatter.gui.Widget.builder;
+import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
@@ -441,6 +449,15 @@ public class Guis {
                     .addButton(152, 63, ButtonOverlay.APAD_RIGHT, false);
         });
 
+        AUTOCRAFTER.getCallbacks().remove(1);
+        AUTOCRAFTER.addGuiCallback(t -> {
+            t.addWidget(AutocrafterProgressWidget.build())
+                    .addWidget(MachineStateWidget.build());
+            t.addWidget(IOWidget.build(9, 63).onlyIf(u -> u.handler instanceof BlockEntityMachine<?> machine &&
+                    machine.getOutputFacing() != null &&
+                    machine.coverHandler.map(c -> c.getOutputCover() instanceof CoverOutput).orElse(false) &&
+                    !(u.handler instanceof BlockEntityMultiMachine<?>)));
+        });
         ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
         ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
         CHEST_BUFFER.getCallbacks().remove(1);

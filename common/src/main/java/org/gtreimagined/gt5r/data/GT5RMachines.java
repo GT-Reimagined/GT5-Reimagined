@@ -8,6 +8,7 @@ import muramasa.antimatter.blockentity.single.BlockEntityDigitalTransformer;
 import muramasa.antimatter.blockentity.single.BlockEntityTransformer;
 import muramasa.antimatter.cover.ICover;
 import muramasa.antimatter.data.AntimatterMaterials;
+import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.BlockMachine;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
@@ -103,6 +104,7 @@ import org.gtreimagined.gtcore.machine.DrumMachine;
 import org.gtreimagined.gtcore.machine.MultiblockTankMachine;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import static muramasa.antimatter.Data.*;
@@ -408,6 +410,7 @@ public class GT5RMachines {
 
     public static void init() {
         AntimatterAPI.registerJEICategoryWorkstation(RecipeMaps.ALLOY_SMELTER, MULTI_SMELTER, HV);
+        AntimatterJEIREIPlugin.addWorkstations(new ResourceLocation("crafting"), l -> l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList()));
     }
 
     private static int getBlockColorNuclear(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, @Nullable BlockEntityMachine<?> machine, int i) {
