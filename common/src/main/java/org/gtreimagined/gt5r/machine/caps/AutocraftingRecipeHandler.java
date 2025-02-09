@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.machine.caps;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.machine.MachineFlag;
@@ -20,6 +21,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static muramasa.antimatter.machine.MachineState.ACTIVE;
+import static muramasa.antimatter.machine.MachineState.INVALID_TIER;
 
 public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocrafter> extends ParallelRecipeHandler<T>{
     public AutocraftingRecipeHandler(T tile, int maxSimultaneousRecipes) {
@@ -54,6 +58,40 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
             }
         }
         return recipe;
+    }
+
+    public void checkRecipe() {
+        if (activeRecipe != null) {
+            return;
+        }
+        //First lookup.
+        if (!this.tile.hadFirstTick() && hasLoadedInput()) {
+            if (!tile.getMachineState().allowRecipeCheck()) return;
+            activeRecipe = findRecipe();
+            if (activeRecipe == null) return;
+            calculateDurations();
+            lastRecipe = activeRecipe;
+            return;
+        }
+        if (tile.getMachineState().allowRecipeCheck()) {
+            if ((activeRecipe = cachedRecipe()) != null || (activeRecipe = findRecipe()) != null) {
+                if (!validateRecipe(activeRecipe)) {
+                    tile.setMachineState(INVALID_TIER);
+                    activeRecipe = null;
+                    return;
+                }
+                calculateDurations();
+                if (!consumeResourceForRecipe(true) || !canRecipeContinue() || (generator && (!activeRecipe.hasInputFluids() || activeRecipe.getInputFluids().size() != 1))) {
+                    activeRecipe = null;
+                    tile.setMachineState(tile.getDefaultMachineState());
+                    //wait half a second after trying again.
+                    tickTimer += 10;
+                    return;
+                }
+                activateRecipe(true);
+                tile.setMachineState(ACTIVE);
+            }
+        }
     }
 
     public int getOverclock() {
