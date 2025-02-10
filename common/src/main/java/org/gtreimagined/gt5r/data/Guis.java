@@ -11,13 +11,11 @@ import muramasa.antimatter.gui.GuiData;
 import muramasa.antimatter.gui.MenuHandlerMachine;
 import muramasa.antimatter.gui.container.ContainerBasicMachine;
 import muramasa.antimatter.gui.container.ContainerMachine;
-import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
 import muramasa.antimatter.gui.slot.ISlotProvider;
 import muramasa.antimatter.gui.widget.IOWidget;
 import muramasa.antimatter.gui.widget.IconWidget;
 import muramasa.antimatter.gui.widget.MachineStateWidget;
 import muramasa.antimatter.gui.widget.ProgressWidget;
-import muramasa.antimatter.gui.widget.TextWidget;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
@@ -34,7 +32,6 @@ import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
 
 import static muramasa.antimatter.gui.SlotType.*;
 import static muramasa.antimatter.gui.Widget.builder;
-import static muramasa.antimatter.machine.MachineFlag.*;
 import static muramasa.antimatter.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
@@ -308,7 +305,7 @@ public class Guis {
                 .add(STORAGE, 98 + 18 * 2, 23)
                 .add(STORAGE, 98, 41).add(STORAGE, 98 + 18, 41)
                 .add(STORAGE, 98 + 18 * 2, 41);
-        BASIC_ASSEMBLY_LINE.add(MULTIBLOCK.getSlots());
+        AUTOCRAFTER_ASSEMBLY_LINE.add(MULTIBLOCK.getSlots());
         BLAST_FURNACE.add(MULTIBLOCK.getSlots());
         IMPLOSION_COMPRESSOR.add(MULTIBLOCK.getSlots());
         VACUUM_FREEZER.add(MULTIBLOCK.getSlots());
@@ -348,7 +345,7 @@ public class Guis {
         ELECTRIC_ITEM_FILTER.getGui().setBackgroundTexture("electric_item_filter");
         ELECTRIC_TYPE_FILTER.getGui().setBackgroundTexture("electric_type_filter");
         ASSEMBLY_LINE.getGui().setBackgroundTexture("multiblock");
-        BASIC_ASSEMBLY_LINE.getGui().setBackgroundTexture("multiblock");
+        AUTOCRAFTER_ASSEMBLY_LINE.getGui().setBackgroundTexture("multiblock");
         BEDROCK_DRILL.getGui().setBackgroundTexture("multiblock");
         BLAST_FURNACE.getGui().setBackgroundTexture("multiblock");
         IMPLOSION_COMPRESSOR.getGui().setBackgroundTexture("multiblock");

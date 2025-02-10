@@ -147,13 +147,13 @@ public class BlockParts {
                 ,
                 "PHP", "GFG", "PWP");
         provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLY_LINE_CASING,
-                of('S', PLATE.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(TungstenSteel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
-        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLER_CASING,
+                of('S', PLATE.getMaterialTag(TungstenSteel), 'F', FRAME.getMaterialTag(TungstenSteel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ADVANCED_ASSEMBLER_CASING,
                 of('C', TIER_CIRCUITS.apply(EV), 'c', TIER_CIRCUITS.apply(IV), 'F', FRAME.getMaterialTag(TungstenSteel), 'M', GTCoreItems.MotorIV), "CcC", "CFC", "CMC");
-        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.BASIC_ASSEMBLY_LINE_CASING,
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.AUTOCRAFTER_ASSEMBLY_LINE_CASING,
                 of('S', PLATE.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(Steel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(HV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
-        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.BASIC_ASSEMBLER_CASING,
-                of('C', TIER_CIRCUITS.apply(MV), 'c', TIER_CIRCUITS.apply(HV), 'F', FRAME.getMaterialTag(Steel), 'M', GTCoreItems.MotorHV), "CcC", "CFC", "CMC");
+        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLER_CASING,
+                of('C', TIER_CIRCUITS.apply(MV), 'c', TIER_CIRCUITS.apply(HV), 'I', GT5RCovers.COVER_CONVEYOR.getItem(HV), 'F', FRAME.getMaterialTag(Steel), 'M', GTCoreItems.MotorHV), "IcI", "CFC", "CMC");
         provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.GRATE_CASING,
                 of('B', Items.IRON_BARS, 'R', ROTOR.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(Steel), 'M', GTCoreItems.MotorMV), "BRB", "BFB", "BMB");
 
