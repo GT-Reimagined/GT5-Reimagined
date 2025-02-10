@@ -18,6 +18,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.WIRE_MILL;
 public class WiremillLoader {
     public static void init() {
         AntimatterAPI.all(Wire.class).forEach(t -> {
+            if (!t.getMaterial().has(INGOT) && !t.getMaterial().has(DUST)) return;
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
             RecipeIngredient ing = t.getMaterial().has(INGOT) ? INGOT.getMaterialIngredient(t.getMaterial(),1) : DUST.getMaterialIngredient(t.getMaterial(),1);
@@ -27,6 +28,7 @@ public class WiremillLoader {
             }
         });
         AntimatterAPI.all(RedstoneWire.class).forEach(t -> {
+            if (!t.getMaterial().has(INGOT) && !t.getMaterial().has(DUST)) return;
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
             RecipeIngredient ing = t.getMaterial().has(INGOT) ? INGOT.getMaterialIngredient(t.getMaterial(),1) : DUST.getMaterialIngredient(t.getMaterial(),1);
