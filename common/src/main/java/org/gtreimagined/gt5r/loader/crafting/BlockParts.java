@@ -29,6 +29,7 @@ import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
+import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
@@ -119,6 +120,8 @@ public class BlockParts {
         addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), GT5RBlocks.NAQUADAH_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), GT5RBlocks.NAQUADAH_ALLOY_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), GT5RBlocks.SUPERCONDUCTOR_COIL);
+        provider.addItemRecipe(output, "coils", GT5RBlocks.FUSION_COIL,
+                of('C', TIER_CIRCUITS.apply(LUV), 'F', GT5RItems.FieldGenMV, 'c', GT5RBlocks.SUPERCONDUCTOR_COIL, 'I', GTCoreItems.IridiumNeutronReflector), "CIC", "FcF", "CIC");
 
         addTierCasing(output, provider, Tier.ULV);
         addTierCasing(output, provider, LV);
