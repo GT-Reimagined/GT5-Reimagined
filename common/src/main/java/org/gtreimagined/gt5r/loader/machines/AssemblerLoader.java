@@ -206,6 +206,9 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Tungsten, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(FALDuctTape).add("fal_duct_tape", 200, 16);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Graphite, 8), FOIL.getMaterialIngredient(Silicon, 1)).fi(Glue.getLiquid(250)).io(DUST_SMALL.get(Graphene)).add("graphene_dust", 480, 240);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL)), of(GT5RCovers.COVER_PUMP.getItem(EV))).io(GT5RBlocks.FLUID_PIPE_HP.getBlockItem(PipeSize.SMALL)).add("small_hp_fluid_pipe", 300, 96);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.NORMAL)), of(GT5RCovers.COVER_PUMP.getItem(IV))).io(GT5RBlocks.FLUID_PIPE_HP.getBlockItem(PipeSize.NORMAL)).add("hp_fluid_pipe", 400, 148);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.LARGE)), of(2, GT5RCovers.COVER_PUMP.getItem(IV))).io(GT5RBlocks.FLUID_PIPE_HP.getBlockItem(PipeSize.LARGE)).add("large_hp_fluid_pipe", 600, 256);
     }
 
     private static void carpet(){
