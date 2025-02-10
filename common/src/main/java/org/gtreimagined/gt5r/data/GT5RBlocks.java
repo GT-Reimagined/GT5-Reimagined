@@ -295,7 +295,6 @@ public class GT5RBlocks {
     public static final FluidPipe<?> FLUID_PIPE_PVC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.PolyvinylChloride, 333, true).caps(1).pressures(getPressures(450)));
     public static final FluidPipe<?> FLUID_PIPE_ADAMANTIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Adamantium, 6531, true).acidProof(true).pressures(getPressures(30000)));
     public static final FluidPipe<?> FLUID_PIPE_HP = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(1).pressures(10000));
-    public static final FluidPipe<?> FLUID_PIPE_PLASMA = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.PlasmaContainment, 100000, true).sizes(PipeSize.NORMAL).caps(1).pressures(100000));
     public static final ItemPipe<?> ITEM_PIPE_BRASS = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Brass).stepsize(32768).caps(0, 0, 0, 1, 2, 4));
     public static final ItemPipe<?> ITEM_PIPE_CUPRONICKEL = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Cupronickel).stepsize(32768).caps(0, 0, 0, 1, 2, 4));
     public static final ItemPipe<?> ITEM_PIPE_BLACK_BRONZE = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.BlackBronze).stepsize(16384).caps(0, 0, 0, 2, 4, 8));
@@ -306,7 +305,6 @@ public class GT5RBlocks {
     public static final ItemPipe<?> ITEM_PIPE_PLATINUM = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Platinum).stepsize(8192).caps(0, 0, 0, 4, 8, 16));
     public static final ItemPipe<?> ITEM_PIPE_OSMIUM = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Osmium).stepsize(4096).caps(0, 0, 0, 8, 16, 32));
     public static final ItemPipe<?> ITEM_PIPE_ULTIMET = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Ultimet).stepsize(2048).caps(0, 0, 0, 16, 32, 64));
-    //public static final ItemPipe<?> ITEM_PIPE_HC = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, HighCapacity).stepsize(4096).caps(64));
     public static final ItemPipe<?> ITEM_PIPE_OSMIRIDIUM = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Osmiridium).stepsize(1024).caps(0, 0, 0, 32, 64, 128));
 
     public static void init(){
