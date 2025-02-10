@@ -1038,6 +1038,11 @@ public class MachineRecipes {
                         .put('C', TIER_CIRCUITS.apply(HV))
                         .put('P', GT5RCovers.COVER_PUMP.getItem(HV).getItem())
                         .build(), "PPP", "CFC", "LCL"));
+        add(FUSION_REACTOR, LUV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                ImmutableMap.<Character, Object>builder()
+                        .put('C', TIER_CIRCUITS.apply(LUV))
+                        .put('F', GT5RItems.FieldGenIV)
+                        .put('H', HULL.getItem(LUV)).build(), "CFC", "FHF", "CFC"));
     }
 
     private static <T extends Machine<T>> void add(T machine, Tier tier, BiConsumer<T, Item> callback) {
