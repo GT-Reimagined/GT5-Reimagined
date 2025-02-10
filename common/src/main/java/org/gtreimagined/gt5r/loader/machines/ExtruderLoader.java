@@ -185,7 +185,7 @@ public class ExtruderLoader {
             }
         });
 
-        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood).forEach(t -> {
+        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial().has(INGOT)).forEach(t -> {
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
             addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 3);
@@ -194,6 +194,7 @@ public class ExtruderLoader {
         });
 
         AntimatterAPI.all(ItemPipe.class).forEach(t -> {
+            if (!t.getMaterial().has(INGOT)) return;
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
             addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 3);
@@ -202,6 +203,7 @@ public class ExtruderLoader {
         });
 
         AntimatterAPI.all(HeatPipe.class).forEach(t -> {
+            if (!t.getMaterial().has(INGOT)) return;
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 10);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 20);
             addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 30);
