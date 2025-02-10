@@ -251,7 +251,7 @@ public class GT5RLocalizations {
 
             add("tooltip.large_boiler.0", "Controller Block for the Large Boiler");
             add("tooltip.large_boiler.1", "Produces %sL of Steam with 1 Coal at %sL/s");
-            add("tooltip.large_boiler.2", "A programmed circuit in the main block throttles the boiler (-1000L/s per config)");
+            add("tooltip.large_boiler.2", "A Selector tag in the main block throttles the boiler (-1000L/s per config)");
             add("tooltip.large_boiler.3", "Size(WxHxD): 3x5x3, Controller (Front middle in fireboxes)");
             add("tooltip.large_boiler.4", "3x1x3 of %s (Bottom layer, Min 4)");
             add("tooltip.large_boiler.5", "3x4x3 of %s (above Fireboxes, hollow, Min 24!)");
