@@ -385,11 +385,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SiliconeRubber).asSolid(900, 0, PLATE, MOLTEN);
         event.setMaterial(Materials.StyreneButadieneRubber).asSolid(295, 0, PLATE);
         /**
-         **  Misc
-         **/
-
-        event.setMaterial(Materials.Superconductor).asSolid(PLATE);
-        /**
          ***  Fluids
          **/
         /**
