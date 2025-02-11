@@ -32,6 +32,7 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import java.util.function.Consumer;
 
@@ -111,7 +112,7 @@ public class BlockParts {
                 of('G', GEAR.getMaterialTag(Titanium), 'P', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL),'C', GT5RBlocks.TITANIUM_CASING, 'W', WRENCH.getTag()), "GGG", "PCP", "PWP");
         provider.addItemRecipe(output, "casings", GT5RBlocks.FILTER_CASING, of('C', GT5RBlocks.TITANIUM_CASING, 'I', GT5RCovers.COVER_ITEM_FILTER.getItem()), " I ", "ICI", " I ");
         provider.addItemRecipe(output, "casings", GT5RBlocks.BEDROCK_DRILL_HEAD,
-                of('D', GEM.getMaterialTag(Diamond), 'd', DRILLBIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.TUNGSTENSTEEL_CASING), "DdD", "GCG", "DdD");
+                of('D', GT5RTags.GRIND_HEADS, 'd', DRILLBIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.TUNGSTENSTEEL_CASING), "GdG", "DCD", "GdG");
         addCoil(output, provider, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GT5RBlocks.CUPRONICKEL_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GT5RBlocks.KANTHAL_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY), GT5RBlocks.NICHROME_COIL);
