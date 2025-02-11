@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import net.minecraft.nbt.CompoundTag;
+import muramasa.antimatter.util.Utils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
@@ -12,11 +12,6 @@ import static org.gtreimagined.gt5r.data.Materials.SquidInk;
 
 public class PrinterLoader {
     public static void init(){
-        ItemStack dataStick = new ItemStack(GT5RItems.DataStick);
-        CompoundTag display = dataStick.getOrCreateTagElement("display");
-        CompoundTag name = new CompoundTag();
-        name.putString("text", "With Scanned Book Data");
-        display.put("Name", name);
-        RecipeMaps.PRINTING.RB().ii(RecipeIngredient.of(Items.PAPER, 3), RecipeIngredient.of(dataStick)).fi(SquidInk.getLiquid(L)).fake().add("printed_pages", 400, 2);
+        RecipeMaps.PRINTING.RB().ii(RecipeIngredient.of(Items.PAPER, 3), RecipeIngredient.of(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("With Scanned Book Data"))).setNoConsume()).fi(SquidInk.getLiquid(L)).io(GT5RItems.PrintedPages).fake().add("printed_pages", 400, 2);
     }
 }
