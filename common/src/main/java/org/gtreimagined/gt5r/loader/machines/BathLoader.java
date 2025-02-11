@@ -21,6 +21,7 @@ import net.minecraft.world.level.material.Fluid;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
@@ -59,7 +60,7 @@ public class BathLoader {
                 .fi(Netherite.getLiquid(L/4))
                 .io(GEM.get(NetherizedDiamond))
                 .add("netherized_diamond_recipe",144);
-        BATH.RB().fi(FluidIngredient.of(TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, "blue_dye")), L))
+        BATH.RB().fi(FluidIngredient.of(GT5RTags.BLUE_DYE, L))
                 .ii(Items.PAPER).io(GTCoreItems.EmptyBlueprint).add("empty_blueprint", 16);
         BATH.RB().ii(DUST.getMaterialIngredient(Tungstate, 7)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(LithiumChloride, 4), DUST.get(TungsticAcid, 7)).add("tungstate", 512);
         BATH.RB().ii(DUST.getMaterialIngredient(Scheelite, 6)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(CalciumChloride, 3), DUST.get(TungsticAcid, 7)).add("scheelite", 512);

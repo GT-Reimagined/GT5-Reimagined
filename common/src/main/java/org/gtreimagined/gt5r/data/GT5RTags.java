@@ -23,6 +23,8 @@ public class GT5RTags {
     public static TagKey<Item> TRANSISTORS = TagUtils.getItemTag(new ResourceLocation(GT5RRef.ID, "transistors"));
     public static TagKey<Item> DIODES = TagUtils.getItemTag(new ResourceLocation(GT5RRef.ID, "diodes"));
     public static final TagKey<Block> ASPHALT = TagUtils.getBlockTag(new ResourceLocation(GT5RRef.ID, "asphalt"));
+
+    public static final TagKey<Fluid> BLUE_DYE = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, "blue_dye"));
     public static TagKey<Item> getTag(String id){
         return TagUtils.getForgelikeItemTag(id);
     }
