@@ -62,12 +62,11 @@ public class ForgeHammerLoader {
             FORGE_HAMMER.RB().ii(GEM.getMaterialIngredient(m, 1)).io(GEM_FLAWED.get(m, 2)).add(m.getId() + "_flawed", 64, 16);
             FORGE_HAMMER.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(GEM_CHIPPED.get(m, 2)).add(m.getId() + "_chipped", 64, 16);
         });
-        AntimatterAPI.all(StoneType.class, GT5RRef.ID, s -> {
-            if (!(s instanceof CobbleStoneType)) return;
-            FORGE_HAMMER.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock(""), 1)).io(new ItemStack(((CobbleStoneType)s).getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
-            FORGE_HAMMER.RB().ii(RecipeIngredient.of(((CobbleStoneType)s).getBlock("cobble").asItem(), 1)).io(DUST.get(s.getMaterial(), 1)).add("cobbled_" + s.getMaterial().getId() + "_dust",10, 16);
+        AntimatterAPI.all(StoneType.class, s -> {
+            if (!(s instanceof CobbleStoneType cs)) return;
+            FORGE_HAMMER.RB().ii(RecipeIngredient.of(cs.getBlock(""), 1)).io(new ItemStack(cs.getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
         });
-        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(ForgeCTags.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.STONE, 1)).io(new ItemStack(Items.COBBLESTONE)).add("cobblestone",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(ForgeCTags.GRAVEL, 1)).io(new ItemStack(Items.SAND)).add("sand",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(ForgeCTags.GLASS, 1)).io(DUST.get(Glass)).add("glass_dust",10, 16);
