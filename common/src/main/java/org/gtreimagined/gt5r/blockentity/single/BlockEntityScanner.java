@@ -41,6 +41,9 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                                 ItemStack output = input0.copy();
                                 output.getTagElement("prospectData").putBoolean("analyzed", true);
                                 return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("data_stick_prospection", 1000, 32);
+                            } else if (input1.getItem() == GT5RItems.DataStick && input1.getTag() != null) {
+                                ItemStack output = input1.copy();
+                                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy()).setNoConsume()).io(output).add("data_stick_copying", 128, 32);
                             }
                         } else if (input0.getItem() == Items.WRITTEN_BOOK && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
                             ItemStack output = new ItemStack(GT5RItems.DataStick);
@@ -50,6 +53,10 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                             ItemStack output = new ItemStack(GT5RItems.DataStick);
                             output.getOrCreateTag().put("blueprintData", input0.getTag().copy());
                             return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("blueprint_copying", 128, 32);
+                        } else if (input0.getItem() == Items.FILLED_MAP && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
+                            ItemStack output = new ItemStack(GT5RItems.DataStick);
+                            output.getOrCreateTag().put("filledMapData", input0.getTag().copy());
+                            return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("filled_map_copying", 128, 32);
                         }
                     }
                 }
@@ -58,7 +65,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK || stack.getItem() == GTCoreItems.Blueprint;
+                return super.accepts(stack) || stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK || stack.getItem() == Items.FILLED_MAP || stack.getItem() == GTCoreItems.Blueprint;
             }
 
             @Override

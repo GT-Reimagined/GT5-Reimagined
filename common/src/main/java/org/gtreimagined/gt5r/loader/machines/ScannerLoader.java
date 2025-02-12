@@ -17,5 +17,7 @@ public class ScannerLoader {
         ItemStack outputDataStick = new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Scanned Book Data"));
         RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(Items.WRITTEN_BOOK), RecipeIngredient.of(emptyDataStick)).io(outputDataStick).fake().add("book_data_stick", 128, 32);
         RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(GTCoreItems.Blueprint), RecipeIngredient.of(emptyDataStick)).io(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Scanned Blueprint Data"))).fake().add("blueprint_data_stick", 128, 32);
+        RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Stick to overwrite"))), RecipeIngredient.of(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Stick to copy"))).setNoConsume()).io(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Copy of the Stick"))).fake().add("data_stick_copying", 128, 32);
+        RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(Items.FILLED_MAP), RecipeIngredient.of(emptyDataStick)).io(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Scanned Map Data"))).fake().add("map_data_stick", 128, 32);
     }
 }
