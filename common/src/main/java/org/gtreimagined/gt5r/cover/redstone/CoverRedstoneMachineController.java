@@ -18,7 +18,7 @@ public class CoverRedstoneMachineController extends CoverBasicRedstoneInput {
 
     @Override
     public void onRemove() {
-        if (handler.getTile() instanceof BlockEntityMachine<?> machine){
+        if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.isServerSide()){
             if (machine.getLevel().isLoaded(machine.getBlockPos())) {
                 if (machine.getMachineState() == MachineState.DISABLED){
                     machine.toggleMachine();
