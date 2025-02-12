@@ -46,6 +46,10 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                             ItemStack output = new ItemStack(GT5RItems.DataStick);
                             output.getOrCreateTag().put("bookData", input0.getTag().copy());
                             return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("book_copying", 128, 32);
+                        } else if (input0.getItem() == GTCoreItems.Blueprint && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
+                            ItemStack output = new ItemStack(GT5RItems.DataStick);
+                            output.getOrCreateTag().put("blueprintData", input0.getTag().copy());
+                            return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("blueprint_copying", 128, 32);
                         }
                     }
                 }
@@ -54,7 +58,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK;
+                return super.accepts(stack) || stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK || stack.getItem() == GTCoreItems.Blueprint;
             }
 
             @Override

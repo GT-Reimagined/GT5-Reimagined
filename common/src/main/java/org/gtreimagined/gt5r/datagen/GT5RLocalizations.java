@@ -67,6 +67,7 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.data_stick.raw_prospection_data", "Raw Prospection Data");
             add("tooltip.gt5r.data_stick.analyzed_prospection_data", "Analyzed Prospection Data");
             add("tooltip.gt5r.data_stick.by", "By X: %s Z: %s Dim: %s");
+            add("tooltip.gt5r.data_stick.blueprint", "Contains scanned blueprint");
             add("tooltip.gt5r.coil.percentage", "Pyrolysis oven processing speed percentage: %s");
             add("tooltip.gt5r.coil.maxSimultaneousRecipes", "Max simultaneous recipes in Multismelter: %s");
             add("tooltip.gt5r.coil.autoclaveBoosts", "Large Autoclave processing speed: %s");

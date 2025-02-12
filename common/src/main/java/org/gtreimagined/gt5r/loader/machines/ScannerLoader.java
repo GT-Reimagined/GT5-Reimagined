@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 public class ScannerLoader {
     public static void init(){
@@ -15,5 +16,6 @@ public class ScannerLoader {
         ItemStack emptyDataStick = new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Stick to save it to"));
         ItemStack outputDataStick = new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Scanned Book Data"));
         RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(Items.WRITTEN_BOOK), RecipeIngredient.of(emptyDataStick)).io(outputDataStick).fake().add("book_data_stick", 128, 32);
+        RecipeMaps.SCANNER.RB().ii(RecipeIngredient.of(GTCoreItems.Blueprint), RecipeIngredient.of(emptyDataStick)).io(new ItemStack(GT5RItems.DataStick).setHoverName(Utils.literal("Scanned Blueprint Data"))).fake().add("blueprint_data_stick", 128, 32);
     }
 }

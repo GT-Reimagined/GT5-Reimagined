@@ -44,6 +44,9 @@ public class ItemDataStick extends ItemBasic<ItemDataStick> {
                     tooltipComponents.add((Utils.translatable("book.byAuthor", string)));
                 }
             }
+            if (nbt.contains("blueprintData")){
+                tooltipComponents.add(Utils.translatable("tooltip.gt5r.data_stick.blueprint"));
+            }
         }
     }
 }
