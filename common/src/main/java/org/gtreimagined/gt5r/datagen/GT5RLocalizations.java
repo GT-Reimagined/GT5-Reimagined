@@ -152,7 +152,7 @@ public class GT5RLocalizations {
             add("tooltip.bedrock_drill.1", "Size(WxHxD):3x8x3");
             add("tooltip.bedrock_drill.2", "Controller (Front middle on second layer)");
             add("tooltip.bedrock_drill.3", "3x1x3 Base of Bedrock Drill Heads");
-            add("tooltip.bedrock_drill.4", "3x1x3 layer of Titanium ca Casings");
+            add("tooltip.bedrock_drill.4", "3x1x3 layer of Titanium Casings");
             add("tooltip.bedrock_drill.5", "1x3x1 Titanium Casing Pillar (Center of second layer)");
             add("tooltip.bedrock_drill.6", "1x3x1 Titanium Frames (Each pillar side and on top)");
             add("tooltip.bedrock_drill.7", "1x Input Hatch for lubricant (Any second layer casing)");
