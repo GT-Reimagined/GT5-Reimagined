@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.cover;
 
 import com.google.common.collect.ImmutableMap;
+import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
@@ -81,7 +82,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
 
     @Override
     public void onUpdate() {
-        if (handler.getTile().getLevel().isClientSide || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
+        if (handler.getTile().getLevel().isClientSide || !(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
@@ -97,7 +98,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
             world.addFreshEntity(entity);
         }
         if (!(state.hasBlockEntity())) return;
-        BlockEntity adjTile = BlockEntityCache.getBlockEntity(handler.getTile().getLevel(), handler.getTile().getBlockPos().relative(side));
+        BlockEntity adjTile = base.getCachedBlockEntity(side);
         if (adjTile == null) {
             return;
         }

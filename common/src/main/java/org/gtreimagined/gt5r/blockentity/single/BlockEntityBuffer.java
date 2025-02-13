@@ -69,7 +69,7 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
 
     protected boolean processItemOutput() {
         Direction outputDir = this.getFacing().getOpposite();
-        BlockEntity adjTile = BlockEntityCache.getBlockEntity(this.getLevel(), this.getBlockPos().relative(outputDir));
+        BlockEntity adjTile = this.getCachedBlockEntity(outputDir);
         if (adjTile == null) return false;
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
