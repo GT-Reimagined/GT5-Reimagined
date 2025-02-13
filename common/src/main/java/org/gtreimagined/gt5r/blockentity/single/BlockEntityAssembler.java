@@ -5,6 +5,7 @@ import com.google.gson.JsonParser;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
@@ -19,7 +20,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import tesseract.TesseractGraphWrappers;
-import tesseract.api.item.ExtendedItemContainer;
 
 import static org.gtreimagined.gt5r.data.Materials.Glue;
 

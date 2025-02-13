@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.cover;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
+import muramasa.antimatter.capability.item.PlatformItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
@@ -10,6 +11,7 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.SyncableTextWidget;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,7 +26,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
-import tesseract.api.item.PlatformItemHandler;
 
 import java.util.function.Predicate;
 
@@ -109,7 +110,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = TesseractCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(this::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = AntimatterCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(this::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
@@ -130,7 +131,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            TesseractCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+            AntimatterCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> AntimatterCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Predicate<ItemStack> filter = s -> {
                     if (isImporting || slotLimit == 0) return true;
                     if (s.getCount() < slotLimit) return false;

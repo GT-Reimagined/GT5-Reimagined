@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.item.PlatformItemHandler;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -22,7 +23,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.api.item.PlatformItemHandler;
 
 public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> extends BlockEntityMachine<T> {
     protected int stackLimit = 0;

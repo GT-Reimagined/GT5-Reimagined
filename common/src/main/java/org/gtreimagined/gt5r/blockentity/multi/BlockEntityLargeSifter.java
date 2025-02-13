@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
+import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.item.ITrackedHandler;
 import muramasa.antimatter.capability.item.MultiTrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -12,8 +13,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
-import tesseract.api.item.ExtendedItemContainer;
-import tesseract.api.item.PlatformItemHandler;
 
 import java.util.ArrayList;
 import java.util.HashSet;

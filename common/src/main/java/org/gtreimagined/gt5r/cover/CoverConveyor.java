@@ -5,12 +5,14 @@ import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
+import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
+import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +29,6 @@ import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
-import tesseract.api.item.ExtendedItemContainer;
 
 import java.util.Map;
 import java.util.Objects;
@@ -88,7 +89,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport() && canMove(side)) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = TesseractCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = AntimatterCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             double x = pos.getX() + side.getStepX() + 0.5;
             double y = pos.getY() + side.getStepY() + 0.5;
@@ -112,7 +113,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            TesseractCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> TesseractCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+            AntimatterCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> AntimatterCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Utils.transferItems(ih, oh, true);
             }));
         }

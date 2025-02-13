@@ -6,6 +6,7 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
+import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
@@ -34,7 +35,6 @@ import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import tesseract.FluidPlatformUtils;
-import tesseract.api.item.ExtendedItemContainer;
 
 import static muramasa.antimatter.Ref.L;
 import static org.gtreimagined.gt5r.data.Materials.SquidInk;
