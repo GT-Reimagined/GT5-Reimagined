@@ -9,6 +9,7 @@ import muramasa.antimatter.material.IMaterialObject;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.CodeUtils;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -21,7 +22,6 @@ import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 import org.gtreimagined.gt5r.data.Materials;
 import org.jetbrains.annotations.Nullable;
-import tesseract.FluidPlatformUtils;
 
 import java.util.List;
 

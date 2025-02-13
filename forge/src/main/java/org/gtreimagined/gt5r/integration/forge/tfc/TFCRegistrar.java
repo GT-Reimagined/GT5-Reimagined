@@ -22,6 +22,7 @@ import muramasa.antimatter.tool.behaviour.BehaviourBlockTilling;
 import muramasa.antimatter.tool.behaviour.BehaviourLogStripping;
 import muramasa.antimatter.tool.behaviour.BehaviourVanillaShovel;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
@@ -38,7 +39,6 @@ import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCBlockTagProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCItemTagProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCLangProvider;
-import tesseract.FluidPlatformUtils;
 
 import java.util.function.BiConsumer;
 

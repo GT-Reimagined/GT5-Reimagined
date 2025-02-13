@@ -10,6 +10,7 @@ import muramasa.antimatter.material.MaterialTypeItem;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -27,7 +28,6 @@ import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
-import tesseract.FluidPlatformUtils;
 
 import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.Ref.U;

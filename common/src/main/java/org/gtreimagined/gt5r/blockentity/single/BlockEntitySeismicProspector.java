@@ -6,6 +6,7 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tool.AntimatterToolType;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.worldgen.vein.VeinSavedData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -25,7 +26,6 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.worldgen.OilSpoutEntry;
 import org.gtreimagined.gt5r.worldgen.OilSpoutSavedData;
 import org.jetbrains.annotations.Nullable;
-import tesseract.FluidPlatformUtils;
 
 import java.util.Map;
 

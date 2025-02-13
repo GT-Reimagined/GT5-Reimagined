@@ -14,6 +14,7 @@ import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.SectionPos;
@@ -31,7 +32,6 @@ import net.minecraft.world.level.material.FluidState;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.worldgen.OilSpoutEntry;
 import org.gtreimagined.gt5r.worldgen.OilSpoutSavedData;
-import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.List;

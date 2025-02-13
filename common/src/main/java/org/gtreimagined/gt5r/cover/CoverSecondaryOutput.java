@@ -9,12 +9,12 @@ import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.core.Direction;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.Materials;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 public class CoverSecondaryOutput extends BaseCover {

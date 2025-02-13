@@ -9,6 +9,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -19,7 +20,6 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreTags;
-import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.function.ToLongFunction;

@@ -7,6 +7,7 @@ import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -16,7 +17,6 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
-import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import static org.gtreimagined.gt5r.data.Materials.*;

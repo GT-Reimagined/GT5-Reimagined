@@ -18,6 +18,7 @@ import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.serializer.MachineRecipeSerializer;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
@@ -34,7 +35,6 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
-import tesseract.FluidPlatformUtils;
 
 import static muramasa.antimatter.Ref.L;
 import static org.gtreimagined.gt5r.data.Materials.SquidInk;

@@ -8,6 +8,7 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -43,7 +44,6 @@ import org.gtreimagined.gt5r.cover.redstone.CoverRedstoneConductorAccept;
 import org.gtreimagined.gt5r.cover.redstone.CoverRedstoneConductorEmit;
 import org.gtreimagined.gt5r.cover.redstone.CoverRedstoneMachineController;
 import org.gtreimagined.gt5r.items.ItemCoverCustomTooltip;
-import tesseract.FluidPlatformUtils;
 
 public class GT5RCovers {
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a, b) ->

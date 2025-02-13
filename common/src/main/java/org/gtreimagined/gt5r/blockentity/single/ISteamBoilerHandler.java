@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -9,7 +10,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
-import tesseract.FluidPlatformUtils;
 import tesseract.TesseractGraphWrappers;
 
 import static org.gtreimagined.gt5r.data.Materials.Steam;
