@@ -8,7 +8,7 @@ plugins {
 
 archivesBaseName = "${project.archive_base_name}-forge"
 
-neoForge {
+legacyForge {
     version = "${project.minecraft_version}-${project.forge_version}"
     def at = project(':antimatter-common').file('src/main/resources/META-INF/accesstransformer.cfg')
     if (at.exists()) {
