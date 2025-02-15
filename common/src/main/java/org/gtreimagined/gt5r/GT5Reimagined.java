@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r;
 
+import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
+import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.AntimatterMod;
@@ -295,14 +297,12 @@ public class GT5Reimagined extends AntimatterMod {
                 Guis.init(side);
                 Models.init();
                 GT5RSounds.init();
-                if (AntimatterPlatformUtils.INSTANCE.isForge()){
-                    IAntimatterWorldgenFunction function = (name, climate, category, effects, gen ,spawns) -> {
-                        if (AntimatterConfig.VANILLA_ORE_GEN.get()) {
-                            removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
-                        }
-                    };
-                    AntimatterAPI.register(IAntimatterWorldgenFunction.class, "removed_ores", GT5RRef.ID, function);
-                }
+                IAntimatterWorldgenFunction function = (name, climate, category, effects, gen ,spawns) -> {
+                    if (AntimatterConfig.VANILLA_ORE_GEN.get()) {
+                        removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
+                    }
+                };
+                AntimatterAPI.register(IAntimatterWorldgenFunction.class, "removed_ores", GT5RRef.ID, function);
                 if (AntimatterAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
@@ -357,10 +357,10 @@ public class GT5Reimagined extends AntimatterMod {
                 AntimatterJEIREIPlugin.addFluidsToHide(l -> {
                     l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                 });
-                AntimatterPlatformUtils.INSTANCE.setBurnTime(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
-                AntimatterPlatformUtils.INSTANCE.setBurnTime(GT5RItems.WoodPellet, 200);
-                AntimatterPlatformUtils.INSTANCE.setFlammability(GT5RBlocks.WOOD_WALL, 5, 20);
-                AntimatterPlatformUtils.INSTANCE.setFlammability(GT5RMachines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
+                TerraformFuelRegistry.addFuel(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
+                TerraformFuelRegistry.addFuel(GT5RItems.WoodPellet, 200);
+                TerraformFlammableBlockRegistry.addFlammableBlock(GT5RBlocks.WOOD_WALL, 5, 20);
+                TerraformFlammableBlockRegistry.addFlammableBlock(GT5RMachines.WOOD_TANK.getBlockState(Tier.NONE), 5, 20);
                 CommonHandler.setup();
               //  if (side == Dist.CLIENT) StructureInfo.init();
                 TierMaps.providerInit();

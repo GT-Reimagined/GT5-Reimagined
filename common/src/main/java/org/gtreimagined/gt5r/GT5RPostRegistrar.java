@@ -11,9 +11,7 @@ import org.gtreimagined.gt5r.material.GregTechMaterialEvent;
 
 public class GT5RPostRegistrar implements IAntimatterRegistrar {
     public GT5RPostRegistrar(){
-        if (AntimatterPlatformUtils.INSTANCE.isForge()){
-            onRegistrarInit();
-        }
+        onRegistrarInit();
     }
 
     @Override

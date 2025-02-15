@@ -12,7 +12,7 @@ import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.GTCore;
 
 public class GT5RTags {
-    public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation((AntimatterPlatformUtils.INSTANCE.isForge() ? "forge" : "c"), "steam"));
+    public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge", "steam"));
     public static final TagKey<Item> GRIND_HEADS = getTag("grind_heads");
     public static final TagKey<Item> GEM_SAPPHIRES = getTag("gems/sapphires");
     public static final TagKey<Item> DUST_SAPPHIRES = getTag("dusts/sapphires");

@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.machine.caps;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.machine.MachineFlag;
@@ -129,7 +128,7 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
     public long getPower() {
         if (maxSimultaneousRecipes() > 1) return super.getPower();
         if (activeRecipe == null) return 0;
-        if (overclock == 0 || tile.has(MachineFlag.RF)) return activeRecipe.getPower();
+        if (overclock == 0 || tile.has(MachineFlag.FE)) return activeRecipe.getPower();
         //half the duration => overclock ^ 2.
         //so if overclock is 2 tiers, we have 1/4 the duration(200 -> 50) but for e.g. 8eu/t this would be
         //8*4*4 = 128eu/t.

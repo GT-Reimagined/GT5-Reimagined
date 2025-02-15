@@ -25,9 +25,6 @@ public class SpaceModRegistrar extends AntimatterMod {
     public static Material Desh;
     public SpaceModRegistrar(){
         INSTANCE = this;
-        if (AntimatterPlatformUtils.INSTANCE.isFabric()) {
-            onRegistrarInit();
-        }
     }
 
     @Override

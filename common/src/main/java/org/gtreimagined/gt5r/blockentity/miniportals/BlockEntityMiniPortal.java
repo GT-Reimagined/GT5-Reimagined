@@ -21,6 +21,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.server.ServerLifecycleHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     public void onFirstTick() {
         super.onFirstTick();
         if (otherSidePos != null && otherSideDimension != null){
-            Level dimension = AntimatterPlatformUtils.INSTANCE.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+            Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
             if (dimension != null && dimension.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                 this.otherSide = portal;
                 otherSideDimension = null;
@@ -174,7 +175,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
             } else if (otherSide == null){
                 if (level.getGameTime() % 100 == 5){
                     if (otherSidePos != null && otherSideDimension != null){
-                        Level dimension = AntimatterPlatformUtils.INSTANCE.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+                        Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
                         if (dimension != null && level.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                             this.otherSide = portal;
                             otherSideDimension = null;
