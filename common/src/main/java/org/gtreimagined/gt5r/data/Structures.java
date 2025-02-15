@@ -74,10 +74,10 @@ public class Structures {
                 .part("right").offsetFunction((i, int3) -> int3.right(i))
                 .of(" ", "E", " ").of("G", "A", "G").of("R", "L", "R").of("C", "O", "C").build()
                 .at('E', GT5RBlocks.SOLID_STEEL_CASING, ENERGY_HATCH)
-                .at('A', GT5RBlocks.ADVANCED_ASSEMBLER_CASING)
+                .at('A', GT5RBlocks.ASSEMBLER_CASING)
                 .at('G', GT5RBlocks.GRATE_CASING)
                 .at('R', GTCoreBlocks.REINFORCED_GLASS)
-                .at('L', GT5RBlocks.ASSEMBLY_LINE_CASING)
+                .at('L', GT5RBlocks.AUTOCRAFTER_ASSEMBLY_LINE_CASING)
                 .at('C', GT5RBlocks.SOLID_STEEL_CASING, INPUT_HATCH)
                 .at('I', INPUT_BUS)
                 .at('O', OUTPUT_BUS).offset(0, 1, 0).min(1, ENERGY_HATCH).build());
