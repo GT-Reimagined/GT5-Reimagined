@@ -21,6 +21,7 @@ import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySecondaryOutput;
 import org.gtreimagined.gt5r.items.ItemPortableScanner;
@@ -111,7 +112,7 @@ public class ToolTypes {
     }
 
     public static void init(){
-        if (AntimatterAPI.getSIDE().isClient()){
+        if (FMLEnvironment.dist.isClient()){
             BiFunction<Direction, BlockEntity, Boolean> REACTOR_FUNCTION = (dir, tile) -> {
                 if (tile instanceof BlockEntitySecondaryOutput machine) {
                     Direction direction = machine.getSecondaryOutputFacing();

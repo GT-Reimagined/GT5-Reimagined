@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.registration.Side;
 import net.minecraft.world.item.DyeColor;
 import net.minecraftforge.api.distmarker.Dist;
 

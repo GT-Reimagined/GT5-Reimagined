@@ -3,7 +3,6 @@ package org.gtreimagined.gt5r.integration;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.registration.Side;
 import net.minecraftforge.api.distmarker.Dist;
 
 public class IC2ClassicRegistrar implements IAntimatterRegistrar {
