@@ -15,6 +15,8 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamMachine;
 import org.jetbrains.annotations.Nullable;
 import xyz.wagyourtail.unimined.expect.annotation.Environment;
@@ -69,7 +71,7 @@ public class CoverSteamVent extends BaseCover {
         }
     }
 
-    @Environment(Environment.EnvType.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     private void addParticle(Level level, BlockPos offset){
         ClientLevel clientLevel = (ClientLevel) level;
         Random random = level.random;

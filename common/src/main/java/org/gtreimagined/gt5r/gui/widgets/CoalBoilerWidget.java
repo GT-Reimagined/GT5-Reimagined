@@ -8,6 +8,8 @@ import muramasa.antimatter.gui.container.ContainerMachine;
 import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
 import muramasa.antimatter.util.Utils;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -89,7 +91,7 @@ public class CoalBoilerWidget extends Widget {
         renderTooltip(stack,"Heat: " + heat + "C° out of " + maxHeat, mouseX, mouseY, 26, 0, 10, 54);
     }
 
-    @Environment(Environment.EnvType.CLIENT)
+    @OnlyIn(Dist.CLIENT)
     protected void renderTooltip(PoseStack matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
         if (isInside(x, y, w, h, mouseX, mouseY)){
             renderTooltip(matrixStack, Utils.literal(text), mouseX, mouseY);
