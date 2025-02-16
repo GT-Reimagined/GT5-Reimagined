@@ -24,6 +24,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -40,7 +41,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
 
     public AppliedEnergisticsRegistrar(){
-        onRegistrarInit();
+        AntimatterAPI.addRegistrar(this);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event, Side side) {
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
             GEM.replacement(CertusQuartz, () -> getAe2Item("certus_quartz_crystal"));
             GEM.replacement(ChargedCertusQuartz, () -> getAe2Item("charged_certus_quartz_crystal"));
@@ -71,11 +72,6 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     @Override
     public int getPriority() {
         return 0;
-    }
-
-    @Override
-    public void onRegistrarInit() {
-        AntimatterAPI.addRegistrar(this);
     }
 
     public static void machineRecipes(){

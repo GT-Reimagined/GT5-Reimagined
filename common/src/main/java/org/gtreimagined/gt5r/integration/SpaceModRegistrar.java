@@ -15,6 +15,7 @@ import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.GT5RRef;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
@@ -34,7 +35,7 @@ public class SpaceModRegistrar extends AntimatterMod {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event, Side side) {
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
             Desh = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "desh", 0x282828, TextureSet.DULL));
             String block = AntimatterAPI.isModLoaded("ad_astra") ? "block" : "blocks";

@@ -33,6 +33,7 @@ import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.util.Helpers;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -51,7 +52,12 @@ public class TFCRegistrar implements IAntimatterRegistrar {
 
     public static Material[] array;
     public TFCRegistrar(){
-        onRegistrarInit();
+        AntimatterAPI.addRegistrar(this);
+        if (isEnabled()) {
+            FMLJavaModLoadingContext.get().getModEventBus().register(this);
+            MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
+            AntimatterDynamics.clientProvider(GT5RRef.ID, () -> new TFCLangProvider(GT5RRef.ID, "TFC en_us Lang", "en_us"));
+        }
     }
     @Override
     public String getId() {
@@ -59,7 +65,7 @@ public class TFCRegistrar implements IAntimatterRegistrar {
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event, Side side) {
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
             array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, Hematite, Sheldonite, Sperrylite};
             /*for (Material material : array) {
@@ -145,16 +151,6 @@ public class TFCRegistrar implements IAntimatterRegistrar {
         return 0;
     }
 
-    @Override
-    public void onRegistrarInit() {
-        AntimatterAPI.addRegistrar(this);
-        if (isEnabled()) {
-            FMLJavaModLoadingContext.get().getModEventBus().register(this);
-            MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
-            AntimatterDynamics.clientProvider(GT5RRef.ID, () -> new TFCLangProvider(GT5RRef.ID, "TFC en_us Lang", "en_us"));
-        }
-    }
-
     public void registerRecipeLoaders(AntimatterLoaderEvent event){
         BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5RRef.ID, a, b);
         loader.accept("tfc_machine_recipes", MachineRecipes::init);
@@ -162,7 +158,7 @@ public class TFCRegistrar implements IAntimatterRegistrar {
 
     @SubscribeEvent
     public void onProviders(AntimatterProvidersEvent ev) {
-        ev.event.addProvider(Ref.MOD_TFC, () -> new AntimatterFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
+        ev.addProvider(Ref.MOD_TFC, () -> new AntimatterFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
             @Override
             protected void processTags(String domain) {
                 super.processTags(domain);
@@ -171,8 +167,8 @@ public class TFCRegistrar implements IAntimatterRegistrar {
         });
         AntimatterBlockTagProvider[] blockTagProviders = new AntimatterBlockTagProvider[1];
         blockTagProviders[0] = new TFCBlockTagProvider( Ref.MOD_TFC, "TFC Block Tags", false);
-        ev.event.addProvider(Ref.MOD_TFC, () -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
-        ev.event.addProvider(Ref.MOD_TFC, () -> blockTagProviders[0]);
+        ev.addProvider(Ref.MOD_TFC, () -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
+        ev.addProvider(Ref.MOD_TFC, () -> blockTagProviders[0]);
 
     }
 

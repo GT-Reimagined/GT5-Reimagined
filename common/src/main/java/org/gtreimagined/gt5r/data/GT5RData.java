@@ -2,11 +2,12 @@ package org.gtreimagined.gt5r.data;
 
 import muramasa.antimatter.registration.Side;
 import net.minecraft.world.item.DyeColor;
+import net.minecraftforge.api.distmarker.Dist;
 
 public class GT5RData {
 
-    public static void init(Side side) {
-        if (side == Side.CLIENT)
+    public static void init(Dist side) {
+        if (side == Dist.CLIENT)
             RecipeMaps.clientMaps();
         /*AntimatterAPI.all(MaterialType.class, t -> {
             if (t instanceof MaterialTypeFluid) return;

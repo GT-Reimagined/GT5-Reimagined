@@ -21,6 +21,7 @@ import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.registration.Side;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.gui.widgets.AutocrafterProgressWidget;
@@ -106,7 +107,7 @@ public class Guis {
         }
     };
 
-    public static void init(Side side) {
+    public static void init(Dist side) {
         slots();
         backgroundTextures();
         machineData();

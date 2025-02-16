@@ -6,23 +6,22 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.common.event.CommonEvents;
+import muramasa.antimatter.common.event.PlayerTickCallback;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.event.CraftingEvent;
-import muramasa.antimatter.event.ProvidersEvent;
+import muramasa.antimatter.event.forge.AntimatterCraftingEvent;
+import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
+import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.event.forge.AntimatterWorldGenEvent;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.mixin.LivingEntityAccessor;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
-import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.tool.IAntimatterTool;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.worldgen.IAntimatterWorldgenFunction;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -31,6 +30,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
@@ -59,11 +64,14 @@ import org.gtreimagined.gt5r.datagen.GT5RItemTagProvider;
 import org.gtreimagined.gt5r.datagen.GT5RLocalizations;
 import org.gtreimagined.gt5r.datagen.GT5RTwilightStalctites;
 import org.gtreimagined.gt5r.datagen.ProgressionAdvancements;
+import org.gtreimagined.gt5r.events.forge.RemappingEvents;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.integration.ThermalRegistrar;
+import org.gtreimagined.gt5r.integration.forge.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.integration.rei.REIRegistrar;
 import org.gtreimagined.gt5r.loader.LootLoader;
+import org.gtreimagined.gt5r.loader.WorldGenLoader;
 import org.gtreimagined.gt5r.loader.crafting.BlockParts;
 import org.gtreimagined.gt5r.loader.crafting.ElectricToolRecipes;
 import org.gtreimagined.gt5r.loader.crafting.MachineRecipes;
@@ -134,6 +142,7 @@ import org.gtreimagined.gt5r.loader.multi.PyrolysisOvenLoader;
 import org.gtreimagined.gt5r.loader.multi.TreeGrowthSimulatorLoader;
 import org.gtreimagined.gt5r.loader.multi.VacuumFreezerLoader;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
+import org.gtreimagined.gt5r.proxy.ClientHandler;
 import org.gtreimagined.gt5r.proxy.CommonHandler;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -144,6 +153,7 @@ import java.util.function.BiConsumer;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
 import static muramasa.antimatter.worldgen.AntimatterWorldGenerator.removeDecoratedFeatureFromAllBiomes;
 
+@Mod(GT5RRef.ID)
 public class GT5Reimagined extends AntimatterMod {
 
     public static GT5Reimagined INSTANCE;
@@ -151,26 +161,37 @@ public class GT5Reimagined extends AntimatterMod {
 
     public GT5Reimagined() {
         super();
-    }
-
-    @Override
-    public void onRegistrarInit() {
-        super.onRegistrarInit();
         new AppliedEnergisticsRegistrar();
         new SpaceModRegistrar();
+        new GT5RPostRegistrar();
+        new TFCRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
-
-
         AntimatterDynamics.clientProvider(GT5RRef.ID,
                 () -> new AntimatterBlockStateProvider(GT5RRef.ID, GT5RRef.NAME + " BlockStates"));
         AntimatterDynamics.clientProvider(GT5RRef.ID,
                 () -> new AntimatterItemModelProvider(GT5RRef.ID, GT5RRef.NAME + " Item Models"));
         AntimatterDynamics.clientProvider(GT5RRef.ID, GT5RLocalizations.en_US::new);
         GT5RConfig.createConfig();
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
+        MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::registerRecipeLoaders);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(GT5Reimagined::registerCraftingLoaders);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(GT5Reimagined::onProviders);
+        MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::onWorldGen);
     }
 
-    public static void onProviders(ProvidersEvent ev) {
+
+
+    private void clientSetup(final FMLClientSetupEvent e) {
+        e.enqueueWork(ClientHandler::setup);
+    }
+
+    private void setup(final FMLCommonSetupEvent e) {
+    }
+
+    public static void onProviders(AntimatterProvidersEvent ev) {
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
         ev.addProvider(GT5RRef.ID, () -> {
             p[0] = new GT5RBlockTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Block Tags"), false);
@@ -186,7 +207,7 @@ public class GT5Reimagined extends AntimatterMod {
                 () -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
     }
     
-    public static void registerCraftingLoaders(CraftingEvent event) {
+    public static void registerCraftingLoaders(AntimatterCraftingEvent event) {
         event.addLoader(Miscellaneous::loadRecipes);
         event.addLoader(Smelting::loadRecipes);
         event.addLoader(WireCablesPlates::loadRecipes);
@@ -204,8 +225,8 @@ public class GT5Reimagined extends AntimatterMod {
         }
     }
 
-    public static void registerRecipeLoaders(IAntimatterRegistrar registrar, IRecipeRegistrate reg) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> reg.add(GT5RRef.ID, a, b);
+    public static void registerRecipeLoaders(AntimatterLoaderEvent event) {
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5RRef.ID, a, b);
         loader.accept("alloy_smelter", AlloySmelterLoader::init);
         loader.accept("arc_furnace", ArcFurnaceLoader::init);
         loader.accept("assembler", AssemblerLoader::init);
@@ -274,12 +295,16 @@ public class GT5Reimagined extends AntimatterMod {
         }
     }
 
+    private static void onWorldGen(AntimatterWorldGenEvent event){
+        WorldGenLoader.init(event);
+    }
+
     public static <T> T get(Class<? extends T> clazz, String id) {
         return AntimatterAPI.get(clazz, id, GT5RRef.ID);
     }
 
     @Override
-    public void onRegistrationEvent(RegistrationEvent event, Side side) {
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         switch (event) {
             case DATA_INIT -> {
                 GT5RRecipeTypes.init();
@@ -306,7 +331,7 @@ public class GT5Reimagined extends AntimatterMod {
                 if (AntimatterAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
-                CommonEvents.addPlayerTickCallback((end, logicalServer, player) -> {
+                PlayerTickCallback.PLAYER_TICK_CALLBACKS.add((end, logicalServer, player) -> {
                     if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
                         BlockState state = player.getLevel().getBlockState(player.getOnPos());
                         AttributeInstance attributeinstance = player.getAttribute(Attributes.MOVEMENT_SPEED);
