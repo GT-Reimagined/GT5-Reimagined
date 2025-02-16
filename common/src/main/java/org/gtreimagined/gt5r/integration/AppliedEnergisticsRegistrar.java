@@ -12,6 +12,7 @@ import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
@@ -131,10 +132,10 @@ public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
     }
 
     public static Item getAe2Item(String id){
-        return AntimatterPlatformUtils.INSTANCE.getItemFromID(Ref.MOD_AE, id);
+        return RegistryUtils.getItemFromID(Ref.MOD_AE, id);
     }
 
     public static Block getAe2Block(String id){
-        return AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_AE, id);
+        return RegistryUtils.getBlockFromId(Ref.MOD_AE, id);
     }
 }

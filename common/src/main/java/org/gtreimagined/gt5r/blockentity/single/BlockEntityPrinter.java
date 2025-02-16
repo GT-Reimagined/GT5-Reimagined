@@ -19,6 +19,7 @@ import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.serializer.MachineRecipeSerializer;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
@@ -70,7 +71,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                         StringBuilder stringBuilder = new StringBuilder();
                                         if (prospect.contains("fluid")) {
                                             CompoundTag fluid = prospect.getCompound("fluid");
-                                            FluidHolder fluid1 = FluidPlatformUtils.createFluidStack(AntimatterPlatformUtils.INSTANCE.getFluidFromID(new ResourceLocation(fluid.getString("name"))), 1);
+                                            FluidHolder fluid1 = FluidPlatformUtils.createFluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(fluid.getString("name"))), 1);
                                             pages.add(StringTag.valueOf(Component.Serializer.toJson(Utils.translatable("text.gt5r.prospected_book", pos1.getX(), pos1.getZ(), prospect.getString("dimension"),
                                                     fluid.getLong("maxYield"), Utils.translatable(fluid1.getTranslationKey())))));
                                         } else {

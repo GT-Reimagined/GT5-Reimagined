@@ -13,6 +13,7 @@ import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeMap;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -153,7 +154,7 @@ public class MaceratorLoader {
             }
         });
         for (DyeColor color : DyeColor.values()) {
-            PULVERIZER.RB().ii(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(color.getSerializedName().toLowerCase() + "_concrete"))).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(color.getSerializedName().toLowerCase() + "_concrete_powder"))).add(color.getId() + "_concrete",400,2);
+            PULVERIZER.RB().ii(RegistryUtils.getItemFromID(new ResourceLocation(color.getSerializedName().toLowerCase() + "_concrete"))).io(RegistryUtils.getItemFromID(new ResourceLocation(color.getSerializedName().toLowerCase() + "_concrete_powder"))).add(color.getId() + "_concrete",400,2);
         }
     }
 

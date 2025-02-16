@@ -5,6 +5,7 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Items;
@@ -56,7 +57,7 @@ public class FluidSolidifierLoader {
         });
         for (DyeColor dye : DyeColor.values()) {
             Material concrete = Material.get(dye.getName() + "_concrete");
-            FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume()).fi(concrete.getLiquid(L)).io(AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(dye.getName() + "_concrete"))).add(dye.getName() + "_concrete",288, 8);
+            FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume()).fi(concrete.getLiquid(L)).io(RegistryUtils.getItemFromID(new ResourceLocation(dye.getName() + "_concrete"))).add(dye.getName() + "_concrete",288, 8);
         }
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume()).fi(Lava.getLiquid(111)).io(ROD_LONG.get(Obsidian)).add("long_obsidian_rod", 16, 8);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).fi(Lava.getLiquid(111)).io(PLATE.get(Obsidian)).add("obsidian_plate", 16, 8);

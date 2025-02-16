@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r;
 
+import carbonconfiglib.CarbonConfig;
 import carbonconfiglib.config.Config;
 import carbonconfiglib.config.ConfigEntry;
 import carbonconfiglib.config.ConfigHandler;
@@ -33,7 +34,7 @@ public class GT5RConfig {
         HARD_CARBON = section.addBool("hard_carbon", false, "Makes carbon fibre require the hard recipe from gt5u. - Default: false");
         COMPLICATED_CHEMICAL_PROCESSING = section.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
         ADD_LOOT = section.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
-        CONFIG = AntimatterPlatformUtils.INSTANCE.createConfig(GT5RRef.ID, config);
+        CONFIG = CarbonConfig.CONFIGS.createConfig(config);
         CONFIG.register();
     }
 }

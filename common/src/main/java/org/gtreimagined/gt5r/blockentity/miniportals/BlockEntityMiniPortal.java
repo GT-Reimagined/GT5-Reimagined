@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.miniportals;
 
+import lombok.Setter;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.IExtendingBlockEntity;
 import muramasa.antimatter.machine.MachineState;
@@ -31,6 +32,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
 
     public static List<BlockEntityMiniPortal>
             sListWorldSide  = new ArrayList<>();
+    @Setter
     BlockEntityMiniPortal otherSide;
     BlockPos otherSidePos = null;
     ResourceLocation otherSideDimension;
@@ -43,10 +45,6 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
             return null;
         }
         return otherSide;
-    }
-
-    public void setOtherSide(BlockEntityMiniPortal otherSide) {
-        this.otherSide = otherSide;
     }
 
     @Override

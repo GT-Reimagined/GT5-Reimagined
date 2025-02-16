@@ -23,6 +23,7 @@ import muramasa.antimatter.tool.behaviour.BehaviourLogStripping;
 import muramasa.antimatter.tool.behaviour.BehaviourVanillaShovel;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
@@ -86,8 +87,8 @@ public class TFCRegistrar implements IAntimatterRegistrar {
                     material = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, sand.name().toLowerCase() + "_sand", sand.getDustColor(), TextureSet.NONE));
                     material.flags(DUST);
                 }
-                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_sand", material, new Texture(Ref.MOD_TFC,"block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "sand/" + sand.name().toLowerCase()).defaultBlockState());
-                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
+                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_sand", material, new Texture(Ref.MOD_TFC,"block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "sand/" + sand.name().toLowerCase()).defaultBlockState());
+                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
             });
             AntimatterMaterialTypes.LIQUID.set((m, i) -> {
@@ -101,8 +102,8 @@ public class TFCRegistrar implements IAntimatterRegistrar {
             });
             // Make TFC logs strippable with AntiMatter tools
             Helpers.mapOfKeys(Wood.class, (wood) -> {
-                var log = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "wood/log/" + wood.name().toLowerCase());
-                var log_stripped = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "wood/stripped_log/" + wood.name().toLowerCase());
+                var log = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "wood/log/" + wood.name().toLowerCase());
+                var log_stripped = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "wood/stripped_log/" + wood.name().toLowerCase());
                 BehaviourLogStripping.addStrippedBlock(log, log_stripped);
                 return true;
             });
@@ -111,14 +112,14 @@ public class TFCRegistrar implements IAntimatterRegistrar {
                 switch (soil) {
                     case DIRT: case GRASS: case CLAY: case CLAY_GRASS:
                         for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
-                            var dirt = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
-                            var farmland = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "farmland/" + vary.name().toLowerCase());
+                            var dirt = RegistryUtils.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
+                            var farmland = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "farmland/" + vary.name().toLowerCase());
                             BehaviourBlockTilling.addStrippedBlock(dirt, farmland);
                         } break;
                     case ROOTED_DIRT:
                         for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
-                            var rootdirt = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
-                            var dirt = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "dirt/" + vary.name().toLowerCase());
+                            var rootdirt = RegistryUtils.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
+                            var dirt = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "dirt/" + vary.name().toLowerCase());
                             BehaviourBlockTilling.addStrippedBlock(rootdirt, dirt);
                         } break;
                     default: break;
@@ -129,8 +130,8 @@ public class TFCRegistrar implements IAntimatterRegistrar {
             Helpers.mapOfKeys(SoilBlockType.class, (path) -> {
                 if (path == GRASS_PATH) {
                     for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
-                        var grasstype = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "grass/" + vary.name().toLowerCase());
-                        var pathtype = AntimatterPlatformUtils.INSTANCE.getBlockFromId(Ref.MOD_TFC, "grass_path/" + vary.name().toLowerCase());
+                        var grasstype = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "grass/" + vary.name().toLowerCase());
+                        var pathtype = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "grass_path/" + vary.name().toLowerCase());
                         BehaviourVanillaShovel.addStrippedBlock(grasstype, pathtype);
                     }
                 }

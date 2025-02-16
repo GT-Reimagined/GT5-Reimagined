@@ -6,6 +6,7 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.data.GT5RItems;
@@ -154,11 +155,11 @@ public class CentrifugeLoader {
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks){
-        CENTRIFUGE.RB().ii(of(input, 1)).fo(Methane.getGas(methane)).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
+        CENTRIFUGE.RB().ii(of(input, 1)).fo(Methane.getGas(methane)).add(RegistryUtils.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
     }
 
     private static void addMethaneRecipe(Item input, int methane, int ticks, ItemStack extra){
-        CENTRIFUGE.RB().ii(of(input, 1)).io(extra).fo(Methane.getGas(methane)).add(AntimatterPlatformUtils.INSTANCE.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
+        CENTRIFUGE.RB().ii(of(input, 1)).io(extra).fo(Methane.getGas(methane)).add(RegistryUtils.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
     }
 }
 

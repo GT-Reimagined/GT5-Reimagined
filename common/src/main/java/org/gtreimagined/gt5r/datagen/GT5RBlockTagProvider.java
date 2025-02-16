@@ -6,6 +6,7 @@ import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.DyeColor;
@@ -51,7 +52,7 @@ public class GT5RBlockTagProvider extends AntimatterBlockTagProvider {
             this.tag(AntimatterDefaultTools.PICKAXE.getToolType()).add(cas);
         });
         for (DyeColor color : DyeColor.values()) {
-            this.tag(GT5RTags.ASPHALT).add(AntimatterPlatformUtils.INSTANCE.getBlockFromId(new ResourceLocation(color.getName() + "_concrete")));
+            this.tag(GT5RTags.ASPHALT).add(RegistryUtils.getBlockFromId(new ResourceLocation(color.getName() + "_concrete")));
         }
         AntimatterAPI.all(BlockAsphalt.class, GT5RRef.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);

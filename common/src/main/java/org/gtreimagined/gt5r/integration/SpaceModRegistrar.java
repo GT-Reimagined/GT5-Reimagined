@@ -11,6 +11,7 @@ import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.registration.Side;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
@@ -70,9 +71,9 @@ public class SpaceModRegistrar extends AntimatterMod {
     }
 
     public static Block getSpaceBlock(String id){
-        return AntimatterPlatformUtils.INSTANCE.getBlockFromId(getMod(), id);
+        return RegistryUtils.getBlockFromId(getMod(), id);
     }
     public static Item getSpaceItem(String id){
-        return AntimatterPlatformUtils.INSTANCE.getItemFromID(getMod(), id);
+        return RegistryUtils.getItemFromID(getMod(), id);
     }
 }

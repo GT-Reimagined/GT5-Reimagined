@@ -18,6 +18,7 @@ import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -263,7 +264,7 @@ public class ArcFurnaceLoader {
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
-        addRecyclingRecipe(RecipeIngredient.of(input), outputs, AntimatterPlatformUtils.INSTANCE.getIdFromItem(input.asItem()).getPath());
+        addRecyclingRecipe(RecipeIngredient.of(input), outputs, RegistryUtils.getIdFromItem(input.asItem()).getPath());
     }
 
     private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, String id){

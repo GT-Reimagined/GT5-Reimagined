@@ -5,6 +5,7 @@ import muramasa.antimatter.client.ModelUtils;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockBedrockFlower;
@@ -35,7 +36,7 @@ public class ClientHandler {
     }
 
     private static void writeResourcePack(String writeName, String readName){
-        File dir = new File(AntimatterPlatformUtils.INSTANCE.getConfigDir().getParent().toFile(), "resourcepacks");
+        File dir = new File(FMLPaths.CONFIGDIR.get().getParent().toFile(), "resourcepacks");
         File target = new File(dir, writeName + ".zip");
 
 

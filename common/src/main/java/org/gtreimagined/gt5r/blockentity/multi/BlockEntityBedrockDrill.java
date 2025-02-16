@@ -20,6 +20,7 @@ import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.int3;
 import net.minecraft.core.BlockPos;
@@ -175,7 +176,7 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
             tag.put("cachedOutput", cachedOutput.save(new CompoundTag()));
         }
         if (cobble != null) {
-            tag.putString("cobble", AntimatterPlatformUtils.INSTANCE.getIdFromItem(cobble).toString());
+            tag.putString("cobble", RegistryUtils.getIdFromItem(cobble).toString());
         }
     }
 
@@ -186,7 +187,7 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
             cachedOutput = ItemStack.of(tag.getCompound("cachedOutput"));
         }
         if (tag.contains("cobble")) {
-            cobble = AntimatterPlatformUtils.INSTANCE.getItemFromID(new ResourceLocation(tag.getString("cobble")));
+            cobble = RegistryUtils.getItemFromID(new ResourceLocation(tag.getString("cobble")));
         }
     }
 }

@@ -115,17 +115,17 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
                 case 0:
                     emitEnergy = !emitEnergy;
                     playerEntity.sendMessage(Utils.literal( (emitEnergy ? "Emit energy to output side" : "Don't emit energy")), playerEntity.getUUID());
-                    AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                    level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 1:
                     outputRedstone = !outputRedstone;
                     playerEntity.sendMessage(Utils.literal( (outputRedstone ? "Emit redstone if slots contain something" : "Don't emit redstone")), playerEntity.getUUID());
-                    AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                    level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 2:
                     invertRedstone = !invertRedstone;
                     playerEntity.sendMessage(Utils.literal( (invertRedstone ? "I" : "Don't i") + "nvert redstone"), playerEntity.getUUID());
-                    AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+                    level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
                     break;
                 case 3:
                     blacklist = !blacklist;
@@ -162,7 +162,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         super.onMachineEvent(event, data);
         if ((event == SlotType.IT_OUT || event == SlotType.IT_IN) && outputRedstone && !this.getLevel().isClientSide()){
          //   level.updateNeighborsAt(this.getBlockPos(), this.getBlockState().getBlock());
-            AntimatterPlatformUtils.INSTANCE.markAndNotifyBlock(level, this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
+            level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
         }
     }
 

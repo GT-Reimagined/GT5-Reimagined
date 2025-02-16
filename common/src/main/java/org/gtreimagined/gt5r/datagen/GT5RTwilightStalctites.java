@@ -7,6 +7,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.util.AntimatterPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import org.gtreimagined.gt5r.GT5RRef;
@@ -56,7 +57,7 @@ public class GT5RTwilightStalctites {
     private static void addStalctite(String name, int hillSize, int maxLength, Block ore, float sizeVariation, int weight){
         JsonObject object = new JsonObject();
         object.addProperty("max_length", maxLength);
-        object.addProperty("ore", AntimatterPlatformUtils.INSTANCE.getIdFromBlock(ore).toString());
+        object.addProperty("ore", RegistryUtils.getIdFromBlock(ore).toString());
         object.addProperty("size_variation", sizeVariation);
         object.addProperty("weight", weight);
         ResourceLocation id = new ResourceLocation(GT5RRef.ID, name);
