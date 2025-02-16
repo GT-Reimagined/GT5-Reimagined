@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -9,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import org.gtreimagined.gt5r.GT5RRef;
-import org.gtreimagined.gtcore.GTCore;
 
 public class GT5RTags {
     public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge", "steam"));

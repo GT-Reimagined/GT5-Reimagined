@@ -4,8 +4,6 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.registration.Side;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.data.GT5RMaterialEvents;
 import org.gtreimagined.gt5r.material.GregTechMaterialEvent;

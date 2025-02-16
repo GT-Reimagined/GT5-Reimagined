@@ -3,7 +3,6 @@ package org.gtreimagined.gt5r.loader.machines.generator;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.data.RecipeMaps;

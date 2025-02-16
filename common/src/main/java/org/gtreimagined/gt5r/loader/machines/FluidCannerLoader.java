@@ -6,7 +6,6 @@ import muramasa.antimatter.item.ItemBattery;
 import muramasa.antimatter.item.ItemFluidCell;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;

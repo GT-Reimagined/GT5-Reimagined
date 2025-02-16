@@ -5,7 +5,6 @@ import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;

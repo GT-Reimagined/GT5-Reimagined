@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
@@ -15,7 +14,6 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.AntimatterCapUtils;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -34,7 +32,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.gui.ButtonOverlays;
 import org.jetbrains.annotations.Nullable;
-import tesseract.TesseractCapUtils;
 
 import java.util.List;
 import java.util.Objects;

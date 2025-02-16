@@ -12,7 +12,6 @@ import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.Cable;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;

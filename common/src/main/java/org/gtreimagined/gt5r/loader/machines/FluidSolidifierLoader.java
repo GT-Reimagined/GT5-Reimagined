@@ -4,7 +4,6 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;

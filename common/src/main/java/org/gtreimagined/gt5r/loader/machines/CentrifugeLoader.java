@@ -5,7 +5,6 @@ import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;

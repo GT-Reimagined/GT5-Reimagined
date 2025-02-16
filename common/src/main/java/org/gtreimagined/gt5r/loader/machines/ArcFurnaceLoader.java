@@ -17,7 +17,6 @@ import muramasa.antimatter.pipe.types.ItemPipe;
 import muramasa.antimatter.pipe.types.Wire;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;

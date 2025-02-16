@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import it.unimi.dsi.fastutil.Pair;
-import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import lombok.Getter;
 import lombok.Setter;
 import muramasa.antimatter.AntimatterAPI;
@@ -14,12 +13,9 @@ import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialType;
 import muramasa.antimatter.ore.CobbleStoneType;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.int3;
@@ -30,14 +26,11 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import static org.gtreimagined.gt5r.data.Materials.Lubricant;
 

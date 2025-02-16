@@ -10,7 +10,6 @@ import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeItemBlock;
 import muramasa.antimatter.pipe.PipeSize;
 import muramasa.antimatter.pipe.types.PipeType;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
@@ -33,7 +32,6 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
-import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import java.util.function.Consumer;
 

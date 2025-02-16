@@ -3,7 +3,6 @@ package org.gtreimagined.gt5r.proxy;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.AntimatterPlatformUtils;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.fml.loading.FMLPaths;
 import org.gtreimagined.gt5r.GT5RRef;
