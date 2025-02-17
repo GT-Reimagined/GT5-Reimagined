@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.loader;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.AntimatterConfig;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.event.forge.AntimatterWorldGenEvent;
+import muramasa.antimatter.event.AntimatterWorldGenEvent;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.worldgen.StoneLayerOre;

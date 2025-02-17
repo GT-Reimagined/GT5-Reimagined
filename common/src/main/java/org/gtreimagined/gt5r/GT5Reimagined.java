@@ -12,10 +12,10 @@ import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
 import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.event.forge.AntimatterCraftingEvent;
-import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
-import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
-import muramasa.antimatter.event.forge.AntimatterWorldGenEvent;
+import muramasa.antimatter.event.AntimatterCraftingEvent;
+import muramasa.antimatter.event.AntimatterLoaderEvent;
+import muramasa.antimatter.event.AntimatterProvidersEvent;
+import muramasa.antimatter.event.AntimatterWorldGenEvent;
 import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.mixin.LivingEntityAccessor;
@@ -193,18 +193,17 @@ public class GT5Reimagined extends AntimatterMod {
 
     public static void onProviders(AntimatterProvidersEvent ev) {
         final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
-        ev.addProvider(GT5RRef.ID, () -> {
+        ev.addProvider(() -> {
             p[0] = new GT5RBlockTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Block Tags"), false);
             return p[0];
         });
-        ev.addProvider(GT5RRef.ID, () -> new GT5RItemTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Item Tags"),
+        ev.addProvider(() -> new GT5RItemTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Item Tags"),
                 false, p[0]));
-        ev.addProvider(GT5RRef.ID, () -> new GT5RFluidTagProvider(GT5RRef.ID,
+        ev.addProvider(() -> new GT5RFluidTagProvider(GT5RRef.ID,
                 GT5RRef.NAME.concat(" Fluid Tags"), false));
-        ev.addProvider(GT5RRef.ID, () -> new AntimatterAdvancementProvider(GT5RRef.ID,
+        ev.addProvider(() -> new AntimatterAdvancementProvider(GT5RRef.ID,
                 GT5RRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));
-        ev.addProvider(GT5RRef.ID,
-                () -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
+        ev.addProvider(() -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
     }
     
     public static void registerCraftingLoaders(AntimatterCraftingEvent event) {

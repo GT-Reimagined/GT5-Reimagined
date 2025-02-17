@@ -7,15 +7,14 @@ import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
-import muramasa.antimatter.event.forge.AntimatterLoaderEvent;
-import muramasa.antimatter.event.forge.AntimatterProvidersEvent;
+import muramasa.antimatter.event.AntimatterLoaderEvent;
+import muramasa.antimatter.event.AntimatterProvidersEvent;
 import muramasa.antimatter.fluid.AntimatterFluid;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeFluid;
 import muramasa.antimatter.material.TextureSet;
 import muramasa.antimatter.ore.StoneType;
 import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
-import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
 import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tool.behaviour.BehaviourBlockTilling;
@@ -157,7 +156,7 @@ public class TFCRegistrar extends AntimatterMod {
 
     @SubscribeEvent
     public void onProviders(AntimatterProvidersEvent ev) {
-        ev.addProvider(Ref.MOD_TFC, () -> new AntimatterFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
+        ev.addProvider(() -> new AntimatterFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
             @Override
             protected void processTags(String domain) {
                 super.processTags(domain);
@@ -166,8 +165,8 @@ public class TFCRegistrar extends AntimatterMod {
         });
         AntimatterBlockTagProvider[] blockTagProviders = new AntimatterBlockTagProvider[1];
         blockTagProviders[0] = new TFCBlockTagProvider( Ref.MOD_TFC, "TFC Block Tags", false);
-        ev.addProvider(Ref.MOD_TFC, () -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
-        ev.addProvider(Ref.MOD_TFC, () -> blockTagProviders[0]);
+        ev.addProvider(() -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
+        ev.addProvider(() -> blockTagProviders[0]);
 
     }
 
