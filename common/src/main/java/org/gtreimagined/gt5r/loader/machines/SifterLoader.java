@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.common.Tags;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.SIFTER;
@@ -21,6 +21,6 @@ public class SifterLoader {
                     e ? GEM_FLAWED.get(m, 1) : gem,
                     e ? GEM_CHIPPED.get(m, 1) : gem, dustPurified).outputChances(chances/*0.05, 0.125, 0.25, 0.5, 0.75, 1.0*/).add("crushed_" + m.getId(),800, 16);
         });
-        SIFTER.RB().ii(RecipeIngredient.of(ForgeCTags.GRAVEL, 1)).io(Items.FLINT).add("flint", 40 * 20, 16);
+        SIFTER.RB().ii(RecipeIngredient.of(Tags.Items.GRAVEL, 1)).io(Items.FLINT).add("flint", 40 * 20, 16);
     }
 }

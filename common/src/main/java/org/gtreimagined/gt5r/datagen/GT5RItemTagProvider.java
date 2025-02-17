@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.datagen;
 
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
 import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
 import net.minecraft.world.item.Items;
@@ -38,7 +38,7 @@ public class GT5RItemTagProvider extends AntimatterItemTagProvider {
         this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
         this.tag(GT5RTags.GRIND_HEADS).add(GTCoreItems.DiamondGrindHead, GTCoreItems.TungstenGrindHead);
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));
-        this.tag(ForgeCTags.GEMS_QUARTZ_ALL).addTag(GEM.getMaterialTag(MilkyQuartz));
+        this.tag(ForgeTags.GEMS_QUARTZ_ALL).addTag(GEM.getMaterialTag(MilkyQuartz));
         this.tag(GT5RTags.GEM_SAPPHIRES).addTag(GEM.getMaterialTag(Sapphire)).addTag(GEM.getMaterialTag(GreenSapphire));
         this.tag(GT5RTags.DUST_SAPPHIRES).addTag(DUST.getMaterialTag(Sapphire)).addTag(DUST.getMaterialTag(GreenSapphire));
         this.tag(GT5RTags.DUST_SANDS).addTag(DUST.getMaterialTag(Sand)).addTag(DUST.getMaterialTag(RedSand));
@@ -49,10 +49,10 @@ public class GT5RItemTagProvider extends AntimatterItemTagProvider {
         if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
             this.tag(GT5RTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
         }
-        this.tag(ForgeCTags.DYES_BLACK).add(Items.INK_SAC);
-        this.tag(ForgeCTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite));
-        this.tag(ForgeCTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite));
-        this.tag(ForgeCTags.DYES_GREEN).addTag(DUST.getMaterialTag(Malachite));
-        this.tag(ForgeCTags.DYES_WHITE).add(Items.BONE_MEAL);
+        this.tag(ForgeTags.DYES_BLACK).add(Items.INK_SAC);
+        this.tag(ForgeTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite));
+        this.tag(ForgeTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite));
+        this.tag(ForgeTags.DYES_GREEN).addTag(DUST.getMaterialTag(Malachite));
+        this.tag(ForgeTags.DYES_WHITE).add(Items.BONE_MEAL);
     }
 }

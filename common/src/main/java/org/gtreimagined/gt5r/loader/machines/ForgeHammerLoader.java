@@ -3,7 +3,6 @@ package org.gtreimagined.gt5r.loader.machines;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.ore.CobbleStoneType;
@@ -13,7 +12,7 @@ import muramasa.antimatter.util.TagUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.gtreimagined.gt5r.GT5RRef;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
 import java.util.function.ToLongFunction;
@@ -66,10 +65,10 @@ public class ForgeHammerLoader {
             if (!(s instanceof CobbleStoneType cs)) return;
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(cs.getBlock(""), 1)).io(new ItemStack(cs.getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
         });
-        FORGE_HAMMER.RB().ii(RecipeIngredient.of(ForgeCTags.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.STONE, 1)).io(new ItemStack(Items.COBBLESTONE)).add("cobblestone",10, 16);
-        FORGE_HAMMER.RB().ii(RecipeIngredient.of(ForgeCTags.GRAVEL, 1)).io(new ItemStack(Items.SAND)).add("sand",10, 16);
-        FORGE_HAMMER.RB().ii(RecipeIngredient.of(ForgeCTags.GLASS, 1)).io(DUST.get(Glass)).add("glass_dust",10, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GRAVEL, 1)).io(new ItemStack(Items.SAND)).add("sand",10, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS, 1)).io(DUST.get(Glass)).add("glass_dust",10, 16);
         //Wrought Iron and Annealed Copper 2 to 1 (pre Arc Furnace)
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.BRICK, 1)).io(DUST_SMALL.get(Brick, 2)).add("brick_dust_small",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.BRICKS, 1)).io(DUST.get(Brick, 2)).add("brick_dust",40, 16);

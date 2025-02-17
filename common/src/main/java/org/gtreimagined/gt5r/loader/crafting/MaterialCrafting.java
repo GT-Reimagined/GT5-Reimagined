@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTypeItem;
@@ -127,7 +127,7 @@ public class MaterialCrafting {
         });
         CHAMBER.all().forEach(m -> {
             if (!m.has(GEM) && !m.has(PLATE)) return;
-            TagKey<Item> input = m == Quartz ? ForgeCTags.GEMS_QUARTZ_ALL : m.has(GEM) ? GEM.getMaterialTag(m) :  PLATE.getMaterialTag(m);
+            TagKey<Item> input = m == Quartz ? ForgeTags.GEMS_QUARTZ_ALL : m.has(GEM) ? GEM.getMaterialTag(m) :  PLATE.getMaterialTag(m);
             provider.addItemRecipe(consumer, "chambers", CHAMBER.get(m),
                     of('I', input, 'H', HAMMER.getTag() ,'W', WRENCH.getTag()), "IHI", "IWI", "III");
         });

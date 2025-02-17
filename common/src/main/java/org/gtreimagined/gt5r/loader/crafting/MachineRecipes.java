@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
@@ -22,6 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
@@ -301,7 +302,7 @@ public class MachineRecipes {
                             .put('C', circuit)
                             .put('G', glass)
                             .put('H', hull)
-                            .put('E', ForgeCTags.CHESTS)
+                            .put('E', Tags.Items.CHESTS_WOODEN)
                             .put('L', cable).build(), "PGP", "LHL", "CEC"));
             add(FORGE_HAMMER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -373,7 +374,7 @@ public class MachineRecipes {
                             .put('C', circuit)
                             .put('H', hull)
                             .put('L', cable)
-                            .put('S', ForgeCTags.CHESTS).build(), "SCS", "RHc", "LCL"));
+                            .put('S', Tags.Items.CHESTS_WOODEN).build(), "SCS", "RHc", "LCL"));
             Item wire = tier == LV ? GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.SMALL) : GT5RBlocks.WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
             Material rodMaterial = tier == LV ? Iron : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
             add(POLARIZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
@@ -464,7 +465,7 @@ public class MachineRecipes {
                             .put('C', circuit)
                             .put('H', hull)
                             .put('L', cable)
-                            .put('S', ForgeCTags.CHESTS).build(), "SCS", "cHR", "LCL"));
+                            .put('S', Tags.Items.CHESTS_WOODEN).build(), "SCS", "cHR", "LCL"));
             add(WIRE_MILL, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of(
                             'M', motor,
@@ -522,10 +523,10 @@ public class MachineRecipes {
                 of('O', PLATE.getMaterialTag(Obsidian), 'I', PLATE.getMaterialTag(Iron), 'E', Items.ENDER_EYE), "OOO", "OEO", "III");
 
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(NONE),
-                of('S', GT5RItems.Wafer, 'G', ForgeCTags.GLASS_PANES, 'C', CIRCUITS_BASIC,
+                of('S', GT5RItems.Wafer, 'G', Tags.Items.GLASS_PANES, 'C', CIRCUITS_BASIC,
                         'P', PLATE.getMaterialTag(Carbon), 'H', HULL.getItem(ULV), 'W', GT5RBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY)), "SGS", "CPC", "WHW");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(ULV),
-                of('W', GT5RItems.Wafer, 'G', ForgeCTags.GLASS_PANES, 'C', CIRCUITS_ADVANCED, 'g', GT5RBlocks.WIRE_GRAPHENE.getBlock(PipeSize.SMALL), 'P', PLATE.getMaterialTag(GalliumArsenide), 'H', HULL.getItem(ULV)), "WGW", "CgC", "PHP");
+                of('W', GT5RItems.Wafer, 'G', Tags.Items.GLASS_PANES, 'C', CIRCUITS_ADVANCED, 'g', GT5RBlocks.WIRE_GRAPHENE.getBlock(PipeSize.SMALL), 'P', PLATE.getMaterialTag(GalliumArsenide), 'H', HULL.getItem(ULV)), "WGW", "CgC", "PHP");
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(LV),
                 of('W', GT5RItems.Wafer, 'G', GTCoreBlocks.REINFORCED_GLASS, 'C', TIER_CIRCUITS.apply(IV), 'g', GT5RBlocks.WIRE_GRAPHENE.getBlock(PipeSize.HUGE), 'P', PLATE.getMaterialTag(IndiumGalliumPhosphide), 'H', HULL.getItem(LV)), "WGW", "CgC", "PHP");
 
@@ -545,24 +546,24 @@ public class MachineRecipes {
             if (hull == null) return;
             add(BATTERY_BUFFER_ONE, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', ForgeCTags.CHESTS_WOODEN)
+                            .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.VTINY)).build(), "LCL", "LHL"));
 
             add(BATTERY_BUFFER_FOUR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', ForgeCTags.CHESTS_WOODEN)
+                            .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.SMALL)).build(), "LCL", "LHL"));
 
             add(BATTERY_BUFFER_EIGHT, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', ForgeCTags.CHESTS_WOODEN)
+                            .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.NORMAL)).build(), "LCL", "LHL"));
             add(BATTERY_BUFFER_SIXTEEN, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', ForgeCTags.CHESTS_WOODEN)
+                            .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.HUGE)).build(), "LCL", "LHL"));
         });
@@ -636,7 +637,7 @@ public class MachineRecipes {
                             .put('C', conveyor).build(), "DMC", "DDD"));
             add(CHEST_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('D', ForgeCTags.CHESTS_WOODEN)
+                            .put('D', Tags.Items.CHESTS_WOODEN)
                             .put('M', hull)
                             .put('C', conveyor)
                             .put('c', TIER_CIRCUITS.apply(LV)).build(), "DMC", " c "));
@@ -646,14 +647,14 @@ public class MachineRecipes {
                             .put('H', hull)
                             .put('C', TIER_CIRCUITS.apply(HV))
                             .put('F', GT5RCovers.COVER_ITEM_FILTER.getItem())
-                            .put('E', ForgeCTags.CHESTS_WOODEN)
+                            .put('E', Tags.Items.CHESTS_WOODEN)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
             add(ELECTRIC_ITEM_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
                             .put('C', TIER_CIRCUITS.apply(LV))
                             .put('F', GT5RCovers.COVER_ITEM_FILTER.getItem())
-                            .put('E', ForgeCTags.CHESTS_WOODEN)
+                            .put('E', Tags.Items.CHESTS_WOODEN)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
         provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', ROD_LONG.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
@@ -716,7 +717,7 @@ public class MachineRecipes {
         AntimatterAPI.all(WorkbenchMachine.class).forEach(m -> {
             if (!m.getId().contains("charging")) {
                 provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
-                        of('P', PLATE.getMaterialTag(m.getMaterial()), 'C', ForgeCTags.CHESTS_WOODEN, 'c', Items.CRAFTING_TABLE, 'S', SCREWDRIVER.getTag()), "PSP", "PcP", "PCP");
+                        of('P', PLATE.getMaterialTag(m.getMaterial()), 'C', Tags.Items.CHESTS_WOODEN, 'c', Items.CRAFTING_TABLE, 'S', SCREWDRIVER.getTag()), "PSP", "PcP", "PCP");
             } else {
                 provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(HV),
                         of('S', SCREWDRIVER.getTag(), 'w', WIRE_CUTTER.getTag(), 'W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.SMALL, HV, false), 'C', CIRCUITS_ADVANCED, 'R', ROD.getMaterialTag(m.getMaterial())), "RCR", "SWw", "ccc");
@@ -774,11 +775,11 @@ public class MachineRecipes {
                         of('P', PLATE.getMaterialTag(m.getMaterial()), 'S', SAW.getTag(), 'H', HAMMER.getTag(), 'W', block.asItem()), "PPP", "HWS", "PPP");
             }
         });
-        provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', ForgeCTags.CHESTS, 'R', ROD_LONG.getMaterialTag(Lead), 'W', ItemTags.PLANKS, 's', SAW.getTag()), "SCs", "WRW", "WRW");
+        provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', ROD_LONG.getMaterialTag(Lead), 'W', ItemTags.PLANKS, 's', SAW.getTag()), "SCs", "WRW", "WRW");
         provider.addItemRecipe(output, "plastic_storage_box", GTCoreBlocks.PLASTIC_STORAGE_BOX.getItem(NONE),
-                of('S', SCREW.getMaterialTag(Plastic), 'C', ForgeCTags.CHESTS_WOODEN, 'P', PLATE.getMaterialTag(Plastic)), "SPS", "PCP", "SPS");
+                of('S', SCREW.getMaterialTag(Plastic), 'C', Tags.Items.CHESTS_WOODEN, 'P', PLATE.getMaterialTag(Plastic)), "SPS", "PCP", "SPS");
         if (GTCoreBlocks.IRONWOOD_ITEM_BARREL != null) {
-            provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.IRONWOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', ForgeCTags.CHESTS, 'R', ROD_LONG.getMaterialTag(Iron), 'W', PLATE.getMaterialTag(GTCoreMaterials.Ironwood), 's', SAW.getTag()), "SCs", "WRW", "WRW");
+            provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.IRONWOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', ROD_LONG.getMaterialTag(Iron), 'W', PLATE.getMaterialTag(GTCoreMaterials.Ironwood), 's', SAW.getTag()), "SCs", "WRW", "WRW");
         }
     }
 
@@ -788,7 +789,7 @@ public class MachineRecipes {
             if (hull == null) return;
             add(INPUT_BUS, tier, (m, item) ->  provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', ForgeCTags.CHESTS)
+                            .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .build(), "C", "H"));
 
@@ -805,7 +806,7 @@ public class MachineRecipes {
 
             add(OUTPUT_BUS, tier, (m, item) ->  provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('C', ForgeCTags.CHESTS)
+                            .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .build(), "H", "C"));
 

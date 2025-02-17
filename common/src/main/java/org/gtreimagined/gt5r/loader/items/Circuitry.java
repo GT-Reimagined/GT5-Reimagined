@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.loader.items;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.material.Material;
@@ -18,6 +18,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
@@ -104,28 +105,28 @@ public class Circuitry {
                 " P ", "WCW", " P ");
         provider.addItemRecipe(output, GT5RRef.ID, "", "diodes", GT5RItems.Diode,
                 ImmutableMap.<Character, Object>builder()
-                        .put('B', ForgeCTags.DYES_BLACK)
+                        .put('B', ForgeTags.DYES_BLACK)
                         .put('T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', GT5RItems.Wafer)
-                        .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
+                        .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addItemRecipe(output, GT5RRef.ID, "diode_2", "diodes", GT5RItems.Diode,
                 ImmutableMap.<Character, Object>builder()
-                        .put('B', ForgeCTags.DYES_BLACK)
+                        .put('B', ForgeTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', GT5RItems.Wafer)
-                        .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
+                        .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addStackRecipe(output, GT5RRef.ID, "diode_3", "diodes", new ItemStack(GT5RItems.Diode),
                 ImmutableMap.<Character, Object>builder()
-                        .put('B', ForgeCTags.DYES_BLACK)
+                        .put('B', ForgeTags.DYES_BLACK)
                         .put('T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
-                        .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
+                        .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addStackRecipe(output, GT5RRef.ID, "diode_4", "diodes", new ItemStack(GT5RItems.Diode),
                 ImmutableMap.<Character, Object>builder()
-                        .put('B', ForgeCTags.DYES_BLACK)
+                        .put('B', ForgeTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
-                        .put('G', ForgeCTags.GLASS_PANES).build(), "BG ", "TWT", "BG ");
+                        .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addStackRecipe(output, GT5RRef.ID, "", "small_coils", new ItemStack(GT5RItems.SmallCoil, 2),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(Steel)), "WWW", "WBW", "WWW");
         provider.addStackRecipe(output, GT5RRef.ID, "small_coil_1", "small_coils", new ItemStack(GT5RItems.SmallCoil, 4),

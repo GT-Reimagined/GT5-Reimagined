@@ -1,9 +1,10 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.common.Tags;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -28,7 +29,7 @@ public class SolidFuelBoilerLoader {
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_raw_ore",80);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(DUST.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_dust",40);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(OilShale), 1)).io(DUST.get(Stone, 1)).add("oilshale_raw",40);
-        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ForgeCTags.STORAGE_BLOCKS_COAL, 1)).io(DUST.get(DarkAsh, 9)).add("coal_block", 1600);
+        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(Tags.Items.STORAGE_BLOCKS_COAL, 1)).io(DUST.get(DarkAsh, 9)).add("coal_block", 1600);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(BLOCK.getMaterialTag(Lignite), 1)).io(DUST.get(DarkAsh, 9)).add("lignite_block", 800);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(BLOCK.getMaterialTag(Charcoal), 1)).io(DUST.get(Ash, 9)).add("charcoal_block",1600);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(GEM.getMaterialTag(CoalCoke), 1)).io(DUST.get(DarkAsh, 1)).add("coal_coke",320);
@@ -39,12 +40,12 @@ public class SolidFuelBoilerLoader {
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.LOGS_THAT_BURN, 1)).io(DUST.get(Ash, 1)).add("logs",30);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.WOOL, 1)).io(DUST.get(Ash, 1)).add("wool",10);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.WOODEN_SLABS, 1)).io(DUST.get(Ash, 1)).add("wooden_slabs",15);
-        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ForgeCTags.BOOKSHELVES, 1)).io(DUST.get(Ash, 1)).add("bookshelves",30);
+        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(Tags.Items.BOOKSHELVES, 1)).io(DUST.get(Ash, 1)).add("bookshelves",30);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.WOODEN_STAIRS, 1)).io(DUST.get(Ash, 1)).add("wooden_stairs",30);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(Items.DRIED_KELP_BLOCK, 1)).add("dried_kelp_block",400);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 1)).add("saplings",10);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(Items.DEAD_BUSH, 1)).add("dead_bush",10);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(Items.BAMBOO, 1)).add("bamboo",5);
-        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ForgeCTags.RODS_WOODEN, 1)).add("sticks",10);
+        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(Tags.Items.RODS_WOODEN, 1)).add("sticks",10);
     }
 }

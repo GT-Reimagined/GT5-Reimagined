@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.item.ItemBasic;
 import muramasa.antimatter.item.ItemCover;
@@ -106,7 +106,7 @@ public class Parts {
       provider.addStackRecipe(/*ToolTypes.SCANNER_BUILDER.get("portable-scanner"), */output, GT5RRef.ID, "scanner", "misc", new ItemStack(GT5RItems.PortableScanner),
               of('E', EmitterHV, 'A', PLATE.getMaterialTag(Aluminium), 'S', SensorHV, 'C', CIRCUITS_ADVANCED, 'c', ComputerMonitor, 'B',  BatteryMediumLithium/*PropertyIngredient.builder("battery").itemStacks(BatteryMediumLithium).build()*/), "EAS", "CcC", "ABA");
       provider.addItemRecipe(output, "misc", ComputerMonitor,
-              of('A', PLATE.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Glass), 'g', ForgeCTags.DYES_GREEN, 'b', ForgeCTags.DYES_BLUE, 'r', ForgeCTags.DYES_RED, 'G', DUST.getMaterialTag(Glowstone)), "AgA", "rPb", "AGA");
+              of('A', PLATE.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Glass), 'g', ForgeTags.DYES_GREEN, 'b', ForgeTags.DYES_BLUE, 'r', ForgeTags.DYES_RED, 'G', DUST.getMaterialTag(Glowstone)), "AgA", "rPb", "AGA");
   }
 
   private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
@@ -140,9 +140,9 @@ public class Parts {
           provider.addItemRecipe(output, "gtparts", robotArm,
                   of('M', motor, 'C', cable, 'P', piston, 'I', circuit, 'R', rod), "CCC", "MRM", "PIR");
           provider.addItemRecipe(output, "gtparts", emitter,
-                  of('R', emitterRod, 'G', ForgeCTags.GEMS_QUARTZ_ALL, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
+                  of('R', emitterRod, 'G', ForgeTags.GEMS_QUARTZ_ALL, 'L', cable, 'C', circuit), "RRC", "LGR", "CLR");
           provider.addItemRecipe(output, "gtparts", sensor,
-                  of('R', emitterRod, 'G', ForgeCTags.GEMS_QUARTZ_ALL, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
+                  of('R', emitterRod, 'G', ForgeTags.GEMS_QUARTZ_ALL, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
           PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
           provider.addItemRecipe(output, "gtparts", fieldGen,
                   of('O', GT5RBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', ROD_LONG.getMaterialTag(NeodymiumMagnetic)), "OCO", "CGC", "OCO");

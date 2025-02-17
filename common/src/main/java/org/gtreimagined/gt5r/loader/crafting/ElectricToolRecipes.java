@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterDefaultTools;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
@@ -15,6 +15,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
@@ -49,8 +50,8 @@ public class ElectricToolRecipes {
                         builder.build(), "PHP", last, "RSR");
             }
         });
-        provider.addItemRecipe(output, "tools", GTCoreItems.GlassMagnifyingGlass, of('G', LENS.getMaterialTag(Glass), 'S', ForgeCTags.RODS_WOODEN), "G", "S");
-        provider.addItemRecipe(output, "tools", GTCoreItems.DiamondMagnifyingGlass, of('G', LENS.getMaterialTag(Diamond), 'S', ForgeCTags.RODS_WOODEN), "G", "S");
+        provider.addItemRecipe(output, "tools", GTCoreItems.GlassMagnifyingGlass, of('G', LENS.getMaterialTag(Glass), 'S', Tags.Items.RODS_WOODEN), "G", "S");
+        provider.addItemRecipe(output, "tools", GTCoreItems.DiamondMagnifyingGlass, of('G', LENS.getMaterialTag(Diamond), 'S', Tags.Items.RODS_WOODEN), "G", "S");
         PLATE.all().forEach(m -> {
             if (m.has(DRILLBIT)){
                 provider.addItemRecipe(output, "bits", DRILLBIT.get(m),

@@ -4,7 +4,6 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.data.AntimatterMaterials;
 import muramasa.antimatter.data.AntimatterStoneTypes;
-import muramasa.antimatter.data.ForgeCTags;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.ore.BlockOreStone;
@@ -22,6 +21,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -175,7 +175,7 @@ public class MaceratorLoader {
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BLAZE_ROD)).io(new ItemStack(Items.BLAZE_POWDER, 5)).add("blaze_powder", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BONE)).io(new ItemStack(Items.BONE_MEAL, 5)).add("bone_meal", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.QUARTZ_BLOCK)).io(DUST.get(Quartz, 4)).add("quartz_dust_from_block", Quartz.getMass(), 2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(ForgeCTags.GLASS)).io(DUST.get(Glass, 1)).add("glass_dust", 400, 2);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS)).io(DUST.get(Glass, 1)).add("glass_dust", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(ItemTags.WOOL)).io(new ItemStack(Items.STRING, 4)).add("wool_to_string",400,2);
         PULVERIZER.RB().ii(GTCoreItems.CarbonMesh).io(DUST.get(Carbon, 16)).add("carbon_mesh_to_dust", 400, 2);
     }

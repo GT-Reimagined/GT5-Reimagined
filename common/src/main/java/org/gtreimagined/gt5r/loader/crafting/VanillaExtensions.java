@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.ForgeCTags;
+import muramasa.antimatter.data.ForgeTags;
 import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.GTCoreConfig;
@@ -27,7 +28,7 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 public class VanillaExtensions {
     public static void loadRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider) {
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", false,
-                new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', ForgeCTags.RODS_WOODEN), "D", "R"), GT5RRef.class, "sulfurTorch", GT5RRef.ID, "sulfur_torch");
+                new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', Tags.Items.RODS_WOODEN), "D", "R"), GT5RRef.class, "sulfurTorch", GT5RRef.ID, "sulfur_torch");
 
         provider.addItemRecipe(consumer, GT5RRef.ID, "chainmail_helmet", "chainmail_armor",
                 Items.CHAINMAIL_HELMET, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR");
@@ -41,10 +42,10 @@ public class VanillaExtensions {
                 of('L', Items.LEATHER, 'R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'S', AntimatterMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", ROD.get(IronMagnetic),
-                of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
+                of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
 
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", ROD.get(Neodymium),
-                of('R', ForgeCTags.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
+                of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
         provider.addStackRecipe(consumer, GT5RRef.ID, "torch_from_coal", "torches", new ItemStack(Items.TORCH, 4),
                 of('C', Ingredient.of(RAW_ORE.get(Coal), DUST.get(Coal), DUST_IMPURE.get(Coal), DUST_PURE.get(Coal), CRUSHED.get(Coal),CRUSHED_PURIFIED.get(Coal), CRUSHED_REFINED.get(Coal)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5RRef.ID, "torch_from_lignite", "torches", new ItemStack(Items.TORCH, 2),
