@@ -20,6 +20,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.block.BlockAsphaltSlab;
@@ -150,10 +151,12 @@ public class BlockParts {
                 of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
-        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLY_LINE_CASING,
-                of('S', PLATE.getMaterialTag(TungstenSteel), 'F', FRAME.getMaterialTag(TungstenSteel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
-        provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ADVANCED_ASSEMBLER_CASING,
-                of('C', TIER_CIRCUITS.apply(EV), 'c', TIER_CIRCUITS.apply(IV), 'F', FRAME.getMaterialTag(TungstenSteel), 'M', GTCoreItems.MotorIV), "CcC", "CFC", "CMC");
+        if (GT5RConfig.HARD_SETTINGS){
+            provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLY_LINE_CASING,
+                    of('S', PLATE.getMaterialTag(TungstenSteel), 'F', FRAME.getMaterialTag(TungstenSteel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
+            provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ADVANCED_ASSEMBLER_CASING,
+                    of('C', TIER_CIRCUITS.apply(EV), 'c', TIER_CIRCUITS.apply(IV), 'F', FRAME.getMaterialTag(TungstenSteel), 'M', GTCoreItems.MotorIV), "CcC", "CFC", "CMC");
+        }
         provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.AUTOCRAFTER_ASSEMBLY_LINE_CASING,
                 of('S', PLATE.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(Steel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(HV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
         provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLER_CASING,

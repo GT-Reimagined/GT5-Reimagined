@@ -840,12 +840,14 @@ public class MachineRecipes {
     }
 
     private static void addMultiblockRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-        add(ASSEMBLY_LINE, IV, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                ImmutableMap.<Character, Object>builder()
-                        .put('A', GT5RBlocks.ADVANCED_ASSEMBLER_CASING)
-                        .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV))
-                        .put('C', TIER_CIRCUITS.apply(IV))
-                        .put('H', HULL.getItem(IV)).build(), "ARA", "CHC", "ARA"));
+        if (GT5RConfig.HARD_SETTINGS) {
+            add(ASSEMBLY_LINE, IV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('A', GT5RBlocks.ADVANCED_ASSEMBLER_CASING)
+                            .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV))
+                            .put('C', TIER_CIRCUITS.apply(IV))
+                            .put('H', HULL.getItem(IV)).build(), "ARA", "CHC", "ARA"));
+        }
         add(AUTOCRAFTER_ASSEMBLY_LINE, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('A', GT5RBlocks.ASSEMBLER_CASING)
