@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.integration.forge.tfc;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.datagen.AntimatterDynamics;
@@ -46,11 +47,11 @@ import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
-public class TFCRegistrar implements IAntimatterRegistrar {
+public class TFCRegistrar extends AntimatterMod {
 
     public static Material[] array;
     public TFCRegistrar(){
-        AntimatterAPI.addRegistrar(this);
+        super();
         if (isEnabled()) {
             FMLJavaModLoadingContext.get().getModEventBus().register(this);
             MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);

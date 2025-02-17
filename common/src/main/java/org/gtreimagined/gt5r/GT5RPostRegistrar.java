@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.event.MaterialEvent;
 import muramasa.antimatter.registration.IAntimatterRegistrar;
 import muramasa.antimatter.registration.RegistrationEvent;
@@ -8,11 +9,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.data.GT5RMaterialEvents;
 import org.gtreimagined.gt5r.material.GregTechMaterialEvent;
 
-public class GT5RPostRegistrar implements IAntimatterRegistrar {
-    public GT5RPostRegistrar(){
-        AntimatterAPI.addRegistrar(this);
-    }
-
+public class GT5RPostRegistrar extends AntimatterMod {
     @Override
     public String getId() {
         return GT5RRef.ID + "_post";

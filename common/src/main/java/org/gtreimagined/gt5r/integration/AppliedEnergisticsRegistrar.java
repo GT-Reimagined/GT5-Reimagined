@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.integration;
 
 import muramasa.antimatter.AntimatterAPI;
+import muramasa.antimatter.AntimatterMod;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.data.AntimatterStoneTypes;
 import muramasa.antimatter.data.ForgeCTags;
@@ -36,11 +37,7 @@ import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 
-public class AppliedEnergisticsRegistrar implements IAntimatterRegistrar {
-
-    public AppliedEnergisticsRegistrar(){
-        AntimatterAPI.addRegistrar(this);
-    }
+public class AppliedEnergisticsRegistrar extends AntimatterMod {
 
     @Override
     public String getId() {
