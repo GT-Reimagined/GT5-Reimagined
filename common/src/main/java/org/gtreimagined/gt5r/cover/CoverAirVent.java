@@ -43,7 +43,7 @@ public class CoverAirVent extends BaseCover {
         Level level = tile.getLevel();
         Optional<PlatformFluidHandler> cap = Optional.empty();
         if (tile instanceof BlockEntityFluidPipe<?> pipe){
-            cap = pipe.getPipeCapHolder().side(side);
+            cap = pipe.getPipeCapHolder().side(side).resolve();
         } else if (tile instanceof BlockEntityMachine<?> machine){
             cap = machine.fluidHandler.map(FluidHandler::getInputTanks);
         }

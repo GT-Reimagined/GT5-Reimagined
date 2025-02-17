@@ -63,7 +63,7 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.itemHandler.side(side).isPresent()){
-            ExtendedItemContainer itemContainer = machine.itemHandler.side(side).get();
+            ExtendedItemContainer itemContainer = machine.itemHandler.side(side).resolve().get();
             int oldRedstone = outputRedstone;
             int all = 0, full = 0;
             for (int i = 0; i < itemContainer.getContainerSize(); i++) {

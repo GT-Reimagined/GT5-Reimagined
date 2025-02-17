@@ -65,7 +65,7 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent()){
-            FluidContainer fluidContainer = machine.fluidHandler.side(side).get();
+            FluidContainer fluidContainer = machine.fluidHandler.side(side).resolve().get();
             int oldRedstone = outputRedstone;
             long scale = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
                 FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);

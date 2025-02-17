@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.util.LazyOptional;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
@@ -64,8 +65,8 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
         if (type.has(MachineFlag.ITEM)){
             this.itemHandler.set(() -> new MachineItemHandler<>(this){
                 @Override
-                public Optional<ExtendedItemContainer> forSide(Direction side) {
-                    return Optional.of(new ExtendedItemContainer() {
+                public LazyOptional<ExtendedItemContainer> forSide(Direction side) {
+                    return LazyOptional.of(() -> new ExtendedItemContainer() {
                         @Override
                         public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
                             if (tile.target == null) return stack;
