@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
-import muramasa.antimatter.client.model.IModelConfiguration;
 import muramasa.antimatter.client.model.MachineModel;
 import muramasa.antimatter.machine.MachineState;
 import net.minecraft.client.renderer.texture.TextureAtlas;
@@ -13,6 +12,7 @@ import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelState;
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.client.model.IModelConfiguration;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -28,8 +28,8 @@ public class ReactorModel extends MachineModel {
     }
 
     @Override
-    public Collection<Material> getMaterials(IModelConfiguration configuration, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
-        Collection<Material> materials = super.getMaterials(configuration, modelGetter, missingTextureErrors);
+    public Collection<Material> getTextures(IModelConfiguration configuration, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
+        Collection<Material> materials = super.getTextures(configuration, modelGetter, missingTextureErrors);
         materials.addAll(Arrays.stream(rodModels).flatMap(i -> i.getMaterials(modelGetter, missingTextureErrors).stream()).toList());
         return materials;
     }

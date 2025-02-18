@@ -5,6 +5,7 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.client.ModelUtils;
+import muramasa.antimatter.client.model.MachineModel;
 import muramasa.antimatter.client.model.loader.AntimatterModelLoader;
 import muramasa.antimatter.machine.MachineState;
 import net.minecraft.client.renderer.block.model.BlockModel;
@@ -12,17 +13,19 @@ import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5RRef;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReactorModelLoader extends AntimatterModelLoader<ReactorModel> {
+public class ReactorModelLoader extends AntimatterModelLoader<MachineModel> {
     public ReactorModelLoader(ResourceLocation loc) {
         super(loc);
     }
 
+    @NotNull
     @Override
-    public ReactorModel readModel(JsonDeserializationContext context, JsonObject json) {
+    public MachineModel read(JsonDeserializationContext context, JsonObject json) {
         ResourceLocation particle = json.has("particle") ? new ResourceLocation(json.get("particle").getAsString()) : MissingTextureAtlasSprite.getLocation();
         Map<MachineState, UnbakedModel[]> m = new HashMap<>();
         AntimatterAPI.all(MachineState.class, t -> {
