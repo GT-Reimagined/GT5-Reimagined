@@ -26,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.CapabilityItemHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.Nullable;
@@ -90,7 +91,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport() && canMove(side)) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = AntimatterCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = handler.getTile().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             double x = pos.getX() + side.getStepX() + 0.5;
             double y = pos.getY() + side.getStepY() + 0.5;
@@ -114,7 +115,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            AntimatterCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> AntimatterCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+            from.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, fromSide).ifPresent(ih -> finalTo.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Utils.transferItems(ih, oh, true);
             }));
         }

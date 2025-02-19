@@ -5,7 +5,6 @@ import muramasa.antimatter.blockentity.pipe.BlockEntityItemPipe;
 import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.CoverHandler;
 import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.capability.item.PlatformItemHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
@@ -14,9 +13,7 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.CodeUtils;
-import muramasa.antimatter.util.ItemHandlerUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,6 +25,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
 import org.gtreimagined.gt5r.gui.ButtonOverlays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -109,7 +109,7 @@ public class CoverItemRetriever extends BaseCover {
                                 if (p.canAcceptItemsFrom(dir, pipe) && (dir != this.side || p != pipe)){
                                     BlockEntity a = p.getCachedBlockEntity(dir);
                                     if (!(a instanceof BlockEntityItemPipe) && a != null){
-                                        PlatformItemHandler itemHandler = AntimatterCapUtils.INSTANCE.getItemHandler(a, dir.getOpposite()).orElse(null);
+                                        IItemHandler itemHandler = a.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, dir.getOpposite()).resolve().orElse(null);
                                         if (itemHandler != null) {
                                             Level world = handler.getTile().getLevel();
                                             BlockPos pos = handler.getTile().getBlockPos();
@@ -135,7 +135,7 @@ public class CoverItemRetriever extends BaseCover {
                 }
                 BlockEntity adjacent = pipe.getCachedBlockEntity(this.side);
                 if (adjacent == null) return;
-                PlatformItemHandler to = AntimatterCapUtils.INSTANCE.getItemHandler(adjacent, this.side.getOpposite()).orElse(null);
+                IItemHandler to = adjacent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.side.getOpposite()).resolve().orElse(null);
                 if (to == null) return;
                 for (BlockEntityItemPipe<?> p : pipes){
                     if (tUsedPipes.add(p)){
@@ -143,7 +143,7 @@ public class CoverItemRetriever extends BaseCover {
                             if (p.canAcceptItemsFrom(dir, pipe) && (dir != this.side || p != pipe)){
                                 BlockEntity a = p.getCachedBlockEntity(dir);
                                 if (!(a instanceof BlockEntityItemPipe) && a != null){
-                                    PlatformItemHandler itemHandler = AntimatterCapUtils.INSTANCE.getItemHandler(a, dir.getOpposite()).orElse(null);
+                                    IItemHandler itemHandler = a.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, dir.getOpposite()).resolve().orElse(null);
                                     if (itemHandler != null && Utils.transferItems(itemHandler, to, true, s -> itemMatches(s, getInventory(SlotType.DISPLAY_SETTABLE).getItem(0)))){
                                         for (BlockEntityItemPipe<?> tUsedPipe : tUsedPipes){
                                             tUsedPipe.incrementTransferCounter(1);
@@ -165,7 +165,7 @@ public class CoverItemRetriever extends BaseCover {
         if (empty) {
             return !whitelist;
         }
-        boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
+        boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerHelper.canItemStacksStack(item, filter);
         return whitelist == matches;
     }
 

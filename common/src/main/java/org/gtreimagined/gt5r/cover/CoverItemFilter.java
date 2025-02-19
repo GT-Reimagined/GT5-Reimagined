@@ -9,11 +9,11 @@ import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.ItemHandlerUtils;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.items.ItemHandlerHelper;
 import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.gtreimagined.gt5r.gui.ButtonOverlays;
 import org.jetbrains.annotations.NotNull;
@@ -69,7 +69,7 @@ public class CoverItemFilter extends CoverFilter {
                     return true;
                 }
             }
-            boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerUtils.canItemStacksStack(item, filter);
+            boolean matches = ignoreNBT ? item.is(filter.getItem()) : ItemHandlerHelper.canItemStacksStack(item, filter);
             if (blacklist == matches){
                 return true;
             }

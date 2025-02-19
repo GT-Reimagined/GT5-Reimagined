@@ -1,10 +1,8 @@
 package org.gtreimagined.gt5r.cover;
 
 import muramasa.antimatter.blockentity.BlockEntityBase;
-import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.capability.item.PlatformItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
@@ -24,9 +22,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.jetbrains.annotations.Nullable;
-import tesseract.TesseractCapUtils;
 
 import java.util.function.Predicate;
 
@@ -111,7 +110,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = AntimatterCapUtils.INSTANCE.getItemHandler(handler.getTile(), side).map(this::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = handler.getTile().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side).map(this::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
@@ -132,7 +131,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            AntimatterCapUtils.INSTANCE.getItemHandler(from, fromSide).ifPresent(ih -> AntimatterCapUtils.INSTANCE.getItemHandler(finalTo, finalFromSide.getOpposite()).ifPresent(oh -> {
+            from.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, fromSide).ifPresent(ih -> finalTo.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Predicate<ItemStack> filter = s -> {
                     if (isImporting || slotLimit == 0) return true;
                     if (s.getCount() < slotLimit) return false;
@@ -144,7 +143,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         }
     }
 
-    public ItemStack extractAny(PlatformItemHandler handler) {
+    public ItemStack extractAny(IItemHandler handler) {
         for (int i = 0; i < handler.getSlots(); i++) {
             ItemStack stack = handler.extractItem(i, slotLimit > 0 ? slotLimit : 64, true);
             if (!stack.isEmpty() && (slotLimit == 0 || stack.getCount() == slotLimit)) {

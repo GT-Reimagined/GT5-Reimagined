@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
 import muramasa.antimatter.client.model.MachineModel;
 import muramasa.antimatter.machine.MachineState;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
@@ -35,8 +36,8 @@ public class ReactorModel extends MachineModel {
     }
 
     @Override
-    public BakedModel bakeModel(ModelBakery bakery,
-                                Function<Material, TextureAtlasSprite> getter, ModelState transform,
+    public BakedModel bakeModel(IModelConfiguration configuration, ModelBakery bakery,
+                                Function<Material, TextureAtlasSprite> getter, ModelState transform, ItemOverrides overrides,
                                 ResourceLocation loc) {
         ImmutableMap.Builder<MachineState, BakedModel[]> builder = ImmutableMap.builder();
 

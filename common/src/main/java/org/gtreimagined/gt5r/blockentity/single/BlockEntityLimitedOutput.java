@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.item.PlatformItemHandler;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.data.AntimatterDefaultTools;
@@ -20,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +32,7 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
         this.itemHandler.set(() -> new LimitedOutputItemHandler<>((T)this));
     }
 
-    public boolean transferItems(PlatformItemHandler from, PlatformItemHandler to, boolean once) {
+    public boolean transferItems(IItemHandler from, IItemHandler to, boolean once) {
         boolean successful = false;
         for (int i = 0; i < from.getSlots(); i++) {
             ItemStack toInsert = from.extractItem(i, from.getStackInSlot(i).getCount(), true);
