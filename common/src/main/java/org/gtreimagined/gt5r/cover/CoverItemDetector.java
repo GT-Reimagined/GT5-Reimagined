@@ -66,10 +66,10 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
             ExtendedItemContainer itemContainer = machine.itemHandler.side(side).resolve().get();
             int oldRedstone = outputRedstone;
             int all = 0, full = 0;
-            for (int i = 0; i < itemContainer.getContainerSize(); i++) {
+            for (int i = 0; i < itemContainer.getSlots(); i++) {
                 int slotLimit = itemContainer.getSlotLimit(i);
                 all += slotLimit;
-                ItemStack stack = itemContainer.getItem(i);
+                ItemStack stack = itemContainer.getStackInSlot(i);
                 if (!stack.isEmpty()){
                     if (slotLimit > 64){ // mass storage
                         full += stack.getCount();
@@ -127,7 +127,7 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
         if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getItem(data[0]);
+            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {

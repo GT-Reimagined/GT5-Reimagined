@@ -204,7 +204,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
         if (event == SlotType.STORAGE){
-            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0)).orElse(ItemStack.EMPTY);
+            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
             if (circuit.getItem() instanceof ItemSelectorTag circuit1){
                 superheatedThreshold = 80000 - (circuit1.circuitId * 3000);
                 efficiency = 1000 - (circuit1.circuitId * 15);

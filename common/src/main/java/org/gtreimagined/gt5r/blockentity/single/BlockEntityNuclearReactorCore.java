@@ -73,7 +73,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     return new TrackedItemHandler<>(tile, type, 4, type.output, type.input, type.tester, 1){
                         @Override
                         public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-                            if (getItem(slot).getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(getItem(slot))){
+                            if (getStackInSlot(slot).getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(getStackInSlot(slot))){
                                 return ItemStack.EMPTY;
                             }
                             return super.extractItem(slot, amount, simulate);
@@ -87,11 +87,11 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
     }
 
     public ItemStack getRod(int slot){
-        return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(slot)).orElse(ItemStack.EMPTY);
+        return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(slot)).orElse(ItemStack.EMPTY);
     }
 
     public void setRod(int slot, ItemStack stack){
-        itemHandler.ifPresent(i -> i.getHandler(SlotType.STORAGE).setItem(slot, stack));
+        itemHandler.ifPresent(i -> i.getHandler(SlotType.STORAGE).setStackInSlot(slot, stack));
     }
 
     @Override
@@ -454,8 +454,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
         for(int i = 0; i < container.getSlots(); ++i) {
             CompoundTag itemTag = new CompoundTag();
             itemTag.putInt("Slot", i);
-            container.getItem(i).save(itemTag);
-            itemTag.putInt("count", container.getItem(i).getCount());
+            container.getStackInSlot(i).save(itemTag);
+            itemTag.putInt("count", container.getStackInSlot(i).getCount());
             nbtTagList.add(itemTag);
         }
 

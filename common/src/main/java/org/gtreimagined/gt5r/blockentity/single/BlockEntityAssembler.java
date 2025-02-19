@@ -34,8 +34,8 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
                     ExtendedItemContainer container = itemHandler.get().getInputHandler();
                     ItemStack printedPages = ItemStack.EMPTY;
                     boolean leather = false;
-                    for (int i = 0; i < container.getContainerSize(); i++) {
-                        ItemStack stack = container.getItem(i);
+                    for (int i = 0; i < container.getSlots(); i++) {
+                        ItemStack stack = container.getStackInSlot(i);
                         if (stack.getItem() == GT5RItems.PrintedPages && printedPages.isEmpty()){
                             printedPages = stack;
                         } else if (stack.getItem() == Items.LEATHER){

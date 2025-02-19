@@ -15,7 +15,7 @@ public interface IAutocrafter {
     void setRecipe(CraftingRecipe recipe);
 
     default void initRecipe(BlockEntityMachine<?> machine) {
-        ItemStack blueprint = machine.itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0)).orElse(ItemStack.EMPTY);
+        ItemStack blueprint = machine.itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
         if (blueprint.isEmpty() && getRecipe() != null){
             setRecipe(null);
         } else if (!blueprint.isEmpty()){

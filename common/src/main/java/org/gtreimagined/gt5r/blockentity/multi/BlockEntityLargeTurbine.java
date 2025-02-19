@@ -126,7 +126,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                                     var materialType = rotor.getAntimatterToolType().getMaterialTypeItem();
                                     var material = rotor.getPrimaryMaterial(compare);
                                     ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : ROD_LONG.get(rotor.getRodMaterial(), 1);
-                                    i.getHandler(SlotType.STORAGE).setItem(0, broken);
+                                    i.getHandler(SlotType.STORAGE).setStackInSlot(0, broken);
                                 }
                             });
                         }

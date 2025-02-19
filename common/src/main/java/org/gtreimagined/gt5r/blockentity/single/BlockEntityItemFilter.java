@@ -62,17 +62,17 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == GT5RItems.DataStick){
             if (stack.getTagElement("displaySlots") == null){
-                CompoundTag displaySlots = stack.getOrCreateTagElement("displaySlots");
                 this.itemHandler.ifPresent(i -> {
-                    i.getHandler(SlotType.DISPLAY_SETTABLE).serialize(displaySlots);
+                    CompoundTag displaySlots = i.getHandler(SlotType.DISPLAY_SETTABLE).serializeNBT();
+                    displaySlots.putString("machineType", this.getMachineType().getLoc().toString());
+                    stack.getOrCreateTag().put("displaySlots", displaySlots);
                 });
-                displaySlots.putString("machineType", this.getMachineType().getLoc().toString());
                 level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
                 return InteractionResult.SUCCESS;
             } else {
                 CompoundTag displaySlots = stack.getTagElement("displaySlots");
                 if (!displaySlots.isEmpty() && displaySlots.getString("machineType").equals(this.getMachineType().getLoc().toString())){
-                    this.itemHandler.ifPresent(i -> i.getHandler(SlotType.DISPLAY_SETTABLE).deserialize(displaySlots));
+                    this.itemHandler.ifPresent(i -> i.getHandler(SlotType.DISPLAY_SETTABLE).deserializeNBT(displaySlots));
                     level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 }
@@ -88,8 +88,8 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
             boolean hasItem = itemHandler.map(h -> {
                 List<Item> list = new ObjectArrayList<>();
                 ExtendedItemContainer outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
-                for (int i = 0; i < outputs.getContainerSize(); i++) {
-                    ItemStack slotStack = outputs.getItem(i);
+                for (int i = 0; i < outputs.getSlots(); i++) {
+                    ItemStack slotStack = outputs.getStackInSlot(i);
                     if (!slotStack.isEmpty()) {
                         if (slotStack.getItem() == stack.getItem()){
                             if (!nbt || Objects.equals(slotStack.getTag(), stack.getTag())) {

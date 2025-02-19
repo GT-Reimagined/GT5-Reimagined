@@ -77,7 +77,7 @@ public class CoverRobotArm extends CoverBasicTransport {
                         }
                         stack.setCount(toInsert.getCount() - inserted.getCount());
                     }
-                } else if (itemHandler.getHandler(SlotType.STORAGE).getContainerSize() > 0){
+                } else if (itemHandler.getHandler(SlotType.STORAGE).getSlots() > 0){
                     ItemStack inserted = itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, toInsert, true);
                     if (inserted.isEmpty()){
                         if (!simulate) {
@@ -126,9 +126,9 @@ public class CoverRobotArm extends CoverBasicTransport {
                             if (h.getInputCount() > 0){
                                 slot++;
                                 if (slot >= h.getInputCount()) slot = 0;
-                            } else if (h.getHandler(SlotType.STORAGE).getContainerSize() > 0){
+                            } else if (h.getHandler(SlotType.STORAGE).getSlots() > 0){
                                 slot++;
-                                if (slot >= h.getHandler(SlotType.STORAGE).getContainerSize()) slot = 0;
+                                if (slot >= h.getHandler(SlotType.STORAGE).getSlots()) slot = 0;
                             }else {
                                 slot = 0;
                             }

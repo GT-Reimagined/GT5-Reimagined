@@ -37,7 +37,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
                 IRecipe recipe = super.findRecipe();
                 if (recipe == null){
                     ExtendedItemContainer container = itemHandler.get().getInputHandler();
-                    ItemStack input = container != null ? container.getItem(0) : ItemStack.EMPTY;
+                    ItemStack input = container != null ? container.getStackInSlot(0) : ItemStack.EMPTY;
                     ResourceLocation id = RegistryUtils.getIdFromItem(input.getItem());
                     FluidHolder fluidInput = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
                     if (!fluidInput.isEmpty()) {

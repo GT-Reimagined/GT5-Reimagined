@@ -88,25 +88,16 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         }
 
                         @Override
-                        public void deserialize(CompoundTag nbt) {
-
-                        }
-
-                        @Override
-                        public CompoundTag serialize(CompoundTag nbt) {
-                            return null;
-                        }
-
-                        @Override
-                        public int getContainerSize() {
+                        public int getSlots() {
                             if (tile.target == null) return 0;
                             IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
                             if (itemHandler1 == null) return 0;
                             return itemHandler1.getSlots();
                         }
 
+                        @NotNull
                         @Override
-                        public ItemStack getItem(int index) {
+                        public ItemStack getStackInSlot(int index) {
                             if (tile.target == null) return ItemStack.EMPTY;
                             IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
                             if (itemHandler1 == null) return ItemStack.EMPTY;
@@ -114,11 +105,19 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                         }
 
                         @Override
-                        public void setItem(int index, ItemStack stack) {
+                        public void setStackInSlot(int index, ItemStack stack) {
                             if (tile.target == null) return;
                             IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
                             if (!(itemHandler1 instanceof IItemHandlerModifiable modifiable)) return;
                             modifiable.setStackInSlot(index, stack);
+                        }
+
+                        @Override
+                        public boolean isItemValid(int i, @NotNull ItemStack itemStack) {
+                            if (tile.target == null) return false;
+                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
+                            if (itemHandler1 == null) return false;
+                            return itemHandler1.isItemValid(i, itemStack);
                         }
                     });
                 }

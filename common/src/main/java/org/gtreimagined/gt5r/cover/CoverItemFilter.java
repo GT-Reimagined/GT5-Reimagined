@@ -62,7 +62,7 @@ public class CoverItemFilter extends CoverFilter {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof ItemStack item) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
-            ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getItem(0);
+            ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getStackInSlot(0);
             boolean empty = filter.isEmpty();
             if (empty) {
                 if (!blacklist) {

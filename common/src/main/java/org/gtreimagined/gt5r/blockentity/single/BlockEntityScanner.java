@@ -32,8 +32,8 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                 if (recipe == null){
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
                     ExtendedItemContainer inputHandler = ih.getInputHandler();
-                    ItemStack input0 = inputHandler.getItem(0);
-                    ItemStack input1 = inputHandler.getItem(1);
+                    ItemStack input0 = inputHandler.getStackInSlot(0);
+                    ItemStack input1 = inputHandler.getStackInSlot(1);
                     if (!input0.isEmpty()) {
                         if (input0.getItem() == GT5RItems.DataStick) {
                             CompoundTag prospect = input0.getTagElement("prospectData");

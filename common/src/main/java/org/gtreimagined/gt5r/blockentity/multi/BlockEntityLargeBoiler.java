@@ -65,7 +65,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
             public void checkRecipe() {
                 super.checkRecipe();
                 itemHandler.ifPresent(i -> {
-                    ItemStack circuit = i.getHandler(SlotType.STORAGE).getItem(0);
+                    ItemStack circuit = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
                     if (circuit.getItem() instanceof ItemSelectorTag intCircuit){
                         if (intCircuit.circuitId > 0 && intCircuit.circuitId <= 24){
                             integratedCircuitConfig = intCircuit.circuitId;

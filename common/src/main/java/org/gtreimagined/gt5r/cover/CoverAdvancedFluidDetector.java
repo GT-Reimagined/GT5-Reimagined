@@ -69,12 +69,12 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
             int oldRedstone = outputRedstone;
             long scale = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
                 FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
-                if (!getInventory(SlotType.STORAGE).getItem(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
+                if (!getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
                 return fluidContainer.getTankCapacity(tankSlot);
             }).sum() / 15L;
             long totalFluid = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
                 FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
-                if (!getInventory(SlotType.STORAGE).getItem(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
+                if (!getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
                 return fluidHolder.getFluidAmount();
             }).sum();
             if (scale > 0){
@@ -123,7 +123,7 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
         if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getItem(data[0]);
+            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {

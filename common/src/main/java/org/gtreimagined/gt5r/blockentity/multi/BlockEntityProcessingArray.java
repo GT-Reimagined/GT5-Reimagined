@@ -51,7 +51,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
 
             @Override
             protected int maxSimultaneousRecipes(){
-                return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0).getCount()).orElse(0);
+                return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0).getCount()).orElse(0);
             }
 
             @Override
@@ -59,7 +59,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
                 if (event == SlotType.STORAGE){
                     IRecipeMap oldRecipeMap = recipeMap;
                     this.tier = null;
-                    ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0)).orElse(ItemStack.EMPTY);
+                    ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                     if (stack.getItem() instanceof BlockItem blockItem){
                         if (blockItem.getBlock() instanceof BlockMachine machine && machine.getType() instanceof BasicMachine){
                             if (machine.getType().getRecipeMap(machine.getTier()) != null){
@@ -77,7 +77,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
 
             @Override
             public void init() {
-                ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getItem(0)).orElse(ItemStack.EMPTY);
+                ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                 if (stack.getItem() instanceof BlockItem blockItem){
                     if (blockItem.getBlock() instanceof BlockMachine machine && machine.getType() instanceof BasicMachine){
                         if (machine.getType().getRecipeMap(machine.getTier()) != null){

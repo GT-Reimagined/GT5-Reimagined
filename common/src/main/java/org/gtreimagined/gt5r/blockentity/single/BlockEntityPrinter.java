@@ -47,8 +47,8 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                 if (recipe == null){
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
                     ExtendedItemContainer inputHandler = ih.getInputHandler();
-                    ItemStack paper = inputHandler.getItem(0);
-                    ItemStack stored = inputHandler.getItem(1);
+                    ItemStack paper = inputHandler.getStackInSlot(0);
+                    ItemStack stored = inputHandler.getStackInSlot(1);
                     if (paper.getItem() == Items.PAPER) {
                         if (paper.getCount() >= 1 && stored.getItem() == GT5RItems.DataStick) {
                             CompoundTag prospect = stored.getTagElement("prospectData");

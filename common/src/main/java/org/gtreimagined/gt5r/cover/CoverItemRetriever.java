@@ -144,7 +144,7 @@ public class CoverItemRetriever extends BaseCover {
                                 BlockEntity a = p.getCachedBlockEntity(dir);
                                 if (!(a instanceof BlockEntityItemPipe) && a != null){
                                     IItemHandler itemHandler = a.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, dir.getOpposite()).resolve().orElse(null);
-                                    if (itemHandler != null && Utils.transferItems(itemHandler, to, true, s -> itemMatches(s, getInventory(SlotType.DISPLAY_SETTABLE).getItem(0)))){
+                                    if (itemHandler != null && Utils.transferItems(itemHandler, to, true, s -> itemMatches(s, getInventory(SlotType.DISPLAY_SETTABLE).getStackInSlot(0)))){
                                         for (BlockEntityItemPipe<?> tUsedPipe : tUsedPipes){
                                             tUsedPipe.incrementTransferCounter(1);
                                         }

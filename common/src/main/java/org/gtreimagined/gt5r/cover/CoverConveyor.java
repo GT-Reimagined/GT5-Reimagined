@@ -27,6 +27,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.Nullable;
@@ -63,7 +64,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof ItemStack stack){
-            if (getInventory(SlotType.STORAGE).getItem(0).isEmpty()) return false;
+            if (getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
@@ -71,7 +72,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return cap != ExtendedItemContainer.class;
+        return cap != IItemHandler.class;
     }
 
     //Useful for using the same model for multiple tiers where id is dependent on tier.
@@ -136,7 +137,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
         if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getItem(data[0]);
+            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {

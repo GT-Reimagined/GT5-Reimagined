@@ -67,7 +67,7 @@ public class CoverFluidFilter extends CoverFilter {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof FluidHolder fluidHolder) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
-            ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getItem(0);
+            ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getStackInSlot(0);
             boolean empty = filter.isEmpty() || FluidHooks.safeGetItemFluidManager(filter).map(f -> {
                 for (int i = 0; i < f.getTankAmount(); i++){
                     if (!f.getFluidInTank(i).isEmpty()){

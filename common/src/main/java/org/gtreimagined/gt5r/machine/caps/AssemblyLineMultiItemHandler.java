@@ -52,13 +52,13 @@ public class AssemblyLineMultiItemHandler<T extends BlockEntityMultiMachine<T>> 
 
     public List<ItemStack> consumeInput(Ingredient input, ITrackedHandler container, boolean simulate) {
         if (input == null) return Collections.emptyList();
-        IntSet skipSlots = new IntOpenHashSet(getInputHandler().getContainerSize());
+        IntSet skipSlots = new IntOpenHashSet(getInputHandler().getSlots());
         List<ItemStack> consumedItems = new ObjectArrayList<>();
 
         int failed = 0;
         int countToReach = RecipeIngredient.count(input);
-        for (int i = 0; i < container.getContainerSize(); i++) {
-            ItemStack item = container.getItem(i);
+        for (int i = 0; i < container.getSlots(); i++) {
+            ItemStack item = container.getStackInSlot(i);
             if (input.test(item) && !skipSlots.contains(i)) {
                 int toConsume = Math.min(item.getCount(), Math.max(countToReach - item.getCount(), countToReach));
                 countToReach -= toConsume;
@@ -71,7 +71,7 @@ public class AssemblyLineMultiItemHandler<T extends BlockEntityMultiMachine<T>> 
                     break;
                 }
             }
-            if (i == container.getContainerSize() - 1) {
+            if (i == container.getSlots() - 1) {
                 failed++;
             }
         }

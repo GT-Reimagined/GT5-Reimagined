@@ -35,7 +35,7 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
     public void onUpdate() {
         if (this.handler.getTile() instanceof BlockEntityLargeTurbine turbine){
             turbine.itemHandler.ifPresent(i -> {
-                ItemStack rotor = i.getHandler(SlotType.STORAGE).getItem(0);
+                ItemStack rotor = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
                 if (rotor.getItem() instanceof ItemTurbineRotor rotor1){
                     if (!mode.scaled){
                         setOutputRedstone(mode.inverted ? 15 : 0);
