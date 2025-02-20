@@ -36,7 +36,7 @@ public class DistillationTowerLoader {
         addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
         DISTILLERY.RB()
                 .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
-                .fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier))
+                .fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100))
                 .fo(DistilledWater.getLiquid(50)).io(Items.SUGAR).add("beet_juice", 80, 16);
         DISTILLERY.RB()
                 .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())

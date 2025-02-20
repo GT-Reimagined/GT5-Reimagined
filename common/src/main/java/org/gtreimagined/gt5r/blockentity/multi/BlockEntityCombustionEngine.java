@@ -36,10 +36,10 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
 
             @Override
             protected boolean consumeGeneratorResources(boolean simulate) {
-                boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), true).getFluidAmount() == 2 * TesseractGraphWrappers.dropletMultiplier).orElse(false);
+                boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), true).getFluidAmount() == 2).orElse(false);
                 int fuelConsumption = (int) (boostEU ? (4096 / activeRecipe.getPower()) : (2048 / activeRecipe.getPower()));
                 int lubeConsume = boostEU ? 2 : 1;
-                if ((lubeTicker == 72 || simulate) &&!fluidHandler.map(f -> f.drainInput(Lubricant.getLiquid(lubeConsume), true).getFluidAmount() == lubeConsume * TesseractGraphWrappers.dropletMultiplier).orElse(false)) {
+                if ((lubeTicker == 72 || simulate) &&!fluidHandler.map(f -> f.drainInput(Lubricant.getLiquid(lubeConsume), true).getFluidAmount() == lubeConsume).orElse(false)) {
                     if (!simulate && startup > 0) startup = 0;
                     return false;
                 }

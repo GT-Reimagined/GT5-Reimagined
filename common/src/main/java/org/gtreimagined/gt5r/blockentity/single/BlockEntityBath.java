@@ -49,7 +49,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
                                 return RecipeMaps.BATH.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).fi(Utils.ca(L / 2, fluidInput)).io(output).add(color.getName() + "_shulker_box", 64);
                             }
                         } else if (id.getPath().contains("_shulker_box") && id.getNamespace().equals("minecraft")){
-                            if (fluidInput.matches(Chlorine.getGas(50)) && fluidInput.getFluidAmount() >= 50 * TesseractGraphWrappers.dropletMultiplier) {
+                            if (fluidInput.matches(Chlorine.getGas(50)) && fluidInput.getFluidAmount() >= 50) {
                                 ItemStack output = new ItemStack(Items.SHULKER_BOX);
                                 output.setTag(input.getTag());
                                 return RecipeMaps.BATH.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).fi(Chlorine.getGas(50)).io(output).add("shulker_box", 64);

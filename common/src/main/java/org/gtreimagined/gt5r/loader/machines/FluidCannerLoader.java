@@ -51,20 +51,20 @@ public class FluidCannerLoader {
             //Only the source, so we don't get duplicates.
             if (!fluid.isSource(fluid.defaultFluidState())) return;
             ResourceLocation fluidId = RegistryUtils.getIdFromFluid(fluid);
-            FLUID_CANNER.RB().ii(RecipeIngredient.of(bucket, 1)).fo(FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier)).io(Items.BUCKET.getDefaultInstance()).add(fluidId.getNamespace() + "_" + fluidId.getPath() + "_bucket",20, 8);
-            FLUID_CANNER.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier)).io(new ItemStack(bucket, 1)).add("bucket_from_" + fluidId.getNamespace() + "_" + fluidId.getPath(),20, 8);
+            FLUID_CANNER.RB().ii(RecipeIngredient.of(bucket, 1)).fo(FluidPlatformUtils.createFluidStack(fluid, 1000)).io(Items.BUCKET.getDefaultInstance()).add(fluidId.getNamespace() + "_" + fluidId.getPath() + "_bucket",20, 8);
+            FLUID_CANNER.RB().ii(RecipeIngredient.of(Items.BUCKET, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, 1000)).io(new ItemStack(bucket, 1)).add("bucket_from_" + fluidId.getNamespace() + "_" + fluidId.getPath(),20, 8);
 
             AntimatterAPI.all(ItemFluidCell.class, emptyCell -> {
                 if (!emptyCell.getFilter().test(0, FluidPlatformUtils.createFluidStack(fluid, 1))) return;
                 int size = emptyCell.getCapacity();
                 ItemStack filled = emptyCell.fill(fluid, size);
-                FLUID_CANNER.RB().ii(RecipeIngredient.of(filled)).fo(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_" + RegistryUtils.getIdFromFluid(fluid).getPath(),20, 8);
-                FLUID_CANNER.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, size * TesseractGraphWrappers.dropletMultiplier)).io(filled).add(RegistryUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
+                FLUID_CANNER.RB().ii(RecipeIngredient.of(filled)).fo(FluidPlatformUtils.createFluidStack(fluid, size)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_" + RegistryUtils.getIdFromFluid(fluid).getPath(),20, 8);
+                FLUID_CANNER.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(FluidPlatformUtils.createFluidStack(fluid, size)).io(filled).add(RegistryUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
             });
         });
         if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)){
-            FLUID_CANNER.RB().ii(RecipeIngredient.of(RegistryUtils.getItemFromID(Ref.MOD_TWILIGHT, "fiery_blood"))).io(Items.GLASS_BOTTLE).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), 250 * TesseractGraphWrappers.dropletMultiplier)).add("fiery_blood_from_fiery_blood_bottle", 20, 8);
-            FLUID_CANNER.RB().ii(RecipeIngredient.of(RegistryUtils.getItemFromID(Ref.MOD_TWILIGHT, "fiery_tears"))).io(Items.GLASS_BOTTLE).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), 250 * TesseractGraphWrappers.dropletMultiplier)).add("fiery_tears_from_fiery_tears_bottle", 20, 8);
+            FLUID_CANNER.RB().ii(RecipeIngredient.of(RegistryUtils.getItemFromID(Ref.MOD_TWILIGHT, "fiery_blood"))).io(Items.GLASS_BOTTLE).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), 250)).add("fiery_blood_from_fiery_blood_bottle", 20, 8);
+            FLUID_CANNER.RB().ii(RecipeIngredient.of(RegistryUtils.getItemFromID(Ref.MOD_TWILIGHT, "fiery_tears"))).io(Items.GLASS_BOTTLE).fo(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), 250)).add("fiery_tears_from_fiery_tears_bottle", 20, 8);
         }
     }
 }

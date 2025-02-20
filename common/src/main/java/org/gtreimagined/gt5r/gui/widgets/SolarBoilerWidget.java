@@ -43,8 +43,8 @@ public class SolarBoilerWidget extends Widget {
 
     @Override
     public void render(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
-        if (water >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) water / (TesseractGraphWrappers.dropletMultiplier * 16000);
+        if (water >= 1) {
+            float per = (float) water / 16000;
             if (per > 1.0F) {
                 per = 1.0F;
             }
@@ -57,8 +57,8 @@ public class SolarBoilerWidget extends Widget {
 
         }
 
-        if (steam >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) steam / (TesseractGraphWrappers.dropletMultiplier * 16000);
+        if (steam >= 1) {
+            float per = (float) steam / 16000;
             if (per > 1.0F) {
                 per = 1.0F;
             }

@@ -228,7 +228,7 @@ public class Circuitry {
 
     private static void addCuttingRecipe(Item input, ItemBasic<?> output, int amount, int ticks, int power, int liquidMultiplier){
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, 5 * liquidMultiplier * TesseractGraphWrappers.dropletMultiplier))
+                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, 5L * liquidMultiplier))
                 .io(new ItemStack(output, amount)).add(output.getId() + "_with_water", ticks, power);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(DistilledWater.getLiquid(3 * liquidMultiplier))

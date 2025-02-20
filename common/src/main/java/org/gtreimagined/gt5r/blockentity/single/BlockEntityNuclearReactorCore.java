@@ -386,10 +386,10 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     int toFill = hotCoolant == Steam ? tEnergy * 160 : tEnergy;
                     if (tEnergy > 0){
                         FluidHolder fluidHolder = hotCoolant.has(AntimatterMaterialTypes.GAS) ? hotCoolant.getGas(tEnergy * multiplier) : hotCoolant.getLiquid(tEnergy);
-                        if (coldCoolant.getFluidAmount() >= tEnergy * TesseractGraphWrappers.dropletMultiplier && fluidHandler1.fillOutput(fluidHolder.copyHolder(), true) == tEnergy * multiplier * TesseractGraphWrappers.dropletMultiplier){
+                        if (coldCoolant.getFluidAmount() >= tEnergy && fluidHandler1.fillOutput(fluidHolder.copyHolder(), true) == (long) tEnergy * multiplier){
                             fluidHandler1.fillOutput(fluidHolder, false);
                             handler.extractInternal(tEnergy * heatPerCoolant, false);
-                            fluidHandler1.drainInput(tEnergy * TesseractGraphWrappers.dropletMultiplier, false);
+                            fluidHandler1.drainInput(tEnergy, false);
                         }
                     }
                 }

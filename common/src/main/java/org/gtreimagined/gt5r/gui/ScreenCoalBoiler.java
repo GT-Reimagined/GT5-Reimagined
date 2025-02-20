@@ -29,12 +29,12 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {
                 FluidHolder[] inputs = t.getInputs();
-                long water = inputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
+                long water = inputs[0].getFluidAmount();
                 if (water >= 1) {
                     drawTooltipInArea(stack,"Water: " + water + " MB", mouseX, mouseY, 84, 25, 10, 54);
                 }
                 FluidHolder[] outputs = t.getOutputs();
-                long steam = outputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
+                long steam = outputs[0].getFluidAmount();
                 if (steam >= 1) {
                     drawTooltipInArea(stack,"Steam: " + steam + " MB", mouseX, mouseY, 70, 25, 10, 54);
                 }
@@ -56,7 +56,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {
                 FluidHolder[] inputs = t.getInputs();
-                long water = inputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
+                long water = inputs[0].getFluidAmount();
                 if (water >= 1) {
                     float per = (float) water / 16000;
                     if (per > 1.0F) {
@@ -71,7 +71,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
 
                 }
                 FluidHolder[] outputs = t.getOutputs();
-                long steam = outputs[0].getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
+                long steam = outputs[0].getFluidAmount();
                 if (steam >= 1) {
                     float per = (float) steam / 16000;
                     if (per > 1.0F) {

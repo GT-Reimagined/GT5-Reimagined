@@ -53,18 +53,18 @@ public interface ISteamBoilerHandler {
                             getTile().getLevel().setBlockAndUpdate(getTile().getBlockPos(), Blocks.AIR.defaultBlockState());
                             return;
                         }
-                        f.drainInput(FluidPlatformUtils.createFluidStack(Fluids.WATER, TesseractGraphWrappers.dropletMultiplier), false);
-                        long room = (16000 * TesseractGraphWrappers.dropletMultiplier) - f.getOutputs()[0].getFluidAmount();
-                        long fill = Math.min(room, (150 * TesseractGraphWrappers.dropletMultiplier));
+                        f.drainInput(FluidPlatformUtils.createFluidStack(Fluids.WATER, 1), false);
+                        long room = (16000) - f.getOutputs()[0].getFluidAmount();
+                        long fill = Math.min(room, (150));
                         if (room > 0){
                             f.fillOutput(Steam.getGas(fill), false);
                         }
-                        if (fill < (150 * TesseractGraphWrappers.dropletMultiplier)) {
+                        if (fill < (150)) {
                             //TODO:steam sounds
                             getTile().getLevel().playSound(null, getTile().getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                             if (getTile().getLevel() instanceof ServerLevel)
                                 ((ServerLevel) getTile().getLevel()).sendParticles(ParticleTypes.SMOKE, getTile().getBlockPos().getX(), getTile().getBlockPos().getY(), getTile().getBlockPos().getZ(), getTile().getLevel().getRandom().nextInt(8) + 1, 0.0D, 0.2D, 0.0D, 0.0D);
-                            f.extractFluid(4000 * TesseractGraphWrappers.dropletMultiplier, false);
+                            f.extractFluid(4000, false);
                         }
                     }
                 } else {

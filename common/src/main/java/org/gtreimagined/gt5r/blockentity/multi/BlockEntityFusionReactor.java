@@ -95,12 +95,12 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
                     int heatMultiplier = h.getHeat() / 30;
                     FluidTank coolantTank = mf.getSecondaryInputTanks().getTank(mf.getSecondaryInputTanks().getFirstAvailableTank(Helium.getGas(1), true));
                     if (coolantTank != null) {
-                        heatMultiplier = (int) Math.min(heatMultiplier, coolantTank.getTankAmount() / TesseractGraphWrappers.dropletMultiplier);
-                        if (coolantTank.extractFluid(Helium.getGas(heatMultiplier), true).getFluidAmount() == heatMultiplier *  TesseractGraphWrappers.dropletMultiplier) {
+                        heatMultiplier = (int) Math.min(heatMultiplier, coolantTank.getTankAmount());
+                        if (coolantTank.extractFluid(Helium.getGas(heatMultiplier), true).getFluidAmount() == heatMultiplier ) {
                             if (mf.getSecondaryOutputTanks() != null && mf.getSecondaryOutputTanks().getSize() >= 1) {
                                 long inserted = mf.getSecondaryOutputTanks().internalInsert(HotHelium.getGas(heatMultiplier), true);
-                                if (inserted >= TesseractGraphWrappers.dropletMultiplier){
-                                    heatMultiplier = (int) Math.min(heatMultiplier, (inserted / TesseractGraphWrappers.dropletMultiplier));
+                                if (inserted >= 1){
+                                    heatMultiplier = (int) Math.min(heatMultiplier, (inserted));
                                     coolantTank.extractFluid(Helium.getGas(heatMultiplier), false);
                                     mf.getSecondaryOutputTanks().internalInsert(HotHelium.getGas(heatMultiplier), false);
                                     h.extract(heatMultiplier * 30, false);

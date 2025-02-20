@@ -16,7 +16,7 @@ public class HeatExchangerLoader {
                 .fo(Coolant.getLiquid(1))
                 .add("hot_coolant",1, 20);
         HEAT_EXCHANGER.RB().fi(Lava.getLiquid(1))
-                .fo(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), TesseractGraphWrappers.dropletMultiplier, null))
+                .fo(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 1, null))
                 .add("lava", 1, 80);
         HEAT_EXCHANGER.RB().ii(Items.MAGMA_BLOCK).io(Items.COBBLESTONE).tags(GT5RRecipeTags.SMALL_HEAT_EXCHANGED_ONLY).add("magma_block", 1000, 40);
         HEAT_EXCHANGER.RB().fi(HotCarbonDioxide.getGas(1)).fo(CarbonDioxide.getGas(1)).tags(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY).add("hot_carbon_dioxide", 1, 20);

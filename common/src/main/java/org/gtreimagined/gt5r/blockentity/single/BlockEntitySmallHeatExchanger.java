@@ -108,7 +108,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
                         waterTank = f.getInputTanks().getTank(waterTankId);
                     }
                     if (waterTank != null) {
-                        waterToExtract = (int) Math.min(heatMultiplier, waterTank.getStoredFluid().getFluidAmount() / TesseractGraphWrappers.dropletMultiplier);
+                        waterToExtract = (int) Math.min(heatMultiplier, waterTank.getStoredFluid().getFluidAmount());
                     }
                     if (waterToExtract > 0){
                         if (hadNoWater){
@@ -119,7 +119,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
                         int waterMultiplier = 160;
                         int steamToAdd = waterToExtract  * waterMultiplier;
                         long inserted = f.getOutputTanks().internalInsert(steam.getGas(steamToAdd), true);
-                        int successfulSteam = (int) ((inserted / TesseractGraphWrappers.dropletMultiplier) / 160);
+                        int successfulSteam = (int) (inserted / 160);
                         if (successfulSteam >= 1){
                             waterToExtract = Math.min(waterToExtract, successfulSteam);
                             waterTank.internalExtract(Utils.ca(waterToExtract, waterTank.getStoredFluid()), false);

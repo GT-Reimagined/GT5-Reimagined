@@ -146,10 +146,10 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         for (int i = 0; i < handler.getInputTanks().getSize() && remainingFlow > 0; i++) { // loop through each hatch; extract inputs and track totals.
                             FluidHolder fluidHolder = handler.getInputTanks().getFluidInTank(i);
                             if (activeRecipe.getInputFluids().get(0).matches(fluidHolder)) {
-                                flow = fluidHolder.getFluidAmount() / TesseractGraphWrappers.dropletMultiplier; // Get all (steam) in hatch
+                                flow = fluidHolder.getFluidAmount(); // Get all (steam) in hatch
                                 flow = Math.min(flow, Math.min(remainingFlow, (int) (actualOptimalFlow * 1.25f))); // try to use up to 125% of optimal flow w/o exceeding remainingFlow
                                 if (!simulate){
-                                    handler.getInputTanks().extractFluid(fluidHolder.copyWithAmount(flow * TesseractGraphWrappers.dropletMultiplier), false);
+                                    handler.getInputTanks().extractFluid(fluidHolder.copyWithAmount(flow), false);
                                 }
                                 remainingFlow -= flow; // track amount we're allowed to continue depleting from hatches
                                 totalFlow += flow; // track total input used

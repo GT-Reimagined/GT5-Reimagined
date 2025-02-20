@@ -159,8 +159,8 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                         int heatMultiplier = h.getHeat() / 80;
                         FluidTank waterTank = f.getInputTanks().getTank(1);
                         if (waterTank != null && waterTank.getFluidInTank(0).matches(DistilledWater.getLiquid(1))) {
-                            heatMultiplier = (int) Math.min(heatMultiplier, waterTank.getTankAmount() / TesseractGraphWrappers.dropletMultiplier);
-                            if (waterTank.extractFluid(DistilledWater.getLiquid(heatMultiplier), true).getFluidAmount() == heatMultiplier *  TesseractGraphWrappers.dropletMultiplier) {
+                            heatMultiplier = Math.min(heatMultiplier, waterTank.getTankAmount());
+                            if (waterTank.extractFluid(DistilledWater.getLiquid(heatMultiplier), true).getFluidAmount() == heatMultiplier) {
                                 if (f.getOutputTanks() != null && f.getOutputTanks().getSize() >= 2){
                                     Material steam = Steam;
                                     if (h.getHeat() >= superheatedThreshold){
@@ -170,8 +170,8 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                                     int waterMultiplier = steam == Steam ? 160 : 80;
                                     int steamToAdd = (int) (heatMultiplier  * waterMultiplier *  tEfficiency);
                                     long inserted = f.getOutputTanks().getTank(1).internalInsert(steam.getGas(steamToAdd), true);
-                                    if (inserted >= TesseractGraphWrappers.dropletMultiplier){
-                                        heatMultiplier = Math.min(heatMultiplier, (int)((inserted / TesseractGraphWrappers.dropletMultiplier) / tEfficiency));
+                                    if (inserted >= 1){
+                                        heatMultiplier = Math.min(heatMultiplier, (int)(inserted / tEfficiency));
                                         f.drainInput(DistilledWater.getLiquid(heatMultiplier), false);
                                         f.getOutputTanks().getTank(1).internalInsert(steam.getGas(steamToAdd), false);
                                         h.extract(heatMultiplier * 80, false);

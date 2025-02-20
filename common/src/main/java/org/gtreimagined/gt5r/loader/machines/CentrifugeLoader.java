@@ -61,7 +61,7 @@ public class CentrifugeLoader {
         //        DUST.get(Sodalite, 4)).add("stone_dust",7680, 30);
 
         CENTRIFUGE.RB().fi(Lava.getLiquid(100)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).outputChances(.2, .1, .025, .025, .025, .025).add("lava", 80, 80);
-        CENTRIFUGE.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 100 * TesseractGraphWrappers.dropletMultiplier, null)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).outputChances(.2, .1, .025, .025, .025, .025).add("pahoehoe_lava", 40, 80);
+        CENTRIFUGE.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 100, null)).io(NUGGET.get(Copper), NUGGET.get(Tin), NUGGET.get(Gold), NUGGET.get(Silver), NUGGET.get(Tantalum), DUST_SMALL.get(Tungstate)).outputChances(.2, .1, .025, .025, .025, .025).add("pahoehoe_lava", 40, 80);
         CENTRIFUGE.RB().ii(of(GLOWSTONE_DUST, 10)).io(DUST.get(Gold, 5), DUST.get(Redstone, 5)).fo(Helium.getGas(1000)).add("glowstone_to_helium", 2920, 16);
         CENTRIFUGE.RB().ii(of(MAGMA_CREAM, 1)).io(BLAZE_POWDER, SLIME_BALL).add("magma_cream", 500, 5);
         CENTRIFUGE.RB().ii(SOUL_SAND).io(DUST_SMALL.get(Saltpeter), DUST_TINY.get(Coal), SAND).outputChances(.8, .2, 1).fo(Oil.getLiquid(40)).add("oil_from_soulsand", 200, 80);

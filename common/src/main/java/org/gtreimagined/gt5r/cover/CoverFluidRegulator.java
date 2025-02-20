@@ -57,11 +57,11 @@ public class CoverFluidRegulator extends CoverBasicTransport {
             if (machine.fluidHandler.isPresent()){
                 MachineFluidHandler<?> fluidHandler = machine.fluidHandler.get();
                 if (stack.isEmpty()) return true;
-                if (fluidLimit > 0 && stack.getFluidAmount() < fluidLimit * TesseractGraphWrappers.dropletMultiplier) return true;
-                FluidHolder toInsert = fluidLimit > 0 ? Utils.ca(fluidLimit * TesseractGraphWrappers.dropletMultiplier, stack) : stack.copyHolder();
+                if (fluidLimit > 0 && stack.getFluidAmount() < fluidLimit) return true;
+                FluidHolder toInsert = fluidLimit > 0 ? Utils.ca(fluidLimit, stack) : stack.copyHolder();
                 if (fluidHandler == null) return true;
                 long inserted = fluidHandler.insertFluid(toInsert, true);
-                if (fluidLimit > 0 && inserted < fluidLimit * TesseractGraphWrappers.dropletMultiplier) return true;
+                if (fluidLimit > 0 && inserted < fluidLimit) return true;
                 if (inserted > 0){
                     if (!simulate){
                         fluidHandler.insertFluid(toInsert, false);

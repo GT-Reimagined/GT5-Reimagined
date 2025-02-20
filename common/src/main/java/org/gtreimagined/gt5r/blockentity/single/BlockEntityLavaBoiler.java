@@ -114,7 +114,7 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
                     FluidHolder[] inputs = f.getInputs();
 
                     // If we have lava then produce heat
-                    if(inputs[1].getFluidAmount() >= lavaPerOperation * TesseractGraphWrappers.dropletMultiplier) {
+                    if(inputs[1].getFluidAmount() >= lavaPerOperation) {
                         setActive(true);
                         this.heat += 1;
 

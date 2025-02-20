@@ -47,13 +47,13 @@ public class BlockEntityMagicEnergyConverter extends BlockEntityGenerator<BlockE
                 }
                 FluidHolder mFluid = tile.fluidHandler.map(f -> f.getInputTanks().getTank(0).getStoredFluid()).orElse(FluidHooks.emptyFluid());
                 if (mFluid.isEmpty()) return false;
-                long fluidAmount = mFluid.getFluidAmount() / TesseractGraphWrappers.dropletMultiplier;
+                long fluidAmount = mFluid.getFluidAmount();
                 if (toInsert > 0 && toConsume > 0 && fluidAmount > toConsume) {
                     long tFluidAmountToUse = Math.min(fluidAmount / toConsume, (handler.getCapacity() - handler.getEnergy()) / toInsert);
                     if (tFluidAmountToUse > 0 && handler.insertInternal(tFluidAmountToUse * toInsert, true) == tFluidAmountToUse * toInsert) {
                         if (tile.getLevel().getGameTime() % 10 == 0 && !simulate){
                             handler.insertInternal(tFluidAmountToUse * toInsert, false);
-                            tile.fluidHandler.ifPresent(f -> f.drainInput(Utils.ca(tFluidAmountToUse * toConsume * TesseractGraphWrappers.dropletMultiplier, mFluid), false));
+                            tile.fluidHandler.ifPresent(f -> f.drainInput(Utils.ca(tFluidAmountToUse * toConsume, mFluid), false));
                         }
                         return true;
                     }

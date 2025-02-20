@@ -36,7 +36,7 @@ public class CoverSecondaryOutput extends BaseCover {
                 if (outputfluid >= 0){
                     FluidTank outputTank = fluidHandler.getOutputTanks().getTank(outputfluid);
                     BlockEntityCache.getFluidHandlerCached(heatExchanger.getLevel(), heatExchanger.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
-                        tryFluidTransfer(f, outputTank, Integer.MAX_VALUE * TesseractGraphWrappers.dropletMultiplier, true);
+                        tryFluidTransfer(f, outputTank, Integer.MAX_VALUE, true);
                     });
                 }
             }

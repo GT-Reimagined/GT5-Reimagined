@@ -38,7 +38,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
 
         @Override
         public boolean consumeResourceForRecipe(boolean simulate) {
-            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GT5RTags.STEAM, getPower() * TesseractGraphWrappers.dropletMultiplier, simulate).getFluidAmount() > 0)
+            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GT5RTags.STEAM, getPower(), simulate).getFluidAmount() > 0)
                     .orElse(false);
         }
         //Allow up to 16 .

@@ -97,8 +97,8 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
         if (!mPumpedFluids.contains(fluid)) return false;
         // Determine the Fluid that is produced.
         if (state.isSource()){
-            FluidHolder stack = FluidHooks.newFluidHolder(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier, null);
-            if (fluidHandler.map(f -> f.fillOutput(stack, true) != 1000 * TesseractGraphWrappers.dropletMultiplier).orElse(false)){
+            FluidHolder stack = FluidHooks.newFluidHolder(fluid, 1000, null);
+            if (fluidHandler.map(f -> f.fillOutput(stack, true) != 1000).orElse(false)){
                 return null;
             }
             fluidHandler.ifPresent(f -> f.fillOutput(stack, false));

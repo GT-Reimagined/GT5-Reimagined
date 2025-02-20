@@ -63,7 +63,7 @@ public class CoverDrain extends BaseCover {
         if (side == Direction.UP && world.isRainingAt(offset) && world.getGameTime() % 60 == 0 && contained.isEmpty()){
             cap.ifPresent(f -> {
                 for (int i = 0; i < f.getTankAmount(); i++) {
-                    FluidHolder toInsert = FluidPlatformUtils.createFluidStack(Fluids.WATER, 4 * TesseractGraphWrappers.dropletMultiplier);
+                    FluidHolder toInsert = FluidPlatformUtils.createFluidStack(Fluids.WATER, 4);
                     long filled = f.insertFluid(toInsert, false);
                     if (filled > 0) {
                         break;
@@ -94,7 +94,7 @@ public class CoverDrain extends BaseCover {
         FluidState state = world.getFluidState(offset);
         if (state.getType() == Fluids.EMPTY || !state.getType().isSource(state)) return;
         Fluid fluid = state.getType();
-        contained = FluidPlatformUtils.createFluidStack(fluid, 1000 * TesseractGraphWrappers.dropletMultiplier);
+        contained = FluidPlatformUtils.createFluidStack(fluid, 1000);
         Holder<Biome> biome = world.getBiome(offset);
         if (fluid != Fluids.WATER || (!biome.is(BiomeTags.IS_DEEP_OCEAN) && !biome.is(BiomeTags.IS_OCEAN) && !biome.is(BiomeTags.IS_RIVER))){
             BlockState newState = Blocks.AIR.defaultBlockState();

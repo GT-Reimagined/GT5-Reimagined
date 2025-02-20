@@ -314,7 +314,7 @@ public class RecipeMaps {
             String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : null;
             boolean toLarge = false;
             for (FluidIngredient outputFluid : recipe.getInputFluids()) {
-                if (outputFluid.getAmount() > 32000 * TesseractGraphWrappers.dropletMultiplier){
+                if (outputFluid.getAmount() > 32000){
                     toLarge = true;
                     break;
                 }

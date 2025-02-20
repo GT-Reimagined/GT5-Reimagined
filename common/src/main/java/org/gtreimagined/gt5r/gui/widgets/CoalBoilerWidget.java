@@ -41,8 +41,8 @@ public class CoalBoilerWidget extends Widget {
 
     @Override
     public void render(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
-        if (water >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) water / (16000 * TesseractGraphWrappers.dropletMultiplier);
+        if (water >= 1) {
+            float per = (float) water / (16000);
             if (per > 1.0F) {
                 per = 1.0F;
             }
@@ -54,8 +54,8 @@ public class CoalBoilerWidget extends Widget {
             drawTexture(stack, gui.handler.getGuiTexture(), realX() + 13, y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 28, 54 - lvl, 10, lvl);
 
         }
-        if (steam >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) steam / (16000 * TesseractGraphWrappers.dropletMultiplier);
+        if (steam >= 1) {
+            float per = (float) steam / (16000);
             if (per > 1.0F) {
                 per = 1.0F;
             }

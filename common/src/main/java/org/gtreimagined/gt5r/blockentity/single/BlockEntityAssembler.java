@@ -44,7 +44,7 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
                     }
                     if (!printedPages.isEmpty() && leather){
                         FluidHolder glue = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
-                        if (!glue.isEmpty() && glue.matches(Glue.getLiquid(20)) && glue.getFluidAmount() >= 20 * TesseractGraphWrappers.dropletMultiplier){
+                        if (!glue.isEmpty() && glue.matches(Glue.getLiquid(20)) && glue.getFluidAmount() >= 20){
                             ItemStack output = new ItemStack(Items.WRITTEN_BOOK);
                             output.setTag(printedPages.copy().getTag());
                             return RecipeMaps.ASSEMBLER.RB().recipeMapOnly().ii(RecipeIngredient.of(printedPages.copy()), RecipeIngredient.of(Items.LEATHER)).fi(Glue.getLiquid(20)).io(output).add("written_book", 32, 8);

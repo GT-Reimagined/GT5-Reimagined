@@ -42,8 +42,8 @@ public class LavaBoilerWidget extends Widget {
 
     @Override
     public void render(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
-        if (water >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) water / (TesseractGraphWrappers.dropletMultiplier * 16000);
+        if (water >= 1) {
+            float per = (float) water / 16000;
             if (per > 1.0F) {
                 per = 1.0F;
             }
@@ -55,8 +55,8 @@ public class LavaBoilerWidget extends Widget {
             drawTexture(stack, gui.handler.getGuiTexture(), realX() + 13, y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 28, 54 - lvl, 10, lvl);
 
         }
-        if (steam >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) steam / (TesseractGraphWrappers.dropletMultiplier * 16000);
+        if (steam >= 1) {
+            float per = (float) steam / 16000;
             if (per > 1.0F) {
                 per = 1.0F;
             }
@@ -67,8 +67,8 @@ public class LavaBoilerWidget extends Widget {
             int y = (realY() + 54) - lvl;
             drawTexture(stack, gui.handler.getGuiTexture(), realX(), y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 18, 54 - lvl, 10, lvl);
         }
-        if (lava >= TesseractGraphWrappers.dropletMultiplier) {
-            float per = (float) lava / (TesseractGraphWrappers.dropletMultiplier * 16000);
+        if (lava >= 1) {
+            float per = (float) lava * 16000;
             if (per > 1.0F) {
                 per = 1.0F;
             }
