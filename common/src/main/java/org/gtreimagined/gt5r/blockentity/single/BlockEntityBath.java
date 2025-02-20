@@ -5,7 +5,6 @@ import com.google.gson.JsonParser;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
@@ -21,6 +20,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import tesseract.TesseractGraphWrappers;
@@ -36,7 +36,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
             public IRecipe findRecipe() {
                 IRecipe recipe = super.findRecipe();
                 if (recipe == null){
-                    ExtendedItemContainer container = itemHandler.get().getInputHandler();
+                    IItemHandler container = itemHandler.get().getInputHandler();
                     ItemStack input = container != null ? container.getStackInSlot(0) : ItemStack.EMPTY;
                     ResourceLocation id = RegistryUtils.getIdFromItem(input.getItem());
                     FluidHolder fluidInput = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());

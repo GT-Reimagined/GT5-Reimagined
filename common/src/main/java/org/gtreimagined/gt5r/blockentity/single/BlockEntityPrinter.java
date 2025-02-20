@@ -6,7 +6,6 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
@@ -29,6 +28,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -46,7 +46,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                 IRecipe recipe = super.findRecipe();
                 if (recipe == null){
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
-                    ExtendedItemContainer inputHandler = ih.getInputHandler();
+                    IItemHandler inputHandler = ih.getInputHandler();
                     ItemStack paper = inputHandler.getStackInSlot(0);
                     ItemStack stored = inputHandler.getStackInSlot(1);
                     if (paper.getItem() == Items.PAPER) {

@@ -7,7 +7,6 @@ import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.multi.BlockEntityBasicMultiMachine;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -18,7 +17,6 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.structure.StructureCache;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -64,8 +62,8 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
         if (type.has(MachineFlag.ITEM)){
             this.itemHandler.set(() -> new MachineItemHandler<>(this){
                 @Override
-                public LazyOptional<ExtendedItemContainer> forSide(Direction side) {
-                    return LazyOptional.of(() -> new ExtendedItemContainer() {
+                public LazyOptional<IItemHandler> forSide(Direction side) {
+                    return LazyOptional.of(() -> new IItemHandlerModifiable() {
                         @Override
                         public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
                             if (tile.target == null) return stack;

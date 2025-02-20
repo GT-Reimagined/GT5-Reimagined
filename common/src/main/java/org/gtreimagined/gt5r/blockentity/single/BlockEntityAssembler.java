@@ -5,7 +5,6 @@ import com.google.gson.JsonParser;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
@@ -17,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import tesseract.TesseractGraphWrappers;
@@ -31,7 +31,7 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
             public IRecipe findRecipe() {
                 IRecipe recipe = super.findRecipe();
                 if (recipe == null){
-                    ExtendedItemContainer container = itemHandler.get().getInputHandler();
+                    IItemHandler container = itemHandler.get().getInputHandler();
                     ItemStack printedPages = ItemStack.EMPTY;
                     boolean leather = false;
                     for (int i = 0; i < container.getSlots(); i++) {

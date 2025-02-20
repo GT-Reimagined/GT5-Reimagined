@@ -4,7 +4,6 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.IPostTickTile;
 import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.item.TrackedItemHandler;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
@@ -40,6 +39,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gt5r.items.IItemReactorRod;
@@ -447,7 +447,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
         return nbt;
     }
 
-    public CompoundTag serializeWithEmpty(ExtendedItemContainer container, CompoundTag nbt) {
+    public CompoundTag serializeWithEmpty(IItemHandler container, CompoundTag nbt) {
         ListTag nbtTagList = new ListTag();
 
 

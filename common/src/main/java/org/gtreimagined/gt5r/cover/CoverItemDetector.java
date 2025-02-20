@@ -5,7 +5,6 @@ import muramasa.antimatter.blockentity.pipe.BlockEntityPipe;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.ButtonOverlay;
@@ -19,6 +18,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -63,7 +63,7 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.itemHandler.side(side).isPresent()){
-            ExtendedItemContainer itemContainer = machine.itemHandler.side(side).resolve().get();
+            IItemHandler itemContainer = machine.itemHandler.side(side).resolve().get();
             int oldRedstone = outputRedstone;
             int all = 0, full = 0;
             for (int i = 0; i < itemContainer.getSlots(); i++) {

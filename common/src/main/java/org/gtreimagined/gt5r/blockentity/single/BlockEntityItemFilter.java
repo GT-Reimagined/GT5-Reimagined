@@ -3,7 +3,6 @@ package org.gtreimagined.gt5r.blockentity.single;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.gui.GuiInstance;
 import muramasa.antimatter.gui.IGuiElement;
@@ -13,7 +12,6 @@ import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.AntimatterCapUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,6 +28,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.gui.ButtonOverlays;
 import org.jetbrains.annotations.Nullable;
@@ -87,7 +86,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         if (slotType == SlotType.STORAGE){
             boolean hasItem = itemHandler.map(h -> {
                 List<Item> list = new ObjectArrayList<>();
-                ExtendedItemContainer outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
+                IItemHandler outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
                 for (int i = 0; i < outputs.getSlots(); i++) {
                     ItemStack slotStack = outputs.getStackInSlot(i);
                     if (!slotStack.isEmpty()) {

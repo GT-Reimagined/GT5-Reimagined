@@ -2,22 +2,20 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.item.ITrackedHandler;
 import muramasa.antimatter.capability.item.MultiTrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.capability.machine.MultiMachineItemHandler;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -94,7 +92,7 @@ public class BlockEntityLargeSifter extends BlockEntityMultiMachine<BlockEntityL
         @Override
         protected ITrackedHandler calculateOutputs() {
             outputList = tile.getComponentsByHandlerId(outputComponentString()).stream().filter(t -> t.getItemHandler().isPresent()).map(t -> t.getItemHandler().get()).sorted(this::compareOutputBuses).map(MachineItemHandler::getOutputHandler).collect(Collectors.toList());
-            return new MultiTrackedItemHandler(outputList.toArray(new ExtendedItemContainer[0]));
+            return new MultiTrackedItemHandler(outputList.toArray(new IItemHandlerModifiable[0]));
         }
     }
 }

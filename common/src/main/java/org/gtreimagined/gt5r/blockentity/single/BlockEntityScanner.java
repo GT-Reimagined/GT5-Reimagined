@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
@@ -18,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -31,7 +31,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                 IRecipe recipe = super.findRecipe();
                 if (recipe == null){
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
-                    ExtendedItemContainer inputHandler = ih.getInputHandler();
+                    IItemHandler inputHandler = ih.getInputHandler();
                     ItemStack input0 = inputHandler.getStackInSlot(0);
                     ItemStack input1 = inputHandler.getStackInSlot(1);
                     if (!input0.isEmpty()) {

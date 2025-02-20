@@ -6,7 +6,6 @@ import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import muramasa.antimatter.Data;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.item.ExtendedItemContainer;
 import muramasa.antimatter.capability.item.ITrackedHandler;
 import muramasa.antimatter.capability.item.MultiTrackedItemHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -15,6 +14,7 @@ import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.items.IItemHandlerModifiable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -91,6 +91,6 @@ public class AssemblyLineMultiItemHandler<T extends BlockEntityMultiMachine<T>> 
     @Override
     protected ITrackedHandler calculateInputs() {
         inputList = tile.getComponentsByHandlerId(inputComponentString()).stream().filter(t -> t.getItemHandler().isPresent()).map(t -> t.getItemHandler().get()).sorted(this::compareInputBuses).map(MachineItemHandler::getInputHandler).collect(Collectors.toList());
-        return new MultiTrackedItemHandler(inputList.toArray(new ExtendedItemContainer[0]));
+        return new MultiTrackedItemHandler(inputList.toArray(new IItemHandlerModifiable[0]));
     }
 }
