@@ -163,7 +163,7 @@ public class GT5RMachines {
     public static BasicMachine CHEMICAL_REACTOR = new BasicMachine(GT5RRef.ID, "chemical_reactor").setMap(RecipeMaps.CHEMICAL_REACTOR).addFlags(GUI, ITEM, FLUID).renderContainedLiquids(true).custom();
     public static BasicMachine CIRCUIT_ASSEMBLER = new BasicMachine(GT5RRef.ID, "circuit_assembler").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.CIRCUIT_ASSEMBLER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine COMPRESSOR = new BasicMachine(GT5RRef.ID, "compressor").setMap(RecipeMaps.COMPRESSOR).addFlags(GUI, ITEM);
-    public static BasicMachine CRYSTALLIZATION_CHAMBER = new BasicMachine(GT5RRef.ID, "crystallization_chamber").setMap(RecipeMaps.CRYSTALLIZATION_CHAMBER).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine CRYSTALLIZATION_CHAMBER = new BasicMachine(GT5RRef.ID, "crystallization_chamber").setMap(RecipeMaps.CRYSTALLIZATION_CHAMBER).addFlags(GUI, ITEM, FLUID).amps(3);
     public static BasicMachine CUTTER = new BasicMachine(GT5RRef.ID, "cutter").setMap(RecipeMaps.CUTTER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine DISASSEMBLER = new BasicMachine(GT5RRef.ID, "disassembler").setMap(RecipeMaps.DISASSEMBLER).addFlags(GUI, ITEM).custom();
     public static BasicMachine DISTILLERY = new BasicMachine(GT5RRef.ID, "distillery").setMap(RecipeMaps.DISTILLERY).addFlags(GUI, ITEM, FLUID).custom().renderContainedLiquids(true).setSound(GT5RSounds.EXTRACTOR,  0.6f);
