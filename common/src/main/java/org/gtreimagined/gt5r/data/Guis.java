@@ -250,7 +250,6 @@ public class Guis {
         CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
                 .add(IT_OUT, 62, 34).add(IT_OUT, 80, 34).add(IT_OUT, 98, 34)
                 .add(IT_OUT, 62, 52).add(IT_OUT, 80, 52).add(IT_OUT, 98, 52);
-        INFINITE_STEAM.add(BASIC_TANK.getSlots());
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots());
         PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, new ResourceLocation(GT5RRef.ID, "primitive_ingot"))
@@ -340,7 +339,6 @@ public class Guis {
         COMBUSTION_GENERATOR.getGui().setBackgroundTexture("basic_tank");
         SEMIFLUID_GENERATOR.getGui().setBackgroundTexture("basic_tank");
         MAGIC_ENERGY_CONVERTER.getGui().setBackgroundTexture("basic_tank");
-        INFINITE_STEAM.getGui().setBackgroundTexture("basic_tank");
         QUANTUM_TANK.getGui().setBackgroundTexture("basic_tank");
         ELECTRIC_ITEM_FILTER.getGui().setBackgroundTexture("electric_item_filter");
         ELECTRIC_TYPE_FILTER.getGui().setBackgroundTexture("electric_type_filter");

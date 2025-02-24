@@ -78,7 +78,6 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCropHarvester;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityHull;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityIUpgradedBatchMachine;
-import org.gtreimagined.gt5r.blockentity.single.BlockEntityInfiniteFluid;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityInputBus;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityInputHatch;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityItemFilter;
@@ -393,7 +392,6 @@ public class GT5RMachines {
     /**
      ** Creative Machines
      **/
-    public static TankMachine INFINITE_STEAM = new TankMachine(GT5RRef.ID, "infinite_steam").addFlags(FLUID, CELL, GUI).setTile(BlockEntityInfiniteFluid::new).setTiers(LV);
 
     private static MultiblockTankMachine[] createTankMachine(Material material, int multiplier){
         Supplier<Block> casing = () -> GT5Reimagined.get(BlockColoredWall.class, material.getId() + "_wall");
