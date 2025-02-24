@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.machine.caps;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.Antimatter;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;

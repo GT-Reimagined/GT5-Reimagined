@@ -1,7 +1,5 @@
 package org.gtreimagined.gt5r.cover;
 
-import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
 import muramasa.antimatter.capability.FluidHandler;

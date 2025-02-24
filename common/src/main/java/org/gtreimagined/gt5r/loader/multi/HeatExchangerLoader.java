@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;

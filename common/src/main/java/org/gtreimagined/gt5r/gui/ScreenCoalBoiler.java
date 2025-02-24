@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.gui.container.ContainerMachine;

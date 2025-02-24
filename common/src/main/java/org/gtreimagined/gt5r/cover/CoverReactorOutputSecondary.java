@@ -1,7 +1,5 @@
 package org.gtreimagined.gt5r.cover;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.BaseCover;

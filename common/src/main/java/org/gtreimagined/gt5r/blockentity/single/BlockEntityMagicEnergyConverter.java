@@ -1,7 +1,5 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.single.BlockEntityGenerator;
 import muramasa.antimatter.capability.item.ITrackedHandler;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;

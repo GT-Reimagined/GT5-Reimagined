@@ -2,8 +2,6 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.machine.types.Machine;

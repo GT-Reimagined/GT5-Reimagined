@@ -1,7 +1,5 @@
 package org.gtreimagined.gt5r.cover;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityBase;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.CoverFactory;
@@ -14,6 +12,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -65,11 +65,11 @@ public class CoverFluidFilter extends CoverFilter {
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         super.onTransfer(object, inputSide, simulate);
-        if (object instanceof FluidHolder fluidHolder) {
+        if (object instanceof FluidStack fluidHolder) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
             ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getStackInSlot(0);
-            boolean empty = filter.isEmpty() || FluidHooks.safeGetItemFluidManager(filter).map(f -> {
-                for (int i = 0; i < f.getTankAmount(); i++){
+            boolean empty = filter.isEmpty() || filter.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).map(f -> {
+                for (int i = 0; i < f.getTanks(); i++){
                     if (!f.getFluidInTank(i).isEmpty()){
                         return false;
                     }
@@ -81,9 +81,9 @@ public class CoverFluidFilter extends CoverFilter {
                     return true;
                 }
             }
-            boolean matches = FluidHooks.safeGetItemFluidManager(filter).map(f -> {
-                for (int i = 0; i < f.getTankAmount(); i++){
-                    boolean match = ignoreNBT ? fluidHolder.getFluid() == f.getFluidInTank(i).getFluid() : f.getFluidInTank(i).matches(fluidHolder);
+            boolean matches = filter.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).map(f -> {
+                for (int i = 0; i < f.getTanks(); i++){
+                    boolean match = ignoreNBT ? fluidHolder.getFluid() == f.getFluidInTank(i).getFluid() : f.getFluidInTank(i).isFluidEqual(fluidHolder);
                     if (match){
                         return true;
                     }

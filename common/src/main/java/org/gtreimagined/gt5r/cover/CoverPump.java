@@ -1,9 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
 import com.google.common.collect.ImmutableMap;
-import earth.terrarium.botarium.common.fluid.base.FluidContainer;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.IGuiHandler;
@@ -18,6 +15,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.Nullable;
@@ -53,7 +52,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
 
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
-        if (object instanceof FluidHolder stack){
+        if (object instanceof FluidStack stack){
             if (getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
@@ -62,7 +61,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return cap != FluidContainer.class;
+        return cap != IFluidHandler.class;
     }
 
     @Override

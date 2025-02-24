@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
@@ -98,7 +97,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
             super.onMachineEvent(event, data);
             if (event == SlotType.FL_IN) {
                 if (data != null && data.length > 0) {
-                    if (data[0] instanceof FluidHolder && ((FluidHolder) data[0]).getFluid().builtInRegistryHolder().is(GT5RTags.STEAM)) {
+                    if (data[0] instanceof FluidStack stack && stack.getFluid().builtInRegistryHolder().is(GT5RTags.STEAM)) {
                         checkRecipe();
                     }
                 }

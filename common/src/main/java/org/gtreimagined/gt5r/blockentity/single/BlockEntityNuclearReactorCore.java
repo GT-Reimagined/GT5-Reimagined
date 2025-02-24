@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.blockentity.IPostTickTile;
 import muramasa.antimatter.capability.IFilterableHandler;

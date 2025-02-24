@@ -2,8 +2,6 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
 import muramasa.antimatter.capability.machine.MachineItemHandler;
@@ -69,7 +67,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                         StringBuilder stringBuilder = new StringBuilder();
                                         if (prospect.contains("fluid")) {
                                             CompoundTag fluid = prospect.getCompound("fluid");
-                                            FluidHolder fluid1 = FluidPlatformUtils.createFluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(fluid.getString("name"))), 1);
+                                            FluidStack fluid1 = new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(fluid.getString("name"))), 1);
                                             pages.add(StringTag.valueOf(Component.Serializer.toJson(Utils.translatable("text.gt5r.prospected_book", pos1.getX(), pos1.getZ(), prospect.getString("dimension"),
                                                     fluid.getLong("maxYield"), Utils.translatable(fluid1.getTranslationKey())))));
                                         } else {

@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.material;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.data.AntimatterMaterialTypes;
 import muramasa.antimatter.material.Material;
 import net.minecraftforge.fluids.FluidStack;

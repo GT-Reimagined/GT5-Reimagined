@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
-import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.Material;

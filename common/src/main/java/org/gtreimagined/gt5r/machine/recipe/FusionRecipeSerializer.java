@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.machine.recipe;
 
 import com.google.gson.JsonObject;
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;

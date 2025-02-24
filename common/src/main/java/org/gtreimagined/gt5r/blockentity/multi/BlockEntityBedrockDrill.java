@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import it.unimi.dsi.fastutil.Pair;
 import lombok.Getter;
 import lombok.Setter;
