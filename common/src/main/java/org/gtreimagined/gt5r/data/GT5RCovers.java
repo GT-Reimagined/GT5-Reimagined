@@ -6,7 +6,7 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.FluidUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
@@ -117,7 +117,7 @@ public class GT5RCovers {
                                 ItemStack contained = ItemStack.of(items.getCompound(0));
                                 IFluidHandlerItem fluidItemHandler = contained.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).resolve().orElse(null);
                                 if (fluidItemHandler != null && !fluidItemHandler.getFluidInTank(0).isEmpty()){
-                                    tooltip.add(FluidPlatformUtils.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
+                                    tooltip.add(FluidUtils.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
                                 }
                             }
                         }

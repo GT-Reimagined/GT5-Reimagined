@@ -5,7 +5,7 @@ import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.FluidUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraftforge.fluids.FluidStack;
@@ -35,7 +35,7 @@ public class CoverSecondaryOutput extends BaseCover {
                 int outputfluid = fluidHandler.getOutputTanks().getFirstAvailableTank(Materials.Steam.getGas(1), true);
                 if (outputfluid >= 0){
                     FluidTank outputTank = fluidHandler.getOutputTanks().getTank(outputfluid);
-                    FluidPlatformUtils.getFluidHandler(heatExchanger.getLevel(), heatExchanger.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
+                    FluidUtils.getFluidHandler(heatExchanger.getLevel(), heatExchanger.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
                         tryFluidTransfer(f, outputTank, Integer.MAX_VALUE, true);
                     });
                 }

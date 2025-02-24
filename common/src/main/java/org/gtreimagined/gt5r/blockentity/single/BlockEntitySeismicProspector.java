@@ -6,7 +6,6 @@ import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.worldgen.vein.VeinSavedData;
 import net.minecraft.core.BlockPos;

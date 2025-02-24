@@ -4,7 +4,7 @@ import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.FluidUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -131,7 +131,7 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
 
     public void exportFluidFromMachineToSide(Direction side){
         if (fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
-        LazyOptional<IFluidHandler> cap = FluidPlatformUtils.getFluidHandler(getLevel(), getBlockPos().relative(side), getCachedBlockEntity(side), side.getOpposite());
+        LazyOptional<IFluidHandler> cap = FluidUtils.getFluidHandler(getLevel(), getBlockPos().relative(side), getCachedBlockEntity(side), side.getOpposite());
         fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
     }
 
@@ -172,7 +172,7 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
         if (!aBlock.isEmpty() && aBlock.getType() instanceof FlowingFluid fluid) {
             mPumpedFluids.add(fluid.getSource());
             mPumpedFluids.add(fluid.getFlowing());
-            mDir = (byte)(FluidPlatformUtils.isFluidGaseous(aBlock.getType()) ? -1 : +1);
+            mDir = (byte)(FluidUtils.isFluidGaseous(aBlock.getType()) ? -1 : +1);
         } else {
             energyHandler.ifPresent(e -> {
                 e.extractEu(2, false);

@@ -20,7 +20,6 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.tool.behaviour.BehaviourBlockTilling;
 import muramasa.antimatter.tool.behaviour.BehaviourLogStripping;
 import muramasa.antimatter.tool.behaviour.BehaviourVanillaShovel;
-import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.dries007.tfc.common.blocks.rock.Rock;

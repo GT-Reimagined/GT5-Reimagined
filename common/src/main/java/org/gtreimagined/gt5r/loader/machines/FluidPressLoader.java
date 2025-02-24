@@ -1,12 +1,10 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.TagUtils;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
-import tesseract.TesseractGraphWrappers;
 
 import static muramasa.antimatter.Ref.L;
 import static org.gtreimagined.gt5r.data.Materials.*;

@@ -6,7 +6,7 @@ import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.FluidUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -137,7 +137,7 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
 
         public void exportFluidFromMachineToSide(Direction side){
             if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
-            LazyOptional<IFluidHandler> cap = FluidPlatformUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), tile.getCachedBlockEntity(side), side.getOpposite());
+            LazyOptional<IFluidHandler> cap = FluidUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), tile.getCachedBlockEntity(side), side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 

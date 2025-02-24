@@ -5,7 +5,7 @@ import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.FluidUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -41,7 +41,7 @@ public class CoverReactorOutputSecondary extends BaseCover {
                 FluidStack inputfluid = fluidHandler.getInputTanks().getFluidInTank(0);
                 if (inputfluid.getAmount() > fluidHandler.getInputTanks().getTankCapacity(0) / 2){
                     int extra = inputfluid.getAmount() - (fluidHandler.getInputTanks().getTankCapacity(0) / 2);
-                    FluidPlatformUtils.getFluidHandler(core.getLevel(), core.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
+                    FluidUtils.getFluidHandler(core.getLevel(), core.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
                         fluidHandler.drainInput(f.fill(Utils.ca(extra, inputfluid), FluidAction.EXECUTE), FluidAction.EXECUTE);
                     });
                 }

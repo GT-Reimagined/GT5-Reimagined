@@ -7,7 +7,7 @@ import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.FluidUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,7 +30,6 @@ import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
-import tesseract.TesseractGraphWrappers;
 
 import java.util.Optional;
 
@@ -145,7 +144,7 @@ public class CoverDrain extends BaseCover {
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
         if (stack.getTag() != null && stack.getTag().contains("containedFluid")){
-            contained = FluidPlatformUtils.fromTag(stack.getTag().getCompound("containedFluid"));
+            contained = FluidUtils.fromTag(stack.getTag().getCompound("containedFluid"));
         }
     }
 
@@ -162,7 +161,7 @@ public class CoverDrain extends BaseCover {
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         if (nbt.contains("contained")){
-            contained = FluidPlatformUtils.fromTag(nbt.getCompound("contained"));
+            contained = FluidUtils.fromTag(nbt.getCompound("contained"));
         }
     }
 }

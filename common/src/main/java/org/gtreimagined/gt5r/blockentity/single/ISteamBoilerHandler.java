@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -11,7 +10,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import tesseract.TesseractGraphWrappers;
 
 import static org.gtreimagined.gt5r.data.Materials.Steam;
 
