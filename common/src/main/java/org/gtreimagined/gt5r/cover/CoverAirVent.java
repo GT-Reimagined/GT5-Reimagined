@@ -15,6 +15,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.Materials;
 import org.jetbrains.annotations.NotNull;
@@ -41,7 +43,7 @@ public class CoverAirVent extends BaseCover {
         }
         if (tile.getLevel().isClientSide) return;
         Level level = tile.getLevel();
-        Optional<PlatformFluidHandler> cap = Optional.empty();
+        Optional<IFluidHandler> cap = Optional.empty();
         if (tile instanceof BlockEntityFluidPipe<?> pipe){
             cap = pipe.getPipeCapHolder().side(side).resolve();
         } else if (tile instanceof BlockEntityMachine<?> machine){
@@ -52,11 +54,11 @@ public class CoverAirVent extends BaseCover {
         if (state.isAir() && cap.isPresent()){
             if (level.getGameTime() % 360 == (30 + (60L * side.get3DDataValue()))){
                 if (level.dimension() == Level.OVERWORLD){
-                    cap.get().insertFluid(Materials.Air.getGas(64000), false);
+                    cap.get().fill(Materials.Air.getGas(64000), FluidAction.EXECUTE);
                 } else if (level.dimension() == Level.NETHER){
-                    cap.get().insertFluid(Materials.NetherAir.getGas(64000), false);
+                    cap.get().fill(Materials.NetherAir.getGas(64000), FluidAction.EXECUTE);
                 } else if (level.dimension() == Level.END){
-                    cap.get().insertFluid(Materials.EnderAir.getGas(64000), false);
+                    cap.get().fill(Materials.EnderAir.getGas(64000), FluidAction.EXECUTE);
                 }
             }
         }

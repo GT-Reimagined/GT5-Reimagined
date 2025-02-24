@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineEnergyHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
@@ -13,6 +12,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.jetbrains.annotations.Nullable;
 
 public class BlockEntityHull extends BlockEntityMachine<BlockEntityHull> {
@@ -20,7 +21,7 @@ public class BlockEntityHull extends BlockEntityMachine<BlockEntityHull> {
         super(type, pos, state);
         fluidHandler.set(() -> new MachineFluidHandler<>(this, 1000 + (1000 * getMachineTier().getIntegerId())){
             @Override
-            public FluidHolder[] getOutputs() {
+            public FluidStack[] getOutputs() {
                 return getInputs();
             }
 

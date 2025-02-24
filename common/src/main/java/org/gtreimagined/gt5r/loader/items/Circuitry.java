@@ -19,6 +19,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
@@ -228,7 +229,7 @@ public class Circuitry {
 
     private static void addCuttingRecipe(Item input, ItemBasic<?> output, int amount, int ticks, int power, int liquidMultiplier){
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, 5L * liquidMultiplier))
+                .fi(new FluidStack(Fluids.WATER, 5 * liquidMultiplier))
                 .io(new ItemStack(output, amount)).add(output.getId() + "_with_water", ticks, power);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(DistilledWater.getLiquid(3 * liquidMultiplier))
@@ -344,7 +345,7 @@ public class Circuitry {
 
     private static void bloodyCircuits() {
         for (Material material : SOLDER.all()) {
-            long base = L / 8;
+            int base = L / 8;
             boolean hasGood = SOLDER.has(SubTag.GOOD_SOLDER, material);
             boolean hasBad = SOLDER.has(SubTag.BAD_SOLDER, material);
             base *= hasBad ? (hasGood ? 2 : 4) : 1;

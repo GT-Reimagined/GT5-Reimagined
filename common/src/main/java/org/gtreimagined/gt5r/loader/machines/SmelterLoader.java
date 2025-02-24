@@ -47,8 +47,7 @@ public class SmelterLoader {
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {
         if (!m.has(AntimatterMaterialTypes.LIQUID)) return;
-        long amount = //(long) (L * ratio);
-                (L * materialAmount) / U;
+        int amount = (int) ((L * materialAmount) / U);
         long duration = Math.max(1, (24 * materialAmount) / U);
         SMELTER.RB()
                 .ii(RecipeIngredient.of(i.getMaterialTag(m),1))
@@ -58,8 +57,7 @@ public class SmelterLoader {
 
     private static void addLava(Material m, MaterialTypeItem<?> i, long materialAmount) {
         long flUnit = 111;
-        long amount = //(long) (L * ratio);
-                (flUnit * materialAmount) / U;
+        int amount = (int) ((flUnit * materialAmount) / U);
         long duration = Math.max(1, (24 * materialAmount) / U);
         SMELTER.RB()
                 .ii(RecipeIngredient.of(i.getMaterialTag(m),1))

@@ -20,7 +20,7 @@ import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIEN
 
 public class SolarBoilerWidget extends Widget {
     private int heat = 0, maxHeat = 0;
-    private long water = 0, steam = 0;
+    private int water = 0, steam = 0;
     private boolean isAllowedToWork = false;
 
     protected SolarBoilerWidget(@NotNull GuiInstance gui, @Nullable IGuiElement parent) {
@@ -37,8 +37,8 @@ public class SolarBoilerWidget extends Widget {
         gui.syncInt(() -> ((BlockEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).getHeat(), i -> heat = i, SERVER_TO_CLIENT);
         gui.syncInt(() -> ((BlockEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxHeat(), i -> maxHeat = i, SERVER_TO_CLIENT);
         gui.syncBoolean(() -> ((BlockEntitySolarBoiler)((ContainerMachine<?>)gui.container).getTile()).isAllowedToWork(), b -> isAllowedToWork = b, SERVER_TO_CLIENT);
-        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getFluidAmount()).orElse(0L), i -> water = i, SERVER_TO_CLIENT);
-        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getFluidAmount()).orElse(0L), i -> steam = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getAmount()).orElse(0), i -> water = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getAmount()).orElse(0), i -> steam = i, SERVER_TO_CLIENT);
     }
 
     @Override

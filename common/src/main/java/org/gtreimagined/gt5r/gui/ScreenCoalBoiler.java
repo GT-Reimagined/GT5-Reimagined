@@ -11,6 +11,7 @@ import muramasa.antimatter.machine.MachineFlag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import tesseract.TesseractGraphWrappers;
 
@@ -28,13 +29,13 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
         if (container.getTile().has(MachineFlag.FLUID)) {
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {
-                FluidHolder[] inputs = t.getInputs();
-                long water = inputs[0].getFluidAmount();
+                FluidStack[] inputs = t.getInputs();
+                int water = inputs[0].getAmount();
                 if (water >= 1) {
                     drawTooltipInArea(stack,"Water: " + water + " MB", mouseX, mouseY, 84, 25, 10, 54);
                 }
-                FluidHolder[] outputs = t.getOutputs();
-                long steam = outputs[0].getFluidAmount();
+                FluidStack[] outputs = t.getOutputs();
+                int steam = outputs[0].getAmount();
                 if (steam >= 1) {
                     drawTooltipInArea(stack,"Steam: " + steam + " MB", mouseX, mouseY, 70, 25, 10, 54);
                 }
@@ -55,8 +56,8 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
         if (container.getTile().has(MachineFlag.FLUID)) {
             //TODO
             container.getTile().fluidHandler.ifPresent(t -> {
-                FluidHolder[] inputs = t.getInputs();
-                long water = inputs[0].getFluidAmount();
+                FluidStack[] inputs = t.getInputs();
+                int water = inputs[0].getAmount();
                 if (water >= 1) {
                     float per = (float) water / 16000;
                     if (per > 1.0F) {
@@ -70,8 +71,8 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
                     drawTexture(stack, gui, leftPos + 83, y, imageWidth + 28, 54 - lvl, 10, lvl);
 
                 }
-                FluidHolder[] outputs = t.getOutputs();
-                long steam = outputs[0].getFluidAmount();
+                FluidStack[] outputs = t.getOutputs();
+                int steam = outputs[0].getAmount();
                 if (steam >= 1) {
                     float per = (float) steam / 16000;
                     if (per > 1.0F) {

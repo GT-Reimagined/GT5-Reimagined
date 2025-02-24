@@ -31,7 +31,7 @@ public class ChemicalReactorLoader {
     private static void addShared(){
         //POLYETHYLENE
         CHEMICAL_REACTOR.RB().fi(Air.getGas(4),Naphtha.getLiquid(L)).fo(Plastic.getLiquid(L / 2)).add("naphtha_to_polyethylene",320, 30);
-        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1),Ethylene.getGas(L)).fo(Plastic.getLiquid((long) (L * 1.5))).add("ethylene_to_polyethylene",160, 30);
+        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1),Ethylene.getGas(L)).fo(Plastic.getLiquid((int) (L * 1.5))).add("ethylene_to_polyethylene",160, 30);
         CHEMICAL_REACTOR.RB().fi(Air.getGas(2),Ethylene.getGas(L * 2)).fo(Plastic.getLiquid(L * 2)).add("ethylene_to_polyethylene_2",320, 30);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(16),Naphtha.getLiquid(L * 9)).ii(DUST_TINY.getMaterialIngredient(Titanium, 1).setNoConsume()).fo(Plastic.getLiquid(L * 9)).add("naphtha_to_polyethylene_2",640, 30);
         //VINYL CHLORIDE

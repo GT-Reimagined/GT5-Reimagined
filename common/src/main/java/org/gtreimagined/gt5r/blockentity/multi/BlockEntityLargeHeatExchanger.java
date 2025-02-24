@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
 import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MultiMachineFluidHandler;
@@ -27,6 +26,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtcore.item.ItemSelectorTag;
@@ -86,7 +88,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
             @Override
             public boolean canOutput() {
-                return !tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids() || tile.fluidHandler.map(t -> t.getOutputTanks() != null && t.getOutputTanks().getSize() > 1 && t.getOutputTanks().getTank(0).internalInsert(Utils.ca(activeRecipe.getOutputFluids()[0].getFluidAmount() * concurrentRecipes, activeRecipe.getOutputFluids()[0]), true) == activeRecipe.getOutputFluids()[0].getFluidAmount() * concurrentRecipes).orElse(false);
+                return !tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids() || tile.fluidHandler.map(t -> t.getOutputTanks() != null && t.getOutputTanks().getTanks() > 1 && t.getOutputTanks().getTank(0).fill(Utils.ca(activeRecipe.getOutputFluids()[0].getAmount() * concurrentRecipes, activeRecipe.getOutputFluids()[0]), FluidAction.SIMULATE) == activeRecipe.getOutputFluids()[0].getAmount() * concurrentRecipes).orElse(false);
             }
 
             @Override
@@ -110,7 +112,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (activeRecipe.hasOutputFluids()) {
                         tile.fluidHandler.ifPresent(h -> {
                             if (h.getOutputTanks() == null) return;
-                            h.getOutputTanks().getTank(0).internalInsert(activeRecipe.getOutputFluids()[0].copyHolder(), false);
+                            h.getOutputTanks().getTank(0).fill(activeRecipe.getOutputFluids()[0].copy(), FluidAction.EXECUTE);
                         });
                     }
                 }
@@ -123,7 +125,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                 boolean flag = true;
                 if (!tile.hadFirstTick()) return true;
                 final List<ItemStack>[] itemInputs = new List[]{new ArrayList<>()};
-                final List<FluidHolder>[] fluidInputs = new List[]{new ArrayList<>()};
+                final List<FluidStack>[] fluidInputs = new List[]{new ArrayList<>()};
                 if (activeRecipe.hasInputItems()) {
                     flag &= tile.itemHandler.map(h -> {
                         itemInputs[0] = h.consumeInputs(activeRecipe, simulate);
@@ -158,10 +160,10 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (h.getHeat() >= 80){
                         int heatMultiplier = h.getHeat() / 80;
                         FluidTank waterTank = f.getInputTanks().getTank(1);
-                        if (waterTank != null && waterTank.getFluidInTank(0).matches(DistilledWater.getLiquid(1))) {
-                            heatMultiplier = Math.min(heatMultiplier, waterTank.getTankAmount());
-                            if (waterTank.extractFluid(DistilledWater.getLiquid(heatMultiplier), true).getFluidAmount() == heatMultiplier) {
-                                if (f.getOutputTanks() != null && f.getOutputTanks().getSize() >= 2){
+                        if (waterTank != null && waterTank.getFluidInTank(0).isFluidEqual(DistilledWater.getLiquid(1))) {
+                            heatMultiplier = Math.min(heatMultiplier, waterTank.getFluidAmount());
+                            if (waterTank.drain(DistilledWater.getLiquid(heatMultiplier), FluidAction.SIMULATE).getAmount() == heatMultiplier) {
+                                if (f.getOutputTanks() != null && f.getOutputTanks().getTanks() >= 2){
                                     Material steam = Steam;
                                     if (h.getHeat() >= superheatedThreshold){
                                         steam = SuperheatedSteam;
@@ -169,11 +171,11 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                                     float tEfficiency = steam == Steam ? 1 : efficiency / 1000.0f;
                                     int waterMultiplier = steam == Steam ? 160 : 80;
                                     int steamToAdd = (int) (heatMultiplier  * waterMultiplier *  tEfficiency);
-                                    long inserted = f.getOutputTanks().getTank(1).internalInsert(steam.getGas(steamToAdd), true);
+                                    long inserted = f.getOutputTanks().getTank(1).fill(steam.getGas(steamToAdd), FluidAction.SIMULATE);
                                     if (inserted >= 1){
                                         heatMultiplier = Math.min(heatMultiplier, (int)(inserted / tEfficiency));
-                                        f.drainInput(DistilledWater.getLiquid(heatMultiplier), false);
-                                        f.getOutputTanks().getTank(1).internalInsert(steam.getGas(steamToAdd), false);
+                                        f.drainInput(DistilledWater.getLiquid(heatMultiplier), FluidAction.EXECUTE);
+                                        f.getOutputTanks().getTank(1).fill(steam.getGas(steamToAdd), FluidAction.EXECUTE);
                                         h.extract(heatMultiplier * 80, false);
                                     }
                                 }

@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
-import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
@@ -16,6 +15,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
@@ -68,7 +70,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
             }
 
             @Override
-            public boolean accepts(FluidHolder stack) {
+            public boolean accepts(FluidStack stack) {
                 return super.accepts(stack) || stack.getFluid() == Water.getLiquid() || stack.getFluid() == DistilledWater.getLiquid();
             }
         });
@@ -108,7 +110,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
                         waterTank = f.getInputTanks().getTank(waterTankId);
                     }
                     if (waterTank != null) {
-                        waterToExtract = (int) Math.min(heatMultiplier, waterTank.getStoredFluid().getFluidAmount());
+                        waterToExtract = (int) Math.min(heatMultiplier, waterTank.getFluid().getAmount());
                     }
                     if (waterToExtract > 0){
                         if (hadNoWater){
@@ -118,12 +120,12 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
                         Material steam = Steam;
                         int waterMultiplier = 160;
                         int steamToAdd = waterToExtract  * waterMultiplier;
-                        long inserted = f.getOutputTanks().internalInsert(steam.getGas(steamToAdd), true);
+                        long inserted = f.getOutputTanks().fill(steam.getGas(steamToAdd), FluidAction.SIMULATE);
                         int successfulSteam = (int) (inserted / 160);
                         if (successfulSteam >= 1){
                             waterToExtract = Math.min(waterToExtract, successfulSteam);
-                            waterTank.internalExtract(Utils.ca(waterToExtract, waterTank.getStoredFluid()), false);
-                            f.getOutputTanks().internalInsert(steam.getGas(waterToExtract * waterMultiplier), false);
+                            waterTank.drain(Utils.ca(waterToExtract, waterTank.getFluid()), FluidAction.EXECUTE);
+                            f.getOutputTanks().fill(steam.getGas(waterToExtract * waterMultiplier), FluidAction.EXECUTE);
                             steamHeat -= waterToExtract * 80;
                         }
                         hadNoWater = false;
@@ -163,19 +165,19 @@ public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<Bl
             }));
         }
 
-        public boolean acceptsRecipe(FluidHolder stack) {
+        public boolean acceptsRecipe(FluidStack stack) {
             return tile.recipeHandler.map(t -> {
                 IRecipeMap map = t.getRecipeMap();
                 return map == null || map.acceptsFluid(stack);
             }).orElse(true);
         }
 
-        public boolean acceptWater(FluidHolder stack) {
+        public boolean acceptWater(FluidStack stack) {
             return stack.getFluid() == Water.getLiquid() || stack.getFluid() == DistilledWater.getLiquid();
         }
 
         @Override
-        public boolean canFluidBeAutoOutput(FluidHolder fluid) {
+        public boolean canFluidBeAutoOutput(FluidStack fluid) {
             return fluid.getFluid() != Steam.getGas();
         }
     }

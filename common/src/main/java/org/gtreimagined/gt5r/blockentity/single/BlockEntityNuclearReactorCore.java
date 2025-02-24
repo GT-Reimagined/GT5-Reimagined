@@ -39,6 +39,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
@@ -333,7 +335,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
             } else if (!running && getMachineState() == MachineState.ACTIVE){
                 setMachineState(MachineState.IDLE);
             }
-            FluidHolder coldCoolant = fluidHandler1.getInputTanks().getFluidInTank(0);
+            FluidStack coldCoolant = fluidHandler1.getInputTanks().getFluidInTank(0);
             int tDivider = 1;
             if (coldCoolant.getFluid().is(Sodium.getFluidTag())) tDivider = 6;
             if (coldCoolant.getFluid().is(Tin.getFluidTag())) tDivider = 3;
@@ -385,11 +387,11 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     int multiplier = hotCoolant == Steam ? 160 : 1;
                     int toFill = hotCoolant == Steam ? tEnergy * 160 : tEnergy;
                     if (tEnergy > 0){
-                        FluidHolder fluidHolder = hotCoolant.has(AntimatterMaterialTypes.GAS) ? hotCoolant.getGas(tEnergy * multiplier) : hotCoolant.getLiquid(tEnergy);
-                        if (coldCoolant.getFluidAmount() >= tEnergy && fluidHandler1.fillOutput(fluidHolder.copyHolder(), true) == (long) tEnergy * multiplier){
-                            fluidHandler1.fillOutput(fluidHolder, false);
+                        FluidStack fluidHolder = hotCoolant.has(AntimatterMaterialTypes.GAS) ? hotCoolant.getGas(tEnergy * multiplier) : hotCoolant.getLiquid(tEnergy);
+                        if (coldCoolant.getAmount() >= tEnergy && fluidHandler1.fillOutput(fluidHolder.copy(), FluidAction.SIMULATE) == (long) tEnergy * multiplier){
+                            fluidHandler1.fillOutput(fluidHolder, FluidAction.EXECUTE);
                             handler.extractInternal(tEnergy * heatPerCoolant, false);
-                            fluidHandler1.drainInput(tEnergy, false);
+                            fluidHandler1.drainInput(tEnergy, FluidAction.EXECUTE);
                         }
                     }
                 }

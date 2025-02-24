@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.loader.multi;
 
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import tesseract.TesseractGraphWrappers;
@@ -16,7 +17,7 @@ public class HeatExchangerLoader {
                 .fo(Coolant.getLiquid(1))
                 .add("hot_coolant",1, 20);
         HEAT_EXCHANGER.RB().fi(Lava.getLiquid(1))
-                .fo(FluidHooks.newFluidHolder(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 1, null))
+                .fo(new FluidStack(GTCoreFluids.PAHOEHOE_LAVA.getFluid(), 1))
                 .add("lava", 1, 80);
         HEAT_EXCHANGER.RB().ii(Items.MAGMA_BLOCK).io(Items.COBBLESTONE).tags(GT5RRecipeTags.SMALL_HEAT_EXCHANGED_ONLY).add("magma_block", 1000, 40);
         HEAT_EXCHANGER.RB().fi(HotCarbonDioxide.getGas(1)).fo(CarbonDioxide.getGas(1)).tags(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY).add("hot_carbon_dioxide", 1, 20);

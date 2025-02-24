@@ -9,6 +9,8 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicRedstoneOutput;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,15 +41,15 @@ public class CoverFluidDetector extends CoverBasicRedstoneOutput {
     @Override
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
-        FluidContainer fluidContainer = handler.getTile() instanceof BlockEntityMachine<?> machine ? machine.fluidHandler.side(side).orElse(null) : ((BlockEntityFluidPipe<?>)handler.getTile()).getFluidHandler().orElse(null);
+        IFluidHandler fluidContainer = handler.getTile() instanceof BlockEntityMachine<?> machine ? machine.fluidHandler.map(f -> f).orElse(null) : ((BlockEntityFluidPipe<?>)handler.getTile()).getFluidHandler().orElse(null);
         if (fluidContainer != null){
-            long scale = IntStream.range(0, fluidContainer.getSize()).mapToLong(fluidContainer::getTankCapacity).sum() / 15L;
-            long totalFluid = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
-                FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
-                return fluidHolder.getFluidAmount();
+            int scale = IntStream.range(0, fluidContainer.getTanks()).map(fluidContainer::getTankCapacity).sum() / 15;
+            int totalFluid = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {
+                FluidStack fluidHolder = fluidContainer.getFluidInTank(tankSlot);
+                return fluidHolder.getAmount();
             }).sum();
             if (scale > 0){
-                setOutputRedstone(inverted ? (int) (15L - totalFluid / scale) : (int) (totalFluid / scale));
+                setOutputRedstone(inverted ? (15 - totalFluid / scale) : (totalFluid / scale));
             } else {
                 setOutputRedstone(inverted ? 15 : 0);
             }

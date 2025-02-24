@@ -29,6 +29,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.worldgen.OilSpoutEntry;
 import org.gtreimagined.gt5r.worldgen.OilSpoutSavedData;
@@ -57,13 +59,13 @@ public class BlockEntityOilDrillingRig extends BlockEntityDrillingRigBase<BlockE
             oilEntry = OilSpoutSavedData.getOrCreate((ServerLevel) level).getFluidVeinWorldEntry(SectionPos.blockToSectionCoord(this.miningPos.getX()), SectionPos.blockToSectionCoord(this.miningPos.getZ()));
         }
         if (oilEntry.getFluid() == null) return;
-        FluidHolder fluidHolder = FluidPlatformUtils.createFluidStack(oilEntry.getFluid().fluid(), oilEntry.getCurrentYield());
+        FluidStack fluidHolder = new FluidStack(oilEntry.getFluid().fluid(), oilEntry.getCurrentYield());
         if (outputTicker > 0){
             outputTicker--;
             return;
         }
         if (progress == 0){
-            if (!fluidHandler.map(f -> f.fillOutput(fluidHolder, true) == oilEntry.getCurrentYield()).orElse(false)){
+            if (!fluidHandler.map(f -> f.fillOutput(fluidHolder, FluidAction.SIMULATE) == oilEntry.getCurrentYield()).orElse(false)){
                 outputTicker = 40;
                 this.setMachineState(MachineState.IDLE);
                 return;
@@ -73,8 +75,8 @@ public class BlockEntityOilDrillingRig extends BlockEntityDrillingRigBase<BlockE
         energyHandler.ifPresent(e -> e.extractEu(euPerTick, false));
         if (++progress == cycle){
             progress = 0;
-            if (fluidHandler.map(f -> f.fillOutput(fluidHolder, true) == oilEntry.getCurrentYield()).orElse(false)){
-                fluidHandler.ifPresent(f -> f.fillOutput(fluidHolder, false));
+            if (fluidHandler.map(f -> f.fillOutput(fluidHolder, FluidAction.SIMULATE) == oilEntry.getCurrentYield()).orElse(false)){
+                fluidHandler.ifPresent(f -> f.fillOutput(fluidHolder, FluidAction.EXECUTE));
                 onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                 oilEntry.decreaseLevel();
             }

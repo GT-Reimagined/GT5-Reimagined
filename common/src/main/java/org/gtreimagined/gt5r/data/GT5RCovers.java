@@ -13,6 +13,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.cover.CoverAirVent;
 import org.gtreimagined.gt5r.cover.CoverConveyor;
@@ -115,9 +117,9 @@ public class GT5RCovers {
                             ListTag items = displayManager.getList("Items", Tag.TAG_COMPOUND);
                             if (!items.isEmpty()){
                                 ItemStack contained = ItemStack.of(items.getCompound(0));
-                                PlatformFluidItemHandler fluidItemHandler = FluidHooks.safeGetItemFluidManager(contained).orElse(null);
+                                IFluidHandlerItem fluidItemHandler = contained.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).resolve().orElse(null);
                                 if (fluidItemHandler != null && !fluidItemHandler.getFluidInTank(0).isEmpty()){
-                                    tooltip.add(FluidPlatformUtils.INSTANCE.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
+                                    tooltip.add(FluidPlatformUtils.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
                                 }
                             }
                         }

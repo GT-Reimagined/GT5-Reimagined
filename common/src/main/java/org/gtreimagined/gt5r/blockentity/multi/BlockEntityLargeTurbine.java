@@ -17,10 +17,13 @@ import muramasa.antimatter.machine.event.IMachineEvent;
 import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.registration.ITextureProvider;
+import muramasa.antimatter.util.Utils;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 import tesseract.TesseractGraphWrappers;
@@ -138,18 +141,18 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         long fuelValue = activeRecipe.getPower();
                         long actualOptimalFlow = tile.getMachineTier() == EV ? aOptFlow / fuelValue : aOptFlow;
                         long totalFlow = 0; // Byproducts are based on actual flow
-                        long flow = 0;
-                        long remainingFlow = (long) (actualOptimalFlow * 1.25f); // Allowed to use up to 125% of optimal flow.  Variable required outside of loop for multi-hatch scenarios.
+                        int flow = 0;
+                        int remainingFlow = (int) (actualOptimalFlow * 1.25f); // Allowed to use up to 125% of optimal flow.  Variable required outside of loop for multi-hatch scenarios.
                         realOptFlow = tile.getMachineTier() == EV ? actualOptimalFlow : ((actualOptimalFlow / 2) / (0.5));
                         MachineFluidHandler<?> handler = fluidHandler.orElse(null);
                         if (handler == null) return 0;
-                        for (int i = 0; i < handler.getInputTanks().getSize() && remainingFlow > 0; i++) { // loop through each hatch; extract inputs and track totals.
-                            FluidHolder fluidHolder = handler.getInputTanks().getFluidInTank(i);
+                        for (int i = 0; i < handler.getInputTanks().getTanks() && remainingFlow > 0; i++) { // loop through each hatch; extract inputs and track totals.
+                            FluidStack fluidHolder = handler.getInputTanks().getFluidInTank(i);
                             if (activeRecipe.getInputFluids().get(0).matches(fluidHolder)) {
-                                flow = fluidHolder.getFluidAmount(); // Get all (steam) in hatch
+                                flow = fluidHolder.getAmount(); // Get all (steam) in hatch
                                 flow = Math.min(flow, Math.min(remainingFlow, (int) (actualOptimalFlow * 1.25f))); // try to use up to 125% of optimal flow w/o exceeding remainingFlow
                                 if (!simulate){
-                                    handler.getInputTanks().extractFluid(fluidHolder.copyWithAmount(flow), false);
+                                    handler.getInputTanks().drain(Utils.ca(flow, fluidHolder), FluidAction.EXECUTE);
                                 }
                                 remainingFlow -= flow; // track amount we're allowed to continue depleting from hatches
                                 totalFlow += flow; // track total input used
@@ -159,8 +162,8 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         tEU = (int) (Math.min((float) actualOptimalFlow, totalFlow));
                         if (tile.getMachineTier() != EV){
                             int waterToOutput = tile.getMachineTier() == HV ? useWater(totalFlow / 160.0f) : (int) totalFlow;
-                            FluidHolder fluid = tile.getMachineTier() == HV ? DistilledWater.getLiquid(waterToOutput) : Steam.getGas(waterToOutput);
-                            if (!simulate) handler.fillOutput(fluid, false);
+                            FluidStack fluid = tile.getMachineTier() == HV ? DistilledWater.getLiquid(waterToOutput) : Steam.getGas(waterToOutput);
+                            if (!simulate) handler.fillOutput(fluid, FluidAction.EXECUTE);
                         } else {
                             tEU *= fuelValue;
                         }

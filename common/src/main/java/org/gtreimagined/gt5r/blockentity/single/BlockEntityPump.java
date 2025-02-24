@@ -5,6 +5,7 @@ import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.FluidHandler;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
@@ -22,6 +23,10 @@ import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.ArrayList;
@@ -97,11 +102,11 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
         if (!mPumpedFluids.contains(fluid)) return false;
         // Determine the Fluid that is produced.
         if (state.isSource()){
-            FluidHolder stack = FluidHooks.newFluidHolder(fluid, 1000, null);
-            if (fluidHandler.map(f -> f.fillOutput(stack, true) != 1000).orElse(false)){
+            FluidStack stack = new FluidStack(fluid, 1000);
+            if (fluidHandler.map(f -> f.fillOutput(stack, FluidAction.SIMULATE) != 1000).orElse(false)){
                 return null;
             }
-            fluidHandler.ifPresent(f -> f.fillOutput(stack, false));
+            fluidHandler.ifPresent(f -> f.fillOutput(stack, FluidAction.EXECUTE));
         }
         BlockState newState = Blocks.AIR.defaultBlockState();
         if (fluid == Fluids.WATER && blockState.getBlock() != Blocks.WATER && blockState.hasProperty(BlockStateProperties.WATERLOGGED) && blockState.getValue(BlockStateProperties.WATERLOGGED)){
@@ -133,7 +138,7 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
 
     public void exportFluidFromMachineToSide(Direction side){
         if (fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
-        Optional<PlatformFluidHandler> cap = BlockEntityCache.getFluidHandlerCached(getLevel(), getBlockPos().relative(side), side.getOpposite());
+        LazyOptional<IFluidHandler> cap = FluidPlatformUtils.getFluidHandler(getLevel(), getBlockPos().relative(side), getCachedBlockEntity(side), side.getOpposite());
         fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
     }
 
@@ -174,7 +179,7 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
         if (!aBlock.isEmpty() && aBlock.getType() instanceof FlowingFluid fluid) {
             mPumpedFluids.add(fluid.getSource());
             mPumpedFluids.add(fluid.getFlowing());
-            mDir = (byte)(FluidPlatformUtils.INSTANCE.isFluidGaseous(aBlock.getType()) ? -1 : +1);
+            mDir = (byte)(FluidPlatformUtils.isFluidGaseous(aBlock.getType()) ? -1 : +1);
         } else {
             energyHandler.ifPresent(e -> {
                 e.extractEu(2, false);

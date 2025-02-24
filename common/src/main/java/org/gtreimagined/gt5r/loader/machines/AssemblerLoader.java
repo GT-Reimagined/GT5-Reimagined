@@ -138,7 +138,7 @@ public class AssemblerLoader {
                 Item cableItem = cable.getBlockItem(size);
                 int ct = size.getCableThickness();
                 int multiplier = ct == 16 ?  5 : ct == 12 ? 4 : ct == 8 ? 3 : ct == 4 ? 2 : 1;
-                long amount = L * multiplier;
+                int amount = L * multiplier;
                 ASSEMBLER.RB().ii(of(wireItem,1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(Rubber.getLiquid(amount)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_rubber",size.getCableThickness()* 20L,8);
                 ASSEMBLER.RB().ii(of(wireItem,1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(StyreneButadieneRubber.getLiquid((amount * 3) / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber",100,8);
                 ASSEMBLER.RB().ii(of(wireItem,1), DUST_SMALL.getMaterialIngredient(PolyvinylChloride, multiplier)).fi(StyreneButadieneRubber.getLiquid(amount / 4)).io(new ItemStack(cableItem,1)).add("cable_" + t.getMaterial().getId() + "_" + size.getId() + "_styrene_butadiene_rubber_2",100,8);

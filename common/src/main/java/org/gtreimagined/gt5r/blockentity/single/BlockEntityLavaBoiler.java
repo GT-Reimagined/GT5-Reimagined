@@ -4,6 +4,7 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.FluidHandler;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
@@ -16,6 +17,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.Arrays;
@@ -111,16 +116,16 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
             tick();
             if (tile.getLevel().getGameTime() % 10L == 0L) {
                 tile.fluidHandler.ifPresent(f -> {
-                    FluidHolder[] inputs = f.getInputs();
+                    FluidStack[] inputs = f.getInputs();
 
                     // If we have lava then produce heat
-                    if(inputs[1].getFluidAmount() >= lavaPerOperation) {
+                    if(inputs[1].getAmount() >= lavaPerOperation) {
                         setActive(true);
                         this.heat += 1;
 
                         // Gets approximately 77 heat per lava bucket
                         if(tile.getLevel().getGameTime() % 16L == 0L) {
-                            f.drainInput(FluidPlatformUtils.createFluidStack(inputs[1].getFluid(), lavaPerOperation), false);
+                            f.drainInput(new FluidStack(inputs[1].getFluid(), lavaPerOperation), FluidAction.EXECUTE);
                         }
 
                         if(this.heat >= this.maxHeat) {
@@ -138,7 +143,7 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
 
         public void exportFluidFromMachineToSide(Direction side){
             if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
-            Optional<PlatformFluidHandler> cap = BlockEntityCache.getFluidHandlerCached(tile.getLevel(), tile.getBlockPos().relative(side), side.getOpposite());
+            LazyOptional<IFluidHandler> cap = FluidPlatformUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), tile.getCachedBlockEntity(side), side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 
@@ -151,7 +156,7 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
         }
 
         @Override
-        public boolean accepts(FluidHolder fluid) {
+        public boolean accepts(FluidStack fluid) {
             return fluid.getFluid() == Fluids.WATER
                     || fluid.getFluid() == DistilledWater.getLiquid()
                     || fluid.getFluid() == Fluids.LAVA;

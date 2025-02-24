@@ -17,6 +17,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.Map;
@@ -40,20 +42,20 @@ public class BlockEntityMagicEnergyConverter extends BlockEntityGenerator<BlockE
                     }
                     return false;
                 }
-                long toConsume = consumedFluidPerOperation(activeRecipe);
+                int toConsume = consumedFluidPerOperation(activeRecipe);
                 long toInsert = calculateGeneratorProduction(activeRecipe);
                 if (activeRecipe.hasInputItems()){
 
                 }
-                FluidHolder mFluid = tile.fluidHandler.map(f -> f.getInputTanks().getTank(0).getStoredFluid()).orElse(FluidHooks.emptyFluid());
+                FluidStack mFluid = tile.fluidHandler.map(f -> f.getInputTanks().getTank(0).getFluid()).orElse(FluidStack.EMPTY);
                 if (mFluid.isEmpty()) return false;
-                long fluidAmount = mFluid.getFluidAmount();
+                int fluidAmount = mFluid.getAmount();
                 if (toInsert > 0 && toConsume > 0 && fluidAmount > toConsume) {
-                    long tFluidAmountToUse = Math.min(fluidAmount / toConsume, (handler.getCapacity() - handler.getEnergy()) / toInsert);
+                    int tFluidAmountToUse = (int) Math.min(fluidAmount / toConsume, (handler.getCapacity() - handler.getEnergy()) / toInsert);
                     if (tFluidAmountToUse > 0 && handler.insertInternal(tFluidAmountToUse * toInsert, true) == tFluidAmountToUse * toInsert) {
                         if (tile.getLevel().getGameTime() % 10 == 0 && !simulate){
                             handler.insertInternal(tFluidAmountToUse * toInsert, false);
-                            tile.fluidHandler.ifPresent(f -> f.drainInput(Utils.ca(tFluidAmountToUse * toConsume, mFluid), false));
+                            tile.fluidHandler.ifPresent(f -> f.drainInput(Utils.ca(tFluidAmountToUse * toConsume, mFluid), FluidAction.EXECUTE));
                         }
                         return true;
                     }

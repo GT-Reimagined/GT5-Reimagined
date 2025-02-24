@@ -4,12 +4,14 @@ import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import muramasa.antimatter.blockentity.BlockEntityCache;
 import muramasa.antimatter.blockentity.BlockEntityMachine;
+import muramasa.antimatter.capability.FluidHandler;
 import muramasa.antimatter.capability.fluid.FluidTanks;
 import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -17,6 +19,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -177,7 +182,7 @@ public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoi
 
         public void exportFluidFromMachineToSide(Direction side){
             if (tile.fluidHandler.map(f -> f.getOutputTanks().isEmpty()).orElse(false)) return;
-            Optional<PlatformFluidHandler> cap = BlockEntityCache.getFluidHandlerCached(tile.getLevel(), tile.getBlockPos().relative(side), side.getOpposite());
+            LazyOptional<IFluidHandler> cap = FluidPlatformUtils.getFluidHandler(tile.getLevel(), tile.getBlockPos().relative(side), tile.getCachedBlockEntity(side), side.getOpposite());
             tile.fluidHandler.ifPresent(f -> cap.ifPresent(other -> Utils.transferFluids(f.getOutputTanks(), other, 1000)));
         }
 
@@ -230,7 +235,7 @@ public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoi
         }
 
         @Override
-        public boolean accepts(FluidHolder fluid) {
+        public boolean accepts(FluidStack fluid) {
             return fluid.getFluid() == Fluids.WATER || fluid.getFluid() == DistilledWater.getLiquid();
         }
 

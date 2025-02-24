@@ -27,6 +27,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
 import java.util.ArrayList;
@@ -70,12 +71,12 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
                 if (oreBlock.is(TagUtils.getForgelikeBlockTag("bedrock_ores"))){
                     oreChance += 2;
                     if (recipe == null){
-                        recipe = RecipeMaps.BEDROCK_DRILL.find(new ItemStack[]{new ItemStack(oreBlock.getBlock())}, new FluidHolder[]{Lubricant.getLiquid(100)}, Tier.LUV, r -> true);
+                        recipe = RecipeMaps.BEDROCK_DRILL.find(new ItemStack[]{new ItemStack(oreBlock.getBlock())}, new FluidStack[]{Lubricant.getLiquid(100)}, Tier.LUV, r -> true);
                     }
                 } else if (oreBlock.is(TagUtils.getForgelikeBlockTag("bedrock_small_ores"))){
                     oreChance++;
                     if (recipe == null){
-                        recipe = RecipeMaps.BEDROCK_DRILL.find(new ItemStack[]{new ItemStack(oreBlock.getBlock())}, new FluidHolder[]{Lubricant.getLiquid(100)}, Tier.LUV, r -> true);
+                        recipe = RecipeMaps.BEDROCK_DRILL.find(new ItemStack[]{new ItemStack(oreBlock.getBlock())}, new FluidStack[]{Lubricant.getLiquid(100)}, Tier.LUV, r -> true);
                     }
                 }
             }
@@ -114,7 +115,7 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
         }
         if (recipe != null && energyHandler.map(e -> e.getEnergy() >= recipe.getPower()).orElse(false)) {
             boolean consumeFluid = fluidHandler.map(h -> {
-                List<FluidHolder> fluidInputs = h.consumeAndReturnInputs(recipe.getInputFluids(), true);
+                List<FluidStack> fluidInputs = h.consumeAndReturnInputs(recipe.getInputFluids(), true);
                 return !fluidInputs.isEmpty();
             }).orElse(true);
             if (consumeFluid && !mainOutput.isEmpty()) {

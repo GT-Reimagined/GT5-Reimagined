@@ -28,6 +28,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
@@ -53,9 +54,9 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                         if (paper.getCount() >= 1 && stored.getItem() == GT5RItems.DataStick) {
                             CompoundTag prospect = stored.getTagElement("prospectData");
                             CompoundTag bookData = stored.getTagElement("bookData");
-                            FluidHolder ink = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
+                            FluidStack ink = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidStack.EMPTY);
                             if (!ink.isEmpty()) {
-                                if (ink.matches(SquidInk.getLiquid(20)) && ink.getFluidAmount() >= L && paper.getCount() >= 3) {
+                                if (ink.isFluidEqual(SquidInk.getLiquid(20)) && ink.getAmount() >= L && paper.getCount() >= 3) {
                                     ItemStack output = new ItemStack(GT5RItems.PrintedPages);
                                     if (prospect != null && prospect.getBoolean("analyzed")) {
                                         CompoundTag nbt = output.getOrCreateTag();
@@ -110,7 +111,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
                                     if ((prospect != null && prospect.getBoolean("analyzed")) || bookData != null) {
                                         return RecipeMaps.PRINTING.RB().recipeMapOnly().ii(RecipeIngredient.of(Items.PAPER, 3)).fi(SquidInk.getLiquid(L)).io(output).add("data_stick_book_printing", 400, 2);
                                     }
-                                } else if (ink.getFluid().is(GT5RTags.BLUE_DYE) && ink.getFluidAmount() >= L){
+                                } else if (ink.getFluid().is(GT5RTags.BLUE_DYE) && ink.getAmount() >= L){
                                     CompoundTag blueprintData = stored.getTagElement("blueprintData");
                                     if (blueprintData != null) {
                                         ItemStack output = new ItemStack(GTCoreItems.Blueprint);

@@ -7,6 +7,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.tool.AntimatterToolType;
 import muramasa.antimatter.util.FluidPlatformUtils;
+import muramasa.antimatter.util.RegistryUtils;
 import muramasa.antimatter.worldgen.vein.VeinSavedData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -52,7 +53,7 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
             if (entry != null) {
                 if (entry.getFluid() != null){
                     CompoundTag fluid = new CompoundTag();
-                    fluid.putString("name", FluidPlatformUtils.INSTANCE.getFluidId(entry.getFluid().fluid()).toString());
+                    fluid.putString("name", RegistryUtils.getIdFromFluid(entry.getFluid().fluid()).toString());
                     fluid.putLong("maxYield", entry.getFluid().getMaxYield());
                     prospectData.put("fluid", fluid);
                 } else {

@@ -19,6 +19,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RItems;
@@ -168,9 +169,9 @@ public class BathLoader {
     }
 
     private static void addFieryBathing(TagKey<Item> in, Item out, long materialAmount) {
-        long amount = (L * materialAmount) / U;
-        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), amount)).add(in.location().getPath() + "_to_" + RegistryUtils.getIdFromItem(out).getPath() + "_tears", amount);
-        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), amount)).add(in.location().getPath() + "_to_" + RegistryUtils.getIdFromItem(out).getPath() + "_blood", amount);
+        int amount = (int) ((L * materialAmount) / U);
+        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(new FluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), amount)).add(in.location().getPath() + "_to_" + RegistryUtils.getIdFromItem(out).getPath() + "_tears", amount);
+        BATH.RB().ii(RecipeIngredient.of(in)).io(out).fi(new FluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), amount)).add(in.location().getPath() + "_to_" + RegistryUtils.getIdFromItem(out).getPath() + "_blood", amount);
     }
 
     private static void addVitriolRecipe(Material input, Material vitriol){

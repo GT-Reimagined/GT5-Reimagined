@@ -10,6 +10,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import tesseract.TesseractGraphWrappers;
 
 import static org.gtreimagined.gt5r.data.Materials.Steam;
@@ -43,9 +45,9 @@ public interface ISteamBoilerHandler {
         this.exportFluid();
         if (getTile().getLevel().getGameTime() % getProcessDelay() == 0) {
             getTile().fluidHandler.ifPresent(f -> {
-                FluidHolder[] inputs = f.getInputs();
+                FluidStack[] inputs = f.getInputs();
                 if (this.getHeat() > 100) {
-                    if (inputs[0].getFluidAmount() == 0) {
+                    if (inputs[0].getAmount() == 0) {
                         setHadNoWater(true);
                     } else {
                         if (hadNoWater()) {
@@ -53,18 +55,18 @@ public interface ISteamBoilerHandler {
                             getTile().getLevel().setBlockAndUpdate(getTile().getBlockPos(), Blocks.AIR.defaultBlockState());
                             return;
                         }
-                        f.drainInput(FluidPlatformUtils.createFluidStack(Fluids.WATER, 1), false);
-                        long room = (16000) - f.getOutputs()[0].getFluidAmount();
-                        long fill = Math.min(room, (150));
+                        f.drainInput(new FluidStack(Fluids.WATER, 1), FluidAction.EXECUTE);
+                        int room = (16000) - f.getOutputs()[0].getAmount();
+                        int fill = Math.min(room, (150));
                         if (room > 0){
-                            f.fillOutput(Steam.getGas(fill), false);
+                            f.fillOutput(Steam.getGas(fill), FluidAction.EXECUTE);
                         }
                         if (fill < (150)) {
                             //TODO:steam sounds
                             getTile().getLevel().playSound(null, getTile().getBlockPos(), SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 1.0f, 1.0f);
                             if (getTile().getLevel() instanceof ServerLevel)
                                 ((ServerLevel) getTile().getLevel()).sendParticles(ParticleTypes.SMOKE, getTile().getBlockPos().getX(), getTile().getBlockPos().getY(), getTile().getBlockPos().getZ(), getTile().getLevel().getRandom().nextInt(8) + 1, 0.0D, 0.2D, 0.0D, 0.0D);
-                            f.extractFluid(4000, false);
+                            f.drain(4000, FluidAction.EXECUTE);
                         }
                     }
                 } else {

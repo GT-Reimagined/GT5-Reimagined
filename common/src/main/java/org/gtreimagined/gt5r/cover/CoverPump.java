@@ -11,6 +11,7 @@ import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.gui.SlotType;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.machine.event.IMachineEvent;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -80,7 +81,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         BlockPos finalTo = to;
         if (canMove(side)) {
             Direction finalFromSide = fromSide;
-            BlockEntityCache.getFluidHandlerCached(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> BlockEntityCache.getFluidHandlerCached(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
+            FluidPlatformUtils.getFluidHandler(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> FluidPlatformUtils.getFluidHandler(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, speeds.get(tier))));
         }
     }
     protected boolean canMove(Direction side){

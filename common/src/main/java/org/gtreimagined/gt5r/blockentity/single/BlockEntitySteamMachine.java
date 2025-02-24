@@ -11,6 +11,7 @@ import muramasa.antimatter.machine.types.Machine;
 import muramasa.antimatter.recipe.IRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import tesseract.TesseractGraphWrappers;
 
@@ -38,7 +39,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
 
         @Override
         public boolean consumeResourceForRecipe(boolean simulate) {
-            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GT5RTags.STEAM, getPower(), simulate).getFluidAmount() > 0)
+            return tile.fluidHandler.map(t -> t.consumeTaggedInput(GT5RTags.STEAM, (int) getPower(), simulate).getAmount() > 0)
                     .orElse(false);
         }
         //Allow up to 16 .
@@ -83,7 +84,7 @@ public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteam
         }
 
         @Override
-        public boolean accepts(FluidHolder stack) {
+        public boolean accepts(FluidStack stack) {
             return stack.getFluid().builtInRegistryHolder().is(GT5RTags.STEAM);
         }
 

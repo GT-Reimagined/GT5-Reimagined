@@ -6,6 +6,7 @@ import muramasa.antimatter.recipe.map.RecipeBuilder;
 import muramasa.antimatter.util.FluidPlatformUtils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
@@ -36,7 +37,7 @@ public class DistillationTowerLoader {
         addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
         DISTILLERY.RB()
                 .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
-                .fi(FluidPlatformUtils.createFluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100))
+                .fi(new FluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100))
                 .fo(DistilledWater.getLiquid(50)).io(Items.SUGAR).add("beet_juice", 80, 16);
         DISTILLERY.RB()
                 .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())

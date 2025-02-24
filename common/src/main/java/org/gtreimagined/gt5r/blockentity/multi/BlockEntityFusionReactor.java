@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.fluid.FluidTank;
 import muramasa.antimatter.capability.machine.DefaultHeatHandler;
 import muramasa.antimatter.capability.machine.MachineRecipeHandler;
 import muramasa.antimatter.gui.event.GuiEvents;
@@ -19,6 +18,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.machine.caps.SecondaryMultiFluidHandler;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipe;
@@ -95,14 +96,14 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
                     int heatMultiplier = h.getHeat() / 30;
                     FluidTank coolantTank = mf.getSecondaryInputTanks().getTank(mf.getSecondaryInputTanks().getFirstAvailableTank(Helium.getGas(1), true));
                     if (coolantTank != null) {
-                        heatMultiplier = (int) Math.min(heatMultiplier, coolantTank.getTankAmount());
-                        if (coolantTank.extractFluid(Helium.getGas(heatMultiplier), true).getFluidAmount() == heatMultiplier ) {
-                            if (mf.getSecondaryOutputTanks() != null && mf.getSecondaryOutputTanks().getSize() >= 1) {
-                                long inserted = mf.getSecondaryOutputTanks().internalInsert(HotHelium.getGas(heatMultiplier), true);
+                        heatMultiplier = Math.min(heatMultiplier, coolantTank.getFluidAmount());
+                        if (coolantTank.drain(Helium.getGas(heatMultiplier), FluidAction.SIMULATE).getAmount() == heatMultiplier ) {
+                            if (mf.getSecondaryOutputTanks() != null && mf.getSecondaryOutputTanks().getTanks() >= 1) {
+                                long inserted = mf.getSecondaryOutputTanks().fill(HotHelium.getGas(heatMultiplier), FluidAction.SIMULATE);
                                 if (inserted >= 1){
                                     heatMultiplier = (int) Math.min(heatMultiplier, (inserted));
-                                    coolantTank.extractFluid(Helium.getGas(heatMultiplier), false);
-                                    mf.getSecondaryOutputTanks().internalInsert(HotHelium.getGas(heatMultiplier), false);
+                                    coolantTank.drain(Helium.getGas(heatMultiplier), FluidAction.EXECUTE);
+                                    mf.getSecondaryOutputTanks().fill(HotHelium.getGas(heatMultiplier), FluidAction.EXECUTE);
                                     h.extract(heatMultiplier * 30, false);
                                 }
                             }

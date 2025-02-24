@@ -19,6 +19,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -65,20 +67,20 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.fluidHandler.side(side).isPresent()){
-            FluidContainer fluidContainer = machine.fluidHandler.side(side).resolve().get();
+            IFluidHandler fluidContainer = machine.fluidHandler.side(side).resolve().get();
             int oldRedstone = outputRedstone;
-            long scale = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
-                FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
+            int scale = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {
+                FluidStack fluidHolder = fluidContainer.getFluidInTank(tankSlot);
                 if (!getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
                 return fluidContainer.getTankCapacity(tankSlot);
-            }).sum() / 15L;
-            long totalFluid = IntStream.range(0, fluidContainer.getSize()).mapToLong(tankSlot -> {
-                FluidHolder fluidHolder = fluidContainer.getFluids().get(tankSlot);
+            }).sum() / 15;
+            int totalFluid = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {
+                FluidStack fluidHolder = fluidContainer.getFluidInTank(tankSlot);
                 if (!getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
-                return fluidHolder.getFluidAmount();
+                return fluidHolder.getAmount();
             }).sum();
             if (scale > 0){
-                outputRedstone = inverted ? (int) (15L - totalFluid / scale) : (int) (totalFluid / scale);
+                outputRedstone = inverted ? (15 - totalFluid / scale) : (totalFluid / scale);
             } else {
                 outputRedstone = inverted ? 15 : 0;
             }

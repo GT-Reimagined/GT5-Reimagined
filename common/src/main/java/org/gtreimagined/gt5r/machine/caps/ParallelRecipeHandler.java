@@ -8,6 +8,7 @@ import muramasa.antimatter.machine.event.MachineEvent;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
         boolean flag = true;
         if (!tile.hadFirstTick()) return true;
         final List<ItemStack>[] itemInputs = new List[]{new ArrayList<>()};
-        final List<FluidHolder>[] fluidInputs = new List[]{new ArrayList<>()};
+        final List<FluidStack>[] fluidInputs = new List[]{new ArrayList<>()};
         if (activeRecipe.hasInputItems()) {
             flag &= tile.itemHandler.map(h -> {
                 itemInputs[0] = h.consumeInputs(activeRecipe, simulate);
@@ -153,14 +154,14 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
         }).orElse(false))
             return false;
         if (!tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids()) return true;
-        List<FluidHolder> outputs = new ArrayList<>();
+        List<FluidStack> outputs = new ArrayList<>();
         for (int i = 0; i < concurrentRecipes; i++) {
-            for (FluidHolder fluidHolder : activeRecipe.getOutputFluids()) {
-                outputs.add(fluidHolder.copyHolder());
+            for (FluidStack fluidHolder : activeRecipe.getOutputFluids()) {
+                outputs.add(fluidHolder.copy());
             }
         }
-        List<FluidHolder> merged = Utils.mergeFluids(new ArrayList<>(), outputs);
-        return tile.fluidHandler.map(t -> t.canOutputsFit(merged.toArray(FluidHolder[]::new))).orElse(false);
+        List<FluidStack> merged = Utils.mergeFluids(new ArrayList<>(), outputs);
+        return tile.fluidHandler.map(t -> t.canOutputsFit(merged.toArray(FluidStack[]::new))).orElse(false);
     }
 
     protected int maxSimultaneousRecipes(){

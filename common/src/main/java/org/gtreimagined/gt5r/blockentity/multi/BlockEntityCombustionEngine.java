@@ -14,6 +14,7 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import tesseract.TesseractGraphWrappers;
 
 import java.util.List;
@@ -36,20 +37,20 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
 
             @Override
             protected boolean consumeGeneratorResources(boolean simulate) {
-                boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), true).getFluidAmount() == 2).orElse(false);
+                boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), FluidAction.SIMULATE).getAmount() == 2).orElse(false);
                 int fuelConsumption = (int) (boostEU ? (4096 / activeRecipe.getPower()) : (2048 / activeRecipe.getPower()));
                 int lubeConsume = boostEU ? 2 : 1;
-                if ((lubeTicker == 72 || simulate) &&!fluidHandler.map(f -> f.drainInput(Lubricant.getLiquid(lubeConsume), true).getFluidAmount() == lubeConsume).orElse(false)) {
+                if ((lubeTicker == 72 || simulate) &&!fluidHandler.map(f -> f.drainInput(Lubricant.getLiquid(lubeConsume), FluidAction.SIMULATE).getAmount() == lubeConsume).orElse(false)) {
                     if (!simulate && startup > 0) startup = 0;
                     return false;
                 }
-                long toConsume = fuelConsumption * activeRecipe.getInputFluids().get(0).getAmount();
+                int toConsume = fuelConsumption * activeRecipe.getInputFluids().get(0).getAmount();
                 if (fluidHandler.map(f -> !f.consumeAndReturnInputs(List.of(activeRecipe.getInputFluids().get(0).copy(toConsume)), simulate).isEmpty()).orElse(false)){
                     if (!simulate) {
                         if (startup > 100) startup = 100;
                         fluidHandler.ifPresent(f -> {
-                            f.drainInput(Oxygen.getGas(2), false);
-                            if (lubeTicker == 72) f.drainInput(Lubricant.getLiquid(lubeConsume), false);
+                            f.drainInput(Oxygen.getGas(2), FluidAction.EXECUTE);
+                            if (lubeTicker == 72) f.drainInput(Lubricant.getLiquid(lubeConsume), FluidAction.EXECUTE);
                         });
                         lastConsumption = toConsume;
                         long euPerTick = boostEU ? 6144 : 2048;

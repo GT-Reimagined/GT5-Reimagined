@@ -6,6 +6,7 @@ import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.Recipe;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 
 import java.util.Collections;
 
@@ -17,7 +18,7 @@ public class FusionRecipeBuilder extends RecipeBuilder {
                 ingredientInput,
                 itemsOutput != null ? itemsOutput.toArray(new ItemStack[0]) : null,
                 fluidsInput != null ? fluidsInput : Collections.emptyList(),
-                fluidsOutput != null ? fluidsOutput.toArray(new FluidHolder[0]) : null,
+                fluidsOutput != null ? fluidsOutput.toArray(new FluidStack[0]) : null,
                 duration, power, special, amps
         );
         if (outputChances != null) recipe.addOutputChances(outputChances);

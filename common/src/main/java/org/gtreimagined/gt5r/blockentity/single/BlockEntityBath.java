@@ -20,6 +20,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -39,17 +40,17 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
                     IItemHandler container = itemHandler.get().getInputHandler();
                     ItemStack input = container != null ? container.getStackInSlot(0) : ItemStack.EMPTY;
                     ResourceLocation id = RegistryUtils.getIdFromItem(input.getItem());
-                    FluidHolder fluidInput = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
+                    FluidStack fluidInput = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidStack.EMPTY);
                     if (!fluidInput.isEmpty()) {
                         if (input.getItem() == Items.SHULKER_BOX){
                             DyeColor color = fromFluid(fluidInput);
-                            if (color != null && fluidInput.getFluidAmount() >= L / 2) {
+                            if (color != null && fluidInput.getAmount() >= L / 2) {
                                 ItemStack output = new ItemStack(RegistryUtils.getItemFromID(new ResourceLocation(color.getName() + "_shulker_box")));
                                 output.setTag(input.getTag());
                                 return RecipeMaps.BATH.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).fi(Utils.ca(L / 2, fluidInput)).io(output).add(color.getName() + "_shulker_box", 64);
                             }
                         } else if (id.getPath().contains("_shulker_box") && id.getNamespace().equals("minecraft")){
-                            if (fluidInput.matches(Chlorine.getGas(50)) && fluidInput.getFluidAmount() >= 50) {
+                            if (fluidInput.isFluidEqual(Chlorine.getGas(50)) && fluidInput.getAmount() >= 50) {
                                 ItemStack output = new ItemStack(Items.SHULKER_BOX);
                                 output.setTag(input.getTag());
                                 return RecipeMaps.BATH.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).fi(Chlorine.getGas(50)).io(output).add("shulker_box", 64);
@@ -91,7 +92,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
         });
     }
 
-    private DyeColor fromFluid(FluidHolder f) {
+    private DyeColor fromFluid(FluidStack f) {
         for (DyeColor color : DyeColor.values()) {
             if (f.getFluid().is(TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, color.getName() + "_dye")))){
                 return color;

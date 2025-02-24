@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RRecipeTypes;
 import org.jetbrains.annotations.NotNull;
@@ -31,7 +32,7 @@ public class FusionRecipeSerializer extends AntimatterRecipeSerializer<FusionRec
     }
 
     @Override
-    public FusionRecipe createRecipe(@NotNull List<Ingredient> stacksInput, ItemStack[] stacksOutput, @NotNull List<FluidIngredient> fluidsInput, FluidHolder[] fluidsOutput, int duration, long power, int special, int amps) {
+    public FusionRecipe createRecipe(@NotNull List<Ingredient> stacksInput, ItemStack[] stacksOutput, @NotNull List<FluidIngredient> fluidsInput, FluidStack[] fluidsOutput, int duration, long power, int special, int amps) {
         return new FusionRecipe(stacksInput, stacksOutput, fluidsInput, fluidsOutput, duration, power, special, amps);
     }
 

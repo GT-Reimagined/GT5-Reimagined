@@ -34,6 +34,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCBlockTagProvider;
@@ -97,12 +98,12 @@ public class TFCRegistrar extends AntimatterMod {
             });
             AntimatterMaterialTypes.LIQUID.set((m, i) -> {
                 if (m == null || !AntimatterMaterialTypes.LIQUID.allowGen(m)) return MaterialTypeFluid.getEmptyFluidAndLog(AntimatterMaterialTypes.LIQUID, m);
-                if (m.getId().equals("water")) return FluidPlatformUtils.createFluidStack(Fluids.WATER, i);
-                else if (m.getId().equals("lava")) return FluidPlatformUtils.createFluidStack(Fluids.LAVA, i);
-                else if (m == SaltWater) return FluidPlatformUtils.createFluidStack(TFCFluids.SALT_WATER.getSource(), i);
+                if (m.getId().equals("water")) return new FluidStack(Fluids.WATER, i);
+                else if (m.getId().equals("lava")) return new FluidStack(Fluids.LAVA, i);
+                else if (m == SaltWater) return new FluidStack(TFCFluids.SALT_WATER.getSource(), i);
                 AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, AntimatterMaterialTypes.LIQUID.getId() + "_" + m.getId());
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
-                return FluidPlatformUtils.createFluidStack(fluid.getFluid(), i);
+                return new FluidStack(fluid.getFluid(), i);
             });
             // Make TFC logs strippable with AntiMatter tools
             Helpers.mapOfKeys(Wood.class, (wood) -> {

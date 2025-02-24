@@ -8,6 +8,7 @@ import muramasa.antimatter.material.MaterialTags;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import muramasa.antimatter.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
@@ -31,7 +32,7 @@ public class Fuels {
             }
         });
         STEAM_FUELS.RB().fi(Steam.getFluidIngredient(2)).add("steam",1,1);
-        HP_STEAM_FUELS.RB().fi(FluidIngredient.ofMB(SuperheatedSteam, 1)).add("superheated_steam", 1, 1);
+        HP_STEAM_FUELS.RB().fi(FluidIngredient.of(SuperheatedSteam, 1)).add("superheated_steam", 1, 1);
         MAGIC_FUELS.RB().ii(GEM_CHIPPED.getMaterialIngredient(Amber, 1)).add("chipped_amber", 1, 1000);
         MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(Amber, 1)).add("amber_plate", 1, 3000);
         MAGIC_FUELS.RB().ii(GEM_FLAWED.getMaterialIngredient(Amber, 1)).add("flawed_amber", 1, 3000);
@@ -58,8 +59,8 @@ public class Fuels {
             MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Knightmetal, 1)).add("knightmetal_dust", 1, 24000);
             MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.Knightmetal, 1)).add("knightmetal_ingot", 1, 24000);
             MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.Knightmetal, 1)).add("knightmetal_plate", 1, 24000);
-            MAGIC_FUELS.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.FIERY_BLOOD.getFluid(), 1, null)).add("fiery_blood", 1, 2048);
-            MAGIC_FUELS.RB().fi(FluidHooks.newFluidHolder(GTCoreFluids.FIERY_TEARS.getFluid(), 1, null)).add("fiery_tears", 1, 2048);
+            MAGIC_FUELS.RB().fi(new FluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), 1)).add("fiery_blood", 1, 2048);
+            MAGIC_FUELS.RB().fi(new FluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), 1)).add("fiery_tears", 1, 2048);
             MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.FierySteel, 1)).add("fiery_steel_dust", 1, 2048000);
             MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.FierySteel, 1)).add("fiery_steel_ingot", 1, 2048000);
             MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.FierySteel, 1)).add("fiery_steel_plate", 1, 2048000);

@@ -12,6 +12,7 @@ import muramasa.antimatter.gui.event.GuiEvents;
 import muramasa.antimatter.gui.event.IGuiEvent;
 import muramasa.antimatter.gui.widget.SyncableTextWidget;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,6 +20,9 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractGraphWrappers;
@@ -53,20 +57,20 @@ public class CoverFluidRegulator extends CoverBasicTransport {
 
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
-        if (object instanceof FluidHolder stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide){
+        if (object instanceof FluidStack stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide){
             if (machine.fluidHandler.isPresent()){
                 MachineFluidHandler<?> fluidHandler = machine.fluidHandler.get();
                 if (stack.isEmpty()) return true;
-                if (fluidLimit > 0 && stack.getFluidAmount() < fluidLimit) return true;
-                FluidHolder toInsert = fluidLimit > 0 ? Utils.ca(fluidLimit, stack) : stack.copyHolder();
+                if (fluidLimit > 0 && stack.getAmount() < fluidLimit) return true;
+                FluidStack toInsert = fluidLimit > 0 ? Utils.ca(fluidLimit, stack) : stack.copy();
                 if (fluidHandler == null) return true;
-                long inserted = fluidHandler.insertFluid(toInsert, true);
+                int inserted = fluidHandler.fill(toInsert, FluidAction.SIMULATE);
                 if (fluidLimit > 0 && inserted < fluidLimit) return true;
                 if (inserted > 0){
                     if (!simulate){
-                        fluidHandler.insertFluid(toInsert, false);
+                        fluidHandler.fill(toInsert, FluidAction.EXECUTE);
                     }
-                    stack.setAmount(stack.getFluidAmount() - inserted);
+                    stack.setAmount(stack.getAmount() - inserted);
                 }
                 return true;
             }
@@ -76,7 +80,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
 
     @Override
     public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return cap != FluidContainer.class;
+        return cap != IFluidHandler.class;
     }
 
     @Override
@@ -95,7 +99,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
         BlockPos finalTo = to;
         if (canMove(side)) {
             Direction finalFromSide = fromSide;
-            BlockEntityCache.getFluidHandlerCached(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> BlockEntityCache.getFluidHandlerCached(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, fluidLimit > 0 ? fluidLimit : CoverPump.speeds.get(tier))));
+            FluidPlatformUtils.getFluidHandler(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> FluidPlatformUtils.getFluidHandler(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, fluidLimit > 0 ? fluidLimit : CoverPump.speeds.get(tier))));
         }
     }
     protected boolean canMove(Direction side){

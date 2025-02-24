@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -43,8 +44,8 @@ public class BlockEntityAssembler extends BlockEntityMachine<BlockEntityAssemble
                         }
                     }
                     if (!printedPages.isEmpty() && leather){
-                        FluidHolder glue = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidHooks.emptyFluid());
-                        if (!glue.isEmpty() && glue.matches(Glue.getLiquid(20)) && glue.getFluidAmount() >= 20){
+                        FluidStack glue = fluidHandler.map(f -> f.getFluidInTank(0)).orElse(FluidStack.EMPTY);
+                        if (!glue.isEmpty() && glue.isFluidEqual(Glue.getLiquid(20)) && glue.getAmount() >= 20){
                             ItemStack output = new ItemStack(Items.WRITTEN_BOOK);
                             output.setTag(printedPages.copy().getTag());
                             return RecipeMaps.ASSEMBLER.RB().recipeMapOnly().ii(RecipeIngredient.of(printedPages.copy()), RecipeIngredient.of(Items.LEATHER)).fi(Glue.getLiquid(20)).io(output).add("written_book", 32, 8);

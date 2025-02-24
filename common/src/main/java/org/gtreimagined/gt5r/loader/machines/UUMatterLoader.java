@@ -25,7 +25,7 @@ public class UUMatterLoader {
             } else if (m.has(GAS)){
                 b.fi(m.getGas(1000));
             }
-            b.fo(UUAmplifier.getLiquid((m.getProtons() + m.getNeutrons()))).add("uu_amplifier_from_" + m.getId(), 100, 32);
+            b.fo(UUAmplifier.getLiquid((int) (m.getProtons() + m.getNeutrons()))).add("uu_amplifier_from_" + m.getId(), 100, 32);
         });
     }
 }

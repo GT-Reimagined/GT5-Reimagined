@@ -32,6 +32,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RRef;
 
 import java.util.ArrayList;
@@ -260,7 +261,7 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
     }
     private EntryIngredient ofFluid(Material fluid, int amount){
         List<EntryStack<?>> stacks = new ArrayList<>();
-        FluidHolder stack;
+        FluidStack stack;
         if(fluid.has(LIQUID)){
             stack = fluid.getLiquid(amount);
         }else{

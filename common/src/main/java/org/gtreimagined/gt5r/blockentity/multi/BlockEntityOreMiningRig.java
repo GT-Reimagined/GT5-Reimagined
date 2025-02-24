@@ -26,6 +26,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.worldgen.PlayerPlacedBlockSavedData;
 import tesseract.TesseractGraphWrappers;
@@ -130,7 +131,7 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
                 if (progress > 0) progress = 0;
                 return;
             }
-            if (progress == cycle && !fluidHandler.map(f -> f.getInputTanks().extractFluid(Materials.DrillingFluid.getLiquid(100), true).getFluidAmount() == 100).orElse(false)){
+            if (progress == cycle && !fluidHandler.map(f -> f.getInputTanks().drain(Materials.DrillingFluid.getLiquid(100), FluidAction.SIMULATE).getAmount() == 100).orElse(false)){
                 runningState = RunningState.OUT_OF_DRILLING_FLUID;
                 if (getMachineState() == MachineState.ACTIVE) setMachineState(MachineState.IDLE);
                 return;
@@ -147,7 +148,7 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
                 progress++;
                 return;
             }
-            fluidHandler.ifPresent(f -> f.getInputTanks().extractFluid(Materials.DrillingFluid.getLiquid(100), false));
+            fluidHandler.ifPresent(f -> f.getInputTanks().drain(Materials.DrillingFluid.getLiquid(100), FluidAction.EXECUTE));
             mineBlock(level, ore, true, getMiningPickaxe());
             oresToMine.remove(0);
             progress = 0;

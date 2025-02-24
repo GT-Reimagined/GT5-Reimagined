@@ -20,6 +20,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
@@ -49,7 +50,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 if (tGeneratedEU > 0 && !simulate) {
                     int amount = (tGeneratedEU + 160) / 160;
                     fluidHandler.ifPresent(f -> {
-                        if (f.drainInput(AntimatterMaterials.Water.getLiquid(amount), false).getFluidAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), false).getFluidAmount() == amount) {
+                        if (f.drainInput(AntimatterMaterials.Water.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount) {
                             f.addOutputs(Steam.getGas(tGeneratedEU));
                             tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                         } else {

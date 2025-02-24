@@ -3,7 +3,9 @@ package org.gtreimagined.gt5r.cover;
 import earth.terrarium.botarium.common.fluid.base.FluidHolder;
 import earth.terrarium.botarium.common.fluid.base.PlatformFluidHandler;
 import earth.terrarium.botarium.common.fluid.utils.FluidHooks;
+import muramasa.antimatter.blockentity.BlockEntityMachine;
 import muramasa.antimatter.blockentity.pipe.BlockEntityFluidPipe;
+import muramasa.antimatter.capability.FluidHandler;
 import muramasa.antimatter.capability.ICoverHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
@@ -26,6 +28,9 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractGraphWrappers;
@@ -35,7 +40,7 @@ import java.util.Optional;
 public class CoverDrain extends BaseCover {
     public static String ID = "drain";
 
-    FluidHolder contained = FluidHooks.emptyFluid();
+    FluidStack contained = FluidStack.EMPTY;
     boolean receivedBlockUpdate = false;
 
     public CoverDrain(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
@@ -55,16 +60,18 @@ public class CoverDrain extends BaseCover {
         }
         if (tile.getLevel().isClientSide) return;
         Level world = tile.getLevel();
-        Optional<PlatformFluidHandler> cap = FluidHooks.safeGetBlockFluidManager(tile, side);
-        if (tile instanceof BlockEntityFluidPipe pipe){
+        Optional<IFluidHandler> cap = Optional.empty();
+        if (tile instanceof BlockEntityFluidPipe<?> pipe){
             cap = pipe.getPipeCapHolder().side(side).resolve();
+        } else if (tile instanceof BlockEntityMachine<?> machine){
+            cap = machine.fluidHandler.map(FluidHandler::getInputTanks);
         }
         BlockPos offset = tile.getBlockPos().relative(side);
         if (side == Direction.UP && world.isRainingAt(offset) && world.getGameTime() % 60 == 0 && contained.isEmpty()){
             cap.ifPresent(f -> {
-                for (int i = 0; i < f.getTankAmount(); i++) {
-                    FluidHolder toInsert = FluidPlatformUtils.createFluidStack(Fluids.WATER, 4);
-                    long filled = f.insertFluid(toInsert, false);
+                for (int i = 0; i < f.getTanks(); i++) {
+                    FluidStack toInsert = new FluidStack(Fluids.WATER, 4);
+                    long filled = f.fill(toInsert, FluidAction.EXECUTE);
                     if (filled > 0) {
                         break;
                     }
@@ -73,12 +80,12 @@ public class CoverDrain extends BaseCover {
         }
         if (!contained.isEmpty()){
             cap.ifPresent(f ->{
-                long filled = f.insertFluid(contained.copyHolder(), true);
+                int filled = f.fill(contained.copy(), FluidAction.SIMULATE);
                 if (filled > 0) {
-                    f.insertFluid(Utils.ca(filled, contained), false);
-                    contained.setAmount(contained.getFluidAmount() - filled);
-                    if (contained.getFluidAmount() <= 0){
-                        contained = FluidHooks.emptyFluid();
+                    f.fill(Utils.ca(filled, contained), FluidAction.EXECUTE);
+                    contained.setAmount(contained.getAmount() - filled);
+                    if (contained.getAmount() <= 0){
+                        contained = FluidStack.EMPTY;
                     }
                 }
             });
@@ -94,7 +101,7 @@ public class CoverDrain extends BaseCover {
         FluidState state = world.getFluidState(offset);
         if (state.getType() == Fluids.EMPTY || !state.getType().isSource(state)) return;
         Fluid fluid = state.getType();
-        contained = FluidPlatformUtils.createFluidStack(fluid, 1000);
+        contained = new FluidStack(fluid, 1000);
         Holder<Biome> biome = world.getBiome(offset);
         if (fluid != Fluids.WATER || (!biome.is(BiomeTags.IS_DEEP_OCEAN) && !biome.is(BiomeTags.IS_OCEAN) && !biome.is(BiomeTags.IS_RIVER))){
             BlockState newState = Blocks.AIR.defaultBlockState();
@@ -132,7 +139,7 @@ public class CoverDrain extends BaseCover {
     public ItemStack getDroppedStack() {
         ItemStack stack = super.getDroppedStack();
         if (!contained.isEmpty()){
-            stack.getOrCreateTag().put("containedFluid", contained.serialize());
+            stack.getOrCreateTag().put("containedFluid", contained.writeToNBT(new CompoundTag()));
         }
         return stack;
     }
@@ -141,7 +148,7 @@ public class CoverDrain extends BaseCover {
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
         if (stack.getTag() != null && stack.getTag().contains("containedFluid")){
-            contained = FluidPlatformUtils.INSTANCE.fromTag(stack.getTag().getCompound("containedFluid"));
+            contained = FluidPlatformUtils.fromTag(stack.getTag().getCompound("containedFluid"));
         }
     }
 
@@ -149,7 +156,7 @@ public class CoverDrain extends BaseCover {
     public CompoundTag serialize() {
         CompoundTag tag = super.serialize();
         if (!contained.isEmpty()){
-            tag.put("contained", contained.serialize());
+            tag.put("contained", contained.writeToNBT(new CompoundTag()));
         }
         return tag;
     }
@@ -158,7 +165,7 @@ public class CoverDrain extends BaseCover {
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         if (nbt.contains("contained")){
-            contained = FluidPlatformUtils.INSTANCE.fromTag(nbt.getCompound("contained"));
+            contained = FluidPlatformUtils.fromTag(nbt.getCompound("contained"));
         }
     }
 }

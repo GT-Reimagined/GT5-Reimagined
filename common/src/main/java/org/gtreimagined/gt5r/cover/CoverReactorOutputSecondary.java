@@ -7,9 +7,12 @@ import muramasa.antimatter.capability.machine.MachineFluidHandler;
 import muramasa.antimatter.cover.BaseCover;
 import muramasa.antimatter.cover.CoverFactory;
 import muramasa.antimatter.machine.Tier;
+import muramasa.antimatter.util.FluidPlatformUtils;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 import org.jetbrains.annotations.Nullable;
@@ -37,11 +40,11 @@ public class CoverReactorOutputSecondary extends BaseCover {
         if (handler.getTile() instanceof BlockEntityNuclearReactorCore core){
             if (core.fluidHandler.isPresent()){
                 MachineFluidHandler<?> fluidHandler = core.fluidHandler.get();
-                FluidHolder inputfluid = fluidHandler.getInputTanks().getFluidInTank(0);
-                if (inputfluid.getFluidAmount() > fluidHandler.getInputTanks().getTankCapacity(0) / 2){
-                    long extra = inputfluid.getFluidAmount() - (fluidHandler.getInputTanks().getTankCapacity(0) / 2);
-                    BlockEntityCache.getFluidHandlerCached(core.getLevel(), core.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
-                        fluidHandler.drainInput(f.insertFluid(Utils.ca(extra, inputfluid), false), false);
+                FluidStack inputfluid = fluidHandler.getInputTanks().getFluidInTank(0);
+                if (inputfluid.getAmount() > fluidHandler.getInputTanks().getTankCapacity(0) / 2){
+                    int extra = inputfluid.getAmount() - (fluidHandler.getInputTanks().getTankCapacity(0) / 2);
+                    FluidPlatformUtils.getFluidHandler(core.getLevel(), core.getBlockPos().relative(this.side), this.side.getOpposite()).ifPresent(f -> {
+                        fluidHandler.drainInput(f.fill(Utils.ca(extra, inputfluid), FluidAction.EXECUTE), FluidAction.EXECUTE);
                     });
                 }
             }

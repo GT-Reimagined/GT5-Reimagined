@@ -16,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
@@ -89,7 +90,7 @@ public class CutterLoader {
 
     private static void addCutterRecipe(TagKey<Item> input, ItemStack output, String id, int duration, int euPerTick){
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
+                .fi(new FluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
                 .io(output).add(id + "_with_water", duration * 2L, euPerTick);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
@@ -101,7 +102,7 @@ public class CutterLoader {
 
     private static void addCutterRecipe(Item input, ItemStack output, ItemStack dust, String id, int duration, int euPerTick){
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
+                .fi(new FluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
                 .io(output, dust).add(id + "_with_water", duration * 2L, euPerTick);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
@@ -113,7 +114,7 @@ public class CutterLoader {
 
     public static void addWoodRecipe(TagKey<Item> input, Item output, int multiplier, String id, int duration, int euPerTick){
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(FluidPlatformUtils.createFluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
+                .fi(new FluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
                 .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id + "_with_water", duration * 2L, euPerTick);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))

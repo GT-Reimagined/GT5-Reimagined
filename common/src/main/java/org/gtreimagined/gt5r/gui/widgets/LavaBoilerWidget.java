@@ -20,7 +20,7 @@ import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIEN
 
 public class LavaBoilerWidget extends Widget {
     private int heat = 0, maxHeat = 0;
-    private long water = 0, steam = 0, lava = 0;
+    private int water = 0, steam = 0, lava = 0;
 
     protected LavaBoilerWidget(@NotNull GuiInstance gui, @Nullable IGuiElement parent) {
         super(gui, parent);
@@ -35,9 +35,9 @@ public class LavaBoilerWidget extends Widget {
         super.init();
         gui.syncInt(() -> ((BlockEntityLavaBoiler)((ContainerMachine<?>)gui.container).getTile()).getHeat(), i -> heat = i, SERVER_TO_CLIENT);
         gui.syncInt(() -> ((BlockEntityLavaBoiler)((ContainerMachine<?>)gui.container).getTile()).getMaxHeat(), i -> maxHeat = i, SERVER_TO_CLIENT);
-        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getFluidAmount()).orElse(0L), i -> water = i, SERVER_TO_CLIENT);
-        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[1].getFluidAmount()).orElse(0L), i -> lava = i, SERVER_TO_CLIENT);
-        gui.syncLong(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getFluidAmount()).orElse(0L), i -> steam = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[0].getAmount()).orElse(0), i -> water = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getInputs()[1].getAmount()).orElse(0), i -> lava = i, SERVER_TO_CLIENT);
+        gui.syncInt(() -> ((ContainerMachine<?>)gui.container).getTile().fluidHandler.map(t -> t.getOutputs()[0].getAmount()).orElse(0), i -> steam = i, SERVER_TO_CLIENT);
     }
 
     @Override
