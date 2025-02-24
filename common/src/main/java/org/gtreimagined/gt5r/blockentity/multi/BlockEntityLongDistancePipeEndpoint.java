@@ -22,7 +22,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
@@ -31,6 +33,7 @@ import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
 import tesseract.api.gt.IEnergyHandler;
 
@@ -38,89 +41,6 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
     BlockEntityLongDistancePipeEndpoint target = null, sender = null;
     public BlockEntityLongDistancePipeEndpoint(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        if (type.has(MachineFlag.FLUID)){
-            this.fluidHandler.set(() -> new MachineFluidHandler<>(this, 0, 0, 0){
-                @Override
-                public boolean canInput(Direction direction) {
-                    return direction == tile.getFacing().getOpposite();
-                }
-
-                @Override
-                public long insertFluid(FluidHolder fluid, boolean simulate) {
-                    if (tile.target == null) return 0;
-                    PlatformFluidHandler fluidHandler1 = BlockEntityCache.getFluidHandlerCached(tile.target.level, tile.target.worldPosition.relative(tile.target.getFacing()), tile.target.getFacing().getOpposite()).orElse(null);
-                    if (fluidHandler1 == null) return 0;
-                    return fluidHandler1.insertFluid(fluid, simulate);
-                }
-
-                @Override
-                public FluidHolder extractFluid(FluidHolder fluid, boolean simulate) {
-                    return FluidHooks.emptyFluid();
-                }
-            });
-        }
-        if (type.has(MachineFlag.ITEM)){
-            this.itemHandler.set(() -> new MachineItemHandler<>(this){
-                @Override
-                public LazyOptional<IItemHandler> forSide(Direction side) {
-                    return LazyOptional.of(() -> new IItemHandlerModifiable() {
-                        @Override
-                        public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
-                            if (tile.target == null) return stack;
-                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
-                            if (itemHandler1 == null) return stack;
-                            return itemHandler1.insertItem(slot, stack, simulate);
-                        }
-
-                        @Override
-                        public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
-                            return ItemStack.EMPTY;
-                        }
-
-                        @Override
-                        public int getSlotLimit(int slot) {
-                            if (tile.target == null) return 0;
-                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
-                            if (itemHandler1 == null) return 0;
-                            return itemHandler1.getSlotLimit(slot);
-                        }
-
-                        @Override
-                        public int getSlots() {
-                            if (tile.target == null) return 0;
-                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
-                            if (itemHandler1 == null) return 0;
-                            return itemHandler1.getSlots();
-                        }
-
-                        @NotNull
-                        @Override
-                        public ItemStack getStackInSlot(int index) {
-                            if (tile.target == null) return ItemStack.EMPTY;
-                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
-                            if (itemHandler1 == null) return ItemStack.EMPTY;
-                            return itemHandler1.getStackInSlot(index);
-                        }
-
-                        @Override
-                        public void setStackInSlot(int index, ItemStack stack) {
-                            if (tile.target == null) return;
-                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
-                            if (!(itemHandler1 instanceof IItemHandlerModifiable modifiable)) return;
-                            modifiable.setStackInSlot(index, stack);
-                        }
-
-                        @Override
-                        public boolean isItemValid(int i, @NotNull ItemStack itemStack) {
-                            if (tile.target == null) return false;
-                            IItemHandler itemHandler1 = tile.target.getNeighbor().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
-                            if (itemHandler1 == null) return false;
-                            return itemHandler1.isItemValid(i, itemStack);
-                        }
-                    });
-                }
-            });
-        }
         if (type.has(MachineFlag.EU)){
             energyHandler.set(() -> new MachineEnergyHandler<>(this, false){
 
@@ -300,5 +220,22 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
             sender.invalidateStructure();
             sender = null;
         }
+    }
+
+    @Override
+    public @NotNull <U> LazyOptional<U> getCapability(@NotNull Capability<U> cap, @Nullable Direction side) {
+        if (side == getFacing().getOpposite()) {
+            if ((cap == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY && has(MachineFlag.FLUID)) ||
+                    (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && has(MachineFlag.ITEM))) {
+                if (this.target != null){
+                    BlockEntity sideBE = this.target.getCachedBlockEntity(target.getFacing());
+                    if (sideBE != null){
+                        return sideBE.getCapability(cap, target.getFacing().getOpposite());
+                    }
+                }
+                return LazyOptional.empty();
+            }
+        }
+        return super.getCapability(cap, side);
     }
 }
