@@ -126,6 +126,7 @@ public class AssemblerLoader {
         addCasing(BlackBronze, GT5RBlocks.BLACK_BRONZE_CASING);
         addCasing(Tungsten, GT5RBlocks.TUNGSTEN_CASING);
         ASSEMBLER.RB().ii(of(GT5RBlocks.SOLID_STEEL_CASING), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GT5RBlocks.CHEMICALLY_INERT_CASING.asItem()).add("chemically_inert_casing", 50, 16);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.STEEL_PIPE_CASING)).fi(Polytetrafluoroethylene.getLiquid((L * 3) + L / 2)).io(GT5RBlocks.PTFE_PIPE_CASING.asItem()).add("ptfe_pipe_casing", 50, 16);
     }
 
     private static void cables(){

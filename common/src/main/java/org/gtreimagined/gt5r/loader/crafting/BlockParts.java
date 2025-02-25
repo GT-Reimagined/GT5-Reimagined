@@ -84,7 +84,6 @@ public class BlockParts {
         addPipeCasing(output, provider, Steel, GT5RBlocks.FLUID_PIPE_STEEL, GT5RBlocks.STEEL_PIPE_CASING);
         addPipeCasing(output, provider, Titanium, GT5RBlocks.FLUID_PIPE_TITANIUM, GT5RBlocks.TITANIUM_PIPE_CASING);
         addPipeCasing(output, provider, TungstenSteel, GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL, GT5RBlocks.TUNGSTENSTEEL_PIPE_CASING);
-        addPipeCasing(output, provider, Polytetrafluoroethylene, GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL, GT5RBlocks.PTFE_PIPE_CASING);
 
         addTurbine(output, provider, Steel, GT5RBlocks.STEEL_TURBINE_CASING);
         addTurbine(output, provider, StainlessSteel, GT5RBlocks.STAINLESS_STEEL_TURBINE_CASING);
