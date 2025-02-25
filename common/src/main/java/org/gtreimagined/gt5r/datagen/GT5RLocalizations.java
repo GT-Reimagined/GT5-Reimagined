@@ -273,14 +273,14 @@ public class GT5RLocalizations {
             add("tooltip.large_centrifuge.6", "Tungstensteel Casings for the rest (14 at most!)");
 
             add("tooltip.large_chemical_reactor.0", "Controller Block for the Large Chemical Reactor");
-            add("tooltip.large_chemical_reactor.1", "Does not lose efficiency when overclocked");
+            add("tooltip.large_chemical_reactor.1", "Runs up to 16 recipes at a time");
             add("tooltip.large_chemical_reactor.2", "Size(WxHxD): 3x3x3");
             add("tooltip.large_chemical_reactor.3", "3x3x3 of Chemically Inert Casings (hollow, min 8!)");
             add("tooltip.large_chemical_reactor.4", "Controller (Front centered)");
             add("tooltip.large_chemical_reactor.5", "1x PTFE Pipe Casing (inside the hollow casings)");
-            add("tooltip.large_chemical_reactor.6", "1x Cupronickel Coil Block (Next to the PTFE Pipe Casing)");
-            add("tooltip.large_chemical_reactor.7", "1x Input Hatch (Any inert casing)");
-            add("tooltip.large_chemical_reactor.8", "1x Output Hatch (Any inert casing)");
+            add("tooltip.large_chemical_reactor.6", "1x Cupronickel Coil Block (Below the PTFE Pipe Casing)");
+            add("tooltip.large_chemical_reactor.7", "1x Input Hatch/Bus (Any inert casing)");
+            add("tooltip.large_chemical_reactor.8", "1x Output Hatch/Bus (Any inert casing)");
             add("tooltip.large_chemical_reactor.9", "1x Energy Hatch (Any inert casing)");
 
             add("tooltip.large_electrolyzer.0", "Controller Block for the Large Electrolyzer");
