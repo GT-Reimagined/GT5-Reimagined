@@ -379,7 +379,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.FiberReinforcedEpoxyResin).flags(PLATE);
         event.setMaterial(Materials.Plastic).asSolid(295, 0, PLATE, FOIL, FRAME).asFluid();
         //event.setMaterial(Polystyrene).asSolid(295, 0);
-        event.setMaterial(Materials.Polytetrafluoroethylene).asSolid(1400, 0, PLATE, FRAME, ROD_LONG);
+        event.setMaterial(Materials.Polytetrafluoroethylene).asSolid(1400, 0, PLATE);
         event.setMaterial(Materials.PolyvinylChloride).asSolid(295, 0, PLATE);
         event.setMaterial(Materials.Rubber).asSolid(295, 0, PLATE, RING, MOLTEN);
         event.setMaterial(Materials.SiliconeRubber).asSolid(900, 0, PLATE, MOLTEN);
