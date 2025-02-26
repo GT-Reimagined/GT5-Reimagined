@@ -39,7 +39,7 @@ public class GT5RLocalizations {
         @Override
         protected void addTranslations() {
             super.addTranslations();
-            add(GT5RRef.ID + ".advancements.greg", "GT5Reimagined Intergalactical");
+            add(GT5RRef.ID + ".advancements.greg", "GT5 Reimagined");
             add(GT5RRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
             add(GT5RRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GT5RRef.ID + ".rei.tooltip.material_tree", "Material Tree");
@@ -138,6 +138,10 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.small_heat_exchanger.efficiency", "Efficiency: %s");
             add("tooltip.gt5r.boiler", "Generates Steam from water.");
             add("tooltip.macerator.0", "Crushes Raw ores down to crushed ore and byproducts. Macerator gives no byproducts, Pulverizer gives byproducts");
+            add("tooltip.gt5r.input_hatch", "Fluid Input for Multiblocks");
+            add("tooltip.gt5r.output_hatch", "Fluid Output for Multiblocks");
+            add("tooltip.gt5r.secondary_input_hatch", "Coolant Input for Fusion");
+            add("tooltip.gt5r.secondary_output_hatch", "Coolant Output for Fusion");
             add("text.gt5r.prospected_book", "Prospection Data From:\nX: %s Z: %s Dim: %s\nProduces %sL %s");
             add("jei.category.macerator_recycling", "Macerator Recycling");
             add("jei.category.macerator_ore_processing", "Macerator Ore Processing");

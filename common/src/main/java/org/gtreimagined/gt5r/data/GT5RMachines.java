@@ -23,9 +23,11 @@ import muramasa.antimatter.texture.Texture;
 import muramasa.antimatter.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -105,6 +107,7 @@ import org.gtreimagined.gtcore.machine.DrumMachine;
 import org.gtreimagined.gtcore.machine.MultiblockTankMachine;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 import static muramasa.antimatter.Data.*;
@@ -364,12 +367,12 @@ public class GT5RMachines {
      **/
     public static HatchMachine DYNAMO_HATCH = new HatchMachine(GT5RRef.ID, "dynamo_hatch", GT5RCovers.COVER_DYNAMO_COLORED, "dynamo").addFlags(EU).overlayTexture(Textures.HATCH_OVERLAY_HANDLER);
     public static HatchMachine ENERGY_HATCH = new HatchMachine(GT5RRef.ID, "energy_hatch", GT5RCovers.COVER_ENERGY_COLORED, "energy").addFlags(EU).overlayTexture(Textures.HATCH_OVERLAY_HANDLER);
-    public static HatchMachine INPUT_HATCH = new HatchMachine(GT5RRef.ID, "input_hatch", COVERINPUT, "fluid_input").addFlags(GUI, FLUID, CELL).setTile(BlockEntityInputHatch::new);
-    public static HatchMachine OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "output_hatch", COVEROUTPUT, "fluid_output").addFlags(GUI, FLUID, CELL);
+    public static HatchMachine INPUT_HATCH = new HatchMachine(GT5RRef.ID, "input_hatch", COVERINPUT, "fluid_input").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).setTile(BlockEntityInputHatch::new);
+    public static HatchMachine OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "output_hatch", COVEROUTPUT, "fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips);
     public static HatchMachine INPUT_BUS = new HatchMachine(GT5RRef.ID, "input_bus", COVERINPUT, "item_input").setTiers(ULV, LV, MV, HV, EV).addFlags(GUI, ITEM).setTile(BlockEntityInputBus::new);
     public static HatchMachine OUTPUT_BUS = new HatchMachine(GT5RRef.ID, "output_bus", COVEROUTPUT, "item_output").setTiers(ULV, LV, MV, HV, EV).addFlags(GUI, ITEM);
-    public static HatchMachine SECONDARY_INPUT_HATCH = new HatchMachine(GT5RRef.ID, "secondary_input_hatch", COVERINPUT, "secondary_fluid_input").addFlags(GUI, FLUID, CELL).overlayTexture(INPUT_HATCH.getOverlayTextures());
-    public static HatchMachine SECONDARY_OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "secondary_output_hatch", COVEROUTPUT, "secondary_fluid_output").addFlags(GUI, FLUID, CELL).overlayTexture(OUTPUT_HATCH.getOverlayTextures());
+    public static HatchMachine SECONDARY_INPUT_HATCH = new HatchMachine(GT5RRef.ID, "secondary_input_hatch", COVERINPUT, "secondary_fluid_input").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).overlayTexture(INPUT_HATCH.getOverlayTextures());
+    public static HatchMachine SECONDARY_OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "secondary_output_hatch", COVEROUTPUT, "secondary_fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).overlayTexture(OUTPUT_HATCH.getOverlayTextures());
     public static HatchMachine MUFFLER_HATCH = new HatchMachine(GT5RRef.ID, "muffler_hatch", COVERMUFFLER, "muffler").setTiers(LV).addFlags(GUI, ITEM).setClientTicking();
     /**
      ** Tanks
@@ -433,5 +436,11 @@ public class GT5RMachines {
         }
         if (i == 0) return Materials.Lead.getRGB();
         return -1;
+    }
+
+    private static void getFluidHatchTooltips(BlockMachine machine, ItemStack stack, @Nullable BlockGetter world, List<Component> tooltip, TooltipFlag flag) {
+        tooltip.add(Utils.translatable("tooltip.gt5r." + (machine.getId().contains("secondary") ? "secondary_" : "") + (machine.getId().contains("input") ? "input" : "output") + "_hatch"));
+        int multiplier = machine.getId().contains("high_capacity") ? 32 : 8;
+        tooltip.add(Utils.translatable("antimatter.tooltip.capacity", (multiplier * 1000 * (machine.getTier().getIntegerId() + 1)) + "L"));
     }
 }
