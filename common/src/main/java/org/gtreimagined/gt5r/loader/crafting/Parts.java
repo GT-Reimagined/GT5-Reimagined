@@ -150,7 +150,7 @@ public class Parts {
           provider.addItemRecipe(output, "gtparts", pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())
                           .put('S', SCREWDRIVER.getTag()).put('R', SCREW.getMaterialTag(rotorMat)).put('T', ROTOR.getMaterialTag(rotorMat))
-                          .put('O', RING.get(Rubber)).put('P', TIER_PIPES.get(t).apply(PipeSize.NORMAL))
+                          .put('O', RING.get(Rubber)).put('P', PIPE_GETTER.apply(PipeSize.NORMAL, t))
                           .build(),
                   "RTO", "SPW", "OMC");
       });

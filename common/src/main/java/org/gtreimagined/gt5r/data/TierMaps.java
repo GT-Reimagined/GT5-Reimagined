@@ -33,15 +33,12 @@ public class TierMaps {
     //public static ImmutableMap<Tier, Item> TIER_CABLES;
     public static Function<Tier, TagKey<Item>> TIER_CIRCUITS;
     public static ImmutableMap<Tier, ItemBasic<?>> TIER_BOARDS;
-
     public static ImmutableMap<Tier, Material> EMITTER_RODS;
     public static ImmutableMap<Tier, Object> EMITTER_GEMS;
-
     public static ImmutableMap<Tier, Material> TIER_ROTORS;
-    public static ImmutableMap<Tier, Function<PipeSize, Item>> TIER_PIPES;
 
+    public static final BiFunction<PipeSize, Tier, Object> PIPE_GETTER;
     public static final BiFunction<PipeSize, Tier, Object> WIRE_GETTER;
-
     public static final TriFunction<PipeSize, Tier, Boolean, Object> CABLE_GETTER;
 
     static {
@@ -103,6 +100,16 @@ public class TierMaps {
             if(tier == UV) return GT5RBlocks.CABLE_NAQUADAH_ALLOY.getBlockItem(size);
             if(tier == UHV) return GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(size);
             throw new IllegalArgumentException("Invalid tier in CABLE_GETTER");
+        };
+        PIPE_GETTER = (size, tier) -> {
+            if (tier == ULV) return GT5RBlocks.FLUID_PIPE_COPPER.getBlockItem(size);
+            if (tier == LV) return GT5RBlocks.FLUID_PIPE_BRONZE.getBlockItem(size);
+            if (tier == MV) return GT5RBlocks.FLUID_PIPE_STEEL.getBlockItem(size);
+            if (tier == HV) return GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(size);
+            if (tier == EV) return GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(size);
+            if (tier == IV) return GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(size);
+            if (tier == LUV || tier == ZPM || tier == UV || tier == UHV) return GT5RBlocks.FLUID_PIPE_CHROMIUM.getBlockItem(size);
+            throw new IllegalArgumentException("Invalid tier in PIPE_GETTER");
         };
     }
     //Called to init the INT CIRCUITS and tier materials early on.
@@ -169,16 +176,6 @@ public class TierMaps {
             builder.put(Tier.EV, Items.ENDER_PEARL);
             builder.put(Tier.IV, Items.ENDER_EYE);
             EMITTER_GEMS = builder.build();
-        }
-        {
-            ImmutableMap.Builder<Tier, Function<PipeSize, Item>> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, GT5RBlocks.FLUID_PIPE_COPPER::getBlockItem);
-            builder.put(Tier.LV, GT5RBlocks.FLUID_PIPE_BRONZE::getBlockItem);
-            builder.put(Tier.MV, GT5RBlocks.FLUID_PIPE_STEEL::getBlockItem);
-            builder.put(Tier.HV, GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL::getBlockItem);
-            builder.put(Tier.EV, GT5RBlocks.FLUID_PIPE_TITANIUM::getBlockItem);
-            builder.put(Tier.IV, GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL::getBlockItem);
-            TIER_PIPES = builder.build();
         }
         {
             ImmutableMap.Builder<Tier, TagKey<Item>> builder = ImmutableMap.builder();

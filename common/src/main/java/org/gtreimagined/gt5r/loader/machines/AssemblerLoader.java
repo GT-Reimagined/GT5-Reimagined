@@ -251,7 +251,7 @@ public class AssemblerLoader {
                             SCREW.getMaterialIngredient(TIER_ROTORS.get(t), 1),
                             ROTOR.getMaterialIngredient(TIER_ROTORS.get(t), 1),
                             RING.getMaterialIngredient(Rubber, 2),
-                            of(TIER_PIPES.get(t).apply(PipeSize.NORMAL), 1),
+                            ofObject(PIPE_GETTER.apply(PipeSize.NORMAL, t), 1),
                             of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID),1)
                             )
                     .io(GT5RCovers.COVER_PUMP.getItem(t))
