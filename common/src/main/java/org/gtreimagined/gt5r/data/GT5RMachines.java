@@ -78,6 +78,8 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityBath;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityBuffer;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCropHarvester;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityHighCapacityInputHatch;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityHighCapacityOutputHatch;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityHull;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityIUpgradedBatchMachine;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityInfiniteFluid;
@@ -371,6 +373,8 @@ public class GT5RMachines {
     public static HatchMachine OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "output_hatch", COVEROUTPUT, "fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips);
     public static HatchMachine INPUT_BUS = new HatchMachine(GT5RRef.ID, "input_bus", COVERINPUT, "item_input").setTiers(ULV, LV, MV, HV, EV).addFlags(GUI, ITEM).setTile(BlockEntityInputBus::new);
     public static HatchMachine OUTPUT_BUS = new HatchMachine(GT5RRef.ID, "output_bus", COVEROUTPUT, "item_output").setTiers(ULV, LV, MV, HV, EV).addFlags(GUI, ITEM);
+    public static HatchMachine HIGH_CAPACITY_INPUT_HATCH = new HatchMachine(GT5RRef.ID, "high_capacity_input_hatch", COVERINPUT, "fluid_input").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).overlayTexture(INPUT_HATCH.getOverlayTextures()).setTile(BlockEntityHighCapacityInputHatch::new);
+    public static HatchMachine HIGH_CAPACITY_OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "high_capacity_output_hatch", COVEROUTPUT, "fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).overlayTexture(OUTPUT_HATCH.getOverlayTextures()).setTile(BlockEntityHighCapacityOutputHatch::new);
     public static HatchMachine SECONDARY_INPUT_HATCH = new HatchMachine(GT5RRef.ID, "secondary_input_hatch", COVERINPUT, "secondary_fluid_input").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).overlayTexture(INPUT_HATCH.getOverlayTextures());
     public static HatchMachine SECONDARY_OUTPUT_HATCH = new HatchMachine(GT5RRef.ID, "secondary_output_hatch", COVEROUTPUT, "secondary_fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).overlayTexture(OUTPUT_HATCH.getOverlayTextures());
     public static HatchMachine MUFFLER_HATCH = new HatchMachine(GT5RRef.ID, "muffler_hatch", COVERMUFFLER, "muffler").setTiers(LV).addFlags(GUI, ITEM).setClientTicking();
