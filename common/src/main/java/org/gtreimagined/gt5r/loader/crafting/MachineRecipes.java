@@ -176,14 +176,13 @@ public class MachineRecipes {
             add(COMPRESSOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of('C', circuit, 'P', piston, 'L', cable, 'H', hull), "LCL", "PHP", "LCL"));
             Material chamber = tier == LV || tier == MV ? Quartz : Iridium;
-            Object cWire = TierMaps.WIRE_GETTER.apply(tier == MV ? PipeSize.SMALL : PipeSize.TINY, tier == LV ? MV : tier);
             add(CRYSTALLIZATION_CHAMBER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C',circuit)
                             .put('P', PIPE_GETTER.apply(PipeSize.NORMAL, tier))
                             .put('H', hull)
                             .put('g', GT5RMaterialTypes.CHAMBER.getMaterialTag(chamber))
-                            .put('W', cWire).build(), "CgC", "PHP", "WWW"));
+                            .put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).build(), "CgC", "PHP", "WWW"));
             add(CROP_HARVESTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('R', arm)
