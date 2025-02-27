@@ -177,14 +177,13 @@ public class MachineRecipes {
             add(COMPRESSOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of('C', circuit, 'P', piston, 'L', cable, 'H', hull), "LCL", "PHP", "LCL"));
             Material chamber = tier == LV || tier == MV ? Quartz : Iridium;
-            Object cWire = TierMaps.WIRE_GETTER.apply(tier == MV ? PipeSize.SMALL : PipeSize.TINY, tier == LV ? MV : tier);
             add(CRYSTALLIZATION_CHAMBER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('C',circuit)
-                            .put('P', TIER_PIPES.get(tier).apply(PipeSize.NORMAL))
+                            .put('P', PIPE_GETTER.apply(PipeSize.NORMAL, tier))
                             .put('H', hull)
                             .put('g', GT5RMaterialTypes.CHAMBER.getMaterialTag(chamber))
-                            .put('W', cWire).build(), "CgC", "PHP", "WWW"));
+                            .put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier)).build(), "CgC", "PHP", "WWW"));
             add(CROP_HARVESTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('R', arm)
@@ -262,7 +261,7 @@ public class MachineRecipes {
             add(EXTRUDER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', piston)
-                            .put('I', TIER_PIPES.get(tier).apply(PipeSize.NORMAL))
+                            .put('I', PIPE_GETTER.apply(PipeSize.NORMAL, tier))
                             .put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier))
                             .put('C', circuit)
                             .put('H', hull).build(), "WWC", "PHI", "WWC"));
@@ -395,7 +394,7 @@ public class MachineRecipes {
                             .put('R', rotor)
                             .put('H', hull)
                             .put('M', motor)
-                            .put('P', TIER_PIPES.get(tier).apply(PipeSize.LARGE))
+                            .put('P', PIPE_GETTER.apply(PipeSize.LARGE, tier))
                             .put('C', circuit).build(), "MCM", "PHP", "RPR"));
             add(RECYCLER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -483,7 +482,7 @@ public class MachineRecipes {
                             .put('H', hull)
                             .put('R', rotor)
                             .put('C', circuit)
-                            .put('P',  TIER_PIPES.get(tier).apply(PipeSize.NORMAL))
+                            .put('P', PIPE_GETTER.apply(PipeSize.NORMAL, tier))
                             .build(), "PCP", "RHR", "MLM"));
             add(COMBUSTION_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
@@ -798,6 +797,8 @@ public class MachineRecipes {
                             .put('G', Items.GLASS)
                             .put('H', hull)
                             .build(), "G", "H"));
+            add(HIGH_CAPACITY_INPUT_HATCH, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.of('I', INPUT_HATCH.getItem(tier), 'P', PIPE_GETTER.apply(PipeSize.LARGE, tier)), " P ", "PIP", " P "));
             add(SECONDARY_INPUT_HATCH, tier, (m, item) -> provider.shapeless(output, "", "machines", new ItemStack(item),
                     INPUT_HATCH.getItem(tier)));
 
@@ -815,6 +816,8 @@ public class MachineRecipes {
                             .put('G', Items.GLASS)
                             .put('H', hull)
                             .build(), "H", "G"));
+            add(HIGH_CAPACITY_OUTPUT_HATCH, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.of('I', OUTPUT_HATCH.getItem(tier), 'P', PIPE_GETTER.apply(PipeSize.LARGE, tier)), " P ", "PIP", " P "));
 
             add(SECONDARY_OUTPUT_HATCH, tier, (m, item) -> provider.shapeless(output, "", "machines", new ItemStack(item),
                     OUTPUT_HATCH.getItem(tier)));
@@ -841,12 +844,14 @@ public class MachineRecipes {
     }
 
     private static void addMultiblockRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
-        add(ASSEMBLY_LINE, IV, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                ImmutableMap.<Character, Object>builder()
-                        .put('A', GT5RBlocks.ADVANCED_ASSEMBLER_CASING)
-                        .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV))
-                        .put('C', TIER_CIRCUITS.apply(IV))
-                        .put('H', HULL.getItem(IV)).build(), "ARA", "CHC", "ARA"));
+        if (GT5RConfig.HARD_SETTINGS) {
+            add(ASSEMBLY_LINE, IV, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('A', GT5RBlocks.ADVANCED_ASSEMBLER_CASING)
+                            .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV))
+                            .put('C', TIER_CIRCUITS.apply(IV))
+                            .put('H', HULL.getItem(IV)).build(), "ARA", "CHC", "ARA"));
+        }
         add(AUTOCRAFTER_ASSEMBLY_LINE, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('A', GT5RBlocks.ASSEMBLER_CASING)
@@ -984,7 +989,7 @@ public class MachineRecipes {
                         ImmutableMap.of('G', GEAR.getMaterialTag(gear),
                                 'H', HULL.getItem(tier),
                                 'C', TIER_CIRCUITS.apply(tier),
-                                'P', TIER_PIPES.get(pipe).apply(PipeSize.LARGE)), "CGC", "GHG", "PGP");
+                                'P', PIPE_GETTER.apply(PipeSize.LARGE, pipe)), "CGC", "GHG", "PGP");
             });
         });
         add(MULTI_SMELTER, HV, (m,item) -> provider.addItemRecipe(output, "machines", item,

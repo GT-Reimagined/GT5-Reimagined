@@ -402,7 +402,6 @@ public class Materials {
 
     public static Material Cinnabar = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "cinnabar", 0x960000, ROUGH));
     public static Material GalliumArsenide = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "gallium_arsenide", 0xa0a0a0, DULL));
-    public static Material HighPressure = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "high_pressure", 0xc80000, NONE));
     public static Material Superconductor = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "superconductor", 0xffffff, NONE));
 
     /**

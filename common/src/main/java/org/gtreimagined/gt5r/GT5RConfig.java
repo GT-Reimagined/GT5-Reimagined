@@ -10,8 +10,8 @@ public class GT5RConfig {
 
     //TODO needed?
     public static boolean MORE_COMPLICATED_CHEMICAL_RECIPES = true;
-    //TODO change to gt core's config for this
     public static boolean HARDER_CIRCUITS = false;
+    public static boolean HARD_SETTINGS = false;
     public static ConfigEntry.BoolValue HARDER_ALUMINIUM_PROCESSING;
     public static ConfigEntry.BoolValue GT5U_OIL;
     public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;

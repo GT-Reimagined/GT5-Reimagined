@@ -151,6 +151,7 @@ import java.util.Arrays;
 import java.util.function.BiConsumer;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
+import static muramasa.antimatter.machine.Tier.IV;
 import static muramasa.antimatter.worldgen.AntimatterWorldGenerator.removeDecoratedFeatureFromAllBiomes;
 
 @Mod(GT5RRef.ID)
@@ -376,6 +377,11 @@ public class GT5Reimagined extends AntimatterMod {
                                 GT5RItems.NanoCpuWafer, GT5RItems.NanoCpu, GT5RItems.NorMemoryChipWafer, GT5RItems.NorMemoryChip, GT5RItems.PICWafer, GT5RItems.PowerIC,
                                 GT5RItems.QBitWafer, GT5RItems.QBitProcessingUnit, GT5RItems.RandomAccessMemoryChipWafer, GT5RItems.RandomAccessMemoryChip, GT5RItems.SOCWafer, GT5RItems.SOC));
                         l.addAll(GT5RMachines.CIRCUIT_ASSEMBLER.getTiers().stream().map(GT5RMachines.CIRCUIT_ASSEMBLER::getBlockState).toList());
+                    }
+                    if (!GT5RConfig.HARD_SETTINGS){
+                        l.add(GT5RMachines.ASSEMBLY_LINE.getItem(IV));
+                        l.add(GT5RBlocks.ADVANCED_ASSEMBLER_CASING);
+                        l.add(GT5RBlocks.ASSEMBLY_LINE_CASING);
                     }
                 });
                 AntimatterJEIREIPlugin.addFluidsToHide(l -> {

@@ -39,7 +39,7 @@ public class GT5RLocalizations {
         @Override
         protected void addTranslations() {
             super.addTranslations();
-            add(GT5RRef.ID + ".advancements.greg", "GT5Reimagined Intergalactical");
+            add(GT5RRef.ID + ".advancements.greg", "GT5 Reimagined");
             add(GT5RRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
             add(GT5RRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
             add(GT5RRef.ID + ".rei.tooltip.material_tree", "Material Tree");
@@ -138,6 +138,12 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.small_heat_exchanger.efficiency", "Efficiency: %s");
             add("tooltip.gt5r.boiler", "Generates Steam from water.");
             add("tooltip.macerator.0", "Crushes Raw ores down to crushed ore and byproducts. Macerator gives no byproducts, Pulverizer gives byproducts");
+            add("tooltip.gt5r.input_hatch", "Fluid Input for Multiblocks");
+            add("tooltip.gt5r.output_hatch", "Fluid Output for Multiblocks");
+            add("tooltip.gt5r.input_bus", "Item Input for Multiblocks");
+            add("tooltip.gt5r.output_bus", "Item Output for Multiblocks");
+            add("tooltip.gt5r.secondary_input_hatch", "Coolant Input for Fusion");
+            add("tooltip.gt5r.secondary_output_hatch", "Coolant Output for Fusion");
             add("text.gt5r.prospected_book", "Prospection Data From:\nX: %s Z: %s Dim: %s\nProduces %sL %s");
             add("jei.category.macerator_recycling", "Macerator Recycling");
             add("jei.category.macerator_ore_processing", "Macerator Ore Processing");
@@ -273,14 +279,14 @@ public class GT5RLocalizations {
             add("tooltip.large_centrifuge.6", "Tungstensteel Casings for the rest (14 at most!)");
 
             add("tooltip.large_chemical_reactor.0", "Controller Block for the Large Chemical Reactor");
-            add("tooltip.large_chemical_reactor.1", "Does not lose efficiency when overclocked");
+            add("tooltip.large_chemical_reactor.1", "Runs up to 16 recipes at a time");
             add("tooltip.large_chemical_reactor.2", "Size(WxHxD): 3x3x3");
             add("tooltip.large_chemical_reactor.3", "3x3x3 of Chemically Inert Casings (hollow, min 8!)");
             add("tooltip.large_chemical_reactor.4", "Controller (Front centered)");
             add("tooltip.large_chemical_reactor.5", "1x PTFE Pipe Casing (inside the hollow casings)");
-            add("tooltip.large_chemical_reactor.6", "1x Cupronickel Coil Block (Next to the PTFE Pipe Casing)");
-            add("tooltip.large_chemical_reactor.7", "1x Input Hatch (Any inert casing)");
-            add("tooltip.large_chemical_reactor.8", "1x Output Hatch (Any inert casing)");
+            add("tooltip.large_chemical_reactor.6", "1x Cupronickel Coil Block (Below the PTFE Pipe Casing)");
+            add("tooltip.large_chemical_reactor.7", "1x Input Hatch/Bus (Any inert casing)");
+            add("tooltip.large_chemical_reactor.8", "1x Output Hatch/Bus (Any inert casing)");
             add("tooltip.large_chemical_reactor.9", "1x Energy Hatch (Any inert casing)");
 
             add("tooltip.large_electrolyzer.0", "Controller Block for the Large Electrolyzer");

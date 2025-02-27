@@ -49,6 +49,8 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
             IRecipeMap recipeMap = null;
             Tier tier = null;
 
+
+
             @Override
             protected int maxSimultaneousRecipes(){
                 return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0).getCount()).orElse(0);
@@ -90,22 +92,22 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
             }
 
             @Override
-            protected IRecipe cachedRecipe() {
-                if (recipeMap == null) return null;
-                return super.cachedRecipe();
+            public void checkRecipe() {
+                if (getRecipeMap() == null){
+                    return;
+                }
+                super.checkRecipe();
             }
 
             @Override
-            public IRecipe findRecipe() {
-                if (lastRecipe != null) {
-                    activeRecipe = lastRecipe;
-                    if (canRecipeContinue()) {
-                        activeRecipe = null;
-                        return lastRecipe;
-                    }
-                    activeRecipe = null;
-                }
-                return recipeMap != null ? recipeMap.find(tile.itemHandler, tile.fluidHandler, tile.getMachineTier(), this::validateRecipe) : null;
+            public IRecipeMap getRecipeMap() {
+                return recipeMap;
+            }
+
+            @Override
+            protected IRecipe cachedRecipe() {
+                if (recipeMap == null) return null;
+                return super.cachedRecipe();
             }
 
             @Override

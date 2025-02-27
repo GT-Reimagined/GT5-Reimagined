@@ -292,7 +292,7 @@ public class RecipeMaps {
             renderString(stack, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
             renderString(stack, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
             renderString(stack, huT, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(stack, formattedText1, fontRenderer, 5 + stringWidth(huT, fontRenderer), 20, Tier.ULV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
+            renderString(stack, formattedText1, fontRenderer, 5 + stringWidth(huT, fontRenderer), 20, Tier.ULV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY, false);
             renderString(stack, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
             renderString(stack, start, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
         }
@@ -379,7 +379,7 @@ public class RecipeMaps {
             renderString(stack, amps, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
             renderString(stack, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
             if (recipe.getInputItems().size() > 2){
-                renderString(stack, "Multi Smelter only", fontRenderer, 5, 40, 0xFF0000, guiOffsetX, guiOffsetY);
+                renderString(stack, "Multi Smelter only", fontRenderer, 5, 40, 0xFF0000, guiOffsetX, guiOffsetY, false);
             }
 
         }

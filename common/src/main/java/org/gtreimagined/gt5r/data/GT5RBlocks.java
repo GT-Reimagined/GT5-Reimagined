@@ -294,7 +294,6 @@ public class GT5RBlocks {
     public static final FluidPipe<?> FLUID_PIPE_PLASTIC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Plastic, 370, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_PVC = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.PolyvinylChloride, 333, true).caps(1).pressures(getPressures(450)));
     public static final FluidPipe<?> FLUID_PIPE_ADAMANTIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Adamantium, 6531, true).acidProof(true).pressures(getPressures(30000)));
-    public static final FluidPipe<?> FLUID_PIPE_HP = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.HighPressure, 3422, true).sizes(PipeSize.SMALL, PipeSize.NORMAL, PipeSize.LARGE).caps(1).pressures(10000));
     public static final ItemPipe<?> ITEM_PIPE_BRASS = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Brass).stepsize(32768).caps(0, 0, 0, 1, 2, 4));
     public static final ItemPipe<?> ITEM_PIPE_CUPRONICKEL = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.Cupronickel).stepsize(32768).caps(0, 0, 0, 1, 2, 4));
     public static final ItemPipe<?> ITEM_PIPE_BLACK_BRONZE = AntimatterAPI.register(ItemPipe.class, new ItemPipe<>(GT5RRef.ID, Materials.BlackBronze).stepsize(16384).caps(0, 0, 0, 2, 4, 8));

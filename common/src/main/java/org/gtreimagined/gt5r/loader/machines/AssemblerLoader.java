@@ -126,6 +126,7 @@ public class AssemblerLoader {
         addCasing(BlackBronze, GT5RBlocks.BLACK_BRONZE_CASING);
         addCasing(Tungsten, GT5RBlocks.TUNGSTEN_CASING);
         ASSEMBLER.RB().ii(of(GT5RBlocks.SOLID_STEEL_CASING), SELECTOR_TAG_INGREDIENTS.get(6)).fi(Polytetrafluoroethylene.getLiquid(L + (L / 2))).io(GT5RBlocks.CHEMICALLY_INERT_CASING.asItem()).add("chemically_inert_casing", 50, 16);
+        ASSEMBLER.RB().ii(of(GT5RBlocks.STEEL_PIPE_CASING)).fi(Polytetrafluoroethylene.getLiquid((L * 3) + L / 2)).io(GT5RBlocks.PTFE_PIPE_CASING.asItem()).add("ptfe_pipe_casing", 50, 16);
     }
 
     private static void cables(){
@@ -206,9 +207,6 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Tungsten, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(FALDuctTape).add("fal_duct_tape", 200, 16);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Graphite, 8), FOIL.getMaterialIngredient(Silicon, 1)).fi(Glue.getLiquid(250)).io(DUST_SMALL.get(Graphene)).add("graphene_dust", 480, 240);
-        ASSEMBLER.RB().ii(of(GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.SMALL)), of(GT5RCovers.COVER_PUMP.getItem(EV))).io(GT5RBlocks.FLUID_PIPE_HP.getBlockItem(PipeSize.SMALL)).add("small_hp_fluid_pipe", 300, 96);
-        ASSEMBLER.RB().ii(of(GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.NORMAL)), of(GT5RCovers.COVER_PUMP.getItem(IV))).io(GT5RBlocks.FLUID_PIPE_HP.getBlockItem(PipeSize.NORMAL)).add("hp_fluid_pipe", 400, 148);
-        ASSEMBLER.RB().ii(of(GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(PipeSize.LARGE)), of(2, GT5RCovers.COVER_PUMP.getItem(IV))).io(GT5RBlocks.FLUID_PIPE_HP.getBlockItem(PipeSize.LARGE)).add("large_hp_fluid_pipe", 600, 256);
     }
 
     private static void carpet(){
@@ -253,7 +251,7 @@ public class AssemblerLoader {
                             SCREW.getMaterialIngredient(TIER_ROTORS.get(t), 1),
                             ROTOR.getMaterialIngredient(TIER_ROTORS.get(t), 1),
                             RING.getMaterialIngredient(Rubber, 2),
-                            of(TIER_PIPES.get(t).apply(PipeSize.NORMAL), 1),
+                            ofObject(PIPE_GETTER.apply(PipeSize.NORMAL, t), 1),
                             of(AntimatterAPI.get(ItemBasic.class,"motor_"+t.getId(), GTCore.ID),1)
                             )
                     .io(GT5RCovers.COVER_PUMP.getItem(t))
