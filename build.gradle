@@ -3,9 +3,6 @@ import org.gradle.jvm.toolchain.JavaLanguageVersion
 plugins {
     id "maven-publish"
     id "idea"
-    // Adds the Kotlin Gradle plugin
-    id 'org.jetbrains.kotlin.jvm' version "${kotlin_version}" apply false
-    id 'org.jetbrains.kotlin.plugin.lombok' version '2.0.20' apply false
     id "io.freefair.lombok" version "8.10.2" apply false
     id "fabric-loom" version "1.7-SNAPSHOT" apply false
     id "net.neoforged.moddev.legacyforge" version "2.0.78" apply false
@@ -25,16 +22,10 @@ subprojects {
     apply plugin: "maven-publish"
     apply plugin: "java"
     apply plugin: "idea"
-    apply plugin: "org.jetbrains.kotlin.jvm"
-    apply plugin: "org.jetbrains.kotlin.plugin.lombok"
     apply plugin: "io.freefair.lombok"
     group = rootProject.maven_group
     version = "${project.mod_version}-${rootProject.minecraft_version}"
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
-
-    compileKotlin {
-        kotlinOptions.jvmTarget = "17"
-    }
 
 
     apply from: 'https://raw.githubusercontent.com/GregTech-Intergalactical/GradleSripts/main/repositories.gradle'
