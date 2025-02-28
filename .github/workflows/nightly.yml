@@ -9,20 +9,18 @@ name: GregTech Nightly
 on:
   push:
     branches:
-    - dev-1.18
+    - '*'
   pull_request:
     branches:
-    - dev-1.18
+    - 'dev**'
 jobs:
   build:
-
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
-    - name: Checkout GregTech
+    - name: Checkout GT5 Reimagined
       uses: actions/checkout@v2
       with:
         submodules: recursive
@@ -34,23 +32,22 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
         cache: gradle
+    - name: Setup Gradle Dependencies Cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-gradle-caches-${{ hashFiles('**/*.properties') }}
     - name: Build with Gradle
       run: ./gradlew build --stacktrace
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
-    - name: Upload Forge Artifact
+    - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: GTI-forge-nightly-${{ steps.vars.outputs.sha_short }}
-        path: forge/build/libs
-      env:
-        USERNAME: ${{ github.actor }}
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload Fabric Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: GTI-fabric-nightly-${{ steps.vars.outputs.sha_short }}
-        path: fabric/build/libs
+        name: GT5R-nightly-${{ steps.vars.outputs.sha_short }}
+        path: build/libs
       env:
         USERNAME: ${{ github.actor }}
         TOKEN: ${{ secrets.GITHUB_TOKEN }}
