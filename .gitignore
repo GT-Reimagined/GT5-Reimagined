@@ -28,10 +28,6 @@ src/generated/*
 forge*changelog.txt
 *.db
 
-# local
-#AntimatterAPI
-#TesseractAPI
-
 .vscode/
 mcmodsrepo/
 .architectury-transformer/debug.log
