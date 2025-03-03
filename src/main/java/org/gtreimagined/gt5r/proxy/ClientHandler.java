@@ -20,10 +20,10 @@ import java.io.InputStream;
 public class ClientHandler {
 
     public static void setup() {
-        AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.INSTANCE.setRenderLayer(t, RenderType.cutout()));
-        AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.INSTANCE.setRenderLayer(t, RenderType.cutout()));
-        AntimatterAPI.all(BlockBedrockFlower.class, t -> ModelUtils.INSTANCE.setRenderLayer(t, RenderType.cutout()));
-        ModelUtils.INSTANCE.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
+        AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        AntimatterAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        ModelUtils.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
     }
 

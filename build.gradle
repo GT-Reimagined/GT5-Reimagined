@@ -72,7 +72,6 @@ legacyForge {
 
 mixin {
     config "antimatter.mixins.json"
-    config "antimatter-forge.mixins.json"
     config "antimatter.rei.mixins.json"
     config "tesseract-forge.mixins.json"
 }
@@ -110,8 +109,8 @@ dependencies {
 
     //gt5r deps
     //minecraftRuntimeLibraries(group: 'com.github.Speiger', name: 'Primitive-Collections', version: '[0.8,0.9)')
-    modImplementation("org.gt-reimagined:gtcore-forge:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
-    jarJar("org.gt-reimagined:gtcore-forge:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
+    modImplementation("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
+    jarJar("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
     modRuntimeOnly("dev.trinsdar:terraform-wood-api-v1:3.1.5")
     jarJar("dev.trinsdar:terraform-wood-api-v1:3.1.5")
     //modRuntimeOnly("curse.maven:rubidium-574856:4451888")
