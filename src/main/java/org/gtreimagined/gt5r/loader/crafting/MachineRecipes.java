@@ -798,7 +798,7 @@ public class MachineRecipes {
                             .put('H', hull)
                             .build(), "G", "H"));
             add(HIGH_CAPACITY_INPUT_HATCH, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.of('I', INPUT_HATCH.getItem(tier), 'P', PIPE_GETTER.apply(PipeSize.LARGE, tier)), " P ", "PIP", " P "));
+                    ImmutableMap.of('I', INPUT_HATCH.getItem(tier), 'P', HATCH_PIPE_GETTER.apply(PipeSize.LARGE, tier)), " P ", "PIP", " P "));
             add(SECONDARY_INPUT_HATCH, tier, (m, item) -> provider.shapeless(output, "", "machines", new ItemStack(item),
                     INPUT_HATCH.getItem(tier)));
 
@@ -817,7 +817,7 @@ public class MachineRecipes {
                             .put('H', hull)
                             .build(), "H", "G"));
             add(HIGH_CAPACITY_OUTPUT_HATCH, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.of('I', OUTPUT_HATCH.getItem(tier), 'P', PIPE_GETTER.apply(PipeSize.LARGE, tier)), " P ", "PIP", " P "));
+                    ImmutableMap.of('I', OUTPUT_HATCH.getItem(tier), 'P', HATCH_PIPE_GETTER.apply(PipeSize.LARGE, tier)), " P ", "PIP", " P "));
 
             add(SECONDARY_OUTPUT_HATCH, tier, (m, item) -> provider.shapeless(output, "", "machines", new ItemStack(item),
                     OUTPUT_HATCH.getItem(tier)));

@@ -17,6 +17,7 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.lwjgl.system.CallbackI.B;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -38,6 +39,7 @@ public class TierMaps {
     public static ImmutableMap<Tier, Material> TIER_ROTORS;
 
     public static final BiFunction<PipeSize, Tier, Object> PIPE_GETTER;
+    public static final BiFunction<PipeSize, Tier, Object> HATCH_PIPE_GETTER;
     public static final BiFunction<PipeSize, Tier, Object> WIRE_GETTER;
     public static final TriFunction<PipeSize, Tier, Boolean, Object> CABLE_GETTER;
 
@@ -110,6 +112,19 @@ public class TierMaps {
             if (tier == IV) return GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(size);
             if (tier == LUV || tier == ZPM || tier == UV || tier == UHV) return GT5RBlocks.FLUID_PIPE_CHROMIUM.getBlockItem(size);
             throw new IllegalArgumentException("Invalid tier in PIPE_GETTER");
+        };
+        HATCH_PIPE_GETTER = (size, tier) -> {
+            if (tier == ULV) return GT5RBlocks.FLUID_PIPE_PLASTIC.getBlockItem(size);
+            if (tier == LV) return GT5RBlocks.FLUID_PIPE_PVC.getBlockItem(size);
+            if (tier == MV) return GT5RBlocks.FLUID_PIPE_INVAR.getBlock(size);
+            if (tier == HV) return GT5RBlocks.FLUID_PIPE_STEEL.getBlock(size);
+            if (tier == EV) return GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(size);
+            if (tier == IV) return GT5RBlocks.FLUID_PIPE_CHROMIUM.getBlockItem(size);
+            if (tier == LUV) return GT5RBlocks.FLUID_PIPE_TUNGSTEN_STEEL.getBlockItem(size);
+            if (tier == ZPM) return GT5RBlocks.FLUID_PIPE_TUNGSTEN.getBlockItem(size);
+            if (tier == UV) return GT5RBlocks.FLUID_PIPE_TUNGSTEN_CARBIDE.getBlockItem(size);
+            if (tier == UHV) return GT5RBlocks.FLUID_PIPE_ADAMANTIUM.getBlockItem(size);
+            throw new IllegalArgumentException("Invalid tier in HATCH_PIPE_GETTER");
         };
     }
     //Called to init the INT CIRCUITS and tier materials early on.
