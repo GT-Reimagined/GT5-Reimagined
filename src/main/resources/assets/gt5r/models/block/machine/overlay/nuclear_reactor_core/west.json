@@ -36,5 +36,5 @@
 			"children": [2]
 		}
 	],
-	"loader": "antimatter:machine_side"
+	"loader": "gtlib:machine_side"
 }
