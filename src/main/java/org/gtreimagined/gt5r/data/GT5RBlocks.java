@@ -153,7 +153,7 @@ public class GT5RBlocks {
     public static final BlockCasing LONG_DIST_WIRE_LUV = new BlockCasing(GT5RRef.ID, "long_distance_wire_luv", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
     public static final BlockCasing LONG_DIST_WIRE_ZPM = new BlockCasing(GT5RRef.ID, "long_distance_wire_zpm", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
     public static final BlockCasing LONG_DIST_WIRE_UV = new BlockCasing(GT5RRef.ID, "long_distance_wire_uv", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
-    public static final BlockFakeCasing FIRE_BRICKS = new BlockFakeCasing(GT5RRef.ID, "fire_bricks", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).sound(SoundType.STONE));
+    public static final BlockFakeCasing FIRE_BRICKS = new BlockFakeCasing(GT5RRef.ID, "fire_bricks", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
     public static final BlockCasing BRONZE_CASING = new BlockCasing(GT5RRef.ID, "bronze_casing");
     public static final BlockCasing BRICKED_BRONZE_CASING = new BlockSidedCasing(GT5RRef.ID, "bricked_bronze_casing", "brick", "bronze");
     public static final BlockCasing BRONZE_PLATED_BRICK_CASING = new BlockCasing(GT5RRef.ID, "bronze_plated_brick_casing");
