@@ -17,6 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
 import tesseract.api.context.TesseractItemContext;
+import tesseract.api.forge.TesseractCaps;
 import tesseract.api.gt.IEnergyHandlerItem;
 import tesseract.api.gt.IEnergyItem;
 
@@ -93,7 +94,7 @@ public class ItemPowerUnit extends ItemBasic<ItemPowerUnit> implements IColorHan
 
     public CompoundTag validateTag(ItemStack stack, long startingEnergy, long maxEnergy) {
         CompoundTag dataTag = stack.getOrCreateTagElement(Ref.TAG_ITEM_ENERGY_DATA);
-        IEnergyHandlerItem handler = TesseractCapUtils.INSTANCE.getEnergyHandlerItem(stack).orElse(null);
+        IEnergyHandlerItem handler = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).resolve().orElse(null);
         if (handler != null){
             handler.setEnergy(startingEnergy);
             handler.setCapacity(maxEnergy);
