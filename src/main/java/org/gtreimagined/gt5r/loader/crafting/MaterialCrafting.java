@@ -112,13 +112,13 @@ public class MaterialCrafting {
 
     public static void loadAutoRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider){
         DUST.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_small_dust", "antimatter_materials", DUST_SMALL.get(m, 4),
+            provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_small_dust", "gt_materials", DUST_SMALL.get(m, 4),
                     of('D', DUST.getMaterialTag(m)), " D");
-            /*provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_tiny_dust", "antimatter_materials", "has_wrench", in, DUST_TINY.get(m, 9),
+            /*provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_tiny_dust", "gt_materials", "has_wrench", in, DUST_TINY.get(m, 9),
                     of('D', DUST.getMaterialTag(m)), "D ");*/
         });
         GT5RMaterialTypes.TURBINE_BLADE.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_materials",
+            provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_materials",
                     GT5RMaterialTypes.TURBINE_BLADE.get(m, 1), ImmutableMap.<Character, Object>builder()
                             .put('S', SCREWDRIVER.getTag())
                             .put('F', FILE.getTag())
@@ -133,13 +133,13 @@ public class MaterialCrafting {
         });
         AntimatterAPI.all(ItemPipe.class, i -> {
             if (i.getSizes().contains(PipeSize.NORMAL)){
-                provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
+                provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
             }
             if (i.getSizes().contains(PipeSize.LARGE)){
-                provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
+                provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
             }
             if (i.getSizes().contains(PipeSize.HUGE)) {
-                provider.addStackRecipe(consumer, GT5RRef.ID, "", "antimatter_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
+                provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
             }
         });
         //todo move to gt core
