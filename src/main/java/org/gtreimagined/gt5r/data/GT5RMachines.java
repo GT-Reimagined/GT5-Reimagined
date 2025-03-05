@@ -443,12 +443,12 @@ public class GT5RMachines {
     private static void getFluidHatchTooltips(BlockMachine machine, ItemStack stack, @Nullable BlockGetter world, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(Utils.translatable("tooltip.gt5r." + (machine.getId().contains("secondary") ? "secondary_" : "") + (machine.getId().contains("input") ? "input" : "output") + "_hatch"));
         int multiplier = machine.getId().contains("high_capacity") ? 32 : 8;
-        tooltip.add(Utils.translatable("antimatter.tooltip.capacity", (multiplier * 1000 * (machine.getTier().getIntegerId() + 1)) + "L"));
+        tooltip.add(Utils.translatable("gtlib.tooltip.capacity", (multiplier * 1000 * (machine.getTier().getIntegerId() + 1)) + "L"));
     }
 
     private static void getItemHatchTooltips(BlockMachine machine, ItemStack stack, @Nullable BlockGetter world, List<Component> tooltip, TooltipFlag flag){
         tooltip.add(Utils.translatable("tooltip.gt5r." + (machine.getId().contains("input") ? "input" : "output") + "_bus"));
         int stacks = machine.getTier() == ULV ? 1 : machine.getTier() == LV ? 4 : machine.getTier() == MV ? 9 : 16;
-        tooltip.add(Utils.translatable("antimatter.tooltip.capacity", stacks + " stacks"));
+        tooltip.add(Utils.translatable("gtlib.tooltip.capacity", stacks + " stacks"));
     }
 }

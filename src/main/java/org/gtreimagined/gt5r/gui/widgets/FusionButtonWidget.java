@@ -53,7 +53,7 @@ public class FusionButtonWidget extends Widget {
     public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
         super.mouseOver(stack, mouseX, mouseY, partialTicks);
         if (isInside(154, 4, 18, 18, mouseX, mouseY)){
-            renderTooltip(stack, Utils.translatable("antimatter.gui.show_recipes"), mouseX, mouseY);
+            renderTooltip(stack, Utils.translatable("gtlib.gui.show_recipes"), mouseX, mouseY);
         }
     }
 

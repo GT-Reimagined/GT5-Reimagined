@@ -77,7 +77,7 @@ public class Guis {
 
     public static GuiData MULTIBLOCK = new GuiData(GT5RRef.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
-    public static GuiData ORE_BYPRODUCTS = new GuiData("antimatter", "ore_byproducts") {
+    public static GuiData ORE_BYPRODUCTS = new GuiData(Ref.ID, "ore_byproducts") {
         @Override
         public ResourceLocation getTexture(Tier tier, String type) {
             return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
