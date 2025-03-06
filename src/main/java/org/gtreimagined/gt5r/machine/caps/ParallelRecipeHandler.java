@@ -174,7 +174,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
 
     @Override
     public long getPower() {
-        return super.getPower() * (maxSimultaneousRecipes() > 1 ? 4 : 1);
+        return super.getPower() * (Math.max(1, Math.min(maxSimultaneousRecipes, 4)));
     }
 
     @Override
