@@ -10,6 +10,7 @@ import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import tesseract.TesseractGraphWrappers;
 
+import java.util.Collections;
 import java.util.List;
 
 import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
@@ -74,6 +76,18 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
                 }
                 if (!simulate && startup > 0) startup = 0;
                 return false;
+            }
+
+            @Override
+            protected boolean canRecipeContinue() {
+                boolean canContinue = super.canRecipeContinue();
+                if (fluidHandler.map(f -> f.drain(Oxygen.getGas(2), FluidAction.SIMULATE).getAmount() == 2).orElse(false)){
+                    FluidIngredient ingredient = activeRecipe.getInputFluids().get(0);
+                    ingredient = ingredient.copy(ingredient.getAmount() * 2);
+                    FluidIngredient finalIngredient = ingredient;
+                    canContinue = canContinue && (!activeRecipe.hasInputFluids() || tile.fluidHandler.map(t -> !t.consumeAndReturnInputs(Collections.singletonList(finalIngredient), true).isEmpty()).orElse(false));
+                }
+                return canContinue;
             }
 
             @Override
