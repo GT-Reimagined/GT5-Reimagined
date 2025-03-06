@@ -126,7 +126,7 @@ public class MaceratorLoader {
 
         //INGOT -> DUST
         AntimatterMaterialTypes.INGOT.all().forEach(t -> {
-            if (!t.has(AntimatterMaterialTypes.DUST)) return;
+            if (!MACERATE_INTO.get(t).has(AntimatterMaterialTypes.DUST)) return;
             PULVERIZER.RB().ii(RecipeIngredient.of(AntimatterMaterialTypes.INGOT.getMaterialTag(t),1)).io(AntimatterMaterialTypes.DUST.get(MACERATE_INTO.get(t),1)).add("dust_" + t.getId(),40,2);
             if (t.has(NUGGET)){
                 PULVERIZER.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(DUST_TINY.get(MACERATE_INTO.get(t),1)).add("dust_tiny_" + t.getId(),10,2);
