@@ -21,6 +21,7 @@ import muramasa.antimatter.util.Utils;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -60,8 +61,8 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
     }
 
     @Override
-    public void onFirstTick() {
-        super.onFirstTick();
+    public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
+        super.onFirstTickServer(level, pos, state);
         onMachineEvent(SlotType.STORAGE);
     }
 

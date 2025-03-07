@@ -55,8 +55,8 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     }
 
     @Override
-    public void onFirstTick() {
-        super.onFirstTick();
+    public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
+        super.onFirstTickServer(level, pos, state);
         if (otherSidePos != null && otherSideDimension != null){
             Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
             if (dimension != null && dimension.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){

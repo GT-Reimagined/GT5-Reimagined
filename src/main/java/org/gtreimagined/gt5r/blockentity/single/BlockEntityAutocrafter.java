@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.blockentity.IAutocrafter;
 import org.gtreimagined.gt5r.machine.caps.AutocraftingRecipeHandler;
@@ -26,9 +27,9 @@ public class BlockEntityAutocrafter extends BlockEntityMachine<BlockEntityAutocr
     }
 
     @Override
-    public void onFirstTick() {
-        super.onFirstTick();
-        if (isServerSide()) onMachineEvent(SlotType.STORAGE);
+    public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
+        super.onFirstTickServer(level, pos, state);
+        onMachineEvent(SlotType.STORAGE);
     }
 
     @Override
