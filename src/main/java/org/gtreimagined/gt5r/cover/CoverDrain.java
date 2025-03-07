@@ -132,23 +132,6 @@ public class CoverDrain extends BaseCover {
     }
 
     @Override
-    public ItemStack getDroppedStack() {
-        ItemStack stack = super.getDroppedStack();
-        if (!contained.isEmpty()){
-            stack.getOrCreateTag().put("containedFluid", contained.writeToNBT(new CompoundTag()));
-        }
-        return stack;
-    }
-
-    @Override
-    public void addInfoFromStack(ItemStack stack) {
-        super.addInfoFromStack(stack);
-        if (stack.getTag() != null && stack.getTag().contains("containedFluid")){
-            contained = FluidUtils.fromTag(stack.getTag().getCompound("containedFluid"));
-        }
-    }
-
-    @Override
     public CompoundTag serialize() {
         CompoundTag tag = super.serialize();
         if (!contained.isEmpty()){
