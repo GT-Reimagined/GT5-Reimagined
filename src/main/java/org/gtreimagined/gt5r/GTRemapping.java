@@ -117,24 +117,29 @@ public class GTRemapping {
         remapGTCore("shape_block", "block_shape");
         remapGTCore("shape_gear", "gear_shape");
         remapGTCore("shape_gear_small", "small_gear_shape");
-        remapGTCore("battery_hull_small", "small_battery_hull");
-        remapGTCore("battery_hull_medium", "medium_battery_hull");
-        remapGTCore("battery_hull_large", "large_battery_hull");
-        remapGTCore("battery_small_mercury", "small_mercury_battery");
-        remapGTCore("battery_small_acid", "small_acid_battery");
-        remapGTCore("battery_small_cadmium", "small_cadmium_battery");
-        remapGTCore("battery_small_lithium", "small_lithium_battery");
-        remapGTCore("battery_small_sodium", "small_sodium_battery");
-        remapGTCore("battery_medium_mercury", "medium_mercury_battery");
-        remapGTCore("battery_medium_acid", "medium_acid_battery");
-        remapGTCore("battery_medium_cadmium", "medium_cadmium_battery");
-        remapGTCore("battery_medium_lithium", "medium_lithium_battery");
-        remapGTCore("battery_medium_sodium", "medium_sodium_battery");
-        remapGTCore("battery_large_mercury", "large_mercury_battery");
-        remapGTCore("battery_large_acid", "large_acid_battery");
-        remapGTCore("battery_large_cadmium", "large_cadmium_battery");
-        remapGTCore("battery_large_lithium", "large_lithium_battery");
-        remapGTCore("battery_large_sodium", "large_sodium_battery");
+        remapFromGTCore("raw_lapotron_crystal", "raw_lapotron_crystal");
+        remapFromGTCore("small_battery_hull", "small_battery_hull");
+        remapFromGTCore("medium_battery_hull", "medium_battery_hull");
+        remapFromGTCore("large_battery_hull", "large_battery_hull");
+        remapFromGTCore("small_mercury_battery", "small_mercury_battery");
+        remapFromGTCore("small_acid_battery", "small_acid_battery");
+        remapFromGTCore("small_cadmium_battery", "small_cadmium_battery");
+        remapFromGTCore("small_lithium_battery", "small_lithium_battery");
+        remapFromGTCore("small_sodium_battery", "small_sodium_battery");
+        remapFromGTCore("medium_mercury_battery", "medium_mercury_battery");
+        remapFromGTCore("medium_acid_battery", "medium_acid_battery");
+        remapFromGTCore("medium_cadmium_battery", "medium_cadmium_battery");
+        remapFromGTCore("medium_lithium_battery", "medium_lithium_battery");
+        remapFromGTCore("medium_sodium_battery", "medium_sodium_battery");
+        remapFromGTCore("large_mercury_battery", "large_mercury_battery");
+        remapFromGTCore("large_acid_battery", "large_acid_battery");
+        remapFromGTCore("large_cadmium_battery", "large_cadmium_battery");
+        remapFromGTCore("large_lithium_battery", "large_lithium_battery");
+        remapFromGTCore("large_sodium_battery", "large_sodium_battery");
+        remapFromGTCore("energy_crystal", "energy_crystal");
+        remapFromGTCore("lapotron_crystal", "lapotron_crystal");
+        remapFromGTCore("lapotronic_energy_orb", "lapotronic_energy_orb");
+        remapFromGTCore("lapotronic_energy_orb_cluster", "lapotronic_energy_orb_cluster");
         remap("coil_cupronickel", "cupronickel_coil");
         remap("coil_kanthal", "kanthal_coil");
         remap("coil_nichrome", "nichrome_coil");
@@ -185,6 +190,10 @@ public class GTRemapping {
 
     private static void remapGTCore(String oldId, String newId){
         AntimatterRemapping.remap(new ResourceLocation(GT5RRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
+    }
+
+    private static void remapFromGTCore(String oldId, String newId){
+        AntimatterRemapping.remap(new ResourceLocation(GTCore.ID, oldId), new ResourceLocation(GT5RRef.ID, newId));
     }
 
     public static Map<String, String> getRemappingMap() {

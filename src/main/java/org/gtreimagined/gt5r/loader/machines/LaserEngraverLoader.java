@@ -7,14 +7,15 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
+import static org.gtreimagined.gt5r.data.GT5RItems.LapotronCrystal;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.BOULE;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class LaserEngraverLoader {
     public static void init(){
-        RecipeMaps.LASER_ENGRAVER.RB().ii(RecipeIngredient.of(GTCoreItems.LapotronCrystal, 1), LENS.getMaterialIngredient(Sapphire, 1).setNoConsume().setNoConsume()).io(new ItemStack(GTCoreItems.EngravedLapotronChip, 3)).add("engraved_lapotron_chip_sapphire", 256, 480);
-        RecipeMaps.LASER_ENGRAVER.RB().ii(RecipeIngredient.of(GTCoreItems.LapotronCrystal, 1), LENS.getMaterialIngredient(BlueTopaz, 1).setNoConsume().setNoConsume()).io(new ItemStack(GTCoreItems.EngravedLapotronChip, 3)).add("engraved_lapotron_chip_blue_topaz", 256, 480);
-        RecipeMaps.LASER_ENGRAVER.RB().ii(RecipeIngredient.of(GTCoreItems.LapotronCrystal, 1), LENS.getMaterialIngredient(Opal, 1).setNoConsume().setNoConsume()).io(new ItemStack(GTCoreItems.EngravedLapotronChip, 3)).add("engraved_lapotron_chip_opal", 256, 480);
+        RecipeMaps.LASER_ENGRAVER.RB().ii(RecipeIngredient.of(LapotronCrystal, 1), LENS.getMaterialIngredient(Sapphire, 1).setNoConsume().setNoConsume()).io(new ItemStack(GTCoreItems.EngravedLapotronChip, 3)).add("engraved_lapotron_chip_sapphire", 256, 480);
+        RecipeMaps.LASER_ENGRAVER.RB().ii(RecipeIngredient.of(LapotronCrystal, 1), LENS.getMaterialIngredient(BlueTopaz, 1).setNoConsume().setNoConsume()).io(new ItemStack(GTCoreItems.EngravedLapotronChip, 3)).add("engraved_lapotron_chip_blue_topaz", 256, 480);
+        RecipeMaps.LASER_ENGRAVER.RB().ii(RecipeIngredient.of(LapotronCrystal, 1), LENS.getMaterialIngredient(Opal, 1).setNoConsume().setNoConsume()).io(new ItemStack(GTCoreItems.EngravedLapotronChip, 3)).add("engraved_lapotron_chip_opal", 256, 480);
         RecipeMaps.LASER_ENGRAVER.RB().ii(PLATE.getMaterialIngredient(Emerald, 1), LENS.getMaterialIngredient(Emerald, 1).setNoConsume()).io(new ItemStack(GTCoreItems.EngravedCrystalChip)).add("engraved_crystal_chip_emerald", 256, 480);
         RecipeMaps.LASER_ENGRAVER.RB().ii(PLATE.getMaterialIngredient(Olivine, 1), LENS.getMaterialIngredient(Emerald, 1).setNoConsume()).io(new ItemStack(GTCoreItems.EngravedCrystalChip)).add("engraved_crystal_chip_olivine", 256, 480);
         RecipeMaps.LASER_ENGRAVER.RB().ii(FOIL.getMaterialIngredient(Copper, 1), LENS.getMaterialIngredient(Ruby, 1).setNoConsume()).io(new ItemStack(GTCoreItems.EtchedWiringMV)).add("etched_wiring_mv_1", 64, 30);

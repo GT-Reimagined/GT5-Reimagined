@@ -36,6 +36,8 @@ import static muramasa.antimatter.data.AntimatterMaterials.*;
 import static muramasa.antimatter.machine.Tier.LV;
 import static muramasa.antimatter.machine.Tier.MV;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrb;
+import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrbCluster;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.SOLDER;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.BOULE;
 import static org.gtreimagined.gt5r.data.Materials.*;

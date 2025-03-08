@@ -19,17 +19,18 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_CANNER;
 
 public class FluidCannerLoader {
     public static void init() {
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullSmall, 1)).fi(Mercury.getLiquid(1000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatterySmallMercury)).add("battery_small_mercury",16, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullMedium, 1)).fi(Mercury.getLiquid(4000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryMediumMercury)).add("battery_medium_mercury",64, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullLarge, 1)).fi(Mercury.getLiquid(16000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryLargeMercury)).add("battery_large_mercury",258, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullSmall, 1)).fi(SulfuricAcid.getLiquid(1000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatterySmallAcid)).add("battery_small_acid",16, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullMedium, 1)).fi(SulfuricAcid.getLiquid(4000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryMediumAcid)).add("battery_medium_acid",64, 1);
-        FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(GTCoreItems.BatteryLargeAcid)).add("battery_large_acid",258, 1);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(BatteryHullSmall, 1)).fi(Mercury.getLiquid(1000)).io(ItemBattery.getFilledBattery(BatterySmallMercury)).add("battery_small_mercury",16, 1);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(BatteryHullMedium, 1)).fi(Mercury.getLiquid(4000)).io(ItemBattery.getFilledBattery(BatteryMediumMercury)).add("battery_medium_mercury",64, 1);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(BatteryHullLarge, 1)).fi(Mercury.getLiquid(16000)).io(ItemBattery.getFilledBattery(BatteryLargeMercury)).add("battery_large_mercury",258, 1);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(BatteryHullSmall, 1)).fi(SulfuricAcid.getLiquid(1000)).io(ItemBattery.getFilledBattery(BatterySmallAcid)).add("battery_small_acid",16, 1);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(BatteryHullMedium, 1)).fi(SulfuricAcid.getLiquid(4000)).io(ItemBattery.getFilledBattery(BatteryMediumAcid)).add("battery_medium_acid",64, 1);
+        FLUID_CANNER.RB().ii(RecipeIngredient.of(BatteryHullLarge, 1)).fi(SulfuricAcid.getLiquid(16000)).io(ItemBattery.getFilledBattery(BatteryLargeAcid)).add("battery_large_acid",258, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GTCoreItems.LighterEmpty)).fi(Butane.getGas(100)).io(GTCoreItems.Lighter).add("lighter", 1, 1);
         FLUID_CANNER.RB().ii(RecipeIngredient.of(GT5RItems.TritiumEnrichedRod)).io(GT5RItems.EmptyNuclearFuelRod).fo(Tritium.getGas(500)).add("tritium_enriched_rod", 16, 16);
         FLUID_CANNER.RB().ii(GT5RItems.EmptyGeigerCounter).fi(Argon.getGas(1000)).io(GT5RItems.GeigerCounter).add("geiger_counter_argon", 64, 16);

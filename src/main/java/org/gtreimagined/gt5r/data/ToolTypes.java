@@ -40,6 +40,7 @@ import java.util.Map;
 import java.util.function.BiFunction;
 
 import static muramasa.antimatter.material.Material.NULL;
+import static org.gtreimagined.gt5r.data.GT5RItems.BatteryMediumLithium;
 
 public class ToolTypes {
 
@@ -101,10 +102,10 @@ public class ToolTypes {
         }
     });
     static {
-        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_SMALL.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_MEDIUM.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_LARGE.location(), ToolTypes::getEnergy);
-        PropertyIngredient.addGetter(GTCoreItems.BatteryMediumLithium.getLoc(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_LV.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_MV.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(GTCoreTags.BATTERIES_HV.location(), ToolTypes::getEnergy);
+        PropertyIngredient.addGetter(BatteryMediumLithium.getLoc(), ToolTypes::getEnergy);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_LV.location(), ToolTypes::getEnergyAndMat);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_MV.location(), ToolTypes::getEnergyAndMat);
         PropertyIngredient.addGetter(GTCoreTags.POWER_UNIT_HV.location(), ToolTypes::getEnergyAndMat);

@@ -9,6 +9,7 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
@@ -31,6 +32,9 @@ public class GT5RItemTagProvider extends AntimatterItemTagProvider {
         this.tag(GT5RTags.TRANSISTORS).add(GT5RItems.Transistor, GT5RItems.SMDTransistor);
         this.tag(GT5RTags.DIODES).add(GT5RItems.Diode, GT5RItems.SMDDiode);
         this.tag(FIRESTARTER).add(Items.FLINT_AND_STEEL);
+        this.tag(BATTERIES_LV).add(GT5RItems.BatterySmallSodium, GT5RItems.BatterySmallCadmium, GT5RItems.BatterySmallLithium);
+        this.tag(BATTERIES_MV).add(GT5RItems.BatteryMediumSodium, GT5RItems.BatteryMediumCadmium, GT5RItems.BatteryMediumLithium);
+        this.tag(BATTERIES_HV).add(GT5RItems.BatteryLargeSodium, GT5RItems.BatteryLargeCadmium, GT5RItems.BatteryLargeLithium, GT5RItems.EnergyCrystal);
         this.tag(GEM.getMaterialTag(Amethyst)).remove(Items.AMETHYST_SHARD);
         this.tag(GEM.getTag()).remove(Items.AMETHYST_SHARD);
         this.tag(BLOCK.getMaterialTag(Amethyst)).remove(Items.AMETHYST_BLOCK);

@@ -57,12 +57,12 @@ public class Parts {
               of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");
       provider.addItemRecipe(output, GT5RRef.ID, "", "carbon", CoalChunk,
               of('F', Items.OBSIDIAN, 'C', CompressedCoalBall), "CCC", "CFC", "CCC");
-      provider.addItemRecipe(output, GT5RRef.ID, "","batteries", GTCoreItems.BatteryHullSmall, of(
+      provider.addItemRecipe(output, GT5RRef.ID, "","batteries", BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
-      provider.addItemRecipe(output,  GT5RRef.ID, "","batteries", GTCoreItems.BatteryHullMedium, of(
+      provider.addItemRecipe(output,  GT5RRef.ID, "","batteries", BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");

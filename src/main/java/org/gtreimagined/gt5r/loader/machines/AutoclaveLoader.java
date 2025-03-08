@@ -9,10 +9,10 @@ import static muramasa.antimatter.Ref.L;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 import static muramasa.antimatter.data.AntimatterMaterials.Water;
 import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gt5r.data.GT5RItems.EnergyCrystal;
+import static org.gtreimagined.gt5r.data.GT5RItems.RawLapotronCrustal;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.AUTOCLAVE;
-import static org.gtreimagined.gtcore.data.GTCoreItems.EnergyCrystal;
-import static org.gtreimagined.gtcore.data.GTCoreItems.RawLapotronCrustal;
 
 public class AutoclaveLoader {
     public static void init() {
