@@ -10,6 +10,7 @@ import muramasa.antimatter.item.ItemCover;
 import muramasa.antimatter.machine.Tier;
 import muramasa.antimatter.material.Material;
 import muramasa.antimatter.pipe.PipeSize;
+import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -20,6 +21,7 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -103,8 +105,8 @@ public class Parts {
       provider.addItemRecipe(output, "hazmat", UniversalHazardSuitBoots, of('L', PLATE.getMaterialTag(Lead), 'A', PLATE.getMaterialTag(Aluminium), 'C', Items.CHAINMAIL_BOOTS), "ALA", "LCL", "ALA");
       provider.addItemRecipe(output, "misc", EmptyGeigerCounter,
               of('S', SCREW.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Aluminium), 'C', CellTin, 'c', TIER_CIRCUITS.apply(LV), 's', SCREWDRIVER.getTag()), "SCS", "PcP", "SsS");
-      provider.addStackRecipe(/*ToolTypes.SCANNER_BUILDER.get("portable-scanner"), */output, GT5RRef.ID, "scanner", "misc", new ItemStack(GT5RItems.PortableScanner),
-              of('E', EmitterHV, 'A', PLATE.getMaterialTag(Aluminium), 'S', SensorHV, 'C', CIRCUITS_ADVANCED, 'c', ComputerMonitor, 'B',  BatteryMediumLithium/*PropertyIngredient.builder("battery").itemStacks(BatteryMediumLithium).build()*/), "EAS", "CcC", "ABA");
+      provider.addToolRecipe(ToolTypes.SCANNER_BUILDER.get("portable-scanner"), output, GT5RRef.ID, "scanner", "misc", new ItemStack(GT5RItems.PortableScanner),
+              of('E', EmitterHV, 'A', PLATE.getMaterialTag(Aluminium), 'S', SensorHV, 'C', CIRCUITS_ADVANCED, 'c', ComputerMonitor, 'B',  PropertyIngredient.builder("battery").itemStacks(BatteryMediumLithium).build()), "EAS", "CcC", "ABA");
       provider.addItemRecipe(output, "misc", ComputerMonitor,
               of('A', PLATE.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Glass), 'g', ForgeTags.DYES_GREEN, 'b', ForgeTags.DYES_BLUE, 'r', ForgeTags.DYES_RED, 'G', DUST.getMaterialTag(Glowstone)), "AgA", "rPb", "AGA");
   }
