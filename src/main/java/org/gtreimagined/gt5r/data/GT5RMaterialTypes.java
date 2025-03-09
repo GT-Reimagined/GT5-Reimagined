@@ -4,8 +4,7 @@ import muramasa.antimatter.AntimatterAPI;
 import muramasa.antimatter.Ref;
 import muramasa.antimatter.material.MaterialTypeItem;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.SCREW;
+import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
 
 public class GT5RMaterialTypes {
 
@@ -18,6 +17,7 @@ public class GT5RMaterialTypes {
     public static final MaterialTypeItem<?> CHAMBER = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("chamber", 2, true, Ref.U * 7));
 
     public static void init(){
+        ROD.dependents(ROD_LONG);
         BOULE.setIgnoreTextureSets();
         CHAMBER.setIgnoreTextureSets();
         TURBINE_BLADE.setLang(m -> m.getDisplayNameString() + " Turbine Blade").unSplitName().setIgnoreTextureSets();
