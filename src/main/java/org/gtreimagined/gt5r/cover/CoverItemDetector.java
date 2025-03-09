@@ -23,6 +23,9 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     boolean inverted = false;
     int outputRedstone = 0;
@@ -146,5 +149,12 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         return stack.getItem() == GT5RCovers.COVER_ITEM_FILTER.getItem().getItem();
+    }
+
+    @Override
+    public List<String> getInfo(boolean simple) {
+        List<String> info = new ArrayList<>();
+        info.add("Inverted: " + inverted);
+        return info;
     }
 }

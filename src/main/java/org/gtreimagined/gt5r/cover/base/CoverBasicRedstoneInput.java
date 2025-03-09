@@ -15,6 +15,9 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class CoverBasicRedstoneInput extends BaseCover {
     protected int redstonePower;
@@ -73,5 +76,12 @@ public class CoverBasicRedstoneInput extends BaseCover {
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         inverted = nbt.getBoolean("inverted");
+    }
+
+    @Override
+    public List<String> getInfo(boolean simple) {
+        List<String> info = new ArrayList<>();
+        info.add("Inverted: " + inverted);
+        return info;
     }
 }

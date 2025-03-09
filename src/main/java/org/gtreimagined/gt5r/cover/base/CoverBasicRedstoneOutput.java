@@ -17,6 +17,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoverBasicRedstoneOutput extends BaseCover {
     protected boolean inverted = false;
     int outputRedstone = 0;
@@ -67,5 +70,12 @@ public class CoverBasicRedstoneOutput extends BaseCover {
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         inverted = nbt.getBoolean("inverted");
+    }
+
+    @Override
+    public List<String> getInfo(boolean simple) {
+        List<String> info = new ArrayList<>();
+        info.add("Inverted: " + inverted);
+        return info;
     }
 }

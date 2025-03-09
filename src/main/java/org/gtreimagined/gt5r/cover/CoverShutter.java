@@ -17,6 +17,9 @@ import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     Mode mode = Mode.OPEN_REDSTONE;
     boolean isPowered = false;
@@ -115,6 +118,13 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;
         return getBasicModel();
+    }
+
+    @Override
+    public List<String> getInfo(boolean simple) {
+       List<String> info = new ArrayList<>();
+       info.add("Shutter Mode: " + mode);
+       return info;
     }
 
     enum Mode {
