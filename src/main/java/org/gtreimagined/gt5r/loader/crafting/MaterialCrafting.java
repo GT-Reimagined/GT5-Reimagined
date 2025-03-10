@@ -142,17 +142,6 @@ public class MaterialCrafting {
                 provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
             }
         });
-        /*//todo move to gt core
-        BLOCK.all().forEach(m -> {
-            if (m.has(INGOT) || m.has(GEM)){
-                MaterialTypeItem<?> input = m.has(GEM) ? GEM : INGOT;
-                String typeID = m.has(GEM) ? "gem" : "ingot";
-                int output = m.has(QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-                String[] strings = m.has(QUARTZ_LIKE_BLOCKS) ? new String[]{"II", "II"} : new String[]{"III", "III", "III"};
-                provider.addItemRecipe(consumer, GT5RRef.ID, m.getId() + "_block", "blocks", BLOCK.get().get(m).asItem(), of('I', input.getMaterialTag(m)), strings);
-                provider.shapeless(consumer, GT5RRef.ID, m.getId() + "_" + typeID, "blocks", input.get(m, output), BLOCK.getMaterialTag(m));
-            }
-        });*/
         RAW_ORE_BLOCK.all().forEach(m -> {
             if (m.has(RAW_ORE)){
                 provider.addItemRecipe(consumer, "blocks", RAW_ORE_BLOCK.get().get(m).asItem(), of('I', RAW_ORE.getMaterialTag(m)), "III", "III", "III");
