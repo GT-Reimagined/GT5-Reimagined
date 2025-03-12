@@ -59,18 +59,17 @@ public class CoverItemRetriever extends BaseCover {
     }
 
     @Override
-    public ItemStack getDroppedStack() {
-        ItemStack stack =  super.getDroppedStack();
-        stack.getOrCreateTag().putBoolean("whitelist", whitelist);
-        stack.getOrCreateTag().putBoolean("ignoreNBT", ignoreNBT);
-        return stack;
+    public CompoundTag serializeStack(CompoundTag tag) {
+        super.serializeStack(tag);
+        tag.putBoolean("whitelist", whitelist);
+        tag.putBoolean("ignoreNBT", ignoreNBT);
+        return tag;
     }
 
     @Override
-    public void addInfoFromStack(ItemStack stack) {
-        super.addInfoFromStack(stack);
-        if (stack.getTag() == null) return;
-        CompoundTag tag = stack.getTag();
+    public void deserializeStack(@Nullable CompoundTag tag) {
+        super.deserializeStack(tag);
+        if (tag == null) return;
         whitelist = tag.getBoolean("whitelist");
         ignoreNBT = tag.getBoolean("ignoreNBT");
     }

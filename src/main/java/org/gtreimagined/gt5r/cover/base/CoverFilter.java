@@ -28,19 +28,18 @@ public class CoverFilter extends BaseCover {
     }
 
     @Override
-    public ItemStack getDroppedStack() {
-        ItemStack stack =  super.getDroppedStack();
-        stack.getOrCreateTag().putBoolean("blacklist", blacklist);
-        stack.getOrCreateTag().putBoolean("ignoreNBT", ignoreNBT);
-        stack.getOrCreateTag().putByte("filterMode", filterMode);
-        return stack;
+    public CompoundTag serializeStack(CompoundTag tag) {
+        super.serializeStack(tag);
+        tag.putBoolean("blacklist", blacklist);
+        tag.putBoolean("ignoreNBT", ignoreNBT);
+        tag.putByte("filterMode", filterMode);
+        return tag;
     }
 
     @Override
-    public void addInfoFromStack(ItemStack stack) {
-        super.addInfoFromStack(stack);
-        if (stack.getTag() == null) return;
-        CompoundTag tag = stack.getTag();
+    public void deserializeStack(@Nullable CompoundTag tag) {
+        super.deserializeStack(tag);
+        if (tag == null) return;
         blacklist = tag.getBoolean("blacklist");
         ignoreNBT = tag.getBoolean("ignoreNBT");
         filterMode = tag.getByte("filterMode");

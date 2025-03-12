@@ -107,11 +107,6 @@ public class CoverFluidRegulator extends CoverBasicTransport {
     }
 
     @Override
-    public void addInfoFromStack(ItemStack stack) {
-        super.addInfoFromStack(stack);
-    }
-
-    @Override
     public void deserialize(CompoundTag nbt) {
         super.deserialize(nbt);
         fluidLimit = nbt.getInt("fluidLimit");
