@@ -176,7 +176,7 @@ public class Guis {
         SCANNER.add(FLUID_SOLIDIFIER).add(IT_IN, 125, 63);
         PRINTER.add(SCANNER);
         DISTILLERY.add(FLUID_CANNER);
-        BATH.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
+        BATH.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
         AUTOCLAVE.add(ALLOY_SMELTER).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63);
         ResourceLocation craft = new ResourceLocation(GT5RRef.ID, "crafting");
         AUTOCRAFTER.add(IT_IN, 17, 7, craft).add(IT_IN, 35, 7).add(IT_IN, 53, 7, craft)
