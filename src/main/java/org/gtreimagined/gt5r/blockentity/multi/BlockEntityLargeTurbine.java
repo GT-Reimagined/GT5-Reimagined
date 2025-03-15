@@ -145,6 +145,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         realOptFlow = tile.getMachineTier() == EV ? actualOptimalFlow : ((actualOptimalFlow / 2) / (0.5));
                         MachineFluidHandler<?> handler = fluidHandler.orElse(null);
                         if (handler == null) return 0;
+                        boolean empty = true;
                         for (int i = 0; i < handler.getInputTanks().getTanks() && remainingFlow > 0; i++) { // loop through each hatch; extract inputs and track totals.
                             FluidStack fluidHolder = handler.getInputTanks().getFluidInTank(i);
                             if (activeRecipe.getInputFluids().get(0).matches(fluidHolder)) {
@@ -155,8 +156,10 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                                 }
                                 remainingFlow -= flow; // track amount we're allowed to continue depleting from hatches
                                 totalFlow += flow; // track total input used
+                                empty = false;
                             }
                         }
+                        if (empty) return 0;
 
                         tEU = (int) (Math.min((float) actualOptimalFlow, totalFlow));
                         if (tile.getMachineTier() != EV){
