@@ -81,13 +81,12 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
             @Override
             protected boolean canRecipeContinue() {
                 boolean canContinue = super.canRecipeContinue();
-                if (fluidHandler.map(f -> f.drain(Oxygen.getGas(2), FluidAction.SIMULATE).getAmount() == 2).orElse(false)){
-                    FluidIngredient ingredient = activeRecipe.getInputFluids().get(0);
-                    ingredient = ingredient.copy(ingredient.getAmount() * 2);
-                    FluidIngredient finalIngredient = ingredient;
-                    canContinue = canContinue && (!activeRecipe.hasInputFluids() || tile.fluidHandler.map(t -> !t.consumeAndReturnInputs(Collections.singletonList(finalIngredient), true).isEmpty()).orElse(false));
-                }
-                return canContinue;
+                boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), FluidAction.SIMULATE).getAmount() == 2).orElse(false);
+                FluidIngredient ingredient = activeRecipe.getInputFluids().get(0);
+                int fuelConsumption = (int) (boostEU ? (4096 / activeRecipe.getPower()) : (2048 / activeRecipe.getPower()));
+                ingredient = ingredient.copy(fuelConsumption);
+                FluidIngredient finalIngredient = ingredient;
+                return canContinue && (!activeRecipe.hasInputFluids() || tile.fluidHandler.map(t -> !t.consumeAndReturnInputs(Collections.singletonList(finalIngredient), true).isEmpty()).orElse(false));
             }
 
             @Override
