@@ -668,6 +668,9 @@ public class MachineRecipes {
         if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)){
             provider.addItemRecipe(output, "mini_portals", MINIATURE_TWILIGHT_PORTAL.getItem(NONE), of('R', Items.GRASS_BLOCK, 'G', Items.WATER_BUCKET, 'E', ItemTags.SMALL_FLOWERS), "ERE", "RGR", "ERE");
         }
+        if (MINIATURE_JAMD_PORTAL != null) {
+            provider.addItemRecipe(output, "mini_portals", MINIATURE_JAMD_PORTAL.getItem(NONE), of('R', ROD_LONG.getMaterialTag(Obsidian), 'S',SAW.getTag(), 'B', Items.STONE_BRICKS), "BRB", "RSR", "BRB");
+        }
 
         var circuit = GT5RConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.LV),
