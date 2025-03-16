@@ -40,6 +40,7 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniEndPortal;
+import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniJAMDPortal;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniNetherPortal;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniTwilightPortal;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityAssemblyLine;
@@ -397,7 +398,8 @@ public class GT5RMachines {
         }
         return i == 0 ? 0x00FF00 : -1;
     }).itemColorHandler((stack, block, i) -> i == 0 ? 0x00FF00 : -1);
-
+    @Nullable
+    public static BasicMachine MINIATURE_JAMD_PORTAL = null;
     /**
      ** Creative Machines
      **/
@@ -421,6 +423,9 @@ public class GT5RMachines {
             l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList());
             l.add(AUTOCRAFTER_ASSEMBLY_LINE.getItem(HV));
         });
+        if (AntimatterAPI.isModLoaded("jamd")){
+            MINIATURE_JAMD_PORTAL = new MiniPortalMachine(GT5RRef.ID, "miniature_jamd_portal").baseTexture(new Texture("jamd","block/mine_portal_block")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniJAMDPortal::new);
+        }
     }
 
     private static int getBlockColorNuclear(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, @Nullable BlockEntityMachine<?> machine, int i) {
