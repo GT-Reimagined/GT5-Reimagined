@@ -566,6 +566,12 @@ public class MachineRecipes {
                             .put('C', Tags.Items.CHESTS_WOODEN)
                             .put('H', hull)
                             .put('L', TierMaps.TIER_WIRES.get(tier).getPipe().getType().getBlockItem(PipeSize.HUGE)).build(), "LCL", "LHL"));
+            add(FLUX_TRANSFORMER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('H', HULL.getItem(tier))
+                            .put('C', CABLE_GETTER.apply(PipeSize.VTINY, tier, false))
+                            .put('R', DUST.getMaterialTag(Redstone))
+                            .build(), " RR", "CH ", " RR"));
         });
         provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.ULV),
                 ImmutableMap.<Character, Object>builder()

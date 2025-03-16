@@ -78,6 +78,7 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityBath;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityBuffer;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCropHarvester;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityFluxTransformer;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityHighCapacityInputHatch;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityHighCapacityOutputHatch;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityHull;
@@ -270,6 +271,7 @@ public class GT5RMachines {
         tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
     });
     public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GT5RRef.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, EU).setTile(BlockEntityDigitalTransformer::new).noCovers().allowFrontIO();
+    public static BasicMachine FLUX_TRANSFORMER = new BasicMachine(GT5RRef.ID, "flux_transformer").setTiers(Tier.getAllElectric()).addFlags(EU, FE).setTile(BlockEntityFluxTransformer::new).noCovers().allowFrontIO().overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER);
     /**
      ** Generators
      **/
