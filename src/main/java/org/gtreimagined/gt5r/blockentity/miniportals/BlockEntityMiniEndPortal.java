@@ -3,6 +3,8 @@ package org.gtreimagined.gt5r.blockentity.miniportals;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,7 +27,7 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
 
     @Override
     protected void playActivationSound(Player player){
-
+        level.playSound(player, this.getBlockPos(), SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     @Override
