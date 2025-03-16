@@ -142,7 +142,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         long totalFlow = 0; // Byproducts are based on actual flow
                         int flow = 0;
                         int remainingFlow = (int) (actualOptimalFlow * 1.25f); // Allowed to use up to 125% of optimal flow.  Variable required outside of loop for multi-hatch scenarios.
-                        realOptFlow = tile.getMachineTier() == EV ? actualOptimalFlow : ((actualOptimalFlow / 2) / (0.5));
+                        realOptFlow = tile.getMachineTier() == HV ? ((actualOptimalFlow / 2) / (0.5)) : actualOptimalFlow;
                         MachineFluidHandler<?> handler = fluidHandler.orElse(null);
                         if (handler == null) return 0;
                         boolean empty = true;
