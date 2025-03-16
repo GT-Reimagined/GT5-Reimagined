@@ -10,6 +10,7 @@ import muramasa.antimatter.gui.widget.WidgetSupplier;
 import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
 import muramasa.antimatter.machine.MachineState;
 import muramasa.antimatter.machine.types.Machine;
+import muramasa.antimatter.recipe.IRecipe;
 import muramasa.antimatter.recipe.ingredient.FluidIngredient;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
@@ -71,8 +72,6 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
                         if (lubeTicker > 72) lubeTicker = 0;
                     }
                     return true;
-                } else if (!simulate){
-                    resetRecipe();
                 }
                 if (!simulate && startup > 0) startup = 0;
                 return false;
@@ -87,6 +86,17 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
                 ingredient = ingredient.copy(fuelConsumption);
                 FluidIngredient finalIngredient = ingredient;
                 return canContinue && (!activeRecipe.hasInputFluids() || tile.fluidHandler.map(t -> !t.consumeAndReturnInputs(Collections.singletonList(finalIngredient), true).isEmpty()).orElse(false));
+            }
+
+            @Override
+            protected boolean validateRecipe(IRecipe r) {
+                boolean canContinue = super.validateRecipe(r);
+                boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), FluidAction.SIMULATE).getAmount() == 2).orElse(false);
+                FluidIngredient ingredient = r.getInputFluids().get(0);
+                int fuelConsumption = (int) (boostEU ? (4096 / r.getPower()) : (2048 / r.getPower()));
+                ingredient = ingredient.copy(fuelConsumption);
+                FluidIngredient finalIngredient = ingredient;
+                return canContinue && (!r.hasInputFluids() || tile.fluidHandler.map(t -> !t.consumeAndReturnInputs(Collections.singletonList(finalIngredient), true).isEmpty()).orElse(false));
             }
 
             @Override
