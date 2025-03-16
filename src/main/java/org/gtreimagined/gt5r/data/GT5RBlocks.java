@@ -285,9 +285,9 @@ public class GT5RBlocks {
     public static final FluidPipe<?> FLUID_PIPE_CHROMIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Chromium, 2725, true).acidProof(true).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.StainlessSteel, 2428, true).acidProof(true).caps(1).pressures(getPressures(750)));
     public static final FluidPipe<?> FLUID_PIPE_NETHERRITE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, AntimatterMaterials.Netherite, 2807, true).acidProof(true).caps(1).pressures(getPressures(900)));
-    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Tungsten, 4618, true).acidProof(true).caps(1).pressures(getPressures(1050)));
+    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Tungsten, 4618, true).acidProof(true).caps(1).pressures(getPressures(1200)));
     public static final FluidPipe<?> FLUID_PIPE_TITANIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Titanium, 1668, true).caps(1).pressures(getPressures(900)));
-    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.TungstenSteel, 3587, true).caps(1).pressures(getPressures(1200)));
+    public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.TungstenSteel, 3587, true).caps(1).pressures(getPressures(1050)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_CARBIDE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.TungstenCarbide, 3837, true).caps(1).pressures(getPressures(1350)));
     public static final FluidPipe<?> FLUID_PIPE_VANADIUM_STEEL = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.VanadiumSteel, 2591, true).acidProof(true).pressures(getPressures(1200)));
     public static final FluidPipe<?> FLUID_PIPE_RUBBER = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Rubber, 350, true).caps(1).pressures(getPressures(300)));
