@@ -391,6 +391,19 @@ public class GT5RLocalizations {
             add("tooltip.pyrolyse_oven.10", "CuN: 50%, FeAlCr: 100%, Ni4Cr: 150%, Fe50CW: 200%, ect.");
             add("tooltip.pyrolyse_oven.11", "EU/t is not affected by Coil tier");
 
+            add("tooltip.tree_growth_simulator.0", "Controller Block for the Tree Growth Simulator");
+            add("tooltip.tree_growth_simulator.1", "Size(WxHxD):5x9x5");
+            add("tooltip.tree_growth_simulator.2", "Controller (Front middle at bottom)");
+            add("tooltip.tree_growth_simulator.3", "5x1x5 Base of Black Bronze Casings");
+            add("tooltip.tree_growth_simulator.4", "5x7x5 ring of Plastic Casings (hollow)");
+            add("tooltip.tree_growth_simulator.5", "5x1x5 Layer of Plastic Casings at Top layer");
+            add("tooltip.tree_growth_simulator.6", "3x1x3 centered layer of Dirt on top of the Black Bronze Casings");
+            add("tooltip.tree_growth_simulator.7", "1x Input Hatch for water (Any Black Bronze Casing)");
+            add("tooltip.tree_growth_simulator.8", "1x Input Bus (Any Black Bronze Casing)");
+            add("tooltip.tree_growth_simulator.9", "1x Output Bus (Any Plastic Casing)");
+            add("tooltip.tree_growth_simulator.10", "1x Energy Hatch (Any Plastic Casing)");
+            add("tooltip.tree_growth_simulator.11", "Grows trees using fertilizer and water");
+
             add("tooltip.vacuum_freezer.0", "Controller Block for the Vacuum Freezer");
             add("tooltip.vacuum_freezer.1", "Super cools hot ingots and gases like Nitrogen");
             add("tooltip.vacuum_freezer.2", "Size(WxHxD):3x3x3 (Hollow), Controller (Front centered)");

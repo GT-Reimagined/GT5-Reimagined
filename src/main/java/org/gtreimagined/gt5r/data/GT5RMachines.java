@@ -357,7 +357,7 @@ public class GT5RMachines {
     public static MultiMachine ORE_MINING_RIG = new MultiMachine(GT5RRef.ID, "ore_mining_rig").setTiers(EV).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityOreMiningRig::new).setTextureBlock(GT5RBlocks.SOLID_STEEL_CASING);
     public static MultiMachine PROCESSING_ARRAY = new MultiMachine(GT5RRef.ID, "processing_array").setTiers(EV).addFlags(GUI, ITEM, FLUID, EU, RECIPE).addStructureTooltip(8).setTile(BlockEntityProcessingArray::new).custom().setTextureBlock(GT5RBlocks.TUNGSTENSTEEL_CASING);
     public static MultiMachine PYROLYSE_OVEN = new MultiMachine(GT5RRef.ID, "pyrolyse_oven").setTiers(MV).setMap(RecipeMaps.PYROLYSE_OVEN).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(12).setTile(BlockEntityPyrolysisOven::new).custom().setTextureBlock(GT5RBlocks.CASING_ULV);
-    public static MultiMachine TREE_GROWTH_SIMULATOR = new MultiMachine(GT5RRef.ID, "tree_growth_simulator").setTiers(LV).setMap(RecipeMaps.TREE_GROWTH_SIMULATOR).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityTreeGrowthSimulator::new).setTextureBlock(GT5RBlocks.PLASTIC_CASING);
+    public static MultiMachine TREE_GROWTH_SIMULATOR = new MultiMachine(GT5RRef.ID, "tree_growth_simulator").setTiers(LV).setMap(RecipeMaps.TREE_GROWTH_SIMULATOR).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(12).setTile(BlockEntityTreeGrowthSimulator::new).setTextureBlock(GT5RBlocks.PLASTIC_CASING);
     public static MultiMachine VACUUM_FREEZER = new MultiMachine(GT5RRef.ID, "vacuum_freezer").setTiers(HV).setMap(RecipeMaps.VACUUM_FREEZER).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(7).setTile(BlockEntityVacuumFreezer::new).setTextureBlock(GT5RBlocks.FROST_PROOF_CASING);
     /**
      * Long distance pipelines
