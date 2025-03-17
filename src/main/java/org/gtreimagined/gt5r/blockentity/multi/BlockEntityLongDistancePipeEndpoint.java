@@ -26,6 +26,7 @@ import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.TesseractCapUtils;
+import tesseract.api.forge.TesseractCaps;
 import tesseract.api.gt.IEnergyHandler;
 
 public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMachine<BlockEntityLongDistancePipeEndpoint> {
@@ -40,7 +41,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                     if (tile.target == null) return 0;
                     if (!checkVoltage(voltage)) return 0;
                     if (tile.target.getNeighbor() == null) return 0;
-                    IEnergyHandler handler = TesseractCapUtils.INSTANCE.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing().getOpposite()).orElse(null);
+                    IEnergyHandler handler = tile.target.getNeighbor().getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
                     if (handler == null) return 0;
                     if (tile.successfulPositions == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
@@ -52,7 +53,7 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
                 public long availableAmpsInput(long voltage) {
                     if (tile.target == null) return 0;
                     if (tile.target.getNeighbor() == null) return 0;
-                    IEnergyHandler handler = TesseractCapUtils.INSTANCE.getEnergyHandler(tile.target.getNeighbor(), tile.target.getFacing().getOpposite()).orElse(null);
+                    IEnergyHandler handler = tile.target.getNeighbor().getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY, tile.target.getFacing().getOpposite()).resolve().orElse(null);
                     if (handler == null) return 0;
                     if (tile.successfulPositions == null) return 0;
                     int loss = Math.round(tile.successfulPositions.size() * 0.125f);
