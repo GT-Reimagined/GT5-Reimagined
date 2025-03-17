@@ -23,6 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
@@ -33,10 +34,12 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
+import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.machine.HopperMachine;
 
 import java.util.Arrays;
 
@@ -65,6 +68,7 @@ public class AssemblerLoader {
         coils();
         frames();
         misc();
+        hoppers();
         motors();
         pistons();
         pumps();
@@ -208,6 +212,14 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Tungsten, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(FALDuctTape).add("fal_duct_tape", 200, 16);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Graphite, 8), FOIL.getMaterialIngredient(Silicon, 1)).fi(Glue.getLiquid(250)).io(DUST_SMALL.get(Graphene)).add("graphene_dust", 480, 240);
+    }
+
+    private static void hoppers(){
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 5), of(Tags.Items.CHESTS_WOODEN)).io(Items.HOPPER).add("hopper", 800, 2);
+        AntimatterAPI.all(HopperMachine.class).forEach(hopper -> {
+            if (!hopper.getMaterial().has(PLATE)) return;
+            ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(hopper.getMaterial(), 5), Ingredient.of(Tags.Items.CHESTS_WOODEN)).io(hopper.getItem(NONE)).add(hopper.getId(), 800, 2);
+        });
     }
 
     private static void carpet(){
