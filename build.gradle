@@ -73,7 +73,6 @@ legacyForge {
 mixin {
     config "antimatter.mixins.json"
     config "antimatter.rei.mixins.json"
-    config "tesseract-forge.mixins.json"
 }
 
 dependencies {
