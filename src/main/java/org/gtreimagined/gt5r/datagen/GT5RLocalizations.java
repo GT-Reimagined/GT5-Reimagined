@@ -162,7 +162,7 @@ public class GT5RLocalizations {
             add("tooltip.bedrock_drill.5", "1x3x1 Titanium Casing Pillar (Center of second layer)");
             add("tooltip.bedrock_drill.6", "1x3x1 Titanium Frames (Each pillar side and on top)");
             add("tooltip.bedrock_drill.7", "1x Input Hatch for lubricant (Any second layer casing)");
-            add("tooltip.bedrock_drill.8", "1x MV+ Energy Hatch (Any second layer casing)");
+            add("tooltip.bedrock_drill.8", "1x EV+ Energy Hatch (Any second layer casing)");
             add("tooltip.bedrock_drill.9", "1x Output Bus (Any second layer casing)");
             add("tooltip.bedrock_drill.10", "Will not form unless there is at least one bedrock ore underneath the drill heads");
             add("tooltip.bedrock_drill.11", "Mines bedrock ores underneath the Bedrock Drill Heads");

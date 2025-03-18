@@ -53,8 +53,7 @@ import java.util.function.Function;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.FRAME;
-import static muramasa.antimatter.machine.Tier.HV;
-import static muramasa.antimatter.machine.Tier.LUV;
+import static muramasa.antimatter.machine.Tier.*;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
 import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatchMinTier;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
@@ -98,7 +97,7 @@ public class Structures {
         BEDROCK_DRILL.setStructure(BlockEntityBedrockDrill.class, b -> b.part("main")
                 .of("   ", " F ", "   ").of(0).of(0).of(" F ", "FCF", " F ").of(3).of(3).of("H~H", "HCH", "HHH").of("DDD", "DDD", "DDD").of("BBB", "BBB", "BBB").build()
                 .at('F', FRAME.get().get(Materials.Titanium).asBlock()).at('C', GT5RBlocks.TITANIUM_CASING)
-                .at('H', GT5RBlocks.TITANIUM_CASING, ENERGY_HATCH, OUTPUT_BUS, INPUT_HATCH)
+                .at('H', GT5RBlocks.TITANIUM_CASING, ofHatchMinTier(ENERGY_HATCH, EV), OUTPUT_BUS, INPUT_HATCH)
                 .at('D', GT5RBlocks.BEDROCK_DRILL_HEAD)
                 .atElement('B', StructureUtility.ofChain(StructureUtility.ofBlock(Blocks.BEDROCK), StructureUtility.onElementPass((e, c, w, x, y, z) -> {
                     c.setBedrockOresFound(c.getBedrockOresFound() + 1);
