@@ -100,6 +100,13 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
             }
 
             @Override
+            protected void recipeFailure() {
+                super.recipeFailure();
+                activeRecipe = null;
+                checkRecipe();
+            }
+
+            @Override
             public CompoundTag serialize() {
                 CompoundTag nbt = super.serialize();
                 nbt.putInt("startup", startup);
