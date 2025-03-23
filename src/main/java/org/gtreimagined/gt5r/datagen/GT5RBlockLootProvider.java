@@ -22,6 +22,7 @@ import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 
+import static muramasa.antimatter.data.AntimatterMaterialTypes.CRUSHED;
 import static muramasa.antimatter.data.AntimatterMaterialTypes.RAW_ORE;
 import static muramasa.antimatter.data.AntimatterMaterials.*;
 
@@ -45,20 +46,20 @@ public class GT5RBlockLootProvider extends AntimatterBlockLootProvider {
         this.add(GT5RBlocks.SOLID_SUPER_FUEL);
         this.add(GT5RBlocks.POWDER_BARREL);
         tables.put(GT5RBlocks.MINING_PIPE, b -> this.build(GT5RBlocks.MINING_PIPE_THIN));
-        tables.put(Blocks.LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
-        tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDrop(b, RAW_ORE.get(Lapis)));
-        tables.put(Blocks.REDSTONE_ORE, b -> createOreDrop(b, RAW_ORE.get(Redstone)));
-        tables.put(Blocks.DEEPSLATE_REDSTONE_ORE, b -> createOreDrop(b, RAW_ORE.get(Redstone)));
-        tables.put(Blocks.DIAMOND_ORE, b -> createOreDrop(b, RAW_ORE.get(Diamond)));
-        tables.put(Blocks.DEEPSLATE_DIAMOND_ORE, b -> createOreDrop(b, RAW_ORE.get(Diamond)));
-        tables.put(Blocks.EMERALD_ORE, b -> createOreDrop(b, RAW_ORE.get(Emerald)));
-        tables.put(Blocks.DEEPSLATE_EMERALD_ORE, b -> createOreDrop(b, RAW_ORE.get(Emerald)));
-        tables.put(Blocks.COPPER_ORE, b -> createOreDrop(b, RAW_ORE.get(Copper)));
-        tables.put(Blocks.DEEPSLATE_COPPER_ORE, b -> createOreDrop(b, RAW_ORE.get(Copper)));
-        tables.put(Blocks.COAL_ORE, b -> createOreDrop(b, RAW_ORE.get(Coal)));
-        tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDrop(b, RAW_ORE.get(Coal)));
+        tables.put(Blocks.LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 1));
+        tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 1));
+        tables.put(Blocks.REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 1));
+        tables.put(Blocks.DEEPSLATE_REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 1));
+        tables.put(Blocks.DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
+        tables.put(Blocks.DEEPSLATE_DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
+        tables.put(Blocks.EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED.get(Emerald), 1));
+        tables.put(Blocks.DEEPSLATE_EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED.get(Emerald), 1));
+        tables.put(Blocks.COPPER_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Copper), CRUSHED.get(Copper), 1));
+        tables.put(Blocks.DEEPSLATE_COPPER_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Copper), CRUSHED.get(Copper), 1));
+        tables.put(Blocks.COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED.get(Coal), 1));
+        tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED.get(Coal), 1));
         tables.put(GT5RBlocks.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
-        tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDrop(b, RAW_ORE.get(NetheriteScrap)));
+        tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDropWithHammer(b, RAW_ORE.get(NetheriteScrap), CRUSHED.get(NetheriteScrap), 1));
         tables.put(Blocks.ANDESITE, b -> createSingleItemTableWithSilkTouch(Blocks.ANDESITE, ((CobbleStoneType)AntimatterStoneTypes.ANDESITE).getBlock("cobble")));
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType)AntimatterStoneTypes.DIORITE).getBlock("cobble")));
         tables.put(Blocks.GRANITE, b -> createSingleItemTableWithSilkTouch(Blocks.GRANITE, ((CobbleStoneType)AntimatterStoneTypes.GRANITE).getBlock("cobble")));
@@ -68,7 +69,7 @@ public class GT5RBlockLootProvider extends AntimatterBlockLootProvider {
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("deepslate_quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
         }
         if (AntimatterAPI.isModLoaded("ad_astra")){
-            tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDrop(b, RAW_ORE.get(Diamond)));
+            tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
         }
     }
 }
