@@ -66,10 +66,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
                 drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (!display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/smelt1.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            }
-            if (display.ore.has(DUST) && display.ore.has(INGOT)){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/smelt2.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/smelt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
                 drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
@@ -85,9 +82,6 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.addAll(setupBaseMachineSlots(display, bounds));
         if (!display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
             widgets.addAll(setupPrimaryFurnaceSlot(display, bounds));
-        }
-        if (display.ore.has(INGOT)){
-            widgets.addAll(setupSecondaryFurnaceSlots(display, bounds));
         }
         if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
             widgets.addAll(setupChemMachineSlots(display, bounds));
@@ -119,30 +113,6 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             return List.of(Widgets.createSlot(xy(50, 4, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(dust, SMELTING_MULTI.getInt(display.ore))))).markOutput().disableBackground());
         }
         return List.of();
-    }
-
-    private List<Widget> setupSecondaryFurnaceSlots(OreProcessingDisplay display, Rectangle bounds){
-        List<Widget> widgets = new ArrayList<>();
-        if (display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
-            widgets.add(Widgets.createSlot(xy(122, 111, bounds)).entries(ofMachine(GT5RMachines.BLAST_FURNACE)).markOutput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(72, 146, bounds)).entries(ofMachine(GT5RMachines.BLAST_FURNACE)).markOutput().disableBackground());
-            if(display.ore.has(INGOT_HOT)){
-                widgets.add(Widgets.createSlot(xy(97, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT_HOT.get(display.ore),1)))).markOutput().disableBackground());
-            }else{
-                widgets.add(Widgets.createSlot(xy(97, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT.get(display.ore),1)))).markOutput().disableBackground());
-            }
-        }else{
-            widgets.add(Widgets.createSlot(xy(122, 111, bounds)).entries(
-                            EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.FURNACE)),
-                                    EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.BLAST_FURNACE))))
-                    .markInput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(72, 146, bounds)).entries(
-                            EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.FURNACE)),
-                                    EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(Items.BLAST_FURNACE))))
-                    .markInput().disableBackground());
-            widgets.add(Widgets.createSlot(xy(97, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(INGOT.get(display.ore),1)))).markOutput().disableBackground());
-        }
-        return widgets;
     }
 
     private List<Widget> setupBaseMachineSlots(OreProcessingDisplay display, Rectangle bounds){
