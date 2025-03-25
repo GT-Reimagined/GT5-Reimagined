@@ -147,8 +147,15 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(72, 81, bounds)).entries(ofMachine(GT5RMachines.MACERATOR)).markInput().disableBackground());
         widgets.add(Widgets.createSlot(xy(72, 102, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(72, 120, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct3),1)))).markOutput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(4, 128, bounds)).entries(ofMachine(GT5RMachines.ORE_WASHER, Items.CAULDRON)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(25, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(4, 106, bounds)).entries(EntryIngredients.ofIngredient(CRUSHED.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(4, 124, bounds)).entries(ofMachine(GT5RMachines.ORE_WASHER, Items.CAULDRON)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(4, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_PURIFIED.get(display.ore, 1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(25, 146, bounds)).entries(EntryIngredients.ofIngredient(DUST_IMPURE.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(43, 146, bounds)).entries(ofMachine(GT5RMachines.ORE_WASHER, Items.CAULDRON)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(65, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(85, 146, bounds)).entries(EntryIngredients.ofIngredient(DUST_PURE.getMaterialIngredient(display.ore, 1))).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(103, 146, bounds)).entries(ofMachine(GT5RMachines.ORE_WASHER, Items.CAULDRON)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(125, 146, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(display.ore, 1)))).markOutput().disableBackground());
         return widgets;
     }
 
