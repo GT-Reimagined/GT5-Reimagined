@@ -208,7 +208,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
 
     private EntryIngredient ofMachine(Machine<?> machine, Item... extra){
         List<EntryStack<?>> stacks = new ArrayList<>();
-        machine.getTiers().forEach(t -> stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(machine.getItem(t)))));
+        stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(machine.getItem(machine.getFirstTier()))));
         for (Item item : extra) {
             stacks.add(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(item)));
         }
