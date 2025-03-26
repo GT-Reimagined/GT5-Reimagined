@@ -26,14 +26,12 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.FORGE_HAMMER;
 
 public class ForgeHammerLoader {
     public static void init() {
-        AntimatterMaterialTypes.CRUSHED.all().forEach(m -> {
-            if (m != AntimatterMaterials.Gold && m != AntimatterMaterials.Iron && m != AntimatterMaterials.Diamond && m != AntimatterMaterials.Emerald && m != AntimatterMaterials.Lapis && m != AntimatterMaterials.Redstone) return;
-            int multiplier = 1;
-            RecipeIngredient ore = RecipeIngredient.of(TagUtils.getForgelikeItemTag("ores/" + m.getId()),1), crushed = AntimatterMaterialTypes.CRUSHED.getIngredient(m, 1);
-            ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(m,1);
+        CRUSHED.all().forEach(m -> {
+            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1), crushed = CRUSHED.getMaterialIngredient(m, 1);
+            ItemStack crushedStack = CRUSHED.get(m,1);
 
             if (m.has(AntimatterMaterialTypes.ORE)) {
-                FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m) * multiplier, crushedStack)).add(m.getId() + "_ore",16, 10);
+                FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_ore",16, 10);
             }
             FORGE_HAMMER.RB().ii(crushed).io(DUST_IMPURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.get(m,1))).io(DUST_PURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
@@ -41,7 +39,7 @@ public class ForgeHammerLoader {
                 FORGE_HAMMER.RB().ii(RecipeIngredient.of(CRUSHED_REFINED.get(m,1))).io(DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_centrifuged_ore",16, 10);
             }
             if (m.has(RAW_ORE)){
-                FORGE_HAMMER.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((ORE_MULTI.getInt(m) * multiplier), crushedStack)).add(m.getId() + "_raw_ore",16, 10);
+                FORGE_HAMMER.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_raw_ore",16, 10);
             }
         });
         ToLongFunction<Material> baseDuration = m -> {
