@@ -46,10 +46,12 @@ public class GT5RBlockLootProvider extends AntimatterBlockLootProvider {
         this.add(GT5RBlocks.SOLID_SUPER_FUEL);
         this.add(GT5RBlocks.POWDER_BARREL);
         tables.put(GT5RBlocks.MINING_PIPE, b -> this.build(GT5RBlocks.MINING_PIPE_THIN));
-        tables.put(Blocks.LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 1));
-        tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 1));
-        tables.put(Blocks.REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 1));
-        tables.put(Blocks.DEEPSLATE_REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 1));
+        tables.put(Blocks.IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED.get(Iron), 1));
+        tables.put(Blocks.DEEPSLATE_IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED.get(Iron), 1));
+        tables.put(Blocks.LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 6));
+        tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 6));
+        tables.put(Blocks.REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 5));
+        tables.put(Blocks.DEEPSLATE_REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 5));
         tables.put(Blocks.DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
         tables.put(Blocks.DEEPSLATE_DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
         tables.put(Blocks.EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED.get(Emerald), 1));
