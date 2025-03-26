@@ -193,16 +193,6 @@ public class WorldGenLoader {
         ev.stoneLayer(new WorldGenStoneLayerBuilder("tuff").withStone(TUFF).withWeight(1).inDimensions(overworld).buildVein());
         if (GT5RConfig.GT6_ORE_GEN.get()){
             ev.stoneLayer(new WorldGenStoneLayerBuilder("kimberlite_2").withStone(KIMBERLITE).withWeight(1).inDimensions(overworld).buildVein());
-            ev.stoneLayer(new WorldGenStoneLayerBuilder("stone_ores").withStone(STONE).withWeight(1).inDimensions(overworld).addOres(
-                    new StoneLayerOre(Emerald, U48, -16, 128).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
-                    new StoneLayerOre(Diamond, U128, -56, -40),
-                    new StoneLayerOre(Lapis, U48, -32, 32),
-                    new StoneLayerOre(Redstone, U32, -64, 15),
-                    new StoneLayerOre(Gold, U64, -64, 32),
-                    new StoneLayerOre(Gold, U32, 32, 64).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS),
-                    new StoneLayerOre(Copper, U16, -16, 112),
-                    new StoneLayerOre(Iron, U16, -24, 56)
-            ).buildVein()); //Ores
             /*ev.stoneLayer(new WorldGenStoneLayerBuilder("deepslate_ores").withStone(STONE).withWeight(1).addOres(
                     new StoneLayerOre(Emerald, U64, -32, 0).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
                     new StoneLayerOre(Diamond, U64, -64, -52).addFilteredBiome(BiomeTags.IS_JUNGLE),
