@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.gui.widgets;
 
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.widget.ProgressWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
+import org.gtreimagined.gtlib.gui.GuiInstance;
+import org.gtreimagined.gtlib.gui.IGuiElement;
+import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
 import net.minecraft.resources.ResourceLocation;
 
 public class AutocrafterProgressWidget extends ProgressWidget {

@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterLanguageProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreBlock;
 import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreItem;
 
-import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
+import static org.gtreimagined.gtlib.util.Utils.lowerUnderscoreToUpperSpaced;
 
 public class TFCLangProvider extends AntimatterLanguageProvider {
     public TFCLangProvider(String providerDomain, String providerName, String locale) {

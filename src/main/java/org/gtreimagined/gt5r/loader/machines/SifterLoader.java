@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.SIFTER;
 
 public class SifterLoader {

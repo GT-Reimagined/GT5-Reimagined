@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
@@ -14,8 +14,8 @@ import org.gtreimagined.gt5r.data.Materials;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.HAMMER;
-import static muramasa.antimatter.data.AntimatterDefaultTools.WRENCH;
+import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.HAMMER;
+import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.WRENCH;
 import static org.gtreimagined.gt5r.data.Materials.Bronze;
 
 public class SteamMachines {

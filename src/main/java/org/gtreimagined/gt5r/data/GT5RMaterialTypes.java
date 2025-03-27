@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
 
 public class GT5RMaterialTypes {
 

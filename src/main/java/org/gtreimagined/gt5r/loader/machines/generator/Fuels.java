@@ -1,19 +1,19 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.recipe.ingredient.FluidIngredient;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.EnderEye;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.EnderEye;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.SEMIFUELS;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;

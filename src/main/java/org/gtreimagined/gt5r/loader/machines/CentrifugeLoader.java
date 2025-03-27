@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.antimatter.util.RegistryUtils;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -14,11 +14,10 @@ import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtcore.data.GTCoreTags;
-import tesseract.TesseractGraphWrappers;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static net.minecraft.world.item.Items.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.*;
 import static org.gtreimagined.gt5r.data.Materials.*;

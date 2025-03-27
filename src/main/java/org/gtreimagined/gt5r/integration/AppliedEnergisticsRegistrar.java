@@ -1,17 +1,17 @@
 package org.gtreimagined.gt5r.integration;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterStoneTypes;
-import muramasa.antimatter.data.ForgeTags;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.event.MaterialEvent;
-import muramasa.antimatter.recipe.ingredient.FluidIngredient;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.util.RegistryUtils;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterStoneTypes;
+import org.gtreimagined.gtlib.data.ForgeTags;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.event.MaterialEvent;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -29,10 +29,10 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Ref.L;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 

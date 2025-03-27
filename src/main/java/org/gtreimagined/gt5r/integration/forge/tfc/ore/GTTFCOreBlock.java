@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.ore;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.minecraft.world.level.block.SoundType;

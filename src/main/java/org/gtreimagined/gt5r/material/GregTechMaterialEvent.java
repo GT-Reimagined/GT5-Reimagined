@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.material;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.event.MaterialEvent;
-import muramasa.antimatter.material.IMaterialTag;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.data.ToolData;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.event.MaterialEvent;
+import org.gtreimagined.gtlib.material.IMaterialTag;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.data.ToolData;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
-import static muramasa.antimatter.material.MaterialTags.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> {
     public GregTechMaterialEvent asSolid(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {

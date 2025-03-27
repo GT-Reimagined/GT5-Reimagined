@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.gui.container.ContainerBasicMachine;
-import muramasa.antimatter.gui.container.ContainerMachine;
-import muramasa.antimatter.gui.container.ContainerMultiMachine;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
+import org.gtreimagined.gtlib.gui.container.ContainerMachine;
+import org.gtreimagined.gtlib.gui.container.ContainerMultiMachine;
 import net.minecraft.client.gui.screens.MenuScreens;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.gui.ScreenCoalBoiler;

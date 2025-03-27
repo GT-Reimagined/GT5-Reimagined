@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.items;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.material.IMaterialObject;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.material.IMaterialObject;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;

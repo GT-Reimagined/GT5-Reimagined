@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.item.ItemBattery;
-import muramasa.antimatter.item.ItemFluidCell;
-import muramasa.antimatter.item.ItemMultiTextureBattery;
-import muramasa.antimatter.machine.Tier;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.item.ItemBattery;
+import org.gtreimagined.gtlib.item.ItemFluidCell;
+import org.gtreimagined.gtlib.item.ItemMultiTextureBattery;
+import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import org.gtreimagined.gt5r.GT5RRef;
@@ -19,7 +19,7 @@ import org.gtreimagined.gt5r.items.ItemNuclearFuelRod;
 import org.gtreimagined.gt5r.items.ItemPortableScanner;
 import org.gtreimagined.gt5r.items.ItemPrintedPages;
 import org.gtreimagined.gt5r.items.ItemSprayCan;
-import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtlib.material.Material;
 
 
 public class GT5RItems {
@@ -166,7 +166,7 @@ public class GT5RItems {
     public static ItemBasic<?> BatteryEnergyOrb = new ItemMultiTextureBattery(GT5RRef.ID, "lapotronic_energy_orb", Tier.IV, 100_000_000, true);
     public static ItemBasic<?> BatteryEnergyOrbCluster = new ItemMultiTextureBattery(GT5RRef.ID, "lapotronic_energy_orb_cluster", Tier.LUV, 1_000_000_000, true);
     /** Nuclear Rods **/
-    public static ItemComponentRod EmptyNuclearFuelRod = new ItemComponentRod(GT5RRef.ID, "empty_nuclear_fuel_rod", muramasa.antimatter.material.Material.NULL, 1);
+    public static ItemComponentRod EmptyNuclearFuelRod = new ItemComponentRod(GT5RRef.ID, "empty_nuclear_fuel_rod", Material.NULL, 1);
     public static ItemComponentRod NeutronAbsorberRod = new ItemComponentRod(GT5RRef.ID, "neutron_absorber_rod", Materials.CdInAGAlloy, 1);
     public static ItemComponentRod NeutronReflectorRod = new ItemComponentRod(GT5RRef.ID, "neutron_reflector_rod", Materials.Beryllium, 1);
     public static ItemComponentRod NeutronModeratorRod = new ItemComponentRod(GT5RRef.ID, "neutron_moderator_rod", Materials.Graphite, 3);

@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.datagen;
 
-import muramasa.antimatter.Data;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.machine.types.Machine;
+import org.gtreimagined.gtlib.Data;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -16,15 +16,15 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider.*;
-import static muramasa.antimatter.machine.Tier.BRONZE;
-import static muramasa.antimatter.machine.Tier.NONE;
-import static muramasa.antimatter.util.TagUtils.getForgelikeItemTag;
-import static muramasa.antimatter.util.Utils.hasItem;
-import static muramasa.antimatter.util.Utils.hasItems;
+import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.datagen.providers.AntimatterAdvancementProvider.*;
+import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
+import static org.gtreimagined.gtlib.machine.Tier.NONE;
+import static org.gtreimagined.gtlib.util.TagUtils.getForgelikeItemTag;
+import static org.gtreimagined.gtlib.util.Utils.hasItem;
+import static org.gtreimagined.gtlib.util.Utils.hasItems;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 

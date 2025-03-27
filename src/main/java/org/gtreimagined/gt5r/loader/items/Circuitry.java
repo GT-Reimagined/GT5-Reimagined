@@ -1,16 +1,16 @@
 package org.gtreimagined.gt5r.loader.items;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.data.ForgeTags;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.SubTag;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.ForgeTags;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.SubTag;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -30,12 +30,12 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.Ref.L;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.machine.Tier.LV;
-import static muramasa.antimatter.machine.Tier.MV;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.machine.Tier.LV;
+import static org.gtreimagined.gtlib.machine.Tier.MV;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrb;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrbCluster;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.SOLDER;

@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.datagen;
 
-import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterFluidTagProvider;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 

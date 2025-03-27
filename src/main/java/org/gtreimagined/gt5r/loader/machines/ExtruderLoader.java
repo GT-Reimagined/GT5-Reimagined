@@ -1,17 +1,16 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.FluidPipe;
-import muramasa.antimatter.pipe.types.HeatPipe;
-import muramasa.antimatter.pipe.types.ItemPipe;
-import muramasa.antimatter.pipe.types.PipeType;
-import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.FluidPipe;
+import org.gtreimagined.gtlib.pipe.types.HeatPipe;
+import org.gtreimagined.gtlib.pipe.types.ItemPipe;
+import org.gtreimagined.gtlib.pipe.types.PipeType;
+import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -24,11 +23,11 @@ import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
 import java.util.function.ToLongFunction;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Endstone;
-import static muramasa.antimatter.material.MaterialTags.RUBBERTOOLS;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Endstone;
+import static org.gtreimagined.gtlib.material.MaterialTags.RUBBERTOOLS;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.Glass;
 import static org.gtreimagined.gt5r.data.Materials.Obsidian;
 import static org.gtreimagined.gt5r.data.RecipeMaps.EXTRUDER;

@@ -1,20 +1,20 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.material.MaterialTypeItem;
-import muramasa.antimatter.ore.CobbleStoneType;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.level.block.Blocks;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 
-import static muramasa.antimatter.Ref.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Lava;
-import static muramasa.antimatter.material.MaterialTags.MOLTEN;
+import static org.gtreimagined.gtlib.Ref.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Lava;
+import static org.gtreimagined.gtlib.material.MaterialTags.MOLTEN;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.SMELTER;
 

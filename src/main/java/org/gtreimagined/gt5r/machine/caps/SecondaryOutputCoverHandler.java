@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.machine.caps;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.machine.MachineCoverHandler;
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.cover.ICover;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineCoverHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.cover.ICover;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;

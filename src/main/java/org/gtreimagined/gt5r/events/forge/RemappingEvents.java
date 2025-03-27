@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.events.forge;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterRemapping;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.fluid.AntimatterFluid;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.ore.BlockOre;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterRemapping;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.fluid.AntimatterFluid;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.ore.BlockOre;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -41,7 +41,7 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.stream.Stream;
 
-import static muramasa.antimatter.material.Material.NULL;
+import static org.gtreimagined.gtlib.material.Material.NULL;
 
 public class RemappingEvents {
     UUID bearUUID = UUID.fromString("1964e3d1-6500-40e7-9ff2-e6161d41a8c2");

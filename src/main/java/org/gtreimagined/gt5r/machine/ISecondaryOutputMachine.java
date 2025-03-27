@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.machine;
 
-import muramasa.antimatter.cover.CoverFactory;
+import org.gtreimagined.gtlib.cover.CoverFactory;
 
 public interface ISecondaryOutputMachine {
     CoverFactory getSecondaryOutputCover();

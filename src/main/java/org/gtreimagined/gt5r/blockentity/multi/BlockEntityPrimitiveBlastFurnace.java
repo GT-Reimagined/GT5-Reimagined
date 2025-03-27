@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import muramasa.antimatter.blockentity.multi.BlockEntityBasicMultiMachine;
-import muramasa.antimatter.capability.machine.CookingRecipeHandler;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.util.int3;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
+import org.gtreimagined.gtlib.capability.machine.CookingRecipeHandler;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.util.int3;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;

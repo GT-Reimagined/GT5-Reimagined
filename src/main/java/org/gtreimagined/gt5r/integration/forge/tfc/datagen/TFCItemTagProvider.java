@@ -1,18 +1,18 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemTagProvider;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.material.data.ToolData;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterItemTagProvider;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.data.ToolData;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 
-import static muramasa.antimatter.data.AntimatterDefaultTools.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Copper;
+import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Copper;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class TFCItemTagProvider extends AntimatterItemTagProvider {

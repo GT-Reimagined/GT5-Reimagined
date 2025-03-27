@@ -1,16 +1,16 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.ICanSyncData;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.widget.InfoRenderWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.machine.types.Machine;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.gui.GuiInstance;
+import org.gtreimagined.gtlib.gui.ICanSyncData;
+import org.gtreimagined.gtlib.gui.IGuiElement;
+import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.integration.jeirei.renderer.IInfoRenderer;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;

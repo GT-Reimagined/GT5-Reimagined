@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.items;
 
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

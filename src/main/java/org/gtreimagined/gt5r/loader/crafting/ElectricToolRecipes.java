@@ -1,14 +1,13 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.ForgeTags;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
-import muramasa.antimatter.tool.IAntimatterTool;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
+import org.gtreimagined.gtlib.tool.IAntimatterTool;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
@@ -26,11 +25,11 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.data.AntimatterDefaultTools.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
-import static muramasa.antimatter.material.MaterialTags.TOOLS;
+import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Diamond;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Wood;
+import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 import static org.gtreimagined.gtcore.data.GTCoreTools.*;

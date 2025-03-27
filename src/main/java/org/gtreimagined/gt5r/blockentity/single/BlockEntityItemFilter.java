@@ -1,18 +1,18 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.capability.IFilterableHandler;
-import muramasa.antimatter.capability.machine.MachineEnergyHandler;
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.gui.event.GuiEvents;
-import muramasa.antimatter.gui.event.IGuiEvent;
-import muramasa.antimatter.machine.event.IMachineEvent;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.capability.IFilterableHandler;
+import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
+import org.gtreimagined.gtlib.gui.GuiInstance;
+import org.gtreimagined.gtlib.gui.IGuiElement;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.event.GuiEvents;
+import org.gtreimagined.gtlib.gui.event.IGuiEvent;
+import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -36,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-import static muramasa.antimatter.machine.MachineFlag.EU;
+import static org.gtreimagined.gtlib.machine.MachineFlag.EU;
 
 public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityItemFilter> implements IFilterableHandler {
     boolean blacklist = false;

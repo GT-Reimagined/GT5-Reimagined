@@ -2,14 +2,14 @@ package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.pipe.types.Cable;
-import muramasa.antimatter.pipe.types.Wire;
-import muramasa.antimatter.util.RegistryUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.Cable;
+import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,8 +20,8 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
-import static muramasa.antimatter.pipe.PipeSize.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.PLATE;
+import static org.gtreimagined.gtlib.pipe.PipeSize.*;
 import static org.gtreimagined.gt5r.data.Materials.Rubber;
 
 public class WireCablesPlates {

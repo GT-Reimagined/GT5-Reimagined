@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;

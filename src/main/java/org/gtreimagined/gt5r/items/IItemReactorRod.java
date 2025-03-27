@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.items;
 
-import muramasa.antimatter.registration.IColorHandler;
+import org.gtreimagined.gtlib.registration.IColorHandler;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 

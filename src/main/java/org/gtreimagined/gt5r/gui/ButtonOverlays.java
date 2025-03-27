@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.gui;
 
 
-import muramasa.antimatter.gui.ButtonOverlay;
+import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gt5r.GT5RRef;
 
 public class ButtonOverlays {

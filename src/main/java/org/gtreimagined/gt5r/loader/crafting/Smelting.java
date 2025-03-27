@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
-import muramasa.antimatter.datagen.loaders.MaterialRecipes;
-import muramasa.antimatter.datagen.providers.AntimatterRecipeProvider;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.datagen.loaders.MaterialRecipes;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.world.item.Items;
@@ -14,7 +14,7 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class Smelting {

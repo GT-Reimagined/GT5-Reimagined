@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.structure.PatternBuilder;
+import org.gtreimagined.gtlib.structure.PatternBuilder;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Blocks;
 

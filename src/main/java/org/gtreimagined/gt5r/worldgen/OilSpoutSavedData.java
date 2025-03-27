@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.worldgen;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import muramasa.antimatter.util.XSTR;
+import org.gtreimagined.gtlib.util.XSTR;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;

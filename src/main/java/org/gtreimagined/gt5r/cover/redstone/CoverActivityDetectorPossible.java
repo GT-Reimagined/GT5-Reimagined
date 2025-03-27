@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.cover.redstone;
 
-import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.machine.Tier;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.core.Direction;
 import org.gtreimagined.gt5r.cover.base.CoverBasicRedstoneOutput;
 import org.jetbrains.annotations.NotNull;

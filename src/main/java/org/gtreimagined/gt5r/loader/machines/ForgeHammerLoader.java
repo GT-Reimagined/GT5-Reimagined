@@ -1,15 +1,13 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.ore.CobbleStoneType;
-import muramasa.antimatter.ore.StoneType;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.TagUtils;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.ore.StoneType;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
@@ -17,9 +15,9 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
 import java.util.function.ToLongFunction;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.material.MaterialTags.MACERATE_INTO;
-import static muramasa.antimatter.material.MaterialTags.ORE_MULTI;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.MACERATE_INTO;
+import static org.gtreimagined.gtlib.material.MaterialTags.ORE_MULTI;
 import static org.gtreimagined.gt5r.data.Materials.Brick;
 import static org.gtreimagined.gt5r.data.Materials.Glass;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FORGE_HAMMER;

@@ -1,24 +1,24 @@
 package org.gtreimagined.gt5r.integration;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.event.MaterialEvent;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.TextureSet;
-import muramasa.antimatter.ore.StoneType;
-import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.RegistryUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.event.MaterialEvent;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.TextureSet;
+import org.gtreimagined.gtlib.ore.StoneType;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.GT5RRef;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
-import static muramasa.antimatter.data.AntimatterMaterials.Iron;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Diamond;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Iron;
 
 public class SpaceModRegistrar extends AntimatterMod {
     public static SpaceModRegistrar INSTANCE;

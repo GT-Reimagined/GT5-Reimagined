@@ -1,24 +1,24 @@
 package org.gtreimagined.gt5r.machine;
 
-import muramasa.antimatter.Data;
-import muramasa.antimatter.gui.SlotData;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.gui.screen.AntimatterContainerScreen;
-import muramasa.antimatter.gui.slot.ISlotProvider;
-import muramasa.antimatter.gui.widget.MachineStateWidget;
-import muramasa.antimatter.gui.widget.ProgressWidget;
-import muramasa.antimatter.gui.widget.TextWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.machine.types.Machine;
+import org.gtreimagined.gtlib.Data;
+import org.gtreimagined.gtlib.gui.SlotData;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.screen.AntimatterContainerScreen;
+import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
+import org.gtreimagined.gtlib.gui.widget.MachineStateWidget;
+import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
+import org.gtreimagined.gtlib.gui.widget.TextWidget;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamMachine;
 
 import java.util.List;
 
-import static muramasa.antimatter.machine.MachineFlag.*;
-import static muramasa.antimatter.machine.Tier.BRONZE;
-import static muramasa.antimatter.machine.Tier.STEEL;
+import static org.gtreimagined.gtlib.machine.MachineFlag.*;
+import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
+import static org.gtreimagined.gtlib.machine.Tier.STEEL;
 
 public class SteamMachine extends Machine<SteamMachine> {
 

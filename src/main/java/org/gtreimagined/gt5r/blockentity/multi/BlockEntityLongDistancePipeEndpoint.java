@@ -2,13 +2,13 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
-import muramasa.antimatter.blockentity.multi.BlockEntityBasicMultiMachine;
-import muramasa.antimatter.capability.machine.MachineEnergyHandler;
-import muramasa.antimatter.client.scene.TrackedDummyWorld;
-import muramasa.antimatter.machine.MachineFlag;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.structure.StructureCache;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
+import org.gtreimagined.gtlib.client.scene.TrackedDummyWorld;
+import org.gtreimagined.gtlib.machine.MachineFlag;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.structure.StructureCache;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
@@ -25,7 +25,6 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.TesseractCapUtils;
 import tesseract.api.forge.TesseractCaps;
 import tesseract.api.gt.IEnergyHandler;
 

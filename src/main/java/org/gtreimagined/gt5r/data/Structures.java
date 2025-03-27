@@ -2,10 +2,10 @@ package org.gtreimagined.gt5r.data;
 
 import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.structure.FakeTileElement;
-import muramasa.antimatter.util.TagUtils;
-import muramasa.antimatter.util.int3;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.structure.FakeTileElement;
+import org.gtreimagined.gtlib.util.TagUtils;
+import org.gtreimagined.gtlib.util.int3;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.ItemStack;
@@ -51,11 +51,11 @@ import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.BLOCK;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.FRAME;
-import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatch;
-import static muramasa.antimatter.structure.AntimatterStructureUtility.ofHatchMinTier;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.BLOCK;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.FRAME;
+import static org.gtreimagined.gtlib.machine.Tier.*;
+import static org.gtreimagined.gtlib.structure.AntimatterStructureUtility.ofHatch;
+import static org.gtreimagined.gtlib.structure.AntimatterStructureUtility.ofHatchMinTier;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
 public class Structures {

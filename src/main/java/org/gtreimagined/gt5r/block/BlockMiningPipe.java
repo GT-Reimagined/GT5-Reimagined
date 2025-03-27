@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.block;
 
-import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.registration.IColorHandler;
-import muramasa.antimatter.registration.IItemBlockProvider;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
+import org.gtreimagined.gtlib.registration.IColorHandler;
+import org.gtreimagined.gtlib.registration.IItemBlockProvider;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

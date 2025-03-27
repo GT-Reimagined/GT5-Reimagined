@@ -2,15 +2,15 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.capability.machine.MultiMachineEnergyHandler;
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.widget.InfoRenderWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.integration.jeirei.renderer.IInfoRenderer;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.capability.machine.MultiMachineEnergyHandler;
+import org.gtreimagined.gtlib.gui.GuiInstance;
+import org.gtreimagined.gtlib.gui.IGuiElement;
+import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.integration.jeirei.renderer.IInfoRenderer;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -29,12 +29,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.worldgen.PlayerPlacedBlockSavedData;
-import tesseract.TesseractGraphWrappers;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
+import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gt5r.blockentity.multi.BlockEntityDrillingRigBase.MineResult.*;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.MINING_PIPE;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.MINING_PIPE_THIN;

@@ -1,18 +1,17 @@
 package org.gtreimagined.gt5r.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.gui.container.ContainerMachine;
-import muramasa.antimatter.gui.screen.ScreenMachine;
-import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
-import muramasa.antimatter.machine.MachineFlag;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.gui.container.ContainerMachine;
+import org.gtreimagined.gtlib.gui.screen.ScreenMachine;
+import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
+import org.gtreimagined.gtlib.machine.MachineFlag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
-import tesseract.TesseractGraphWrappers;
 
 public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>> extends ScreenMachine<BlockEntityCoalBoiler, T> {
     public ScreenCoalBoiler(T container, Inventory inv, Component name) {

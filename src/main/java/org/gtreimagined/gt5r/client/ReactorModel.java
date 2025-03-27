@@ -2,8 +2,8 @@ package org.gtreimagined.gt5r.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
-import muramasa.antimatter.client.model.MachineModel;
-import muramasa.antimatter.machine.MachineState;
+import org.gtreimagined.gtlib.client.model.MachineModel;
+import org.gtreimagined.gtlib.machine.MachineState;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;

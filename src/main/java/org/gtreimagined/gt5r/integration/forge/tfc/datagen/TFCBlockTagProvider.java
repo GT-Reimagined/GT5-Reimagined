@@ -1,14 +1,14 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
-import muramasa.antimatter.ore.StoneType;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.ore.StoneType;
 import net.dries007.tfc.common.TFCTags;
 import net.minecraft.world.level.block.Block;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE_SMALL;
-import static muramasa.antimatter.data.AntimatterStoneTypes.BEDROCK;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE_SMALL;
+import static org.gtreimagined.gtlib.data.AntimatterStoneTypes.BEDROCK;
 
 public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
     public TFCBlockTagProvider(String providerDomain, String providerName, boolean replace) {

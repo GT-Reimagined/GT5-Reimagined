@@ -3,10 +3,10 @@ package org.gtreimagined.gt5r.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.datagen.AntimatterDynamics;
-import muramasa.antimatter.util.RegistryUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import org.gtreimagined.gt5r.GT5RRef;
@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.ORE;
-import static muramasa.antimatter.data.AntimatterStoneTypes.STONE;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE;
+import static org.gtreimagined.gtlib.data.AntimatterStoneTypes.STONE;
 import static org.gtreimagined.gtcore.data.GTCoreMaterials.*;
 
 public class GT5RTwilightStalctites {

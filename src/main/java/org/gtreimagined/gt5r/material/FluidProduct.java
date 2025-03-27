@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.material;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.material.Material;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
 import net.minecraftforge.fluids.FluidStack;
 
 public record FluidProduct(Material mat, int amount){

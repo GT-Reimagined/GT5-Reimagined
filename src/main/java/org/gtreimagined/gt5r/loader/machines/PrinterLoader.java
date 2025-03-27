@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.recipe.ingredient.FluidIngredient;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
@@ -10,7 +10,7 @@ import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static muramasa.antimatter.Ref.L;
+import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gt5r.data.Materials.SquidInk;
 
 public class PrinterLoader {

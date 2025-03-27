@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.texture.IOverlayModeler;
-import muramasa.antimatter.texture.IOverlayTexturer;
-import muramasa.antimatter.texture.ITextureHandler;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.texture.IOverlayModeler;
+import org.gtreimagined.gtlib.texture.IOverlayTexturer;
+import org.gtreimagined.gtlib.texture.ITextureHandler;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5RRef;

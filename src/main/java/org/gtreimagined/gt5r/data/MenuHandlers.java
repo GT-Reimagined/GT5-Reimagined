@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.IGuiHandler;
-import muramasa.antimatter.gui.MenuHandlerMachine;
-import muramasa.antimatter.gui.container.ContainerMultiMachine;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.capability.IGuiHandler;
+import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
+import org.gtreimagined.gtlib.gui.container.ContainerMultiMachine;
 import net.minecraft.world.entity.player.Inventory;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityFusionReactor;

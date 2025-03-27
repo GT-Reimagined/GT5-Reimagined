@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.blockentity;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.gui.SlotType;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.gui.SlotType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;

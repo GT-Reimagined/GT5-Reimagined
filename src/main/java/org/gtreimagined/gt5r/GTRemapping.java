@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterRemapping;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.cover.CoverFactory;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterRemapping;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.cover.CoverFactory;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtcore.GTCore;
 

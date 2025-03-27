@@ -1,18 +1,17 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.machine.MachineRecipeHandler;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.gui.widget.InfoRenderWidget;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.event.IMachineEvent;
-import muramasa.antimatter.machine.event.MachineEvent;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.registration.ITextureProvider;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.machine.event.MachineEvent;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +26,7 @@ import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.item.ItemSelectorTag;
 
-import static muramasa.antimatter.machine.Tier.*;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 import static org.gtreimagined.gt5r.data.Materials.Steam;
 

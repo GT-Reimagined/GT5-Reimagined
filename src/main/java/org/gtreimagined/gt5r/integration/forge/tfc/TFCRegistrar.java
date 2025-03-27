@@ -1,27 +1,27 @@
 package org.gtreimagined.gt5r.integration.forge.tfc;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.datagen.AntimatterDynamics;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
-import muramasa.antimatter.datagen.providers.AntimatterFluidTagProvider;
-import muramasa.antimatter.event.AntimatterLoaderEvent;
-import muramasa.antimatter.event.AntimatterProvidersEvent;
-import muramasa.antimatter.fluid.AntimatterFluid;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTypeFluid;
-import muramasa.antimatter.material.TextureSet;
-import muramasa.antimatter.ore.StoneType;
-import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
-import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.tool.behaviour.BehaviourBlockTilling;
-import muramasa.antimatter.tool.behaviour.BehaviourLogStripping;
-import muramasa.antimatter.tool.behaviour.BehaviourVanillaShovel;
-import muramasa.antimatter.util.RegistryUtils;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterFluidTagProvider;
+import org.gtreimagined.gtlib.event.AntimatterLoaderEvent;
+import org.gtreimagined.gtlib.event.AntimatterProvidersEvent;
+import org.gtreimagined.gtlib.fluid.AntimatterFluid;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTypeFluid;
+import org.gtreimagined.gtlib.material.TextureSet;
+import org.gtreimagined.gtlib.ore.StoneType;
+import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.tool.behaviour.BehaviourBlockTilling;
+import org.gtreimagined.gtlib.tool.behaviour.BehaviourLogStripping;
+import org.gtreimagined.gtlib.tool.behaviour.BehaviourVanillaShovel;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.common.blocks.soil.SoilBlockType;
@@ -42,7 +42,7 @@ import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCLangProvider;
 
 import java.util.function.BiConsumer;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 import static org.gtreimagined.gt5r.data.Materials.*;
 

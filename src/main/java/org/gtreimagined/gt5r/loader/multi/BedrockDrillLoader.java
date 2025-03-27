@@ -1,22 +1,21 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.data.AntimatterStoneTypes;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.AntimatterStoneTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.BEDROCK_DRILL;
 

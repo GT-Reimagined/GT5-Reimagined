@@ -1,12 +1,12 @@
 package org.gtreimagined.gt5r.cover.redstone;
 
-import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;

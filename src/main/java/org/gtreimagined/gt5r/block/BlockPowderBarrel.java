@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.block;
 
-import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.blockentity.miniportals;
 
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.GEM;
 
 public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
     public static List<BlockEntityMiniPortal> sListTwilightSide = new ArrayList<>();

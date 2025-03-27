@@ -1,23 +1,23 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.IGuiHandler;
-import muramasa.antimatter.cover.CoverOutput;
-import muramasa.antimatter.gui.BarDir;
-import muramasa.antimatter.gui.ButtonOverlay;
-import muramasa.antimatter.gui.GuiData;
-import muramasa.antimatter.gui.MenuHandlerMachine;
-import muramasa.antimatter.gui.container.ContainerBasicMachine;
-import muramasa.antimatter.gui.container.ContainerMachine;
-import muramasa.antimatter.gui.slot.ISlotProvider;
-import muramasa.antimatter.gui.widget.IOWidget;
-import muramasa.antimatter.gui.widget.IconWidget;
-import muramasa.antimatter.gui.widget.MachineStateWidget;
-import muramasa.antimatter.gui.widget.ProgressWidget;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.machine.Tier;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.capability.IGuiHandler;
+import org.gtreimagined.gtlib.cover.CoverOutput;
+import org.gtreimagined.gtlib.gui.BarDir;
+import org.gtreimagined.gtlib.gui.ButtonOverlay;
+import org.gtreimagined.gtlib.gui.GuiData;
+import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
+import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
+import org.gtreimagined.gtlib.gui.container.ContainerMachine;
+import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
+import org.gtreimagined.gtlib.gui.widget.IOWidget;
+import org.gtreimagined.gtlib.gui.widget.IconWidget;
+import org.gtreimagined.gtlib.gui.widget.MachineStateWidget;
+import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,9 +30,9 @@ import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
 import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
 
-import static muramasa.antimatter.gui.SlotType.*;
-import static muramasa.antimatter.gui.Widget.builder;
-import static muramasa.antimatter.machine.Tier.*;
+import static org.gtreimagined.gtlib.gui.SlotType.*;
+import static org.gtreimagined.gtlib.gui.Widget.builder;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
 public class Guis {

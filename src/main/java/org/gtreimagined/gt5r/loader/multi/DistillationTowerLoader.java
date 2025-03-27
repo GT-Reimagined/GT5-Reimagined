@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
@@ -10,8 +10,8 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST_SMALL;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;

@@ -1,14 +1,13 @@
 package org.gtreimagined.gt5r.cover.base;
 
-import muramasa.antimatter.capability.CoverHandler;
-import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.cover.BaseCover;
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.capability.CoverHandler;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.cover.BaseCover;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

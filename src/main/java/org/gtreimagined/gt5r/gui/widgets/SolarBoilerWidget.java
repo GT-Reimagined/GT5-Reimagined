@@ -1,20 +1,20 @@
 package org.gtreimagined.gt5r.gui.widgets;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import muramasa.antimatter.gui.GuiInstance;
-import muramasa.antimatter.gui.IGuiElement;
-import muramasa.antimatter.gui.Widget;
-import muramasa.antimatter.gui.container.ContainerMachine;
-import muramasa.antimatter.gui.widget.WidgetSupplier;
-import muramasa.antimatter.mixin.client.AbstractContainerScreenAccessor;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.gui.GuiInstance;
+import org.gtreimagined.gtlib.gui.IGuiElement;
+import org.gtreimagined.gtlib.gui.Widget;
+import org.gtreimagined.gtlib.gui.container.ContainerMachine;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.mixin.client.AbstractContainerScreenAccessor;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySolarBoiler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import static muramasa.antimatter.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
+import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 
 public class SolarBoilerWidget extends Widget {
     private int heat = 0, maxHeat = 0;

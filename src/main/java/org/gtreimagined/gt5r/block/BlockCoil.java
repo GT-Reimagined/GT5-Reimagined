@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.block;
 
-import muramasa.antimatter.block.BlockBasic;
-import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

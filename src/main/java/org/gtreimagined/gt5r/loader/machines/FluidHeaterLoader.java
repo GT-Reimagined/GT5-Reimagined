@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_HEATER;

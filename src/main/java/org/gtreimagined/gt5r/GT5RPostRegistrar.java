@@ -1,10 +1,8 @@
 package org.gtreimagined.gt5r;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.event.MaterialEvent;
-import muramasa.antimatter.registration.IAntimatterRegistrar;
-import muramasa.antimatter.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.event.MaterialEvent;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.data.GT5RMaterialEvents;
 import org.gtreimagined.gt5r.material.GregTechMaterialEvent;

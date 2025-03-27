@@ -1,15 +1,15 @@
 package org.gtreimagined.gt5r.items;
 
 import lombok.Getter;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.material.IMaterialObject;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.CodeUtils;
-import muramasa.antimatter.util.FluidUtils;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.material.IMaterialObject;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.CodeUtils;
+import org.gtreimagined.gtlib.util.FluidUtils;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

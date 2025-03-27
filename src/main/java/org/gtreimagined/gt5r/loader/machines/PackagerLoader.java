@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.material.Material;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.CHUNK;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.CHUNK;
 import static org.gtreimagined.gt5r.data.RecipeMaps.PACKAGER;
 
 public class PackagerLoader {

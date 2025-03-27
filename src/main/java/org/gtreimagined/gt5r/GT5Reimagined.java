@@ -2,27 +2,27 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.AntimatterConfig;
-import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.common.event.PlayerTickCallback;
-import muramasa.antimatter.datagen.AntimatterDynamics;
-import muramasa.antimatter.datagen.providers.AntimatterAdvancementProvider;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
-import muramasa.antimatter.datagen.providers.AntimatterItemModelProvider;
-import muramasa.antimatter.event.AntimatterCraftingEvent;
-import muramasa.antimatter.event.AntimatterLoaderEvent;
-import muramasa.antimatter.event.AntimatterProvidersEvent;
-import muramasa.antimatter.event.AntimatterWorldGenEvent;
-import muramasa.antimatter.integration.jeirei.AntimatterJEIREIPlugin;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.mixin.LivingEntityAccessor;
-import muramasa.antimatter.recipe.loader.IRecipeRegistrate;
-import muramasa.antimatter.registration.RegistrationEvent;
-import muramasa.antimatter.tool.IAntimatterTool;
-import muramasa.antimatter.worldgen.IAntimatterWorldgenFunction;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterConfig;
+import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.common.event.PlayerTickCallback;
+import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterAdvancementProvider;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterItemModelProvider;
+import org.gtreimagined.gtlib.event.AntimatterCraftingEvent;
+import org.gtreimagined.gtlib.event.AntimatterLoaderEvent;
+import org.gtreimagined.gtlib.event.AntimatterProvidersEvent;
+import org.gtreimagined.gtlib.event.AntimatterWorldGenEvent;
+import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
+import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.tool.IAntimatterTool;
+import org.gtreimagined.gtlib.worldgen.IAntimatterWorldgenFunction;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -145,14 +145,13 @@ import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
 import org.gtreimagined.gt5r.proxy.ClientHandler;
 import org.gtreimagined.gt5r.proxy.CommonHandler;
 import org.gtreimagined.gtcore.GTCore;
-import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.PLATE;
-import static muramasa.antimatter.machine.Tier.IV;
-import static muramasa.antimatter.worldgen.AntimatterWorldGenerator.removeDecoratedFeatureFromAllBiomes;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.PLATE;
+import static org.gtreimagined.gtlib.machine.Tier.IV;
+import static org.gtreimagined.gtlib.worldgen.AntimatterWorldGenerator.removeDecoratedFeatureFromAllBiomes;
 
 @Mod(GT5RRef.ID)
 public class GT5Reimagined extends AntimatterMod {

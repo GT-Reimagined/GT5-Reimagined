@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.datagen;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.datagen.providers.AntimatterBlockTagProvider;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.RegistryUtils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.DyeColor;
@@ -22,7 +22,7 @@ import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Wood;
 
 public class GT5RBlockTagProvider extends AntimatterBlockTagProvider {
 

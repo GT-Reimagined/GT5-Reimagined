@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.blockentity.IExtendingBlockEntity;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;

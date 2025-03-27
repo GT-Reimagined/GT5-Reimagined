@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.AntimatterAPI;
+import org.gtreimagined.gtlib.AntimatterAPI;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import org.gtreimagined.gt5r.GT5RRef;

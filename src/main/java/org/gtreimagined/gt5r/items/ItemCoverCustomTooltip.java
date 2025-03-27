@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.items;
 
-import muramasa.antimatter.item.ItemCover;
-import muramasa.antimatter.machine.Tier;
+import org.gtreimagined.gtlib.item.ItemCover;
+import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

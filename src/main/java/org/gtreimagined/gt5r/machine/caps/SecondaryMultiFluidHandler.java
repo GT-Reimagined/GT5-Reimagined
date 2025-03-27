@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.machine.caps;
 
-import muramasa.antimatter.blockentity.multi.BlockEntityMultiMachine;
-import muramasa.antimatter.capability.IComponentHandler;
-import muramasa.antimatter.capability.fluid.FluidTanks;
-import muramasa.antimatter.capability.machine.MachineFluidHandler;
-import muramasa.antimatter.capability.machine.MultiMachineFluidHandler;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.capability.IComponentHandler;
+import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
+import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
+import org.gtreimagined.gtlib.capability.machine.MultiMachineFluidHandler;
 
 import java.util.Arrays;
 import java.util.EnumMap;

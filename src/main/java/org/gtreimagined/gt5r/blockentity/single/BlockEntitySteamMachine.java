@@ -1,20 +1,19 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.machine.MachineRecipeHandler;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.machine.MachineFlag;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.machine.event.IMachineEvent;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.recipe.IRecipe;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.machine.MachineFlag;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.recipe.IRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RTags;
-import tesseract.TesseractGraphWrappers;
 
-import static muramasa.antimatter.machine.Tier.BRONZE;
+import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
 import static org.gtreimagined.gt5r.data.GT5RMachines.STEAM_FORGE_HAMMER;
 
 public class BlockEntitySteamMachine extends BlockEntityMachine<BlockEntitySteamMachine> {

@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.material.MaterialTag;
-import muramasa.antimatter.material.tags.DoubleMaterialTag;
-import muramasa.antimatter.material.tags.ListMaterialTag;
-import muramasa.antimatter.material.tags.NumberMaterialTag;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.material.MaterialTag;
+import org.gtreimagined.gtlib.material.tags.DoubleMaterialTag;
+import org.gtreimagined.gtlib.material.tags.ListMaterialTag;
+import org.gtreimagined.gtlib.material.tags.NumberMaterialTag;
 import org.gtreimagined.gt5r.material.FluidProduct;
 
 public class GT5RMaterialTags {

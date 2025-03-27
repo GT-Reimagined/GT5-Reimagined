@@ -1,18 +1,18 @@
 package org.gtreimagined.gt5r.machine;
 
-import muramasa.antimatter.cover.ICover;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.texture.Texture;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.cover.ICover;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static muramasa.antimatter.Data.COVEROUTPUT;
-import static muramasa.antimatter.gui.SlotType.*;
-import static muramasa.antimatter.machine.MachineFlag.*;
-import static muramasa.antimatter.machine.Tier.NONE;
+import static org.gtreimagined.gtlib.Data.COVEROUTPUT;
+import static org.gtreimagined.gtlib.gui.SlotType.*;
+import static org.gtreimagined.gtlib.machine.MachineFlag.*;
+import static org.gtreimagined.gtlib.machine.Tier.NONE;
 
 public class HeatExchangerMachine extends SecondaryOutputMachine {
     int rate;

@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.items;
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.capability.energy.ItemEnergyHandler;
-import muramasa.antimatter.item.ScannerItem;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.capability.energy.ItemEnergyHandler;
+import org.gtreimagined.gtlib.item.ScannerItem;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -14,7 +14,6 @@ import net.minecraft.world.level.Level;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.TesseractCapUtils;
 import tesseract.api.context.TesseractItemContext;
 import tesseract.api.forge.TesseractCaps;
 import tesseract.api.gt.IEnergyHandlerItem;

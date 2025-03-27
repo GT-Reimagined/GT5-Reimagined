@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import it.unimi.dsi.fastutil.longs.LongList;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.util.RegistryUtils;
-import muramasa.antimatter.worldgen.vein.VeinSavedData;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.worldgen.vein.VeinSavedData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;

@@ -2,10 +2,10 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Copper;
-import static muramasa.antimatter.data.AntimatterMaterials.Iron;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Copper;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Iron;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class RoasterLoader {

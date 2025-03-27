@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.block;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.datagen.builder.AntimatterBlockModelBuilder;
-import muramasa.antimatter.datagen.providers.AntimatterBlockStateProvider;
-import muramasa.antimatter.dynamic.BlockDynamic;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.datagen.builder.AntimatterBlockModelBuilder;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
+import org.gtreimagined.gtlib.dynamic.BlockDynamic;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.Material;

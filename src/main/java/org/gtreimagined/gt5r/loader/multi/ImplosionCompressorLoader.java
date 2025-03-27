@@ -1,12 +1,12 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Diamond;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Diamond;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.IMPLOSION_COMPRESSOR;
 

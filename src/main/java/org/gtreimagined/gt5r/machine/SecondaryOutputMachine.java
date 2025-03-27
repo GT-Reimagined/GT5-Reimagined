@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.machine;
 
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.cover.ICover;
-import muramasa.antimatter.machine.types.BasicMachine;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.cover.ICover;
+import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySecondaryOutput;
 
 public class SecondaryOutputMachine extends BasicMachine implements ISecondaryOutputMachine {

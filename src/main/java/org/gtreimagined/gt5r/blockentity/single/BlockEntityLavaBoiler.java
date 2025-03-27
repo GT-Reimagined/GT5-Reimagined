@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.fluid.FluidTanks;
-import muramasa.antimatter.capability.machine.MachineFluidHandler;
-import muramasa.antimatter.capability.machine.MachineRecipeHandler;
-import muramasa.antimatter.gui.SlotType;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.util.FluidUtils;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
+import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
+import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.util.FluidUtils;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -21,8 +21,8 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import static muramasa.antimatter.machine.MachineState.ACTIVE;
-import static muramasa.antimatter.machine.MachineState.IDLE;
+import static org.gtreimagined.gtlib.machine.MachineState.ACTIVE;
+import static org.gtreimagined.gtlib.machine.MachineState.IDLE;
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 
 public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoiler> {

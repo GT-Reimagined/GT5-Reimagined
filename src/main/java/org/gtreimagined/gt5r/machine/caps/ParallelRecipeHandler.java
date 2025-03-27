@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.machine.caps;
 
-import muramasa.antimatter.Antimatter;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.machine.MachineRecipeHandler;
-import muramasa.antimatter.machine.event.MachineEvent;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.Antimatter;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.machine.event.MachineEvent;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static muramasa.antimatter.machine.MachineState.OUTPUT_FULL;
+import static org.gtreimagined.gtlib.machine.MachineState.OUTPUT_FULL;
 
 public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends MachineRecipeHandler<T> {
     public int concurrentRecipes = 0;

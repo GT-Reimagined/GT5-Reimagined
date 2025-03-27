@@ -1,16 +1,15 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Data;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.MaterialTags;
-import muramasa.antimatter.material.SubTag;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Data;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.SubTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.material.GregTechMaterialEvent;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
@@ -18,9 +17,9 @@ import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.material.MaterialTags.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.ALLOY;
 import static org.gtreimagined.gt5r.data.Materials.*;
 

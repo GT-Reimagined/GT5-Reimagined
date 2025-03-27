@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.loader;
 
-import muramasa.antimatter.datagen.AntimatterLoot;
+import org.gtreimagined.gtlib.datagen.AntimatterLoot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.gtreimagined.gt5r.GT5RConfig;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.data.AntimatterMaterials.Emerald;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Emerald;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class LootLoader {

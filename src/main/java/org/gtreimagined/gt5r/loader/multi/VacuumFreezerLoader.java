@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.INGOT_HOT;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.INGOT;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.INGOT_HOT;
 import static org.gtreimagined.gt5r.data.Materials.Nitrogen;
 import static org.gtreimagined.gt5r.data.RecipeMaps.VACUUM_FREEZER;
 

@@ -1,12 +1,12 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 
-import static muramasa.antimatter.Ref.L;
+import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_PRESS;
 

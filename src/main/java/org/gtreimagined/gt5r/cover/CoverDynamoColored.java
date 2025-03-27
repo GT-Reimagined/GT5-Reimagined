@@ -1,11 +1,11 @@
 package org.gtreimagined.gt5r.cover;
 
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.client.RenderHelper;
-import muramasa.antimatter.cover.CoverDynamo;
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.machine.Tier;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.client.RenderHelper;
+import org.gtreimagined.gtlib.cover.CoverDynamo;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;

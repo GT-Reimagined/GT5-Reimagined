@@ -1,14 +1,14 @@
 package org.gtreimagined.gt5r.machine;
 
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.machine.MachineFlag;
-import muramasa.antimatter.machine.types.BasicMachine;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.machine.MachineFlag;
+import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.Textures;
 
-import static muramasa.antimatter.machine.MachineFlag.UNCULLED;
-import static muramasa.antimatter.machine.Tier.NONE;
+import static org.gtreimagined.gtlib.machine.MachineFlag.UNCULLED;
+import static org.gtreimagined.gtlib.machine.Tier.NONE;
 
 public class MiniPortalMachine extends BasicMachine {
     public MiniPortalMachine(String domain, String id) {

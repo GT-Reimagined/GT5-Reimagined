@@ -2,15 +2,15 @@ package org.gtreimagined.gt5r.machine.caps;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.machine.MachineFlag;
-import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.recipe.map.IRecipeMap;
-import muramasa.antimatter.recipe.serializer.MachineRecipeSerializer;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.machine.MachineFlag;
+import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.Recipe;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
+import org.gtreimagined.gtlib.recipe.serializer.MachineRecipeSerializer;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -22,8 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static muramasa.antimatter.machine.MachineState.ACTIVE;
-import static muramasa.antimatter.machine.MachineState.INVALID_TIER;
+import static org.gtreimagined.gtlib.machine.MachineState.ACTIVE;
+import static org.gtreimagined.gtlib.machine.MachineState.INVALID_TIER;
 
 public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocrafter> extends ParallelRecipeHandler<T>{
     public AutocraftingRecipeHandler(T tile, int maxSimultaneousRecipes) {

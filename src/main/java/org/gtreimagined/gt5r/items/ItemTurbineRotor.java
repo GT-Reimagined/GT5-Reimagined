@@ -2,11 +2,11 @@ package org.gtreimagined.gt5r.items;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.tool.AntimatterItemTier;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.tool.MaterialTool;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.tool.AntimatterItemTier;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.MaterialTool;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;

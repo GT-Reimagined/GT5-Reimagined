@@ -1,16 +1,16 @@
 package org.gtreimagined.gt5r.cover;
 
-import muramasa.antimatter.blockentity.BlockEntityBase;
-import muramasa.antimatter.blockentity.BlockEntityMachine;
-import muramasa.antimatter.capability.ICoverHandler;
-import muramasa.antimatter.capability.machine.MachineItemHandler;
-import muramasa.antimatter.cover.CoverFactory;
-import muramasa.antimatter.gui.ButtonOverlay;
-import muramasa.antimatter.gui.event.GuiEvents;
-import muramasa.antimatter.gui.event.IGuiEvent;
-import muramasa.antimatter.gui.widget.SyncableTextWidget;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.gui.ButtonOverlay;
+import org.gtreimagined.gtlib.gui.event.GuiEvents;
+import org.gtreimagined.gtlib.gui.event.IGuiEvent;
+import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;

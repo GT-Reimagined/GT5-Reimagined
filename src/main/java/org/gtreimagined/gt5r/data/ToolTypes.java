@@ -1,18 +1,18 @@
 package org.gtreimagined.gt5r.data;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterDefaultTools;
-import muramasa.antimatter.item.ItemBattery;
-import muramasa.antimatter.machine.BlockMachine;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.pipe.BlockPipe;
-import muramasa.antimatter.recipe.ingredient.PropertyIngredient;
-import muramasa.antimatter.recipe.material.MaterialRecipe;
-import muramasa.antimatter.tool.AntimatterToolType;
-import muramasa.antimatter.tool.IAntimatterTool;
-import muramasa.antimatter.tool.behaviour.BehaviourExtendedHighlight;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.item.ItemBattery;
+import org.gtreimagined.gtlib.machine.BlockMachine;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.pipe.BlockPipe;
+import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
+import org.gtreimagined.gtlib.recipe.material.MaterialRecipe;
+import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.IAntimatterTool;
+import org.gtreimagined.gtlib.tool.behaviour.BehaviourExtendedHighlight;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -27,19 +27,17 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntitySecondaryOutput;
 import org.gtreimagined.gt5r.items.ItemPortableScanner;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 import org.gtreimagined.gtcore.GTCore;
-import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtcore.data.GTCoreTools;
 import org.gtreimagined.gtcore.item.ItemPowerUnit;
 import org.jetbrains.annotations.NotNull;
-import tesseract.TesseractCapUtils;
 import tesseract.api.forge.TesseractCaps;
 import tesseract.api.gt.IGTNode;
 
 import java.util.Map;
 import java.util.function.BiFunction;
 
-import static muramasa.antimatter.material.Material.NULL;
+import static org.gtreimagined.gtlib.material.Material.NULL;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryMediumLithium;
 
 public class ToolTypes {
@@ -79,9 +77,9 @@ public class ToolTypes {
 
         @Override
         public Map<String, Object> getFromResult(@NotNull ItemStack stack) {
-            CompoundTag nbt = stack.getOrCreateTagElement(muramasa.antimatter.Ref.TAG_TOOL_DATA);
-            Material primary = AntimatterAPI.get(Material.class, nbt.getString(muramasa.antimatter.Ref.KEY_TOOL_DATA_PRIMARY_MATERIAL));
-            Material secondary = AntimatterAPI.get(Material.class, nbt.getString(muramasa.antimatter.Ref.KEY_TOOL_DATA_SECONDARY_MATERIAL));
+            CompoundTag nbt = stack.getOrCreateTagElement(Ref.TAG_TOOL_DATA);
+            Material primary = AntimatterAPI.get(Material.class, nbt.getString(Ref.KEY_TOOL_DATA_PRIMARY_MATERIAL));
+            Material secondary = AntimatterAPI.get(Material.class, nbt.getString(Ref.KEY_TOOL_DATA_SECONDARY_MATERIAL));
             return ImmutableMap.of("primary", primary, "secondary", secondary, "energy", getEnergy(stack).getA(), "maxEnergy", getEnergy(stack).getB());
         }
     });

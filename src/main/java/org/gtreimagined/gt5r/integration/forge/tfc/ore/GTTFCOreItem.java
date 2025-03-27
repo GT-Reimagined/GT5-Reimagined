@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.ore;
 
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.texture.Texture;
 
 public class GTTFCOreItem extends ItemBasic<GTTFCOreItem> {
     public GTTFCOreItem(String domain, String id) {

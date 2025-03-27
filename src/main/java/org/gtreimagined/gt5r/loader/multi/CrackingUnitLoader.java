@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_TINY;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST_TINY;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.CRACKING;
 

@@ -1,9 +1,8 @@
 package org.gtreimagined.gt5r.integration;
 
-import muramasa.antimatter.AntimatterMod;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.registration.IAntimatterRegistrar;
-import muramasa.antimatter.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 public class IC2ClassicRegistrar extends AntimatterMod {

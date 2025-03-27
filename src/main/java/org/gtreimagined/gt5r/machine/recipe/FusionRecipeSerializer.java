@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.machine.recipe;
 
 import com.google.gson.JsonObject;
-import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.ingredient.FluidIngredient;
-import muramasa.antimatter.recipe.serializer.AntimatterRecipeSerializer;
+import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.recipe.serializer.AntimatterRecipeSerializer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;

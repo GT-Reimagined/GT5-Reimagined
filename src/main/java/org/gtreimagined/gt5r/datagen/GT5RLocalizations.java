@@ -1,12 +1,12 @@
 package org.gtreimagined.gt5r.datagen;
 
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.datagen.providers.AntimatterLanguageProvider;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterLanguageProvider;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.block.BlockAsphaltSlab;
@@ -23,9 +23,9 @@ import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.items.ItemDepletedRod;
 import org.gtreimagined.gt5r.items.ItemNuclearFuelRod;
 
-import static muramasa.antimatter.machine.Tier.*;
-import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpaced;
-import static muramasa.antimatter.util.Utils.lowerUnderscoreToUpperSpacedRotated;
+import static org.gtreimagined.gtlib.machine.Tier.*;
+import static org.gtreimagined.gtlib.util.Utils.lowerUnderscoreToUpperSpaced;
+import static org.gtreimagined.gtlib.util.Utils.lowerUnderscoreToUpperSpacedRotated;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
 public class GT5RLocalizations {

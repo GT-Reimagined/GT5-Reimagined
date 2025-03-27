@@ -1,16 +1,15 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.material.Element;
-import muramasa.antimatter.material.Material;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.material.Material;
 import net.minecraft.world.item.DyeColor;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
-import static muramasa.antimatter.material.Element.*;
-import static muramasa.antimatter.material.TextureSet.*;
+import static org.gtreimagined.gtlib.material.Element.*;
+import static org.gtreimagined.gtlib.material.TextureSet.*;
 
 public class Materials {
     //TODO add Zincite, chromium dioxide(mass multi=3), niobium nitride, nitro carbon, wollastonite, kyanite, chromite, pyrochlore, gypsum,

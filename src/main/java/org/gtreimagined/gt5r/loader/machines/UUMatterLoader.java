@@ -1,15 +1,14 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
-import tesseract.TesseractGraphWrappers;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.Materials.UUAmplifier;
 
 public class UUMatterLoader {

@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.miniportals;
 
-import muramasa.antimatter.machine.MachineState;
-import muramasa.antimatter.machine.types.Machine;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.item.ItemBasic;
+import org.gtreimagined.gtlib.item.ItemBasic;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FORMING_PRESS;
 
 public class FormingPressLoader {

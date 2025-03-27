@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.material.Element;
+import org.gtreimagined.gtlib.material.Element;
 
 public class Elements {
     public static Element Ma = Element.Ma;

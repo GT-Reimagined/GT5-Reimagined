@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.datagen;
 
-import muramasa.antimatter.AntimatterAPI;
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterStoneTypes;
-import muramasa.antimatter.datagen.providers.AntimatterBlockLootProvider;
-import muramasa.antimatter.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterStoneTypes;
+import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockLootProvider;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -22,9 +22,9 @@ import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.CRUSHED;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.RAW_ORE;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.CRUSHED;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.RAW_ORE;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
 
 public class GT5RBlockLootProvider extends AntimatterBlockLootProvider {
     public GT5RBlockLootProvider(String providerDomain, String providerName) {

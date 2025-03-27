@@ -1,9 +1,8 @@
 package org.gtreimagined.gt5r.machine.recipe;
 
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import muramasa.antimatter.recipe.IRecipe;
-import muramasa.antimatter.recipe.Recipe;
-import muramasa.antimatter.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 

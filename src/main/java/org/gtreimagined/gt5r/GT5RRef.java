@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r;
 
-import muramasa.antimatter.Ref;
+import org.gtreimagined.gtlib.Ref;
 
 public class GT5RRef {
 

@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.integration.xei;
 
-import muramasa.antimatter.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.jetbrains.annotations.Nullable;
 
 public record OreByProduct(IRecipe maceratorOre, IRecipe oreWasher, IRecipe maceratorCrushed, IRecipe centrifugeImpure, IRecipe maceratorRefined,

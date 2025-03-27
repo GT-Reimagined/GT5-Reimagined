@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;

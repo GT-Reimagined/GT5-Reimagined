@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.integration.forge.tfc;
 
 
-import muramasa.antimatter.Ref;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.recipe.ingredient.RecipeIngredient;
-import muramasa.antimatter.util.RegistryUtils;
-import muramasa.antimatter.util.TagUtils;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
+import org.gtreimagined.gtlib.util.Utils;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Helpers;
@@ -20,10 +20,10 @@ import org.gtreimagined.gt5r.loader.machines.CutterLoader;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtcore.integration.tfc.TFCRubberData;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterials.*;
-import static muramasa.antimatter.material.MaterialTags.MACERATE_INTO;
-import static muramasa.antimatter.material.MaterialTags.ORE_MULTI;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.MACERATE_INTO;
+import static org.gtreimagined.gtlib.material.MaterialTags.ORE_MULTI;
 import static net.dries007.tfc.common.blocks.rock.Ore.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_PRESS;

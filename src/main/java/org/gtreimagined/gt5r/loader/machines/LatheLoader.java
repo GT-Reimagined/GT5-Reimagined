@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import muramasa.antimatter.material.Material;
+import org.gtreimagined.gtlib.material.Material;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -9,8 +9,8 @@ import org.gtreimagined.gt5r.data.RecipeMaps;
 
 import java.util.function.ToLongFunction;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class LatheLoader {
     public static void init() {

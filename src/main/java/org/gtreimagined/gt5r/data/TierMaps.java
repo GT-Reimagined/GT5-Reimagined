@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.data;
 
 import com.google.common.collect.ImmutableMap;
-import muramasa.antimatter.item.ItemBasic;
-import muramasa.antimatter.machine.Tier;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.material.SubTag;
-import muramasa.antimatter.pipe.PipeItemBlock;
-import muramasa.antimatter.pipe.PipeSize;
-import muramasa.antimatter.util.TagUtils;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.SubTag;
+import org.gtreimagined.gtlib.pipe.PipeItemBlock;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -15,16 +15,14 @@ import net.minecraft.world.item.Items;
 import org.apache.commons.lang3.function.TriFunction;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
-import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
-import org.lwjgl.system.CallbackI.B;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.GEM;
-import static muramasa.antimatter.data.AntimatterMaterials.Copper;
-import static muramasa.antimatter.machine.Tier.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.GEM;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Copper;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class TierMaps {
 

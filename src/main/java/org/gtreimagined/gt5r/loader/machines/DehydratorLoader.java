@@ -2,8 +2,8 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gt5r.GT5RConfig;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST;
-import static muramasa.antimatter.data.AntimatterMaterialTypes.DUST_SMALL;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST_SMALL;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.DEHYDRATOR;
 

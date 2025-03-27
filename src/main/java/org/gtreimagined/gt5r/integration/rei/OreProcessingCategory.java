@@ -14,11 +14,11 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import muramasa.antimatter.data.AntimatterMaterialTypes;
-import muramasa.antimatter.data.AntimatterMaterials;
-import muramasa.antimatter.machine.types.Machine;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.util.Utils;
+import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -35,9 +35,9 @@ import org.gtreimagined.gt5r.data.Materials;
 import java.util.ArrayList;
 import java.util.List;
 
-import static muramasa.antimatter.data.AntimatterMaterialTypes.*;
-import static muramasa.antimatter.integration.rei.REIUtils.toREIFLuidStack;
-import static muramasa.antimatter.material.MaterialTags.*;
+import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.integration.rei.REIUtils.toREIFLuidStack;
+import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);

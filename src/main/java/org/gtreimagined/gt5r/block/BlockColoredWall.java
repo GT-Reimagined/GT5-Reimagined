@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.block;
 
-import muramasa.antimatter.block.BlockFakeTile;
-import muramasa.antimatter.material.Material;
-import muramasa.antimatter.registration.IColorHandler;
-import muramasa.antimatter.texture.Texture;
+import org.gtreimagined.gtlib.block.BlockFakeTile;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.registration.IColorHandler;
+import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
 
-import static muramasa.antimatter.data.AntimatterMaterials.Wood;
+import static org.gtreimagined.gtlib.data.AntimatterMaterials.Wood;
 
 public class BlockColoredWall  extends BlockFakeTile implements IColorHandler {
     final Material material;
