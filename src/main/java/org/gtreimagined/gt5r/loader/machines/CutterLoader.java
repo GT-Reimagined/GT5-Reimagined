@@ -2,8 +2,8 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
@@ -23,8 +23,8 @@ import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import java.util.function.ToLongFunction;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Wood;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
 import static org.gtreimagined.gt5r.data.RecipeMaps.CUTTER;
 
 public class CutterLoader {
@@ -33,9 +33,9 @@ public class CutterLoader {
             if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
-        for (Material mat : AntimatterMaterialTypes.PLATE.all()) {
-            int multiplier = 1;//mat.has(AntimatterMaterialTypes.GEM) ? 8 : 3;
-            if (mat == AntimatterMaterials.Diamond || mat == AntimatterMaterials.NetherizedDiamond)
+        for (Material mat : GTMaterialTypes.PLATE.all()) {
+            int multiplier = 1;//mat.has(GTMaterialTypes.GEM) ? 8 : 3;
+            if (mat == GTLibMaterials.Diamond || mat == GTLibMaterials.NetherizedDiamond)
                 multiplier = 5;
             if (mat.has(GEM)){
                 addCutterRecipe(GEM.getMaterialTag(mat), PLATE.get(mat, 1), "plate_" + mat.getId() + "_from_gem", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
@@ -46,7 +46,7 @@ public class CutterLoader {
                     addCutterRecipe(GEM_EXQUISITE.getMaterialTag(mat), PLATE.get(mat, 4), "plate_" + mat.getId() + "_from_gem_exquisite", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
                 }
             }
-            if (!mat.has(AntimatterMaterialTypes.BLOCK))
+            if (!mat.has(GTMaterialTypes.BLOCK))
                 continue;
             int count = mat.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
             addCutterRecipe(BLOCK.getMaterialTag(mat), PLATE.get(mat, count), "plate_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 8 * multiplier), 30);
@@ -65,12 +65,12 @@ public class CutterLoader {
                 }
             }
         });
-        AntimatterMaterialTypes.BOLT.all().forEach(t -> {
-            if (t.has(AntimatterMaterialTypes.ROD)) {
+        GTMaterialTypes.BOLT.all().forEach(t -> {
+            if (t.has(GTMaterialTypes.ROD)) {
                 addCutterRecipe(ROD.getMaterialTag(t), BOLT.get(t, 4), "bolt_" + t.getId(), (int) (baseDuration.applyAsLong(t) * 2), 4);
             }
         });
-        AntimatterMaterialTypes.ROD_LONG.all().stream().filter(m -> m.has(ROD)).forEach(m -> {
+        GTMaterialTypes.ROD_LONG.all().stream().filter(m -> m.has(ROD)).forEach(m -> {
             addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (baseDuration.applyAsLong(m) * 2), 4);
         });
         if (!AntimatterAPI.isModLoaded(Ref.MOD_TFC)){

@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.datagen;
 
 import org.gtreimagined.gtlib.Data;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
@@ -16,9 +16,9 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 import java.util.List;
 import java.util.function.Consumer;
 
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.datagen.providers.AntimatterAdvancementProvider.*;
 import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
@@ -37,7 +37,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
         progressionRoot = buildRootAdvancement(Data.DEBUG_SCANNER, new ResourceLocation(GT5RRef.ID, "textures/block/machine/base/lv.png"),
                 GT5RRef.ID + ".advancements.gt5r.title", GT5RRef.ID + ".advancements.gt5r.desc", FrameType.TASK, false, false, false)
                 .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(GT5RRef.ID, "progression/root"));
-        Advancement rock = buildBasicAdvancement(progressionRoot, AntimatterMaterialTypes.ROCK.get(Stone), "rock", FrameType.TASK)
+        Advancement rock = buildBasicAdvancement(progressionRoot, GTMaterialTypes.ROCK.get(Stone), "rock", FrameType.TASK)
                 .addCriterion("has_rocks", hasItems(getForgelikeItemTag("rocks"), getForgelikeItemTag("bearing_rocks"))).save(consumer, getLoc(GT5RRef.ID, "progression/rock"));
         Item pickaxe = PICKAXE.getToolItem(Flint);
         Advancement flintPick = buildBasicAdvancement(rock, pickaxe, "flint_pickaxe", FrameType.TASK)

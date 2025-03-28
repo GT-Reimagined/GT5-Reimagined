@@ -149,7 +149,7 @@ import org.gtreimagined.gtcore.GTCore;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.PLATE;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.PLATE;
 import static org.gtreimagined.gtlib.machine.Tier.IV;
 import static org.gtreimagined.gtlib.worldgen.AntimatterWorldGenerator.removeDecoratedFeatureFromAllBiomes;
 

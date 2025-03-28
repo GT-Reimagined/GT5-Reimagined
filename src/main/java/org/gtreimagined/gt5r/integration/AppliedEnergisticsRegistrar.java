@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.integration;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.AntimatterMod;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterStoneTypes;
+import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
 import org.gtreimagined.gtlib.event.MaterialEvent;
@@ -30,8 +30,8 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 import java.util.function.Consumer;
 
 import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
@@ -53,8 +53,8 @@ public class AppliedEnergisticsRegistrar extends AntimatterMod {
             DUST.replacement(Fluix, () -> getAe2Item("fluix_dust"));
             BLOCK.replacement(CertusQuartz, () -> getAe2Item("quartz_block"));
             BLOCK.replacement(Fluix, () -> getAe2Item("fluix_block"));
-            ORE.replacement(CertusQuartz, AntimatterStoneTypes.STONE, () -> getAe2Item("quartz_ore"));
-            ORE.replacement(CertusQuartz, AntimatterStoneTypes.DEEPSLATE, () -> getAe2Item("deepslate_quartz_ore"));
+            ORE.replacement(CertusQuartz, VanillaStoneTypes.STONE, () -> getAe2Item("quartz_ore"));
+            ORE.replacement(CertusQuartz, VanillaStoneTypes.DEEPSLATE, () -> getAe2Item("deepslate_quartz_ore"));
         }
     }
 

@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Wood;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
 
 public class BlockColoredWall  extends BlockFakeTile implements IColorHandler {
     final Material material;

@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
 import org.gtreimagined.gtlib.machine.MachineState;
@@ -49,7 +49,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 if (tGeneratedEU > 0 && !simulate) {
                     int amount = (tGeneratedEU + 160) / 160;
                     fluidHandler.ifPresent(f -> {
-                        if (f.drainInput(AntimatterMaterials.Water.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount) {
+                        if (f.drainInput(GTLibMaterials.Water.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount) {
                             f.addOutputs(Steam.getGas(tGeneratedEU));
                             tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                         } else {

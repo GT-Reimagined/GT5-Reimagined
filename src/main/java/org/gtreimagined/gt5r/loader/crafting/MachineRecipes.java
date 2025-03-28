@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemCover;
@@ -47,9 +47,9 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrb;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
@@ -131,7 +131,7 @@ public class MachineRecipes {
 
             add(AUTOCLAVE, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
-                            .put('T', AntimatterMaterialTypes.PLATE.getMaterialTag(material))
+                            .put('T', GTMaterialTypes.PLATE.getMaterialTag(material))
                             .put('C', circuit)
                             .put('G', glass)
                             .put('H', hull)

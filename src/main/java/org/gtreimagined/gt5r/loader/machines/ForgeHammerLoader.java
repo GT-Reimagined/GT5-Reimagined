@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
@@ -15,7 +15,7 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
 import java.util.function.ToLongFunction;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.MACERATE_INTO;
 import static org.gtreimagined.gtlib.material.MaterialTags.ORE_MULTI;
 import static org.gtreimagined.gt5r.data.Materials.Brick;
@@ -28,7 +28,7 @@ public class ForgeHammerLoader {
             RecipeIngredient ore = ORE.getMaterialIngredient(m, 1), crushed = CRUSHED.getMaterialIngredient(m, 1);
             ItemStack crushedStack = CRUSHED.get(m,1);
 
-            if (m.has(AntimatterMaterialTypes.ORE)) {
+            if (m.has(GTMaterialTypes.ORE)) {
                 FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_ore",16, 10);
             }
             FORGE_HAMMER.RB().ii(crushed).io(DUST_IMPURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);

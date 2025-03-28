@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE;
-import static org.gtreimagined.gtlib.data.AntimatterStoneTypes.STONE;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
+import static org.gtreimagined.gtlib.data.VanillaStoneTypes.STONE;
 import static org.gtreimagined.gtcore.data.GTCoreMaterials.*;
 
 public class GT5RTwilightStalctites {

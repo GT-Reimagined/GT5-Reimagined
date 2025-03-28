@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.integration.rei;
 
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.integration.rei.REIUtils;
 import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.world.item.ItemStack;
@@ -32,7 +32,7 @@ public class REIRegistrar {
             r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.FLUID_PRESS.getItem(Tier.LV))));
         });
         REIUtils.addExtraDisplay(r -> {
-            AntimatterMaterialTypes.ORE.all().forEach(m -> {
+            GTMaterialTypes.ORE.all().forEach(m -> {
                 if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
                     if (m.has(GT5RMaterialTags.BATH_MERCURY)){
                         r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.MERCURY));
@@ -44,7 +44,7 @@ public class REIRegistrar {
                     r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.NONE));
                 }
             });
-            AntimatterMaterialTypes.DUST.all().forEach(m -> {
+            GTMaterialTypes.DUST.all().forEach(m -> {
                 r.add(new MaterialTreeDisplay(m));
             });
         });

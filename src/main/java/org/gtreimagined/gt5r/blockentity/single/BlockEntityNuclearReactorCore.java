@@ -7,7 +7,7 @@ import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
 import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
@@ -383,7 +383,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     int multiplier = hotCoolant == Steam ? 160 : 1;
                     int toFill = hotCoolant == Steam ? tEnergy * 160 : tEnergy;
                     if (tEnergy > 0){
-                        FluidStack fluidHolder = hotCoolant.has(AntimatterMaterialTypes.GAS) ? hotCoolant.getGas(tEnergy * multiplier) : hotCoolant.getLiquid(tEnergy);
+                        FluidStack fluidHolder = hotCoolant.has(GTMaterialTypes.GAS) ? hotCoolant.getGas(tEnergy * multiplier) : hotCoolant.getLiquid(tEnergy);
                         if (coldCoolant.getAmount() >= tEnergy && fluidHandler1.fillOutput(fluidHolder.copy(), FluidAction.SIMULATE) == (long) tEnergy * multiplier){
                             fluidHandler1.fillOutput(fluidHolder, FluidAction.EXECUTE);
                             handler.extractInternal(tEnergy * heatPerCoolant, false);

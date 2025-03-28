@@ -2,8 +2,8 @@ package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
@@ -37,9 +37,9 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.HULL;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -47,10 +47,10 @@ import static org.gtreimagined.gt5r.data.TierMaps.*;
 
 public class BlockParts {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        AntimatterMaterialTypes.FRAME.all().forEach(frame -> {
-            if (!frame.has(AntimatterMaterialTypes.ROD)) return;
-            provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", AntimatterMaterialTypes.FRAME.get().get(frame).asStack(2),
-                    of('R', AntimatterMaterialTypes.ROD.get(frame), 'W', WRENCH.getTag())
+        GTMaterialTypes.FRAME.all().forEach(frame -> {
+            if (!frame.has(GTMaterialTypes.ROD)) return;
+            provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", GTMaterialTypes.FRAME.get().get(frame).asStack(2),
+                    of('R', GTMaterialTypes.ROD.get(frame), 'W', WRENCH.getTag())
             , "RRR","RWR", "RRR");
         });
 
@@ -146,7 +146,7 @@ public class BlockParts {
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
 
         provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.ENGINE_INTAKE_CASING, 1),
-                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
+                of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
         if (GT5RConfig.HARD_SETTINGS){
@@ -173,11 +173,11 @@ public class BlockParts {
                         .put('P', PLATE.get(Steel))
                         .put('W', HAMMER.getTag()).build(), "PPP", "PWP", "PPP");
         provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.FUSION_CASING, 1),
-                of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', GT5RBlocks.CASING_LUV)
+                of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GT5RBlocks.CASING_LUV)
                 ,
                 "PHP", "PFP", "PWP");
         /*provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", "has_wrench", provider.hasSafeItem(WRENCH.getTag()), new ItemStack(CASING_FUSION_2, 1),
-                of('P', PLATE.getMaterialTag(Americium), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', CASING_FUSION_1)
+                of('P', PLATE.getMaterialTag(Americium), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', CASING_FUSION_1)
                 ,
                 "PHP", "PFP", "PWP");*/
 
@@ -208,9 +208,9 @@ public class BlockParts {
             }
         });
 
-        /*provider.addStackRecipe(output, GT5RRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(AntimatterDefaultTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
+        /*provider.addStackRecipe(output, GT5RRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(GTTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
-                'P', PLATE.get(AntimatterMaterials.Iron),
+                'P', PLATE.get(GTLibMaterials.Iron),
                         'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
         ), "PCP", "CBC", "PCP");*/
         provider.removeRecipe(new ResourceLocation("tnt"));
@@ -232,39 +232,39 @@ public class BlockParts {
 
     private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
-                of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
+                of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 ,
                 "PHP", "PFP", "PWP");
     }
 
     private static void addBrickedCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", casing,
-                of('B', Items.BRICK, 'P', PLATE.getMaterialTag(mat), 'H', AntimatterDefaultTools.HAMMER.getTag())
+                of('B', Items.BRICK, 'P', PLATE.getMaterialTag(mat), 'H', GTTools.HAMMER.getTag())
                 , "PPP", "PHP", "BBB");
     }
 
     private static void addFirebox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
-                of('P', PLATE.getMaterialTag(mat), 'R', ROD.getMaterialTag(mat), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
+                of('P', PLATE.getMaterialTag(mat), 'R', ROD.getMaterialTag(mat), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "RFR", "PRP");
     }
 
     private static void addGearbox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
-                of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', AntimatterDefaultTools.HAMMER.getTag(), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem(), 'G', GEAR.getMaterialTag(mat))
+                of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem(), 'G', GEAR.getMaterialTag(mat))
                 ,
                 "PHP", "GFG", "PWP");
     }
 
     private static void addPipeCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, PipeType<?> pipe, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
-                of('P', PLATE.getMaterialTag(mat), 'R', pipe.getBlockItem(PipeSize.NORMAL), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
+                of('P', PLATE.getMaterialTag(mat), 'R', pipe.getBlockItem(PipeSize.NORMAL), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "RFR", "PRP");
     }
 
     private static void addTurbine(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", casing,
-                of('P', PLATE.getMaterialTag(mat), 'R', AntimatterMaterialTypes.ROD.getMaterialTag(mat), 'F', AntimatterMaterialTypes.FRAME.get().get(mat).asItem())
+                of('P', PLATE.getMaterialTag(mat), 'R', GTMaterialTypes.ROD.getMaterialTag(mat), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "PFP", "PRP");
     }
 

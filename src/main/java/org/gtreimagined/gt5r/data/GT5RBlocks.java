@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.block.BlockBasic;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.pipe.types.Cable;
 import org.gtreimagined.gtlib.pipe.types.FluidPipe;
@@ -34,7 +34,7 @@ import org.gtreimagined.gt5r.block.BlockMiningPipe;
 import org.gtreimagined.gt5r.block.BlockPowderBarrel;
 import org.gtreimagined.gt5r.block.BlockSidedCasing;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class GT5RBlocks {
@@ -136,12 +136,12 @@ public class GT5RBlocks {
     public static final BlockCasing CASING_ZPM = new BlockCasing(GT5RRef.ID, "casing_zpm");
     public static final BlockCasing CASING_UV = new BlockCasing(GT5RRef.ID, "casing_uv");
     public static final BlockCasing CASING_UHV = new BlockCasing(GT5RRef.ID, "casing_uhv");
-    public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GT5RRef.ID, AntimatterMaterials.Wood, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+    public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GT5RRef.ID, GTLibMaterials.Wood, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     public static final BlockColoredWall STEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Steel);
     public static final BlockColoredWall INVAR_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Invar);
     public static final BlockColoredWall STAINLESS_STEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.StainlessSteel);
     public static final BlockColoredWall TITANIUM_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Titanium);
-    public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GT5RRef.ID, AntimatterMaterials.Netherite);
+    public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GT5RRef.ID, GTLibMaterials.Netherite);
     public static final BlockColoredWall TUNGSTENSTEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.TungstenSteel);
     public static final BlockColoredWall TUNGSTEN_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Tungsten);
     public static final BlockColoredWall ADAMANTIUM_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Adamantium);
@@ -215,10 +215,10 @@ public class GT5RBlocks {
     public static final Cable<?> CABLE_LEAD = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Lead, 2, Tier.LV).amps(2));
     public static final Cable<?> CABLE_TIN = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Tin, 1, Tier.LV).amps(1));
     public static final Cable<?> CABLE_ZINC = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Zinc, 1, Tier.LV).amps(1));
-    public static final Cable<?> CABLE_IRON = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, AntimatterMaterials.Iron, 3, Tier.MV).amps(2)); //M);
+    public static final Cable<?> CABLE_IRON = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, GTLibMaterials.Iron, 3, Tier.MV).amps(2)); //M);
     public static final Cable<?> CABLE_NICKEL = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Nickel, 3, Tier.MV).amps(3));
     public static final Cable<?> CABLE_CUPRONICKEL = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Cupronickel, 3, Tier.MV).amps(2));
-    public static final Cable<?> CABLE_COPPER = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, AntimatterMaterials.Copper, 2, Tier.MV).amps(1));
+    public static final Cable<?> CABLE_COPPER = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, GTLibMaterials.Copper, 2, Tier.MV).amps(1));
     public static final Cable<?> CABLE_ANNEALED_COPPER = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.AnnealedCopper, 1, Tier.MV).amps(1));
     public static final Cable<?> CABLE_KANTHAL = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Kanthal, 3, Tier.HV).amps(4)); //H);
     public static final Cable<?> CABLE_GOLD = AntimatterAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Gold, 2, Tier.HV).amps(3));
@@ -246,10 +246,10 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_LEAD = AntimatterAPI.register(Wire.class,  new Wire<>(GT5RRef.ID, Materials.Lead, 4, Tier.LV).amps(2));
     public static final Wire<?> WIRE_TIN = AntimatterAPI.register(Wire.class,  new Wire<>(GT5RRef.ID, Materials.Tin, 2, Tier.LV).amps(1));
     public static final Wire<?> WIRE_ZINC = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Zinc, 2, Tier.LV).amps(1));
-    public static final Wire<?> WIRE_IRON = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, AntimatterMaterials.Iron, 6, Tier.MV).amps(2)); //M);
+    public static final Wire<?> WIRE_IRON = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, GTLibMaterials.Iron, 6, Tier.MV).amps(2)); //M);
     public static final Wire<?> WIRE_NICKEL = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Nickel, 6, Tier.MV).amps(3));
     public static final Wire<?> WIRE_CUPRONICKEL = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Cupronickel, 6, Tier.MV).amps(2));
-    public static final Wire<?> WIRE_COPPER = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, AntimatterMaterials.Copper, 4, Tier.MV).amps(1));
+    public static final Wire<?> WIRE_COPPER = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, GTLibMaterials.Copper, 4, Tier.MV).amps(1));
     public static final Wire<?> WIRE_ANNEALED_COPPER = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.AnnealedCopper, 2, Tier.MV).amps(1));
     public static final Wire<?> WIRE_KANTHAL = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Kanthal, 6, Tier.HV).amps(4)); //H);
     public static final Wire<?> WIRE_GOLD = AntimatterAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Gold, 4, Tier.HV).amps(3));
@@ -272,8 +272,8 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_NAQUADAH_ALLOY = AntimatterAPI.register(Wire.class,new Wire<>(GT5RRef.ID, Materials.NaquadahAlloy, 8, Tier.ZPM).amps(2));
     public static final Wire<?> WIRE_DURANIUM = AntimatterAPI.register(Wire.class,new Wire<>(GT5RRef.ID, Materials.Duranium, 16, Tier.ZPM).amps(1));
     public static final Wire<?> WIRE_SUPERCONDUCTOR = (Wire<?>) AntimatterAPI.register(Wire.class,new Wire<>(GT5RRef.ID, Materials.Superconductor, 1, Tier.UHV).amps(4)).loss(0.2); //MA);
-    public static final FluidPipe<?> FLUID_PIPE_WOOD = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, AntimatterMaterials.Wood, 350, false).caps(1).pressures(getPressures(150)));
-    public static final FluidPipe<?> FLUID_PIPE_COPPER = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, AntimatterMaterials.Copper, 1696, true).caps(1).pressures(getPressures(300)));
+    public static final FluidPipe<?> FLUID_PIPE_WOOD = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, GTLibMaterials.Wood, 350, false).caps(1).pressures(getPressures(150)));
+    public static final FluidPipe<?> FLUID_PIPE_COPPER = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, GTLibMaterials.Copper, 1696, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_BRONZE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Bronze, 1696, true).caps(1).pressures(getPressures(450)));
     // it's not in gt6, not sure whether to keep it or not
     //public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, BismuthBronze, 950, true).caps(1).pressures(800));
@@ -283,7 +283,7 @@ public class GT5RBlocks {
     public static final FluidPipe<?> FLUID_PIPE_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Steel, 2557, true).caps(1).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_CHROMIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Chromium, 2725, true).acidProof(true).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.StainlessSteel, 2428, true).acidProof(true).caps(1).pressures(getPressures(750)));
-    public static final FluidPipe<?> FLUID_PIPE_NETHERRITE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, AntimatterMaterials.Netherite, 2807, true).acidProof(true).caps(1).pressures(getPressures(900)));
+    public static final FluidPipe<?> FLUID_PIPE_NETHERRITE = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, GTLibMaterials.Netherite, 2807, true).acidProof(true).caps(1).pressures(getPressures(900)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Tungsten, 4618, true).acidProof(true).caps(1).pressures(getPressures(1200)));
     public static final FluidPipe<?> FLUID_PIPE_TITANIUM = AntimatterAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, Materials.Titanium, 1668, true).caps(1).pressures(getPressures(900)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = AntimatterAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.TungstenSteel, 3587, true).caps(1).pressures(getPressures(1050)));

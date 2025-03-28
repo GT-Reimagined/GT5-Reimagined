@@ -51,8 +51,8 @@ import java.util.function.BiPredicate;
 import java.util.function.Function;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.BLOCK;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.FRAME;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.BLOCK;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.FRAME;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gtlib.structure.AntimatterStructureUtility.ofHatch;
 import static org.gtreimagined.gtlib.structure.AntimatterStructureUtility.ofHatchMinTier;

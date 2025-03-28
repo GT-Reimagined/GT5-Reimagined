@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.machine;
 
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.MachineFlag;
 import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import net.minecraft.resources.ResourceLocation;
@@ -19,6 +19,6 @@ public class MiniPortalMachine extends BasicMachine {
         this.itemModelParent(new ResourceLocation(GT5RRef.ID, "block/mini_portal"));
         this.custom(Textures.MINI_PORTAL);
         this.removeFlags(MachineFlag.COVERABLE);
-        this.setToolTag(AntimatterDefaultTools.PICKAXE.getToolType());
+        this.setToolTag(GTTools.PICKAXE.getToolType());
     }
 }

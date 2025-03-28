@@ -9,7 +9,7 @@ import org.gtreimagined.gt5r.data.RecipeMaps;
 
 import java.util.function.ToLongFunction;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class LatheLoader {

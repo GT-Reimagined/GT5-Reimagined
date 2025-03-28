@@ -5,7 +5,7 @@ import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Lava;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Lava;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.HEAT_EXCHANGER;
 

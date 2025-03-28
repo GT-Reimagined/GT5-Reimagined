@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
-import org.gtreimagined.gtlib.data.AntimatterStoneTypes;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
+import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
@@ -14,20 +14,20 @@ import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.BEDROCK_DRILL;
 
 public class BedrockDrillLoader {
     public static void init(){
         addBedrockDrillRecipe(Materials.Adamantine, 105, Adamantium);
-        //addBedrockDrillRecipe(AntimatterMaterials.NetheriteScrap, 63,);
+        //addBedrockDrillRecipe(GTLibMaterials.NetheriteScrap, 63,);
         addBedrockDrillRecipe(Bastnasite, 63, Monazite, RareEarth, Neodymium/*, Nikolite*/);
         addBedrockDrillRecipe(Bauxite, 53, Ilmenite, Hematite, Alumina);
         ItemStack cobble = new ItemStack(Items.COBBLESTONE);
         cobble.setHoverName(Utils.literal("Various Cobblestone Types"));
-        BEDROCK_DRILL.RB().ii(Items.BEDROCK).fi(Lubricant.getLiquid(100)).io(cobble, DUST.get(AntimatterMaterials.Bedrock, 1)).outputChances(9990, 10);
+        BEDROCK_DRILL.RB().ii(Items.BEDROCK).fi(Lubricant.getLiquid(100)).io(cobble, DUST.get(GTLibMaterials.Bedrock, 1)).outputChances(9990, 10);
         addBedrockDrillRecipe(Cassiterite, 35, Molybdenite, Fluorite, Sperrylite, Apatite);
         addBedrockDrillRecipe(Chalcopyrite, 40, Pyrite, Cobaltite, Cadmium, Gold, Sperrylite, Indium);
         addBedrockDrillRecipe(Coal, 105, Lignite, Sulfur);
@@ -59,7 +59,7 @@ public class BedrockDrillLoader {
         RecipeBuilder rb = BEDROCK_DRILL.RB();
         List<Integer> chances = new ArrayList<>();
         chances.add(9687);
-        rb.ii(RecipeIngredient.of(1, ORE.getMaterialTag(main, AntimatterStoneTypes.BEDROCK), ORE_SMALL.getMaterialTag(main, AntimatterStoneTypes.BEDROCK))).fi(Materials.Lubricant.getLiquid(100)).io(RAW_ORE.get(main));
+        rb.ii(RecipeIngredient.of(1, ORE.getMaterialTag(main, VanillaStoneTypes.BEDROCK), ORE_SMALL.getMaterialTag(main, VanillaStoneTypes.BEDROCK))).fi(Materials.Lubricant.getLiquid(100)).io(RAW_ORE.get(main));
         for (Material m : byproduct){
             if (m.has(RAW_ORE)) {
                 rb.io(RAW_ORE.get(m));
@@ -68,7 +68,7 @@ public class BedrockDrillLoader {
             } else continue;
             chances.add(byproductChance);
         }
-        rb.io(DUST.get(AntimatterMaterials.Bedrock));
+        rb.io(DUST.get(GTLibMaterials.Bedrock));
         chances.add(10);
         ItemStack cobble = new ItemStack(Items.COBBLESTONE);
         cobble.setHoverName(Utils.literal("Various Cobblestone Types"));

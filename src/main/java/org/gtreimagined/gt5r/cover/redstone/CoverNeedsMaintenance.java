@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.cover.redstone;
 
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.tool.AntimatterToolType;
@@ -57,7 +57,7 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
 
     @Override
     public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
-        if (type != null && type.getTag() == AntimatterDefaultTools.SCREWDRIVER.getTag()){
+        if (type != null && type.getTag() == GTTools.SCREWDRIVER.getTag()){
             mode = player.isShiftKeyDown() ? mode.previous() : mode.next();
             this.handler.getTile().setChanged();
             player.sendMessage(Utils.translatable("message.gt5r.needs_maintenance." + (mode.scaled ? "scaled" : "unscaled") + "." + (mode.inverted ? "inverted" : "normal")), player.getUUID());

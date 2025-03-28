@@ -20,8 +20,8 @@ import org.gtreimagined.gtcore.data.GTCoreTags;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.GEM;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Copper;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.GEM;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class TierMaps {

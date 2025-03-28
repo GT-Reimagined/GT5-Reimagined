@@ -15,7 +15,7 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.Cable;
@@ -37,12 +37,12 @@ import org.gtreimagined.gt5r.GT5RRef;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.integration.rei.REIUtils.toREIFLuidStack;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay> {
-    protected static Renderer icon = EntryStacks.of(DUST.get(AntimatterMaterials.Iron));
+    protected static Renderer icon = EntryStacks.of(DUST.get(GTLibMaterials.Iron));
     private static final Component title = Utils.translatable(GT5RRef.ID + ".rei.tooltip.material_tree");
     static CategoryIdentifier<? extends MaterialTreeDisplay> id = CategoryIdentifier.of(GT5RRef.ID, "material_tree");
 

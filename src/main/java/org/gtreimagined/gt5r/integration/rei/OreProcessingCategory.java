@@ -14,8 +14,8 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.util.Utils;
@@ -35,7 +35,7 @@ import org.gtreimagined.gt5r.data.Materials;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.integration.rei.REIUtils.toREIFLuidStack;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
@@ -59,7 +59,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
             if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
                 drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
-            if (display.ore.has(AntimatterMaterialTypes.GEM)){
+            if (display.ore.has(GTMaterialTypes.GEM)){
                 drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
@@ -86,7 +86,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
             widgets.addAll(setupChemMachineSlots(display, bounds));
         }
-        if (display.ore.has(AntimatterMaterialTypes.GEM)){
+        if (display.ore.has(GTMaterialTypes.GEM)){
             widgets.addAll(setupSiftMachineSlots(display, bounds));
         }
         if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
@@ -129,7 +129,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(25, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST_IMPURE.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(25, 111, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct1),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(29, 26, bounds)).entries(ofMachine(GT5RMachines.ORE_WASHER)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(50, 26, bounds)).entries(ofFluid(AntimatterMaterials.Water, 1000)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(50, 26, bounds)).entries(ofFluid(GTLibMaterials.Water, 1000)).markInput().disableBackground());
         widgets.add(Widgets.createSlot(xy(72, 26, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_PURIFIED.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(90, 26, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_TINY.get(display.byProduct1),3)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(120, 48, bounds)).entries(ofMachine(GT5RMachines.MACERATOR)).markInput().disableBackground());
@@ -190,11 +190,11 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         Item dust, nugget;
         List<Widget> widgets = new ArrayList<>();
         if(display.sepMode == OreProcessingDisplay.SepMode.IRON){
-            dust = DUST_SMALL.get(AntimatterMaterials.Iron);
-            nugget = NUGGET.get(AntimatterMaterials.Iron);
+            dust = DUST_SMALL.get(GTLibMaterials.Iron);
+            nugget = NUGGET.get(GTLibMaterials.Iron);
         } else if(display.sepMode == OreProcessingDisplay.SepMode.GOLD){
-            dust = DUST_SMALL.get(AntimatterMaterials.Gold);
-            nugget = NUGGET.get(AntimatterMaterials.Gold);
+            dust = DUST_SMALL.get(GTLibMaterials.Gold);
+            nugget = NUGGET.get(GTLibMaterials.Gold);
         }else{
             dust = DUST_SMALL.get(Materials.Neodymium);
             nugget = NUGGET.get(Materials.Neodymium);

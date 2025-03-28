@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.RegistryUtils;
@@ -15,7 +15,7 @@ public class LargeBoilerLoader {
             ResourceLocation id = RegistryUtils.getIdFromItem(i);
             RecipeMaps.LARGE_BOILERS.RB().ii(RecipeIngredient.of(i)).add(id.getNamespace() + "." + id.getPath(), b / 80, b % 80);
         });
-        AntimatterMaterialTypes.LIQUID.all().forEach(mat -> {
+        GTMaterialTypes.LIQUID.all().forEach(mat -> {
             if (!mat.has(MaterialTags.FUEL_POWER) || MaterialTags.FUEL_POWER.getInt(mat) <= 0) return;
             int special = mat.has(SEMIFUELS) ? -1 : 4;
             int ticks = mat.has(SEMIFUELS) ? MaterialTags.FUEL_POWER.getInt(mat) * 2 : MaterialTags.FUEL_POWER.getInt(mat) / 2;

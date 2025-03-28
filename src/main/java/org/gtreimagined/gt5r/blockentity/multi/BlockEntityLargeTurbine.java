@@ -25,7 +25,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ROD_LONG;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ROD_LONG;
 import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gtlib.machine.Tier.EV;
 import static org.gtreimagined.gtlib.machine.Tier.HV;

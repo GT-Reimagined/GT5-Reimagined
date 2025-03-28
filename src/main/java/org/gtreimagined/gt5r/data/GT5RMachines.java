@@ -7,7 +7,7 @@ import org.gtreimagined.gtlib.blockentity.single.BlockEntityBatteryBuffer;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityDigitalTransformer;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityTransformer;
 import org.gtreimagined.gtlib.cover.ICover;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
 import org.gtreimagined.gtlib.machine.BlockMachine;
 import org.gtreimagined.gtlib.machine.MachineState;
@@ -114,8 +114,8 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static org.gtreimagined.gtlib.Data.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Netherite;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Wood;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Netherite;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 
@@ -230,7 +230,7 @@ public class GT5RMachines {
     public static DrumMachine INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
     public static DrumMachine STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
     public static DrumMachine TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
-    public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(AntimatterMaterials.Netherite, 128000).acidProof();
+    public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(GTLibMaterials.Netherite, 128000).acidProof();
     public static DrumMachine TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000);
     public static DrumMachine TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000);
     public static DrumMachine ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof();

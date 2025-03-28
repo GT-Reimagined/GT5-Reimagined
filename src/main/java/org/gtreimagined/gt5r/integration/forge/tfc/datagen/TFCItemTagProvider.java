@@ -11,8 +11,8 @@ import org.gtreimagined.gtlib.tool.AntimatterToolType;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Copper;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class TFCItemTagProvider extends AntimatterItemTagProvider {

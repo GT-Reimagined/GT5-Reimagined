@@ -22,7 +22,7 @@ import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Water;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Water;
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 import static org.gtreimagined.gt5r.data.Materials.Steam;
 

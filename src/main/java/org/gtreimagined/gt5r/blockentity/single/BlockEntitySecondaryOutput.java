@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.tool.AntimatterToolType;
 import org.gtreimagined.gtlib.util.Utils;
@@ -32,7 +32,7 @@ public class BlockEntitySecondaryOutput<T extends BlockEntitySecondaryOutput<T>>
 
     @Override
     public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
-        if (type == AntimatterDefaultTools.WRENCH_ALT) {
+        if (type == GTTools.WRENCH_ALT) {
             if (setSecondaryOutput(player, hit)) {
                 Utils.damageStack(player.getItemInHand(hand), hand, player);
                 return InteractionResult.SUCCESS;

@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.pipe.PipeSize;
@@ -14,15 +14,15 @@ import org.gtreimagined.gt5r.data.Materials;
 
 import java.util.function.Consumer;
 
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.HAMMER;
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.WRENCH;
+import static org.gtreimagined.gtlib.data.GTTools.HAMMER;
+import static org.gtreimagined.gtlib.data.GTTools.WRENCH;
 import static org.gtreimagined.gt5r.data.Materials.Bronze;
 
 public class SteamMachines {
     public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
-        Object bronzePlate = AntimatterMaterialTypes.PLATE.getMaterialTag(Bronze);
-        Object steelPlate = AntimatterMaterialTypes.PLATE.getMaterialTag(Materials.Steel);
-        Object silverPlate = AntimatterMaterialTypes.PLATE.getMaterialTag(Materials.Silver);
+        Object bronzePlate = GTMaterialTypes.PLATE.getMaterialTag(Bronze);
+        Object steelPlate = GTMaterialTypes.PLATE.getMaterialTag(Materials.Steel);
+        Object silverPlate = GTMaterialTypes.PLATE.getMaterialTag(Materials.Silver);
         Object wrench = WRENCH.getTag();
         Object bricks = Items.BRICKS;
         Object furnace = Items.FURNACE;

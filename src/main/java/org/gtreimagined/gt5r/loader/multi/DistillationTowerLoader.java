@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.ItemStack;
@@ -10,8 +10,8 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST_SMALL;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_SMALL;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
@@ -162,7 +162,7 @@ public class DistillationTowerLoader {
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
                     .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).setNoConsume())
-                    .fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
+                    .fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);
             b.add(input.getId() + "_" + outputs[i].mat().getId(), distilleryTicks, distilleryPerTick);
@@ -177,7 +177,7 @@ public class DistillationTowerLoader {
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
                     .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).setNoConsume())
-                    .fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
+                    .fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);
             b.add(input.getId() + "_" + outputs[i].mat().getId(), ticks, euPerTick);
@@ -185,12 +185,12 @@ public class DistillationTowerLoader {
     }
 
     private static void addDistillationRecipe(Material input, int amount, int ticks, int euPerTick, ItemStack itemOutput, FluidProduct... outputs){
-        RecipeBuilder builder = DISTILLATION.RB().fi(input.has(AntimatterMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount));
+        RecipeBuilder builder = DISTILLATION.RB().fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount));
         for(int i=0;i<outputs.length;i++){
             Material fo = outputs[i].mat();
-            if (fo.has(AntimatterMaterialTypes.LIQUID)){
+            if (fo.has(GTMaterialTypes.LIQUID)){
                 builder.fo(outputs[i].mat().getLiquid(outputs[i].amount()));
-            } else if (fo.has(AntimatterMaterialTypes.GAS)){
+            } else if (fo.has(GTMaterialTypes.GAS)){
                 builder.fo(outputs[i].mat().getGas(outputs[i].amount()));
             }
 

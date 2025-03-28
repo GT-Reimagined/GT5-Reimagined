@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.material;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.IMaterialTag;
 import org.gtreimagined.gtlib.material.Material;
@@ -17,7 +17,7 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
             flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         }
         if (blastFurnaceTemp > 2400) {
-            flags(AntimatterMaterialTypes.INGOT_HOT);
+            flags(GTMaterialTypes.INGOT_HOT);
         }
         return this;
     }
@@ -31,7 +31,7 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     public GregTechMaterialEvent forceBF(boolean hotIngot) {
         flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         if (hotIngot) {
-            flags(AntimatterMaterialTypes.INGOT_HOT);
+            flags(GTMaterialTypes.INGOT_HOT);
         }
         return this;
     }
@@ -53,7 +53,7 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
 
     @Override
     protected GregTechMaterialEvent buildTool(ToolData builder) {
-        flags(AntimatterMaterialTypes.ROD_LONG);
+        flags(GTMaterialTypes.ROD_LONG);
         return super.buildTool(builder);
     }
 

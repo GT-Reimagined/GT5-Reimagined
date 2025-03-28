@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.integration.forge.tfc;
 
 
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.RegistryUtils;
@@ -20,8 +20,8 @@ import org.gtreimagined.gt5r.loader.machines.CutterLoader;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtcore.integration.tfc.TFCRubberData;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.MACERATE_INTO;
 import static org.gtreimagined.gtlib.material.MaterialTags.ORE_MULTI;
 import static net.dries007.tfc.common.blocks.rock.Ore.*;
@@ -81,7 +81,7 @@ public class MachineRecipes {
 
     private static void addMaceratorRecipe(Ore input, Material material){
         int multiplier = ORE_MULTI.getInt(material);
-        ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
+        ItemStack crushedStack = GTMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
         if (input.isGraded()){
             RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Grade.POOR).get()).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
@@ -96,7 +96,7 @@ public class MachineRecipes {
 
     private static void addMaceratorRecipe(Material material){
         int multiplier = ORE_MULTI.getInt(material);
-        ItemStack crushedStack = AntimatterMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
+        ItemStack crushedStack = GTMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
         RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "poor_" + material.getId())).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
         RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "normal_" + material.getId())).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);

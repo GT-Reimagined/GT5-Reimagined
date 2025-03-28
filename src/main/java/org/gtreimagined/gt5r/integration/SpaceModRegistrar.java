@@ -16,9 +16,9 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.GT5RRef;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Diamond;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Iron;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Diamond;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 
 public class SpaceModRegistrar extends AntimatterMod {
     public static SpaceModRegistrar INSTANCE;

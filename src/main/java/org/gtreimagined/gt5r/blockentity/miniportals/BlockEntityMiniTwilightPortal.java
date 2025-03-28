@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.miniportals;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.tool.AntimatterToolType;
@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.GEM;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.GEM;
 
 public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
     public static List<BlockEntityMiniPortal> sListTwilightSide = new ArrayList<>();
@@ -30,7 +30,7 @@ public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
 
     @Override
     protected boolean isPortalSetter(ItemStack stack){
-        return stack.is(GEM.getMaterialTag(AntimatterMaterials.Diamond));
+        return stack.is(GEM.getMaterialTag(GTLibMaterials.Diamond));
     }
 
     @Override

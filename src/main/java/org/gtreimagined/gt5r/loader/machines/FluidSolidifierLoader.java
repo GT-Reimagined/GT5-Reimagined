@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.RegistryUtils;
@@ -12,15 +12,15 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gtlib.Ref.L9;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_SOLIDIFYER;
 
 public class FluidSolidifierLoader {
     public static void init() {
         AntimatterAPI.all(Material.class, mat -> {
-            if (!mat.has(AntimatterMaterialTypes.LIQUID) || mat == Glass) return;
+            if (!mat.has(GTMaterialTypes.LIQUID) || mat == Glass) return;
             if (mat.has(PLATE)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume())
                 .fi(mat.getFluidIngredient(L)).io(PLATE.get(mat,1)).add(mat.getId() + "_plate",32, 8);

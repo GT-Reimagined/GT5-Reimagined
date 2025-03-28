@@ -14,7 +14,7 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import java.util.function.Consumer;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class Smelting {

@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
@@ -8,43 +8,43 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.COMPRESSOR;
 import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 
 public class CompressorLoader {
     public static void init() {
-        AntimatterMaterialTypes.INGOT.all().forEach(ingot -> {
-            if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
+        GTMaterialTypes.INGOT.all().forEach(ingot -> {
+            if (ingot.has(GTMaterialTypes.BLOCK)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-                COMPRESSOR.RB().ii(INGOT.getMaterialIngredient(ingot, count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
+                COMPRESSOR.RB().ii(INGOT.getMaterialIngredient(ingot, count)).io(GTMaterialTypes.BLOCK.get().get(ingot).asStack(1))
                         .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
         PLATE_DENSE.all().forEach(ingot -> {
-            if (ingot.has(AntimatterMaterialTypes.PLATE)) {
+            if (ingot.has(GTMaterialTypes.PLATE)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
                 COMPRESSOR.RB().ii(PLATE.getMaterialIngredient(ingot, count)).io(PLATE_DENSE.get(ingot, 1))
                         .add("dense_plate_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
-        AntimatterMaterialTypes.GEM.all().forEach(ingot -> {
-            if (ingot.has(AntimatterMaterialTypes.BLOCK)) {
+        GTMaterialTypes.GEM.all().forEach(ingot -> {
+            if (ingot.has(GTMaterialTypes.BLOCK)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-                COMPRESSOR.RB().ii(GEM.getMaterialIngredient(ingot, count)).io(AntimatterMaterialTypes.BLOCK.get().get(ingot).asStack(1))
+                COMPRESSOR.RB().ii(GEM.getMaterialIngredient(ingot, count)).io(GTMaterialTypes.BLOCK.get().get(ingot).asStack(1))
                         .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
-        AntimatterMaterialTypes.RAW_ORE.all().forEach(raw_ore -> {
-            if (raw_ore.has(AntimatterMaterialTypes.BLOCK)) {
+        GTMaterialTypes.RAW_ORE.all().forEach(raw_ore -> {
+            if (raw_ore.has(GTMaterialTypes.BLOCK)) {
                 int count = 9;
-                COMPRESSOR.RB().ii(RAW_ORE.getMaterialIngredient(raw_ore, count)).io(AntimatterMaterialTypes.RAW_ORE_BLOCK.get().get(raw_ore).asStack(1))
+                COMPRESSOR.RB().ii(RAW_ORE.getMaterialIngredient(raw_ore, count)).io(GTMaterialTypes.RAW_ORE_BLOCK.get().get(raw_ore).asStack(1))
                         .add("block_raw_" + raw_ore.getId(),Math.max(80, raw_ore.getMass() * 2), 16);
             }
         });
-        COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Wood, 1)).io(AntimatterMaterialTypes.PLATE.get(Wood, 1)).add("wood_plate",60, 4);
+        COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Wood, 1)).io(GTMaterialTypes.PLATE.get(Wood, 1)).add("wood_plate",60, 4);
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).io(PLATE.get(Lapis)).add("lapis_plate", 300, 2);
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lazurite, 1)).io(PLATE.get(Lazurite)).add("lazurite", 300, 2);

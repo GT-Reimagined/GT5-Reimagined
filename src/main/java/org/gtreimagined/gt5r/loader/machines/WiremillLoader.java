@@ -10,7 +10,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.FLUID_PIPE_STEEL;
 import static org.gtreimagined.gt5r.data.Materials.Carbon;
 import static org.gtreimagined.gt5r.data.RecipeMaps.WIRE_MILL;

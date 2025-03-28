@@ -6,7 +6,7 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Water;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Water;
 import static org.gtreimagined.gt5r.data.RecipeMaps.TREE_GROWTH_SIMULATOR;
 
 public class TreeGrowthSimulatorLoader {

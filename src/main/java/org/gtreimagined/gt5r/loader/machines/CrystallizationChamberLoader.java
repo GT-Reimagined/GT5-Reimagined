@@ -4,9 +4,9 @@ import org.gtreimagined.gtlib.material.Material;
 
 import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gtlib.Ref.L9;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST_TINY;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Iron;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_TINY;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.BOULE;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.CRYSTALLIZATION_CHAMBER;

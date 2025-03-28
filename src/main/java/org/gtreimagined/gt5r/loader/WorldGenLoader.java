@@ -27,9 +27,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.gtreimagined.gtlib.Ref.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE_STONE;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
-import static org.gtreimagined.gtlib.data.AntimatterStoneTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE_STONE;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
+import static org.gtreimagined.gtlib.data.VanillaStoneTypes.*;
 import static net.minecraft.world.level.Level.END;
 import static net.minecraft.world.level.Level.NETHER;
 import static net.minecraft.world.level.Level.OVERWORLD;

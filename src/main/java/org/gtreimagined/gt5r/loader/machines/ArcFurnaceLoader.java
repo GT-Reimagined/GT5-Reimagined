@@ -3,8 +3,8 @@ package org.gtreimagined.gt5r.loader.machines;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -35,8 +35,8 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static org.gtreimagined.gtlib.Ref.U;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -88,7 +88,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(b.asItem(), of(b.getMaterial(), 4f));
             }
         });
-        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
+        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -105,7 +105,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
             }
         });
-        AntimatterAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != AntimatterMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
+        AntimatterAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -254,10 +254,10 @@ public class ArcFurnaceLoader {
         addRecyclingRecipe(Items.DIAMOND_LEGGINGS, of(Diamond, 7f));
         addRecyclingRecipe(Items.DIAMOND_BOOTS, of(Diamond, 4f));
         MaterialTags.ARMOR.all().forEach(m -> {
-            addRecyclingRecipe(AntimatterDefaultTools.HELMET.getToolStack(m).getItem(), of(m, 5f));
-            addRecyclingRecipe(AntimatterDefaultTools.CHESTPLATE.getToolStack(m).getItem(), of(m, 8f));
-            addRecyclingRecipe(AntimatterDefaultTools.LEGGINGS.getToolStack(m).getItem(), of(m, 7f));
-            addRecyclingRecipe(AntimatterDefaultTools.BOOTS.getToolStack(m).getItem(), of(m, 4f));
+            addRecyclingRecipe(GTTools.HELMET.getToolStack(m).getItem(), of(m, 5f));
+            addRecyclingRecipe(GTTools.CHESTPLATE.getToolStack(m).getItem(), of(m, 8f));
+            addRecyclingRecipe(GTTools.LEGGINGS.getToolStack(m).getItem(), of(m, 7f));
+            addRecyclingRecipe(GTTools.BOOTS.getToolStack(m).getItem(), of(m, 4f));
         });
     }
 

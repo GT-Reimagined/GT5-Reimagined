@@ -7,7 +7,7 @@ import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import net.minecraft.world.item.Item;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Iron;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class PolarizerLoader {

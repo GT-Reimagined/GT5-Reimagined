@@ -3,8 +3,8 @@ package org.gtreimagined.gt5r.events.forge;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.AntimatterRemapping;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.fluid.AntimatterFluid;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.ore.BlockOre;
@@ -52,7 +52,7 @@ public class RemappingEvents {
 
         }*/
         ItemStack handStack = event.getPlayer().getItemInHand(event.getHand());
-        if(handStack.is(AntimatterDefaultTools.WRENCH.getTag()) && event.getTarget() instanceof Player targetPlayer && targetPlayer.getUUID().equals(GTCommonEvents.BEAR_UUID)){
+        if(handStack.is(GTTools.WRENCH.getTag()) && event.getTarget() instanceof Player targetPlayer && targetPlayer.getUUID().equals(GTCommonEvents.BEAR_UUID)){
             Random random = event.getPlayer().getRandom();
             targetPlayer.moveTo(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ(), random.nextInt(180), targetPlayer.getXRot());
         }
@@ -202,16 +202,16 @@ public class RemappingEvents {
             if (id.startsWith("block_")){
                 Material mat = Material.get(id.replace("block_", ""));
                 if (mat != NULL){
-                    map.remap(AntimatterMaterialTypes.BLOCK.get().get(mat).asBlock());
+                    map.remap(GTMaterialTypes.BLOCK.get().get(mat).asBlock());
                     continue;
                 }
             }
             if (id.equals("ore_stone_salt")){
-                map.remap(AntimatterMaterialTypes.ORE_STONE.get().get(Materials.Salt).asBlock());
+                map.remap(GTMaterialTypes.ORE_STONE.get().get(Materials.Salt).asBlock());
                 continue;
             }
             if (id.equals("ore_stone_rock_salt")){
-                map.remap(AntimatterMaterialTypes.ORE_STONE.get().get(Materials.RockSalt).asBlock());
+                map.remap(GTMaterialTypes.ORE_STONE.get().get(Materials.RockSalt).asBlock());
                 continue;
             }
             if (id.startsWith("ore_")){

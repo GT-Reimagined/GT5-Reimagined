@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineCoverHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.cover.ICover;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.types.HatchMachine;
 import org.gtreimagined.gtlib.tool.AntimatterToolType;
@@ -50,7 +50,7 @@ public class BlockEntityInputBus extends BlockEntityHatch<BlockEntityInputBus> {
     @Override
     public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
         ItemStack stack = player.getItemInHand(hand);
-        if (type == AntimatterDefaultTools.SCREWDRIVER){
+        if (type == GTTools.SCREWDRIVER){
             ICover instance = coverHandler.map(h -> h.get(Utils.getInteractSide(hit))).orElse(ICover.empty);
             if (!player.isCrouching()) {
                 if (!instance.isEmpty() && instance.openGui(player, Utils.getInteractSide(hit))) {

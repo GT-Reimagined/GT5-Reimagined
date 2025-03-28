@@ -104,7 +104,7 @@ public class BlockMiningPipe extends BlockBasic implements IItemBlockProvider, I
 
     /*@Override
     public BlockItem getItemBlock() {
-        return new AntimatterItemBlock(this){
+        return new GTItemBlock(this){
             @Override
             protected boolean placeBlock(BlockPlaceContext context, BlockState state) {
                 return context.getPlayer().isCreative();

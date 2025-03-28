@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.integration.forge.tfc;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.AntimatterMod;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterFluidTagProvider;
@@ -42,7 +42,7 @@ import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCLangProvider;
 
 import java.util.function.BiConsumer;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
@@ -95,12 +95,12 @@ public class TFCRegistrar extends AntimatterMod {
                 AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
             });
-            AntimatterMaterialTypes.LIQUID.set((m, i) -> {
-                if (m == null || !AntimatterMaterialTypes.LIQUID.allowGen(m)) return MaterialTypeFluid.getEmptyFluidAndLog(AntimatterMaterialTypes.LIQUID, m);
+            GTMaterialTypes.LIQUID.set((m, i) -> {
+                if (m == null || !GTMaterialTypes.LIQUID.allowGen(m)) return MaterialTypeFluid.getEmptyFluidAndLog(GTMaterialTypes.LIQUID, m);
                 if (m.getId().equals("water")) return new FluidStack(Fluids.WATER, i);
                 else if (m.getId().equals("lava")) return new FluidStack(Fluids.LAVA, i);
                 else if (m == SaltWater) return new FluidStack(TFCFluids.SALT_WATER.getSource(), i);
-                AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, AntimatterMaterialTypes.LIQUID.getId() + "_" + m.getId());
+                AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, GTMaterialTypes.LIQUID.getId() + "_" + m.getId());
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });

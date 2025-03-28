@@ -4,8 +4,8 @@ import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.INGOT;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.INGOT_HOT;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT_HOT;
 import static org.gtreimagined.gt5r.data.Materials.Nitrogen;
 import static org.gtreimagined.gt5r.data.RecipeMaps.VACUUM_FREEZER;
 

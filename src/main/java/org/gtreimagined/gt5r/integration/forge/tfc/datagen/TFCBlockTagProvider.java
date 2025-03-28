@@ -6,9 +6,9 @@ import org.gtreimagined.gtlib.ore.StoneType;
 import net.dries007.tfc.common.TFCTags;
 import net.minecraft.world.level.block.Block;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.ORE_SMALL;
-import static org.gtreimagined.gtlib.data.AntimatterStoneTypes.BEDROCK;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE_SMALL;
+import static org.gtreimagined.gtlib.data.VanillaStoneTypes.BEDROCK;
 
 public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
     public TFCBlockTagProvider(String providerDomain, String providerName, boolean replace) {

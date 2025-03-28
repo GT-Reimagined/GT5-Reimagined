@@ -44,8 +44,8 @@ import java.util.Arrays;
 
 import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gtlib.Ref.L9;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.ofObject;

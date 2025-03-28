@@ -2,8 +2,8 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeBlock;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
@@ -31,8 +31,8 @@ import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
 import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gtlib.Ref.U;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.BATH_MERCURY;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.BATH_PERSULFATE;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -41,13 +41,13 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.BATH;
 public class BathLoader {
     public static void init() {
         BATH.RB()
-                .ii(RecipeIngredient.of(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Wood),1))
-                .fi(AntimatterMaterials.Water.getLiquid(125))
+                .ii(RecipeIngredient.of(GTMaterialTypes.DUST.get(GTLibMaterials.Wood),1))
+                .fi(GTLibMaterials.Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
                 .add("paper",16);
         BATH.RB()
                 .ii(RecipeIngredient.of(Items.SUGAR_CANE,1))
-                .fi(AntimatterMaterials.Water.getLiquid(125))
+                .fi(GTLibMaterials.Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
                 .add("paper_1",16);
         BATH.RB()
@@ -151,18 +151,18 @@ public class BathLoader {
     public static void mercurybathing(){
         BATH_MERCURY.getAll().forEach((main, side) ->
             BATH.RB()
-                    .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
+                    .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
-                    .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
+                    .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(GTLibMaterials.Stone)))
                     .outputChances(1.0, 0.7, 1.0)
                     .add("mercury_" + main.getId(),40*20));
     }
     public static void persulfatebathing(){
         BATH_PERSULFATE.getAll().forEach((main, side) ->
                 BATH.RB()
-                        .ii(RecipeIngredient.of(AntimatterMaterialTypes.CRUSHED.get(main),1))
+                        .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED.get(main),1))
                         .fi(SodiumPersulfateSolution.getLiquid(1000))
-                        .io(new ItemStack(AntimatterMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(AntimatterMaterialTypes.DUST.get(side)),new ItemStack(AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Stone)))
+                        .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(GTLibMaterials.Stone)))
                         .outputChances(1.0, 0.7, 1.0)
                         .add("persulfate_"+main.getId(),40*20));
     }

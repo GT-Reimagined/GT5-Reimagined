@@ -6,9 +6,9 @@ import lombok.Setter;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
-import org.gtreimagined.gtlib.data.AntimatterStoneTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
+import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -119,12 +119,12 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
             }).orElse(true);
             if (consumeFluid && !mainOutput.isEmpty()) {
                 if (level.getRandom().nextInt(1000) == 0) {
-                    List<StoneType> types = AntimatterAPI.all(StoneType.class).stream().filter(s -> s instanceof CobbleStoneType || s == AntimatterStoneTypes.BEDROCK || s == AntimatterStoneTypes.STONE).toList();
+                    List<StoneType> types = AntimatterAPI.all(StoneType.class).stream().filter(s -> s instanceof CobbleStoneType || s == VanillaStoneTypes.BEDROCK || s == VanillaStoneTypes.STONE).toList();
                     int index = level.getRandom().nextInt(types.size());
                     StoneType type = types.get(index);
-                    if (type == AntimatterStoneTypes.DEEPSLATE) {
+                    if (type == VanillaStoneTypes.DEEPSLATE) {
                         cobble = Items.COBBLED_DEEPSLATE;
-                    } else if (type == AntimatterStoneTypes.STONE){
+                    } else if (type == VanillaStoneTypes.STONE){
                         cobble = Items.COBBLESTONE;
                     } else if (type instanceof CobbleStoneType cobbleStoneType){
                         cobble = cobbleStoneType.getBlock("cobble").asItem();
@@ -137,7 +137,7 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
                     else output = this.mainOutput;
                 } else {
                     if (level.getRandom().nextInt(1000) == 0){
-                        output = AntimatterMaterialTypes.DUST.get(AntimatterMaterials.Bedrock, 1);
+                        output = GTMaterialTypes.DUST.get(GTLibMaterials.Bedrock, 1);
                     } else if (level.dimension().location().equals(Level.NETHER.location())){
                         output = new ItemStack(Items.NETHERRACK);
                     }

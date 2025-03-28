@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
@@ -12,8 +12,8 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 
 import static org.gtreimagined.gtlib.Ref.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Lava;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Lava;
 import static org.gtreimagined.gtlib.material.MaterialTags.MOLTEN;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.SMELTER;
@@ -46,7 +46,7 @@ public class SmelterLoader {
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {
-        if (!m.has(AntimatterMaterialTypes.LIQUID)) return;
+        if (!m.has(GTMaterialTypes.LIQUID)) return;
         int amount = (int) ((L * materialAmount) / U);
         long duration = Math.max(1, (24 * materialAmount) / U);
         SMELTER.RB()

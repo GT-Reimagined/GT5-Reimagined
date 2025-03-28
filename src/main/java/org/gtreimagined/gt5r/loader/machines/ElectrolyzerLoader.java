@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -17,8 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.ELECTROLYZER;
@@ -32,14 +32,14 @@ public class ElectrolyzerLoader {
         }
         elecMaterials.forEach(t -> {
             if (!t.has(DUST) && !t.has(LIQUID) && !t.has(GAS)) return;
-            FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(AntimatterMaterialTypes.LIQUID)) && !mat.m.has(AntimatterMaterialTypes.DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
+            FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(GTMaterialTypes.LIQUID)) && !mat.m.has(GTMaterialTypes.DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
             for (FluidStack fluid : fluids) {
                 if (fluid.isEmpty())
                     return;
             }
             if (fluids.length > 6) return;
             int euPerTick = t.has(ELEC30) ? 30 : t.has(ELEC60) || t == Alumina ? 60 : t.has(ELEC90) ? 90 : 120;
-            ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(AntimatterMaterialTypes.DUST)).map(mat -> AntimatterMaterialTypes.DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
+            ItemStack[] items = t.getProcessInto().stream().filter(mat -> mat.m.has(GTMaterialTypes.DUST)).map(mat -> GTMaterialTypes.DUST.get(mat.m, mat.s)).toArray(ItemStack[]::new);
             int inputAmount = MaterialTags.PROCESS_INTO.get(t).getRight() > 0 ? MaterialTags.PROCESS_INTO.get(t).getRight() : t.getProcessInto().stream().mapToInt(mat -> mat.s).sum();
             RecipeBuilder b = ELECTROLYZER.RB();
             String prefix = "dust";

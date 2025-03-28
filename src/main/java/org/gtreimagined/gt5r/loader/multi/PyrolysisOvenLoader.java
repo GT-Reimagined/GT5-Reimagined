@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -9,9 +9,9 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.RAW_ORE;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.RAW_ORE;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.PYROLYSE_OVEN;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
@@ -20,8 +20,8 @@ public class PyrolysisOvenLoader {
     public static void init(){
         PYROLYSE_OVEN.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale", 200, 120);
         PYROLYSE_OVEN.RB().ii(RAW_ORE.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale_raw", 200, 120);
-        PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Materials.Biomass.getLiquid(1500)).add("biomass", 100, 10);
-        PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(2)).fi(AntimatterMaterials.Water.getLiquid(1500)).fo(Materials.Biomass.getLiquid(1500)).add("fermented_biomass", 200, 10);
+        PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(1)).fi(GTLibMaterials.Water.getLiquid(1000)).fo(Materials.Biomass.getLiquid(1500)).add("biomass", 100, 10);
+        PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(2)).fi(GTLibMaterials.Water.getLiquid(1500)).fo(Materials.Biomass.getLiquid(1500)).add("fermented_biomass", 200, 10);
         PYROLYSE_OVEN.RB().ii(DUST.getMaterialIngredient(Sugar, 23), SELECTOR_TAG_INGREDIENTS.get(1)).io(DUST.get(Charcoal, 12)).fo(Water.getLiquid(11000)).add("sugar_to_charcoal", 320, 64);
         PYROLYSE_OVEN.RB().ii(DUST.getMaterialIngredient(Sugar, 23), SELECTOR_TAG_INGREDIENTS.get(2)).fi(Nitrogen.getGas(500)).io(DUST.get(Charcoal, 12)).fo(Water.getLiquid(11000)).add("sugar_to_charcoal_2", 160, 96);
         PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(5)).io(new ItemStack(Items.CHARCOAL, 20)).fo(WoodGas.getGas(1500)).add("wood_gas", 640, 64);

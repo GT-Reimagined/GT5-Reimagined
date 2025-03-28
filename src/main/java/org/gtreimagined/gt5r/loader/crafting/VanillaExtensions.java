@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -19,9 +19,9 @@ import org.gtreimagined.gtcore.GTCoreConfig;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.AntimatterDefaultTools.HAMMER;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Coal;
+import static org.gtreimagined.gtlib.data.GTTools.HAMMER;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Coal;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class VanillaExtensions {
@@ -30,15 +30,15 @@ public class VanillaExtensions {
                 new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', Tags.Items.RODS_WOODEN), "D", "R"), GT5RRef.class, "sulfurTorch", GT5RRef.ID, "sulfur_torch");
 
         provider.addItemRecipe(consumer, GT5RRef.ID, "chainmail_helmet", "chainmail_armor",
-                Items.CHAINMAIL_HELMET, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR");
+                Items.CHAINMAIL_HELMET, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR");
         provider.addItemRecipe(consumer, GT5RRef.ID, "chainmail_chestplate", "chainmail_armor",
-                Items.CHAINMAIL_CHESTPLATE, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RHR", "RRR", "RRR");
+                Items.CHAINMAIL_CHESTPLATE, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RHR", "RRR", "RRR");
         provider.addItemRecipe(consumer, GT5RRef.ID, "chainmail_leggings", "chainmail_armor",
-                Items.CHAINMAIL_LEGGINGS, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR", "R R");
+                Items.CHAINMAIL_LEGGINGS, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR", "R R");
         provider.addItemRecipe(consumer, GT5RRef.ID, "chainmail_boots", "chainmail_armor",
-                Items.CHAINMAIL_BOOTS, of('R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "R R", "RHR");
+                Items.CHAINMAIL_BOOTS, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "R R", "RHR");
         provider.addItemRecipe(consumer, GT5RRef.ID, "saddle", "", Items.SADDLE,
-                of('L', Items.LEATHER, 'R', AntimatterMaterialTypes.RING.getMaterialTag(Steel), 'S', AntimatterMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
+                of('L', Items.LEATHER, 'R', GTMaterialTypes.RING.getMaterialTag(Steel), 'S', GTMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", ROD.get(IronMagnetic),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");

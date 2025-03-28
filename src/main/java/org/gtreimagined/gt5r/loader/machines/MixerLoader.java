@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.MIXER;
@@ -100,13 +100,13 @@ public class MixerLoader {
     }
 
     private static void addDust(Material mat, int eut, int duration) {
-        for (MaterialTypeItem<?> type : new MaterialTypeItem[]{DUST, AntimatterMaterialTypes.DUST_SMALL, AntimatterMaterialTypes.DUST_TINY}) {
+        for (MaterialTypeItem<?> type : new MaterialTypeItem[]{DUST, GTMaterialTypes.DUST_SMALL, GTMaterialTypes.DUST_TINY}) {
             List<Ingredient> ings = mat.getProcessInto().stream().map(t -> type.getMaterialIngredient(t.m, t.s)).collect(Collectors.toList());
             if (ings.size() == 0) return;
             var type2 = type;
             int count = mat.getProcessInto().stream().mapToInt(t -> t.s).sum();
             if (type != DUST){
-                if (type == AntimatterMaterialTypes.DUST_SMALL){
+                if (type == GTMaterialTypes.DUST_SMALL){
                     if (count % 4 == 0){
                         count /=4;
                         type2 = DUST;
@@ -133,8 +133,8 @@ public class MixerLoader {
         MIXER.RB().ii(DUST.getMaterialIngredient(TricalciumPhosphate, 3), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 4)).add("fertilizer_1", 200, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(Phosphate, 3), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 5)).add("fertilizer_2", 200, 16);
         MIXER.RB().ii(of(DUST.get(Wood,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
-        MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
-        MIXER.RB().ii(of(DUST.get(Salt,2))).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);
+        MIXER.RB().ii(of(DUST.get(GTLibMaterials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
+        MIXER.RB().ii(of(DUST.get(Salt,2))).fi(GTLibMaterials.Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);
         MIXER.RB().ii(of(DUST.get(Salt,2))).fi(DistilledWater.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water_2",2*20, 8);
         MIXER.RB().ii(of(DUST.get(Talc,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant",64*2, 4);
         MIXER.RB().ii(of(DUST.get(Talc,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_1",64*2, 4);
@@ -142,15 +142,15 @@ public class MixerLoader {
         MIXER.RB().ii(of(DUST.get(Soapstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_3",64*2, 4);
         MIXER.RB().ii(of(DUST.get(Soapstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_4",64*2, 4);
         MIXER.RB().ii(of(DUST.get(Soapstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_5",64*2, 4);
-        MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Redstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_6",64*2, 4);
-        MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Redstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_7",64*2, 4);
-        MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Redstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_8",64*2, 4);
+        MIXER.RB().ii(of(DUST.get(GTLibMaterials.Redstone,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_6",64*2, 4);
+        MIXER.RB().ii(of(DUST.get(GTLibMaterials.Redstone,1))).fi(Creosote.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_7",64*2, 4);
+        MIXER.RB().ii(of(DUST.get(GTLibMaterials.Redstone,1))).fi(SeedOil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant_8",64*2, 4);
         MIXER.RB().ii(of(DUST.get(Glass,7)),of(DUST.get(Boron,1))).io(DUST.get(BorosilicateGlass,8)).add("borosilicate_glass",40*20, 8);
-        MIXER.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(AntimatterMaterials.Coal,1))).io(Items.GUNPOWDER).add("gunpowder",20*20, 8);
-        MIXER.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(AntimatterMaterials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
-        MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Stone,1))).fi(Lubricant.getLiquid(20), AntimatterMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
-        MIXER.RB().ii(of(DUST.get(AntimatterMaterials.Stone,3)),of(DUST.get(Clay,1))).fi(AntimatterMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(L * 4)).add("concrete", 20, 16);
-        MIXER.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff)).fi(AntimatterMaterials.Water.getLiquid(1000)).fo(Biomass.getLiquid(1000)).add("biomass", 400, 8);
+        MIXER.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(GTLibMaterials.Coal,1))).io(Items.GUNPOWDER).add("gunpowder",20*20, 8);
+        MIXER.RB().ii(of(DUST.get(Saltpeter,2)),of(DUST.get(Sulfur,1)),of(DUST.get(GTLibMaterials.Charcoal,1))).io(new ItemStack(Items.GUNPOWDER,2)).add("gunpowder_1",15*20, 8);
+        MIXER.RB().ii(of(DUST.get(GTLibMaterials.Stone,1))).fi(Lubricant.getLiquid(20), GTLibMaterials.Water.getLiquid(4980)).fo(DrillingFluid.getLiquid(5000)).add("drilling_fluid",32*2, 16);
+        MIXER.RB().ii(of(DUST.get(GTLibMaterials.Stone,3)),of(DUST.get(Clay,1))).fi(GTLibMaterials.Water.getLiquid(500)).fo(Concrete.getLiquid(L * 4)).add("concrete", 20, 16);
+        MIXER.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff)).fi(GTLibMaterials.Water.getLiquid(1000)).fo(Biomass.getLiquid(1000)).add("biomass", 400, 8);
         MIXER.RB().ii(of(DUST_LAPIS_LAZURITE, 1)).fi(DistilledWater.getLiquid(1000)).fo(Coolant.getLiquid(1000)).add("cold_coolant", 256, 48);
         MIXER.RB().ii(DUST.getMaterialIngredient(SodiumPersulfate, 1)).fi(Water.getLiquid(1000)).fo(SodiumPersulfateSolution.getLiquid(1000)).add("sodium_persulfate_solution", 20, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(SodiumPersulfate, 1)).fi(DistilledWater.getLiquid(1000)).fo(SodiumPersulfateSolution.getLiquid(1000)).add("sodium_persulfate_solution_distilled", 20, 16);

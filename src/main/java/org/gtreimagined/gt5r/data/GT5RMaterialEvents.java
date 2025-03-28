@@ -3,8 +3,8 @@ package org.gtreimagined.gt5r.data;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.AntimatterDefaultTools;
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.SubTag;
@@ -17,8 +17,8 @@ import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.ALLOY;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -1094,12 +1094,12 @@ public class GT5RMaterialEvents {
         /**
          **  Plastic Related
          **/
-        event.setMaterial(Materials.Rubber).tool().toolDamage(-1).toolSpeed(0.15f).toolDurability(1024).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.EpoxyResin).tool().toolSpeed(2.25f).toolDurability(256).toolQuality(1).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.Plastic).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build();
-        event.setMaterial(Materials.PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.SiliconeRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1536).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(AntimatterDefaultTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.Rubber).tool().toolDamage(-1).toolSpeed(0.15f).toolDurability(1024).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.EpoxyResin).tool().toolSpeed(2.25f).toolDurability(256).toolQuality(1).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.Plastic).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build();
+        event.setMaterial(Materials.PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.SiliconeRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1536).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
     }
 
 
@@ -1551,7 +1551,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Gold).flags(FOIL, ROD_LONG, WIRE_FINE);
         event.setMaterial(Iron).flags(RING, ROD_LONG, FRAME, GEAR_SMALL);
         event.setMaterial(Wood).flags(FRAME);
-        event.setMaterial(AntimatterMaterials.Netherite).asMetal(2246, 1300, RING);
+        event.setMaterial(GTLibMaterials.Netherite).asMetal(2246, 1300, RING);
         event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Materials.Lazurite, 12, Materials.Sodalite, 2, Materials.Pyrite, 1, Materials.Calcite, 1));
         event.setMaterial(Prismarine).mats(of(Materials.Potassium, 2, Materials.Oxygen, 8, Materials.Manganese, 1, Materials.Silicon, 5));
         event.setMaterial(Redstone).mats(of(Materials.Silicon, 1, Materials.Pyrite, 5, Materials.Ruby, 1, Materials.Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);

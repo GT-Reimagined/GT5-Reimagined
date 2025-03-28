@@ -1,19 +1,19 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.data.AntimatterMaterials;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.AntimatterMaterials.Coal;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTLibMaterials.Coal;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.COKE_OVEN;
 
 public class CokeOvenLoader {
     public static void init() {
-        COKE_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GEM.get(AntimatterMaterials.Charcoal, 1)).fo(Creosote.getLiquid(100)).add("charcoal",600, 0);
+        COKE_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GEM.get(GTLibMaterials.Charcoal, 1)).fo(Creosote.getLiquid(100)).add("charcoal",600, 0);
         COKE_OVEN.RB().ii(RecipeIngredient.of(Items.COAL, 1)).io(GEM.get(CoalCoke, 1)).fo(Creosote.getLiquid(200)).add("coal_coke",600, 0);
         COKE_OVEN.RB().ii(RecipeIngredient.of(GEM.getMaterialTag(Lignite), 1)).io(GEM.get(LigniteCoke, 1)).fo(Creosote.getLiquid(200)).add("lignite_coal_coke",600, 0);
         COKE_OVEN.RB().ii(RecipeIngredient.of(CRUSHED.getMaterialTag(Coal), 1)).io(GEM.get(CoalCoke, 1)).fo(Creosote.getLiquid(200)).add("coal_coke_crushed",600, 0);

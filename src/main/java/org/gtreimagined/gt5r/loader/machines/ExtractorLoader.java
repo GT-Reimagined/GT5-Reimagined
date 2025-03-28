@@ -5,7 +5,7 @@ import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.Materials.RawRubber;

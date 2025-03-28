@@ -7,7 +7,7 @@ import org.gtreimagined.gt5r.items.ItemBreederRod;
 import org.gtreimagined.gt5r.items.ItemNuclearFuelRod;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.Materials.*;

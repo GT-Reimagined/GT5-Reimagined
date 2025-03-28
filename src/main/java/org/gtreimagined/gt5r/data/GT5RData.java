@@ -12,7 +12,7 @@ public class GT5RData {
             if (t instanceof MaterialTypeFluid) return;
             if (t.getClass() == MaterialType.class) return;
             //TODO: add better check
-            if (t == AntimatterMaterialTypes.ORE_STONE) return;
+            if (t == GTMaterialTypes.ORE_STONE) return;
             CoverFactory.builder((a,b,c,d) -> new CoverTypeFilter(a,b,c,d,t)).addTextures(Material.NULL.getSet().getTextures(t)).item((a, b) -> {
             return new ItemCover(a.getDomain(), a.getId()).tip("Filters for " + t.getId()).texture(Material.NULL.getSet().getTextures(t));}).build(GT5RRef.ID, "cover_type_" + t.getId());
         });*/

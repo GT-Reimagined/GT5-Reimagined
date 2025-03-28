@@ -7,7 +7,7 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.data.AntimatterMaterialTypes;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.Cable;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.AntimatterMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.integration.rei.REIUtils.toREIFLuidStack;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
@@ -33,7 +33,7 @@ public class MaterialTreeDisplay implements Display {
 
     public MaterialTreeDisplay(Material material){
         this.mat = material;
-        this.input = createInputEntries(List.of(AntimatterMaterialTypes.DUST.getMaterialIngredient(material, 1)));
+        this.input = createInputEntries(List.of(GTMaterialTypes.DUST.getMaterialIngredient(material, 1)));
         this.output = new ArrayList<>();
         if (mat.has(LIQUID)){
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.FLUID, toREIFLuidStack((mat.getLiquid(1000))))));
@@ -48,7 +48,7 @@ public class MaterialTreeDisplay implements Display {
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(INGOT.get(mat),1))));
         }
         if(mat.has(BLOCK)){
-            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,AntimatterMaterialTypes.BLOCK.get().get(mat).asStack(1))));
+            this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, GTMaterialTypes.BLOCK.get().get(mat).asStack(1))));
         }
         if(mat.has(NUGGET)){
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(NUGGET.get(mat),1))));

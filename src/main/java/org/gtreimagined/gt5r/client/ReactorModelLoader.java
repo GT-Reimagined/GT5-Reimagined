@@ -6,7 +6,7 @@ import com.google.gson.JsonObject;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.client.model.MachineModel;
-import org.gtreimagined.gtlib.client.model.loader.AntimatterModelLoader;
+import org.gtreimagined.gtlib.client.model.loader.GTModelLoader;
 import org.gtreimagined.gtlib.machine.MachineState;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ReactorModelLoader extends AntimatterModelLoader<MachineModel> {
+public class ReactorModelLoader extends GTModelLoader<MachineModel> {
     public ReactorModelLoader(ResourceLocation loc) {
         super(loc);
     }
