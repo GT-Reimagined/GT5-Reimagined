@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.loader;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.AntimatterConfig;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.event.AntimatterWorldGenEvent;
+import org.gtreimagined.gtlib.event.GTWorldGenEvent;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.util.TagUtils;
 import org.gtreimagined.gtlib.worldgen.StoneLayerOre;
@@ -51,7 +51,7 @@ public class WorldGenLoader {
     public static final ResourceKey<Level> JAMD_MINING = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("jamd", "mining"));
 
 
-    public static void init(AntimatterWorldGenEvent ev) {
+    public static void init(GTWorldGenEvent ev) {
         if (AntimatterConfig.STONE_LAYERS.get()) {
             initStoneVeins(ev);
         }
@@ -75,7 +75,7 @@ public class WorldGenLoader {
         }
     }
 
-    private static void initBedrockVeins(AntimatterWorldGenEvent ev) {
+    private static void initBedrockVeins(GTWorldGenEvent ev) {
         ev.bedrockOre(WorldGenBedrockVein.create("diamond", 128000, Diamond, true, PANDANUS_CANDELABRUM, OVERWORLD.location(), JAMD_MINING.location()));
         ev.bedrockOre(WorldGenBedrockVein.create("tungstate", 96000, Tungstate, true, TUNGSTUS, OVERWORLD.location(), JAMD_MINING.location()));
         ev.bedrockOre(WorldGenBedrockVein.create("scheelite", 96000, Scheelite, true, TUNGSTUS, OVERWORLD.location(), JAMD_MINING.location()));
@@ -108,7 +108,7 @@ public class WorldGenLoader {
         }
     }
 
-    private static void initTwilightForestOres(AntimatterWorldGenEvent event){
+    private static void initTwilightForestOres(GTWorldGenEvent event){
         event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
         event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
         event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
@@ -134,7 +134,7 @@ public class WorldGenLoader {
         event.vanillaOre(new WorldGenVanillaOreBuilder().withMaterial(Pitchblende).withSize(16).withProbability(100).atHeight(-24, -16).withDimensions(TWILIGHT_FOREST.location()).buildMaterial());
     }
 
-    private static void initSmallOres(AntimatterWorldGenEvent event){
+    private static void initSmallOres(GTWorldGenEvent event){
         event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Copper).withAmountPerChunk(32).atHeight(16, 126).buildMaterial());
         event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Tin).withAmountPerChunk(32).atHeight(16, 126).buildMaterial());
         event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Bismuth).withAmountPerChunk(8).atHeight(76, 196).buildMaterial());
@@ -172,7 +172,7 @@ public class WorldGenLoader {
         event.smallOre(new WorldGenSmallOreBuilder().withMaterial(Sulfur).withAmountPerChunk(8).atHeight(-59, -34).withCustomId("sulfur_overworld").buildMaterial());
     }
 
-    private static void initStoneVeins(AntimatterWorldGenEvent ev) {
+    private static void initStoneVeins(GTWorldGenEvent ev) {
         List<ResourceKey<Level>> overworld = List.of(OVERWORLD, JAMD_MINING);
         ev.stoneLayer(new WorldGenStoneLayerBuilder("stone").withStone(STONE).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new WorldGenStoneLayerBuilder("black_granite").withStone(BLACK_GRANITE).withWeight(1).inDimensions(overworld).buildVein());
@@ -351,7 +351,7 @@ public class WorldGenLoader {
 
     }
 
-    private static void initOreVeins(AntimatterWorldGenEvent ev) {
+    private static void initOreVeins(GTWorldGenEvent ev) {
         List<ResourceKey<Level>> overworld = new ArrayList<>();
         if (!AntimatterAPI.isModLoaded(MOD_TFC) && !GT5RConfig.GT6_ORE_GEN.get()){
             overworld.add(OVERWORLD);

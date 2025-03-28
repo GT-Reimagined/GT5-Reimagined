@@ -7,8 +7,8 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
-import org.gtreimagined.gtlib.event.AntimatterLoaderEvent;
-import org.gtreimagined.gtlib.event.AntimatterProvidersEvent;
+import org.gtreimagined.gtlib.event.GTLoaderEvent;
+import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.fluid.AntimatterFluid;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeFluid;
@@ -149,13 +149,13 @@ public class TFCRegistrar extends AntimatterMod {
         return 0;
     }
 
-    public void registerRecipeLoaders(AntimatterLoaderEvent event){
+    public void registerRecipeLoaders(GTLoaderEvent event){
         BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5RRef.ID, a, b);
         loader.accept("tfc_machine_recipes", MachineRecipes::init);
     }
 
     @SubscribeEvent
-    public void onProviders(AntimatterProvidersEvent ev) {
+    public void onProviders(GTProvidersEvent ev) {
         ev.addProvider(() -> new GTFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
             @Override
             protected void processTags(String domain) {

@@ -12,10 +12,10 @@ import org.gtreimagined.gtlib.datagen.providers.GTAdvancementProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
-import org.gtreimagined.gtlib.event.AntimatterCraftingEvent;
-import org.gtreimagined.gtlib.event.AntimatterLoaderEvent;
-import org.gtreimagined.gtlib.event.AntimatterProvidersEvent;
-import org.gtreimagined.gtlib.event.AntimatterWorldGenEvent;
+import org.gtreimagined.gtlib.event.GTCraftingEvent;
+import org.gtreimagined.gtlib.event.GTLoaderEvent;
+import org.gtreimagined.gtlib.event.GTProvidersEvent;
+import org.gtreimagined.gtlib.event.GTWorldGenEvent;
 import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
@@ -191,7 +191,7 @@ public class GT5Reimagined extends AntimatterMod {
     private void setup(final FMLCommonSetupEvent e) {
     }
 
-    public static void onProviders(AntimatterProvidersEvent ev) {
+    public static void onProviders(GTProvidersEvent ev) {
         final GTBlockTagProvider[] p = new GTBlockTagProvider[1];
         ev.addProvider(() -> {
             p[0] = new GT5RBlockTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Block Tags"), false);
@@ -206,7 +206,7 @@ public class GT5Reimagined extends AntimatterMod {
         ev.addProvider(() -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
     }
     
-    public static void registerCraftingLoaders(AntimatterCraftingEvent event) {
+    public static void registerCraftingLoaders(GTCraftingEvent event) {
         event.addLoader(Miscellaneous::loadRecipes);
         event.addLoader(Smelting::loadRecipes);
         event.addLoader(WireCablesPlates::loadRecipes);
@@ -224,7 +224,7 @@ public class GT5Reimagined extends AntimatterMod {
         }
     }
 
-    public static void registerRecipeLoaders(AntimatterLoaderEvent event) {
+    public static void registerRecipeLoaders(GTLoaderEvent event) {
         BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5RRef.ID, a, b);
         loader.accept("alloy_smelter", AlloySmelterLoader::init);
         loader.accept("arc_furnace", ArcFurnaceLoader::init);
@@ -294,7 +294,7 @@ public class GT5Reimagined extends AntimatterMod {
         }
     }
 
-    private static void onWorldGen(AntimatterWorldGenEvent event){
+    private static void onWorldGen(GTWorldGenEvent event){
         WorldGenLoader.init(event);
     }
 
