@@ -4,9 +4,9 @@ import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.AntimatterMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterFluidTagProvider;
+import org.gtreimagined.gtlib.datagen.GTLibDynamics;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
 import org.gtreimagined.gtlib.event.AntimatterLoaderEvent;
 import org.gtreimagined.gtlib.event.AntimatterProvidersEvent;
 import org.gtreimagined.gtlib.fluid.AntimatterFluid;
@@ -54,7 +54,7 @@ public class TFCRegistrar extends AntimatterMod {
         if (isEnabled()) {
             FMLJavaModLoadingContext.get().getModEventBus().register(this);
             MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
-            AntimatterDynamics.clientProvider(GT5RRef.ID, () -> new TFCLangProvider(GT5RRef.ID, "TFC en_us Lang", "en_us"));
+            GTLibDynamics.clientProvider(GT5RRef.ID, () -> new TFCLangProvider(GT5RRef.ID, "TFC en_us Lang", "en_us"));
         }
     }
     @Override
@@ -156,14 +156,14 @@ public class TFCRegistrar extends AntimatterMod {
 
     @SubscribeEvent
     public void onProviders(AntimatterProvidersEvent ev) {
-        ev.addProvider(() -> new AntimatterFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
+        ev.addProvider(() -> new GTFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
             @Override
             protected void processTags(String domain) {
                 super.processTags(domain);
                 this.tag(TagUtils.getForgelikeFluidTag("salt_water")).add(TFCFluids.SALT_WATER.getSource());
             }
         });
-        AntimatterBlockTagProvider[] blockTagProviders = new AntimatterBlockTagProvider[1];
+        GTBlockTagProvider[] blockTagProviders = new GTBlockTagProvider[1];
         blockTagProviders[0] = new TFCBlockTagProvider( Ref.MOD_TFC, "TFC Block Tags", false);
         ev.addProvider(() -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
         ev.addProvider(() -> blockTagProviders[0]);

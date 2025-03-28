@@ -2,8 +2,8 @@ package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterItemTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTItemTagProvider;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.data.ToolData;
@@ -15,8 +15,8 @@ import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
-public class TFCItemTagProvider extends AntimatterItemTagProvider {
-    public TFCItemTagProvider(String providerDomain, String providerName, boolean replace, AntimatterBlockTagProvider p) {
+public class TFCItemTagProvider extends GTItemTagProvider {
+    public TFCItemTagProvider(String providerDomain, String providerName, boolean replace, GTBlockTagProvider p) {
         super(providerDomain, providerName, replace, p);
     }
 

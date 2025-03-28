@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
 import org.gtreimagined.gtlib.tool.IAntimatterTool;
@@ -36,7 +36,7 @@ import static org.gtreimagined.gtcore.data.GTCoreTools.*;
 
 public class ElectricToolRecipes {
 
-    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         TOOLS.getAll().forEach((m, d) -> {
             if (d.toolTypes().contains(ToolTypes.PINCERS) && (m.has(GEM) || m.has(PLATE))){
                 TagKey<Item> plateGem = m.has(GEM) ? GEM.getMaterialTag(m) : m.has(PLATE) ? PLATE.getMaterialTag(m) : INGOT.getMaterialTag(m);

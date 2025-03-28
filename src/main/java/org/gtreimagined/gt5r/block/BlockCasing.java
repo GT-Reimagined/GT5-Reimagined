@@ -1,8 +1,8 @@
 package org.gtreimagined.gt5r.block;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.datagen.builder.AntimatterBlockModelBuilder;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
+import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.dynamic.BlockDynamic;
 import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.world.level.block.Block;
@@ -26,8 +26,8 @@ public class BlockCasing extends BlockDynamic {
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
-        AntimatterBlockModelBuilder builder = buildBlock(block,prov);
+    public void onBlockModelBuild(Block block, GTBlockStateProvider prov) {
+        GTBlockModelBuilder builder = buildBlock(block,prov);
         if (builder != null) {
             prov.state(block, builder);
         } else {
@@ -35,7 +35,7 @@ public class BlockCasing extends BlockDynamic {
         }
     }
     //Hierarchial block builder.
-    protected AntimatterBlockModelBuilder buildBlock(Block block, AntimatterBlockStateProvider prov) {
+    protected GTBlockModelBuilder buildBlock(Block block, GTBlockStateProvider prov) {
         return null;
     }
 }

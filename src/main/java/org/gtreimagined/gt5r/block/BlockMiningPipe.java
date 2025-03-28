@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.block;
 
 import org.gtreimagined.gtlib.block.BlockBasic;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.registration.IColorHandler;
 import org.gtreimagined.gtlib.registration.IItemBlockProvider;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -79,7 +79,7 @@ public class BlockMiningPipe extends BlockBasic implements IItemBlockProvider, I
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
+    public void onBlockModelBuild(Block block, GTBlockStateProvider prov) {
         if (getId().equals("mining_pipe_thin")){
             prov.state(block, () -> prov.existing(GT5RRef.ID,"block/mining_pipe_thin"));
             return;

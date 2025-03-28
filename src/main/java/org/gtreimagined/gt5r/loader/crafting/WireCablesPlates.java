@@ -5,7 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.Cable;
 import org.gtreimagined.gtlib.pipe.types.Wire;
@@ -26,7 +26,7 @@ import static org.gtreimagined.gt5r.data.Materials.Rubber;
 
 public class WireCablesPlates {
     @SuppressWarnings("unchecked")
-    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         AntimatterAPI.all(Wire.class, wire -> {
             Cable<?> cable = AntimatterAPI.get(Cable.class, "cable" + "_" + wire.getMaterial().getId());
             ImmutableSet<PipeSize> sizes = wire.getSizes();
@@ -70,17 +70,17 @@ public class WireCablesPlates {
         });
     }
 
-    private static void twoToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    private static void twoToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         provider.shapeless(output,"two_to_one_" + RegistryUtils.getIdFromItem(wires.get(to)).getPath(),"wire",
                 new ItemStack(wires.get(to),1),wires.get(from),wires.get(from));
     }
 
-    private static void oneToTwo(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    private static void oneToTwo(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         provider.shapeless(output,"one_to_two_" + RegistryUtils.getIdFromItem(wires.get(to)).getPath(),"wire",
                 new ItemStack(wires.get(to),2),wires.get(from));
     }
 
-    private static void fourToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    private static void fourToOne(Map<PipeSize, Item> wires, PipeSize from, PipeSize to, Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         provider.shapeless(output,"four_to_one_" + RegistryUtils.getIdFromItem(wires.get(to)).getPath(),"wire",
                 new ItemStack(wires.get(to),1),wires.get(from),wires.get(from),wires.get(from),wires.get(from));
     }

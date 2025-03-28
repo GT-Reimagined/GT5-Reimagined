@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeItemBlock;
@@ -46,7 +46,7 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.TierMaps.*;
 
 public class BlockParts {
-    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         GTMaterialTypes.FRAME.all().forEach(frame -> {
             if (!frame.has(GTMaterialTypes.ROD)) return;
             provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", GTMaterialTypes.FRAME.get().get(frame).asStack(2),
@@ -218,69 +218,69 @@ public class BlockParts {
                 of('W', ItemTags.PLANKS, 'G', Items.GUNPOWDER, 'S', Items.STRING), "WSW" ,"GGG", "WGW");
     }
 
-    private static void addSlabRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block slab){
+    private static void addSlabRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block slab){
         provider.addStackRecipe(output, "slabs", new ItemStack(slab, 6), ImmutableMap.of('F', full), "FFF");
         provider.addItemRecipe(output, "slabs", full, ImmutableMap.of('S', slab), "S", "S");
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + RegistryUtils.getIdFromItem(slab.asItem()).getPath()));
     }
 
-    private static void addStairRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Block full, Block stair){
+    private static void addStairRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block stair){
         provider.addStackRecipe(output, "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "F  ", "FF ", "FFF");
         provider.addStackRecipe(output, GT5RRef.ID, RegistryUtils.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + RegistryUtils.getIdFromItem(stair.asItem()).getPath()));
     }
 
-    private static void addCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
+    private static void addCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 ,
                 "PHP", "PFP", "PWP");
     }
 
-    private static void addBrickedCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
+    private static void addBrickedCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", casing,
                 of('B', Items.BRICK, 'P', PLATE.getMaterialTag(mat), 'H', GTTools.HAMMER.getTag())
                 , "PPP", "PHP", "BBB");
     }
 
-    private static void addFirebox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
+    private static void addFirebox(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'R', ROD.getMaterialTag(mat), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "RFR", "PRP");
     }
 
-    private static void addGearbox(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
+    private static void addGearbox(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem(), 'G', GEAR.getMaterialTag(mat))
                 ,
                 "PHP", "GFG", "PWP");
     }
 
-    private static void addPipeCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, PipeType<?> pipe, Block casing) {
+    private static void addPipeCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, PipeType<?> pipe, Block casing) {
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'R', pipe.getBlockItem(PipeSize.NORMAL), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "RFR", "PRP");
     }
 
-    private static void addTurbine(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Block casing) {
+    private static void addTurbine(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'R', GTMaterialTypes.ROD.getMaterialTag(mat), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "PFP", "PRP");
     }
 
-    private static void addCoil(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, PipeItemBlock wire, BlockCoil coil) {
+    private static void addCoil(Consumer<FinishedRecipe> output, GTRecipeProvider provider, PipeItemBlock wire, BlockCoil coil) {
         provider.addItemRecipe(output, "casings", coil,
                 of('P', wire, 'W', WRENCH.getTag())
                 , "PPP", "PWP", "PPP");
     }
 
-    private static void addTierCasing(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Tier tier) {
+    private static void addTierCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Tier tier) {
         provider.addItemRecipe(output, "casings", AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID),
                 of('P', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', WRENCH.getTag())
                 , "PPP", "PWP", "PPP");
     }
 
-    private static void addTierHull(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Material mat, Tier tier) {
+    private static void addTierHull(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Tier tier) {
         provider.addItemRecipe(output, "hulls", HULL.getItem(tier),
                 of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID))
                 , "PRP", "WKW");

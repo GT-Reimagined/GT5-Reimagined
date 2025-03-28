@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import org.gtreimagined.gtlib.data.GTTools;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.ItemTags;
@@ -14,7 +14,7 @@ import static com.google.common.collect.ImmutableMap.of;
 
 public class WoodCrafting {
 
-    public static void loadRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider) {
         provider.addItemRecipe(consumer, GT5RRef.ID, "tiny_wooden_fluid_pipe", "pipes",
                 GT5RBlocks.FLUID_PIPE_WOOD.getBlockItem(PipeSize.TINY), of('S', GTTools.SAW.getTag(), 's', ItemTags.WOODEN_SLABS, 'H', GTTools.SOFT_HAMMER.getTag()), "  S", " s ", "H  ");
         provider.addItemRecipe(consumer, GT5RRef.ID, "small_wooden_fluid_pipe", "pipes",

@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +25,7 @@ import static org.gtreimagined.gtlib.data.GTLibMaterials.Coal;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class VanillaExtensions {
-    public static void loadRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider) {
         provider.addConditionalRecipe(consumer, provider.getStackRecipe("", false,
                 new ItemStack(Blocks.TORCH, 2), of('D', TagUtils.getForgelikeItemTag("dusts/sulfur"), 'R', Tags.Items.RODS_WOODEN), "D", "R"), GT5RRef.class, "sulfurTorch", GT5RRef.ID, "sulfur_torch");
 

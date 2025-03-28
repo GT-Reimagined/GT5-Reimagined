@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.datagen;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterLanguageProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTLanguageProvider;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.util.Utils;
@@ -30,7 +30,7 @@ import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
 public class GT5RLocalizations {
 
-    public static class en_US extends AntimatterLanguageProvider {
+    public static class en_US extends GTLanguageProvider {
 
         public en_US() {
             super(GT5RRef.ID, GT5RRef.NAME + " en_us Localization", "en_us");

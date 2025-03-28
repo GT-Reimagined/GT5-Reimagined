@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.datagen;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockLootProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockLootProvider;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
@@ -26,7 +26,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.CRUSHED;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.RAW_ORE;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 
-public class GT5RBlockLootProvider extends AntimatterBlockLootProvider {
+public class GT5RBlockLootProvider extends GTBlockLootProvider {
     public GT5RBlockLootProvider(String providerDomain, String providerName) {
         super(providerDomain, providerName);
     }

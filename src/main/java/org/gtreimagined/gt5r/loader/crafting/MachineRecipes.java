@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemCover;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -59,7 +59,7 @@ import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class MachineRecipes {
-    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         addBasicMachineRecipes(output, provider);
         addHatchRecipes(output, provider);
         addMultiblockRecipes(output, provider);
@@ -67,7 +67,7 @@ public class MachineRecipes {
         addStorageTransformerRecipes(output, provider);
     }
 
-    private static void addBasicMachineRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void addBasicMachineRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item motor = AntimatterAPI.get(ItemBasic.class, "motor_"+tier.getId(), GTCore.ID);
             if (motor == null) return;
@@ -539,7 +539,7 @@ public class MachineRecipes {
                 of('L', PLATE.getMaterialTag(Lead), 'H', GT5RBlocks.TUNGSTENSTEEL_CASING, 'P', GT5RBlocks.FLUID_PIPE_COPPER.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Copper)), "LCL", "PHP", "LCL");
     }
 
-    private static void addStorageTransformerRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void addStorageTransformerRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item hull = HULL.getItem(tier);
             if (hull == null) return;
@@ -624,7 +624,7 @@ public class MachineRecipes {
                         .put('W', GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
     }
 
-    private static void addUtilityBlockRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void addUtilityBlockRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item hull = HULL.getItem(tier);
             if (hull == null) return;
@@ -791,7 +791,7 @@ public class MachineRecipes {
         }
     }
 
-    private static void addHatchRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void addHatchRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         Arrays.stream(Tier.getAllElectric()).forEach(tier -> {
             Item hull = HULL.getItem(tier);
             if (hull == null) return;
@@ -852,7 +852,7 @@ public class MachineRecipes {
         });
     }
 
-    private static void addMultiblockRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void addMultiblockRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         if (GT5RConfig.HARD_SETTINGS) {
             add(ASSEMBLY_LINE, IV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()

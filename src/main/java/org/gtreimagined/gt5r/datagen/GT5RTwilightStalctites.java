@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
+import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -43,13 +43,13 @@ public class GT5RTwilightStalctites {
         JsonArray array = new JsonArray();
         hollowHillEntries.get(2).forEach(r -> array.add(r.toString()));
         medium.add("stalactites", array);
-        AntimatterDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/medium_hollow_hill.json"), medium.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/medium_hollow_hill.json"), medium.toString().getBytes());
         JsonObject large = new JsonObject();
         large.addProperty("replace", false);
         JsonArray array2 = new JsonArray();
         hollowHillEntries.get(3).forEach(r -> array2.add(r.toString()));
         large.add("stalactites", array2);
-        AntimatterDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/large_hollow_hill.json"), large.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/large_hollow_hill.json"), large.toString().getBytes());
         hollowHillEntries = null;
     }
 
@@ -61,6 +61,6 @@ public class GT5RTwilightStalctites {
         object.addProperty("weight", weight);
         ResourceLocation id = new ResourceLocation(GT5RRef.ID, name);
         hollowHillEntries.computeIfAbsent(hillSize, i -> new ArrayList<>()).add(id);
-        AntimatterDynamics.RUNTIME_DATA_PACK.addData(AntimatterDynamics.fix(id, "stalactite/entries", ".json"), object.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(GTLibDynamics.fix(id, "stalactite/entries", ".json"), object.toString().getBytes());
     }
 }

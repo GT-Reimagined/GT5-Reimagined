@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.block;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.datagen.builder.AntimatterBlockModelBuilder;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterItemModelProvider;
+import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
 import org.gtreimagined.gtlib.registration.IAntimatterObject;
 import org.gtreimagined.gtlib.registration.IModelProvider;
 import org.gtreimagined.gtlib.registration.ITextureProvider;
@@ -60,13 +60,13 @@ public class BlockBedrockFlower extends BushBlock implements IAntimatterObject, 
     }
 
     @Override
-    public void onItemModelBuild(ItemLike item, AntimatterItemModelProvider prov) {
+    public void onItemModelBuild(ItemLike item, GTItemModelProvider prov) {
         prov.tex(item, getTextures());
     }
 
     @Override
-    public void onBlockModelBuild(Block block, AntimatterBlockStateProvider prov) {
-        AntimatterBlockModelBuilder builder = prov.getBuilder(block);
+    public void onBlockModelBuild(Block block, GTBlockStateProvider prov) {
+        GTBlockModelBuilder builder = prov.getBuilder(block);
         builder.parent(new ResourceLocation("block/cross"));
         Texture texture = getTextures()[0];
         builder.texture("cross", texture);

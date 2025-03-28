@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.datagen;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -24,7 +24,7 @@ import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 
 import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
 
-public class GT5RBlockTagProvider extends AntimatterBlockTagProvider {
+public class GT5RBlockTagProvider extends GTBlockTagProvider {
 
     public GT5RBlockTagProvider(String providerDomain, String providerName, boolean replace) {
         super(providerDomain, providerName, replace);

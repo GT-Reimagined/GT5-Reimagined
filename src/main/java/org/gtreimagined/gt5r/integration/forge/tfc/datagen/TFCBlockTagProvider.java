@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.ore.StoneType;
 import net.dries007.tfc.common.TFCTags;
 import net.minecraft.world.level.block.Block;
@@ -10,7 +10,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE_SMALL;
 import static org.gtreimagined.gtlib.data.VanillaStoneTypes.BEDROCK;
 
-public class TFCBlockTagProvider extends AntimatterBlockTagProvider {
+public class TFCBlockTagProvider extends GTBlockTagProvider {
     public TFCBlockTagProvider(String providerDomain, String providerName, boolean replace) {
         super(providerDomain, providerName, replace);
     }

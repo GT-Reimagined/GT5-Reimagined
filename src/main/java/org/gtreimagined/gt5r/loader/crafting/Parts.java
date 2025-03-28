@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemCover;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -40,7 +40,7 @@ import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class Parts {
-  public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+  public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
       tieredItems(output, provider);
       molds(output, provider);
       provider.shapeless(output, "nether_quartz_from_milky_quartz","parts", new ItemStack(Items.QUARTZ), GEM.getMaterialTag(MilkyQuartz));
@@ -110,7 +110,7 @@ public class Parts {
               of('A', PLATE.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Glass), 'g', ForgeTags.DYES_GREEN, 'b', ForgeTags.DYES_BLUE, 'r', ForgeTags.DYES_RED, 'G', DUST.getMaterialTag(Glowstone)), "AgA", "rPb", "AGA");
   }
 
-  private static void tieredItems(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+  private static void tieredItems(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
       Arrays.stream(Tier.getStandardWithIV()).forEach(t -> {
           Material magnet = (t == Tier.ULV || t == LV) ? IronMagnetic
                   : (t == Tier.EV || t == Tier.IV ? NeodymiumMagnetic : SteelMagnetic);
@@ -157,7 +157,7 @@ public class Parts {
       });
   }
 
-  private static void molds(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+  private static void molds(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
       provider.addItemRecipe(output, GT5RRef.ID, "empty_shape", "gtparts", EmptyShape, of(
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag(),
@@ -210,17 +210,17 @@ public class Parts {
       shapeRecipe(output, provider, ShapeRod, ShapeFineWire, "PH");
   }
 
-  private static void moldRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
+  private static void moldRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item mold, String... shapes){
       provider.addItemRecipe(output, GT5RRef.ID, "", "gtparts", mold,
               of('P', EmptyShape, 'H', HAMMER.getTag()), shapes);
   }
 
-    private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item inputMold, Item mold, String... shapes){
+    private static void shapeRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item inputMold, Item mold, String... shapes){
         provider.addItemRecipe(output, GT5RRef.ID, "", "gtparts", mold,
                 of('P', inputMold, 'H', WIRE_CUTTER.getTag()), shapes);
     }
 
-    private static void shapeRecipe(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider, Item mold, String... shapes){
+    private static void shapeRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item mold, String... shapes){
         shapeRecipe(output, provider, EmptyShape, mold, shapes);
     }
 

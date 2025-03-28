@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
 import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterLanguageProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTLanguageProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreBlock;
 import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreItem;
 
 import static org.gtreimagined.gtlib.util.Utils.lowerUnderscoreToUpperSpaced;
 
-public class TFCLangProvider extends AntimatterLanguageProvider {
+public class TFCLangProvider extends GTLanguageProvider {
     public TFCLangProvider(String providerDomain, String providerName, String locale) {
         super(providerDomain, providerName, locale);
     }

@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.SubTag;
@@ -47,7 +47,7 @@ import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
 public class Circuitry {
-    public static void loadCraftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    public static void loadCraftingRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         // MANUAL COATED BOARD CRAFTING
         provider.addStackRecipe(output, GT5RRef.ID, "", "board_basic", new ItemStack(GT5RItems.CircuitBoardCoated, 3),
                 ImmutableMap.<Character, Object>builder()
@@ -62,7 +62,7 @@ public class Circuitry {
         }
     }
 
-    private static void bloodyCircuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void bloodyCircuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         // MANUAL TIER 0 CIRCUIT CRAFTING
         provider.addItemRecipe(output, "circuit_basic", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
@@ -134,7 +134,7 @@ public class Circuitry {
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(NickelZincFerrite)), "WWW", "WBW", "WWW");
     }
 
-    private static void circuits(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    private static void circuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         provider.addItemRecipe(output, GT5RRef.ID, "circuit_basic_h", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))

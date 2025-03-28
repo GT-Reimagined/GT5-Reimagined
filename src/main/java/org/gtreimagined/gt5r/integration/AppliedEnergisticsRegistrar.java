@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.AntimatterMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -110,7 +110,7 @@ public class AppliedEnergisticsRegistrar extends AntimatterMod {
         }
     }
     
-    public static void craftingRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider){
+    public static void craftingRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5RRef.ID + ":silicon");
         SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5RRef.ID + ":silicon_blasting");
     }

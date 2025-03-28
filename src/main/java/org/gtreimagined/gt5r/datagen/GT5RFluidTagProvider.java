@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.datagen;
 
-import org.gtreimagined.gtlib.datagen.providers.AntimatterFluidTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -8,7 +8,7 @@ import net.minecraft.world.item.DyeColor;
 
 import static org.gtreimagined.gt5r.data.Materials.Oil;
 
-public class GT5RFluidTagProvider extends AntimatterFluidTagProvider {
+public class GT5RFluidTagProvider extends GTFluidTagProvider {
     public GT5RFluidTagProvider(String providerDomain, String providerName, boolean replace) {
         super(providerDomain, providerName, replace);
     }

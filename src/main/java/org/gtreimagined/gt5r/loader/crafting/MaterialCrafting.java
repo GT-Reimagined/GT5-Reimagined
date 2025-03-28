@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterRecipeProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.ItemPipe;
@@ -29,7 +29,7 @@ import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.CHAMBER;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class MaterialCrafting {
-    public static void loadRecipes(Consumer<FinishedRecipe> output, AntimatterRecipeProvider provider) {
+    public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         addShapelessDustRecipe(output, provider, Bronze, ImmutableMap.of(Copper, 3, Tin, 1));
         addShapelessDustRecipe(output, provider, Brass, ImmutableMap.of(Copper, 3, Zinc, 1));
         addShapelessDustRecipe(output, provider, BlackBronze, ImmutableMap.of(Copper, 3, Silver, 1, Gold, 1));
@@ -52,7 +52,7 @@ public class MaterialCrafting {
         loadMixedMetal(output, provider);
     }
 
-    public static void loadMixedMetal(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider){
+    public static void loadMixedMetal(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         mixedMetalRecipe(consumer, provider, Iron, Bronze, Tin, 1);
         mixedMetalRecipe(consumer, provider, Iron, Bronze, Zinc, 1);
         mixedMetalRecipe(consumer, provider, Iron, Bronze, Aluminium, 1);
@@ -103,12 +103,12 @@ public class MaterialCrafting {
         mixedMetalRecipe(consumer, provider, TungstenSteel, Brass, Aluminium, 6);
     }
 
-    public static void mixedMetalRecipe(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider, Material top, Material middle, Material bottom, int amount){
+    public static void mixedMetalRecipe(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider, Material top, Material middle, Material bottom, int amount){
         provider.addStackRecipe(consumer, GT5RRef.ID, "mixed_metal_from_" + top.getId() + "_" + middle.getId() + "_" + bottom.getId(), "mixed_metal", Utils.ca(amount, GTCoreItems.MixedMetalIngot.getMixedMetalIngot(top, middle, bottom)),
                 of('T', PLATE.getMaterialTag(top), 'M', PLATE.getMaterialTag(middle), 'B', PLATE.getMaterialTag(bottom)), "T", "M", "B");
     }
 
-    public static void loadAutoRecipes(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider){
+    public static void loadAutoRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         DUST.all().forEach(m -> {
             provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_small_dust", "gt_materials", DUST_SMALL.get(m, 4),
                     of('D', DUST.getMaterialTag(m)), " D");
@@ -148,7 +148,7 @@ public class MaterialCrafting {
         });
     }
 
-    private static void addShapelessDustRecipe(Consumer<FinishedRecipe> consumer, AntimatterRecipeProvider provider, Material output, ImmutableMap<Material, Integer> inputs){
+    private static void addShapelessDustRecipe(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider, Material output, ImmutableMap<Material, Integer> inputs){
         int sum = inputs.values().stream().mapToInt(i -> i).sum();
         if (sum > 9) return;
         Object[] inputArray = new Object[sum];

@@ -3,8 +3,8 @@ package org.gtreimagined.gt5r.datagen;
 import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterItemTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTItemTagProvider;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
@@ -15,8 +15,8 @@ import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 
-public class GT5RItemTagProvider extends AntimatterItemTagProvider {
-    public GT5RItemTagProvider(String providerDomain, String providerName, boolean replace, AntimatterBlockTagProvider p) {
+public class GT5RItemTagProvider extends GTItemTagProvider {
+    public GT5RItemTagProvider(String providerDomain, String providerName, boolean replace, GTBlockTagProvider p) {
         super(providerDomain, providerName, replace, p);
     }
 

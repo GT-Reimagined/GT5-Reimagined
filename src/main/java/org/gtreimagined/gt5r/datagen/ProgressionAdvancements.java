@@ -19,7 +19,7 @@ import java.util.function.Consumer;
 import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.datagen.providers.AntimatterAdvancementProvider.*;
+import static org.gtreimagined.gtlib.datagen.providers.GTAdvancementProvider.*;
 import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
 import static org.gtreimagined.gtlib.util.TagUtils.getForgelikeItemTag;

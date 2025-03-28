@@ -7,11 +7,11 @@ import org.gtreimagined.gtlib.AntimatterConfig;
 import org.gtreimagined.gtlib.AntimatterMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.common.event.PlayerTickCallback;
-import org.gtreimagined.gtlib.datagen.AntimatterDynamics;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterAdvancementProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockStateProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterBlockTagProvider;
-import org.gtreimagined.gtlib.datagen.providers.AntimatterItemModelProvider;
+import org.gtreimagined.gtlib.datagen.GTLibDynamics;
+import org.gtreimagined.gtlib.datagen.providers.GTAdvancementProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
+import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
 import org.gtreimagined.gtlib.event.AntimatterCraftingEvent;
 import org.gtreimagined.gtlib.event.AntimatterLoaderEvent;
 import org.gtreimagined.gtlib.event.AntimatterProvidersEvent;
@@ -167,11 +167,11 @@ public class GT5Reimagined extends AntimatterMod {
         new TFCRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
-        AntimatterDynamics.clientProvider(GT5RRef.ID,
-                () -> new AntimatterBlockStateProvider(GT5RRef.ID, GT5RRef.NAME + " BlockStates"));
-        AntimatterDynamics.clientProvider(GT5RRef.ID,
-                () -> new AntimatterItemModelProvider(GT5RRef.ID, GT5RRef.NAME + " Item Models"));
-        AntimatterDynamics.clientProvider(GT5RRef.ID, GT5RLocalizations.en_US::new);
+        GTLibDynamics.clientProvider(GT5RRef.ID,
+                () -> new GTBlockStateProvider(GT5RRef.ID, GT5RRef.NAME + " BlockStates"));
+        GTLibDynamics.clientProvider(GT5RRef.ID,
+                () -> new GTItemModelProvider(GT5RRef.ID, GT5RRef.NAME + " Item Models"));
+        GTLibDynamics.clientProvider(GT5RRef.ID, GT5RLocalizations.en_US::new);
         GT5RConfig.createConfig();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
@@ -192,7 +192,7 @@ public class GT5Reimagined extends AntimatterMod {
     }
 
     public static void onProviders(AntimatterProvidersEvent ev) {
-        final AntimatterBlockTagProvider[] p = new AntimatterBlockTagProvider[1];
+        final GTBlockTagProvider[] p = new GTBlockTagProvider[1];
         ev.addProvider(() -> {
             p[0] = new GT5RBlockTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Block Tags"), false);
             return p[0];
@@ -201,7 +201,7 @@ public class GT5Reimagined extends AntimatterMod {
                 false, p[0]));
         ev.addProvider(() -> new GT5RFluidTagProvider(GT5RRef.ID,
                 GT5RRef.NAME.concat(" Fluid Tags"), false));
-        ev.addProvider(() -> new AntimatterAdvancementProvider(GT5RRef.ID,
+        ev.addProvider(() -> new GTAdvancementProvider(GT5RRef.ID,
                 GT5RRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));
         ev.addProvider(() -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
     }
