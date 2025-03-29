@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.cover.BaseCover;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -52,7 +52,7 @@ public class CoverBasicRedstoneInput extends BaseCover {
     }
 
     @Override
-    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable GTToolType type) {
         if (type != null && type.getTag() == GTTools.SCREWDRIVER.getTag()){
             inverted = !inverted;
             player.sendMessage(Utils.translatable("message.gt5r.redstone_mode." + (inverted ? "inverted" : "normal")), player.getUUID());

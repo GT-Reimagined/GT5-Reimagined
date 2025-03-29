@@ -7,7 +7,7 @@ import org.gtreimagined.gtlib.datagen.providers.GTItemTagProvider;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.data.ToolData;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 
@@ -31,7 +31,7 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "saws"))).addTag(SAW.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "knives"))).addTag(KNIFE.getTag());
         Material[] tfcTools = new Material[]{BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel};
-        AntimatterAPI.all(AntimatterToolType.class).forEach(t -> {
+        AntimatterAPI.all(GTToolType.class).forEach(t -> {
             if (t.hasOriginalTag()) {
                 tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "usable_on_tool_rack"))).addTag(t.getTag());
             }

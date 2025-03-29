@@ -8,7 +8,7 @@ import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.types.HatchMachine;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -48,7 +48,7 @@ public class BlockEntityInputBus extends BlockEntityHatch<BlockEntityInputBus> {
     }
 
     @Override
-    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (type == GTTools.SCREWDRIVER){
             ICover instance = coverHandler.map(h -> h.get(Utils.getInteractSide(hit))).orElse(ICover.empty);

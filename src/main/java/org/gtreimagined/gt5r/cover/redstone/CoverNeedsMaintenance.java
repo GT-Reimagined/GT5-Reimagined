@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -56,7 +56,7 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable GTToolType type) {
         if (type != null && type.getTag() == GTTools.SCREWDRIVER.getTag()){
             mode = player.isShiftKeyDown() ? mode.previous() : mode.next();
             this.handler.getTile().setChanged();

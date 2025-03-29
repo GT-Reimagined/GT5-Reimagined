@@ -11,7 +11,7 @@ import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -57,7 +57,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
     }
 
     @Override
-    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == GT5RItems.DataStick){
             if (stack.getTagElement("displaySlots") == null){

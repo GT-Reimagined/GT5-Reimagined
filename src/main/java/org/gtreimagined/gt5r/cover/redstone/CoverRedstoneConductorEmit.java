@@ -4,7 +4,7 @@ import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionHand;
@@ -40,7 +40,7 @@ public class CoverRedstoneConductorEmit extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable GTToolType type) {
         return InteractionResult.PASS;
     }
 }

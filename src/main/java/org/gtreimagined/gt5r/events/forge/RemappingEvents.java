@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.AntimatterRemapping;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.fluid.AntimatterFluid;
+import org.gtreimagined.gtlib.fluid.GTFluid;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.ore.BlockOre;
 import net.minecraft.core.Direction;
@@ -368,7 +368,7 @@ public class RemappingEvents {
             if (id.contains("polethylene")){
                 liquid = liquid.replace("polethylene", "plastic");
             }
-            AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
+            GTFluid fluid = AntimatterAPI.get(GTFluid.class, liquid);
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());
             }
@@ -385,7 +385,7 @@ public class RemappingEvents {
             if (id.contains("sodium_persulfate")){
                 liquid = liquid.replace("sodium_persulfate", "sodium_persulfate_solution");
             }
-            AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, liquid);
+            GTFluid fluid = AntimatterAPI.get(GTFluid.class, liquid);
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());
             }

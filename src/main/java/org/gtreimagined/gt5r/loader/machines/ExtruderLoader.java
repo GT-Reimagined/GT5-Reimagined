@@ -10,7 +10,7 @@ import org.gtreimagined.gtlib.pipe.types.HeatPipe;
 import org.gtreimagined.gtlib.pipe.types.ItemPipe;
 import org.gtreimagined.gtlib.pipe.types.PipeType;
 import org.gtreimagined.gtlib.pipe.types.Wire;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -153,10 +153,10 @@ public class ExtruderLoader {
         });
 
         MaterialTags.TOOLS.getAll().forEach((m, t) -> {
-            AntimatterToolType[] toolHeadTypes = new AntimatterToolType[]{PICKAXE, AXE, SWORD, SHOVEL, HOE, FILE, SAW, HAMMER};
+            GTToolType[] toolHeadTypes = new GTToolType[]{PICKAXE, AXE, SWORD, SHOVEL, HOE, FILE, SAW, HAMMER};
             Item[] toolHeadShapes = new Item[]{GTCoreItems.ShapeHeadPickaxe, GTCoreItems.ShapeHeadAxe, GTCoreItems.ShapeBladeSword, GTCoreItems.ShapeHeadShovel, GTCoreItems.ShapeHeadHoe, GTCoreItems.ShapeHeadFile, GTCoreItems.ShapeBladeSaw, GTCoreItems.ShapeHeadHammer};
             int i = 0;
-            for (AntimatterToolType type : toolHeadTypes) {
+            for (GTToolType type : toolHeadTypes) {
                 if (t.toolTypes().contains(type)) {
                     var itemType = type.getMaterialTypeItem();
                     if (itemType == null) continue;

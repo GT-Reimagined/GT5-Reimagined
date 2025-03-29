@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.blockentity.miniportals;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -34,7 +34,7 @@ public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
     }
 
     @Override
-    public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
         InteractionResult result = super.onInteractBoth(state, world, pos, player, hand, hit, type);
         if (result == InteractionResult.SUCCESS){
             LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);

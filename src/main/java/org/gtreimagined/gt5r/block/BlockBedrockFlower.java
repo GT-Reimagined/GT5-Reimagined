@@ -4,7 +4,7 @@ import org.gtreimagined.gtlib.AntimatterAPI;
 import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
-import org.gtreimagined.gtlib.registration.IAntimatterObject;
+import org.gtreimagined.gtlib.registration.IGTObject;
 import org.gtreimagined.gtlib.registration.IModelProvider;
 import org.gtreimagined.gtlib.registration.ITextureProvider;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -30,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class BlockBedrockFlower extends BushBlock implements IAntimatterObject, IModelProvider, ITextureProvider {
+public class BlockBedrockFlower extends BushBlock implements IGTObject, IModelProvider, ITextureProvider {
     protected static final VoxelShape SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
     private final String domain, id;
     public final org.gtreimagined.gtlib.material.Material tooltipMaterial;

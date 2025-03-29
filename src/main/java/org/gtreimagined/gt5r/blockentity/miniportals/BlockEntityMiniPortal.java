@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -117,7 +117,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     }
 
     @Override
-    public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (isPortalSetter(stack) && setPortal()){
             if (!player.isCreative()) {

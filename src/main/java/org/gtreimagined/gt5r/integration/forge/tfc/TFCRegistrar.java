@@ -9,7 +9,7 @@ import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
-import org.gtreimagined.gtlib.fluid.AntimatterFluid;
+import org.gtreimagined.gtlib.fluid.GTFluid;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeFluid;
 import org.gtreimagined.gtlib.material.TextureSet;
@@ -100,7 +100,7 @@ public class TFCRegistrar extends AntimatterMod {
                 if (m.getId().equals("water")) return new FluidStack(Fluids.WATER, i);
                 else if (m.getId().equals("lava")) return new FluidStack(Fluids.LAVA, i);
                 else if (m == SaltWater) return new FluidStack(TFCFluids.SALT_WATER.getSource(), i);
-                AntimatterFluid fluid = AntimatterAPI.get(AntimatterFluid.class, GTMaterialTypes.LIQUID.getId() + "_" + m.getId());
+                GTFluid fluid = AntimatterAPI.get(GTFluid.class, GTMaterialTypes.LIQUID.getId() + "_" + m.getId());
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });

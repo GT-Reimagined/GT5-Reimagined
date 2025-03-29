@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.cover.redstone;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -23,7 +23,7 @@ public class CoverRedstoneConductorAccept extends CoverBasicRedstoneInput {
     }
 
     @Override
-    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable GTToolType type) {
         return InteractionResult.PASS;
     }
 }

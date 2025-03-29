@@ -10,8 +10,8 @@ import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.BlockPipe;
 import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
 import org.gtreimagined.gtlib.recipe.material.MaterialRecipe;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
-import org.gtreimagined.gtlib.tool.IAntimatterTool;
+import org.gtreimagined.gtlib.tool.GTToolType;
+import org.gtreimagined.gtlib.tool.IGTTool;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourExtendedHighlight;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -42,11 +42,11 @@ import static org.gtreimagined.gt5r.data.GT5RItems.BatteryMediumLithium;
 
 public class ToolTypes {
 
-    public static final AntimatterToolType SMALL_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GT5RRef.ID, "small_turbine_rotor", 1, 1, 1, -1.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GT5RRef.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType LARGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GT5RRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType HUGE_TURBINE_ROTOR = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GT5RRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
-    public static final AntimatterToolType PINCERS = AntimatterAPI.register(AntimatterToolType.class, new AntimatterToolType(GT5RRef.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
+    public static final GTToolType SMALL_TURBINE_ROTOR = AntimatterAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "small_turbine_rotor", 1, 1, 1, -1.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType TURBINE_ROTOR = AntimatterAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType LARGE_TURBINE_ROTOR = AntimatterAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType HUGE_TURBINE_ROTOR = AntimatterAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType PINCERS = AntimatterAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
 
     public static final MaterialRecipe.Provider SCANNER_BUILDER = MaterialRecipe.registerProvider("portable-scanner", GT5RRef.ID, id -> new MaterialRecipe.ItemBuilder() {
 
@@ -71,7 +71,7 @@ public class ToolTypes {
             Material m = (Material) mats.mats.get("secondary");
             Tuple<Long, Long> battery = (Tuple<Long, Long>) mats.mats.get("battery");
             String domain = Ref.ID;
-            IAntimatterTool type = AntimatterAPI.get(IAntimatterTool.class, id.replace('-', '_'), GTCore.ID);
+            IGTTool type = AntimatterAPI.get(IGTTool.class, id.replace('-', '_'), GTCore.ID);
             return type.resolveStack((Material) mats.mats.get("primary"), m == null ? NULL : m, battery.getA(), battery.getB());
         }
 
@@ -89,7 +89,7 @@ public class ToolTypes {
         @Override
         public ItemStack build(CraftingContainer inv, MaterialRecipe.Result mats) {
             Tuple<Long, Tuple<Long, Material>> t = (Tuple<Long, Tuple<Long, Material>>) mats.mats.get("secondary");
-            IAntimatterTool type = AntimatterAPI.get(IAntimatterTool.class, id.replace('-', '_'), GTCore.ID);
+            IGTTool type = AntimatterAPI.get(IGTTool.class, id.replace('-', '_'), GTCore.ID);
             t.getB().getB();
             return type.resolveStack((Material) mats.mats.get("primary"), t.getB().getB(), t.getA(), t.getB().getA());
         }
@@ -137,7 +137,7 @@ public class ToolTypes {
             long maxEnergy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IGTNode::getCapacity).orElse(400000L);
             return new Tuple<>(energy, maxEnergy);
         }
-        if (stack.getItem() instanceof IAntimatterTool tool){
+        if (stack.getItem() instanceof IGTTool tool){
             if (tool.getAntimatterToolType().isPowered()){
                 long currentEnergy = tool.getCurrentEnergy(stack);
                 long maxEnergy = tool.getMaxEnergy(stack);

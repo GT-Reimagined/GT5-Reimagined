@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.machine.recipe;
 import com.google.gson.JsonObject;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
-import org.gtreimagined.gtlib.recipe.serializer.AntimatterRecipeSerializer;
+import org.gtreimagined.gtlib.recipe.serializer.GTRecipeSerializer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class FusionRecipeSerializer extends AntimatterRecipeSerializer<FusionRecipe> {
+public class FusionRecipeSerializer extends GTRecipeSerializer<FusionRecipe> {
     public static final FusionRecipeSerializer INSTANCE = new FusionRecipeSerializer();
     public static void init(){
     }

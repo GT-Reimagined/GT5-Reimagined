@@ -21,7 +21,7 @@ import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
 import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
-import org.gtreimagined.gtlib.tool.IAntimatterTool;
+import org.gtreimagined.gtlib.tool.IGTTool;
 import org.gtreimagined.gtlib.worldgen.IAntimatterWorldgenFunction;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -357,8 +357,8 @@ public class GT5Reimagined extends AntimatterMod {
                 LootLoader.init();
                 AntimatterJEIREIPlugin.addItemsToHide(GT5RBlocks.LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
-                    IAntimatterTool screwdriver_mv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_mv", GTCore.ID);
-                    IAntimatterTool screwdriver_hv = AntimatterAPI.get(IAntimatterTool.class, "electric_screwdriver_hv", GTCore.ID);
+                    IGTTool screwdriver_mv = AntimatterAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
+                    IGTTool screwdriver_hv = AntimatterAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     if (!GT5RConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GT5RItems.CircuitBoardPhenolic, GT5RItems.CircuitBoardPlastic, GT5RItems.CircuitBoardFiber,

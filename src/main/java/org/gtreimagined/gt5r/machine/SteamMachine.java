@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.machine;
 import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.gui.SlotData;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.screen.AntimatterContainerScreen;
+import org.gtreimagined.gtlib.gui.screen.GTContainerScreen;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
 import org.gtreimagined.gtlib.gui.widget.MachineStateWidget;
 import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
@@ -42,7 +42,7 @@ public class SteamMachine extends Machine<SteamMachine> {
     protected void setupGui() {
         super.setupGui();
         addGuiCallback(t -> {
-            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((AntimatterContainerScreen<?>) b).getTitle().getString(), 4210752, false).build(a, b)).setPos(9, 5).clientSide());
+            t.addWidget(WidgetSupplier.build((a, b) -> TextWidget.build(((GTContainerScreen<?>) b).getTitle().getString(), 4210752, false).build(a, b)).setPos(9, 5).clientSide());
             if (has(RECIPE) && !getId().contains("boiler")) {
                 t.addWidget(ProgressWidget.build())
                         .addWidget(MachineStateWidget.build());

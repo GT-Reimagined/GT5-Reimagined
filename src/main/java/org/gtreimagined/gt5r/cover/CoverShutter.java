@@ -6,7 +6,7 @@ import org.gtreimagined.gtlib.cover.BaseCover;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -57,7 +57,7 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     }
 
     @Override
-    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteract(Player player, InteractionHand hand, Direction side, @Nullable GTToolType type) {
         if (type != null && type.getTag() == GTTools.SCREWDRIVER.getTag()){
             mode = player.isShiftKeyDown() ? mode.cycleBackward() : mode.cycleForward();
             this.handler.getTile().setChanged();

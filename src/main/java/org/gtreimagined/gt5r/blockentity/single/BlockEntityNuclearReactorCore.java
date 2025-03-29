@@ -13,10 +13,10 @@ import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.network.AntimatterNetwork;
+import org.gtreimagined.gtlib.network.GTLibNetwork;
 import org.gtreimagined.gtlib.pipe.TileTicker;
 import org.gtreimagined.gtlib.texture.Texture;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.CodeUtils;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
@@ -97,7 +97,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
     @Override
     public void onFirstTickClient(Level level, BlockPos pos, BlockState state) {
         super.onFirstTickClient(level, pos, state);
-        AntimatterNetwork.NETWORK.sendToServer(new MessageTriggerInventorySync(this.getBlockPos()));
+        GTLibNetwork.NETWORK.sendToServer(new MessageTriggerInventorySync(this.getBlockPos()));
     }
     boolean syncSlots;
 
@@ -199,7 +199,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
     }
 
     @Override
-    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
         ItemStack held = player.getItemInHand(hand);
         if (hit.getDirection() == Direction.UP && getCover(UP).isEmpty()){
             if ((held.getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(held)) || type == ToolTypes.PINCERS) {

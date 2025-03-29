@@ -54,8 +54,8 @@ import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.BLOCK;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.FRAME;
 import static org.gtreimagined.gtlib.machine.Tier.*;
-import static org.gtreimagined.gtlib.structure.AntimatterStructureUtility.ofHatch;
-import static org.gtreimagined.gtlib.structure.AntimatterStructureUtility.ofHatchMinTier;
+import static org.gtreimagined.gtlib.structure.GTLibStructureUtility.ofHatch;
+import static org.gtreimagined.gtlib.structure.GTLibStructureUtility.ofHatchMinTier;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
 public class Structures {

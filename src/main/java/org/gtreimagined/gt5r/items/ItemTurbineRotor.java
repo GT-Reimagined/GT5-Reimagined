@@ -3,8 +3,8 @@ package org.gtreimagined.gt5r.items;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.tool.AntimatterItemTier;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTItemTier;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.tool.MaterialTool;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.ChatFormatting;
@@ -20,7 +20,7 @@ import org.gtreimagined.gt5r.data.ToolTypes;
 import java.util.List;
 
 public class ItemTurbineRotor extends MaterialTool {
-    public ItemTurbineRotor(String domain, AntimatterToolType type, AntimatterItemTier tier, Properties properties) {
+    public ItemTurbineRotor(String domain, GTToolType type, GTItemTier tier, Properties properties) {
         super(domain, type, tier, properties);
     }
 

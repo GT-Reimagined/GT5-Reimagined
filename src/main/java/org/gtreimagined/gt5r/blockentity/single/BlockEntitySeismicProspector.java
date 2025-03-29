@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.tool.AntimatterToolType;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.worldgen.vein.VeinSavedData;
 import net.minecraft.core.BlockPos;
@@ -38,7 +38,7 @@ public class BlockEntitySeismicProspector extends BlockEntityMachine<BlockEntity
     }
 
     @Override
-    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable AntimatterToolType type) {
+    public InteractionResult onInteractServer(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
         ItemStack stack = player.getItemInHand(hand);
         if (stack.getItem() == Items.TNT && stack.getCount() >= 4 && entry == null){
             maxProgress = 120;
