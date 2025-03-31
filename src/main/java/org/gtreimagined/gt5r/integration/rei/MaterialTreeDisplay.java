@@ -6,7 +6,7 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
@@ -81,24 +81,24 @@ public class MaterialTreeDisplay implements Display {
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(SCREW.get(mat),1))));
         }
         if(mat.has(WIRE)){
-            Item wireItem = AntimatterAPI.get(Wire.class,"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            Item wireItem = GTAPI.get(Wire.class,"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(wireItem))));
         }
         if(mat.has(CABLE)){
-            Item cableItem = AntimatterAPI.get(Cable.class,"cable_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            Item cableItem = GTAPI.get(Cable.class,"cable_"+mat.getId()).getBlockItem(PipeSize.VTINY);
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(cableItem))));
         }
         if(mat.has(WIRE_FINE)){
             this.output.add(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM,new ItemStack(WIRE_FINE.get(mat),1))));
         }
         if (mat.has(FLUIDPIPE)) {
-            FluidPipe<?> pipe = AntimatterAPI.get(FluidPipe.class, "fluid_pipe_" + mat.getId());
+            FluidPipe<?> pipe = GTAPI.get(FluidPipe.class, "fluid_pipe_" + mat.getId());
             if (pipe != null){
                 pipe.getSizes().forEach(s -> addPipe(pipe, s));
             }
         }
         if (mat.has(ITEMPIPE)) {
-            ItemPipe<?> pipe = AntimatterAPI.get(ItemPipe.class, "item_pipe_" + mat.getId());
+            ItemPipe<?> pipe = GTAPI.get(ItemPipe.class, "item_pipe_" + mat.getId());
             if (pipe != null){
                 pipe.getSizes().forEach(s -> addPipe(pipe, s));
             }

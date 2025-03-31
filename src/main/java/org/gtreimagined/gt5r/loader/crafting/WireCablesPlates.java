@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -27,8 +27,8 @@ import static org.gtreimagined.gt5r.data.Materials.Rubber;
 public class WireCablesPlates {
     @SuppressWarnings("unchecked")
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
-        AntimatterAPI.all(Wire.class, wire -> {
-            Cable<?> cable = AntimatterAPI.get(Cable.class, "cable" + "_" + wire.getMaterial().getId());
+        GTAPI.all(Wire.class, wire -> {
+            Cable<?> cable = GTAPI.get(Cable.class, "cable" + "_" + wire.getMaterial().getId());
             ImmutableSet<PipeSize> sizes = wire.getSizes();
             Map<PipeSize, Item> wires = sizes.stream().map(s -> new Pair<>(s, wire.getBlockItem(s))).collect(Collectors.toMap(Pair::getFirst, Pair::getSecond));
             PipeSize[] val = VALUES;
@@ -61,7 +61,7 @@ public class WireCablesPlates {
                 provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_16x", "cables", new ItemStack(cable.getBlockItem(HUGE)), wire.getBlockItem(HUGE), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
             }
         });
-        AntimatterAPI.all(RedstoneWire.class, wire -> {
+        GTAPI.all(RedstoneWire.class, wire -> {
             if (wire.getMaterial().has(PLATE)) {
                 provider.shapeless(output,  wire.getMaterial().getId() + "_plate_to_wire","wire",
                         new ItemStack(wire.getBlockItem(VTINY)),

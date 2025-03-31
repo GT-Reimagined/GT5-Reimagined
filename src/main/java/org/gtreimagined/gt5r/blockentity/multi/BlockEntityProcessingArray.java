@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
@@ -142,7 +142,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
             @Override
             public void deserialize(CompoundTag nbt) {
                 super.deserialize(nbt);
-                this.recipeMap = AntimatterAPI.get(RecipeMap.class, nbt.getString("recipeMap"));
+                this.recipeMap = GTAPI.get(RecipeMap.class, nbt.getString("recipeMap"));
             }
         });
     }

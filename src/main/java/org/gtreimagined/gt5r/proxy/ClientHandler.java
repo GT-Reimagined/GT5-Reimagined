@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.proxy;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.client.renderer.RenderType;
@@ -20,9 +20,9 @@ import java.io.InputStream;
 public class ClientHandler {
 
     public static void setup() {
-        AntimatterAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
-        AntimatterAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
-        AntimatterAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        GTAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        GTAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        GTAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         ModelUtils.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
     }

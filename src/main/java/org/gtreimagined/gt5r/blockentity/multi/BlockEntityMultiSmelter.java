@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 import com.mojang.blaze3d.vertex.PoseStack;
 import lombok.Getter;
 import lombok.Setter;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.ICanSyncData;
@@ -80,7 +80,7 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
             superDraw += 8;
         }
         int add = getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo() ? 40 : 16;
-        RecipeMap<?> map = AntimatterAPI.get(RecipeMap.class, widget.recipeMap);
+        RecipeMap<?> map = GTAPI.get(RecipeMap.class, widget.recipeMap);
         if (map != null){
             renderer.draw(stack, Utils.literal("Recipe map: ").append(map.getDisplayName()).getString(), left, top + add, 0xFAFAFF);
             superDraw += 8;

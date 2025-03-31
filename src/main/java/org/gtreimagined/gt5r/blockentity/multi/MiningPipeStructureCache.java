@@ -7,7 +7,7 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
 import org.gtreimagined.gtlib.structure.StructureCache;
 import org.gtreimagined.gtlib.structure.StructureHandle;
@@ -25,7 +25,7 @@ public class MiningPipeStructureCache {
     private static final Object2ObjectMap<Level, Long2ObjectMap<Set<StructureHandle<?>>>> CALLBACKS = new Object2ObjectOpenHashMap<>();
 
     static {
-        AntimatterAPI.registerBlockUpdateHandler((world, pos, oldState, newState, flags) -> {
+        GTAPI.registerBlockUpdateHandler((world, pos, oldState, newState, flags) -> {
             if (oldState == newState) return;  // TODO: better checks?
             //if no block update is actually queried, ignore it here.
             if ((flags & (1)) == 0) {

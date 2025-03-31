@@ -135,7 +135,7 @@ public class Structures {
         CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
                 .of("CBMBC", "CBMBC", "CBMBC").of( "CB~BC", "L---R", "CBMBC").of(0).build()
                 .at('C', GT5RBlocks.STAINLESS_STEEL_CASING)
-                //.at("B", "coil", AntimatterAPI.all(BlockCoil.class))
+                //.at("B", "coil", GTAPI.all(BlockCoil.class))
                 .at('B', GT5RBlocks.CUPRONICKEL_COIL)
                 .at('L', OUTPUT_HATCH, GT5RBlocks.STAINLESS_STEEL_CASING)
                 .at('R', INPUT_HATCH)

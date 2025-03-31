@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.util.RegistryUtils;
@@ -23,7 +23,7 @@ public class GT5RTwilightStalctites {
     private static Map<Integer, List<ResourceLocation>> hollowHillEntries = new Object2ObjectOpenHashMap<>();
 
     public static void init(){
-        if (!AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)) return;
+        if (!GTAPI.isModLoaded(Ref.MOD_TWILIGHT)) return;
         addStalctite("ruby", 2, 6, ORE.get().get(Ruby, STONE).asBlock(), 0.6f, 20);
         addStalctite("sapphire", 2, 6, ORE.get().get(Sapphire, STONE).asBlock(), 0.6f, 20);
         addStalctite("green_sapphire", 2, 6, ORE.get().get(GreenSapphire, STONE).asBlock(), 0.6f, 20);

@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -19,7 +19,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_SOLIDIFYER;
 
 public class FluidSolidifierLoader {
     public static void init() {
-        AntimatterAPI.all(Material.class, mat -> {
+        GTAPI.all(Material.class, mat -> {
             if (!mat.has(GTMaterialTypes.LIQUID) || mat == Glass) return;
             if (mat.has(PLATE)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume())

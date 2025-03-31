@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.material.MaterialTag;
 import org.gtreimagined.gtlib.material.tags.DoubleMaterialTag;
 import org.gtreimagined.gtlib.material.tags.ListMaterialTag;
@@ -8,15 +8,15 @@ import org.gtreimagined.gtlib.material.tags.NumberMaterialTag;
 import org.gtreimagined.gt5r.material.FluidProduct;
 
 public class GT5RMaterialTags {
-    public static final MaterialTag ELEC = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
+    public static final MaterialTag ELEC = GTAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
 
-    public static final MaterialTag ELEC30 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec30", true));
-    public static final MaterialTag ELEC60 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec60", true));
-    public static final MaterialTag ELEC90 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec90", true));
-    public static final MaterialTag ELEC120 = AntimatterAPI.register(MaterialTag.class, new MaterialTag("elec120", true));
+    public static final MaterialTag ELEC30 = GTAPI.register(MaterialTag.class, new MaterialTag("elec30", true));
+    public static final MaterialTag ELEC60 = GTAPI.register(MaterialTag.class, new MaterialTag("elec60", true));
+    public static final MaterialTag ELEC90 = GTAPI.register(MaterialTag.class, new MaterialTag("elec90", true));
+    public static final MaterialTag ELEC120 = GTAPI.register(MaterialTag.class, new MaterialTag("elec120", true));
     public static final MaterialTag ELEC_CIRCUIT = new MaterialTag("elec_circuit");
 
-    public static final NumberMaterialTag ELEC_TICKS = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("elec_ticks", true));
+    public static final NumberMaterialTag ELEC_TICKS = (NumberMaterialTag) GTAPI.register(MaterialTag.class, new NumberMaterialTag("elec_ticks", true));
     public static final MaterialTag CENT = new MaterialTag("cent"); //Add Centrifuging Recipes - SHOULD NOT SHARE MATS WITH ELEC
     public static final MaterialTag CENT5 = new MaterialTag("cent5"); //Centrifuging recipes that use 5 eu/tick
     public static final MaterialTag CENT10 = new MaterialTag("cent10"); //Centrifuging recipes that use 10 eu/tick
@@ -44,9 +44,9 @@ public class GT5RMaterialTags {
     public static final MaterialTag BRITTLEG = new MaterialTag("brittle_g"); //This is for Gems that cannot be used in recipes such as Gem > Rod in Lathe
     public static final MaterialTag DECAYABLE = new MaterialTag("decayable");
 
-    public static final MaterialTag NEEDS_BLAST_FURNACE = AntimatterAPI.register(MaterialTag.class, new MaterialTag("needs_blast_furnace", true));
-    public static final NumberMaterialTag RECIPE_MASS = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("recipe_mass", true));
-    public static final NumberMaterialTag BLAST_FURNACE_TEMP = (NumberMaterialTag) AntimatterAPI.register(MaterialTag.class, new NumberMaterialTag("blast_furnace_temp", true));
+    public static final MaterialTag NEEDS_BLAST_FURNACE = GTAPI.register(MaterialTag.class, new MaterialTag("needs_blast_furnace", true));
+    public static final NumberMaterialTag RECIPE_MASS = (NumberMaterialTag) GTAPI.register(MaterialTag.class, new NumberMaterialTag("recipe_mass", true));
+    public static final NumberMaterialTag BLAST_FURNACE_TEMP = (NumberMaterialTag) GTAPI.register(MaterialTag.class, new NumberMaterialTag("blast_furnace_temp", true));
     public static final DoubleMaterialTag BATH_MERCURY = new DoubleMaterialTag("bath_mercury");
     public static final DoubleMaterialTag BATH_PERSULFATE = new DoubleMaterialTag("bath_persulfate");
     public static final DoubleMaterialTag THERMAL_CENTRIFUGE_EXPLICIT = new DoubleMaterialTag("thermal_centrifuge_explicit");

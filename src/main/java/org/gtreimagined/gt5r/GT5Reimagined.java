@@ -2,9 +2,9 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
-import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.AntimatterConfig;
-import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTLibConfig;
+import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.common.event.PlayerTickCallback;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
@@ -22,7 +22,7 @@ import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
 import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.tool.IGTTool;
-import org.gtreimagined.gtlib.worldgen.IAntimatterWorldgenFunction;
+import org.gtreimagined.gtlib.worldgen.IGTWorldgenFunction;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -151,10 +151,10 @@ import java.util.function.BiConsumer;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.PLATE;
 import static org.gtreimagined.gtlib.machine.Tier.IV;
-import static org.gtreimagined.gtlib.worldgen.AntimatterWorldGenerator.removeDecoratedFeatureFromAllBiomes;
+import static org.gtreimagined.gtlib.worldgen.GTLibWorldGenerator.removeDecoratedFeatureFromAllBiomes;
 
 @Mod(GT5RRef.ID)
-public class GT5Reimagined extends AntimatterMod {
+public class GT5Reimagined extends GTMod {
 
     public static GT5Reimagined INSTANCE;
     public static Logger LOGGER = LogManager.getLogger(GT5RRef.ID);
@@ -219,7 +219,7 @@ public class GT5Reimagined extends AntimatterMod {
         event.addLoader(ElectricToolRecipes::loadRecipes);
         event.addLoader(MaterialCrafting::loadRecipes);
         event.addLoader(WoodCrafting::loadRecipes);
-        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+        if (GTAPI.isModLoaded(Ref.MOD_AE)){
             event.addLoader(AppliedEnergisticsRegistrar::craftingRecipes);
         }
     }
@@ -286,10 +286,10 @@ public class GT5Reimagined extends AntimatterMod {
         loader.accept("pyrolysis_oven", PyrolysisOvenLoader::init);
         loader.accept("tree_growth_simulator", TreeGrowthSimulatorLoader::init);
         loader.accept("vacuum_freezer", VacuumFreezerLoader::init);
-        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+        if (GTAPI.isModLoaded(Ref.MOD_AE)){
             loader.accept("ae2", AppliedEnergisticsRegistrar::machineRecipes);
         }
-        if (AntimatterAPI.isModLoaded("thermal")){
+        if (GTAPI.isModLoaded("thermal")){
             loader.accept("thermal", ThermalRegistrar::thermalMachineRecipes);
         }
     }
@@ -299,7 +299,7 @@ public class GT5Reimagined extends AntimatterMod {
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {
-        return AntimatterAPI.get(clazz, id, GT5RRef.ID);
+        return GTAPI.get(clazz, id, GT5RRef.ID);
     }
 
     @Override
@@ -321,13 +321,13 @@ public class GT5Reimagined extends AntimatterMod {
                 Guis.init(side);
                 Models.init();
                 GT5RSounds.init();
-                IAntimatterWorldgenFunction function = (name, climate, category, effects, gen ,spawns) -> {
-                    if (AntimatterConfig.VANILLA_ORE_GEN.get()) {
+                IGTWorldgenFunction function = (name, climate, category, effects, gen , spawns) -> {
+                    if (GTLibConfig.VANILLA_ORE_GEN.get()) {
                         removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
                     }
                 };
-                AntimatterAPI.register(IAntimatterWorldgenFunction.class, "removed_ores", GT5RRef.ID, function);
-                if (AntimatterAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
+                GTAPI.register(IGTWorldgenFunction.class, "removed_ores", GT5RRef.ID, function);
+                if (GTAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
                 PlayerTickCallback.PLAYER_TICK_CALLBACKS.add((end, logicalServer, player) -> {
@@ -357,8 +357,8 @@ public class GT5Reimagined extends AntimatterMod {
                 LootLoader.init();
                 AntimatterJEIREIPlugin.addItemsToHide(GT5RBlocks.LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
-                    IGTTool screwdriver_mv = AntimatterAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
-                    IGTTool screwdriver_hv = AntimatterAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
+                    IGTTool screwdriver_mv = GTAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
+                    IGTTool screwdriver_hv = GTAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     if (!GT5RConfig.HARDER_CIRCUITS){
                         l.addAll(Arrays.asList(GT5RItems.CircuitBoardPhenolic, GT5RItems.CircuitBoardPlastic, GT5RItems.CircuitBoardFiber,

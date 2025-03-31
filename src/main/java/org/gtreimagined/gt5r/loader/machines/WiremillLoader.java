@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.Wire;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -17,7 +17,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.WIRE_MILL;
 
 public class WiremillLoader {
     public static void init() {
-        AntimatterAPI.all(Wire.class).forEach(t -> {
+        GTAPI.all(Wire.class).forEach(t -> {
             if (!t.getMaterial().has(INGOT) && !t.getMaterial().has(DUST)) return;
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
@@ -27,7 +27,7 @@ public class WiremillLoader {
                 WIRE_MILL.RB().ii(wireItem).io(WIRE_FINE.get(t.getMaterial(),4)).add(t.getMaterial().getId() + "_wire_fine", 200,8);
             }
         });
-        AntimatterAPI.all(RedstoneWire.class).forEach(t -> {
+        GTAPI.all(RedstoneWire.class).forEach(t -> {
             if (!t.getMaterial().has(INGOT) && !t.getMaterial().has(DUST)) return;
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);

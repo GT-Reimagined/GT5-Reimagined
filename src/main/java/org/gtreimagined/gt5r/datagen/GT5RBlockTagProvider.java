@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.datagen;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
@@ -33,45 +33,45 @@ public class GT5RBlockTagProvider extends GTBlockTagProvider {
     @Override
     public void processTags(String domain){
         super.processTags(domain);
-        AntimatterAPI.all(BlockCasing.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockCasing.class, GT5RRef.ID, cas -> {
             if (cas.getId().contains("long_distance_wire")){
                 this.tag(GTTools.WIRE_CUTTER.getToolType()).add(cas);
                 return;
             }
             this.tag(GTTools.WRENCH.getToolType()).add(cas);
         });
-        AntimatterAPI.all(BlockColoredWall.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockColoredWall.class, GT5RRef.ID, cas -> {
             if (cas.getMaterial() == Wood){
                 this.tag(GTTools.AXE.getToolType()).add(cas);
             } else {
                 this.tag(GTTools.WRENCH.getToolType()).add(cas);
             }
         });
-        AntimatterAPI.all(BlockFakeCasing.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockFakeCasing.class, GT5RRef.ID, cas -> {
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
         for (DyeColor color : DyeColor.values()) {
             this.tag(GT5RTags.ASPHALT).add(RegistryUtils.getBlockFromId(new ResourceLocation(color.getName() + "_concrete")));
         }
-        AntimatterAPI.all(BlockAsphalt.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockAsphalt.class, GT5RRef.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
-        AntimatterAPI.all(BlockAsphaltSlab.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockAsphaltSlab.class, GT5RRef.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
-        AntimatterAPI.all(BlockAsphaltStair.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockAsphaltStair.class, GT5RRef.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
-        AntimatterAPI.all(BlockCoil.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockCoil.class, GT5RRef.ID, cas -> {
             this.tag(GTTools.WRENCH.getToolType()).add(cas);
         });
         this.tag(GTTools.AXE.getToolType()).add(GT5RBlocks.BRITTLE_CHARCOAL, GT5RBlocks.POWDER_BARREL);
         this.tag(GTTools.PICKAXE.getToolType()).add(GT5RBlocks.MINING_PIPE, GT5RBlocks.MINING_PIPE_THIN, GT5RBlocks.SOLID_SUPER_FUEL);
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GT5RMachines.MINIATURE_NETHER_PORTAL.getBlockState(Tier.NONE));
-        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+        if (GTAPI.isModLoaded(Ref.MOD_AE)){
             //TODO config for this
             this.tag(GTTools.WRENCH.getToolType()).add(AppliedEnergisticsRegistrar.getAe2Block("cable_bus"));
             this.tag(GTTools.PICKAXE.getToolType()).remove(AppliedEnergisticsRegistrar.getAe2Block("cable_bus"));

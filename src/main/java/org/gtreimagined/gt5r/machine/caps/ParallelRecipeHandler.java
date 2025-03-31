@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.machine.caps;
 
-import org.gtreimagined.gtlib.Antimatter;
+import org.gtreimagined.gtlib.GTLib;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
@@ -125,7 +125,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
 
 
     protected void logString(String message){
-        Antimatter.LOGGER.info(message);
+        GTLib.LOGGER.info(message);
     }
     @Override
     public void onServerUpdate() {

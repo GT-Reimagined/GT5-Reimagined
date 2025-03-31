@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
 
@@ -8,13 +8,13 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class GT5RMaterialTypes {
 
-    public static final MaterialTypeItem<?> TURBINE_BLADE = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("turbine_blade", 2, true, (Ref.U * 3) + (Ref.U8 * 2)));//.unSplitName();
-    public static final MaterialTypeItem<?> HUGE_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("huge_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 8));
-    public static final MaterialTypeItem<?> LARGE_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("large_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 6));
-    public static final MaterialTypeItem<?> BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 4));
-    public static final MaterialTypeItem<?> SMALL_BROKEN_TURBINE_ROTOR = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("small_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 2));
-    public static final MaterialTypeItem<?> BOULE = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("boule", 2, true, Ref.U * 4));
-    public static final MaterialTypeItem<?> CHAMBER = AntimatterAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("chamber", 2, true, Ref.U * 7));
+    public static final MaterialTypeItem<?> TURBINE_BLADE = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("turbine_blade", 2, true, (Ref.U * 3) + (Ref.U8 * 2)));//.unSplitName();
+    public static final MaterialTypeItem<?> HUGE_BROKEN_TURBINE_ROTOR = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("huge_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 8));
+    public static final MaterialTypeItem<?> LARGE_BROKEN_TURBINE_ROTOR = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("large_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 6));
+    public static final MaterialTypeItem<?> BROKEN_TURBINE_ROTOR = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 4));
+    public static final MaterialTypeItem<?> SMALL_BROKEN_TURBINE_ROTOR = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("small_broken_turbine_rotor", 2, true, TURBINE_BLADE.getUnitValue() * 2));
+    public static final MaterialTypeItem<?> BOULE = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("boule", 2, true, Ref.U * 4));
+    public static final MaterialTypeItem<?> CHAMBER = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("chamber", 2, true, Ref.U * 7));
 
     public static void init(){
         ROD.dependents(ROD_LONG);

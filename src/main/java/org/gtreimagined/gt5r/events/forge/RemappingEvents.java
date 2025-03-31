@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.events.forge;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.AntimatterRemapping;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTRemapping;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
@@ -106,91 +106,91 @@ public class RemappingEvents {
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
             if (id.contains("oilsands")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("oilsands", "oil_shale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("oilsands", "oil_shale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("quartzite") && !id.contains("__")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("quartzite", "milky_quartz").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("quartzite", "milky_quartz").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("blue_sapphire")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("blue_sapphire", "sapphire").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("blue_sapphire", "sapphire").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("cooperite")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("cooperite", "sheldonite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("cooperite", "sheldonite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("phosphorus")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("phosphorus", "tricalcium_phosphate").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("phosphorus", "tricalcium_phosphate").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("polyethylene")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("polyethylene", "plastic"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("polyethylene", "plastic"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("nitric_oxide")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("nitric_oxide", "nitrogen_monoxide"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("nitric_oxide", "nitrogen_monoxide"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("banded_iron")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("chrome")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("chrome", "chromium").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("chrome", "chromium").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("palladium")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("palladium", "sperrylite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("palladium", "sperrylite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("aluminium")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("aluminium", "alumina").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("aluminium", "alumina").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("uranium") && !id.contains("uranium_2")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("uranium", "uraninite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("uranium", "uraninite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("granite_red") || id.contains("granite_black")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                 }
@@ -215,18 +215,18 @@ public class RemappingEvents {
                 continue;
             }
             if (id.startsWith("ore_")){
-                Block replacement = AntimatterAPI.get(BlockOre.class, id);
+                Block replacement = GTAPI.get(BlockOre.class, id);
                 if (replacement != null){
                     map.remap(replacement);
                     continue;
                 }
             }
-            Block replacement = AntimatterAPI.get(Block.class, id, GT5RRef.ANTIMATTER_SHARED);
+            Block replacement = GTAPI.get(Block.class, id, GT5RRef.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
-            replacement = AntimatterAPI.get(Block.class, id, GT5RRef.ID);
+            replacement = GTAPI.get(Block.class, id, GT5RRef.ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
@@ -240,8 +240,8 @@ public class RemappingEvents {
             if (id.equals("rubber_sapling")){
                 map.remap(GTCoreBlocks.RUBBER_SAPLING);
             }
-            if (AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
-                Block block = AntimatterAPI.get(Block.class, AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
+            if (GTRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
+                Block block = GTAPI.get(Block.class, GTRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -255,84 +255,84 @@ public class RemappingEvents {
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();
             if (id.contains("oilsands")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("oilsands", "oil_shale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("oilsands", "oil_shale").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("blue_sapphire")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("blue_sapphire", "sapphire").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("blue_sapphire", "sapphire").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("cooperite")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("cooperite", "sheldonite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("cooperite", "sheldonite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("phosphorus")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("phosphorus", "tricalcium_phosphate").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("phosphorus", "tricalcium_phosphate").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("polyethylene")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("polyethylene", "plastic"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("polyethylene", "plastic"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("nitric_oxide")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("nitric_oxide", "nitrogen_monoxide"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("nitric_oxide", "nitrogen_monoxide"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("banded_iron")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("banded_iron", "hematite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("chrome")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("chrome", "chromium").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("chrome", "chromium").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("palladium")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("palladium", "sperrylite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("palladium", "sperrylite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("aluminium")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("aluminium", "alumina").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("aluminium", "alumina").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("uranium") && !id.contains("uranium_2")){
-                Item block = AntimatterAPI.get(Item.class, id.replace("uranium", "uraninite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Item block = GTAPI.get(Item.class, id.replace("uranium", "uraninite").replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block);
                     return;
                 }
             }
             if (id.contains("granite_red") || id.contains("granite_black")){
-                Block block = AntimatterAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
+                Block block = GTAPI.get(Block.class, id.replace("granite_black", "black_granite").replace("granite_red", "red_granite"), Ref.SHARED_ID);
                 if (block != null){
                     map.remap(block.asItem());
                 }
@@ -340,19 +340,19 @@ public class RemappingEvents {
         });
         for (var map : Stream.of(event.getMappings("gregtech"), event.getMappings("gti")).flatMap(Collection::stream).toList()) {
             String id = map.key.getPath();
-            Item replacement = AntimatterAPI.get(Item.class, id, GT5RRef.ANTIMATTER_SHARED);
+            Item replacement = GTAPI.get(Item.class, id, GT5RRef.ANTIMATTER_SHARED);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
-            replacement = AntimatterAPI.get(Item.class, id, GT5RRef.ID);
+            replacement = GTAPI.get(Item.class, id, GT5RRef.ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
 
-            if (AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
-                Item block = AntimatterAPI.get(Item.class, AntimatterRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
+            if (GTRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
+                Item block = GTAPI.get(Item.class, GTRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -368,7 +368,7 @@ public class RemappingEvents {
             if (id.contains("polethylene")){
                 liquid = liquid.replace("polethylene", "plastic");
             }
-            GTFluid fluid = AntimatterAPI.get(GTFluid.class, liquid);
+            GTFluid fluid = GTAPI.get(GTFluid.class, liquid);
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());
             }
@@ -385,7 +385,7 @@ public class RemappingEvents {
             if (id.contains("sodium_persulfate")){
                 liquid = liquid.replace("sodium_persulfate", "sodium_persulfate_solution");
             }
-            GTFluid fluid = AntimatterAPI.get(GTFluid.class, liquid);
+            GTFluid fluid = GTAPI.get(GTFluid.class, liquid);
             if (fluid != null){
                 map.remap(id.startsWith("flowing_") ? fluid.getFlowingFluid() : fluid.getFluid());
             }

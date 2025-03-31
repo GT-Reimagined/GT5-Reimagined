@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.datagen;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
@@ -49,7 +49,7 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
                 .addTag(DUST.getMaterialTag(Quartzite)).addTag(DUST.getMaterialTag(Quartz))
                 .addTag(DUST.getMaterialTag(Glass)).addTag(DUST.getMaterialTag(Flint))
                 .addTag(DUST.getMaterialTag(MilkyQuartz));
-        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+        if (GTAPI.isModLoaded(Ref.MOD_AE)){
             this.tag(GT5RTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
         }
         this.tag(ForgeTags.DYES_BLACK).add(Items.INK_SAC);

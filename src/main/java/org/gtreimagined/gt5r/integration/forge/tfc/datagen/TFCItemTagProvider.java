@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTItemTagProvider;
@@ -31,7 +31,7 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "saws"))).addTag(SAW.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "knives"))).addTag(KNIFE.getTag());
         Material[] tfcTools = new Material[]{BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel};
-        AntimatterAPI.all(GTToolType.class).forEach(t -> {
+        GTAPI.all(GTToolType.class).forEach(t -> {
             if (t.hasOriginalTag()) {
                 tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "usable_on_tool_rack"))).addTag(t.getTag());
             }

@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerMultiMachine;
@@ -11,9 +11,9 @@ import org.gtreimagined.gt5r.gui.ScreenFusionReactor;
 import org.gtreimagined.gt5r.gui.ScreenSteamMachine;
 
 public class ClientData {
-    public final static MenuScreens.ScreenConstructor SCREEN_FUSION_REACTOR = AntimatterAPI.register(MenuScreens.ScreenConstructor.class, "fusion_reactor", GT5RRef.ID,(MenuScreens.ScreenConstructor)(a, b, c) -> new ScreenFusionReactor<>((ContainerMultiMachine) a,b,c));
-    public static final MenuScreens.ScreenConstructor SCREEN_STEAM = AntimatterAPI.register(MenuScreens.ScreenConstructor.class, "steam", GT5RRef.ID, (MenuScreens.ScreenConstructor)(a, b, c) -> new ScreenSteamMachine((ContainerBasicMachine) a,b,c));
-    public static final MenuScreens.ScreenConstructor SCREEN_COAL = AntimatterAPI.register(MenuScreens.ScreenConstructor.class, "coal", GT5RRef.ID, (MenuScreens.ScreenConstructor)(a, b, c) -> new ScreenCoalBoiler((ContainerMachine) a,b,c));
+    public final static MenuScreens.ScreenConstructor SCREEN_FUSION_REACTOR = GTAPI.register(MenuScreens.ScreenConstructor.class, "fusion_reactor", GT5RRef.ID,(MenuScreens.ScreenConstructor)(a, b, c) -> new ScreenFusionReactor<>((ContainerMultiMachine) a,b,c));
+    public static final MenuScreens.ScreenConstructor SCREEN_STEAM = GTAPI.register(MenuScreens.ScreenConstructor.class, "steam", GT5RRef.ID, (MenuScreens.ScreenConstructor)(a, b, c) -> new ScreenSteamMachine((ContainerBasicMachine) a,b,c));
+    public static final MenuScreens.ScreenConstructor SCREEN_COAL = GTAPI.register(MenuScreens.ScreenConstructor.class, "coal", GT5RRef.ID, (MenuScreens.ScreenConstructor)(a, b, c) -> new ScreenCoalBoiler((ContainerMachine) a,b,c));
 
     public static void init() {
     }

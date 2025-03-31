@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
 import org.gtreimagined.gtlib.gui.screen.ScreenMachine;
@@ -118,7 +118,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int mouseButton) {
-        if ((!AntimatterAPI.isModLoaded(Ref.MOD_JEI) && !AntimatterAPI.isModLoaded(Ref.MOD_REI)) || !container.getTile().has(MachineFlag.RECIPE))
+        if ((!GTAPI.isModLoaded(Ref.MOD_JEI) && !GTAPI.isModLoaded(Ref.MOD_REI)) || !container.getTile().has(MachineFlag.RECIPE))
             return super.mouseClicked(mouseX, mouseY, mouseButton);
         if (isInGui((imageWidth / 2) - 10, 24, 20, 18, mouseX, mouseY)) {
             return false;

@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -52,7 +52,7 @@ public class ArcFurnaceLoader {
                 RecipeMaps.ARC_FURNACE.RB().ii(INGOT.getMaterialIngredient(m, 1)).fi(Oxygen.getGas((int)m.getMass())).io(INGOT.get(output)).add(m.getId() + "_ingot_to_" + output.getId() + "_ingot", m.getMass(), 30, 0, 3);
             }
         });
-        for (MaterialType<?> t : AntimatterAPI.all(MaterialType.class)) {
+        for (MaterialType<?> t : GTAPI.all(MaterialType.class)) {
             if (t.getUnitValue() <= 0 || t == DUST || t == DUST_TINY || t == DUST_SMALL || t == INGOT || t == NUGGET || t == CHUNK ||
                     t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE || t == ROCK || t == BEARING_ROCK) continue;
             double amount = (double) t.getUnitValue() / U;
@@ -81,14 +81,14 @@ public class ArcFurnaceLoader {
                 }
             });
         }
-        AntimatterAPI.all(BlockColoredWall.class).forEach(b -> {
+        GTAPI.all(BlockColoredWall.class).forEach(b -> {
             if (b.getMaterial() == Wood){
                 addRecyclingRecipe(b.asItem(), of(Lead, 1f, Wood, 4f));
             } else {
                 addRecyclingRecipe(b.asItem(), of(b.getMaterial(), 4f));
             }
         });
-        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
+        GTAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -105,7 +105,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
             }
         });
-        AntimatterAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
+        GTAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -122,7 +122,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
             }
         });
-        AntimatterAPI.all(Wire.class, w -> {
+        GTAPI.all(Wire.class, w -> {
             ImmutableSet<PipeSize> sizes = w.getSizes();
             if (!w.getMaterial().has(DUST)) return;
             sizes.forEach(size -> {
@@ -132,7 +132,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(cableItem, of(w.getMaterial(), amount));
             });
         });
-        AntimatterAPI.all(RedstoneWire.class, w -> {
+        GTAPI.all(RedstoneWire.class, w -> {
             ImmutableSet<PipeSize> sizes = w.getSizes();
             if (!w.getMaterial().has(DUST)) return;
             sizes.forEach(size -> {
@@ -142,7 +142,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(cableItem, of(w.getMaterial(), amount));
             });
         });
-        AntimatterAPI.all(Cable.class, c -> {
+        GTAPI.all(Cable.class, c -> {
             ImmutableSet<PipeSize> sizes = c.getSizes();
             if (!c.getMaterial().has(DUST)) return;
             sizes.forEach(size -> {

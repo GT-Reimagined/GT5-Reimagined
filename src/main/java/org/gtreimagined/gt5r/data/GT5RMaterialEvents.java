@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
@@ -1176,7 +1176,7 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Silver, 6);
         GTCoreBlocks.createHopper(Manganese, 6);
         GTCoreBlocks.createHopper(GTCoreMaterials.Lumium, 6);
-        if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)) {
+        if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)) {
             GTCoreBlocks.createHopper(GTCoreMaterials.Knightmetal, 7);
         }
         GTCoreBlocks.createHopper(Molybdenum, 8);

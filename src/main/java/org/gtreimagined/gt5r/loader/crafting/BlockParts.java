@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -54,7 +54,7 @@ public class BlockParts {
             , "RRR","RWR", "RRR");
         });
 
-        AntimatterAPI.all(BlockColoredWall.class, b -> {
+        GTAPI.all(BlockColoredWall.class, b -> {
             if (b.getMaterial() == Wood){
                 provider.addItemRecipe(output, "walls", b.asItem(),
                         of('P', PLATE.getMaterialTag(Lead), 'H', HAMMER.getTag(), 'S', SAW.getTag(), 'W', ItemTags.PLANKS), "W W", "SPH", "W W");
@@ -197,9 +197,9 @@ public class BlockParts {
         provider.addItemRecipe(output, "long_distance_pipes", GT5RBlocks.LONG_DIST_FLUID_PIPE,
                 of('E', GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
 
-        AntimatterAPI.all(BlockAsphalt.class, GT5RRef.ID).forEach(b -> {
-            Block slab = AntimatterAPI.get(BlockAsphaltSlab.class, b.getId() + "_slab", GT5RRef.ID);
-            Block stairs = AntimatterAPI.get(BlockAsphaltStair.class, b.getId() + "_stairs", GT5RRef.ID);
+        GTAPI.all(BlockAsphalt.class, GT5RRef.ID).forEach(b -> {
+            Block slab = GTAPI.get(BlockAsphaltSlab.class, b.getId() + "_slab", GT5RRef.ID);
+            Block stairs = GTAPI.get(BlockAsphaltStair.class, b.getId() + "_stairs", GT5RRef.ID);
             if (slab != null){
                 addSlabRecipe(output, provider, b, slab);
             }
@@ -211,7 +211,7 @@ public class BlockParts {
         /*provider.addStackRecipe(output, GT5RRef.ID, "blastbrickcasing", "gtblockparts", "has_wrench", provider.hasSafeItem(GTTools.WRENCH.getTag()), new ItemStack(CASING_BLAST_BRICK,4),
                 of('C', CASING_FIRE_BRICK,
                 'P', PLATE.get(GTLibMaterials.Iron),
-                        'B', AntimatterAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
+                        'B', GTAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
         ), "PCP", "CBC", "PCP");*/
         provider.removeRecipe(new ResourceLocation("tnt"));
         provider.addItemRecipe(output, "misc", GT5RBlocks.POWDER_BARREL,
@@ -275,14 +275,14 @@ public class BlockParts {
     }
 
     private static void addTierCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Tier tier) {
-        provider.addItemRecipe(output, "casings", AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID),
+        provider.addItemRecipe(output, "casings", GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID),
                 of('P', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', WRENCH.getTag())
                 , "PPP", "PWP", "PPP");
     }
 
     private static void addTierHull(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Tier tier) {
         provider.addItemRecipe(output, "hulls", HULL.getItem(tier),
-                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', AntimatterAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID))
+                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID))
                 , "PRP", "WKW");
     }
 }

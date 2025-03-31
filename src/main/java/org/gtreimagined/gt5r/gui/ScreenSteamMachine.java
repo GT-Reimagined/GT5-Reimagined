@@ -29,12 +29,12 @@ public class ScreenSteamMachine<T extends BlockEntitySteamMachine, U extends Con
         super.init();
         /*if (container.getTile().has(MachineFlag.ITEM)) {
             addButton(new SwitchButtonWidget(gui, guiLeft + 26, guiTop + 63, 16, 16, ITEM, (b, s) -> {
-                Antimatter.NETWORK.sendToServer(container.getTile().createGuiPacket(GuiEvent.ITEM_EJECT, s ? 1 : 0));
+                GTLib.NETWORK.sendToServer(container.getTile().createGuiPacket(GuiEvent.ITEM_EJECT, s ? 1 : 0));
             },container.getTile().coverHandler.map(t -> COVEROUTPUT.shouldOutputItems(t.get(t.getOutputFacing()))).orElse(false)));
         }
         if (container.getTile().has(MachineFlag.FLUID)) {
             addButton(new SwitchButtonWidget(gui, guiLeft + 8, guiTop + 63, 16, 16, FLUID, (b, s) -> {
-                Antimatter.NETWORK.sendToServer(container.getTile().createGuiPacket(GuiEvent.FLUID_EJECT, s ? 1 : 0));
+                GTLib.NETWORK.sendToServer(container.getTile().createGuiPacket(GuiEvent.FLUID_EJECT, s ? 1 : 0));
             },container.getTile().coverHandler.map(t -> COVEROUTPUT.shouldOutputFluids(t.get(t.getOutputFacing()))).orElse(false)));
         }*/
     }

@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.items;
 
 import lombok.Getter;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.material.IMaterialObject;
@@ -222,7 +222,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
         durability = durabilityLoss > durability ? -1 : durability - durabilityLoss;
         stack.getOrCreateTag().putLong("rodDurability", durability);
         if (durability <= 0){
-            ItemDepletedRod depletedRod = AntimatterAPI.get(ItemDepletedRod.class, material.getId() + "_depleted_rod", this.getDomain());
+            ItemDepletedRod depletedRod = GTAPI.get(ItemDepletedRod.class, material.getId() + "_depleted_rod", this.getDomain());
             if (depletedRod != null) {
                 reactor.setRod(slot, new ItemStack(depletedRod));
             } else {

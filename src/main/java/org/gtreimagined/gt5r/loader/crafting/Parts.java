@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -122,7 +122,7 @@ public class Parts {
           TagKey<Item> rod = ROD.getMaterialTag(mat);
           TagKey<Item> circuit = TIER_CIRCUITS.apply(t);
 
-          Item motor = AntimatterAPI.get(ItemBasic.class, "motor_" + t.getId(), GTCore.ID);
+          Item motor = GTAPI.get(ItemBasic.class, "motor_" + t.getId(), GTCore.ID);
           Item piston = GT5Reimagined.get(ItemBasic.class, "piston_" + t.getId());
           Item robotArm = GT5Reimagined.get(ItemCover.class, "robot_arm_" + t.getId());
           Item emitter = GT5Reimagined.get(ItemBasic.class, "emitter_" + t.getId());

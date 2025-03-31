@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
@@ -55,11 +55,11 @@ public class CutterLoader {
             }
 
         }
-        AntimatterAPI.all(StoneType.class, s -> {
+        GTAPI.all(StoneType.class, s -> {
             if (s instanceof CobbleStoneType c){
                 for (String type : CobbleStoneType.SUFFIXES){
                     String id = (type.isEmpty() ? c.getId() : c.getId() + "_" + type) + "_cover";
-                    Item cover = AntimatterAPI.get(Item.class, id, Ref.SHARED_ID);
+                    Item cover = GTAPI.get(Item.class, id, Ref.SHARED_ID);
                     if (cover == null) continue;
                     addCutterRecipe(c.getBlock(type).asItem(), new ItemStack(cover, 8), DUST.get(c.getMaterial(), 1), id, 20, 2);
                 }
@@ -73,7 +73,7 @@ public class CutterLoader {
         GTMaterialTypes.ROD_LONG.all().stream().filter(m -> m.has(ROD)).forEach(m -> {
             addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (baseDuration.applyAsLong(m) * 2), 4);
         });
-        if (!AntimatterAPI.isModLoaded(Ref.MOD_TFC)){
+        if (!GTAPI.isModLoaded(Ref.MOD_TFC)){
             addWoodRecipe(ItemTags.OAK_LOGS, Items.OAK_PLANKS, 1, "oak_planks", 200, 8);
             addWoodRecipe(ItemTags.BIRCH_LOGS, Items.BIRCH_PLANKS, 1, "birch_planks", 200, 8);
             addWoodRecipe(ItemTags.SPRUCE_LOGS, Items.SPRUCE_PLANKS, 1, "spruce_planks", 200, 8);

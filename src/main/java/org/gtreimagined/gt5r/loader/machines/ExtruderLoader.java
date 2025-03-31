@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -174,7 +174,7 @@ public class ExtruderLoader {
             }
         });
 
-        AntimatterAPI.all(Wire.class).forEach(t -> {
+        GTAPI.all(Wire.class).forEach(t -> {
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
             if (t.getMaterial().has(INGOT)) {
@@ -184,7 +184,7 @@ public class ExtruderLoader {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(t.getMaterial()),1),of(GTCoreItems.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId() + "_from_dust", baseDuration.applyAsLong(t.getMaterial()), energyPerTick.applyAsLong(t.getMaterial()));
             }
         });
-        AntimatterAPI.all(RedstoneWire.class).forEach(t -> {
+        GTAPI.all(RedstoneWire.class).forEach(t -> {
             Item wireItem = t.getBlockItem(PipeSize.VTINY);
             ItemStack stack = new ItemStack(wireItem,2);
             if (t.getMaterial().has(INGOT)) {
@@ -195,7 +195,7 @@ public class ExtruderLoader {
             }
         });
 
-        AntimatterAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial().has(INGOT)).forEach(t -> {
+        GTAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial().has(INGOT)).forEach(t -> {
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
             addPipeRecipe(t.getMaterial(), 3, 1, PipeSize.NORMAL, t, 3);
@@ -203,7 +203,7 @@ public class ExtruderLoader {
             addPipeRecipe(t.getMaterial(), 12, 1, PipeSize.HUGE, t, 12);
         });
 
-        AntimatterAPI.all(ItemPipe.class).forEach(t -> {
+        GTAPI.all(ItemPipe.class).forEach(t -> {
             if (!t.getMaterial().has(INGOT)) return;
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 2);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 1);
@@ -212,7 +212,7 @@ public class ExtruderLoader {
             addPipeRecipe(t.getMaterial(), 12, 1, PipeSize.HUGE, t, 12);
         });
 
-        AntimatterAPI.all(HeatPipe.class).forEach(t -> {
+        GTAPI.all(HeatPipe.class).forEach(t -> {
             if (!t.getMaterial().has(INGOT)) return;
             addPipeRecipe(t.getMaterial(), 1, 2, PipeSize.TINY, t, 10);
             addPipeRecipe(t.getMaterial(), 1, 1, PipeSize.SMALL, t, 20);

@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityBatteryBuffer;
@@ -418,12 +418,12 @@ public class GT5RMachines {
     }
 
     public static void init() {
-        AntimatterAPI.registerJEICategoryWorkstation(RecipeMaps.ALLOY_SMELTER, MULTI_SMELTER, HV);
+        GTAPI.registerJEICategoryWorkstation(RecipeMaps.ALLOY_SMELTER, MULTI_SMELTER, HV);
         AntimatterJEIREIPlugin.addWorkstations(new ResourceLocation("crafting"), l -> {
             l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList());
             l.add(AUTOCRAFTER_ASSEMBLY_LINE.getItem(HV));
         });
-        if (AntimatterAPI.isModLoaded("jamd")){
+        if (GTAPI.isModLoaded("jamd")){
             MINIATURE_JAMD_PORTAL = new MiniPortalMachine(GT5RRef.ID, "miniature_jamd_portal").baseTexture(new Texture("jamd","block/mine_portal_block")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniJAMDPortal::new);
         }
     }

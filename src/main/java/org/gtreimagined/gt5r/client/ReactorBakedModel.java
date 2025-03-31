@@ -2,7 +2,7 @@ package org.gtreimagined.gt5r.client;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import org.gtreimagined.gtlib.AntimatterProperties;
+import org.gtreimagined.gtlib.GTLibProperties;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.client.ModelUtils;
@@ -44,7 +44,7 @@ public class ReactorBakedModel extends MachineBakedModel {
         }
         BlockEntity tile = level.getBlockEntity(pos);
         if (!(tile instanceof BlockEntityNuclearReactorCore core)) return Collections.emptyList();
-        AntimatterProperties.MachineProperties props = getMachineProperty(core);
+        GTLibProperties.MachineProperties props = getMachineProperty(core);
         if (props == null) return Collections.emptyList();
         List<BakedQuad> superBlockQuads = new ObjectArrayList<>(20);
         List<BakedQuad> coverQuads = getCoverQuads(state, side, rand, props, core, level, pos);

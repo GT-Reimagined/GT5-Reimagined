@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.datagen;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockLootProvider;
@@ -34,14 +34,14 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
     @Override
     protected void loot() {
         super.loot();
-        AntimatterAPI.all(BlockCasing.class,providerDomain, this::add);
-        AntimatterAPI.all(BlockColoredWall.class,providerDomain, this::add);
-        AntimatterAPI.all(BlockCoil.class,providerDomain, this::add);
-        AntimatterAPI.all(BlockFakeCasing.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockAsphalt.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockAsphaltSlab.class, providerDomain, b -> tables.put(b, BlockLoot::createSlabItemTable));
-        AntimatterAPI.all(BlockAsphaltStair.class, providerDomain, this::add);
-        AntimatterAPI.all(BlockBedrockFlower.class, providerDomain, this::add);
+        GTAPI.all(BlockCasing.class,providerDomain, this::add);
+        GTAPI.all(BlockColoredWall.class,providerDomain, this::add);
+        GTAPI.all(BlockCoil.class,providerDomain, this::add);
+        GTAPI.all(BlockFakeCasing.class, providerDomain, this::add);
+        GTAPI.all(BlockAsphalt.class, providerDomain, this::add);
+        GTAPI.all(BlockAsphaltSlab.class, providerDomain, b -> tables.put(b, BlockLoot::createSlabItemTable));
+        GTAPI.all(BlockAsphaltStair.class, providerDomain, this::add);
+        GTAPI.all(BlockBedrockFlower.class, providerDomain, this::add);
         this.add(GT5RBlocks.MINING_PIPE_THIN);
         this.add(GT5RBlocks.SOLID_SUPER_FUEL);
         this.add(GT5RBlocks.POWDER_BARREL);
@@ -66,11 +66,11 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType) VanillaStoneTypes.DIORITE).getBlock("cobble")));
         tables.put(Blocks.GRANITE, b -> createSingleItemTableWithSilkTouch(Blocks.GRANITE, ((CobbleStoneType) VanillaStoneTypes.GRANITE).getBlock("cobble")));
         tables.put(Blocks.BASALT, b -> createSingleItemTableWithSilkTouch(Blocks.BASALT, ((CobbleStoneType) VanillaStoneTypes.BASALT).getBlock("cobble")));
-        if (AntimatterAPI.isModLoaded(Ref.MOD_AE)){
+        if (GTAPI.isModLoaded(Ref.MOD_AE)){
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("deepslate_quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
         }
-        if (AntimatterAPI.isModLoaded("ad_astra")){
+        if (GTAPI.isModLoaded("ad_astra")){
             tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
         }
     }

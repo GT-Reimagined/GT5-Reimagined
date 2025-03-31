@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.client;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.client.model.MachineModel;
 import org.gtreimagined.gtlib.client.model.loader.GTModelLoader;
@@ -28,7 +28,7 @@ public class ReactorModelLoader extends GTModelLoader<MachineModel> {
     public MachineModel read(JsonDeserializationContext context, JsonObject json) {
         ResourceLocation particle = json.has("particle") ? new ResourceLocation(json.get("particle").getAsString()) : MissingTextureAtlasSprite.getLocation();
         Map<MachineState, UnbakedModel[]> m = new HashMap<>();
-        AntimatterAPI.all(MachineState.class, t -> {
+        GTAPI.all(MachineState.class, t -> {
             if (json.has(t.toString().toLowerCase())) {
                 JsonArray arr = json.get(t.toString().toLowerCase()).getAsJsonArray();
                 UnbakedModel[] a = new UnbakedModel[6];

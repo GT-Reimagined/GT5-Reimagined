@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -129,7 +129,7 @@ public class MaterialCrafting {
             provider.addItemRecipe(consumer, "chambers", CHAMBER.get(m),
                     of('I', input, 'H', HAMMER.getTag() ,'W', WRENCH.getTag()), "IHI", "IWI", "III");
         });
-        AntimatterAPI.all(ItemPipe.class, i -> {
+        GTAPI.all(ItemPipe.class, i -> {
             if (i.getSizes().contains(PipeSize.NORMAL)){
                 provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
             }

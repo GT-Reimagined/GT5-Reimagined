@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -57,7 +57,7 @@ public class ForgeHammerLoader {
             FORGE_HAMMER.RB().ii(GEM.getMaterialIngredient(m, 1)).io(GEM_FLAWED.get(m, 2)).add(m.getId() + "_flawed", 64, 16);
             FORGE_HAMMER.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(GEM_CHIPPED.get(m, 2)).add(m.getId() + "_chipped", 64, 16);
         });
-        AntimatterAPI.all(StoneType.class, s -> {
+        GTAPI.all(StoneType.class, s -> {
             if (!(s instanceof CobbleStoneType cs)) return;
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(cs.getBlock(""), 1)).io(new ItemStack(cs.getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
         });

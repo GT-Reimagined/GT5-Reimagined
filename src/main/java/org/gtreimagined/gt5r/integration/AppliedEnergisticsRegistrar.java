@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.integration;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -36,7 +36,7 @@ import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 
-public class AppliedEnergisticsRegistrar extends AntimatterMod {
+public class AppliedEnergisticsRegistrar extends GTMod {
 
     @Override
     public String getId() {
@@ -60,7 +60,7 @@ public class AppliedEnergisticsRegistrar extends AntimatterMod {
 
     @Override
     public boolean isEnabled() {
-        return AntimatterAPI.isModLoaded(getId());
+        return GTAPI.isModLoaded(getId());
     }
 
     @Override

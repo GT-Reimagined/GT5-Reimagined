@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.AntimatterConfig;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTLibConfig;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.event.GTWorldGenEvent;
 import org.gtreimagined.gtlib.material.Material;
@@ -52,16 +52,16 @@ public class WorldGenLoader {
 
 
     public static void init(GTWorldGenEvent ev) {
-        if (AntimatterConfig.STONE_LAYERS.get()) {
+        if (GTLibConfig.STONE_LAYERS.get()) {
             initStoneVeins(ev);
         }
-        if (AntimatterConfig.ORE_VEINS.get()) {
+        if (GTLibConfig.ORE_VEINS.get()) {
             initOreVeins(ev);
         }
-        if (AntimatterConfig.SMALL_ORES.get() && !AntimatterAPI.isModLoaded(MOD_TFC)){
+        if (GTLibConfig.SMALL_ORES.get() && !GTAPI.isModLoaded(MOD_TFC)){
             initSmallOres(ev);
         }
-        if (AntimatterConfig.BEDROCK_VEINS.get()) {
+        if (GTLibConfig.BEDROCK_VEINS.get()) {
             initBedrockVeins(ev);
         }
         OilSpoutSavedData.clearFluidMap();
@@ -70,7 +70,7 @@ public class WorldGenLoader {
         new OilSpoutFluid("light_oil", OilLight.getLiquid(), 20, 625, 3, 6);
         new OilSpoutFluid("heavy_oil", OilHeavy.getLiquid(), 20, 625, 5, 4);
         new OilSpoutFluid("natural_gas", NaturalGas.getGas(), 20, 625, 4, 7);
-        if (AntimatterAPI.isModLoaded(MOD_TWILIGHT)){
+        if (GTAPI.isModLoaded(MOD_TWILIGHT)){
             initTwilightForestOres(ev);
         }
     }
@@ -300,7 +300,7 @@ public class WorldGenLoader {
                     new StoneLayerOre(Spessartine, U32, -40, 8),
                     new StoneLayerOre(Pyrope, U32, -32, 0)
             ).buildVein());
-            if (AntimatterAPI.isModLoaded(MOD_AE)){
+            if (GTAPI.isModLoaded(MOD_AE)){
                 ev.stoneLayer(new WorldGenStoneLayerBuilder("quartzite_ores").withStone(QUARTZITE).withWeight(1).inDimensions(overworld).addOres(
                         new StoneLayerOre(CertusQuartz, U16, 16, 48),
                         new StoneLayerOre(MilkyQuartz, U16, 16, 48),
@@ -353,7 +353,7 @@ public class WorldGenLoader {
 
     private static void initOreVeins(GTWorldGenEvent ev) {
         List<ResourceKey<Level>> overworld = new ArrayList<>();
-        if (!AntimatterAPI.isModLoaded(MOD_TFC) && !GT5RConfig.GT6_ORE_GEN.get()){
+        if (!GTAPI.isModLoaded(MOD_TFC) && !GT5RConfig.GT6_ORE_GEN.get()){
             overworld.add(OVERWORLD);
         }
         if (!GT5RConfig.GT6_ORE_GEN.get()){
@@ -371,7 +371,7 @@ public class WorldGenLoader {
                 .inDimensions(overworld).inDimension(END).inDimensions(moonMars).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("tetrahedrite").asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite)
                 .inDimensions(overworld).inDimension(NETHER).inDimensions(moonMars).buildVein());
-        Material sporadic = !AntimatterConfig.STONE_LAYERS.get() ? Calcite : Alumina;
+        Material sporadic = !GTLibConfig.STONE_LAYERS.get() ? Calcite : Alumina;
         ev.vein(new WorldGenVeinLayerBuilder("magnetite").asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite)
                 .inDimensions(overworld).inDimension(NETHER).inDimensions(mars).buildVein());
         ev.vein(new WorldGenVeinLayerBuilder("copper").asOreVein(36, 66, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
@@ -439,10 +439,10 @@ public class WorldGenLoader {
                 END).buildVein());
         if (GT5RConfig.GT6_ORE_GEN.get()) return;
         List<ResourceKey<Level>> overworldTFCStoneLayers = new ArrayList<>();
-        if (!AntimatterAPI.isModLoaded(MOD_TFC) && !AntimatterConfig.STONE_LAYERS.get()){
+        if (!GTAPI.isModLoaded(MOD_TFC) && !GTLibConfig.STONE_LAYERS.get()){
             overworldTFCStoneLayers.add(OVERWORLD);
         }
-        if (!AntimatterConfig.STONE_LAYERS.get()) {
+        if (!GTLibConfig.STONE_LAYERS.get()) {
             overworldTFCStoneLayers.add(JAMD_MINING);
         }
         if (!overworldTFCStoneLayers.isEmpty()){

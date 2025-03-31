@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
@@ -42,7 +42,7 @@ import static org.gtreimagined.gtcore.data.GTCoreItems.Biochaff;
 public class MaceratorLoader {
     public static void initAuto() {
         ORE.all().forEach(m -> {
-            AntimatterAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).filter(s -> s != VanillaStoneTypes.BEDROCK).forEach(s -> {
+            GTAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).filter(s -> s != VanillaStoneTypes.BEDROCK).forEach(s -> {
                 Material sm = s.getMaterial();
                 if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED)) return;
                 ItemStack stoneDust = sm.has(GTMaterialTypes.DUST) ? GTMaterialTypes.DUST.get(sm, 1) : ItemStack.EMPTY;
@@ -145,7 +145,7 @@ public class MaceratorLoader {
                 PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_rock",20,2);
             }
         });
-        AntimatterAPI.all(StoneType.class, s -> {
+        GTAPI.all(StoneType.class, s -> {
             if (s.getMaterial() == NULL || !s.getMaterial().has(DUST) || s.isSandLike() || s.getState().getBlock() instanceof BlockOreStone) return;
             PULVERIZER.RB().ii(RecipeIngredient.of(s.getState().getBlock().asItem(), 1)).io(DUST.get(s.getMaterial(), 9)).add(s.getId() + "_stone_to_" + s.getMaterial().getId() + "_dust",400, 2);
             if (s instanceof CobbleStoneType){

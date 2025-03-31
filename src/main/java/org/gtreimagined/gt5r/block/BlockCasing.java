@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.dynamic.BlockDynamic;
@@ -13,7 +13,7 @@ public class BlockCasing extends BlockDynamic {
 
     public BlockCasing(String domain, String id, Block.Properties properties) {
         super(domain, id, properties.isValidSpawn((blockState, blockGetter, blockPos, object) -> false));
-        if (this.getClass() != BlockCasing.class) AntimatterAPI.register(BlockCasing.class, this);
+        if (this.getClass() != BlockCasing.class) GTAPI.register(BlockCasing.class, this);
     }
 
     public BlockCasing(String domain, String id) {

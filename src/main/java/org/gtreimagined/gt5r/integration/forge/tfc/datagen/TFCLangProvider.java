@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.providers.GTLanguageProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreBlock;
 import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreItem;
@@ -14,10 +14,10 @@ public class TFCLangProvider extends GTLanguageProvider {
 
     @Override
     protected void english(String domain, String locale) {
-        AntimatterAPI.all(GTTFCOreItem.class, domain).forEach(i -> {
+        GTAPI.all(GTTFCOreItem.class, domain).forEach(i -> {
             add(i, lowerUnderscoreToUpperSpaced(i.getId()));
         });
-        AntimatterAPI.all(GTTFCOreBlock.class, domain).forEach(i -> {
+        GTAPI.all(GTTFCOreBlock.class, domain).forEach(i -> {
             add(i, lowerUnderscoreToUpperSpaced(i.getId()));
         });
     }

@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.integration;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.Material;
@@ -20,7 +20,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.Diamond;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 
-public class SpaceModRegistrar extends AntimatterMod {
+public class SpaceModRegistrar extends GTMod {
     public static SpaceModRegistrar INSTANCE;
     public static Material Desh;
     public SpaceModRegistrar(){
@@ -35,12 +35,12 @@ public class SpaceModRegistrar extends AntimatterMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
-            Desh = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, "desh", 0x282828, TextureSet.DULL));
-            String block = AntimatterAPI.isModLoaded("ad_astra") ? "block" : "blocks";
-            AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_sand", Material.NULL, new Texture(getMod(), block + "/moon_sand"), SoundType.SAND, false).setState(getSpaceBlock("moon_sand")).setSandLike(true));
-            var moonStone = AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_stone", Material.NULL, new Texture(getMod(), block + "/moon_stone"), SoundType.STONE, false).setState(getSpaceBlock("moon_stone")));
-            AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_sand", Material.NULL, new Texture(getMod(), block + "/mars_sand"), SoundType.SAND, false).setState(getSpaceBlock("mars_sand")).setSandLike(true));
-            var marsStone = AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_stone", Material.NULL, new Texture(getMod(), block + "/mars_stone"), SoundType.STONE, false).setState(getSpaceBlock("mars_stone")));
+            Desh = GTAPI.register(Material.class, new Material(GT5RRef.ID, "desh", 0x282828, TextureSet.DULL));
+            String block = GTAPI.isModLoaded("ad_astra") ? "block" : "blocks";
+            GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_sand", Material.NULL, new Texture(getMod(), block + "/moon_sand"), SoundType.SAND, false).setState(getSpaceBlock("moon_sand")).setSandLike(true));
+            var moonStone = GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_stone", Material.NULL, new Texture(getMod(), block + "/moon_stone"), SoundType.STONE, false).setState(getSpaceBlock("moon_stone")));
+            GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_sand", Material.NULL, new Texture(getMod(), block + "/mars_sand"), SoundType.SAND, false).setState(getSpaceBlock("mars_sand")).setSandLike(true));
+            var marsStone = GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_stone", Material.NULL, new Texture(getMod(), block + "/mars_stone"), SoundType.STONE, false).setState(getSpaceBlock("mars_stone")));
             ORE.replacement(Iron, moonStone, () -> getSpaceBlock("moon_iron_ore").asItem());
             ORE.replacement(Iron, marsStone, () -> getSpaceBlock("mars_iron_ore").asItem());
             ORE.replacement(Diamond, marsStone, () -> getSpaceBlock("mars_diamond_ore").asItem());
@@ -62,11 +62,11 @@ public class SpaceModRegistrar extends AntimatterMod {
 
     @Override
     public boolean isEnabled() {
-        return (AntimatterAPI.isModLoaded("ad_astra") || AntimatterAPI.isModLoaded("beyond_earth")) && !AntimatterAPI.isModLoaded(Ref.MOD_GC);
+        return (GTAPI.isModLoaded("ad_astra") || GTAPI.isModLoaded("beyond_earth")) && !GTAPI.isModLoaded(Ref.MOD_GC);
     }
 
     private static String getMod(){
-        return AntimatterAPI.isModLoaded("ad_astra") ? "ad_astra" : "beyond_earth";
+        return GTAPI.isModLoaded("ad_astra") ? "ad_astra" : "beyond_earth";
     }
 
     public static Block getSpaceBlock(String id){

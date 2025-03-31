@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.ore.StoneType;
 import net.dries007.tfc.common.TFCTags;
@@ -19,7 +19,7 @@ public class TFCBlockTagProvider extends GTBlockTagProvider {
     protected void processTags(String domain) {
         super.processTags(domain);
         ORE.all().forEach(m -> {
-            AntimatterAPI.all(StoneType.class).stream().filter(s -> s.doesGenerateOre() && s != BEDROCK).forEach(s -> {
+            GTAPI.all(StoneType.class).stream().filter(s -> s.doesGenerateOre() && s != BEDROCK).forEach(s -> {
                 Block ore = ORE.get().get(m, s).asBlock();
                 Block smallOre = ORE_SMALL.get().get(m, s).asBlock();
                 this.tag(TFCTags.Blocks.CAN_COLLAPSE).add(ore, smallOre);

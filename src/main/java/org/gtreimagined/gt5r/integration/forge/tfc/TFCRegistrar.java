@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.integration.forge.tfc;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
-import org.gtreimagined.gtlib.AntimatterMod;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
@@ -46,7 +46,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
-public class TFCRegistrar extends AntimatterMod {
+public class TFCRegistrar extends GTMod {
 
     public static Material[] array;
     public TFCRegistrar(){
@@ -78,21 +78,21 @@ public class TFCRegistrar extends AntimatterMod {
             Helpers.mapOfKeys(Rock.class, (rock) -> {
                 Material material = Material.get(rock.name().toLowerCase());
                 if (material == Material.NULL){
-                    material = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, rock.name().toLowerCase(), rock.color().col, TextureSet.NONE));
+                    material = GTAPI.register(Material.class, new Material(GT5RRef.ID, rock.name().toLowerCase(), rock.color().col, TextureSet.NONE));
                     material.flags(DUST);
                 }
-                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "raw_" + rock.name().toLowerCase(), material, new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), SoundType.STONE, false).setStateSupplier(() -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState()).setHardnessAndResistance(rock.category().hardness(6.5F), 10.0F).setHarvestLevel(1));
-                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, rock.name().toLowerCase() + "_gravel", material, new Texture(Ref.MOD_TFC, "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
+                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "raw_" + rock.name().toLowerCase(), material, new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), SoundType.STONE, false).setStateSupplier(() -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState()).setHardnessAndResistance(rock.category().hardness(6.5F), 10.0F).setHarvestLevel(1));
+                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, rock.name().toLowerCase() + "_gravel", material, new Texture(Ref.MOD_TFC, "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
                 return true;
             });
             Helpers.mapOfKeys(SandBlockType.class, (sand) -> {
                 Material material = Material.get(sand.name().toLowerCase() + "_sand");
                 if (material == Material.NULL){
-                    material = AntimatterAPI.register(Material.class, new Material(GT5RRef.ID, sand.name().toLowerCase() + "_sand", sand.getDustColor(), TextureSet.NONE));
+                    material = GTAPI.register(Material.class, new Material(GT5RRef.ID, sand.name().toLowerCase() + "_sand", sand.getDustColor(), TextureSet.NONE));
                     material.flags(DUST);
                 }
-                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_sand", material, new Texture(Ref.MOD_TFC,"block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "sand/" + sand.name().toLowerCase()).defaultBlockState());
-                AntimatterAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
+                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_sand", material, new Texture(Ref.MOD_TFC,"block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "sand/" + sand.name().toLowerCase()).defaultBlockState());
+                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
             });
             GTMaterialTypes.LIQUID.set((m, i) -> {
@@ -100,7 +100,7 @@ public class TFCRegistrar extends AntimatterMod {
                 if (m.getId().equals("water")) return new FluidStack(Fluids.WATER, i);
                 else if (m.getId().equals("lava")) return new FluidStack(Fluids.LAVA, i);
                 else if (m == SaltWater) return new FluidStack(TFCFluids.SALT_WATER.getSource(), i);
-                GTFluid fluid = AntimatterAPI.get(GTFluid.class, GTMaterialTypes.LIQUID.getId() + "_" + m.getId());
+                GTFluid fluid = GTAPI.get(GTFluid.class, GTMaterialTypes.LIQUID.getId() + "_" + m.getId());
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });
@@ -172,6 +172,6 @@ public class TFCRegistrar extends AntimatterMod {
 
     @Override
     public boolean isEnabled() {
-        return AntimatterAPI.isModLoaded(Ref.MOD_TFC);
+        return GTAPI.isModLoaded(Ref.MOD_TFC);
     }
 }

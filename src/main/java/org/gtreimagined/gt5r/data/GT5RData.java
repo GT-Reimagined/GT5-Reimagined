@@ -8,7 +8,7 @@ public class GT5RData {
     public static void init(Dist side) {
         if (side == Dist.CLIENT)
             RecipeMaps.clientMaps();
-        /*AntimatterAPI.all(MaterialType.class, t -> {
+        /*GTAPI.all(MaterialType.class, t -> {
             if (t instanceof MaterialTypeFluid) return;
             if (t.getClass() == MaterialType.class) return;
             //TODO: add better check

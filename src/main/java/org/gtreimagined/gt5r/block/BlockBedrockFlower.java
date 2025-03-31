@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
@@ -46,7 +46,7 @@ public class BlockBedrockFlower extends BushBlock implements IGTObject, IModelPr
         this.id = id;
         this.tooltipMaterial = tooltipMaterial;
         this.sand = sand;
-        AntimatterAPI.register(BlockBedrockFlower.class, this);
+        GTAPI.register(BlockBedrockFlower.class, this);
     }
 
     @Override

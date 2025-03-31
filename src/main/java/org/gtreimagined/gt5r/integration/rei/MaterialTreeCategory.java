@@ -14,7 +14,7 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
@@ -188,13 +188,13 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
         if(mat.has(FLUIDPIPE) || mat.has(ITEMPIPE)){
             List<Item> itemList = new ArrayList<>();
             if (mat.has(FLUIDPIPE)){
-                FluidPipe<?> fluidPipe = AntimatterAPI.get(FluidPipe.class,"fluid_pipe_"+mat.getId());
+                FluidPipe<?> fluidPipe = GTAPI.get(FluidPipe.class,"fluid_pipe_"+mat.getId());
                 if (fluidPipe != null){
                     fluidPipe.getSizes().forEach(s -> itemList.add(fluidPipe.getBlockItem(s)));
                 }
             }
             if (mat.has(ITEMPIPE)){
-                ItemPipe<?> itemPipe = AntimatterAPI.get(ItemPipe.class,"item_pipe_"+mat.getId());
+                ItemPipe<?> itemPipe = GTAPI.get(ItemPipe.class,"item_pipe_"+mat.getId());
                 if (itemPipe != null){
                     itemPipe.getSizes().forEach(s -> itemList.add(itemPipe.getBlockItem(s)));
                 }
@@ -228,11 +228,11 @@ public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay
             widgets.add(Widgets.createSlot(xy(180, 74, bounds)).entries(EntryIngredients.ofIngredient(SPRING.getMaterialIngredient(mat, 1))).markOutput().disableBackground());
         }
         if(mat.has(WIRE)){
-            Item wireItem = AntimatterAPI.get(Wire.class,"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            Item wireItem = GTAPI.get(Wire.class,"wire_"+mat.getId()).getBlockItem(PipeSize.VTINY);
             widgets.add(Widgets.createSlot(xy(90, 50, bounds)).entries(EntryIngredients.of(wireItem)).markOutput().disableBackground());
         }
         if(mat.has(CABLE)){
-            Item wireItem = AntimatterAPI.get(Cable.class,"cable_"+mat.getId()).getBlockItem(PipeSize.VTINY);
+            Item wireItem = GTAPI.get(Cable.class,"cable_"+mat.getId()).getBlockItem(PipeSize.VTINY);
             widgets.add(Widgets.createSlot(xy(60, 50, bounds)).entries(EntryIngredients.of(wireItem)).markOutput().disableBackground());
         }
         if(mat.has(WIRE_FINE)){

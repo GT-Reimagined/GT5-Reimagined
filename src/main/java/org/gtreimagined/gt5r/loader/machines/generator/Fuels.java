@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -20,7 +20,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 
 public class Fuels {
     public static void init() {
-        AntimatterAPI.all(Material.class, mat -> {
+        GTAPI.all(Material.class, mat -> {
             if (mat != Materials.Steam && mat != SuperheatedSteam && mat.has(MaterialTags.FUEL_POWER) && MaterialTags.FUEL_POWER.getInt(mat) > 0) {
                 if (mat.has(LIQUID)) {
                     RecipeBuilder rb = mat.has(SEMIFUELS) ? SEMI_FUELS.RB() : COMBUSTION_FUELS.RB();
@@ -48,7 +48,7 @@ public class Fuels {
         MAGIC_FUELS.RB().ii(Items.NETHER_STAR).add("nether_star", 1, 100000000);
         MAGIC_FUELS.RB().ii(Items.BEACON).add("beacon", 1, 100000000);
         MAGIC_FUELS.RB().ii(Items.ENCHANTED_BOOK).io(Items.BOOK).fake().add("enchanted_book", 1, 1000, 1);
-        if (AntimatterAPI.isModLoaded(Ref.TWILIGHT_FOREST)){
+        if (GTAPI.isModLoaded(Ref.TWILIGHT_FOREST)){
             MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Ironwood, 1)).add("ironwood_dust", 1, 8000);
             MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.Ironwood, 1)).add("ironwood_ingot", 1, 8000);
             MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.Ironwood, 1)).add("ironwood_plate", 1, 8000);

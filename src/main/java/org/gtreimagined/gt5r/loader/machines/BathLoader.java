@@ -1,6 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
@@ -73,7 +73,7 @@ public class BathLoader {
             BATH.RB().ii(DUST.getMaterialIngredient(SodiumAluminate, 4)).fi(DistilledWater.getLiquid(6000)).io(DUST.get(AluminiumHydroxide, 7), DUST.get(SodiumHydroxide, 3)).add("aluminium_hydroxide_distilled_water", 102 * 20);
         }
         BATH.RB().ii(DUST.getMaterialIngredient(Magnesium, 2)).fi(TitaniumTetrachloride.getLiquid(5000)).io(DUST.get(Titanium, 1), DUST.get(MagnesiumChloride, 6)).add("titanium", 512);
-        if (AntimatterAPI.isModLoaded(Ref.MOD_TWILIGHT)){
+        if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)){
             GTCoreMaterials.FierySteel.getTypes().forEach(t -> {
                 if (Steel.has(t)){
                     if (t instanceof MaterialTypeItem<?> typeItem){

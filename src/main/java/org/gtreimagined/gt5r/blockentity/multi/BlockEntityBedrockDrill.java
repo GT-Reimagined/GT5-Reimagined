@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 import it.unimi.dsi.fastutil.Pair;
 import lombok.Getter;
 import lombok.Setter;
-import org.gtreimagined.gtlib.AntimatterAPI;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
@@ -119,7 +119,7 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
             }).orElse(true);
             if (consumeFluid && !mainOutput.isEmpty()) {
                 if (level.getRandom().nextInt(1000) == 0) {
-                    List<StoneType> types = AntimatterAPI.all(StoneType.class).stream().filter(s -> s instanceof CobbleStoneType || s == VanillaStoneTypes.BEDROCK || s == VanillaStoneTypes.STONE).toList();
+                    List<StoneType> types = GTAPI.all(StoneType.class).stream().filter(s -> s instanceof CobbleStoneType || s == VanillaStoneTypes.BEDROCK || s == VanillaStoneTypes.STONE).toList();
                     int index = level.getRandom().nextInt(types.size());
                     StoneType type = types.get(index);
                     if (type == VanillaStoneTypes.DEEPSLATE) {
