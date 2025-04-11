@@ -375,8 +375,10 @@ public class WorldGenLoader {
         Material sporadic = !GTLibConfig.STONE_LAYERS.get() ? Calcite : Alumina;
         ev.vein(new VeinBuilder(id("magnetite")).asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite)
                 .inDimensions(overworld).inDimension(NETHER).inDimensions(mars).buildVein());
-        ev.vein(new VeinBuilder(id("copper")).asOreVein(36, 66, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
-                .inDimensions(overworld).inDimension(NETHER).inDimensions(moonMars).buildVein());
+        ev.vein(new VeinBuilder(id("copper_nether")).asOreVein(10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
+                .inDimension(NETHER).buildVein());
+        ev.vein(new VeinBuilder(id("copper")).asOreVein(-30, 0, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
+                .inDimensions(overworld).inDimensions(moonMars).buildVein());
         ev.vein(new VeinBuilder(id("salts")).asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene)
                 .inDimensions(overworld).inDimensions(moon).buildVein());
         ev.vein(new VeinBuilder(id("redstone")).asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar)
