@@ -11,7 +11,7 @@ import org.gtreimagined.gtlib.worldgen.StoneLayerOre;
 import org.gtreimagined.gtlib.worldgen.bedrockore.BedrockVein;
 import org.gtreimagined.gtlib.worldgen.object.WorldGenStoneLayerBuilder;
 import org.gtreimagined.gtlib.worldgen.smallore.SmallOreBuilder;
-import org.gtreimagined.gtlib.worldgen.vanillaore.VanillaOreBuilder;
+import org.gtreimagined.gtlib.worldgen.vanillaore.VanillaVeinBuilder;
 import org.gtreimagined.gtlib.worldgen.vein.VeinBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -110,29 +110,29 @@ public class WorldGenLoader {
     }
 
     private static void initTwilightForestOres(GTWorldGenEvent event){
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "coal_twilight")).withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "lignite_twilight")).withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "salt_twilight")).withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "rock_salt_twilight")).withMaterial(RockSalt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "bauxite_twilight")).withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "oil_shale_twilight")).withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "milky_quartz_twilight")).withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "coal_twilight")).withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "lignite_twilight")).withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "salt_twilight")).withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "rock_salt_twilight")).withMaterial(RockSalt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "bauxite_twilight")).withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "oil_shale_twilight")).withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "milky_quartz_twilight")).withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
 
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "sulfur_twilight")).withMaterial(Sulfur).withSize(16).withProbability(100).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "apatite_twilight")).withMaterial(Apatite).withSize(16).withProbability(50).atHeight(-8, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "ruby_twilight")).withMaterial(Ruby).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "amber_twilight")).withMaterial(Amber).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "amethyst_twilight")).withMaterial(Amethyst).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "galena_twilight")).withMaterial(Galena).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "tetrahedrite_twilight")).withMaterial(Tetrahedrite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "cassiterite_twilight")).withMaterial(Cassiterite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "sheldonite_twilight")).withMaterial(Sheldonite).withSize(6).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "pentlandite_twilight")).withMaterial(Pentlandite).withSize(16).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "scheelite_twilight")).withMaterial(Scheelite).withSize(12).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "rutile_twilight")).withMaterial(Rutile).withSize(6).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "bastnasite_twilight")).withMaterial(Bastnasite).withSize(16).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "graphite_twilight")).withMaterial(Graphite).withSize(6).withProbability(50).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaOreBuilder(new ResourceLocation(GT5RRef.ID, "pitchblende_twilight")).withMaterial(Pitchblende).withSize(16).withProbability(100).atHeight(-24, -16).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "sulfur_twilight")).withMaterial(Sulfur).withSize(16).withProbability(100).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "apatite_twilight")).withMaterial(Apatite).withSize(16).withProbability(50).atHeight(-8, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "ruby_twilight")).withMaterial(Ruby).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "amber_twilight")).withMaterial(Amber).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "amethyst_twilight")).withMaterial(Amethyst).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "galena_twilight")).withMaterial(Galena).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "tetrahedrite_twilight")).withMaterial(Tetrahedrite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "cassiterite_twilight")).withMaterial(Cassiterite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "sheldonite_twilight")).withMaterial(Sheldonite).withSize(6).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "pentlandite_twilight")).withMaterial(Pentlandite).withSize(16).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "scheelite_twilight")).withMaterial(Scheelite).withSize(12).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "rutile_twilight")).withMaterial(Rutile).withSize(6).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "bastnasite_twilight")).withMaterial(Bastnasite).withSize(16).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "graphite_twilight")).withMaterial(Graphite).withSize(6).withProbability(50).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "pitchblende_twilight")).withMaterial(Pitchblende).withSize(16).withProbability(100).atHeight(-24, -16).inDimensions(TWILIGHT_FOREST).buildMaterial());
     }
 
     private static void initSmallOres(GTWorldGenEvent event){
