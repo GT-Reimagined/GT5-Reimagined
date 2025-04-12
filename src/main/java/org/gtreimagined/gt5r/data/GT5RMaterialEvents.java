@@ -917,10 +917,10 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.DilutedSulfuricAcid).mats(of(Materials.Hydrogen,2, Materials.Sulfur,1, Materials.Oxygen,4));
         event.setMaterial(Materials.HeavyWater).mats(of(Materials.Deuterium, 2, Materials.Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Materials.SemiheavyWater).mats(of(Materials.Hydrogen, 1, Materials.Deuterium, 1, Materials.Oxygen, 1)).elecTicks(2000);
-        event.setMaterial(Materials.TritiatedWater).mats(of(Materials.Tritanium, 2, Materials.Oxygen, 1)).elecTicks(2000);
+        event.setMaterial(Materials.TritiatedWater).mats(of(Tritium, 2, Materials.Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Materials.HotHeavyWater).mats(of(Materials.Deuterium, 2, Materials.Oxygen, 1));
         event.setMaterial(Materials.HotSemiheavyWater).mats(of(Materials.Hydrogen, 1, Materials.Deuterium, 1, Materials.Oxygen, 1));
-        event.setMaterial(Materials.HotTritiatedWater).mats(of(Materials.Tritanium, 2, Materials.Oxygen, 1));
+        event.setMaterial(Materials.HotTritiatedWater).mats(of(Materials.Tritium, 2, Materials.Oxygen, 1));
         event.setMaterial(Materials.HotMoltenLithiumChloride).mats(of(Materials.LithiumChloride, 1));
         event.setMaterial(Materials.HydrochloricAcid).mats(of(Materials.Hydrogen, 1, Materials.Chlorine, 1)).elecTicks(720);
         event.setMaterial(Materials.HydrofluoricAcid).mats(of(Materials.Hydrogen, 1, Materials.Fluorine, 1)).elecTicks(80);
