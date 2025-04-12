@@ -179,7 +179,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).asMetal(1700, ALLOY);
         event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).forceBF(false);
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
-        event.setMaterial(Materials.Tritanium).asMetal(295, FRAME, MOLTEN);
+        event.setMaterial(Materials.TritaniumAlloy).asMetal(295, FRAME, MOLTEN);
         event.setMaterial(Materials.TungstenCarbide).asMetal(2460);
         event.setMaterial(Materials.TungstenSteel).asMetal(3000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
         event.setMaterial(Materials.Ultimet).asMetal(2700, PLATE);
@@ -1057,7 +1057,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SteelMagnetic).tool(Materials.Steel).toolEnchantments(of(Enchantments.SHARPNESS, 2)).build();
         event.setMaterial(Materials.SterlingSilver).tool().toolDamage(2).toolSpeed(13).toolDurability(128).toolQuality(2).build();
         event.setMaterial(Materials.StainlessSteel).tool().toolDamage(2).toolSpeed(7).toolDurability(480).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
-        event.setMaterial(Materials.Tritanium).tool().toolDamage(9).toolSpeed(15).toolDurability(9400).toolQuality(6).build();
+        event.setMaterial(Materials.TritaniumAlloy).tool().toolDamage(9).toolSpeed(15).toolDurability(9400).toolQuality(6).build();
         event.setMaterial(Materials.TungstenCarbide).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.TungstenSteel).tool(Materials.TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
         event.setMaterial(Materials.VanadiumSteel).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();

@@ -188,7 +188,8 @@ public class Materials {
     public static Material SterlingSilver = GTAPI.register(Material.class, new Material(GT5RRef.ID, "sterling_silver", 0xfadce1, SHINY));
     public static Material StainlessSteel = GTAPI.register(Material.class, new Material(GT5RRef.ID, "stainless_steel", 0xc8c8dc, SHINY));
     public static Material TinAlloy = GTAPI.register(Material.class, new Material(GT5RRef.ID, "tin_alloy", 0x9fadbb, NONE));
-    public static Material Tritanium = GTAPI.register(Material.class, new Material(GT5RRef.ID, "tritanium", 0xffffff, SHINY));
+    public static Material Trinitanium = GTAPI.register(Material.class, new Material(GT5RRef.ID, "trinitanium", 0xEBAFFF, METALLIC));
+    public static Material TritaniumAlloy = GTAPI.register(Material.class, new Material(GT5RRef.ID, "tritanium_alloy", 0x379B9B, SHINY));
     public static Material TungstenCarbide = GTAPI.register(Material.class, new Material(GT5RRef.ID, "tungsten_carbide", 0x330066, METALLIC));
     public static Material TungstenSteel = GTAPI.register(Material.class, new Material(GT5RRef.ID, "tungstensteel", 0x6464a0, METALLIC));
     public static Material Ultimet = GTAPI.register(Material.class, new Material(GT5RRef.ID, "ultimet", 0xb4b4e6, SHINY));
