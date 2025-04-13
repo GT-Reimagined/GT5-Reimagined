@@ -123,7 +123,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                                 ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
                                 ItemStack compare = stack.copy();
                                 if(stack.getItem() instanceof ItemTurbineRotor rotor && stack.hurt(1, getLevel().random, null)){
-                                    var materialType = rotor.getAntimatterToolType().getMaterialTypeItem();
+                                    var materialType = rotor.getGTToolType().getMaterialTypeItem();
                                     var material = rotor.getPrimaryMaterial(compare);
                                     ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : ROD_LONG.get(rotor.getRodMaterial(), 1);
                                     i.getHandler(SlotType.STORAGE).setStackInSlot(0, broken);
