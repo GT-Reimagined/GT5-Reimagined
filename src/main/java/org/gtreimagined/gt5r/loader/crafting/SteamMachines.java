@@ -70,7 +70,7 @@ public class SteamMachines {
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_MACERATOR.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
-                        'H', brickedBronzeHull,
+                        'H', hullBronze,
                         'P', piston,
                         'D', diamond
                 ), "DBD", "BHB", "PBP");
@@ -123,7 +123,7 @@ public class SteamMachines {
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_MACERATOR.getItem(Tier.STEEL),
                 ImmutableMap.of(
                         'B', steelPipe,
-                        'H', brickedSteelHull,
+                        'H', hullSteel,
                         'P', piston,
                         'D', diamond
                 ), "DBD", "BHB", "PBP");
