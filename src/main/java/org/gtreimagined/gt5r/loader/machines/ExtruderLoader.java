@@ -27,6 +27,7 @@ import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.Endstone;
 import static org.gtreimagined.gtlib.material.MaterialTags.RUBBERTOOLS;
+import static org.gtreimagined.gtlib.material.MaterialTags.WOOD;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.Glass;
 import static org.gtreimagined.gt5r.data.Materials.Obsidian;
@@ -46,7 +47,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(GTMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
+            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS) && !r.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRing, 1).setNoConsume()).io(GTMaterialTypes.RING.get(r, 4)).add("ring_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -54,7 +55,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeFoil, 1).setNoConsume()).io(GTMaterialTypes.FOIL.get(r, 4)).add("foil_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
+            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS) && !r.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeFoil, 1).setNoConsume()).io(GTMaterialTypes.FOIL.get(r, 4)).add("foil_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -62,7 +63,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeFineWire, 1).setNoConsume()).io(GTMaterialTypes.WIRE_FINE.get(r, 8)).add("fine_wire_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
+            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS) && !r.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeFineWire, 1).setNoConsume()).io(GTMaterialTypes.WIRE_FINE.get(r, 8)).add("fine_wire_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -70,7 +71,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeTinyPlate, 1).setNoConsume()).io(GTMaterialTypes.PLATE_TINY.get(r, 9)).add("tiny_plate_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
+            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS) && !r.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeTinyPlate, 1).setNoConsume()).io(GTMaterialTypes.PLATE_TINY.get(r, 9)).add("tiny_plate_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -79,7 +80,7 @@ public class ExtruderLoader {
             if (g.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(g), 4), of(GTCoreItems.ShapeGear, 1).setNoConsume()).io(GTMaterialTypes.GEAR.get(g, 1)).add("gear_" + g.getId(), baseDuration.applyAsLong(g) * 4, energyPerTick.applyAsLong(g));
             }
-            if (g.has(GTMaterialTypes.DUST) && g.has(RUBBERTOOLS)) {
+            if (g.has(GTMaterialTypes.DUST) && g.has(RUBBERTOOLS) && !g.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(g), 4), of(GTCoreItems.ShapeGear, 1).setNoConsume()).io(GTMaterialTypes.GEAR.get(g, 1)).add("gear_" + g.getId() + "_from_dust", baseDuration.applyAsLong(g) * 4, energyPerTick.applyAsLong(g));
             }
         });
@@ -88,7 +89,7 @@ public class ExtruderLoader {
             if (b.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(b), 1), of(GTCoreItems.ShapeBolt, 1).setNoConsume()).io(GTMaterialTypes.BOLT.get(b, 8)).add("bolt_" + b.getId(), baseDuration.applyAsLong(b), energyPerTick.applyAsLong(b));
             }
-            if (b.has(GTMaterialTypes.DUST) && b.has(RUBBERTOOLS)) {
+            if (b.has(GTMaterialTypes.DUST) && b.has(RUBBERTOOLS) && !b.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(b), 1), of(GTCoreItems.ShapeBolt, 1).setNoConsume()).io(GTMaterialTypes.BOLT.get(b, 8)).add("bolt_" + b.getId() + "_from_dust", baseDuration.applyAsLong(b), energyPerTick.applyAsLong(b));
             }
         });
@@ -97,7 +98,7 @@ public class ExtruderLoader {
             if (g.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(g), 1), of(GTCoreItems.ShapeGearSmall, 1).setNoConsume()).io(GTMaterialTypes.GEAR_SMALL.get(g, 1)).add("gear_small_" + g.getId(), baseDuration.applyAsLong(g), energyPerTick.applyAsLong(g));
             }
-            if (g.has(GTMaterialTypes.DUST) && g.has(RUBBERTOOLS)) {
+            if (g.has(GTMaterialTypes.DUST) && g.has(RUBBERTOOLS) && !g.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(g), 1), of(GTCoreItems.ShapeGearSmall, 1).setNoConsume()).io(GTMaterialTypes.GEAR_SMALL.get(g, 1)).add("gear_small_" + g.getId() + "_from_dust", baseDuration.applyAsLong(g), energyPerTick.applyAsLong(g));
             }
         });
@@ -106,7 +107,7 @@ public class ExtruderLoader {
             if (p.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(p), 1), of(GTCoreItems.ShapePlate, 1).setNoConsume()).io(GTMaterialTypes.PLATE.get(p, 1)).add("plate_" + p.getId(), baseDuration.applyAsLong(p), energyPerTick.applyAsLong(p));
             }
-            if (p.has(GTMaterialTypes.DUST) && p.has(RUBBERTOOLS)) {
+            if (p.has(GTMaterialTypes.DUST) && p.has(RUBBERTOOLS) && !p.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(p), 1), of(GTCoreItems.ShapePlate, 1).setNoConsume()).io(GTMaterialTypes.PLATE.get(p, 1)).add("plate_" + p.getId() + "_from_dust", baseDuration.applyAsLong(p), energyPerTick.applyAsLong(p));
             }
         });
@@ -115,7 +116,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeCasing, 1).setNoConsume()).io(GTMaterialTypes.ITEM_CASING.get(r, 2)).add("item_casing_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS)) {
+            if (r.has(GTMaterialTypes.DUST) && r.has(RUBBERTOOLS) && !r.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeCasing, 1).setNoConsume()).io(GTMaterialTypes.ITEM_CASING.get(r, 2)).add("item_casing_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -124,7 +125,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(GTMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || (!r.has(INGOT) && !r.has(GEM) && r != Obsidian))) {
+            if (r.has(GTMaterialTypes.DUST) && !r.has(WOOD) && (r.has(RUBBERTOOLS) || (!r.has(INGOT) && !r.has(GEM) && r != Obsidian))) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeRod, 1).setNoConsume()).io(GTMaterialTypes.ROD.get(r, 2)).add("rod_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -133,7 +134,7 @@ public class ExtruderLoader {
             if (r.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(r), 1), of(GTCoreItems.ShapeLongRod, 1).setNoConsume()).io(GTMaterialTypes.ROD_LONG.get(r, 1)).add("long_rod_" + r.getId(), baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
-            if (r.has(GTMaterialTypes.DUST) && (r.has(RUBBERTOOLS) || r == Endstone)) {
+            if (r.has(GTMaterialTypes.DUST) && !r.has(WOOD) && (r.has(RUBBERTOOLS) || r == Endstone)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(r), 1), of(GTCoreItems.ShapeLongRod, 1).setNoConsume()).io(GTMaterialTypes.ROD_LONG.get(r, 1)).add("long_rod_" + r.getId() + "_from_dust", baseDuration.applyAsLong(r), energyPerTick.applyAsLong(r));
             }
         });
@@ -147,7 +148,7 @@ public class ExtruderLoader {
             if (p.has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(p), 9), of(GTCoreItems.ShapeBlock, 1).setNoConsume()).io(GTMaterialTypes.BLOCK.get().get(p).asStack()).add("block_" + p.getId(), baseDuration.applyAsLong(p) * 9, energyPerTick.applyAsLong(p));
             }
-            if (p.has(GTMaterialTypes.DUST) && p.has(RUBBERTOOLS)) {
+            if (p.has(GTMaterialTypes.DUST) && p.has(RUBBERTOOLS) && !p.has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(p), 9), of(GTCoreItems.ShapeBlock, 1).setNoConsume()).io(GTMaterialTypes.BLOCK.get().get(p).asStack()).add("block_" + p.getId() + "_from_dust", baseDuration.applyAsLong(p) * 9, energyPerTick.applyAsLong(p));
             }
         });
@@ -165,7 +166,7 @@ public class ExtruderLoader {
                         if (m.has(INGOT)) {
                             EXTRUDER.RB().ii(of(INGOT.getMaterialTag(m), amountIn), of(toolHeadShapes[i], 1).setNoConsume()).io(itemType.get(m, 1)).add(itemType.getId() + "_" + m.getId(), baseDuration.applyAsLong(m) * amountIn, energyPerTick.applyAsLong(m));
                         }
-                        if (m.has(GTMaterialTypes.DUST) && m.has(RUBBERTOOLS)) {
+                        if (m.has(GTMaterialTypes.DUST) && m.has(RUBBERTOOLS) && !m.has(WOOD)) {
                             EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(m), amountIn), of(toolHeadShapes[i], 1).setNoConsume()).io(itemType.get(m, 1)).add(itemType.getId() + "_" + m.getId() + "_from_dust", baseDuration.applyAsLong(m) * amountIn, energyPerTick.applyAsLong(m));
                         }
                     }
@@ -190,7 +191,7 @@ public class ExtruderLoader {
             if (t.getMaterial().has(INGOT)) {
                 EXTRUDER.RB().ii(of(INGOT.getMaterialTag(t.getMaterial()),1),of(GTCoreItems.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId(),baseDuration.applyAsLong(t.getMaterial()),energyPerTick.applyAsLong(t.getMaterial()));
             }
-            if (t.getMaterial().has(GTMaterialTypes.DUST) && t.getMaterial().has(RUBBERTOOLS)) {
+            if (t.getMaterial().has(GTMaterialTypes.DUST) && t.getMaterial().has(RUBBERTOOLS) && !t.getMaterial().has(WOOD)) {
                 EXTRUDER.RB().ii(of(GTMaterialTypes.DUST.getMaterialTag(t.getMaterial()),1),of(GTCoreItems.ShapeWire,1).setNoConsume()).io(stack).add("wire_" + t.getMaterial().getId() + "_from_dust", baseDuration.applyAsLong(t.getMaterial()), energyPerTick.applyAsLong(t.getMaterial()));
             }
         });
