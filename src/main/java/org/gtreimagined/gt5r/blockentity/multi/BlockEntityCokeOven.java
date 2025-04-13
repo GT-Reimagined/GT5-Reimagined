@@ -1,19 +1,55 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.items.CapabilityItemHandler;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
+import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
+import org.gtreimagined.gtlib.util.Utils;
+import org.gtreimagined.gtlib.util.int3;
 
 public class BlockEntityCokeOven extends BlockEntityBasicMultiMachine<BlockEntityCokeOven> {
 
+    BlockPos[] positions;
     public BlockEntityCokeOven(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        positions = new BlockPos[9];
+        int3 start = new int3(pos, this.getFacing(state)).below(2).right(1);
+        positions[0] = start.immutable();
+        positions[1] = start.left(1).immutable();
+        positions[2] = start.left(1).immutable();
+        positions[3] = start.back(1).immutable();
+        positions[4] = start.right(1).immutable();
+        positions[5] = start.right(1).immutable();
+        positions[6] = start.back(1).immutable();
+        positions[7] = start.left(1).immutable();
+        positions[8] = start.left(1).immutable();
     }
 
     @Override
     public boolean allowsFakeTiles() {
         return true;
+    }
+
+    @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level, pos, state);
+        if (level.getGameTime() % 10 == 0) {
+            for (BlockPos pos1 : positions) {
+                BlockEntity blockEntity = level.getBlockEntity(pos1);
+                if (blockEntity != null){
+                    blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, Direction.UP).ifPresent(itemHandler1 ->
+                            itemHandler.ifPresent(i -> Utils.transferItems(i.getHandler(SlotType.IT_OUT), itemHandler1, false)));
+                    blockEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, Direction.UP).ifPresent(fluidHandler1 ->
+                            fluidHandler.ifPresent(f -> Utils.transferFluids(f.getOutputTanks(), fluidHandler1)));
+                }
+            }
+        }
     }
 
     @Override
