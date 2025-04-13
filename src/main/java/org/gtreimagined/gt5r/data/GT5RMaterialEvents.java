@@ -10,7 +10,7 @@ import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.SubTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
-import org.gtreimagined.gt5r.material.GregTechMaterialEvent;
+import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
@@ -24,7 +24,7 @@ import static org.gtreimagined.gt5r.data.GT5RMaterialTags.ALLOY;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class GT5RMaterialEvents {
-    public static void onMaterialEvent(GregTechMaterialEvent event){
+    public static void onMaterialEvent(GT5RMaterialEvent event){
         flags(event);
         antimatterMaterials(event);
         byproducts(event);
@@ -35,7 +35,7 @@ public class GT5RMaterialEvents {
         workbenches(event);
     }
 
-    private static void defaultMaterialFlags(GregTechMaterialEvent event){
+    private static void defaultMaterialFlags(GT5RMaterialEvent event){
         /**
          *** Periodic Table of Elements (No Isotopes)
          **/
@@ -621,7 +621,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HydroCrackedRefineryGas).asGas();
     }
 
-    private static void processInto(GregTechMaterialEvent event){
+    private static void processInto(GT5RMaterialEvent event){
         /**
          ***  Solids
          **/
@@ -992,7 +992,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HydroCrackedRefineryGas).mats(of(Materials.RefineryGas,1, Materials.Hydrogen,2));
     }
 
-    private static void toolsAndArmor(GregTechMaterialEvent event){
+    private static void toolsAndArmor(GT5RMaterialEvent event){
         /**
          ** Periodic Elements
          */
@@ -1103,7 +1103,7 @@ public class GT5RMaterialEvents {
     }
 
 
-    private static void nuclearIsotopes(GregTechMaterialEvent event){
+    private static void nuclearIsotopes(GT5RMaterialEvent event){
         /**
          *** Isotopes (Solids)
          **/
@@ -1141,7 +1141,7 @@ public class GT5RMaterialEvents {
     }
 
 
-    private static void workbenches(GregTechMaterialEvent event){
+    private static void workbenches(GT5RMaterialEvent event){
         GT5RMachines.initTanks();
         METAL.all().forEach(m -> {
             if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
@@ -1200,7 +1200,7 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Adamantium, 36);
     }
 
-    public static void byproducts(GregTechMaterialEvent event){
+    public static void byproducts(GT5RMaterialEvent event){
         event.setMaterial(Materials.Almandine).addByProduct(Materials.RedGarnet, Materials.Alumina);
         event.setMaterial(Materials.Alumina).addByProduct(Materials.Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
@@ -1321,7 +1321,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Zinc).addByProduct(Materials.Tin, Materials.Gallium).bathPersulfate(Materials.Zinc);
     }
 
-    private static void flags(GregTechMaterialEvent event){
+    private static void flags(GT5RMaterialEvent event){
         GT5RMaterialTags.BRITTLEG.add(Coal, Charcoal, Materials.Lignite, Materials.PetroleumCoke, Materials.CoalCoke, Materials.LigniteCoke);
         GT5RMaterialTags.CALCITE2X.add(Materials.Pyrite, Materials.YellowLimonite);
         GT5RMaterialTags.CALCITE3X.add(Iron, Materials.BrownLimonite);
@@ -1537,7 +1537,7 @@ public class GT5RMaterialEvents {
         // Naquadria.mChemicalFormula = "NqX";
     }
 
-    private static void antimatterMaterials(GregTechMaterialEvent event){
+    private static void antimatterMaterials(GT5RMaterialEvent event){
         event.setMaterial(Basalt).mats(of(Materials.Olivine, 1, Materials.Calcite, 3, Flint, 8, Materials.DarkAsh, 4));
         event.setMaterial(Blaze).mats(of(Materials.Sulfur, 1, Materials.DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE, ROCK).mats(of(Materials.Carbon, 2));

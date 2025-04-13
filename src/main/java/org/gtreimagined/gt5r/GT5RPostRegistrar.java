@@ -5,7 +5,7 @@ import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.data.GT5RMaterialEvents;
-import org.gtreimagined.gt5r.material.GregTechMaterialEvent;
+import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
 
 public class GT5RPostRegistrar extends GTMod {
     @Override
@@ -20,8 +20,8 @@ public class GT5RPostRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event = new GregTechMaterialEvent();
-        GT5RMaterialEvents.onMaterialEvent((GregTechMaterialEvent) event);
+        event = new GT5RMaterialEvent();
+        GT5RMaterialEvents.onMaterialEvent((GT5RMaterialEvent) event);
     }
 
     @Override

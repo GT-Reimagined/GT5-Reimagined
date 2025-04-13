@@ -9,8 +9,8 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
-public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> {
-    public GregTechMaterialEvent asSolid(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
+public class GT5RMaterialEvent extends MaterialEvent<GT5RMaterialEvent> {
+    public GT5RMaterialEvent asSolid(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
         super.asSolid(meltingPoint, tags);
         GT5RMaterialTags.BLAST_FURNACE_TEMP.add(material, blastFurnaceTemp);
         if (blastFurnaceTemp >= 2000){
@@ -22,13 +22,13 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
         return this;
     }
 
-    public GregTechMaterialEvent asMetal(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
+    public GT5RMaterialEvent asMetal(int meltingPoint, int blastFurnaceTemp, IMaterialTag... tags) {
         flags(METAL, MOLTEN);
         asSolid(meltingPoint, blastFurnaceTemp, tags);
         return this;
     }
 
-    public GregTechMaterialEvent forceBF(boolean hotIngot) {
+    public GT5RMaterialEvent forceBF(boolean hotIngot) {
         flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         if (hotIngot) {
             flags(GTMaterialTypes.INGOT_HOT);
@@ -37,37 +37,37 @@ public class GregTechMaterialEvent extends MaterialEvent<GregTechMaterialEvent> 
     }
 
     @Override
-    public GregTechMaterialEvent asSolid(int meltingPoint, IMaterialTag... tags) {
+    public GT5RMaterialEvent asSolid(int meltingPoint, IMaterialTag... tags) {
         return asSolid(meltingPoint, meltingPoint, tags);
     }
 
     @Override
-    public GregTechMaterialEvent asMetal(int meltingPoint, IMaterialTag... tags) {
+    public GT5RMaterialEvent asMetal(int meltingPoint, IMaterialTag... tags) {
         return asMetal(meltingPoint, meltingPoint, tags);
     }
 
-    public GregTechMaterialEvent elecTicks(int ticks){
+    public GT5RMaterialEvent elecTicks(int ticks){
         GT5RMaterialTags.ELEC_TICKS.add(material, ticks);
         return this;
     }
 
     @Override
-    protected GregTechMaterialEvent buildTool(ToolData builder) {
+    protected GT5RMaterialEvent buildTool(ToolData builder) {
         flags(GTMaterialTypes.ROD_LONG);
         return super.buildTool(builder);
     }
 
-    public GregTechMaterialEvent thermal(Material byProduct){
+    public GT5RMaterialEvent thermal(Material byProduct){
         GT5RMaterialTags.THERMAL_CENTRIFUGE_EXPLICIT.add(this.material, byProduct);
         return this;
     }
 
-    public GregTechMaterialEvent bathMercury(Material byProduct){
+    public GT5RMaterialEvent bathMercury(Material byProduct){
         GT5RMaterialTags.BATH_MERCURY.add(this.material, byProduct);
         return this;
     }
 
-    public GregTechMaterialEvent bathPersulfate(Material byProduct){
+    public GT5RMaterialEvent bathPersulfate(Material byProduct){
         GT5RMaterialTags.BATH_PERSULFATE.add(this.material, byProduct);
         return this;
     }
