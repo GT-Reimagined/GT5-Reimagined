@@ -142,6 +142,7 @@ public class GT5RMachines {
     public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GT5RRef.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(GT5RRef.ID, "steam_furnace").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
     public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5RRef.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(RecipeMaps.MACERATOR).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
+    public static SteamMachine STEAM_CUTTER = new SteamMachine(GT5RRef.ID, "steam_cutter").setEuMultiplier(1).setDurationMultiplier(2).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
     public static SteamMachine STEAM_SIFTER = new SteamMachine(GT5RRef.ID, "steam_sifter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
     /**
      ** Hatchless Multiblock Machines (Steam Age)
@@ -435,6 +436,7 @@ public class GT5RMachines {
         STEAM_EXTRACTOR.setMap(RecipeMaps.EXTRACTOR);
         STEAM_FORGE_HAMMER.setMap(RecipeMaps.FORGE_HAMMER);
         STEAM_FURNACE.setMap(RecipeMaps.ELECTRIC_FURNACE);
+        STEAM_CUTTER.setMap(RecipeMaps.CUTTER);
         STEAM_SIFTER.setMap(RecipeMaps.SIFTER);
     }
 
