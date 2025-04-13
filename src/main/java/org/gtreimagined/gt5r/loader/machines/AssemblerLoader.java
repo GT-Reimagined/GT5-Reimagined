@@ -292,7 +292,7 @@ public class AssemblerLoader {
                 ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
             }
             if (t.toolTypes().contains(ToolTypes.HUGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Americium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), ROD_LONG.getMaterialIngredient(Adamantium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
                 ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
             }
         });
