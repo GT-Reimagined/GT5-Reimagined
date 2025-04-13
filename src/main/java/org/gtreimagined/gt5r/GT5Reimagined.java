@@ -16,7 +16,7 @@ import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.event.GTWorldGenEvent;
-import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
+import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
 import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
@@ -355,8 +355,8 @@ public class GT5Reimagined extends GTMod {
                 GT5RTwilightStalctites.init();
                 GT5RRemapping.init();
                 LootLoader.init();
-                AntimatterJEIREIPlugin.addItemsToHide(GT5RBlocks.LAVA);
-                AntimatterJEIREIPlugin.addItemsToHide(l -> {
+                GTLibXEIPlugin.addItemsToHide(GT5RBlocks.LAVA);
+                GTLibXEIPlugin.addItemsToHide(l -> {
                     IGTTool screwdriver_mv = GTAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
                     IGTTool screwdriver_hv = GTAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
@@ -382,7 +382,7 @@ public class GT5Reimagined extends GTMod {
                         l.add(GT5RBlocks.ASSEMBLY_LINE_CASING);
                     }
                 });
-                AntimatterJEIREIPlugin.addFluidsToHide(l -> {
+                GTLibXEIPlugin.addFluidsToHide(l -> {
                     l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                 });
                 TerraformFuelRegistry.addFuel(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);

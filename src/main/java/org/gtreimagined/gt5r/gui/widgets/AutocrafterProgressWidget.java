@@ -4,7 +4,7 @@ import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
 import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.jeirei.AntimatterJEIREIPlugin;
+import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
 import net.minecraft.resources.ResourceLocation;
 
 public class AutocrafterProgressWidget extends ProgressWidget {
@@ -19,6 +19,6 @@ public class AutocrafterProgressWidget extends ProgressWidget {
     @Override
     public void onClick(double mouseX, double mouseY, int button) {
         super.onClick(mouseX, mouseY, button);
-        AntimatterJEIREIPlugin.showCategories(new ResourceLocation("crafting"));
+        GTLibXEIPlugin.showCategories(new ResourceLocation("crafting"));
     }
 }
