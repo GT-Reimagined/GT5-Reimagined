@@ -44,6 +44,7 @@ public class GT5RConfig {
         DEFAULT_ORE_VEINS = worldgen.addBool("default_ore_veins", true, "Enables default ore veins. Will not generate in the overworld when gt6_ore_gen is true. Default: true");
         DEFAULT_SMALL_ORES = worldgen.addBool("default_small_ores", true, "Enables default small ore gen. - Default: true");
         DEFAULT_BEDROCK_VEINS = worldgen.addBool("default_bedrock_veins", true, "Enables default bedrock veins. - Default: true");
+        DEFAULT_TWILIGHT_ORE_GEN = worldgen.addBool("default_twilight_ore_gen", true, "Enables default twilight ore gen. - Default: true");
         CONFIG = CarbonConfig.CONFIGS.createConfig(config);
         CONFIG.register();
     }

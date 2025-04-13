@@ -71,7 +71,7 @@ public class WorldGenLoader {
         new OilSpoutFluid("light_oil", OilLight.getLiquid(), 20, 625, 3, 6);
         new OilSpoutFluid("heavy_oil", OilHeavy.getLiquid(), 20, 625, 5, 4);
         new OilSpoutFluid("natural_gas", NaturalGas.getGas(), 20, 625, 4, 7);
-        if (GTAPI.isModLoaded(MOD_TWILIGHT)){
+        if (GTAPI.isModLoaded(MOD_TWILIGHT) && GT5RConfig.DEFAULT_TWILIGHT_ORE_GEN.get()){
             initTwilightForestOres(ev);
         }
     }
