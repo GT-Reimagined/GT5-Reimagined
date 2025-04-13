@@ -15,4 +15,9 @@ public class BlockEntityCokeOven extends BlockEntityBasicMultiMachine<BlockEntit
     public boolean allowsFakeTiles() {
         return true;
     }
+
+    @Override
+    public int maxShares() {
+       return 0;
+    }
 }

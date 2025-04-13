@@ -36,4 +36,9 @@ public class BlockEntityPrimitiveBlastFurnace extends BlockEntityBasicMultiMachi
         controller.above(1);
         getLevel().setBlock(controller, Blocks.AIR.defaultBlockState(), 2);
     }
+
+    @Override
+    public int maxShares() {
+       return 0;
+    }
 }
