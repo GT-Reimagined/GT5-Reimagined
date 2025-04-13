@@ -14,6 +14,7 @@ import org.gtreimagined.gt5r.data.Materials;
 
 import java.util.function.Consumer;
 
+import static org.gtreimagined.gt5r.data.Materials.Steel;
 import static org.gtreimagined.gtlib.data.GTTools.HAMMER;
 import static org.gtreimagined.gtlib.data.GTTools.WRENCH;
 import static org.gtreimagined.gt5r.data.Materials.Bronze;
@@ -100,6 +101,13 @@ public class SteamMachines {
                         'H', brickedBronzeHull,
                         'F', Items.FURNACE
                 ), "BBB", "FHF", "BBB");
+        provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_CUTTER.getItem(Tier.BRONZE),
+                ImmutableMap.of(
+                        'B', bronzePipe,
+                        'H', hullBronze,
+                        'P', piston,
+                        'S', GTMaterialTypes.BUZZSAW_BLADE.getMaterialTag(Steel)
+                ), "BSB", "PHP", "BBB");
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_SIFTER.getItem(Tier.BRONZE),
                 ImmutableMap.of(
                         'B', bronzePipe,
@@ -157,6 +165,13 @@ public class SteamMachines {
                         'P', piston,
                         'A', Items.ANVIL
                 ), "BPB", "BHB", "BAB");
+        provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_CUTTER.getItem(Tier.STEEL),
+                ImmutableMap.of(
+                        'B', steelPipe,
+                        'H', hullSteel,
+                        'P', piston,
+                        'S', GTMaterialTypes.BUZZSAW_BLADE.getMaterialTag(Steel)
+                ), "BSB", "PHP", "BBB");
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_SIFTER.getItem(Tier.STEEL),
                 ImmutableMap.of(
                         'B', steelPipe,
