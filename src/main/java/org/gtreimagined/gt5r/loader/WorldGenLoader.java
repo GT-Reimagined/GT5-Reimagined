@@ -175,7 +175,6 @@ public class WorldGenLoader {
 
     private static void initStoneVeins(GTWorldGenEvent ev) {
         List<ResourceKey<Level>> overworld = List.of(OVERWORLD, JAMD_MINING);
-        ev.stoneLayer(new StoneLayerBuilder(id("stone")).withStone(STONE).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("black_granite")).withStone(BLACK_GRANITE).withWeight(1).maxY(0, SHALE.getState().getBlock()).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("red_granite")).withStone(RED_GRANITE).withWeight(1).maxY(0, GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("komatiite")).withStone(KOMATIITE).withWeight(1).inDimensions(overworld).buildVein());
@@ -315,13 +314,13 @@ public class WorldGenLoader {
                 ).buildVein());
             }
 
-            ev.addCollisionBothSides(ORE_STONE.get().get(Coal).asState(), STONE.getState(),
+            ev.addCollisionBothSides(ORE_STONE.get().get(Coal).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(ORE_STONE.get().get(Lignite).asState(), STONE.getState(),
+            ev.addCollisionBothSides(ORE_STONE.get().get(Lignite).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(ORE_STONE.get().get(OilShale).asState(), STONE.getState(),
+            ev.addCollisionBothSides(ORE_STONE.get().get(OilShale).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
             ev.addCollisionBothSides(BLACK_GRANITE.getState(), MARBLE.getState(),
