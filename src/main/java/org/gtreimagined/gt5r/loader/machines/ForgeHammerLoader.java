@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
@@ -46,7 +47,9 @@ public class ForgeHammerLoader {
         };
         PLATE.all().forEach(plate -> {
             if (!plate.has(INGOT) || plate.has(MaterialTags.NOSMASH)) return;
-            FORGE_HAMMER.RB().ii(INGOT.getMaterialIngredient(plate, 3)).io(PLATE.get(plate, 2)).add("plate_" + plate.getId(),baseDuration.applyAsLong(plate) * 2, 16);
+            int input = GT5RConfig.MORE_LOSSY_FORGE_HAMMER.get() ? 2 : 3;
+            int output = GT5RConfig.MORE_LOSSY_FORGE_HAMMER.get() ? 1 : 2;
+            FORGE_HAMMER.RB().ii(INGOT.getMaterialIngredient(plate, input)).io(PLATE.get(plate, output)).add("plate_" + plate.getId(),baseDuration.applyAsLong(plate) * 2, 16);
         });
         ROD_LONG.all().stream().filter(m -> !m.has(MaterialTags.NOSMASH)).forEach(rod -> {
             FORGE_HAMMER.RB().ii(ROD.getMaterialIngredient(rod, 2)).io(ROD_LONG.get(rod, 1)).add("rod_long_" + rod.getId(), baseDuration.applyAsLong(rod) * 2, 16);

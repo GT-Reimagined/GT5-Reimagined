@@ -16,6 +16,7 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue GT5U_OIL;
     public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;
     public static ConfigEntry.BoolValue HARD_CARBON;
+    public static ConfigEntry.BoolValue MORE_LOSSY_FORGE_HAMMER;
     public static ConfigEntry.BoolValue GT6_ORE_GEN;
     public static ConfigEntry.BoolValue DEFAULT_ORE_VEINS;
     public static ConfigEntry.BoolValue DEFAULT_STONE_LAYERS;
@@ -36,6 +37,7 @@ public class GT5RConfig {
 
         ASPHALT_MULTIPLIER = general.addDouble("asphalt_multiplier", 1.1, "Default speed multiplier applied by concrete.");
         HARD_CARBON = general.addBool("hard_carbon", false, "Makes carbon fibre require the hard recipe from gt5u. - Default: false");
+        MORE_LOSSY_FORGE_HAMMER = general.addBool("more_lossy_forge_hammer", true, "Makes forge hammer makes plates in a ratio of 2:1 instead of 3:2 ingots to plates. Default- true");
         COMPLICATED_CHEMICAL_PROCESSING = general.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
         ADD_LOOT = general.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
         ConfigSection worldgen = config.add("worldgen");
