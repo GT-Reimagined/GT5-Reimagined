@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTRemapping;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import net.minecraft.resources.ResourceLocation;
@@ -11,54 +12,54 @@ import java.util.Map;
 
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
-public class GTRemapping {
+public class GT5RRemapping {
     private static final Map<String, String> REMAPPING_MAP = new Object2ObjectArrayMap<>();
 
     public static void init(){
-        org.gtreimagined.gtlib.GTRemapping.getBeRemappingFunctionList().add(r -> {
+        GTRemapping.getBeRemappingFunctionList().add(r -> {
             if (r.getNamespace().equals("gregtech") || r.getNamespace().equals("gti")){
                 var r2 = new ResourceLocation(GT5RRef.ID, r.getPath());
-                if (org.gtreimagined.gtlib.GTRemapping.getBeRemappingMap().containsKey(r2)){
-                    return org.gtreimagined.gtlib.GTRemapping.getBeRemappingMap().get(r2);
+                if (GTRemapping.getBeRemappingMap().containsKey(r2)){
+                    return GTRemapping.getBeRemappingMap().get(r2);
                 }
                 return r2;
             }
             return r;
         });
         for (CoverFactory cover : GTAPI.all(CoverFactory.class, GT5RRef.ID)){
-            org.gtreimagined.gtlib.GTRemapping.remapCover(new ResourceLocation("gti", cover.getId()), cover.getLoc());
+            GTRemapping.remapCover(new ResourceLocation("gti", cover.getId()), cover.getLoc());
         }
         for (int i = 0; i < 25; i++) {
             remapGTCore("int_circuit_" + i, "selector_tag_"+i);
         }
-        org.gtreimagined.gtlib.GTRemapping.remapBlockEntity(new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_polyethylene"), new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_plastic"));
+        GTRemapping.remapBlockEntity(new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_polyethylene"), new ResourceLocation(Ref.SHARED_ID, "fluid_pipe_plastic"));
         remap("bath_hv", "bath");
         remap("coke_oven_bronze", "coke_oven");
         remap("primitive_blast_furnace_bronze", "primitive_blast_furnace");
         remap("heat_exchanger_ev", "large_heat_exchanger");
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("small_heat_exchanger", INVAR_SMALL_HEAT_EXCHANGER);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("pyrolysis_oven", PYROLYSE_OVEN);
-        org.gtreimagined.gtlib.GTRemapping.remapBlockEntity(new ResourceLocation(GT5RRef.ID, "heat_exchanger"), new ResourceLocation(GT5RRef.ID, "large_heat_exchanger"));
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("item_input_hatch", INPUT_BUS);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("item_output_hatch", OUTPUT_BUS);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("fluid_input_hatch", INPUT_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("fluid_output_hatch", OUTPUT_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("coal_boiler", SOLID_FUEL_BOILER);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("pulverizer", MACERATOR);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("large_macerator", LARGE_PULVERIZER);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("fluid_extractor", FLUID_PRESS);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_item_input", INPUT_BUS);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_item_output", OUTPUT_BUS);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_fluid_input", INPUT_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_fluid_output", OUTPUT_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_energy", ENERGY_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_dynamo", DYNAMO_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("hatch_muffler", MUFFLER_HATCH);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("steam_generator", STEAM_GENERATOR);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("gas_generator", GAS_GENERATOR);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("battery_buffer_one", BATTERY_BUFFER_ONE);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("battery_buffer_four", BATTERY_BUFFER_FOUR);
-        org.gtreimagined.gtlib.GTRemapping.remapMachine("battery_buffer_nine", BATTERY_BUFFER_EIGHT);
+        GTRemapping.remapMachine("small_heat_exchanger", INVAR_SMALL_HEAT_EXCHANGER);
+        GTRemapping.remapMachine("pyrolysis_oven", PYROLYSE_OVEN);
+        GTRemapping.remapBlockEntity(new ResourceLocation(GT5RRef.ID, "heat_exchanger"), new ResourceLocation(GT5RRef.ID, "large_heat_exchanger"));
+        GTRemapping.remapMachine("item_input_hatch", INPUT_BUS);
+        GTRemapping.remapMachine("item_output_hatch", OUTPUT_BUS);
+        GTRemapping.remapMachine("fluid_input_hatch", INPUT_HATCH);
+        GTRemapping.remapMachine("fluid_output_hatch", OUTPUT_HATCH);
+        GTRemapping.remapMachine("coal_boiler", SOLID_FUEL_BOILER);
+        GTRemapping.remapMachine("pulverizer", MACERATOR);
+        GTRemapping.remapMachine("large_macerator", LARGE_PULVERIZER);
+        GTRemapping.remapMachine("fluid_extractor", FLUID_PRESS);
+        GTRemapping.remapMachine("hatch_item_input", INPUT_BUS);
+        GTRemapping.remapMachine("hatch_item_output", OUTPUT_BUS);
+        GTRemapping.remapMachine("hatch_fluid_input", INPUT_HATCH);
+        GTRemapping.remapMachine("hatch_fluid_output", OUTPUT_HATCH);
+        GTRemapping.remapMachine("hatch_energy", ENERGY_HATCH);
+        GTRemapping.remapMachine("hatch_dynamo", DYNAMO_HATCH);
+        GTRemapping.remapMachine("hatch_muffler", MUFFLER_HATCH);
+        GTRemapping.remapMachine("steam_generator", STEAM_GENERATOR);
+        GTRemapping.remapMachine("gas_generator", GAS_GENERATOR);
+        GTRemapping.remapMachine("battery_buffer_one", BATTERY_BUFFER_ONE);
+        GTRemapping.remapMachine("battery_buffer_four", BATTERY_BUFFER_FOUR);
+        GTRemapping.remapMachine("battery_buffer_nine", BATTERY_BUFFER_EIGHT);
         remapGTCore("rubber_log", "rubber_log");
         remapGTCore("rubber_leaves", "rubber_leaves");
         remapGTCore("rubber_sapling", "rubber_sapling");
@@ -77,9 +78,9 @@ public class GTRemapping {
         remap("circuit_wetware", "wetware_circuit");
         remap("vacuumtube", "vacuum_tube");
         remap("adv_circuit_parts", "advanced_circuit_parts");
-        org.gtreimagined.gtlib.GTRemapping.remap(new ResourceLocation(GTCore.ID, "glass_tube"), new ResourceLocation(GT5RRef.ID, "glass_tube"));
-        org.gtreimagined.gtlib.GTRemapping.remap(new ResourceLocation(GTCore.ID, "coated_circuit_board"), new ResourceLocation(GT5RRef.ID, "coated_circuit_board"));
-        org.gtreimagined.gtlib.GTRemapping.remap(new ResourceLocation(GTCore.ID, "epoxy_circuit_board"), new ResourceLocation(GT5RRef.ID, "epoxy_circuit_board"));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, "glass_tube"), new ResourceLocation(GT5RRef.ID, "glass_tube"));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, "coated_circuit_board"), new ResourceLocation(GT5RRef.ID, "coated_circuit_board"));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, "epoxy_circuit_board"), new ResourceLocation(GT5RRef.ID, "epoxy_circuit_board"));
         remapGTCore("mold_plate", "plate_mold");
         remapGTCore("mold_casing", "casing_mold");
         remapGTCore("mold_gear", "gear_mold");
@@ -177,22 +178,22 @@ public class GTRemapping {
         remap("casing_turbine_2", "stainless_steel_turbine_casing");
         remap("casing_turbine_3", "titanium_turbine_casing");
         remap("casing_turbine_4", "tungstensteel_turbine_casing");
-        org.gtreimagined.gtlib.GTRemapping.remap(new ResourceLocation(GT5RRef.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
+        GTRemapping.remap(new ResourceLocation(GT5RRef.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
         remap("cell_tin", "tin_cell");
         remap("cell_steel", "steel_cell");
         remap("cell_tungstensteel", "tungstensteel_cell");
     }
 
     private static void remap(String oldId, String newId){
-        org.gtreimagined.gtlib.GTRemapping.remap(GT5RRef.ID, oldId, newId);
+        GTRemapping.remap(GT5RRef.ID, oldId, newId);
     }
 
     private static void remapGTCore(String oldId, String newId){
-        org.gtreimagined.gtlib.GTRemapping.remap(new ResourceLocation(GT5RRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
+        GTRemapping.remap(new ResourceLocation(GT5RRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
     }
 
     private static void remapFromGTCore(String oldId, String newId){
-        org.gtreimagined.gtlib.GTRemapping.remap(new ResourceLocation(GTCore.ID, oldId), new ResourceLocation(GT5RRef.ID, newId));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, oldId), new ResourceLocation(GT5RRef.ID, newId));
     }
 
     public static Map<String, String> getRemappingMap() {

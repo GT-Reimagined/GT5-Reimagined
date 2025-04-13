@@ -353,7 +353,7 @@ public class GT5Reimagined extends GTMod {
             case DATA_READY -> {
                 Structures.init();
                 GT5RTwilightStalctites.init();
-                GTRemapping.init();
+                GT5RRemapping.init();
                 LootLoader.init();
                 AntimatterJEIREIPlugin.addItemsToHide(GT5RBlocks.LAVA);
                 AntimatterJEIREIPlugin.addItemsToHide(l -> {
