@@ -25,20 +25,20 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.FORGE_HAMMER;
 
 public class ForgeHammerLoader {
     public static void init() {
-        CRUSHED.all().forEach(m -> {
+        ORE.all().forEach(m -> {
             RecipeIngredient ore = ORE.getMaterialIngredient(m, 1), crushed = CRUSHED.getMaterialIngredient(m, 1);
-            ItemStack crushedStack = CRUSHED.get(m,1);
-
-            if (m.has(GTMaterialTypes.ORE)) {
-                FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_ore",16, 10);
-            }
-            FORGE_HAMMER.RB().ii(crushed).io(DUST_IMPURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
-            FORGE_HAMMER.RB().ii(RecipeIngredient.of(CRUSHED_PURIFIED.get(m,1))).io(DUST_PURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
-            if (m.has(CRUSHED_REFINED)) {
-                FORGE_HAMMER.RB().ii(RecipeIngredient.of(CRUSHED_REFINED.get(m,1))).io(DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_centrifuged_ore",16, 10);
-            }
+            Material macerateInto = MACERATE_INTO.getMapping(m);
+            ItemStack crushedStack = macerateInto.has(CRUSHED) ? CRUSHED.get(macerateInto,1) : DUST.get(macerateInto, 1);
+            FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_ore",16, 10);
             if (m.has(RAW_ORE)){
                 FORGE_HAMMER.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_raw_ore",16, 10);
+            }
+            if (MACERATE_INTO.getMapping(m).has(CRUSHED)){
+                FORGE_HAMMER.RB().ii(CRUSHED.getMaterialIngredient(macerateInto, 1)).io(DUST_IMPURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
+                FORGE_HAMMER.RB().ii(CRUSHED.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(DUST_PURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
+                if (m.has(CRUSHED_REFINED)) {
+                    FORGE_HAMMER.RB().ii(CRUSHED_REFINED.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_refined_ore",16, 10);
+                }
             }
         });
         ToLongFunction<Material> baseDuration = m -> {
