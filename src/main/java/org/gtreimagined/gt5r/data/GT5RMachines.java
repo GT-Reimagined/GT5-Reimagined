@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
+import org.gtreimagined.gtcore.data.GTCoreCovers;
+import org.gtreimagined.gtcore.machine.SteamMachine;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
@@ -104,7 +106,6 @@ import org.gtreimagined.gt5r.items.IItemReactorRod;
 import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.MiniPortalMachine;
 import org.gtreimagined.gt5r.machine.SecondaryOutputMachine;
-import org.gtreimagined.gt5r.machine.SteamMachine;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.machine.DrumMachine;
 import org.gtreimagined.gtcore.machine.MultiblockTankMachine;
@@ -135,13 +136,13 @@ public class GT5RMachines {
     public static SteamMachine SOLID_FUEL_BOILER = new SteamMachine(GT5RRef.ID, "solid_fuel_boiler").setTiers(BRONZE, STEEL).setMap(RecipeMaps.SOLID_FUEL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BOILER_HANDLER).setTile(BlockEntityCoalBoiler::new).noCovers().addTooltipInfo("tooltip.gt5r.boiler");
     public static SteamMachine LAVA_BOILER = new SteamMachine(GT5RRef.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setTile(BlockEntityLavaBoiler::new).noCovers().addTooltipInfo("tooltip.gt5r.boiler");
     public static SteamMachine SOLAR_BOILER = new SteamMachine(GT5RRef.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setTile(BlockEntitySolarBoiler::new).allowFrontIO().noCovers().addTooltipInfo("tooltip.gt5r.boiler");
-    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GT5RRef.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_ALLOY_SMELTER).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).covers(GT5RCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GT5RRef.ID, "steam_compressor").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_COMPRESSOR).addFlags(GUI, ITEM, FLUID).covers(GT5RCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GT5RRef.ID, "steam_extractor").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_EXTRACTOR).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f).covers(GT5RCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GT5RRef.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_FORGE_HAMMER).addFlags(GUI, ITEM, FLUID).covers(GT5RCovers.COVER_STEAM_VENT).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
-    public static SteamMachine STEAM_FURNACE = new SteamMachine(GT5RRef.ID, "steam_furnace").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_FURNACE).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).covers(GT5RCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5RRef.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_MACERATOR).addFlags(GUI, ITEM, FLUID).covers(GT5RCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
-    public static SteamMachine STEAM_SIFTER = new SteamMachine(GT5RRef.ID, "steam_sifter").setTiers(BRONZE, STEEL).setMap(RecipeMaps.STEAM_SIFTER).addFlags(GUI, ITEM, FLUID).covers(GT5RCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GT5RRef.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GT5RRef.ID, "steam_compressor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GT5RRef.ID, "steam_extractor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GT5RRef.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
+    public static SteamMachine STEAM_FURNACE = new SteamMachine(GT5RRef.ID, "steam_furnace").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5RRef.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(RecipeMaps.MACERATOR).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
+    public static SteamMachine STEAM_SIFTER = new SteamMachine(GT5RRef.ID, "steam_sifter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
     /**
      ** Hatchless Multiblock Machines (Steam Age)
      **/
@@ -426,6 +427,15 @@ public class GT5RMachines {
         if (GTAPI.isModLoaded("jamd")){
             MINIATURE_JAMD_PORTAL = new MiniPortalMachine(GT5RRef.ID, "miniature_jamd_portal").baseTexture(new Texture("jamd","block/mine_portal_block")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniJAMDPortal::new);
         }
+
+        GTAPI.registerJEICategoryWorkstation(RecipeMaps.PULVERIZER, STEAM_MACERATOR, BRONZE);
+        GTAPI.registerJEICategoryWorkstation(RecipeMaps.PULVERIZER, STEAM_MACERATOR, STEEL);
+        STEAM_ALLOY_SMELTER.setMap(RecipeMaps.ALLOY_SMELTER);
+        STEAM_COMPRESSOR.setMap(RecipeMaps.COMPRESSOR);
+        STEAM_EXTRACTOR.setMap(RecipeMaps.EXTRACTOR);
+        STEAM_FORGE_HAMMER.setMap(RecipeMaps.FORGE_HAMMER);
+        STEAM_FURNACE.setMap(RecipeMaps.ELECTRIC_FURNACE);
+        STEAM_SIFTER.setMap(RecipeMaps.SIFTER);
     }
 
     private static int getBlockColorNuclear(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, @Nullable BlockEntityMachine<?> machine, int i) {

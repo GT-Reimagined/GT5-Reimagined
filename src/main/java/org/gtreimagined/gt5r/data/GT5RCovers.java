@@ -34,7 +34,6 @@ import org.gtreimagined.gt5r.cover.CoverReactorOutputSecondary;
 import org.gtreimagined.gt5r.cover.CoverRobotArm;
 import org.gtreimagined.gt5r.cover.CoverSecondaryOutput;
 import org.gtreimagined.gt5r.cover.CoverShutter;
-import org.gtreimagined.gt5r.cover.CoverSteamVent;
 import org.gtreimagined.gt5r.cover.redstone.CoverActivityDetectorPossible;
 import org.gtreimagined.gt5r.cover.redstone.CoverActivityDetectorProcessing;
 import org.gtreimagined.gt5r.cover.redstone.CoverActivityDetectorSuccessful;
@@ -157,8 +156,6 @@ public class GT5RCovers {
     public static final CoverFactory COVER_ITEM_DETECTOR = CoverFactory.builder(CoverItemDetector::new).gui().item((a, b) -> {
         return new ItemCover(GT5RRef.ID, "item_detector");
     }).addTextures(new Texture(GT5RRef.ID, "block/cover/item_detector")).build(GT5RRef.ID, "item_detector");
-    public static final CoverFactory COVER_STEAM_VENT = CoverFactory.builder(CoverSteamVent::new)
-            .addTextures(new Texture(GT5RRef.ID, "block/cover/output")).build(GT5RRef.ID, "steam_vent");
     public static final CoverFactory COVER_REACTOR_OUTPUT = CoverFactory.builder(CoverReactorOutput::new)
             .addTextures(new Texture(GT5RRef.ID, "block/cover/reactor_output")).build(GT5RRef.ID, "reactor_output");
     public static final CoverFactory COVER_REACTOR_OUTPUT_SECONDARY = CoverFactory.builder(CoverReactorOutputSecondary::new)

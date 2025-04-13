@@ -182,6 +182,7 @@ public class GT5RRemapping {
         remap("cell_tin", "tin_cell");
         remap("cell_steel", "steel_cell");
         remap("cell_tungstensteel", "tungstensteel_cell");
+        GTRemapping.remapCover(new ResourceLocation(GT5RRef.ID, "steam_vent"), new ResourceLocation(GTCore.ID, "steam_vent"));
     }
 
     private static void remap(String oldId, String newId){

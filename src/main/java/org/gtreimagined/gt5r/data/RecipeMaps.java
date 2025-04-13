@@ -29,6 +29,7 @@ import org.gtreimagined.gt5r.machine.recipe.FusionRecipeBuilder;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
 import org.gtreimagined.gtcore.data.RecipeBuilders;
 import org.gtreimagined.gtcore.data.RecipeBuilders.SteamBuilder;
+import org.lwjgl.system.CallbackI.S;
 
 import java.util.List;
 import java.util.Objects;
@@ -38,31 +39,13 @@ import java.util.function.BiFunction;
 public class RecipeMaps {
 
     public static BiFunction<Integer, Integer, Proxy> DISSASSEMBLER_PROXY = (power, duration) -> new Proxy(RecipeType.CRAFTING, getDefaultCrafting(power, duration));
-    public static RecipeMap<RecipeBuilder> STEAM_ALLOY_SMELTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_alloy_smelter", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_COMPRESSOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_compressor", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_EXTRACTOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_extractor", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
     public static RecipeMap<RecipeBuilder> STEAM_FUELS = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "steam_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> HP_STEAM_FUELS = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "hp_steam_fuels", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> STEAM_FORGE_HAMMER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_forge_hammer", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_MACERATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_macerator", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_SIFTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_sifter", new RecipeBuilder()).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_FURNACE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_furnace", new RecipeBuilder())
-                    .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 160)).setGuiTier(Tier.BRONZE));
-    public static RecipeMap<RecipeBuilder> STEAM_OVEN = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_oven", new RecipeBuilder())
-                    .setProxy(RecipeProxies.SMOKING_PROXY.apply(8, 80)).setGuiTier(Tier.BRONZE));
 
     public static RecipeMap<RecipeBuilder> ALLOY_SMELTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "alloy_smelter", new SteamBuilder(STEAM_ALLOY_SMELTER)));
+            new RecipeMap<>(GT5RRef.ID, "alloy_smelter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> AMP_FABRICATOR = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "amp_fabricator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ARC_FURNACE = GTAPI.register(RecipeMap.class,
@@ -94,7 +77,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> COMBUSTION_FUELS = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "combustion_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COMPRESSOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "compressor", new SteamBuilder(STEAM_COMPRESSOR)));
+            new RecipeMap<>(GT5RRef.ID, "compressor", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CRYSTALLIZATION_CHAMBER = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "crystallization_chamber", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CUTTER = GTAPI.register(RecipeMap.class,
@@ -117,16 +100,16 @@ public class RecipeMaps {
             new RecipeMap<>(GT5RRef.ID, "electric_blast_furnace", new RecipeBuilders.BlastingBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ELECTRIC_FURNACE = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "electric_furnace", new RecipeBuilder())
-                    .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 60)));
+                    .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 80)));
     public static RecipeMap<RecipeBuilder> ELECTRIC_OVEN = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "electric_oven", new RecipeBuilder())
-                    .setProxy(RecipeProxies.SMOKING_PROXY.apply(8, 30)));
+                    .setProxy(RecipeProxies.SMOKING_PROXY.apply(8, 40)));
     public static RecipeMap<RecipeBuilder> ELECTROLYZER = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "electrolyzer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ELECTROMAGNETIC_SEPARATOR = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "electromagnetic_separator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> EXTRACTOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "extractor", new SteamBuilder(STEAM_EXTRACTOR)));
+            new RecipeMap<>(GT5RRef.ID, "extractor", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> EXTRUDER = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "extruder", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FERMENTER = GTAPI.register(RecipeMap.class,
@@ -144,7 +127,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> GAS_FUELS = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "gas_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FORGE_HAMMER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "forge_hammer", new SteamBuilder(STEAM_FORGE_HAMMER)));
+            new RecipeMap<>(GT5RRef.ID, "forge_hammer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> HEAT_EXCHANGER = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "heat_exchanger", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> IMPLOSION_COMPRESSOR = GTAPI.register(RecipeMap.class,
@@ -156,7 +139,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> LATHE = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "lathe", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MACERATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "macerator", new SteamBuilder(STEAM_MACERATOR)));
+            new RecipeMap<>(GT5RRef.ID, "macerator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MAGIC_FUELS = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "magic_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MASS_FABRICATOR = GTAPI.register(RecipeMap.class,
@@ -194,7 +177,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> SEMI_FUELS = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "semi_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SIFTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "sifter", new SteamBuilder(STEAM_SIFTER)));
+            new RecipeMap<>(GT5RRef.ID, "sifter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMELTER = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5RRef.ID, "smelter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = GTAPI.register(RecipeMap.class,
@@ -346,6 +329,11 @@ public class RecipeMaps {
             String euT = "EU/t: " + recipe.getPower();
             String amps = "Amps: " + recipe.getAmps();
             String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
+            long steamDuration = recipe.getDuration() * 2L;
+            long steamPower = recipe.getPower() * 2L;
+            String steamT = "Steam: " + steamPower + " mb/t";
+            String steamAdditional = steamDuration < 1200 ? "" : steamDuration < 36000 ? " (" + (steamDuration / 20.0f) + " secs)" : " (" + (steamDuration / 1200.0f) + " mins)";
+            String steamLength = "Steam Duration: " + steamDuration + " ticks" + steamAdditional;
             Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
             String formattedText = " (" + tier.getId().toUpperCase() + ")";
             renderString(stack, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
@@ -353,12 +341,18 @@ public class RecipeMaps {
             renderString(stack, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
             renderString(stack, amps, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
             renderString(stack, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            renderString(stack, "Secondary outputs only available in pulverizers", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+            if (steamPower <= Tier.LV.getVoltage()){
+                renderString(stack, steamT, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+                renderString(stack, steamLength, fontRenderer, 5, 50, guiOffsetX, guiOffsetY);
+            } else {
+                renderString(stack, "Not runnable in Steam machines", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+            }
+            renderString(stack, "Byproducts in pulverizer only", fontRenderer, 5, steamPower <= Tier.LV.getVoltage() ? 60 : 50, guiOffsetX, guiOffsetY);
         }
 
         @Override
         public int getRows() {
-            return 5;
+            return 7;
         }
     };
 
@@ -370,6 +364,11 @@ public class RecipeMaps {
             String euT = "EU/t: " + recipe.getPower();
             String amps = "Amps: " + recipe.getAmps();
             String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
+            long steamDuration = recipe.getDuration() * 2L;
+            long steamPower = recipe.getPower() * 2L;
+            String steamT = "Steam: " + steamPower + " mb/t";
+            String steamAdditional = steamDuration < 1200 ? "" : steamDuration < 36000 ? " (" + (steamDuration / 20.0f) + " secs)" : " (" + (steamDuration / 1200.0f) + " mins)";
+            String steamLength = "Steam Duration: " + steamDuration + " ticks" + steamAdditional;
             Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
             String formattedText = " (" + tier.getId().toUpperCase() + ")";
             renderString(stack, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
@@ -379,13 +378,51 @@ public class RecipeMaps {
             renderString(stack, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
             if (recipe.getInputItems().size() > 2){
                 renderString(stack, "Multi Smelter only", fontRenderer, 5, 40, 0xFF0000, guiOffsetX, guiOffsetY, false);
+            } else if (steamPower <= Tier.LV.getVoltage()){
+                renderString(stack, steamT, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+                renderString(stack, steamLength, fontRenderer, 5, 50, guiOffsetX, guiOffsetY);
+            } else {
+                renderString(stack, "Not runnable in Steam machines", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
             }
-
         }
 
         @Override
         public int getRows() {
-            return 5;
+            return 6;
+        }
+    };
+
+    public static final IRecipeInfoRenderer STEAM_RENDERER = new IRecipeInfoRenderer() {
+        public void render(PoseStack stack, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
+            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
+            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
+            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
+            String euT = "EU/t: " + recipe.getPower();
+            String amps = "Amps: " + recipe.getAmps();
+            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
+            long steamDuration = recipe.getDuration() * (recipe.getMapId().equals("plate_cutter") ? 4L : 2L);
+            long steamPower = recipe.getMapId().equals("cutter") ? recipe.getPower() : recipe.getPower() * 2L;
+            String steamT = "Steam: " + steamPower + " mb/t";
+            String steamAdditional = steamDuration < 1200 ? "" : steamDuration < 36000 ? " (" + (steamDuration / 20.0f) + " secs)" : " (" + (steamDuration / 1200.0f) + " mins)";
+            String steamLength = "Steam Duration: " + steamDuration + " ticks" + steamAdditional;
+            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
+            String formattedText = " (" + tier.getId().toUpperCase() + ")";
+            renderString(stack, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
+            renderString(stack, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
+            renderString(stack, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
+            renderString(stack, amps, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
+            renderString(stack, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
+            if (steamPower <= Tier.LV.getVoltage()){
+                renderString(stack, steamT, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+                renderString(stack, steamLength, fontRenderer, 5, 50, guiOffsetX, guiOffsetY);
+            } else {
+                renderString(stack, "Not runnable in Steam machines", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+            }
+        }
+
+        @Override
+        public int getRows() {
+            return 6;
         }
     };
 
@@ -442,20 +479,19 @@ public class RecipeMaps {
         SEMI_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         MAGIC_FUELS.setInfoRenderer(MAGIC_FUEL_RENDERER);
         ORE_BYPRODUCTS.setInfoRenderer(InfoRenderers.EMPTY_RENDERER);
-        STEAM_ALLOY_SMELTER.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
-        STEAM_COMPRESSOR.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
-        STEAM_EXTRACTOR.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         STEAM_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
         HP_STEAM_FUELS.setInfoRenderer(InfoRenderers.FUEL_RENDERER);
-        STEAM_FORGE_HAMMER.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
-        STEAM_MACERATOR.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
-        STEAM_FURNACE.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
-        STEAM_SIFTER.setInfoRenderer(InfoRenderers.STEAM_RENDERER);
         LARGE_BOILERS.setInfoRenderer(LARGE_BOILER_RENDERER);
         HEAT_EXCHANGER.setInfoRenderer(HEAT_EXCHANGER_RENDERER);
         FUSION.setInfoRenderer(FUSION_RENDERER);
         CHEMICAL_REACTOR.setInfoRenderer(CHEM_RENDERER);
         PULVERIZER.setInfoRenderer(MACERATOR_RENDERER);
+        ELECTRIC_FURNACE.setInfoRenderer(STEAM_RENDERER);
+        COMPRESSOR.setInfoRenderer(STEAM_RENDERER);
+        EXTRACTOR.setInfoRenderer(STEAM_RENDERER);
+        CUTTER.setInfoRenderer(STEAM_RENDERER);
+        SIFTER.setInfoRenderer(STEAM_RENDERER);
+        FORGE_HAMMER.setInfoRenderer(STEAM_RENDERER);
     }
 
     public static class PulverizerBuilder extends RecipeBuilder{
