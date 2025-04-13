@@ -53,16 +53,16 @@ public class WorldGenLoader {
 
 
     public static void init(GTWorldGenEvent ev) {
-        if (GTLibConfig.STONE_LAYERS.get()) {
+        if (GT5RConfig.DEFAULT_STONE_LAYERS.get()) {
             initStoneVeins(ev);
         }
-        if (GTLibConfig.ORE_VEINS.get()) {
+        if (GT5RConfig.DEFAULT_ORE_VEINS.get()) {
             initOreVeins(ev);
         }
-        if (GTLibConfig.SMALL_ORES.get() && !GTAPI.isModLoaded(MOD_TFC)){
+        if (GT5RConfig.DEFAULT_SMALL_ORES.get() && !GTAPI.isModLoaded(MOD_TFC)){
             initSmallOres(ev);
         }
-        if (GTLibConfig.BEDROCK_VEINS.get()) {
+        if (GT5RConfig.DEFAULT_BEDROCK_VEINS.get()) {
             initBedrockVeins(ev);
         }
         OilSpoutSavedData.clearFluidMap();
@@ -442,10 +442,10 @@ public class WorldGenLoader {
                 END).buildVein());
         if (GT5RConfig.GT6_ORE_GEN.get()) return;
         List<ResourceKey<Level>> overworldTFCStoneLayers = new ArrayList<>();
-        if (!GTAPI.isModLoaded(MOD_TFC) && !GTLibConfig.STONE_LAYERS.get()){
+        if (!GTAPI.isModLoaded(MOD_TFC) && !GT5RConfig.DEFAULT_STONE_LAYERS.get()){
             overworldTFCStoneLayers.add(OVERWORLD);
         }
-        if (!GTLibConfig.STONE_LAYERS.get()) {
+        if (!GT5RConfig.DEFAULT_STONE_LAYERS.get()) {
             overworldTFCStoneLayers.add(JAMD_MINING);
         }
         if (!overworldTFCStoneLayers.isEmpty()){

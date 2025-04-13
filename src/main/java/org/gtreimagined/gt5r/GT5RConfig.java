@@ -17,22 +17,33 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;
     public static ConfigEntry.BoolValue HARD_CARBON;
     public static ConfigEntry.BoolValue GT6_ORE_GEN;
+    public static ConfigEntry.BoolValue DEFAULT_ORE_VEINS;
+    public static ConfigEntry.BoolValue DEFAULT_STONE_LAYERS;
+    public static ConfigEntry.BoolValue DEFAULT_SMALL_ORES;
+    public static ConfigEntry.BoolValue DEFAULT_BEDROCK_VEINS;
+    public static ConfigEntry.BoolValue DEFAULT_TWILIGHT_ORE_GEN;
     public static ConfigEntry.DoubleValue ASPHALT_MULTIPLIER;
     public static ConfigEntry.BoolValue ADD_LOOT;
     static ConfigHandler CONFIG;
 
     public static void createConfig(){
         Config config = new Config("gt5r");
-        ConfigSection section = config.add("general");
+        ConfigSection general = config.add("general");
         /*MORE_COMPLICATED_CHEMICAL_RECIPES = section.addBool("more_complicated_chemical_recipes", false, "Enables more complicated chemical recipes. - Default: false");
         HARDER_CIRCUITS = section.addBool("harder_circuits", false, "Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false");*/
-        GT5U_OIL = section.addBool("gt5u_oil", false, "Enables gt5u oil processing, if false gt6 oil processing is used instead. - Default: false");
-        HARDER_ALUMINIUM_PROCESSING = section.addBool("harder_aluminium_processing", true, "Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true");
-        GT6_ORE_GEN = section.addBool("gt6_ore_gen", false, "Enables gt6 style veins insteadof gt5 style veins. - Default: false");
-        ASPHALT_MULTIPLIER = section.addDouble("asphalt_multiplier", 1.1, "Default speed multiplier applied by concrete.");
-        HARD_CARBON = section.addBool("hard_carbon", false, "Makes carbon fibre require the hard recipe from gt5u. - Default: false");
-        COMPLICATED_CHEMICAL_PROCESSING = section.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
-        ADD_LOOT = section.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
+        GT5U_OIL = general.addBool("gt5u_oil", false, "Enables gt5u oil processing, if false gt6 oil processing is used instead. - Default: false");
+        HARDER_ALUMINIUM_PROCESSING = general.addBool("harder_aluminium_processing", true, "Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true");
+
+        ASPHALT_MULTIPLIER = general.addDouble("asphalt_multiplier", 1.1, "Default speed multiplier applied by concrete.");
+        HARD_CARBON = general.addBool("hard_carbon", false, "Makes carbon fibre require the hard recipe from gt5u. - Default: false");
+        COMPLICATED_CHEMICAL_PROCESSING = general.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
+        ADD_LOOT = general.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
+        ConfigSection worldgen = config.add("worldgen");
+        GT6_ORE_GEN = worldgen.addBool("gt6_ore_gen", false, "Enables gt6 style veins insteadof gt5 style veins. - Default: false");
+        DEFAULT_STONE_LAYERS = worldgen.addBool("default_stone_layers", true, "Enables default stone layers. - Defalt: true");
+        DEFAULT_ORE_VEINS = worldgen.addBool("default_ore_veins", true, "Enables default ore veins. Will not generate in the overworld when gt6_ore_gen is true. Default: true");
+        DEFAULT_SMALL_ORES = worldgen.addBool("default_small_ores", true, "Enables default small ore gen. - Default: true");
+        DEFAULT_BEDROCK_VEINS = worldgen.addBool("default_bedrock_veins", true, "Enables default bedrock veins. - Default: true");
         CONFIG = CarbonConfig.CONFIGS.createConfig(config);
         CONFIG.register();
     }
