@@ -176,8 +176,8 @@ public class WorldGenLoader {
     private static void initStoneVeins(GTWorldGenEvent ev) {
         List<ResourceKey<Level>> overworld = List.of(OVERWORLD, JAMD_MINING);
         ev.stoneLayer(new StoneLayerBuilder(id("stone")).withStone(STONE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("black_granite")).withStone(BLACK_GRANITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("red_granite")).withStone(RED_GRANITE).withWeight(1).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("black_granite")).withStone(BLACK_GRANITE).withWeight(1).maxY(0, SHALE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("red_granite")).withStone(RED_GRANITE).withWeight(1).maxY(0, GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("komatiite")).withStone(KOMATIITE).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("basalt")).withStone(BASALT).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("marble")).withStone(MARBLE).withWeight(1).inDimensions(overworld).buildVein());
@@ -186,9 +186,10 @@ public class WorldGenLoader {
         ev.stoneLayer(new StoneLayerBuilder(id("blue_schist")).withStone(BLUE_SCHIST).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("kimberlite")).withStone(KIMBERLITE).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("quartzite")).withStone(QUARTZITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("shale")).withStone(SHALE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("slate")).withStone(SLATE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("granite")).withStone(GRANITE).withWeight(1).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("shale")).withStone(SHALE).withWeight(1).minY(0, BLACK_GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("slate")).withStone(SLATE).withWeight(1).minY(0, DEEPSLATE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("deepslate")).withStone(DEEPSLATE).withWeight(1).maxY(0, SLATE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("granite")).withStone(GRANITE).withWeight(1).minY(0, RED_GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("diorite")).withStone(DIORITE).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("andesite")).withStone(ANDESITE).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("tuff")).withStone(TUFF).withWeight(1).inDimensions(overworld).buildVein());
@@ -204,11 +205,11 @@ public class WorldGenLoader {
                     new StoneLayerOre(Uraninite, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
                     new StoneLayerOre(Thorium, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
                     new StoneLayerOre(Scheelite, U64, 0, 12).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)).buildVein());*/
-            ev.stoneLayer(new StoneLayerBuilder(id("granite_ores")).withStone(GRANITE).withWeight(1).inDimensions(overworld).addOres(
+            ev.stoneLayer(new StoneLayerBuilder(id("granite_ores")).withStone(GRANITE).withWeight(1).minY(0, RED_GRANITE.getState().getBlock()).inDimensions(overworld).addOres(
                     new StoneLayerOre(BlueTopaz, U64, -24, 0).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Topaz, U64, -8, 16).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)
             ).buildVein());
-            ev.stoneLayer(new StoneLayerBuilder(id("granite_ores_2")).withStone(GRANITE).withWeight(1).inDimensions(overworld).addOres(
+            ev.stoneLayer(new StoneLayerBuilder(id("granite_ores_2")).withStone(GRANITE).withWeight(1).minY(0, RED_GRANITE.getState().getBlock()).inDimensions(overworld).addOres(
                     new StoneLayerOre(Apatite, U8, 32, 64),
                     new StoneLayerOre(Phosphate, U24, 36, 60),
                     new StoneLayerOre(TricalciumPhosphate, U24, 40, 56)
@@ -233,13 +234,13 @@ public class WorldGenLoader {
                     new StoneLayerOre(Hematite, U6, -16, 64),
                     new StoneLayerOre(VanadiumMagnetite, U64, -16, 16)
             ).buildVein());
-            ev.stoneLayer(new StoneLayerBuilder(id("black_granite_ores")).withStone(BLACK_GRANITE).withWeight(1).inDimensions(overworld).addOres(
+            ev.stoneLayer(new StoneLayerBuilder(id("black_granite_ores")).withStone(BLACK_GRANITE).withWeight(1).maxY(0, SHALE.getState().getBlock()).inDimensions(overworld).addOres(
                     new StoneLayerOre(Sheldonite, U32, -64, -48),
                     new StoneLayerOre(Sperrylite, U32, -64, -48),
                     new StoneLayerOre(Iridium, U64, -64, -56),
                     new StoneLayerOre(Emerald, U64, -40, -16)
             ).buildVein());
-            ev.stoneLayer(new StoneLayerBuilder(id("red_granite_ores")).withStone(RED_GRANITE).withWeight(1).inDimensions(overworld).addOres(
+            ev.stoneLayer(new StoneLayerBuilder(id("red_granite_ores")).withStone(RED_GRANITE).withWeight(1).maxY(0, GRANITE.getState().getBlock()).inDimensions(overworld).addOres(
                     new StoneLayerOre(Pitchblende, U32, -32, 0),
                     new StoneLayerOre(Uraninite, U32, -32, 0),
                     new StoneLayerOre(Tantalite, U16, -32, 0)
