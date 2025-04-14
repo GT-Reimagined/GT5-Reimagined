@@ -14,9 +14,9 @@ credits="GregoriusTechneticies for his previous versions of GregTech, the curren
 authors="Trinsdar"
 description='''A Reimagining of GregTech 5U for modern minecraft versions'''
 [[dependencies.gt5r]]
-    modId="antimatter"
+    modId="gtlib"
     mandatory=true
-    versionRange="[0.2,)"
+    versionRange="[0.3-pre.9,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gt5r]]
