@@ -228,8 +228,6 @@ public class Guis {
                 .add(ENERGY,53,63, bat).add(ENERGY,71,63, bat).add(ENERGY,89,63, bat).add(ENERGY,107,63, bat);
 
         SOLID_FUEL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
-        SOLID_FUEL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(STEEL,
-                IT_IN, 116, 62);
         LAVA_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
         SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
 
