@@ -367,66 +367,65 @@ public class WorldGenLoader {
         if (!GT5RConfig.GT6_ORE_GEN.get()){
             overworld.add(JAMD_MINING);
         }
-        List<ResourceKey<Level>> moonMars = List.of(BE_MOON, AA_MOON, BE_MARS, AA_MARS);
         List<ResourceKey<Level>> mars = List.of(BE_MARS, AA_MARS);
         List<ResourceKey<Level>> moon = List.of(BE_MOON, AA_MOON);
 
         ev.vein(new VeinBuilder(id("gold")).asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold)
-                .inDimensions(moonMars).inDimensions(overworld).buildVein());
+                .inDimensions(moon).inDimensions(mars).inDimensions(overworld).buildVein());
         ev.vein(new VeinBuilder(id("iron")).asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite)
-                .inDimensions(overworld).inDimension(NETHER).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimension(NETHER).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("cassiterite")).asOreVein(6, 126, 50, 5, 24, Tin, Tin, Cassiterite, Tin)
-                .inDimensions(overworld).inDimension(END).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimension(END).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("tetrahedrite")).asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite)
-                .inDimensions(overworld).inDimension(NETHER).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimension(NETHER).inDimensions(moon).inDimensions(mars).buildVein());
         Material sporadic = !GTLibConfig.STONE_LAYERS.get() ? Calcite : Alumina;
         ev.vein(new VeinBuilder(id("magnetite")).asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite)
                 .inDimensions(overworld).inDimension(NETHER).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("copper_nether")).asOreVein(10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
                 .inDimension(NETHER).buildVein());
         ev.vein(new VeinBuilder(id("copper")).asOreVein(-30, 0, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("salts")).asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene)
                 .inDimensions(overworld).inDimensions(moon).buildVein());
         ev.vein(new VeinBuilder(id("redstone")).asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("pitchblend")).asOreVein(-54, -9, 20, 3, 20, Pitchblende, Pitchblende, Uraninite, Uraninite)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("soapstone")).asOreVein(-54, -9, 40, 3, 16, Soapstone, Talc, Glauconite, Pentlandite)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("nickel")).asOreVein(11, 56, 40, 3, 16, Garnierite, Nickel, Cobaltite, Pentlandite)
-                .inDimensions(overworld).inDimensions(NETHER, END).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(NETHER, END).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("platinum")).asOreVein(-24, -9, 5, 3, 16, Sheldonite, Sperrylite, Platinum, Iridium)
                 .inDimensions(overworld).inDimensions(mars).buildVein());
         /*ev.vein(new VeinBuilder("uranium").asOreVein(-44, -29, 20, 3, 16, Uraninite, Uraninite, Uraninite, Uraninite)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());*/
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());*/
         ev.vein(new VeinBuilder(id("monazite")).asOreVein(-44, -14, 30, 3, 16, Bastnasite, Bastnasite, Monazite, Neodymium)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("molybdenum")).asOreVein(-44, 1, 5, 3, 16, Wulfenite, Molybdenite, Molybdenum, Powellite)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("tungstate")).asOreVein(-44, 1, 10, 3, 16, Scheelite, Scheelite, Tungstate, Lithium)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("sapphire")).asOreVein(-54, -9, 60, 3, 16, Almandine, Pyrope, Sapphire, GreenSapphire)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("manganese")).asOreVein(-44, -29, 20, 3, 16, Grossular, Spessartine, Pyrolusite, Tantalite)
                 .inDimensions(overworld).inDimensions(moon).buildVein());
         Material third = CertusQuartz.enabled ? CertusQuartz : Barite;
         ev.vein(new VeinBuilder(id("quartz")).asOreVein(6, 66, 60, 3, 16, MilkyQuartz, Barite, third, third)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("diamond")).asOreVein(-59, -48, 40, 2, 16, Graphite, Graphite, Diamond, Coal)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("diamond_nether")).asOreVein(5, 10, 40, 2, 16, Graphite, Graphite, Diamond, Coal)
                 .inDimension(NETHER).buildVein());
         ev.vein(new VeinBuilder(id("olivine")).asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("apatite")).asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, TricalciumPhosphate, Phosphate)
                 .inDimensions(overworld).buildVein());
         ev.vein(new VeinBuilder(id("galena")).asOreVein(6, 51, 40, 5, 16, Galena, Galena, Silver, Lead)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("lapis")).asOreVein(-44, 1, 40, 5, 16, Lazurite, Sodalite, Lapis, sporadic)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("beryllium")).asOreVein(-59, -21, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium)
-                .inDimensions(overworld).inDimensions(moonMars).buildVein());
+                .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("naquadah")).asOreVein(10, 60, 10, 5, 32, Naquadah, Naquadah, Naquadah, Naquadah)
                 .inDimension(END).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("nether_quartz")).asOreVein(40, 80, 80, 5, 24, Quartz, Quartz, Quartz, Quartz,
@@ -459,7 +458,7 @@ public class WorldGenLoader {
         }
         if (!overworldTFCStoneLayers.isEmpty()){
             ev.vein(new VeinBuilder(id("bauxite")).asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite)
-                    .inDimensions(overworldTFCStoneLayers).inDimensions(moonMars).buildVein());
+                    .inDimensions(overworldTFCStoneLayers).inDimensions(moon).inDimensions(mars).buildVein());
             ev.vein(new VeinBuilder(id("oilshale")).asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale)
                     .inDimensions(overworldTFCStoneLayers).buildVein());
             ev.vein(new VeinBuilder(id("lignite")).asOreVein(0, 200, 160, 8, 32, Lignite, Lignite, Lignite, Coal)
