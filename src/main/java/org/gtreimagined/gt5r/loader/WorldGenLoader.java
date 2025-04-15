@@ -408,6 +408,8 @@ public class WorldGenLoader {
                 .inDimensions(overworld).inDimensions(moonMars).buildVein());
         ev.vein(new VeinBuilder(id("diamond")).asOreVein(-59, -48, 40, 2, 16, Graphite, Graphite, Diamond, Coal)
                 .inDimensions(overworld).inDimensions(moonMars).buildVein());
+        ev.vein(new VeinBuilder(id("diamond_nether")).asOreVein(5, 10, 40, 2, 16, Graphite, Graphite, Diamond, Coal)
+                .inDimension(NETHER).buildVein());
         ev.vein(new VeinBuilder(id("olivine")).asOreVein(-54, -9, 60, 3, 16, Bentonite, Magnesite, Olivine, Glauconite)
                 .inDimensions(overworld).inDimensions(moonMars).buildVein());
         ev.vein(new VeinBuilder(id("apatite")).asOreVein(-4, 41, 60, 3, 16, Apatite, Apatite, TricalciumPhosphate, Phosphate)
