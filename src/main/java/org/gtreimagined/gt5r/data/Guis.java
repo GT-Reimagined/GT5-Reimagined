@@ -237,7 +237,7 @@ public class Guis {
         STEAM_EXTRACTOR.add(EXTRACTOR).add(FL_IN, 53, 63);
         STEAM_MACERATOR.add(MACERATOR).add(FL_IN, 53, 63);
         STEAM_FORGE_HAMMER.add(FORGE_HAMMER).add(FL_IN, 53, 63);
-        STEAM_CUTTER.add(CUTTER).add(FL_IN, 53, 63);
+        STEAM_CUTTER.add(CUTTER).add(FL_IN, 35, 63);
         STEAM_SIFTER.add(SIFTER).add(FL_IN, 53, 63);
         STEAM_GENERATOR.add(BASIC_TANK.getSlots());
         GAS_GENERATOR.add(BASIC_TANK.getSlots());
