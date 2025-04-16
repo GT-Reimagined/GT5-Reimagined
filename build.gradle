@@ -30,7 +30,7 @@ allprojects {
     java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 
-    apply from: 'https://raw.githubusercontent.com/GT-Reimagined/GradleSripts/main/repositories.gradle'
+    apply from: 'https://raw.githubusercontent.com/GT-Reimagined/GradleScripts/main/repositories.gradle'
 
     java {
         withSourcesJar()
