@@ -29,7 +29,6 @@ public class GT5RItems {
     public static ItemFluidCell CellTin = new ItemFluidCell(GT5RRef.ID, Materials.Tin, 1000);
     public static ItemFluidCell CellSteel = new ItemFluidCell(GT5RRef.ID, Materials.Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GT5RRef.ID, Materials.TungstenSteel, 64000);
-    public static ItemBasic<?> Scrap = new ItemBasic<>(GT5RRef.ID, "scrap");
     public static ItemBasic<?> WoodPellet = new ItemBasic<>(GT5RRef.ID, "wood_pellet");
     public static ItemBasic<?> PrintedPages = new ItemPrintedPages(GT5RRef.ID, "printed_pages").tip("Used to make written Books");
     public static ItemBasic<?> DataStick = new ItemDataStick(GT5RRef.ID, "data_stick").tip("A Low Capacity Data Storage");
