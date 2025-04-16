@@ -296,22 +296,27 @@ public class ArcFurnaceLoader {
                 mac.io(DUST.get(macOutput, roundedAmount));
             }
             if (arcOutput == Ash || arcOutput.has(INGOT)){
-                totalMassArc[0] += (long) (arcOutput.getMass() * arcFloatAmount);
+                int amount = 0;
+                MaterialTypeItem<?> arcType;
                 if (arcLeftover > 0){
                     float smallLeftover = arcLeftover * 4;
                     int smallExtra = (int) (smallLeftover);
                     float tinyLeftover = smallLeftover - smallExtra;
                     int tinyExtra = (int) (arcLeftover * 9);
                     if (tinyLeftover > 0){
-                        MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST_TINY : NUGGET;
-                        arc.io(arcType.get(arcOutput, (roundedArcAmount * 9) + tinyExtra));
+                        amount = (roundedArcAmount * 9) + tinyExtra;
+                        arcType = arcOutput == Ash ? DUST_TINY : NUGGET;
                     } else {
-                        MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST_SMALL : CHUNK;
-                        arc.io(arcType.get(arcOutput, (roundedArcAmount * 4) + smallExtra));
+                        arcType = arcOutput == Ash ? DUST_SMALL : CHUNK;
+                        amount = (roundedArcAmount * 4) + smallExtra;
                     }
                 } else {
-                    MaterialTypeItem<?> arcType = arcOutput == Ash ? DUST : INGOT;
-                    arc.io(arcType.get(arcOutput, roundedArcAmount));
+                    arcType = arcOutput == Ash ? DUST : INGOT;
+                    amount = roundedArcAmount;
+                }
+                if (amount > 0){
+                    totalMassArc[0] += (long) (arcOutput.getMass() * arcFloatAmount);
+                    arc.io(arcType.get(arcOutput, amount));
                 }
             }
 
