@@ -35,7 +35,7 @@ public class ForgeHammerLoader {
             }
             if (MACERATE_INTO.getMapping(m).has(CRUSHED)){
                 FORGE_HAMMER.RB().ii(CRUSHED.getMaterialIngredient(macerateInto, 1)).io(DUST_IMPURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
-                FORGE_HAMMER.RB().ii(CRUSHED.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(DUST_PURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
+                FORGE_HAMMER.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(DUST_PURE.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
                 if (m.has(CRUSHED_REFINED)) {
                     FORGE_HAMMER.RB().ii(CRUSHED_REFINED.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_refined_ore",16, 10);
                 }
