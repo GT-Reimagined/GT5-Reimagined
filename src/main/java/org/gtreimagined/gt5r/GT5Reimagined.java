@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
+import org.gtreimagined.gt5r.data.StructureInfo;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTLibConfig;
 import org.gtreimagined.gtlib.GTMod;
@@ -352,6 +353,7 @@ public class GT5Reimagined extends GTMod {
             }
             case DATA_READY -> {
                 Structures.init();
+                StructureInfo.init();
                 GT5RTwilightStalctites.init();
                 GT5RRemapping.init();
                 LootLoader.init();
