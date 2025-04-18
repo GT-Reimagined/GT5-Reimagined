@@ -227,8 +227,8 @@ public class GT5RLocalizations {
             add("tooltip.large_heat_exchanger.3", "2x Titanium Pipe Casing (Inside the Hollow Machine Casings)");
             add("tooltip.large_heat_exchanger.4", "1x Distilled Water Input (Any mid layer casing)");
             add("tooltip.large_heat_exchanger.5", "1x Steam Output (Any mid layer casing)");
-            add("tooltip.large_heat_exchanger.6", "1x Hot Fluid Input (Bottom Center)");
-            add("tooltip.large_heat_exchanger.7", "1x Cold Fluid Output (Top Center)");
+            add("tooltip.large_heat_exchanger.6", "1x Hot Fluid Input (Top Center)");
+            add("tooltip.large_heat_exchanger.7", "1x Cold Fluid Output (Bottom Center)");
 
             add("tooltip.implosion_compressor.0", "Controller Block for the Implosion Compressor");
             add("tooltip.implosion_compressor.1", "Size(WxHxD): 3x3x3 (Hollow), Controller (Front centered)");

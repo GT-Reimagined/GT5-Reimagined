@@ -198,7 +198,7 @@ public class Structures {
                     return check && tile.LAYERS.size() == tile.HATCH_LAYERS.size();
                 }).build());
         LARGE_HEAT_EXCHANGER.setStructure(BlockEntityLargeHeatExchanger.class, b -> b.part("main")
-                .of("DDD", "DOD", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DID", "DDD").build()
+                .of("DDD", "DID", "DDD").of("CCC", "CPC", "CCC").of(1).of("D~D", "DOD", "DDD").build()
                 .at('D', GT5RBlocks.TITANIUM_CASING)
                 .at('C', GT5RBlocks.TITANIUM_CASING, OUTPUT_HATCH, INPUT_HATCH).at('P', GT5RBlocks.TITANIUM_PIPE_CASING)
                 .at('I', INPUT_HATCH).at('O', OUTPUT_HATCH)

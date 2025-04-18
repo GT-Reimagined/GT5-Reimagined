@@ -51,12 +51,12 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
         this.fluidHandler.set(() -> new MultiMachineFluidHandler<>(this){
             @Override
             protected int compareOutputHatches(MachineFluidHandler<?> a, MachineFluidHandler<?> b) {
-                return a.getTile().getBlockPos().getY() == this.tile.getBlockPos().getY() + 3 ? 1 : 0;
+                return a.getTile().getBlockPos().getY() == this.tile.getBlockPos().getY() ? 1 : 0;
             }
 
             @Override
             protected int compareInputHatches(MachineFluidHandler<?> a, MachineFluidHandler<?> b) {
-                return a.getTile().getBlockPos().getY() == this.tile.getBlockPos().getY() ? 1 : 0;
+                return a.getTile().getBlockPos().getY() == this.tile.getBlockPos().getY() + 3 ? 1 : 0;
             }
         });
         recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 1){
