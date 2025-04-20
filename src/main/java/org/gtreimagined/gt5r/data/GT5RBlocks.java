@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
+import org.gtreimagined.gt5r.block.BlockFakeLava;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
@@ -39,12 +40,7 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class GT5RBlocks {
 
-    public static final LiquidBlock LAVA = GTAPI.register(Block.class, "lava", GT5RRef.ID, new LiquidBlock(Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noDrops()){
-        @Override
-        public ItemStack pickupBlock(LevelAccessor level, BlockPos pos, BlockState state) {
-            return ItemStack.EMPTY;
-        }
-    });
+    public static final LiquidBlock LAVA = new BlockFakeLava();
     public static final BlockBasic BRITTLE_CHARCOAL = new BlockBasic(GT5RRef.ID, "brittle_charcoal", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.WOOD, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
         @Override
         public Texture[] getTextures() {
