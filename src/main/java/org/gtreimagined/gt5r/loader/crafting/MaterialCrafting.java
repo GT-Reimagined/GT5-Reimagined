@@ -142,6 +142,7 @@ public class MaterialCrafting {
         });
         RAW_ORE_BLOCK.all().forEach(m -> {
             if (m.has(RAW_ORE)){
+                if (RAW_ORE.hasReplacement(m) && RAW_ORE_BLOCK.hasReplacement(m)) return; //assumes mods it uses for replacement already adds a recipe
                 provider.addItemRecipe(consumer, "blocks", RAW_ORE_BLOCK.get().get(m).asItem(), of('I', RAW_ORE.getMaterialTag(m)), "III", "III", "III");
                 provider.shapeless(consumer, "", "blocks", RAW_ORE.get(m, 9), RAW_ORE_BLOCK.getMaterialTag(m));
             }
