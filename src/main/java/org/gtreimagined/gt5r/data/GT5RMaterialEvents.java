@@ -17,6 +17,7 @@ import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static org.gtreimagined.gt5r.data.Materials.Basalt;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
@@ -221,6 +222,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.ArsenicTrioxide).asDust();
         event.setMaterial(Materials.Biotite).asDust();
         event.setMaterial(Materials.Bitumen).asDust().asFluid(0, 1000).flags(MOLTEN);
+        event.setMaterial(Basalt).asDust(ROCK);
         event.setMaterial(Materials.BlackGranite).asDust(ROCK);
         event.setMaterial(Materials.BlueSchist).asDust(ROCK);
         event.setMaterial(Materials.BorosilicateGlass).asDust();
@@ -697,6 +699,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.AmmoniumChloride).mats(of(Materials.Nitrogen,1, Materials.Hydrogen,4, Materials.Chlorine,1));
         event.setMaterial(Materials.ArsenicTrioxide).mats(of(Materials.Arsenic, 2, Materials.Oxygen, 3)).elecTicks(180);
         event.setMaterial(Materials.Biotite).mats(b -> b.put(Materials.Potassium, 2).put(Materials.Magnesium, 6).put(Materials.Alumina, 15).put(Materials.SiliconDioxide, 18).put(Materials.Fluorine, 4)).elecTicks(440);
+        event.setMaterial(Basalt).mats(of(Materials.Olivine, 1, Materials.Calcite, 3, Flint, 8, Materials.DarkAsh, 4));
         event.setMaterial(Materials.BlackGranite).mats(of(Materials.Biotite, 1, Materials.PotassiumFeldspar, 1, Flint, 1));
         event.setMaterial(Materials.BorosilicateGlass).mats(of(Materials.Boron, 1, Materials.Silicon, 7, Materials.Oxygen,14));
         event.setMaterial(Materials.Brick).mats(of(Materials.Aluminium, 4, Materials.Silicon, 3, Materials.Oxygen, 12));
@@ -1210,7 +1213,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Andradite).addByProduct(Materials.YellowGarnet, Iron, Materials.Boron);
         event.setMaterial(Materials.Antimony).addByProduct(Materials.Zinc, Iron);
         event.setMaterial(Materials.Ash).addByProduct(Materials.Carbon);
-        event.setMaterial(Basalt).addByProduct(Materials.Olivine, Materials.DarkAsh);
         event.setMaterial(Materials.Bastnasite).addByProduct(Materials.Neodymium, Materials.RareEarth);
         event.setMaterial(Materials.Bauxite).addByProduct(Materials.Grossular, Materials.Rutile, Materials.Gallium);
         event.setMaterial(Materials.Bentonite).addByProduct(Materials.Alumina, Materials.Calcium, Materials.Magnesium).elecTicks(480);
@@ -1538,7 +1540,7 @@ public class GT5RMaterialEvents {
     }
 
     private static void antimatterMaterials(GT5RMaterialEvent event){
-        event.setMaterial(Basalt).mats(of(Materials.Olivine, 1, Materials.Calcite, 3, Flint, 8, Materials.DarkAsh, 4));
+
         event.setMaterial(Blaze).mats(of(Materials.Sulfur, 1, Materials.DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE, ROCK).mats(of(Materials.Carbon, 2));
         event.setMaterial(Copper).flags(PLATE, ROD_LONG, FOIL, WIRE_FINE, BOLT);
