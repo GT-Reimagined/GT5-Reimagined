@@ -28,10 +28,8 @@ public class ClientHandler {
     }
 
     private static void copyProgrammerArtIfMissing() {
-        writeResourcePack("GT5Reimagined-Old-Machine-Textures", "gt5u-machine-base");
-        writeResourcePack("GT5Reimagined-New-Machine-Textures", "new-machine-base");
-        writeResourcePack("New-Stone-Textures", "new-stone-textures");
-        writeResourcePack("Former-Gui-Textures", "new-gui-textures");
+        writeResourcePack("Classic-GT5-Machine-Textures", "classic-gt5-machine-textures");
+        writeResourcePack("Old-GTI-Machine-Textures", "old-gti-machine-textures");
     }
 
     private static void writeResourcePack(String writeName, String readName){
