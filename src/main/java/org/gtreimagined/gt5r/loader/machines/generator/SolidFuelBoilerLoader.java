@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
+import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
@@ -35,6 +36,7 @@ public class SolidFuelBoilerLoader {
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(BLOCK.getMaterialTag(CoalCoke), 1)).io(DUST.get(DarkAsh, 9)).add("coal_coke_block",3200);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(GEM.getMaterialTag(LigniteCoke), 1)).io(DUST.get(DarkAsh, 1)).add("lignite_coke",160);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(BLOCK.getMaterialTag(LigniteCoke), 1)).io(DUST.get(DarkAsh, 9)).add("lignite_coke_block",1600);
+        SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(GT5RItems.WoodPellet, 1)).io(DUST.get(Ash, 1)).add("wood_pellets", 20);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.PLANKS, 1)).io(DUST.get(Ash, 1)).add("planks",30);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.LOGS_THAT_BURN, 1)).io(DUST.get(Ash, 1)).add("logs",30);
         SOLID_FUEL_BOILERS.RB().ii(RecipeIngredient.of(ItemTags.WOOL, 1)).io(DUST.get(Ash, 1)).add("wool",10);
