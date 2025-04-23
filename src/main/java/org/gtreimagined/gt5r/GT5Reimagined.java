@@ -357,7 +357,6 @@ public class GT5Reimagined extends GTMod {
                 GT5RTwilightStalctites.init();
                 GT5RRemapping.init();
                 LootLoader.init();
-                GTLibXEIPlugin.addItemsToHide(GT5RBlocks.LAVA);
                 GTLibXEIPlugin.addItemsToHide(l -> {
                     IGTTool screwdriver_mv = GTAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
                     IGTTool screwdriver_hv = GTAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
