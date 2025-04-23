@@ -118,7 +118,6 @@ public class AssemblerLoader {
         addWall(Netherite, GT5RBlocks.NETHERITE_WALL);
         addWall(Adamantium, GT5RBlocks.ADAMANTIUM_WALL);
 
-        addCasing(Bronze, GT5RBlocks.BRONZE_CASING);
         addCasing(Steel, GT5RBlocks.SOLID_STEEL_CASING);
         addCasing(StainlessSteel, GT5RBlocks.STAINLESS_STEEL_CASING);
         addCasing(Titanium, GT5RBlocks.TITANIUM_CASING);
