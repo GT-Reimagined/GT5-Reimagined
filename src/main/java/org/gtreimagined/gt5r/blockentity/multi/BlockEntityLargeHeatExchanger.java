@@ -91,7 +91,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
             @Override
             public boolean consumeResourceForRecipe(boolean simulate) {
-                return heatHandler.map(h -> h.insert((int) activeRecipe.getPower() * concurrentRecipes, simulate) > 0).orElse(false);
+                return true;
             }
 
             protected void addOutputs() {
@@ -113,6 +113,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                             h.getOutputTanks().getTank(0).fill(activeRecipe.getOutputFluids()[0].copy(), FluidAction.EXECUTE);
                         });
                     }
+                    heatHandler.ifPresent(h -> h.insert((int) activeRecipe.getPower(), false));
                 }
                 if (activeRecipe.hasOutputItems()) tile.onMachineEvent(MachineEvent.ITEMS_OUTPUTTED);
                 if (activeRecipe.hasOutputFluids()) tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
