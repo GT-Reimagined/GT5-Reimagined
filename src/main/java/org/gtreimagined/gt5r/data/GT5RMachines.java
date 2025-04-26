@@ -445,7 +445,7 @@ public class GT5RMachines {
             int slot = i > 4 ? i - 5 : i - 1;
             if (machine instanceof BlockEntityNuclearReactorCore core){
                 if (i < 5){
-                    boolean on = core.getMachineState() == MachineState.ACTIVE && (core.mode & Ref.B[slot]) == 0;
+                    boolean on = core.getMachineState() != MachineState.DISABLED && (core.mode & Ref.B[slot]) == 0;
                     return on ? -1 : Materials.Lead.getRGB();
                 } else {
                     ItemStack rod = core.getRod(slot);

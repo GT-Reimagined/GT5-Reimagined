@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
+import lombok.Setter;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.IPostTickTile;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
@@ -60,6 +61,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
     public int[] oNeutronCounts = new int[]{0, 0, 0, 0};
     public long oldHeat = 0;
     public byte mode = 0;
+    public boolean oRunning, mRunning = false;
     public static final int[] S2103 = new int[] {0,0,2,1,0,3,0}, S0312 = new int[] {0,0,0,3,1,2,0};
     BlockEntityNuclearReactorCore[] adjacentReactors = new BlockEntityNuclearReactorCore[4];
 
@@ -99,11 +101,13 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
         super.onFirstTickClient(level, pos, state);
         GTLibNetwork.NETWORK.sendToServer(new MessageTriggerInventorySync(this.getBlockPos()));
     }
+    @Setter
     boolean syncSlots;
 
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
+        if (getMachineState() == MachineState.ACTIVE) setMachineState(MachineState.IDLE);
 
         if (syncSlots){
             syncSlots();
@@ -120,10 +124,6 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
         if (getLevel() != null && isServerSide()){
             sidedSync(true);
         }
-    }
-
-    public void setSyncSlots(boolean syncSlots) {
-        this.syncSlots = syncSlots;
     }
 
     @Override
@@ -303,7 +303,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                 }
             }
         } else {
-            if (machineState == MachineState.DISABLED) return;
+            //if (machineState == MachineState.DISABLED) return;
             if (level.getGameTime() % 20 == 19) {
                 updateReactorRodModeration(0);
                 updateReactorRodModeration(1);
@@ -318,19 +318,16 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
                     if (tStrength > 0) Utils.applyRadioactivity(tEntity, (int)CodeUtils.divup(tStrength, 10), tStrength);
                 }
             }
-            boolean running = tCalc != 0;
+            oRunning = mRunning;
+            mRunning = tCalc != 0;
             DefaultHeatHandler handler = heatHandler.orElse(null);
             MachineFluidHandler<?> fluidHandler1 = fluidHandler.orElse(null);
             int tEnergy = handler.getHeat();
-            if (getReactorRodNeutronReaction(0)) running = true;
-            if (getReactorRodNeutronReaction(1)) running = true;
-            if (getReactorRodNeutronReaction(2)) running = true;
-            if (getReactorRodNeutronReaction(3)) running = true;
-            if (running && getMachineState() != MachineState.ACTIVE){
-                setMachineState(MachineState.ACTIVE);
-            } else if (!running && getMachineState() == MachineState.ACTIVE){
-                setMachineState(MachineState.IDLE);
-            }
+            if (getReactorRodNeutronReaction(0)) mRunning = true;
+            if (getReactorRodNeutronReaction(1)) mRunning = true;
+            if (getReactorRodNeutronReaction(2)) mRunning = true;
+            if (getReactorRodNeutronReaction(3)) mRunning = true;
+            if (oRunning != mRunning) sidedSync(true);
             FluidStack coldCoolant = fluidHandler1.getInputTanks().getFluidInTank(0);
             int tDivider = 1;
             if (coldCoolant.getFluid().is(Sodium.getFluidTag())) tDivider = 6;
@@ -430,6 +427,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
         }
         tag.put("currentNeutronCounts", currentNeutronCountTag);
         tag.put("oldNeutronCounts", oldNeutronCountTag);
+        tag.putBoolean("oRunning", oRunning);
+        tag.putBoolean("mRunning", mRunning);
     }
 
     @Override
@@ -442,6 +441,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
             });
             nbt.put(Ref.KEY_MACHINE_ITEMS, in);
         });
+        nbt.putBoolean("oRunning", oRunning);
+        nbt.putBoolean("mRunning", mRunning);
         return nbt;
     }
 
@@ -466,6 +467,8 @@ public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<Bl
         super.load(tag);
         mode = tag.getByte("mode");
         oldHeat = tag.getLong("oldHeat");
+        mRunning = tag.getBoolean("mRunning");
+        oRunning = tag.getBoolean("oRunning");
         ListTag currentNeutronCountTag = tag.getList("currentNeutronCounts", Tag.TAG_INT);
         ListTag oldNeutronCountTag = tag.getList("oldNeutronCounts", Tag.TAG_INT);
         for (int i = 0; i < 4; i++) {
