@@ -75,7 +75,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (totalHu == 0) return 0;
                     double ratio = 80.0 / totalHu;
                     int totalRecipes = (int) (base * ratio);
-                    return Math.min(1, totalRecipes);
+                    return Math.max(1, totalRecipes);
                 }
                 return super.maxSimultaneousRecipes();
             }
