@@ -45,6 +45,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     int efficiency = 1000;
     int dryHeatCounter = 0;
     int dryHeatMaximum = 100;
+    boolean fullOfSteam = false;
 
     public BlockEntityLargeHeatExchanger(Machine type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -82,7 +83,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
             @Override
             protected boolean canRecipeContinue() {
-                return super.canRecipeContinue() && heatHandler.map(h -> h.getHeat() + (activeRecipe.getTotalPower()) <= h.getHeatCap()).orElse(false);
+                return super.canRecipeContinue() && heatHandler.map(h -> h.getHeat() + (activeRecipe.getTotalPower()) <= h.getHeatCap()).orElse(false) && !fullOfSteam;
             }
 
             @Override
@@ -178,6 +179,9 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                                         f.drainInput(DistilledWater.getLiquid(heatMultiplier), FluidAction.EXECUTE);
                                         f.getOutputTanks().getTank(1).fill(steam.getGas(steamToAdd), FluidAction.EXECUTE);
                                         h.extractInternal(heatMultiplier * 80, false);
+                                        fullOfSteam = false;
+                                    } else {
+                                        fullOfSteam = true;
                                     }
                                 }
                                 dryHeatCounter = 0;
@@ -224,6 +228,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
         super.saveAdditional(tag);
         tag.putInt("efficiency", efficiency);
         tag.putInt("superheatedThreshold", superheatedThreshold);
+        tag.putBoolean("fullOfSteam", fullOfSteam);
     }
 
     @Override
@@ -231,6 +236,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
         super.load(tag);
         efficiency = tag.getInt("efficiency");
         superheatedThreshold = tag.getInt("superheatedThreshold");
+        fullOfSteam = tag.getBoolean("fullOfSteam");
     }
 
     @Override
@@ -258,8 +264,8 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
         @Override
         public void init() {
             super.init();
-            BlockEntityMultiMachine<?> m = (BlockEntityMultiMachine) gui.handler;
-            gui.syncInt(() -> m.getHeatHandlers().size() == 0 ? 0 : m.getHeatHandlers().stream().mapToInt(IHeatHandler::getTemperature).sum() / m.getHeatHandlers().size(), a -> this.heat = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
+            BlockEntityMultiMachine<?> m = (BlockEntityLargeHeatExchanger) gui.handler;
+            gui.syncInt(() -> m.heatHandler.map(DefaultHeatHandler::getHeat).orElse(0), a -> this.heat = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
         }
     }
 }
