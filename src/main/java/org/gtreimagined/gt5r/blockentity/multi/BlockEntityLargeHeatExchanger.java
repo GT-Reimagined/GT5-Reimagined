@@ -13,6 +13,7 @@ import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
 import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
 import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
+import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -153,11 +154,12 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
-        if (level.getGameTime() % 20 == 0){
+        if (level.getGameTime() % 20 == 0 && this.getMachineState() != MachineState.DISABLED){
             fluidHandler.ifPresent(f -> {
                 heatHandler.ifPresent(h -> {
                     if (h.getHeat() >= 80){
                         int heatMultiplier = h.getHeat() / 80;
+                        if (f.getInputTanks() == null) return;
                         FluidTank waterTank = f.getInputTanks().getTank(1);
                         if (waterTank != null && waterTank.getFluidInTank(0).isFluidEqual(DistilledWater.getLiquid(1))) {
                             heatMultiplier = Math.min(heatMultiplier, waterTank.getFluidAmount());
