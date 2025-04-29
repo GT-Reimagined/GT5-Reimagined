@@ -177,7 +177,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                                         heatMultiplier = Math.min(heatMultiplier, (int)(inserted / tEfficiency));
                                         f.drainInput(DistilledWater.getLiquid(heatMultiplier), FluidAction.EXECUTE);
                                         f.getOutputTanks().getTank(1).fill(steam.getGas(steamToAdd), FluidAction.EXECUTE);
-                                        h.extract(heatMultiplier * 80, false);
+                                        h.extractInternal(heatMultiplier * 80, false);
                                     }
                                 }
                                 dryHeatCounter = 0;
