@@ -41,7 +41,7 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<BlockEntityLargeHeatExchanger> implements IFilterableHandler {
 
-    int superheatedThreshold = 80000;
+    int superheatedThreshold = Integer.MAX_VALUE;
     int efficiency = 1000;
     int dryHeatCounter = 0;
     int dryHeatMaximum = 100;
@@ -153,6 +153,12 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     }
 
     @Override
+    public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
+        super.onFirstTickServer(level, pos, state);
+        onMachineEvent(SlotType.STORAGE);
+    }
+
+    @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
         if (level.getGameTime() % 20 == 0 && this.getMachineState() != MachineState.DISABLED){
@@ -227,7 +233,6 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     public void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
         tag.putInt("efficiency", efficiency);
-        tag.putInt("superheatedThreshold", superheatedThreshold);
         tag.putBoolean("fullOfSteam", fullOfSteam);
     }
 
@@ -235,7 +240,6 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     public void load(CompoundTag tag) {
         super.load(tag);
         efficiency = tag.getInt("efficiency");
-        superheatedThreshold = tag.getInt("superheatedThreshold");
         fullOfSteam = tag.getBoolean("fullOfSteam");
     }
 
