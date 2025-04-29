@@ -20,7 +20,7 @@ public class Textures {
                 new Texture(GT5RRef.ID, "block/machine/empty"),
     };
 
-    public static final ITextureHandler BOILER_HANDLER = (m, t, s) -> new Texture[] {
+    public static final ITextureHandler BRICKED_HANDLER = (m, t, s) -> new Texture[] {
         new Texture(GT5RRef.ID, "block/machine/base/brick"),
         new Texture(GT5RRef.ID, "block/machine/base/" + t.getId()),
         new Texture(GT5RRef.ID, "block/machine/base/bricked_" + t.getId()),
