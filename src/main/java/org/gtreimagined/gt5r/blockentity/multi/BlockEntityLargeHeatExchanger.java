@@ -212,7 +212,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                 superheatedThreshold = 80000 - (circuit1.circuitId * 3000);
                 efficiency = 1000 - (circuit1.circuitId * 15);
             } else {
-                superheatedThreshold = 80000;
+                superheatedThreshold = Integer.MAX_VALUE;
                 efficiency = 1000;
             }
         }
