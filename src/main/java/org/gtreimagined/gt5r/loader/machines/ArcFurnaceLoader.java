@@ -191,6 +191,8 @@ public class ArcFurnaceLoader {
         addRecyclingRecipe(STEAM_SIFTER.getItem(STEEL), of(Steel, 14f, Stone, 8f, Wood, 6f));
         addRecyclingRecipe(STEAM_MACERATOR.getItem(BRONZE), of(Bronze, 12f, Stone, 8f, Wood, 6f, Diamond, 2f));
         addRecyclingRecipe(STEAM_MACERATOR.getItem(STEEL), of(Steel, 12f, Stone, 8f, Wood, 6f, Diamond, 2f));
+        addRecyclingRecipe(STEAM_CUTTER.getItem(BRONZE), of(Bronze, 13f, Steel, 4f, Stone, 8f, Wood, 6f));
+        addRecyclingRecipe(STEAM_CUTTER.getItem(STEEL), of(Steel, 17f, Stone, 8f, Wood, 6f));
         for (Tier tier : getAllElectric()) {
             addRecyclingRecipe(GT5Reimagined.get(BlockCasing.class,"casing_" + tier.getId()), of(TIER_MATERIALS.get(tier), 8f));
         }
