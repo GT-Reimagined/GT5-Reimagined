@@ -336,7 +336,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Bauxite).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
         event.setMaterial(Materials.Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL, ROCK);
         event.setMaterial(Materials.OilShale).asDust(ORE, ORE_STONE, ORE_SMALL, RAW_ORE, RAW_ORE_BLOCK, BEARING_ROCK, ROCK).setExpRange(1,5).harvestLevel(1);
-        event.setMaterial(Materials.RockSalt).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
+        event.setMaterial(Materials.Sylvite).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
         event.setMaterial(Materials.Salt).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
         /**
          **  Gems
@@ -807,7 +807,7 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.Bauxite).mats(of(Materials.Rutile, 2, Materials.Aluminium, 16, Materials.Hydrogen, 10, Materials.Oxygen, 11));
         event.setMaterial(Materials.Lignite).mats(of(Materials.Carbon, 3, Water, 1)).elecTicks(40);
-        event.setMaterial(Materials.RockSalt).mats(of(Materials.Potassium, 1, Materials.Chlorine, 1)).elecTicks(72);
+        event.setMaterial(Materials.Sylvite).mats(of(Materials.Potassium, 1, Materials.Chlorine, 1)).elecTicks(72);
         event.setMaterial(Materials.Salt).mats(of(Materials.Sodium, 1, Materials.Chlorine, 1)).elecTicks(320);
         /**
          **  Gems
@@ -1290,9 +1290,9 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.RedGarnet).addByProduct(Materials.Spessartine, Materials.Pyrope, Materials.Almandine);
         event.setMaterial(Redstone).addByProduct(Materials.Cinnabar, Materials.RareEarth, Glowstone);
         event.setMaterial(Materials.RedGranite).addByProduct(Materials.PotassiumFeldspar);
-        event.setMaterial(Materials.RockSalt).addByProduct(Materials.Salt);
+        event.setMaterial(Materials.Sylvite).addByProduct(Materials.Salt);
         event.setMaterial(Materials.Ruby).addByProduct(Materials.Chromium, Materials.RedGarnet);
-        event.setMaterial(Materials.Salt).addByProduct(Materials.RockSalt);
+        event.setMaterial(Materials.Salt).addByProduct(Materials.Sylvite);
         event.setMaterial(Materials.Saltpeter).addByProduct(Materials.Saltpeter);
         event.setMaterial(Materials.Scheelite).addByProduct(Materials.Manganese, Materials.Molybdenum, Materials.Calcium).elecTicks(120); //1920 eu/tick
         event.setMaterial(Materials.Sheldonite).addByProduct(Materials.Palladium, Materials.Nickel, Materials.Iridium).bathMercury(Materials.Sheldonite).bathPersulfate(Materials.Nickel);
@@ -1382,7 +1382,7 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.CRYSTALLIZE.add(Lapis, Materials.Lazurite, Materials.Sodalite, Materials.MilkyQuartz, Quartz, Materials.CertusQuartz, Materials.Fluix, Materials.Jade, Materials.Amber, Materials.Apatite, Flint, EnderEye, EnderPearl);
         GT5RMaterialTags.NON_GEMS.add(Coal, Charcoal, Materials.Lignite, Materials.CoalCoke, Materials.LigniteCoke, Materials.PetroleumCoke);
         GT5RMaterialTags.ELEC30.add(Charcoal, Materials.Opal, Coal, Materials.CoalCoke, Materials.Lignite, Materials.SteelMagnetic, Materials.IronMagnetic, Materials.Quicklime, Materials.Quartzite,
-                Materials.SiliconDioxide, Materials.Wollastonite, Materials.CobaltOxide, Materials.Garnierite, Materials.CupricOxide, Materials.RockSalt, /*Zincite,*/Materials.Pyrolusite, /*ChromiumDioxide,*/
+                Materials.SiliconDioxide, Materials.Wollastonite, Materials.CobaltOxide, Materials.Garnierite, Materials.CupricOxide, Materials.Sylvite, /*Zincite,*/Materials.Pyrolusite, /*ChromiumDioxide,*/
                 Materials.Phosphate, /*NiobiumNitride,*/ Materials.GreenSapphire, Materials.Sapphire, Materials.NeodymiumMagnetic, Materials.Cassiterite,
                 Materials.PhosphorousPentoxide, Materials.Hematite, Materials.Massicot, Materials.ArsenicTrioxide, Sugar, Materials.Magnetite, Materials.AntimonyTrioxide,
                 Materials.Salt, Materials.SodiumBisulfate, Materials.PotassiumBisulfate, Materials.HydrochloricAcid, Materials.SaltWater, Materials.HydrochloricAcid, Diamond,
@@ -1416,7 +1416,7 @@ public class GT5RMaterialEvents {
         NOSMASH.add(Wood/* WoodSealed */, Materials.Sulfur, Materials.Saltpeter, Materials.Graphite, /* Paper, */Coal, Charcoal, Materials.Lignite, Materials.PetroleumCoke, Materials.Rubber,
                 Materials.StyreneButadieneRubber, Materials.Plastic, Materials.PolyvinylChloride, Materials.Polystyrene, Materials.SiliconeRubber, Materials.Polytetrafluoroethylene, Materials.NitroDiesel,
                 Materials.Concrete, Redstone, Glowstone, Netherrack, Stone, Materials.Brick, Endstone, Materials.Marble, Basalt, Materials.Obsidian, Flint,
-                Materials.RedGranite, Materials.BlackGranite, Materials.Salt, Materials.RockSalt, Materials.Glass, Diamond, Emerald, Materials.Amethyst, Materials.Tanzanite, Materials.Topaz,
+                Materials.RedGranite, Materials.BlackGranite, Materials.Salt, Materials.Sylvite, Materials.Glass, Diamond, Emerald, Materials.Amethyst, Materials.Tanzanite, Materials.Topaz,
                 /* Amber, */ Materials.Sapphire, Materials.Ruby, Materials.Opal, Materials.Olivine, Lapis, Materials.MilkyQuartz, Quartz, Materials.Phosphate, EnderPearl, EnderEye, Materials.Silicon);
         GT5RMaterialTags.NOSMELT.add(Wood/* , WoodSealed */, Materials.Sulfur, Materials.Saltpeter, Materials.Graphite, /* Paper, */Coal, Charcoal, Materials.Lignite,
                 Materials.NitroDiesel, Emerald, Materials.Amethyst, Materials.Tanzanite, Materials.Topaz, /* Amber, */ Materials.Sapphire, Materials.Ruby, Materials.Opal, Materials.Olivine,
@@ -1467,7 +1467,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.TricalciumPhosphate).setOreMulti(3).setSmeltingMulti(3);
         event.setMaterial(Quartz).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Redstone).setOreMulti(5).setSmeltingMulti(5);
-        event.setMaterial(Materials.RockSalt).setOreMulti(2).setSmeltingMulti(2);
+        event.setMaterial(Materials.Sylvite).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Materials.Salt).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Materials.Saltpeter).setOreMulti(4).setSmeltingMulti(4);
         event.setMaterial(Materials.Scheelite).setOreMulti(2).setSmeltingMulti(2);

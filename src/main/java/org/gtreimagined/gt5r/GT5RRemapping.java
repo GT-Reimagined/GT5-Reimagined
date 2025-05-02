@@ -1,12 +1,16 @@
 package org.gtreimagined.gt5r;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectArrayMap;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTRemapping;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.ore.StoneType;
+import org.gtreimagined.gtlib.ore.VanillaStoneType;
 
 import java.util.Map;
 
@@ -25,6 +29,17 @@ public class GT5RRemapping {
                 return r2;
             }
             return r;
+        });
+        Materials.Sylvite.getTypes().forEach(type -> {
+            String id = type.getId() + "_sylvite";
+            String oldId = type.getId() + "_rock_salt";
+            if (type != GTMaterialTypes.ORE && type != GTMaterialTypes.ORE_SMALL){
+                GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID, oldId), new ResourceLocation(Ref.SHARED_ID, id));
+            } else {
+                GTAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).forEach(a -> {
+                    GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID, oldId + "_" + a.getId()), new ResourceLocation(Ref.SHARED_ID, id + "_" + a.getId()));
+                });
+            }
         });
         for (CoverFactory cover : GTAPI.all(CoverFactory.class, GT5RRef.ID)){
             GTRemapping.remapCover(new ResourceLocation("gti", cover.getId()), cover.getLoc());

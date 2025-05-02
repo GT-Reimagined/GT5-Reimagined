@@ -113,7 +113,7 @@ public class WorldGenLoader {
         event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "coal_twilight")).withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
         event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "lignite_twilight")).withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
         event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "salt_twilight")).withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "rock_salt_twilight")).withMaterial(RockSalt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "sylvite_twilight")).withMaterial(Sylvite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
         event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "bauxite_twilight")).withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
         event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "oil_shale_twilight")).withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
         event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "milky_quartz_twilight")).withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
@@ -348,7 +348,7 @@ public class WorldGenLoader {
         ev.stoneLayer(new StoneLayerBuilder(id("coal")).withStone(ORE_STONE.get().get(Coal).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("lignite")).withStone(ORE_STONE.get().get(Lignite).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("salt")).withStone(ORE_STONE.get().get(Salt).asState()).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("rock_salt")).withStone(ORE_STONE.get().get(RockSalt).asState()).withWeight(1).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("sylvite")).withStone(ORE_STONE.get().get(Sylvite).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("bauxite")).withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("oil_shale")).withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).inDimensions(overworld).buildVein());
 
@@ -385,7 +385,7 @@ public class WorldGenLoader {
                 .inDimension(NETHER).buildVein());
         ev.vein(new VeinBuilder(id("copper")).asOreVein(-30, 0, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
                 .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
-        ev.vein(new VeinBuilder(id("salts")).asOreVein(51, 66, 50, 3, 24, RockSalt, Salt, Lepidolite, Spodumene)
+        ev.vein(new VeinBuilder(id("salts")).asOreVein(51, 66, 50, 3, 24, Sylvite, Salt, Lepidolite, Spodumene)
                 .inDimensions(overworld).inDimensions(moon).buildVein());
         ev.vein(new VeinBuilder(id("redstone")).asOreVein(-54, -9, 60, 3, 24, Redstone, Redstone, Ruby, Cinnabar)
                 .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());

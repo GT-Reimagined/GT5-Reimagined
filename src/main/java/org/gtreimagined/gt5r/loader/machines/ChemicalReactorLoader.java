@@ -110,7 +110,7 @@ public class ChemicalReactorLoader {
         //HYDROCHLORIC ACID
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(3000), Chlorine.getGas(2000)).fo(HydrochloricAcid.getLiquid(4000), Oxygen.getGas(1000)).add("hydrochloric_acid", 60, 8);
         CHEMICAL_REACTOR.RB().fi(DistilledWater.getLiquid(3000), Chlorine.getGas(2000)).fo(HydrochloricAcid.getLiquid(4000), Oxygen.getGas(1000)).add("hydrochloric_acid_2", 60, 8);
-        CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(RockSalt, 2)).fo(HydrochloricAcid.getLiquid(2000)).io(DUST.get(PotassiumBisulfate, 7)).add("hydrochloric_acid_3", 144, 16);
+        CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Sylvite, 2)).fo(HydrochloricAcid.getLiquid(2000)).io(DUST.get(PotassiumBisulfate, 7)).add("hydrochloric_acid_3", 144, 16);
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(7000)).ii(DUST.getMaterialIngredient(Salt, 2)).fo(HydrochloricAcid.getLiquid(2000)).io(DUST.get(SodiumBisulfate, 7)).add("hydrochloric_acid_4", 144, 16);
         //TITANIUMTETRACHLORIDE
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Rutile), 1), of(DUST.getMaterialTag(Carbon), 1)).fi(Chlorine.getGas(4000), Calcite.getLiquid(L)).fo(TitaniumTetrachloride.getLiquid(5000),CarbonDioxide.getGas(3000)).add("titanium_tetrachloride",500, 480);

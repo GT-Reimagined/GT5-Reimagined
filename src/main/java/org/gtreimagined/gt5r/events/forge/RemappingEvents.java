@@ -211,7 +211,7 @@ public class RemappingEvents {
                 continue;
             }
             if (id.equals("ore_stone_rock_salt")){
-                map.remap(GTMaterialTypes.ORE_STONE.get().get(Materials.RockSalt).asBlock());
+                map.remap(GTMaterialTypes.ORE_STONE.get().get(Materials.Sylvite).asBlock());
                 continue;
             }
             if (id.startsWith("ore_")){
