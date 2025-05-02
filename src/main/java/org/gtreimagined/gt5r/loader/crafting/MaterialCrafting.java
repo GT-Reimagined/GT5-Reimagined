@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -48,6 +49,7 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, IndiumGalliumPhosphide, ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1));
         addShapelessDustRecipe(output, provider, GTCoreMaterials.Signalum, ImmutableMap.of(RedAlloy, 5, Silver, 2, Copper, 1));
         provider.shapeless(output, GT5RRef.ID, "", "dusts", GTMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        provider.addItemRecipe(output, GT5RRef.ID, "copper_ingot", "ingots", GTMaterialTypes.INGOT.get(Copper), ImmutableMap.of('I', GTMaterialTypes.NUGGET.getMaterialTag(Copper)), "III", "III", "III");
         loadAutoRecipes(output, provider);
         loadMixedMetal(output, provider);
     }
