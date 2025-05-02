@@ -16,7 +16,7 @@ description='''A Reimagining of GregTech 5U for modern minecraft versions'''
 [[dependencies.gt5r]]
     modId="gtlib"
     mandatory=true
-    versionRange="[0.3-pre.9,)"
+    versionRange="[0.3,)"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gt5r]]
