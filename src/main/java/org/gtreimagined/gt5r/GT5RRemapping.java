@@ -40,6 +40,14 @@ public class GT5RRemapping {
                     GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID, oldId + "_" + a.getId()), new ResourceLocation(Ref.SHARED_ID, id + "_" + a.getId()));
                 });
             }
+            if (type == GTMaterialTypes.BEARING_ROCK){
+                GTAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).forEach(a -> {
+                    GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID,  "surface_rock_rock_salt_" + a.getId()), new ResourceLocation(Ref.SHARED_ID, "surface_rock_sylvite_" + a.getId()));
+                });
+            }
+            if (type == GTMaterialTypes.ROCK){
+                GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID, "surface_rock_rock_salt"), new ResourceLocation(Ref.SHARED_ID, "surface_rock_sylvite"));
+            }
         });
         for (CoverFactory cover : GTAPI.all(CoverFactory.class, GT5RRef.ID)){
             GTRemapping.remapCover(new ResourceLocation("gti", cover.getId()), cover.getLoc());
