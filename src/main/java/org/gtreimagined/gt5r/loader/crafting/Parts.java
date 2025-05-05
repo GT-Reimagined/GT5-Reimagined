@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
+import com.gtnewhorizon.structurelib.Registry;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -69,6 +70,13 @@ public class Parts {
       ), "C C", "PPP", "PPP");
       provider.addStackRecipe(output, GT5RRef.ID, "", "batteries", DUST.get(Energium, 9),
               of('R', DUST.getMaterialTag(Redstone), 'r', DUST.getMaterialTag(Ruby)), "RrR", "rRr", "RrR");
+
+      provider.addItemRecipe(output, GT5RRef.ID, "front_rotation_tool", "gtparts", Registry.FRONT_ROTATION_TOOL,
+              of('R', ROD.getMaterialTag(Wood),
+                      'C', ROD.getMaterialTag(Cobalt),
+                      'P', PLATE.getMaterialTag(Cobalt),
+                      'H', HAMMER.getTag(),
+                      'F', FILE.getTag()), "FPC", " CP", "R H");
 
 
       provider.addItemRecipe(output, GT5RRef.ID, "diamondsaw_blade", "gtparts", DiamondSawBlade, of(
