@@ -15,6 +15,7 @@ import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_TINY;
 
 public class DistillationTowerLoader {
 
@@ -32,7 +33,7 @@ public class DistillationTowerLoader {
         addDistillingRecipe(Creosote, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(FishOil, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
-        addDistillingRecipe(Water, 576, 16, 120, ItemStack.EMPTY, new FluidProduct(DistilledWater,520));
+        addDistillingRecipe(Water, 100, 16, 64, DUST_TINY.get(Calcite, 1), new FluidProduct(DistilledWater,80));
         DISTILLERY.RB()
                 .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
                 .fi(new FluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100))
