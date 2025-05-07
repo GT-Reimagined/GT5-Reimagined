@@ -93,8 +93,10 @@ dependencies {
     modImplementation("org.gt-reimagined:structurelib-forge:${project.structurelib_version}-${project.minecraft_version}")
     modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-1.18.2:${project.resourcefullib_version}")
     modImplementation("maven.modrinth:carbon-config:${project.carbon_config_forge_version}")
-    modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
-    modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
+    modImplementation("curse.maven:kubejs-238086:4377177")
+    modImplementation("curse.maven:rhino-416294:4069880")
+    //modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
+    //modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
     //MIXIN
     if (System.getProperty('idea.sync.active') != 'true') {
