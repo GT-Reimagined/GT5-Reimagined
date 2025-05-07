@@ -211,7 +211,7 @@ public class MachineRecipes {
                             .put('H', hull)
                             .put('c', circuit)
                             .put('P', PLATE.getMaterialTag(material))
-                            .put('R', arm).build(), "WcW", "CHC", "PRP"));
+                            .put('R', pump).build(), "WcW", "CHC", "PRP"));
             add(DISASSEMBLER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('R', arm)
