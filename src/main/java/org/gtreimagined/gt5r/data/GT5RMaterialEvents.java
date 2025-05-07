@@ -338,6 +338,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.OilShale).asDust(ORE, ORE_STONE, ORE_SMALL, RAW_ORE, RAW_ORE_BLOCK, BEARING_ROCK, ROCK).setExpRange(1,5).harvestLevel(1);
         event.setMaterial(Materials.Sylvite).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
         event.setMaterial(Materials.Salt).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
+        event.setMaterial(IodineSalt).asDust();
         /**
          **  Gems
          **/
@@ -809,6 +810,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Lignite).mats(of(Materials.Carbon, 3, Water, 1)).elecTicks(40);
         event.setMaterial(Materials.Sylvite).mats(of(Materials.Potassium, 1, Materials.Chlorine, 1)).elecTicks(72);
         event.setMaterial(Materials.Salt).mats(of(Materials.Sodium, 1, Materials.Chlorine, 1)).elecTicks(320);
+        event.setMaterial(IodineSalt).mats(of(Potassium, 1, Iodine, 1, Oxygen, 3)).elecTicks(1600);
         /**
          **  Gems
          **/
@@ -1290,9 +1292,9 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.RedGarnet).addByProduct(Materials.Spessartine, Materials.Pyrope, Materials.Almandine);
         event.setMaterial(Redstone).addByProduct(Materials.Cinnabar, Materials.RareEarth, Glowstone);
         event.setMaterial(Materials.RedGranite).addByProduct(Materials.PotassiumFeldspar);
-        event.setMaterial(Materials.Sylvite).addByProduct(Materials.Salt);
+        event.setMaterial(Materials.Sylvite).addByProduct(Materials.Salt, Salt, IodineSalt);
         event.setMaterial(Materials.Ruby).addByProduct(Materials.Chromium, Materials.RedGarnet);
-        event.setMaterial(Materials.Salt).addByProduct(Materials.Sylvite);
+        event.setMaterial(Materials.Salt).addByProduct(Materials.Sylvite, Sylvite, IodineSalt);
         event.setMaterial(Materials.Saltpeter).addByProduct(Materials.Saltpeter);
         event.setMaterial(Materials.Scheelite).addByProduct(Materials.Manganese, Materials.Molybdenum, Materials.Calcium).elecTicks(120); //1920 eu/tick
         event.setMaterial(Materials.Sheldonite).addByProduct(Materials.Palladium, Materials.Nickel, Materials.Iridium).bathMercury(Materials.Sheldonite).bathPersulfate(Materials.Nickel);
@@ -1392,7 +1394,7 @@ public class GT5RMaterialEvents {
                 /*Wollastonite,*/ Materials.NitrogenMonoxide, Materials.Butane, Materials.CarbonMonoxide, Materials.Pyrite, Materials.RedGranite, Materials.Ferrosilite, Materials.Butadiene, Materials.Amethyst,
                 Materials.Molybdenite, Materials.Ruby, /*Kyanite,*/ Materials.NitrogenDioxide, Materials.DinitrogenTetroxide, Materials.Propane, Materials.Barite, Materials.Isoprene,
                 Materials.Chromite, EnderPearl, Materials.SiliconDioxide, Materials.Apatite, Materials.SulfurTrioxide, /*Pyrochlore, */ Materials.Toluene, Materials.Phosphate,
-                Materials.Tantalite, Materials.PhosphorousPentoxide, Materials.Osmiridium, Materials.Pentlandite, Materials.Steel, Materials.Graphite, Materials.MagnesiumChloride);
+                Materials.Tantalite, Materials.PhosphorousPentoxide, Materials.Osmiridium, Materials.Pentlandite, Materials.Steel, Materials.Graphite, Materials.MagnesiumChloride, IodineSalt);
         GT5RMaterialTags.ELEC90.add(Materials.Polydimethylsiloxane, Materials.AceticAcid, Materials.Olivine, Materials.Ethanol, Materials.Methanol, Materials.VinylAcetate, /*Gypsum,*/ Materials.Cobaltite,
                 /*Dymethylamine,*/ Materials.Chalcopyrite, /*Mirabilite,*/ Materials.Spodumene, /*Dolomite,*/ Materials.HypochlorousAcid, Materials.Chloramine, Materials.Bastnasite,
                 Materials.Chloromethane, Materials.Malachite, /*Borax, */ /*Kaolinite,*/ Materials.Obsidian, Materials.NitricAcid, Materials.VinylChloride, Materials.Acetone, /*Asbestos,*/ Materials.PotassiumFeldspar,

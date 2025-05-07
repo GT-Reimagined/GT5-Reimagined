@@ -333,8 +333,9 @@ public class Materials {
     public static Material Bauxite = GTAPI.register(Material.class, new Material(GT5RRef.ID, "bauxite", 0xc86400, DULL));
     public static Material Lignite = GTAPI.register(Material.class, new Material(GT5RRef.ID, "lignite_coal", 0x644646, LIGNITE));
     public static Material OilShale = GTAPI.register(Material.class, new Material(GT5RRef.ID, "oil_shale", 0x32323c, NONE));
-    public static Material Salt = GTAPI.register(Material.class, new Material(GT5RRef.ID, "salt", 0xfafafa, FINE));
-    public static Material Sylvite = GTAPI.register(Material.class, new Material(GT5RRef.ID, "sylvite", 0xf0c8c8, FINE));
+    public static Material Salt = GTAPI.register(Material.class, new Material(GT5RRef.ID, "salt", 0xfafafa, CUBE));
+    public static Material IodineSalt = GTAPI.register(Material.class, new Material(GT5RRef.ID, "iodine_salt", 0xf0c8f0, CUBE));
+    public static Material Sylvite = GTAPI.register(Material.class, new Material(GT5RRef.ID, "sylvite", 0xf0c8c8, CUBE));
 
     /**
      ** Gems
