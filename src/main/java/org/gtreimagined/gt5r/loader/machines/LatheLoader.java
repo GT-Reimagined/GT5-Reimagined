@@ -18,13 +18,13 @@ public class LatheLoader {
             if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
-        ROD_LONG.all().forEach(t -> {
+        ROD.all().forEach(t -> {
             if (t.has(INGOT)) {
                 RecipeMaps.LATHE.RB().ii(of(INGOT.getMaterialTag(t), 1))
-                .io(ROD_LONG.get(t, 1)).add(t.getId() + "_long_rod",baseDuration.applyAsLong(t) * 5, 16);
+                .io(ROD.get(t, 1), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
             } else if (t.has(GEM)) {
                 RecipeMaps.LATHE.RB().ii(of(GEM.getMaterialTag(t), 1))
-                .io(ROD_LONG.get(t, 1)).add(t.getId() + "_long_rod",baseDuration.applyAsLong(t) * 5, 16);
+                .io(ROD.get(t, 1), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
             }
         });
         SCREW.all().forEach(t -> {
