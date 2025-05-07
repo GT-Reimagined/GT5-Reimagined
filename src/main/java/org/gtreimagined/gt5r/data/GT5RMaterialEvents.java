@@ -1407,7 +1407,7 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC120.all().toArray(new Material[0]));
         GT5RMaterialTags.ELEC_CIRCUIT.add(Water, Materials.DistilledWater, Materials.SodiumBisulfate);
         GT5RMaterialTags.ELECSEPG.add(Materials.VanadiumMagnetite, Materials.Magnetite);
-        GT5RMaterialTags.ELECSEPI.add(Materials.YellowLimonite, Materials.BrownLimonite, Materials.Tin, Materials.Chromium, Materials.Ilmenite, Materials.Hematite, Materials.Pyrite, Materials.Glauconite, Materials.Nickel, Materials.Chromite, Materials.Pentlandite, Materials.Manganese);
+        GT5RMaterialTags.ELECSEPI.add(Materials.YellowLimonite, Materials.BrownLimonite, Materials.Tin, Materials.Ilmenite, Materials.Hematite, Materials.Pyrite, Materials.Glauconite, Materials.Nickel, Materials.Chromite, Materials.Pentlandite, Materials.Manganese);
         GT5RMaterialTags.ELECSEPN.add(Materials.Monazite, Materials.Bastnasite);
         GT5RMaterialTags.GRINDABLE.add(/* Paper, */Coal, Charcoal, Materials.Lignite, Materials.Lead, Materials.Tin, Materials.SolderingAlloy, Flint, Gold, Silver, Iron,
                 Materials.IronMagnetic, Materials.Steel, Materials.SteelMagnetic, Materials.Zinc, Materials.Antimony, Copper, Materials.AnnealedCopper, Materials.Bronze, Materials.Nickel, Materials.Invar,
