@@ -17,7 +17,6 @@ public class GT5RMaterialTypes {
     public static final MaterialTypeItem<?> CHAMBER = GTAPI.register(MaterialTypeItem.class, new MaterialTypeItem<>("chamber", 2, true, Ref.U * 7));
 
     public static void init(){
-        ROD.dependents(ROD_LONG);
         BOULE.setIgnoreTextureSets();
         CHAMBER.setIgnoreTextureSets();
         TURBINE_BLADE.setLang(m -> m.getDisplayNameString() + " Turbine Blade").unSplitName().setIgnoreTextureSets();
