@@ -6,6 +6,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
+import org.gtreimagined.gtlib.material.MaterialTags;
 
 import java.util.function.ToLongFunction;
 
@@ -21,10 +22,10 @@ public class LatheLoader {
         ROD.all().forEach(t -> {
             if (t.has(INGOT)) {
                 RecipeMaps.LATHE.RB().ii(of(INGOT.getMaterialTag(t), 1))
-                .io(ROD.get(t, 1), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
+                .io(ROD.get(t, 1), DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(t), 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
             } else if (t.has(GEM)) {
                 RecipeMaps.LATHE.RB().ii(of(GEM.getMaterialTag(t), 1))
-                .io(ROD.get(t, 1), DUST_SMALL.get(t, 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
+                .io(ROD.get(t, 1), DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(t), 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
             }
         });
         SCREW.all().forEach(t -> {
