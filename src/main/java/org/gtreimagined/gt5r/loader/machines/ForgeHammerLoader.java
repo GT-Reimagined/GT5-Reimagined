@@ -26,7 +26,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.FORGE_HAMMER;
 public class ForgeHammerLoader {
     public static void init() {
         ORE.all().forEach(m -> {
-            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1), crushed = CRUSHED.getMaterialIngredient(m, 1);
+            RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
             Material macerateInto = MACERATE_INTO.getMapping(m);
             ItemStack crushedStack = macerateInto.has(CRUSHED) ? CRUSHED.get(macerateInto,1) : DUST.get(macerateInto, 1);
             FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_ore",16, 10);
