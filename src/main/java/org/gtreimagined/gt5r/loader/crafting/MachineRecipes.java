@@ -650,7 +650,7 @@ public class MachineRecipes {
             add(ELECTRIC_TYPE_FILTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('H', hull)
-                            .put('C', TIER_CIRCUITS.apply(HV))
+                            .put('C', TIER_CIRCUITS.apply(MV))
                             .put('F', GT5RCovers.COVER_ITEM_FILTER.getItem())
                             .put('E', Tags.Items.CHESTS_WOODEN)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
