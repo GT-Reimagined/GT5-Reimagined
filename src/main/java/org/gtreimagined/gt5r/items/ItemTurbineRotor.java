@@ -42,7 +42,7 @@ public class ItemTurbineRotor extends MaterialTool {
     public Material getRodMaterial(){
         if (type == ToolTypes.TURBINE_ROTOR) return Materials.Titanium;
         if (type == ToolTypes.LARGE_TURBINE_ROTOR) return Materials.TungstenSteel;
-        if (type == ToolTypes.HUGE_TURBINE_ROTOR) return Materials.Americium;
+        if (type == ToolTypes.HUGE_TURBINE_ROTOR) return Materials.Adamantium;
         return Materials.Magnalium;
     }
 
