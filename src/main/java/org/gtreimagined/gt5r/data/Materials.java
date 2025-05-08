@@ -718,24 +718,6 @@ public class Materials {
     public static Material Lava = GTLibMaterials.Lava;
     public static Material Water = GTLibMaterials.Water;
 
-    // TODO go through the GT_Loader_Item_Block_And_Fluid and make sure all explicitly added fluids have the LIQUID tag
     public static void init() {
-        // TODO assign correct handle materials
-        // for (Material material : generated) {
-        // if (material == Blaze) {
-        // material.handleMaterial = "blaze";
-        // } /*else if (aMaterial.contains(SubTag.MAGICAL) &&
-        // aMaterial.contains(SubTag.CRYSTAL) && Utils.isModLoaded(MOD_ID_TC)) {
-        // aMaterial.mHandleMaterial = Thaumium;
-        // }*/ else if (material.getMass() > Element.Tc.getMass() * 2) {
-        // material.handleMaterial = Tungstensteel.;
-        // } else if (material.getMass() > Element.Tc.getMass()) {
-        // material.handleMaterial = Steel;
-        // } else {
-        // material.handleMaterial = Wood;
-        // }
-        // }
-        // If using small ore markers, every normal ore needs a small version. This
-        // greatly increases block usage
     }
 }
