@@ -1,23 +1,21 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.data.GTLibMaterials;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.BEDROCK_DRILL;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class BedrockDrillLoader {
     public static void init(){
@@ -27,7 +25,7 @@ public class BedrockDrillLoader {
         addBedrockDrillRecipe(Bauxite, 53, Ilmenite, Hematite, Alumina);
         ItemStack cobble = new ItemStack(Items.COBBLESTONE);
         cobble.setHoverName(Utils.literal("Various Cobblestone Types"));
-        BEDROCK_DRILL.RB().ii(Items.BEDROCK).fi(Lubricant.getLiquid(100)).io(cobble, DUST.get(GTLibMaterials.Bedrock, 1)).outputChances(9990, 10);
+        BEDROCK_DRILL.RB().ii(Items.BEDROCK).fi(Lubricant.getLiquid(100)).io(cobble, DUST.get(Bedrock, 1)).outputChances(9990, 10);
         addBedrockDrillRecipe(Cassiterite, 35, Molybdenite, Fluorite, Sperrylite, Apatite);
         addBedrockDrillRecipe(Chalcopyrite, 40, Pyrite, Cobaltite, Cadmium, Gold, Sperrylite, Indium);
         addBedrockDrillRecipe(Coal, 105, Lignite, Sulfur);
@@ -68,7 +66,7 @@ public class BedrockDrillLoader {
             } else continue;
             chances.add(byproductChance);
         }
-        rb.io(DUST.get(GTLibMaterials.Bedrock));
+        rb.io(DUST.get(Bedrock));
         chances.add(10);
         ItemStack cobble = new ItemStack(Items.COBBLESTONE);
         cobble.setHoverName(Utils.literal("Various Cobblestone Types"));

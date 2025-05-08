@@ -1,13 +1,6 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.data.GTTools;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
-import org.gtreimagined.gtlib.tool.IGTTool;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
@@ -20,19 +13,24 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
+import org.gtreimagined.gtlib.tool.IGTTool;
 
 import java.util.Map;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.GTTools.*;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Diamond;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
-import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
 import static org.gtreimagined.gtcore.data.GTCoreTools.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
 public class ElectricToolRecipes {
 

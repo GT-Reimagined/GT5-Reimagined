@@ -11,7 +11,6 @@ import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_SMALL;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;

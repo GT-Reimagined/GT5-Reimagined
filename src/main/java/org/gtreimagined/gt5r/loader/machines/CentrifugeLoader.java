@@ -16,7 +16,6 @@ import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static net.minecraft.world.item.Items.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.*;

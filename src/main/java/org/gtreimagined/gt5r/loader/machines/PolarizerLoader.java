@@ -1,13 +1,12 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import net.minecraft.world.item.Item;
+import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeBlock;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
-import net.minecraft.world.item.Item;
-import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class PolarizerLoader {

@@ -3,11 +3,21 @@ package org.gtreimagined.gt5r.blockentity.multi;
 import it.unimi.dsi.fastutil.Pair;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.fluids.FluidStack;
+import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gtlib.data.VanillaStoneTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -18,16 +28,6 @@ import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.TagUtils;
 import org.gtreimagined.gtlib.util.int3;
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
-import org.gtreimagined.gt5r.data.RecipeMaps;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -137,7 +137,7 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
                     else output = this.mainOutput;
                 } else {
                     if (level.getRandom().nextInt(1000) == 0){
-                        output = GTMaterialTypes.DUST.get(GTLibMaterials.Bedrock, 1);
+                        output = GTMaterialTypes.DUST.get(Materials.Bedrock, 1);
                     } else if (level.dimension().location().equals(Level.NETHER.location())){
                         output = new ItemStack(Items.NETHERRACK);
                     }

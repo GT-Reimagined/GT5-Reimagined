@@ -14,15 +14,6 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.pipe.types.Cable;
-import org.gtreimagined.gtlib.pipe.types.FluidPipe;
-import org.gtreimagined.gtlib.pipe.types.ItemPipe;
-import org.gtreimagined.gtlib.pipe.types.Wire;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiComponent;
@@ -33,6 +24,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.Cable;
+import org.gtreimagined.gtlib.pipe.types.FluidPipe;
+import org.gtreimagined.gtlib.pipe.types.ItemPipe;
+import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ import static org.gtreimagined.gtlib.integration.rei.REIUtils.toREIFLuidStack;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class MaterialTreeCategory implements DisplayCategory<MaterialTreeDisplay> {
-    protected static Renderer icon = EntryStacks.of(DUST.get(GTLibMaterials.Iron));
+    protected static Renderer icon = EntryStacks.of(DUST.get(Materials.Iron));
     private static final Component title = Utils.translatable(GT5RRef.ID + ".rei.tooltip.material_tree");
     static CategoryIdentifier<? extends MaterialTreeDisplay> id = CategoryIdentifier.of(GT5RRef.ID, "material_tree");
 

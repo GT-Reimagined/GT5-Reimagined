@@ -1,12 +1,12 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Water;
+import static org.gtreimagined.gt5r.data.Materials.Water;
 import static org.gtreimagined.gt5r.data.RecipeMaps.TREE_GROWTH_SIMULATOR;
 
 public class TreeGrowthSimulatorLoader {

@@ -1,24 +1,21 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.data.GTLibMaterials;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Bedrock;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Deepslate;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.ELECTROMAGNETIC_SEPARATOR;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class ElectromagneticSeparatorLoader {
     public static void init(){
         GT5RMaterialTags.ELECSEPI.all().forEach(m -> {
-            ELECTROMAGNETIC_SEPARATOR.RB().ii(DUST_PURE.getIngredient(m, 1)).io(DUST.get(m, 1), DUST_SMALL.get(GTLibMaterials.Iron, 1), NUGGET.get(GTLibMaterials.Iron, 1))
+            ELECTROMAGNETIC_SEPARATOR.RB().ii(DUST_PURE.getIngredient(m, 1)).io(DUST.get(m, 1), DUST_SMALL.get(Materials.Iron, 1), NUGGET.get(Materials.Iron, 1))
                     .outputChances(1.0, 0.4, 0.2)
                     .add(m.getId() + "_iron", 400, 24);
         });
         GT5RMaterialTags.ELECSEPG.all().forEach(m -> {
-            ELECTROMAGNETIC_SEPARATOR.RB().ii(DUST_PURE.getIngredient(m, 1)).io(DUST.get(m, 1), DUST_SMALL.get(GTLibMaterials.Gold, 1), NUGGET.get(GTLibMaterials.Gold, 1))
+            ELECTROMAGNETIC_SEPARATOR.RB().ii(DUST_PURE.getIngredient(m, 1)).io(DUST.get(m, 1), DUST_SMALL.get(Materials.Gold, 1), NUGGET.get(Materials.Gold, 1))
                     .outputChances(1.0, 0.4, 0.2)
                     .add(m.getId() + "_gold", 400, 24);
         });

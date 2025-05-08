@@ -1,25 +1,10 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gt5r.block.BlockFakeLava;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.block.BlockBasic;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.pipe.types.Cable;
-import org.gtreimagined.gtlib.pipe.types.FluidPipe;
-import org.gtreimagined.gtlib.pipe.types.ItemPipe;
-import org.gtreimagined.gtlib.pipe.types.Wire;
-import org.gtreimagined.gtlib.texture.Texture;
-import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.DyeColor;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import org.gtreimagined.gt5r.GT5RRef;
@@ -31,11 +16,20 @@ import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.block.BlockFakeCasing;
+import org.gtreimagined.gt5r.block.BlockFakeLava;
 import org.gtreimagined.gt5r.block.BlockMiningPipe;
 import org.gtreimagined.gt5r.block.BlockPowderBarrel;
 import org.gtreimagined.gt5r.block.BlockSidedCasing;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.data.GTLibMaterials;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.pipe.types.Cable;
+import org.gtreimagined.gtlib.pipe.types.FluidPipe;
+import org.gtreimagined.gtlib.pipe.types.ItemPipe;
+import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.texture.Texture;
 
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class GT5RBlocks {
@@ -132,12 +126,12 @@ public class GT5RBlocks {
     public static final BlockCasing CASING_ZPM = new BlockCasing(GT5RRef.ID, "casing_zpm");
     public static final BlockCasing CASING_UV = new BlockCasing(GT5RRef.ID, "casing_uv");
     public static final BlockCasing CASING_UHV = new BlockCasing(GT5RRef.ID, "casing_uhv");
-    public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GT5RRef.ID, GTLibMaterials.Wood, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+    public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Wood, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     public static final BlockColoredWall STEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Steel);
     public static final BlockColoredWall INVAR_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Invar);
     public static final BlockColoredWall STAINLESS_STEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.StainlessSteel);
     public static final BlockColoredWall TITANIUM_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Titanium);
-    public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GT5RRef.ID, GTLibMaterials.Netherite);
+    public static final BlockColoredWall NETHERITE_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Netherite);
     public static final BlockColoredWall TUNGSTENSTEEL_WALL = new BlockColoredWall(GT5RRef.ID, Materials.TungstenSteel);
     public static final BlockColoredWall TUNGSTEN_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Tungsten);
     public static final BlockColoredWall ADAMANTIUM_WALL = new BlockColoredWall(GT5RRef.ID, Materials.Adamantium);
@@ -211,10 +205,10 @@ public class GT5RBlocks {
     public static final Cable<?> CABLE_LEAD = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Lead, 2, Tier.LV).amps(2));
     public static final Cable<?> CABLE_TIN = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Tin, 1, Tier.LV).amps(1));
     public static final Cable<?> CABLE_ZINC = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Zinc, 1, Tier.LV).amps(1));
-    public static final Cable<?> CABLE_IRON = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, GTLibMaterials.Iron, 3, Tier.MV).amps(2)); //M);
+    public static final Cable<?> CABLE_IRON = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Iron, 3, Tier.MV).amps(2)); //M);
     public static final Cable<?> CABLE_NICKEL = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Nickel, 3, Tier.MV).amps(3));
     public static final Cable<?> CABLE_CUPRONICKEL = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Cupronickel, 3, Tier.MV).amps(2));
-    public static final Cable<?> CABLE_COPPER = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, GTLibMaterials.Copper, 2, Tier.MV).amps(1));
+    public static final Cable<?> CABLE_COPPER = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Copper, 2, Tier.MV).amps(1));
     public static final Cable<?> CABLE_ANNEALED_COPPER = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.AnnealedCopper, 1, Tier.MV).amps(1));
     public static final Cable<?> CABLE_KANTHAL = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Materials.Kanthal, 3, Tier.HV).amps(4)); //H);
     public static final Cable<?> CABLE_GOLD = GTAPI.register(Cable.class, new Cable<>(GT5RRef.ID, Gold, 2, Tier.HV).amps(3));
@@ -242,10 +236,10 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_LEAD = GTAPI.register(Wire.class,  new Wire<>(GT5RRef.ID, Materials.Lead, 4, Tier.LV).amps(2));
     public static final Wire<?> WIRE_TIN = GTAPI.register(Wire.class,  new Wire<>(GT5RRef.ID, Materials.Tin, 2, Tier.LV).amps(1));
     public static final Wire<?> WIRE_ZINC = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Zinc, 2, Tier.LV).amps(1));
-    public static final Wire<?> WIRE_IRON = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, GTLibMaterials.Iron, 6, Tier.MV).amps(2)); //M);
+    public static final Wire<?> WIRE_IRON = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Iron, 6, Tier.MV).amps(2)); //M);
     public static final Wire<?> WIRE_NICKEL = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Nickel, 6, Tier.MV).amps(3));
     public static final Wire<?> WIRE_CUPRONICKEL = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Cupronickel, 6, Tier.MV).amps(2));
-    public static final Wire<?> WIRE_COPPER = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, GTLibMaterials.Copper, 4, Tier.MV).amps(1));
+    public static final Wire<?> WIRE_COPPER = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Copper, 4, Tier.MV).amps(1));
     public static final Wire<?> WIRE_ANNEALED_COPPER = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.AnnealedCopper, 2, Tier.MV).amps(1));
     public static final Wire<?> WIRE_KANTHAL = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Materials.Kanthal, 6, Tier.HV).amps(4)); //H);
     public static final Wire<?> WIRE_GOLD = GTAPI.register(Wire.class, new Wire<>(GT5RRef.ID, Gold, 4, Tier.HV).amps(3));
@@ -268,8 +262,8 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_NAQUADAH_ALLOY = GTAPI.register(Wire.class,new Wire<>(GT5RRef.ID, Materials.NaquadahAlloy, 8, Tier.ZPM).amps(2));
     public static final Wire<?> WIRE_DURANIUM = GTAPI.register(Wire.class,new Wire<>(GT5RRef.ID, Materials.Duranium, 16, Tier.ZPM).amps(1));
     public static final Wire<?> WIRE_SUPERCONDUCTOR = (Wire<?>) GTAPI.register(Wire.class,new Wire<>(GT5RRef.ID, Materials.Superconductor, 1, Tier.UHV).amps(4)).loss(0.2); //MA);
-    public static final FluidPipe<?> FLUID_PIPE_WOOD = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, GTLibMaterials.Wood, 350, false).caps(1).pressures(getPressures(150)));
-    public static final FluidPipe<?> FLUID_PIPE_COPPER = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, GTLibMaterials.Copper, 1696, true).caps(1).pressures(getPressures(300)));
+    public static final FluidPipe<?> FLUID_PIPE_WOOD = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Wood, 350, false).caps(1).pressures(getPressures(150)));
+    public static final FluidPipe<?> FLUID_PIPE_COPPER = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Copper, 1696, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_BRONZE = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5RRef.ID, Materials.Bronze, 1696, true).caps(1).pressures(getPressures(450)));
     // it's not in gt6, not sure whether to keep it or not
     //public static final FluidPipe<?> FLUID_PIPE_BISMUTH_BRONZE = GTAPI.register(FluidPipe.class, new FluidPipe<>(GT5RRef.ID, BismuthBronze, 950, true).caps(1).pressures(800));

@@ -1,19 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import com.google.common.collect.ImmutableSet;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.item.ItemBasic;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.material.MaterialTypeBlock;
-import org.gtreimagined.gtlib.pipe.PipeItemBlock;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.pipe.types.Cable;
-import org.gtreimagined.gtlib.pipe.types.Wire;
-import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
-import org.gtreimagined.gtlib.util.RegistryUtils;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -39,16 +26,22 @@ import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.machine.HopperMachine;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.MaterialTypeBlock;
+import org.gtreimagined.gtlib.pipe.PipeItemBlock;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.Cable;
+import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.Arrays;
 
-import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.Ref.L9;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.machine.Tier.*;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.ofObject;
 import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.HULL;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -57,6 +50,12 @@ import static org.gtreimagined.gt5r.data.TierMaps.*;
 import static org.gtreimagined.gt5r.loader.crafting.Parts.fromTier;
 import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.Ref.L9;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.machine.Tier.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.ofObject;
 
 public class AssemblerLoader {
     public static void init() {

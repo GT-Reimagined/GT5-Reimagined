@@ -1,18 +1,5 @@
 package org.gtreimagined.gt5r.loader;
 
-import org.gtreimagined.gt5r.GT5RRef;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.GTLibConfig;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.event.GTWorldGenEvent;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.util.TagUtils;
-import org.gtreimagined.gtlib.worldgen.stonelayer.StoneLayerOre;
-import org.gtreimagined.gtlib.worldgen.bedrockore.BedrockVein;
-import org.gtreimagined.gtlib.worldgen.stonelayer.StoneLayerBuilder;
-import org.gtreimagined.gtlib.worldgen.smallore.SmallOreBuilder;
-import org.gtreimagined.gtlib.worldgen.vanillaore.VanillaVeinBuilder;
-import org.gtreimagined.gtlib.worldgen.vein.VeinBuilder;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -20,23 +7,35 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.worldgen.OilSpoutFluid;
 import org.gtreimagined.gt5r.worldgen.OilSpoutSavedData;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTLibConfig;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.event.GTWorldGenEvent;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.TagUtils;
+import org.gtreimagined.gtlib.worldgen.bedrockore.BedrockVein;
+import org.gtreimagined.gtlib.worldgen.smallore.SmallOreBuilder;
+import org.gtreimagined.gtlib.worldgen.stonelayer.StoneLayerBuilder;
+import org.gtreimagined.gtlib.worldgen.stonelayer.StoneLayerOre;
+import org.gtreimagined.gtlib.worldgen.vanillaore.VanillaVeinBuilder;
+import org.gtreimagined.gtlib.worldgen.vein.VeinBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.Ref.*;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE_STONE;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.data.VanillaStoneTypes.*;
 import static net.minecraft.world.level.Level.END;
 import static net.minecraft.world.level.Level.NETHER;
 import static net.minecraft.world.level.Level.OVERWORLD;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtcore.data.GTCoreBlocks.*;
+import static org.gtreimagined.gtlib.Ref.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE_STONE;
+import static org.gtreimagined.gtlib.data.VanillaStoneTypes.*;
 
 public class WorldGenLoader {
 

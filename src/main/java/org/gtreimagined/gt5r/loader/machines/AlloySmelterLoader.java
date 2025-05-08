@@ -1,8 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -13,16 +11,17 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.material.MaterialTags.RUBBERTOOLS;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.ALLOY_SMELTER;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.RUBBERTOOLS;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class AlloySmelterLoader {
 

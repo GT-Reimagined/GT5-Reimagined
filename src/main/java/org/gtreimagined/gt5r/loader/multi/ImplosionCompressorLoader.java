@@ -1,14 +1,13 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Diamond;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.IMPLOSION_COMPRESSOR;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class ImplosionCompressorLoader {
     public static void init(){

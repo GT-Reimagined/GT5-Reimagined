@@ -1,14 +1,5 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.ore.CobbleStoneType;
-import org.gtreimagined.gtlib.ore.StoneType;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -20,12 +11,20 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.ore.StoneType;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
 import java.util.function.ToLongFunction;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.CUTTER;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class CutterLoader {
     public static void init() {
@@ -35,7 +34,7 @@ public class CutterLoader {
         };
         for (Material mat : GTMaterialTypes.PLATE.all()) {
             int multiplier = 1;//mat.has(GTMaterialTypes.GEM) ? 8 : 3;
-            if (mat == GTLibMaterials.Diamond || mat == GTLibMaterials.NetherizedDiamond)
+            if (mat == Diamond || mat == NetherizedDiamond)
                 multiplier = 5;
             if (mat.has(GEM)){
                 addCutterRecipe(GEM.getMaterialTag(mat), PLATE.get(mat, 1), "plate_" + mat.getId() + "_from_gem", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);

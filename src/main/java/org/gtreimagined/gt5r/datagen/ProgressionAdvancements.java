@@ -1,8 +1,5 @@
 package org.gtreimagined.gt5r.datagen;
 
-import org.gtreimagined.gtlib.Data;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -12,21 +9,23 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.Data;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.machine.types.Machine;
 
 import java.util.List;
 import java.util.function.Consumer;
 
-import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gt5r.data.GT5RMachines.*;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.datagen.providers.GTAdvancementProvider.*;
 import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
 import static org.gtreimagined.gtlib.util.TagUtils.getForgelikeItemTag;
 import static org.gtreimagined.gtlib.util.Utils.hasItem;
 import static org.gtreimagined.gtlib.util.Utils.hasItems;
-import static org.gtreimagined.gt5r.data.GT5RMachines.*;
-import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> {
 

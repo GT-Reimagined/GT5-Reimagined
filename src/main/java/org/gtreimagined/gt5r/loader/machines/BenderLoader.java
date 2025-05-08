@@ -1,10 +1,5 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
@@ -12,12 +7,16 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
 import java.util.function.ToLongFunction;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.BENDER;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class BenderLoader {
     public static void init() {
@@ -49,7 +48,7 @@ public class BenderLoader {
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
         BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), SELECTOR_TAG_INGREDIENTS.get(1)).io(GT5RItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(GTLibMaterials.Iron, 3), SELECTOR_TAG_INGREDIENTS.get(3)).io(new ItemStack(Items.BUCKET)).add("bucket", 200, 16);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Iron, 3), SELECTOR_TAG_INGREDIENTS.get(3)).io(new ItemStack(Items.BUCKET)).add("bucket", 200, 16);
         BENDER.RB().ii(RecipeIngredient.of(GTCoreTags.INGOTS_MIXED_METAL, 1).setIgnoreNbt(), SELECTOR_TAG_INGREDIENTS.get(1)).io(GTCoreItems.AdvancedAlloy).add("advanced_alloy", 100, 8);
     }
 }

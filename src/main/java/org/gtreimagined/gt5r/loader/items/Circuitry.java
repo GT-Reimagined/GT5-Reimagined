@@ -1,16 +1,6 @@
 package org.gtreimagined.gt5r.loader.items;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.item.ItemBasic;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.SubTag;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -25,17 +15,21 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.data.ForgeTags;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.SubTag;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.function.Consumer;
 
-import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.machine.Tier.LV;
-import static org.gtreimagined.gtlib.machine.Tier.MV;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrb;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrbCluster;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.SOLDER;
@@ -45,6 +39,11 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gt5r.data.TierMaps.CABLE_GETTER;
 import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.machine.Tier.LV;
+import static org.gtreimagined.gtlib.machine.Tier.MV;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class Circuitry {
     public static void loadCraftingRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
@@ -240,8 +239,8 @@ public class Circuitry {
     }
 
     private static void circuitParts(){
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(GTLibMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lapis, 1), DUST.getMaterialIngredient(GTLibMaterials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts_1", 32, 64);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(Materials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lapis, 1), DUST.getMaterialIngredient(Materials.Glowstone, 1)).io(new ItemStack(AdvCircuitParts, 2)).add("advanced_circuit_parts_1", 32, 64);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Niobium, 1), WIRE_FINE.getMaterialIngredient(Platinum, 1)).io(new ItemStack(ComplexCircuitParts, 2)).add("complex_circuit_parts", 32, 256);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(Tin.getLiquid(L / 4)).io(new ItemStack(NandChip)).add("nand_chip_tin_poly", 32, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(NandChip)).add("nand_chip_soldering_alloy_poly", 32, 16);

@@ -1,17 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import org.gtreimagined.gtlib.block.BlockBasic;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
-import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.machine.MachineState;
-import org.gtreimagined.gtlib.machine.event.IMachineEvent;
-import org.gtreimagined.gtlib.machine.event.MachineEvent;
-import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -24,11 +13,22 @@ import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.item.ItemSelectorTag;
+import org.gtreimagined.gtlib.block.BlockBasic;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.machine.event.MachineEvent;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.texture.Texture;
 
-import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 import static org.gtreimagined.gt5r.data.Materials.Steam;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityLargeBoiler> {
 
@@ -49,7 +49,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 if (tGeneratedEU > 0 && !simulate) {
                     int amount = (tGeneratedEU + 160) / 160;
                     fluidHandler.ifPresent(f -> {
-                        if (f.drainInput(GTLibMaterials.Water.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount) {
+                        if (f.drainInput(Materials.Water.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount || f.drainInput(DistilledWater.getLiquid(amount), FluidAction.EXECUTE).getAmount() == amount) {
                             f.addOutputs(Steam.getGas(tGeneratedEU));
                             tile.onMachineEvent(MachineEvent.FLUIDS_OUTPUTTED);
                         } else {

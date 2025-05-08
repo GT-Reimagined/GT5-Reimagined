@@ -1,17 +1,5 @@
 package org.gtreimagined.gt5r.integration;
 
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.GTMod;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.VanillaStoneTypes;
-import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.event.MaterialEvent;
-import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
-import org.gtreimagined.gtlib.registration.RegistrationEvent;
-import org.gtreimagined.gtlib.util.RegistryUtils;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -26,16 +14,26 @@ import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTMod;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.ForgeTags;
+import org.gtreimagined.gtlib.data.VanillaStoneTypes;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.event.MaterialEvent;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.function.Consumer;
 
-import static org.gtreimagined.gt5r.data.Materials.Basalt;
-import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class AppliedEnergisticsRegistrar extends GTMod {
 

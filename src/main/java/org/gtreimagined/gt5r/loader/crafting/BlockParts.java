@@ -1,16 +1,6 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.data.GTTools;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.pipe.PipeItemBlock;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.pipe.types.PipeType;
-import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -33,17 +23,26 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.pipe.PipeItemBlock;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.PipeType;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.GTTools.*;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.HULL;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.TierMaps.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class BlockParts {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {

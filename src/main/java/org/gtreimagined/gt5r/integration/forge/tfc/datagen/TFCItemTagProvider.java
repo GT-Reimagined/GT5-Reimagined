@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
 
+import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
@@ -9,11 +10,9 @@ import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.data.ToolData;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.TagUtils;
-import net.minecraft.resources.ResourceLocation;
 
-import static org.gtreimagined.gtlib.data.GTTools.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class TFCItemTagProvider extends GTItemTagProvider {
     public TFCItemTagProvider(String providerDomain, String providerName, boolean replace, GTBlockTagProvider p) {

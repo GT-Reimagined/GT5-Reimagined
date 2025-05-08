@@ -1,18 +1,17 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
-import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Water;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.GT5RItems.EnergyCrystal;
 import static org.gtreimagined.gt5r.data.GT5RItems.RawLapotronCrustal;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.AUTOCLAVE;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class AutoclaveLoader {
     public static void init() {

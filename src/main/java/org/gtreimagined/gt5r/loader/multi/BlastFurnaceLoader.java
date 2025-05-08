@@ -1,31 +1,28 @@
 package org.gtreimagined.gt5r.loader.multi;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
-import static org.gtreimagined.gtlib.material.MaterialTags.DIRECT_SMELT_INTO;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.E_BLAST_FURNACE;
 import static org.gtreimagined.gt5r.data.RecipeMaps.PRIMITIVE_BLAST_FURNACE;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.DIRECT_SMELT_INTO;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class BlastFurnaceLoader {
     public static int mixedOreYield = GT5RRef.mixedOreYieldsTwoThirdsPureOre ? 2 : 3;
 
     public static void init() {
         /* PRIMITIVE */
-        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(GTLibMaterials.Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), DUST_SMALL.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
         DUST.all().forEach(m -> {
             if (m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GT5RMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(INGOT_HOT) ? INGOT_HOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
@@ -57,7 +54,7 @@ public class BlastFurnaceLoader {
                 .io(INGOT.get(AnnealedCopper))
                 .add("annealed_copper_ingot", 25 * 20, 120);
         /* Steel */
-        E_BLAST_FURNACE.RB().temperature(1000).ii(INGOT.getMaterialIngredient(GTLibMaterials.Iron, 1))
+        E_BLAST_FURNACE.RB().temperature(1000).ii(INGOT.getMaterialIngredient(Iron, 1))
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), DUST_SMALL.get(DarkAsh))
                 .add("steel_ingot", 500, 120);

@@ -1,14 +1,13 @@
 package org.gtreimagined.gt5r.loader;
 
-import org.gtreimagined.gtlib.datagen.GTLoot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gtlib.datagen.GTLoot;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Emerald;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class LootLoader {
     public static void init(){

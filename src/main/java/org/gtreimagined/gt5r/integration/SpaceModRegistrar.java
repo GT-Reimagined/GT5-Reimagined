@@ -1,5 +1,10 @@
 package org.gtreimagined.gt5r.integration;
 
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraftforge.api.distmarker.Dist;
+import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
@@ -10,15 +15,10 @@ import org.gtreimagined.gtlib.ore.StoneType;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.util.RegistryUtils;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraftforge.api.distmarker.Dist;
-import org.gtreimagined.gt5r.GT5RRef;
 
+import static org.gtreimagined.gt5r.data.Materials.Diamond;
+import static org.gtreimagined.gt5r.data.Materials.Iron;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Diamond;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 
 public class SpaceModRegistrar extends GTMod {
     public static SpaceModRegistrar INSTANCE;

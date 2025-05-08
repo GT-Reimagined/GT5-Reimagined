@@ -2,22 +2,6 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.data.GTTools;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.material.MaterialType;
-import org.gtreimagined.gtlib.material.MaterialTypeItem;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.pipe.types.Cable;
-import org.gtreimagined.gtlib.pipe.types.FluidPipe;
-import org.gtreimagined.gtlib.pipe.types.ItemPipe;
-import org.gtreimagined.gtlib.pipe.types.Wire;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
-import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
-import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -32,15 +16,29 @@ import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.MaterialType;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.Cable;
+import org.gtreimagined.gtlib.pipe.types.FluidPipe;
+import org.gtreimagined.gtlib.pipe.types.ItemPipe;
+import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.Ref.U;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.TierMaps.TIER_MATERIALS;
+import static org.gtreimagined.gtlib.Ref.U;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class ArcFurnaceLoader {
     public static void init() {
@@ -88,7 +86,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(b.asItem(), of(b.getMaterial(), 4f));
             }
         });
-        GTAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
+        GTAPI.all(FluidPipe.class).stream().filter(t -> t.getMaterial() != Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }
@@ -105,7 +103,7 @@ public class ArcFurnaceLoader {
                 addRecyclingRecipe(t.getBlockItem(PipeSize.HUGE), of(t.getMaterial(), 12f));
             }
         });
-        GTAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != GTLibMaterials.Wood && t.getMaterial().has(DUST)).forEach(t -> {
+        GTAPI.all(ItemPipe.class).stream().filter(t -> t.getMaterial() != Wood && t.getMaterial().has(DUST)).forEach(t -> {
             if (t.getSizes().contains(PipeSize.TINY)){
                 addRecyclingRecipe(t.getBlockItem(PipeSize.TINY), of(t.getMaterial(), 0.5f));
             }

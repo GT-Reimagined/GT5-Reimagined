@@ -1,8 +1,5 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -15,14 +12,16 @@ import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.GTCoreConfig;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.GTTools.HAMMER;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Coal;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTTools.HAMMER;
 
 public class VanillaExtensions {
     public static void loadRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider) {

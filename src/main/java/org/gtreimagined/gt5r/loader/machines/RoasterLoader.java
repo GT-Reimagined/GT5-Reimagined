@@ -2,11 +2,9 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
-import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 
 public class RoasterLoader {
     public static void init(){

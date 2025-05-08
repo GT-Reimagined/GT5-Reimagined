@@ -1,10 +1,5 @@
 package org.gtreimagined.gt5r.datagen;
 
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.VanillaStoneTypes;
-import org.gtreimagined.gtlib.datagen.providers.GTBlockLootProvider;
-import org.gtreimagined.gtlib.ore.CobbleStoneType;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
@@ -21,10 +16,15 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.VanillaStoneTypes;
+import org.gtreimagined.gtlib.datagen.providers.GTBlockLootProvider;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
 
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.CRUSHED;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.RAW_ORE;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 
 public class GT5RBlockLootProvider extends GTBlockLootProvider {
     public GT5RBlockLootProvider(String providerDomain, String providerName) {

@@ -1,15 +1,6 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.ForgeTags;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.pipe.types.ItemPipe;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -19,15 +10,22 @@ import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.data.ForgeTags;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.ItemPipe;
+import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.GTTools.*;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.CHAMBER;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class MaterialCrafting {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {

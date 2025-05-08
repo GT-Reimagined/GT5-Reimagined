@@ -1,5 +1,14 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gtcore.block.RedstoneWire;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
@@ -11,27 +20,16 @@ import org.gtreimagined.gtlib.pipe.types.ItemPipe;
 import org.gtreimagined.gtlib.pipe.types.PipeType;
 import org.gtreimagined.gtlib.pipe.types.Wire;
 import org.gtreimagined.gtlib.tool.GTToolType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import org.gtreimagined.gt5r.data.GT5RItems;
-import org.gtreimagined.gt5r.data.GT5RMaterialTags;
-import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gtcore.block.RedstoneWire;
-import org.gtreimagined.gtcore.data.GTCoreItems;
-import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
 import java.util.function.ToLongFunction;
 
-import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.data.RecipeMaps.EXTRUDER;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Endstone;
+import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.RUBBERTOOLS;
 import static org.gtreimagined.gtlib.material.MaterialTags.WOOD;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
-import static org.gtreimagined.gt5r.data.Materials.Glass;
-import static org.gtreimagined.gt5r.data.Materials.Obsidian;
-import static org.gtreimagined.gt5r.data.RecipeMaps.EXTRUDER;
 
 public class ExtruderLoader {
     public static void init() {

@@ -14,11 +14,6 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -31,6 +26,10 @@ import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +128,7 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         widgets.add(Widgets.createSlot(xy(25, 93, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, DUST_IMPURE.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(25, 111, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST.get(display.byProduct1),1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(29, 26, bounds)).entries(ofMachine(GT5RMachines.ORE_WASHER)).markInput().disableBackground());
-        widgets.add(Widgets.createSlot(xy(50, 26, bounds)).entries(ofFluid(GTLibMaterials.Water, 1000)).markInput().disableBackground());
+        widgets.add(Widgets.createSlot(xy(50, 26, bounds)).entries(ofFluid(Materials.Water, 1000)).markInput().disableBackground());
         widgets.add(Widgets.createSlot(xy(72, 26, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_PURIFIED.get(display.ore, 1)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(90, 26, bounds)).entries(List.of(EntryStack.of(VanillaEntryTypes.ITEM, new ItemStack(DUST_TINY.get(display.byProduct1),3)))).markOutput().disableBackground());
         widgets.add(Widgets.createSlot(xy(120, 48, bounds)).entries(ofMachine(GT5RMachines.MACERATOR)).markInput().disableBackground());
@@ -190,11 +189,11 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         Item dust, nugget;
         List<Widget> widgets = new ArrayList<>();
         if(display.sepMode == OreProcessingDisplay.SepMode.IRON){
-            dust = DUST_SMALL.get(GTLibMaterials.Iron);
-            nugget = NUGGET.get(GTLibMaterials.Iron);
+            dust = DUST_SMALL.get(Materials.Iron);
+            nugget = NUGGET.get(Materials.Iron);
         } else if(display.sepMode == OreProcessingDisplay.SepMode.GOLD){
-            dust = DUST_SMALL.get(GTLibMaterials.Gold);
-            nugget = NUGGET.get(GTLibMaterials.Gold);
+            dust = DUST_SMALL.get(Materials.Gold);
+            nugget = NUGGET.get(Materials.Gold);
         }else{
             dust = DUST_SMALL.get(Materials.Neodymium);
             nugget = NUGGET.get(Materials.Neodymium);

@@ -1,13 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.item.ItemBasic;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.SubTag;
-import org.gtreimagined.gtlib.pipe.PipeItemBlock;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -16,12 +9,19 @@ import org.apache.commons.lang3.function.TriFunction;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.SubTag;
+import org.gtreimagined.gtlib.pipe.PipeItemBlock;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.GEM;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Copper;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class TierMaps {
@@ -45,11 +45,11 @@ public class TierMaps {
         {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, Materials.WroughtIron);
-            builder.put(Tier.LV, Materials.Steel);
+            builder.put(Tier.LV, Steel);
             builder.put(Tier.MV, Materials.Aluminium);
-            builder.put(Tier.HV, Materials.StainlessSteel);
-            builder.put(Tier.EV, Materials.Titanium);
-            builder.put(Tier.IV, Materials.TungstenSteel);
+            builder.put(Tier.HV, StainlessSteel);
+            builder.put(Tier.EV, Titanium);
+            builder.put(Tier.IV, TungstenSteel);
             builder.put(LUV, Materials.Chromium);
             builder.put(ZPM, Materials.Iridium);
             builder.put(UV, Materials.Osmium);
@@ -60,11 +60,11 @@ public class TierMaps {
         {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
             builder.put(Tier.ULV, Copper);
-            builder.put(Tier.LV, Materials.Bronze);
-            builder.put(Tier.MV, Materials.Steel);
-            builder.put(Tier.HV, Materials.StainlessSteel);
-            builder.put(Tier.EV, Materials.Titanium);
-            builder.put(Tier.IV, Materials.TungstenSteel);
+            builder.put(Tier.LV, Bronze);
+            builder.put(Tier.MV, Steel);
+            builder.put(Tier.HV, StainlessSteel);
+            builder.put(Tier.EV, Titanium);
+            builder.put(Tier.IV, TungstenSteel);
             TIER_PIPE_MATERIAL = builder.build();
         }
 
@@ -164,12 +164,12 @@ public class TierMaps {
         }*/
         {
             ImmutableMap.Builder<Tier, Material> builder = ImmutableMap.builder();
-            builder.put(Tier.ULV, Materials.Bronze);
+            builder.put(Tier.ULV, Bronze);
             builder.put(Tier.LV, Materials.Tin);
-            builder.put(Tier.MV, Materials.Bronze);
-            builder.put(Tier.HV, Materials.Steel);
-            builder.put(Tier.EV, Materials.StainlessSteel);
-            builder.put(Tier.IV, Materials.TungstenSteel);
+            builder.put(Tier.MV, Bronze);
+            builder.put(Tier.HV, Steel);
+            builder.put(Tier.EV, StainlessSteel);
+            builder.put(Tier.IV, TungstenSteel);
             TIER_ROTORS = builder.build();
         }
         {

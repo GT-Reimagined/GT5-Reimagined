@@ -1,28 +1,25 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Data;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.GTTools;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.material.SubTag;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
+import org.gtreimagined.gtlib.Data;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.SubTag;
 
 import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gt5r.data.Materials.Basalt;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.material.MaterialTags.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.ALLOY;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class GT5RMaterialEvents {
     public static void onMaterialEvent(GT5RMaterialEvent event){
@@ -1555,7 +1552,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Gold).flags(FOIL, ROD_LONG, WIRE_FINE);
         event.setMaterial(Iron).flags(RING, ROD_LONG, FRAME, GEAR_SMALL);
         event.setMaterial(Wood).flags(FRAME);
-        event.setMaterial(GTLibMaterials.Netherite).asMetal(2246, 1300, RING);
+        event.setMaterial(Netherite).asMetal(2246, 1300, RING);
         event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Materials.Lazurite, 12, Materials.Sodalite, 2, Materials.Pyrite, 1, Materials.Calcite, 1));
         event.setMaterial(Prismarine).mats(of(Materials.Potassium, 2, Materials.Oxygen, 8, Materials.Manganese, 1, Materials.Silicon, 5));
         event.setMaterial(Redstone).mats(of(Materials.Silicon, 1, Materials.Pyrite, 5, Materials.Ruby, 1, Materials.Mercury, 3)).asFluid(0, MaterialTags.MELTING_POINT.getInt(Redstone));//.setOreMulti(4);

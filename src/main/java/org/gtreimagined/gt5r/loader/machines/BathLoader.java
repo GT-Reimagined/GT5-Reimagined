@@ -1,16 +1,5 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTypeBlock;
-import org.gtreimagined.gtlib.material.MaterialTypeItem;
-import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
-import org.gtreimagined.gtlib.util.RegistryUtils;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
@@ -23,31 +12,41 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTypeBlock;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 
-import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.Ref.U;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.BATH_MERCURY;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.BATH_PERSULFATE;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.BATH;
+import static org.gtreimagined.gtlib.Ref.L;
+import static org.gtreimagined.gtlib.Ref.U;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class BathLoader {
     public static void init() {
         BATH.RB()
-                .ii(RecipeIngredient.of(GTMaterialTypes.DUST.get(GTLibMaterials.Wood),1))
-                .fi(GTLibMaterials.Water.getLiquid(125))
+                .ii(RecipeIngredient.of(GTMaterialTypes.DUST.get(Wood),1))
+                .fi(Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
                 .add("paper",16);
         BATH.RB()
                 .ii(RecipeIngredient.of(Items.SUGAR_CANE,1))
-                .fi(GTLibMaterials.Water.getLiquid(125))
+                .fi(Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
                 .add("paper_1",16);
         BATH.RB()
@@ -153,7 +152,7 @@ public class BathLoader {
             BATH.RB()
                     .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED.get(main),1))
                     .fi(Mercury.getLiquid(1000))
-                    .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(GTLibMaterials.Stone)))
+                    .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(Materials.Stone)))
                     .outputChances(1.0, 0.7, 1.0)
                     .add("mercury_" + main.getId(),40*20));
     }
@@ -162,7 +161,7 @@ public class BathLoader {
                 BATH.RB()
                         .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED.get(main),1))
                         .fi(SodiumPersulfateSolution.getLiquid(1000))
-                        .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(GTLibMaterials.Stone)))
+                        .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(Materials.Stone)))
                         .outputChances(1.0, 0.7, 1.0)
                         .add("persulfate_"+main.getId(),40*20));
     }

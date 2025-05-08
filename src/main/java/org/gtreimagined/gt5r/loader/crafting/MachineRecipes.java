@@ -1,18 +1,6 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.item.ItemBasic;
-import org.gtreimagined.gtlib.item.ItemCover;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.pipe.PipeSize;
-import org.gtreimagined.gtlib.pipe.types.Wire;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -41,22 +29,33 @@ import org.gtreimagined.gtcore.machine.LockerMachine;
 import org.gtreimagined.gtcore.machine.MassStorageMachine;
 import org.gtreimagined.gtcore.machine.MultiblockTankMachine;
 import org.gtreimagined.gtcore.machine.WorkbenchMachine;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.item.ItemBasic;
+import org.gtreimagined.gtlib.item.ItemCover;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.pipe.PipeSize;
+import org.gtreimagined.gtlib.pipe.types.Wire;
 
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gtlib.data.GTTools.*;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryEnergyOrb;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.TierMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class MachineRecipes {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {

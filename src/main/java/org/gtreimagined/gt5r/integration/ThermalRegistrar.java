@@ -3,7 +3,6 @@ package org.gtreimagined.gt5r.integration;
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
-import static org.gtreimagined.gtlib.data.GTLibMaterials.EnderPearl;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.loader.multi.BlastFurnaceLoader.addBlastAlloyRecipes;
 

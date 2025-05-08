@@ -1,18 +1,5 @@
 package org.gtreimagined.gt5r.loader.machines;
 
-import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTLibMaterials;
-import org.gtreimagined.gtlib.data.VanillaStoneTypes;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
-import org.gtreimagined.gtlib.ore.BlockOreStone;
-import org.gtreimagined.gtlib.ore.CobbleStoneType;
-import org.gtreimagined.gtlib.ore.StoneType;
-import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
-import org.gtreimagined.gtlib.recipe.map.RecipeMap;
-import org.gtreimagined.gtlib.util.RegistryUtils;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
@@ -26,18 +13,29 @@ import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.VanillaStoneTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.ore.BlockOreStone;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.ore.StoneType;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.recipe.map.RecipeMap;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
-import static org.gtreimagined.gtlib.material.Material.NULL;
-import static org.gtreimagined.gtlib.material.MaterialTags.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.PULVERIZER;
 import static org.gtreimagined.gt5r.data.RecipeMaps.SIFTER;
 import static org.gtreimagined.gtcore.data.GTCoreItems.Biochaff;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.material.Material.NULL;
+import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class MaceratorLoader {
     public static void initAuto() {
@@ -162,7 +160,7 @@ public class MaceratorLoader {
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.SAND,1)).add("sand",100,2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(DUST.get(Stone,9)).add("stone_dust_from_gravel",100,2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST_SMALL.get(Materials.Brick, 2)).add("brick_dust",50,4);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(GTMaterialTypes.DUST.get(GTLibMaterials.Coal, 1)).add("coal_dust",50,4);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(GTMaterialTypes.DUST.get(Coal, 1)).add("coal_dust",50,4);
         PULVERIZER.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GTMaterialTypes.DUST.get(Wood, 2)).add("wood_dust",40, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.CLAY_BALL, 1)).io(DUST_SMALL.get(Clay, 2)).add("clay_dust_small",16, 4);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.CLAY, 1)).io(DUST.get(Clay, 2)).add("clay_dust",30, 4);

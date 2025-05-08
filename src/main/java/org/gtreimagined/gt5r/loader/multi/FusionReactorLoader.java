@@ -1,11 +1,9 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import static org.gtreimagined.gtlib.Ref.L;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Gold;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Iron;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FUSION;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
+import static org.gtreimagined.gtlib.Ref.L;
 
 public class FusionReactorLoader {
     public static void init(){

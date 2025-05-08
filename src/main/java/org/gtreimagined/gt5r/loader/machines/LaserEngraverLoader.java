@@ -6,7 +6,6 @@ import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.GT5RItems.LapotronCrystal;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.BOULE;
 import static org.gtreimagined.gt5r.data.Materials.*;

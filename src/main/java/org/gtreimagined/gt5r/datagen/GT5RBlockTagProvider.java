@@ -22,7 +22,8 @@ import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
+import static org.gtreimagined.gt5r.data.Materials.Wood;
+
 
 public class GT5RBlockTagProvider extends GTBlockTagProvider {
 

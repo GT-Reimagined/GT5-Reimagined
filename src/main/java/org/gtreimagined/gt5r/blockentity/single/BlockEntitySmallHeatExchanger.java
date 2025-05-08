@@ -1,14 +1,5 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
-import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
-import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
-import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
-import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.recipe.IRecipe;
-import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
-import org.gtreimagined.gtlib.util.CodeUtils;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Explosion;
@@ -21,10 +12,17 @@ import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
+import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
+import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
+import org.gtreimagined.gtlib.util.CodeUtils;
+import org.gtreimagined.gtlib.util.Utils;
 
-import static org.gtreimagined.gtlib.data.GTLibMaterials.Water;
-import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
-import static org.gtreimagined.gt5r.data.Materials.Steam;
+import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<BlockEntitySmallHeatExchanger> {
     boolean hadNoWater = false;

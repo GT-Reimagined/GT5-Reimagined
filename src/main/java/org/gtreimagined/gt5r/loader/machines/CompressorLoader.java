@@ -9,7 +9,6 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.common.Tags;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.COMPRESSOR;
 import static org.gtreimagined.gtcore.data.GTCoreItems.*;

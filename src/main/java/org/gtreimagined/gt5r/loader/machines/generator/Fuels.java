@@ -1,22 +1,21 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
+import net.minecraft.world.item.Items;
+import net.minecraftforge.fluids.FluidStack;
+import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gtcore.data.GTCoreFluids;
+import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
-import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
-import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gtcore.data.GTCoreFluids;
-import org.gtreimagined.gtcore.data.GTCoreMaterials;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.data.GTLibMaterials.EnderEye;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.SEMIFUELS;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class Fuels {
     public static void init() {
