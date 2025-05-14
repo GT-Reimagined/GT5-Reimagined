@@ -497,7 +497,6 @@ public class GT5RMaterialEvents {
          *  Inorganic
          **/
         event.setMaterial(Materials.AluminiumFluoride).asFluid(0,1560).flags(MOLTEN, ACID);
-        event.setMaterial(Materials.Antimatter).asFluid();
         event.setMaterial(Materials.BlueVitriol).asFluid();
         event.setMaterial(Materials.GreenVitriol).asFluid();
         event.setMaterial(Materials.RedVitriol).asFluid();

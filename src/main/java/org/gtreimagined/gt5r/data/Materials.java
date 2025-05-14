@@ -544,7 +544,6 @@ public class Materials {
      **/
 
     public static Material AluminiumFluoride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "aluminium_fluoride", 0xc8bebe, NONE));
-    public static Material Antimatter = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "anti_matter", 0x8000c4, NONE));
     public static Material BlueVitriol = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "blue_vitriol", 0x4242DE, NONE));
     public static Material GreenVitriol = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "green_vitriol", 0x42de42, NONE));
     public static Material RedVitriol = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "red_vitriol", 0xde4242, NONE));
