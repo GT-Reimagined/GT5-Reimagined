@@ -52,6 +52,12 @@ public class DistillationTowerLoader {
                 new FluidProduct(Glycerol, 20),
                 new FluidProduct(Methane, 4),
                 new FluidProduct(DistilledWater,50));
+        addDistillationRecipe(WoodGas, 1000, 40, 256, ItemStack.EMPTY,
+                new FluidProduct(CarbonDioxide, 490),
+                new FluidProduct(Ethylene, 20),
+                new FluidProduct(Methane, 130),
+                new FluidProduct(CarbonMonoxide, 340),
+                new FluidProduct(Hydrogen, 20));
         Material ethane = GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get() ? Ethane : Ethylene;
         addDistillationDistillingRecipe(RefineryGas, 1000, 240, 120,
                 new FluidProduct(Butane, 60),
@@ -126,12 +132,7 @@ public class DistillationTowerLoader {
                 new FluidProduct(WoodTar, 250),
                 new FluidProduct(WoodVinegar, 500),
                 new FluidProduct(WoodGas, 250));
-        addDistillationDistillingRecipe(WoodGas, 1000, 40, 256, 64, 16, ItemStack.EMPTY,
-                new FluidProduct(CarbonDioxide, 490),
-                new FluidProduct(Ethylene, 20),
-                new FluidProduct(Methane, 130),
-                new FluidProduct(CarbonMonoxide, 340),
-                new FluidProduct(Hydrogen, 20));
+
         addDistillationDistillingRecipe(FermentedBiomass, 1000, 75, 180, 8, 1500, ItemStack.EMPTY,
                 new FluidProduct(AceticAcid, 25),
                 new FluidProduct(Water, 375),
