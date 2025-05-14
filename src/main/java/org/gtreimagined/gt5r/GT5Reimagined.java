@@ -398,8 +398,12 @@ public class GT5Reimagined extends GTMod {
                                 Materials.WoodTar.getLiquid(), Materials.WoodVinegar.getLiquid(), Materials.DilutedHydrochloricAcid.getLiquid(), Materials.Methanol.getLiquid(), Materials.Propanol.getLiquid(),
                                 Materials.Butanol.getLiquid(), Materials.Heptanol.getLiquid(), Materials.Ethenol.getLiquid(), Materials.Propenol.getLiquid(), Materials.Butenol.getLiquid(),
                                 Materials.Ethanediol.getLiquid(), Materials.Propanediol.getLiquid(), Materials.Butanediol.getLiquid(),
-                                Materials.AceticAcid.getLiquid(), Materials.AllylChloride.getLiquid(), Materials.BenzoylChloride.getLiquid(), Materials.BisphenolA.getLiquid(),
-                                Materials.MethylAcetate.getLiquid(), Materials.CharcoalByproducts.getGas(), Materials.Chloromethane.getGas(), Materials.SulfuricGas.getGas(),
+                                Materials.AceticAcid.getLiquid(), Materials.AllylChloride.getLiquid(), Materials.Benzaldehyde.getLiquid(), Materials.BenzoylChloride.getLiquid(),
+                                Materials.BisphenolA.getLiquid(), Materials.Chloroform.getLiquid(), Materials.Cumene.getLiquid(), Materials.Dichloroethane.getLiquid(), Materials.Dimethyldichlorosilane.getLiquid(),
+                                Materials.MethylAcetate.getLiquid(), Materials.Phenol.getLiquid(), Materials.PolyvinylAcetate.getLiquid(), Materials.Styrene.getLiquid(), Materials.SulfuricNaphtha.getLiquid(),
+                                Materials.VinylAcetate.getLiquid(), Materials.HydrofluoricAcid.getLiquid(), Materials.HydrogenPeroxide.getLiquid(), Materials.HypochlorousAcid.getLiquid(),
+                                Materials.PeroxydisulfuricAcid.getLiquid(), Materials.PhosphoricAcid.getLiquid(), Materials.CharcoalByproducts.getGas(), Materials.Butene.getGas(),
+                                Materials.Chloromethane.getGas(), Materials.SulfuricGas.getGas(), Materials.CalciumAcetateSolution.getLiquid(), Materials.Gasoline.getLiquid(),
                                 Materials.Ammonia.getGas()));
                     }
                 });
