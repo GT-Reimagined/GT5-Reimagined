@@ -44,9 +44,6 @@ public class DistillationTowerLoader {
         addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
                 new FluidProduct(HydrochloricAcid, 1000),
                 new FluidProduct(Water, 1000));
-        addDistillingRecipe(DilutedSulfuricAcid, 2000, 600, 120, ItemStack.EMPTY,
-                new FluidProduct(SulfuricAcid, 1000),
-                new FluidProduct(Water, 1000));
         addDistillationDistillingRecipe(Biomass, 80, 16, 64, 24, 16, DUST_SMALL.get(Wood, 1),
                 new FluidProduct(Ethanol, 20),
                 new FluidProduct(Glycerol, 20),

@@ -514,7 +514,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Cryolite).asFluid(0, 1285).flags(MOLTEN, ACID);
         event.setMaterial(Materials.DistilledWater).asFluid();
         event.setMaterial(Materials.DilutedHydrochloricAcid).asFluid().flags(ACID);
-        event.setMaterial(Materials.DilutedSulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(Materials.DrillingFluid).asFluid(); // TODO: Perhaps for a bedrock drill;
         event.setMaterial(Materials.HexafluorosilicicAcid).asFluid().flags(ACID);
         event.setMaterial(Materials.HotCoolant).asFluid(0,500);
@@ -916,7 +915,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.CalciumAcetateSolution).mats(of(Materials.Calcium, 1, Materials.Carbon, 2, Materials.Oxygen, 4, Materials.Hydrogen, 6)).elecTicks(520);
         event.setMaterial(Materials.DistilledWater).mats(of(Materials.Hydrogen,2, Materials.Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Materials.DilutedHydrochloricAcid).mats(of(Materials.Hydrogen, 1, Materials.Chlorine, 1));
-        event.setMaterial(Materials.DilutedSulfuricAcid).mats(of(Materials.Hydrogen,2, Materials.Sulfur,1, Materials.Oxygen,4));
         event.setMaterial(Materials.HeavyWater).mats(of(Materials.Deuterium, 2, Materials.Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Materials.SemiheavyWater).mats(of(Materials.Hydrogen, 1, Materials.Deuterium, 1, Materials.Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Materials.TritiatedWater).mats(of(Tritium, 2, Materials.Oxygen, 1)).elecTicks(2000);
