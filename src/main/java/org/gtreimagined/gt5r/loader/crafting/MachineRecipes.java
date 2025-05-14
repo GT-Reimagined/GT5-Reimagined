@@ -263,13 +263,15 @@ public class MachineRecipes {
                             .put('W', WIRE_GETTER.apply(PipeSize.SMALL, tier))
                             .put('C', circuit)
                             .put('H', hull).build(), "WWC", "PHI", "WWC"));
-            add(FERMENTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.<Character, Object>builder()
-                            .put('P', pump)
-                            .put('C', circuit)
-                            .put('G', glass)
-                            .put('H', hull)
-                            .put('L', cable).build(), "LPL", "GHG", "LCL"));
+            if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()) {
+                add(FERMENTER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
+                        ImmutableMap.<Character, Object>builder()
+                                .put('P', pump)
+                                .put('C', circuit)
+                                .put('G', glass)
+                                .put('H', hull)
+                                .put('L', cable).build(), "LPL", "GHG", "LCL"));
+            }
             add(FLUID_CANNER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', pump)

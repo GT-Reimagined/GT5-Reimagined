@@ -387,6 +387,9 @@ public class GT5Reimagined extends GTMod {
                         l.add(GT5RBlocks.ADVANCED_ASSEMBLER_CASING);
                         l.add(GT5RBlocks.ASSEMBLY_LINE_CASING);
                     }
+                    if (!GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
+                        l.addAll(GT5RMachines.FERMENTER.getTiers().stream().map(GT5RMachines.FERMENTER::getBlockState).toList());
+                    }
                 });
                 GTLibXEIPlugin.addFluidsToHide(l -> {
                     if (!GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
