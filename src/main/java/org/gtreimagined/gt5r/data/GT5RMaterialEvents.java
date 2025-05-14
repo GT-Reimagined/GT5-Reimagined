@@ -99,8 +99,7 @@ public class GT5RMaterialEvents {
         //Promethium
         //Samarium
         event.setMaterial(Materials.Europium).asMetal(1099, PLATE);
-        event.setMaterial(Materials.Gadolinium).asMetal(1585);
-        event.setMaterial(Materials.Terbium).asMetal(1696);
+        //Gadolinium, Terbium
         //dysprosium, holmium, erbium, thulium, ytterbium, lutetium
         event.setMaterial(Materials.Hafnium).asMetal(2506);
         event.setMaterial(Materials.Tantalum).asSolid(3290);
@@ -588,7 +587,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NetherAir).asGas().fluidDensity(0);
         event.setMaterial(Materials.NitrogenMonoxide).asGas();
         event.setMaterial(Materials.NitrogenDioxide).asGas();
-        event.setMaterial(Materials.NobleGases).asGas(0,790);
         event.setMaterial(Materials.SulfurDioxide).asGas().fluidDensity(689);
         event.setMaterial(Materials.SulfurTrioxide).asGas(0,300).fluidDensity(517);
         /**

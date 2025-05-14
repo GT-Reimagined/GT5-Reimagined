@@ -653,7 +653,6 @@ public class Materials {
     public static Material NetherAir = GTAPI.register(Material.class, new Material(GT5RRef.ID, "nether_air", 0xad7070, NONE));
     public static Material NitrogenMonoxide = GTAPI.register(Material.class, new Material(GT5RRef.ID, "nitrogen_monoxide", 0x7dc8f0, NONE));
     public static Material NitrogenDioxide = GTAPI.register(Material.class, new Material(GT5RRef.ID, "nitrogen_dioxide", 0x64afff, NONE));
-    public static Material NobleGases = GTAPI.register(Material.class, new Material(GT5RRef.ID, "noble_gases", 0xc9e3fc, NONE));
     public static Material Steam = GTAPI.register(Material.class, new Material(GT5RRef.ID, "steam", 0xa0a0a0, NONE));
     public static Material SuperheatedSteam = GTAPI.register(Material.class, new Material(GT5RRef.ID, "superheated_steam", 0xa0a0a0, NONE));
     public static Material SulfurDioxide = GTAPI.register(Material.class, new Material(GT5RRef.ID, "sulfur_dioxide", 0xc8c819, NONE));
