@@ -131,8 +131,6 @@ public class MixerLoader {
         MIXER.RB().ii(DUST.getMaterialIngredient(Apatite, 1), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 2)).add("fertilizer", 200, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(TricalciumPhosphate, 3), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 4)).add("fertilizer_1", 200, 16);
         MIXER.RB().ii(DUST.getMaterialIngredient(Phosphate, 3), of(1, DUST.getMaterialTag(Ash),DUST.getMaterialTag(Potassium))).io(new ItemStack(GTCoreItems.Fertilizer, 5)).add("fertilizer_2", 200, 16);
-        MIXER.RB().ii(of(DUST.get(Wood,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid",60*20, 2);
-        MIXER.RB().ii(of(DUST.get(Materials.Sugar,4))).fi(SulfuricAcid.getLiquid(1000)).io(Items.CHARCOAL.getDefaultInstance()).fo(DilutedSulfuricAcid.getLiquid(1000)).add("diluted_sulfuric_acid_1",60*20, 2);
         MIXER.RB().ii(of(DUST.get(Salt,2))).fi(Water.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water",2*20, 8);
         MIXER.RB().ii(of(DUST.get(Salt,2))).fi(DistilledWater.getLiquid(1000)).fo(SaltWater.getLiquid(1000)).add("salt_water_2",2*20, 8);
         MIXER.RB().ii(of(DUST.get(Talc,1))).fi(Oil.getLiquid(750)).fo(Lubricant.getLiquid(750)).add("lubricant",64*2, 4);
