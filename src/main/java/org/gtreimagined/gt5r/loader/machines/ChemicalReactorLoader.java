@@ -56,7 +56,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Carbon),1),of(DUST.getMaterialTag(Calcium),1)).fi(Oxygen.getGas(3000)).io(DUST.get(Calcite,5)).add("calcite",500, 30);
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Quicklime),2)).fi(CarbonDioxide.getGas(3000)).io(DUST.get(Calcite,5)).add("calcite_1",80, 30);
         //METHANE
-        CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(4000)).fo(Methane.getGas(5000)).add("methane",14000, 30);
+        CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(4000)).fo(Methane.getGas(5000)).add("methane",3500, 30);
         //GLYCERYL TRINITRATE
         CHEMICAL_REACTOR.RB().fi(Glycerol.getLiquid(2800),NitricAcid.getLiquid(3000), SulfuricAcid.getLiquid(4200)).fo(GlycerylTrinitrate.getLiquid(4000),SulfurDioxide.getGas(1200)).add("glyceryl_trinitrate",180,30);
         //NITRO DIESEL
