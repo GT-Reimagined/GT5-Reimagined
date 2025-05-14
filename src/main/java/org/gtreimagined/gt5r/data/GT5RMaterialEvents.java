@@ -532,7 +532,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HypochlorousAcid).asFluid().flags(ACID);
 
         event.setMaterial(Materials.Lubricant).asFluid();
-        event.setMaterial(Materials.NickelSulfate).asFluid();
         event.setMaterial(Materials.NitricAcid).asFluid().flags(ACID);
         event.setMaterial(Materials.PeroxydisulfuricAcid).asFluid().flags(ACID);
         event.setMaterial(Materials.PhosphoricAcid).asFluid().flags(ACID);
@@ -926,7 +925,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HydrogenPeroxide).mats(of(Materials.Hydrogen,2, Materials.Oxygen,2));
         event.setMaterial(Materials.HypochlorousAcid).mats(of(Materials.Hydrogen, 1, Materials.Chlorine, 1, Materials.Oxygen, 1)).elecTicks(192);
 
-        event.setMaterial(Materials.NickelSulfate).mats(of(Materials.Nickel,1, Materials.Sulfur,1, Materials.Oxygen,4)).elecTicks(900);
         event.setMaterial(Materials.NitricAcid).mats(of(Materials.Hydrogen, 1, Materials.Nitrogen, 1, Materials.Oxygen, 3)).elecTicks(240);
         event.setMaterial(Materials.PeroxydisulfuricAcid).mats(of(Materials.Sulfur,2, Materials.Hydrogen,2, Materials.Oxygen,8));
         event.setMaterial(Materials.PhosphoricAcid).mats(of(Materials.Hydrogen, 3, Materials.Phosphor, 1, Materials.Oxygen, 4)).elecTicks(392);
@@ -1381,7 +1379,7 @@ public class GT5RMaterialEvents {
                 Materials.Phosphate, /*NiobiumNitride,*/ Materials.GreenSapphire, Materials.Sapphire, Materials.NeodymiumMagnetic, Materials.Cassiterite,
                 Materials.PhosphorousPentoxide, Materials.Hematite, Materials.Massicot, Materials.ArsenicTrioxide, Sugar, Materials.Magnetite, Materials.AntimonyTrioxide,
                 Materials.Salt, Materials.SodiumBisulfate, Materials.PotassiumBisulfate, Materials.HydrochloricAcid, Materials.SaltWater, Materials.HydrochloricAcid, Diamond,
-                Materials.NickelSulfate, Water, Materials.DistilledWater, Materials.HeavyWater, Materials.SemiheavyWater, Materials.TritiatedWater, Materials.MilkyQuartz, Materials.FerricChloride, Materials.Sperrylite, Materials.LithiumChloride);
+                Water, Materials.DistilledWater, Materials.HeavyWater, Materials.SemiheavyWater, Materials.TritiatedWater, Materials.MilkyQuartz, Materials.FerricChloride, Materials.Sperrylite, Materials.LithiumChloride);
         GT5RMaterialTags.ELEC60.add(Materials.CalciumChloride, Materials.SodiumHydroxide, Materials.Propene, Materials.Ethylene, Materials.Butene, Materials.Benzene, Materials.Styrene, Materials.Ethane, Materials.Ammonia, Materials.SodiumSulfide, Materials.Methane,
                 Materials.Magnesite, Materials.HydrofluoricAcid, Materials.HydrogenFluoride, Materials.Sphalerite, /*NitroCarbon,*/ Materials.SodaAsh, Materials.Calcite, Materials.Saltpeter, Materials.Monazite,
                 /*Wollastonite,*/ Materials.NitrogenMonoxide, Materials.Butane, Materials.CarbonMonoxide, Materials.Pyrite, Materials.RedGranite, Materials.Ferrosilite, Materials.Butadiene, Materials.Amethyst,

@@ -580,7 +580,6 @@ public class Materials {
     public static Material HydrogenPeroxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hydrogen_peroxide", 0xf8efb4, NONE));
     public static Material HypochlorousAcid = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hypochlorous_acid", 0x6f8a91, NONE));
     public static Material Lubricant = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "lubricant", 0xffc400, NONE));
-    public static Material NickelSulfate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "nickel_sulfate", 0xffffff, NONE));
     public static Material NitricAcid = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "nitric_acid", 0xe6e2ab, NONE));
     public static Material PeroxydisulfuricAcid = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "peroxydisulfuricacid", 0xff9000, NONE));
     public static Material SaltWater = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "salt_water", 0x0760b9, NONE));
