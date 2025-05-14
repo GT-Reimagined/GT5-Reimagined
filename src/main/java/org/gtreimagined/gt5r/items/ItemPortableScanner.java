@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.items;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.capability.energy.ItemEnergyHandler;
 import org.gtreimagined.gtlib.item.ScannerItem;
@@ -11,7 +12,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.context.TesseractItemContext;
@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
     public ItemPortableScanner() {
-        super(GT5RRef.ID, "portable_scanner", false, new Properties().stacksTo(1).tab(Ref.TAB_ITEMS));
+        super(GT5Reimagined.ID, "portable_scanner", false, new Properties().stacksTo(1).tab(Ref.TAB_ITEMS));
     }
 
     @Override

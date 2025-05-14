@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -20,7 +21,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.items.IItemHandler;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
 import static org.gtreimagined.gtlib.Ref.L;
@@ -91,7 +91,7 @@ public class BlockEntityBath extends BlockEntityMachine<BlockEntityBath> {
 
     private DyeColor fromFluid(FluidStack f) {
         for (DyeColor color : DyeColor.values()) {
-            if (f.getFluid().is(TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, color.getName() + "_dye")))){
+            if (f.getFluid().is(TagUtils.getFluidTag(new ResourceLocation(GT5Reimagined.ID, color.getName() + "_dye")))){
                 return color;
             }
         }

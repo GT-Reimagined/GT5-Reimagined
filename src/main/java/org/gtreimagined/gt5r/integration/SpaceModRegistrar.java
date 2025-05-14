@@ -4,7 +4,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.api.distmarker.Dist;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
@@ -35,12 +35,12 @@ public class SpaceModRegistrar extends GTMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
-            Desh = GTAPI.register(Material.class, new Material(GT5RRef.ID, "desh", 0x282828, TextureSet.DULL));
+            Desh = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "desh", 0x282828, TextureSet.DULL));
             String block = GTAPI.isModLoaded("ad_astra") ? "block" : "blocks";
-            GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_sand", Material.NULL, new Texture(getMod(), block + "/moon_sand"), SoundType.SAND, false).setState(getSpaceBlock("moon_sand")).setSandLike(true));
-            var moonStone = GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "moon_stone", Material.NULL, new Texture(getMod(), block + "/moon_stone"), SoundType.STONE, false).setState(getSpaceBlock("moon_stone")));
-            GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_sand", Material.NULL, new Texture(getMod(), block + "/mars_sand"), SoundType.SAND, false).setState(getSpaceBlock("mars_sand")).setSandLike(true));
-            var marsStone = GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "mars_stone", Material.NULL, new Texture(getMod(), block + "/mars_stone"), SoundType.STONE, false).setState(getSpaceBlock("mars_stone")));
+            GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, "moon_sand", Material.NULL, new Texture(getMod(), block + "/moon_sand"), SoundType.SAND, false).setState(getSpaceBlock("moon_sand")).setSandLike(true));
+            var moonStone = GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, "moon_stone", Material.NULL, new Texture(getMod(), block + "/moon_stone"), SoundType.STONE, false).setState(getSpaceBlock("moon_stone")));
+            GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, "mars_sand", Material.NULL, new Texture(getMod(), block + "/mars_sand"), SoundType.SAND, false).setState(getSpaceBlock("mars_sand")).setSandLike(true));
+            var marsStone = GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, "mars_stone", Material.NULL, new Texture(getMod(), block + "/mars_stone"), SoundType.STONE, false).setState(getSpaceBlock("mars_stone")));
             ORE.replacement(Iron, moonStone, () -> getSpaceBlock("moon_iron_ore").asItem());
             ORE.replacement(Iron, marsStone, () -> getSpaceBlock("mars_iron_ore").asItem());
             ORE.replacement(Diamond, marsStone, () -> getSpaceBlock("mars_diamond_ore").asItem());

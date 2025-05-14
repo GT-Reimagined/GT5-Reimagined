@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableSet;
 import com.mojang.datafixers.util.Pair;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
@@ -13,7 +14,6 @@ import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 
 import java.util.Map;
@@ -53,12 +53,12 @@ public class WireCablesPlates {
                         GTTools.WIRE_CUTTER.getTag(), PLATE.get(wire.getMaterial()));
             }
             if (cable != null){ //manual lv cable crafting
-                provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_1x", "cables", new ItemStack(cable.getBlockItem(VTINY)), wire.getBlockItem(VTINY), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_2x", "cables", new ItemStack(cable.getBlockItem(TINY)), wire.getBlockItem(TINY), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_4x", "cables", new ItemStack(cable.getBlockItem(SMALL)), wire.getBlockItem(SMALL), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_8x", "cables", new ItemStack(cable.getBlockItem(NORMAL)), wire.getBlockItem(NORMAL), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_12x", "cables", new ItemStack(cable.getBlockItem(LARGE)), wire.getBlockItem(LARGE), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
-                provider.shapeless(output, GT5RRef.ID, wire.getId() + "_cable_16x", "cables", new ItemStack(cable.getBlockItem(HUGE)), wire.getBlockItem(HUGE), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GT5Reimagined.ID, wire.getId() + "_cable_1x", "cables", new ItemStack(cable.getBlockItem(VTINY)), wire.getBlockItem(VTINY), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GT5Reimagined.ID, wire.getId() + "_cable_2x", "cables", new ItemStack(cable.getBlockItem(TINY)), wire.getBlockItem(TINY), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GT5Reimagined.ID, wire.getId() + "_cable_4x", "cables", new ItemStack(cable.getBlockItem(SMALL)), wire.getBlockItem(SMALL), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GT5Reimagined.ID, wire.getId() + "_cable_8x", "cables", new ItemStack(cable.getBlockItem(NORMAL)), wire.getBlockItem(NORMAL), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GT5Reimagined.ID, wire.getId() + "_cable_12x", "cables", new ItemStack(cable.getBlockItem(LARGE)), wire.getBlockItem(LARGE), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
+                provider.shapeless(output, GT5Reimagined.ID, wire.getId() + "_cable_16x", "cables", new ItemStack(cable.getBlockItem(HUGE)), wire.getBlockItem(HUGE), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber), GTMaterialTypes.PLATE.getMaterialTag(Rubber));
             }
         });
         GTAPI.all(RedstoneWire.class, wire -> {

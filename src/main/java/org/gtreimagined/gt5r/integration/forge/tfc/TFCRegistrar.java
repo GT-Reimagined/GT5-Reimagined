@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.integration.forge.tfc;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
@@ -35,7 +36,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCBlockTagProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCItemTagProvider;
 import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCLangProvider;
@@ -54,7 +54,7 @@ public class TFCRegistrar extends GTMod {
         if (isEnabled()) {
             FMLJavaModLoadingContext.get().getModEventBus().register(this);
             MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
-            GTLibDynamics.clientProvider(GT5RRef.ID, () -> new TFCLangProvider(GT5RRef.ID, "TFC en_us Lang", "en_us"));
+            GTLibDynamics.clientProvider(GT5Reimagined.ID, () -> new TFCLangProvider(GT5Reimagined.ID, "TFC en_us Lang", "en_us"));
         }
     }
     @Override
@@ -78,21 +78,21 @@ public class TFCRegistrar extends GTMod {
             Helpers.mapOfKeys(Rock.class, (rock) -> {
                 Material material = Material.get(rock.name().toLowerCase());
                 if (material == Material.NULL){
-                    material = GTAPI.register(Material.class, new Material(GT5RRef.ID, rock.name().toLowerCase(), rock.color().col, TextureSet.NONE));
+                    material = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, rock.name().toLowerCase(), rock.color().col, TextureSet.NONE));
                     material.flags(DUST);
                 }
-                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, "raw_" + rock.name().toLowerCase(), material, new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), SoundType.STONE, false).setStateSupplier(() -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState()).setHardnessAndResistance(rock.category().hardness(6.5F), 10.0F).setHarvestLevel(1));
-                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, rock.name().toLowerCase() + "_gravel", material, new Texture(Ref.MOD_TFC, "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
+                GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, "raw_" + rock.name().toLowerCase(), material, new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), SoundType.STONE, false).setStateSupplier(() -> rock.getBlock(Rock.BlockType.RAW).get().defaultBlockState()).setHardnessAndResistance(rock.category().hardness(6.5F), 10.0F).setHarvestLevel(1));
+                GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, rock.name().toLowerCase() + "_gravel", material, new Texture(Ref.MOD_TFC, "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
                 return true;
             });
             Helpers.mapOfKeys(SandBlockType.class, (sand) -> {
                 Material material = Material.get(sand.name().toLowerCase() + "_sand");
                 if (material == Material.NULL){
-                    material = GTAPI.register(Material.class, new Material(GT5RRef.ID, sand.name().toLowerCase() + "_sand", sand.getDustColor(), TextureSet.NONE));
+                    material = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, sand.name().toLowerCase() + "_sand", sand.getDustColor(), TextureSet.NONE));
                     material.flags(DUST);
                 }
-                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_sand", material, new Texture(Ref.MOD_TFC,"block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "sand/" + sand.name().toLowerCase()).defaultBlockState());
-                GTAPI.register(StoneType.class, new StoneType(GT5RRef.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
+                GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, sand.name().toLowerCase() + "_sand", material, new Texture(Ref.MOD_TFC,"block/sand/" + sand.name().toLowerCase()), SoundType.SAND, false)).setSandLike(true).setRequiresTool(true).setFallingDustColor(sand.getDustColor()).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "sand/" + sand.name().toLowerCase()).defaultBlockState());
+                GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
             });
             GTMaterialTypes.LIQUID.set((m, i) -> {
@@ -150,7 +150,7 @@ public class TFCRegistrar extends GTMod {
     }
 
     public void registerRecipeLoaders(GTLoaderEvent event){
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5RRef.ID, a, b);
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5Reimagined.ID, a, b);
         loader.accept("tfc_machine_recipes", MachineRecipes::init);
     }
 

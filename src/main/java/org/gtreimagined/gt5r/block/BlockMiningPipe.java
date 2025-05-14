@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
 import org.gtreimagined.gtlib.registration.IColorHandler;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
 import org.jetbrains.annotations.Nullable;
@@ -75,13 +75,13 @@ public class BlockMiningPipe extends BlockBasic implements IItemBlockProvider, I
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GT5RRef.ID, "block/pipe/mining_pipe")};
+        return new Texture[]{new Texture(GT5Reimagined.ID, "block/pipe/mining_pipe")};
     }
 
     @Override
     public void onBlockModelBuild(Block block, GTBlockStateProvider prov) {
         if (getId().equals("mining_pipe_thin")){
-            prov.state(block, () -> prov.existing(GT5RRef.ID,"block/mining_pipe_thin"));
+            prov.state(block, () -> prov.existing(GT5Reimagined.ID,"block/mining_pipe_thin"));
             return;
         }
         super.onBlockModelBuild(block, prov);

@@ -9,7 +9,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
@@ -221,7 +220,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
     public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){
         if (hatchPos.getY() != this.getBlockPos().getY()) return super.getTextureForHatches(dir, hatchPos);
         String prefix = tier == LV ? "bronze" : tier == MV ? "steel" : tier == HV ? "titanium" : "tungstensteel";
-        return new Texture(GT5RRef.ID, "block/casing/" + prefix + "_firebox");
+        return new Texture(GT5Reimagined.ID, "block/casing/" + prefix + "_firebox");
     }
 
     @Override

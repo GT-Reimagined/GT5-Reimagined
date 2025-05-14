@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.machine.recipe;
 
 import com.google.gson.JsonObject;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
 import org.gtreimagined.gtlib.recipe.serializer.GTRecipeSerializer;
@@ -10,7 +11,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.fluids.FluidStack;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RRecipeTypes;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -22,7 +22,7 @@ public class FusionRecipeSerializer extends GTRecipeSerializer<FusionRecipe> {
     public static void init(){
     }
     protected FusionRecipeSerializer() {
-        super(GT5RRef.ID, "fusion");
+        super(GT5Reimagined.ID, "fusion");
     }
 
     @Override

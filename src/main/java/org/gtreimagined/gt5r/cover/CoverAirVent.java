@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityFluidPipe;
 import org.gtreimagined.gtlib.capability.FluidHandler;
@@ -15,7 +16,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.Materials;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -30,7 +30,7 @@ public class CoverAirVent extends BaseCover {
 
     @Override
     public String getDomain() {
-        return GT5RRef.ID;
+        return GT5Reimagined.ID;
     }
 
     @Override

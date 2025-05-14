@@ -10,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.ore.StoneType;
-import org.gtreimagined.gtlib.ore.VanillaStoneType;
 
 import java.util.Map;
 
@@ -22,7 +21,7 @@ public class GT5RRemapping {
     public static void init(){
         GTRemapping.getBeRemappingFunctionList().add(r -> {
             if (r.getNamespace().equals("gregtech") || r.getNamespace().equals("gti")){
-                var r2 = new ResourceLocation(GT5RRef.ID, r.getPath());
+                var r2 = new ResourceLocation(GT5Reimagined.ID, r.getPath());
                 if (GTRemapping.getBeRemappingMap().containsKey(r2)){
                     return GTRemapping.getBeRemappingMap().get(r2);
                 }
@@ -49,7 +48,7 @@ public class GT5RRemapping {
                 GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID, "surface_rock_rock_salt"), new ResourceLocation(Ref.SHARED_ID, "surface_rock_sylvite"));
             }
         });
-        for (CoverFactory cover : GTAPI.all(CoverFactory.class, GT5RRef.ID)){
+        for (CoverFactory cover : GTAPI.all(CoverFactory.class, GT5Reimagined.ID)){
             GTRemapping.remapCover(new ResourceLocation("gti", cover.getId()), cover.getLoc());
         }
         for (int i = 0; i < 25; i++) {
@@ -62,7 +61,7 @@ public class GT5RRemapping {
         remap("heat_exchanger_ev", "large_heat_exchanger");
         GTRemapping.remapMachine("small_heat_exchanger", INVAR_SMALL_HEAT_EXCHANGER);
         GTRemapping.remapMachine("pyrolysis_oven", PYROLYSE_OVEN);
-        GTRemapping.remapBlockEntity(new ResourceLocation(GT5RRef.ID, "heat_exchanger"), new ResourceLocation(GT5RRef.ID, "large_heat_exchanger"));
+        GTRemapping.remapBlockEntity(new ResourceLocation(GT5Reimagined.ID, "heat_exchanger"), new ResourceLocation(GT5Reimagined.ID, "large_heat_exchanger"));
         GTRemapping.remapMachine("item_input_hatch", INPUT_BUS);
         GTRemapping.remapMachine("item_output_hatch", OUTPUT_BUS);
         GTRemapping.remapMachine("fluid_input_hatch", INPUT_HATCH);
@@ -101,9 +100,9 @@ public class GT5RRemapping {
         remap("circuit_wetware", "wetware_circuit");
         remap("vacuumtube", "vacuum_tube");
         remap("adv_circuit_parts", "advanced_circuit_parts");
-        GTRemapping.remap(new ResourceLocation(GTCore.ID, "glass_tube"), new ResourceLocation(GT5RRef.ID, "glass_tube"));
-        GTRemapping.remap(new ResourceLocation(GTCore.ID, "coated_circuit_board"), new ResourceLocation(GT5RRef.ID, "coated_circuit_board"));
-        GTRemapping.remap(new ResourceLocation(GTCore.ID, "epoxy_circuit_board"), new ResourceLocation(GT5RRef.ID, "epoxy_circuit_board"));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, "glass_tube"), new ResourceLocation(GT5Reimagined.ID, "glass_tube"));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, "coated_circuit_board"), new ResourceLocation(GT5Reimagined.ID, "coated_circuit_board"));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, "epoxy_circuit_board"), new ResourceLocation(GT5Reimagined.ID, "epoxy_circuit_board"));
         remapGTCore("mold_plate", "plate_mold");
         remapGTCore("mold_casing", "casing_mold");
         remapGTCore("mold_gear", "gear_mold");
@@ -201,23 +200,23 @@ public class GT5RRemapping {
         remap("casing_turbine_2", "stainless_steel_turbine_casing");
         remap("casing_turbine_3", "titanium_turbine_casing");
         remap("casing_turbine_4", "tungstensteel_turbine_casing");
-        GTRemapping.remap(new ResourceLocation(GT5RRef.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
+        GTRemapping.remap(new ResourceLocation(GT5Reimagined.ID, "monocrystalline_silicon_boule"), new ResourceLocation(Ref.SHARED_ID, "boule_silicon"));
         remap("cell_tin", "tin_cell");
         remap("cell_steel", "steel_cell");
         remap("cell_tungstensteel", "tungstensteel_cell");
-        GTRemapping.remapCover(new ResourceLocation(GT5RRef.ID, "steam_vent"), new ResourceLocation(GTCore.ID, "steam_vent"));
+        GTRemapping.remapCover(new ResourceLocation(GT5Reimagined.ID, "steam_vent"), new ResourceLocation(GTCore.ID, "steam_vent"));
     }
 
     private static void remap(String oldId, String newId){
-        GTRemapping.remap(GT5RRef.ID, oldId, newId);
+        GTRemapping.remap(GT5Reimagined.ID, oldId, newId);
     }
 
     private static void remapGTCore(String oldId, String newId){
-        GTRemapping.remap(new ResourceLocation(GT5RRef.ID, oldId), new ResourceLocation(GTCore.ID, newId));
+        GTRemapping.remap(new ResourceLocation(GT5Reimagined.ID, oldId), new ResourceLocation(GTCore.ID, newId));
     }
 
     private static void remapFromGTCore(String oldId, String newId){
-        GTRemapping.remap(new ResourceLocation(GTCore.ID, oldId), new ResourceLocation(GT5RRef.ID, newId));
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, oldId), new ResourceLocation(GT5Reimagined.ID, newId));
     }
 
     public static Map<String, String> getRemappingMap() {

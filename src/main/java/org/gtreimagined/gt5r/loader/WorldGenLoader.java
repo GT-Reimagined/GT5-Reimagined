@@ -7,7 +7,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biomes;
 import org.gtreimagined.gt5r.GT5RConfig;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.worldgen.OilSpoutFluid;
 import org.gtreimagined.gt5r.worldgen.OilSpoutSavedData;
@@ -76,62 +76,62 @@ public class WorldGenLoader {
     }
 
     private static void initBedrockVeins(GTWorldGenEvent ev) {
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"diamond"), 128000, Diamond, true, PANDANUS_CANDELABRUM, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"tungstate"), 96000, Tungstate, true, TUNGSTUS, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"scheelite"), 96000, Scheelite, true, TUNGSTUS, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"uraninite"), 60000, Uraninite, true, TUFTED_EVENING_PRIMROSE, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"pitchblende"), 60000, Pitchblende, true, THOMPSONS_LOCOWEED, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"gold_a"), 32000, Gold, true, ALTERED_ANDESITE_BUCKWHEAT, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"gold_b"), 32000, Gold, true, DESERT_TRUMPET, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"sheldonite"), 16000, Sheldonite, true, NARCISSUS_SHELDONIA, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"copper"), 16000, Copper, true, BECIUM_HOMBLEI, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"monzanite"), 16000, Monazite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"powellite"), 14000, Powellite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"bastnasite"), 8000, Bastnasite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"redstone"), 7000, Redstone, true, PRINCES_PLUME, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"vanadium_magnetite"), 6000, VanadiumMagnetite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"galena"), 6000, Galena, true, CROSBY_BUCKWHEAT, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"coal"), 5000, Coal, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"graphite"), 5000, Graphite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"stibnite"), 4000, Stibnite, true, ATRIPLEX_CANESCENS, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"hematite"), 4000, Hematite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"sphalerite"), 3000, Sphalerite, true, VIOLA_CALAMINARIA, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"pentlandite"), 3000, Pentlandite, true, THLASPI_LERESCHIANUM, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"saltpeter"), 3000, Saltpeter, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"bauxite"), 2000, Bauxite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"cassiterite"), 2000, Cassiterite, true, ORECHID, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"chalcopyrite"), 2000, Chalcopyrite, true, ALPINE_CATCHFLY, OVERWORLD, JAMD_MINING));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"naquadah"), 10000, Naquadah, true, BE_MARS, AA_MARS));
-        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"adamantine"), 10000, Adamantine, true, BE_MARS, AA_MARS));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"diamond"), 128000, Diamond, true, PANDANUS_CANDELABRUM, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"tungstate"), 96000, Tungstate, true, TUNGSTUS, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"scheelite"), 96000, Scheelite, true, TUNGSTUS, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"uraninite"), 60000, Uraninite, true, TUFTED_EVENING_PRIMROSE, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"pitchblende"), 60000, Pitchblende, true, THOMPSONS_LOCOWEED, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"gold_a"), 32000, Gold, true, ALTERED_ANDESITE_BUCKWHEAT, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"gold_b"), 32000, Gold, true, DESERT_TRUMPET, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"sheldonite"), 16000, Sheldonite, true, NARCISSUS_SHELDONIA, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"copper"), 16000, Copper, true, BECIUM_HOMBLEI, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"monzanite"), 16000, Monazite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"powellite"), 14000, Powellite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"bastnasite"), 8000, Bastnasite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"redstone"), 7000, Redstone, true, PRINCES_PLUME, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"vanadium_magnetite"), 6000, VanadiumMagnetite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"galena"), 6000, Galena, true, CROSBY_BUCKWHEAT, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"coal"), 5000, Coal, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"graphite"), 5000, Graphite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"stibnite"), 4000, Stibnite, true, ATRIPLEX_CANESCENS, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"hematite"), 4000, Hematite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"sphalerite"), 3000, Sphalerite, true, VIOLA_CALAMINARIA, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"pentlandite"), 3000, Pentlandite, true, THLASPI_LERESCHIANUM, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"saltpeter"), 3000, Saltpeter, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"bauxite"), 2000, Bauxite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"cassiterite"), 2000, Cassiterite, true, ORECHID, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"chalcopyrite"), 2000, Chalcopyrite, true, ALPINE_CATCHFLY, OVERWORLD, JAMD_MINING));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"naquadah"), 10000, Naquadah, true, BE_MARS, AA_MARS));
+        ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"adamantine"), 10000, Adamantine, true, BE_MARS, AA_MARS));
         if (SpaceModRegistrar.INSTANCE.isEnabled()){
-            ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5RRef.ID,"desh"), 2000, SpaceModRegistrar.Desh, true, BE_MARS, AA_MARS));
+            ev.bedrockOre(BedrockVein.create(new ResourceLocation(GT5Reimagined.ID,"desh"), 2000, SpaceModRegistrar.Desh, true, BE_MARS, AA_MARS));
         }
     }
 
     private static void initTwilightForestOres(GTWorldGenEvent event){
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "coal_twilight")).withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "lignite_twilight")).withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "salt_twilight")).withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "sylvite_twilight")).withMaterial(Sylvite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "bauxite_twilight")).withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "oil_shale_twilight")).withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "milky_quartz_twilight")).withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "coal_twilight")).withMaterial(Coal).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "lignite_twilight")).withMaterial(Lignite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "salt_twilight")).withMaterial(Salt).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "sylvite_twilight")).withMaterial(Sylvite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "bauxite_twilight")).withMaterial(Bauxite).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "oil_shale_twilight")).withMaterial(OilShale).withMaterialType(ORE_STONE).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "milky_quartz_twilight")).withMaterial(MilkyQuartz).withSize(50).withWeight(1).atHeight(-16, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
 
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "sulfur_twilight")).withMaterial(Sulfur).withSize(16).withProbability(100).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "apatite_twilight")).withMaterial(Apatite).withSize(16).withProbability(50).atHeight(-8, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "ruby_twilight")).withMaterial(Ruby).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "amber_twilight")).withMaterial(Amber).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "amethyst_twilight")).withMaterial(Amethyst).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "galena_twilight")).withMaterial(Galena).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "tetrahedrite_twilight")).withMaterial(Tetrahedrite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "cassiterite_twilight")).withMaterial(Cassiterite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "sheldonite_twilight")).withMaterial(Sheldonite).withSize(6).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "pentlandite_twilight")).withMaterial(Pentlandite).withSize(16).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "scheelite_twilight")).withMaterial(Scheelite).withSize(12).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "rutile_twilight")).withMaterial(Rutile).withSize(6).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "bastnasite_twilight")).withMaterial(Bastnasite).withSize(16).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "graphite_twilight")).withMaterial(Graphite).withSize(6).withProbability(50).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
-        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5RRef.ID, "pitchblende_twilight")).withMaterial(Pitchblende).withSize(16).withProbability(100).atHeight(-24, -16).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "sulfur_twilight")).withMaterial(Sulfur).withSize(16).withProbability(100).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "apatite_twilight")).withMaterial(Apatite).withSize(16).withProbability(50).atHeight(-8, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "ruby_twilight")).withMaterial(Ruby).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "amber_twilight")).withMaterial(Amber).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "amethyst_twilight")).withMaterial(Amethyst).withSize(12).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "galena_twilight")).withMaterial(Galena).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "tetrahedrite_twilight")).withMaterial(Tetrahedrite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "cassiterite_twilight")).withMaterial(Cassiterite).withSize(24).withProbability(25).atHeight(-24, 0).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "sheldonite_twilight")).withMaterial(Sheldonite).withSize(6).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "pentlandite_twilight")).withMaterial(Pentlandite).withSize(16).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "scheelite_twilight")).withMaterial(Scheelite).withSize(12).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "rutile_twilight")).withMaterial(Rutile).withSize(6).withProbability(25).atHeight(-24, -8).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "bastnasite_twilight")).withMaterial(Bastnasite).withSize(16).withProbability(100).atHeight(8, 22).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "graphite_twilight")).withMaterial(Graphite).withSize(6).withProbability(50).atHeight(-32, -24).inDimensions(TWILIGHT_FOREST).buildMaterial());
+        event.vanillaOre(new VanillaVeinBuilder(new ResourceLocation(GT5Reimagined.ID, "pitchblende_twilight")).withMaterial(Pitchblende).withSize(16).withProbability(100).atHeight(-24, -16).inDimensions(TWILIGHT_FOREST).buildMaterial());
     }
 
     private static void initSmallOres(GTWorldGenEvent event){
@@ -468,6 +468,6 @@ public class WorldGenLoader {
     }
 
     public static ResourceLocation id(String id){
-        return new ResourceLocation(GT5RRef.ID, id);
+        return new ResourceLocation(GT5Reimagined.ID, id);
     }
 }

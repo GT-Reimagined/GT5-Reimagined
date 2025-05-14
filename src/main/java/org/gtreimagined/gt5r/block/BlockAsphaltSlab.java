@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockBasicSlab;
 import org.gtreimagined.gtlib.registration.IColorHandler;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -10,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
 
 public class BlockAsphaltSlab extends BlockBasicSlab implements IColorHandler {
@@ -32,6 +32,6 @@ public class BlockAsphaltSlab extends BlockBasicSlab implements IColorHandler {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GT5RRef.ID, "block/stone/asphalt")};
+        return new Texture[]{new Texture(GT5Reimagined.ID, "block/stone/asphalt")};
     }
 }

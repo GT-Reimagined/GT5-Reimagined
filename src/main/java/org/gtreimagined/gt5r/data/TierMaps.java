@@ -7,8 +7,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import org.apache.commons.lang3.function.TriFunction;
 import org.gtreimagined.gt5r.GT5RConfig;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
@@ -70,7 +70,7 @@ public class TierMaps {
 
         WIRE_GETTER = (size, tier) -> {
             if (tier == LV) {
-                return TagUtils.getItemTag(new ResourceLocation(GT5RRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(Ref.ID, SubTag.COPPER_WIRE.getId()+"_"+ size.getId()));
             }
             if (tier == MV) {
                 return GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(size);
@@ -90,7 +90,7 @@ public class TierMaps {
             if (tier == ULV) return GT5RBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(size);
             if (tier == LV) return GT5RBlocks.CABLE_TIN.getBlockItem(size);
             if (tier == MV){
-                return TagUtils.getItemTag(new ResourceLocation(GT5RRef.ANTIMATTER, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
+                return TagUtils.getItemTag(new ResourceLocation(Ref.ID, SubTag.COPPER_CABLE.getId()+"_"+ size.getId()));
             }
             if (tier == HV) return GT5RBlocks.CABLE_GOLD.getBlockItem(size);
             if (tier == EV) return GT5RBlocks.CABLE_ALUMINIUM.getBlockItem(size);

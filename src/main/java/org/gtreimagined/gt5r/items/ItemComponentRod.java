@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.items;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.material.IMaterialObject;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.jetbrains.annotations.Nullable;
@@ -40,9 +40,9 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
     @Override
     public Texture[] getTextures() {
         if (this == GT5RItems.EmptyNuclearFuelRod){
-            return new Texture[]{new Texture(GT5RRef.ID, "item/basic/empty_nuclear_fuel_rod")};
+            return new Texture[]{new Texture(GT5Reimagined.ID, "item/basic/empty_nuclear_fuel_rod")};
         }
-        return new Texture[]{new Texture(GT5RRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GT5RRef.ID, "item/basic/empty_nuclear_fuel_rod")};
+        return new Texture[]{new Texture(GT5Reimagined.ID, "item/basic/nuclear_fuel_rod"), new Texture(GT5Reimagined.ID, "item/basic/empty_nuclear_fuel_rod")};
     }
 
     @Override

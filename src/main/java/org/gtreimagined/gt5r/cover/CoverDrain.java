@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityFluidPipe;
 import org.gtreimagined.gtlib.capability.FluidHandler;
@@ -27,7 +28,6 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -44,7 +44,7 @@ public class CoverDrain extends BaseCover {
 
     @Override
     public String getDomain() {
-        return GT5RRef.ID;
+        return GT5Reimagined.ID;
     }
 
     @Override

@@ -7,7 +7,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
@@ -47,30 +46,30 @@ public class Parts {
       provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
               GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
 
-      provider.addStackRecipe(output, GT5RRef.ID, "drain_expensive", "parts",
+      provider.addStackRecipe(output, GT5Reimagined.ID, "drain_expensive", "parts",
               new ItemStack(GT5Reimagined.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
       provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
               of('G', GEAR_SMALL.getMaterialTag(Iron), 'R', ROD.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
 
-      provider.shapeless(output, GT5RRef.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
-      provider.addItemRecipe(output, GT5RRef.ID, "", "carbon", CoalBall,
+      provider.shapeless(output, GT5Reimagined.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalBall,
               of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");
-      provider.addItemRecipe(output, GT5RRef.ID, "", "carbon", CoalChunk,
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalChunk,
               of('F', Items.OBSIDIAN, 'C', CompressedCoalBall), "CCC", "CFC", "CCC");
-      provider.addItemRecipe(output, GT5RRef.ID, "","batteries", BatteryHullSmall, of(
+      provider.addItemRecipe(output, GT5Reimagined.ID, "","batteries", BatteryHullSmall, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, LV, false)
       ), "C", "P", "P");
 
-      provider.addItemRecipe(output,  GT5RRef.ID, "","batteries", BatteryHullMedium, of(
+      provider.addItemRecipe(output,  GT5Reimagined.ID, "","batteries", BatteryHullMedium, of(
               'P', PLATE.get(BatteryAlloy),
               'C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false)
       ), "C C", "PPP", "PPP");
-      provider.addStackRecipe(output, GT5RRef.ID, "", "batteries", DUST.get(Energium, 9),
+      provider.addStackRecipe(output, GT5Reimagined.ID, "", "batteries", DUST.get(Energium, 9),
               of('R', DUST.getMaterialTag(Redstone), 'r', DUST.getMaterialTag(Ruby)), "RrR", "rRr", "RrR");
 
-      provider.addItemRecipe(output, GT5RRef.ID, "front_rotation_tool", "gtparts", Registry.FRONT_ROTATION_TOOL,
+      provider.addItemRecipe(output, GT5Reimagined.ID, "front_rotation_tool", "gtparts", Registry.FRONT_ROTATION_TOOL,
               of('R', ROD.getMaterialTag(Wood),
                       'C', ROD.getMaterialTag(Cobalt),
                       'P', PLATE.getMaterialTag(Cobalt),
@@ -78,29 +77,29 @@ public class Parts {
                       'F', FILE.getTag()), "FPC", " CP", "R H");
 
 
-      provider.addItemRecipe(output, GT5RRef.ID, "diamondsaw_blade", "gtparts", DiamondSawBlade, of(
+      provider.addItemRecipe(output, GT5Reimagined.ID, "diamondsaw_blade", "gtparts", DiamondSawBlade, of(
               'G', GEAR.get(CobaltBrass),
               'D', DUST_SMALL.get(Diamond)
       ), " D ", "DGD", " D ");
 
       provider.addItemRecipe(output, "mining_pipes", GT5RBlocks.MINING_PIPE_THIN,
               of('H', HAMMER.getTag(), 'P', GT5RBlocks.FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
-      provider.addStackRecipe(output, GT5RRef.ID, "", "matches", new ItemStack(Match, 4), of('P', DUST.getMaterialTag(Phosphor), 'S', ROD.getMaterialTag(Wood)), "P", "S");
-      provider.shapeless(output, GT5RRef.ID, "tape_from_empty", "tapes", new ItemStack(Tape), TapeEmpty, TapeEmpty, TapeEmpty, TapeEmpty);
-      provider.shapeless(output, GT5RRef.ID, "duct_tape_from_empty", "tapes", new ItemStack(DuctTape), DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty);
-      provider.shapeless(output, GT5RRef.ID, "fal_duct_tape_from_empty", "tapes", new ItemStack(FALDuctTape), FALDuctTapeEmpty, FALDuctTapeEmpty, FALDuctTapeEmpty, FALDuctTapeEmpty);
-      provider.addItemRecipe(output, GT5RRef.ID, "", "tapes", Tape, of('P', Items.PAPER, 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
-      provider.addItemRecipe(output, GT5RRef.ID, "", "tapes", DuctTape, of('P', FOIL.getMaterialTag(Plastic), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
-      provider.addItemRecipe(output, GT5RRef.ID, "", "tapes", FALDuctTape, of('P', FOIL.getMaterialTag(Tungsten), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
-      provider.shapeless(output, GT5RRef.ID, "data_stick_clearing", "data_sticks", new ItemStack(GT5RItems.DataStick), GT5RItems.DataStick);
-      provider.shapeless(output, GT5RRef.ID, "fluid_filter_reset", "filters", GT5RCovers.COVER_FLUID_FILTER.getItem(), GT5RCovers.COVER_FLUID_FILTER.getItem().getItem());
-      provider.shapeless(output, GT5RRef.ID, "item_filter_reset", "filters", GT5RCovers.COVER_ITEM_FILTER.getItem(), GT5RCovers.COVER_ITEM_FILTER.getItem().getItem());
-      provider.shapeless(output, GT5RRef.ID, "item_retriever_reset", "filters", GT5RCovers.COVER_ITEM_RETRIEVER.getItem(), GT5RCovers.COVER_ITEM_RETRIEVER.getItem().getItem());
+      provider.addStackRecipe(output, GT5Reimagined.ID, "", "matches", new ItemStack(Match, 4), of('P', DUST.getMaterialTag(Phosphor), 'S', ROD.getMaterialTag(Wood)), "P", "S");
+      provider.shapeless(output, GT5Reimagined.ID, "tape_from_empty", "tapes", new ItemStack(Tape), TapeEmpty, TapeEmpty, TapeEmpty, TapeEmpty);
+      provider.shapeless(output, GT5Reimagined.ID, "duct_tape_from_empty", "tapes", new ItemStack(DuctTape), DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty);
+      provider.shapeless(output, GT5Reimagined.ID, "fal_duct_tape_from_empty", "tapes", new ItemStack(FALDuctTape), FALDuctTapeEmpty, FALDuctTapeEmpty, FALDuctTapeEmpty, FALDuctTapeEmpty);
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "tapes", Tape, of('P', Items.PAPER, 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "tapes", DuctTape, of('P', FOIL.getMaterialTag(Plastic), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "tapes", FALDuctTape, of('P', FOIL.getMaterialTag(Tungsten), 'G', Glue.getLiquid().getBucket()), "PPP", " G ");
+      provider.shapeless(output, GT5Reimagined.ID, "data_stick_clearing", "data_sticks", new ItemStack(GT5RItems.DataStick), GT5RItems.DataStick);
+      provider.shapeless(output, GT5Reimagined.ID, "fluid_filter_reset", "filters", GT5RCovers.COVER_FLUID_FILTER.getItem(), GT5RCovers.COVER_FLUID_FILTER.getItem().getItem());
+      provider.shapeless(output, GT5Reimagined.ID, "item_filter_reset", "filters", GT5RCovers.COVER_ITEM_FILTER.getItem(), GT5RCovers.COVER_ITEM_FILTER.getItem().getItem());
+      provider.shapeless(output, GT5Reimagined.ID, "item_retriever_reset", "filters", GT5RCovers.COVER_ITEM_RETRIEVER.getItem(), GT5RCovers.COVER_ITEM_RETRIEVER.getItem().getItem());
       provider.addItemRecipe(output, "covers", GT5RCovers.COVER_PROGRESS_SENSOR.getItem().getItem(), of('W', CABLE_GETTER.apply(PipeSize.VTINY, LV, false), 'A', PLATE.getMaterialTag(Aluminium), 'G', GEAR_SMALL.getMaterialTag(Brass), 'C', CIRCUITS_GOOD), "WAW", "GCG");
       provider.addItemRecipe(output, "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "W", "A");
       provider.addItemRecipe(output, "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "A", "W");
-      provider.shapeless(output, GT5RRef.ID, "redstone_conductor_accept_conversion", "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem(), GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem());
-      provider.shapeless(output, GT5RRef.ID, "redstone_conductor_emit_conversion", "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem(), GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem());
+      provider.shapeless(output, GT5Reimagined.ID, "redstone_conductor_accept_conversion", "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem(), GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem());
+      provider.shapeless(output, GT5Reimagined.ID, "redstone_conductor_emit_conversion", "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem(), GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem());
       provider.addItemRecipe(output, "covers", GT5RCovers.COVER_ITEM_RETRIEVER.getItem().getItem(),
               of('C', CIRCUITS_ADVANCED, 'F', GT5RCovers.COVER_ITEM_FILTER.getItem().getItem(), 'E', PLATE.getMaterialTag(Electrum), 'P', PistonLV), "EPE", "CFC");
       provider.addItemRecipe(output, "misc", DiamondGrindHead, of('D', DUST.getMaterialTag(Diamond), 'G', GEM.getMaterialTag(Diamond), 'S', PLATE.getMaterialTag(Steel)), "DSD", "SGS", "DSD");
@@ -111,7 +110,7 @@ public class Parts {
       provider.addItemRecipe(output, "hazmat", UniversalHazardSuitBoots, of('L', PLATE.getMaterialTag(Lead), 'A', PLATE.getMaterialTag(Aluminium), 'C', Items.CHAINMAIL_BOOTS), "ALA", "LCL", "ALA");
       provider.addItemRecipe(output, "misc", EmptyGeigerCounter,
               of('S', SCREW.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Aluminium), 'C', CellTin, 'c', TIER_CIRCUITS.apply(LV), 's', SCREWDRIVER.getTag()), "SCS", "PcP", "SsS");
-      provider.addToolRecipe(ToolTypes.SCANNER_BUILDER.get("portable-scanner"), output, GT5RRef.ID, "scanner", "misc", new ItemStack(GT5RItems.PortableScanner),
+      provider.addToolRecipe(ToolTypes.SCANNER_BUILDER.get("portable-scanner"), output, GT5Reimagined.ID, "scanner", "misc", new ItemStack(GT5RItems.PortableScanner),
               of('E', EmitterHV, 'A', PLATE.getMaterialTag(Aluminium), 'S', SensorHV, 'C', CIRCUITS_ADVANCED, 'c', ComputerMonitor, 'B',  PropertyIngredient.builder("battery").itemStacks(BatteryMediumLithium).build()), "EAS", "CcC", "ABA");
       provider.addItemRecipe(output, "misc", ComputerMonitor,
               of('A', PLATE.getMaterialTag(Aluminium), 'P', PLATE.getMaterialTag(Glass), 'g', ForgeTags.DYES_GREEN, 'b', ForgeTags.DYES_BLUE, 'r', ForgeTags.DYES_RED, 'G', DUST.getMaterialTag(Glowstone)), "AgA", "rPb", "AGA");
@@ -165,7 +164,7 @@ public class Parts {
   }
 
   private static void molds(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
-      provider.addItemRecipe(output, GT5RRef.ID, "empty_shape", "gtparts", EmptyShape, of(
+      provider.addItemRecipe(output, GT5Reimagined.ID, "empty_shape", "gtparts", EmptyShape, of(
               'P', PLATE.get(Steel),
               'H', HAMMER.getTag(),
               'F', FILE.getTag()
@@ -218,12 +217,12 @@ public class Parts {
   }
 
   private static void moldRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item mold, String... shapes){
-      provider.addItemRecipe(output, GT5RRef.ID, "", "gtparts", mold,
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "gtparts", mold,
               of('P', EmptyShape, 'H', HAMMER.getTag()), shapes);
   }
 
     private static void shapeRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item inputMold, Item mold, String... shapes){
-        provider.addItemRecipe(output, GT5RRef.ID, "", "gtparts", mold,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "gtparts", mold,
                 of('P', inputMold, 'H', WIRE_CUTTER.getTag()), shapes);
     }
 

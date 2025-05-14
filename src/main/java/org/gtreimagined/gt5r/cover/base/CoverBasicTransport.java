@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.cover.base;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
@@ -10,7 +11,6 @@ import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.cover.ICoverRedstoneSensitive;
 import org.gtreimagined.gt5r.cover.ImportExportMode;
 import org.gtreimagined.gt5r.cover.RedstoneMode;
@@ -38,7 +38,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
 
     @Override
     public String getDomain() {
-        return GT5RRef.ID;
+        return GT5Reimagined.ID;
     }
 
     @Override

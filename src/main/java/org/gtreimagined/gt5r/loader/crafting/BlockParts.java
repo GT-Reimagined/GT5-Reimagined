@@ -11,7 +11,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.gtreimagined.gt5r.GT5RConfig;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.block.BlockAsphaltSlab;
 import org.gtreimagined.gt5r.block.BlockAsphaltStair;
@@ -48,7 +48,7 @@ public class BlockParts {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
         GTMaterialTypes.FRAME.all().forEach(frame -> {
             if (!frame.has(GTMaterialTypes.ROD)) return;
-            provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", GTMaterialTypes.FRAME.get().get(frame).asStack(2),
+            provider.addStackRecipe(output, GT5Reimagined.ID, "", "gtblockparts", GTMaterialTypes.FRAME.get().get(frame).asStack(2),
                     of('R', GTMaterialTypes.ROD.get(frame), 'W', WRENCH.getTag())
             , "RRR","RWR", "RRR");
         });
@@ -64,7 +64,7 @@ public class BlockParts {
         });
 
         addBrickedCasing(output, provider, Bronze, GT5RBlocks.BRICKED_BRONZE_CASING);
-        provider.addStackRecipe(output, GT5RRef.ID, "firebricks", "blocks",
+        provider.addStackRecipe(output, GT5Reimagined.ID, "firebricks", "blocks",
                 new ItemStack(GT5RBlocks.FIRE_BRICKS), of('F', GTCoreItems.FireBrick), "FF", "FF");
         addBrickedCasing(output, provider, Steel, GT5RBlocks.BRICKED_STEEL_CASING);
 
@@ -144,7 +144,7 @@ public class BlockParts {
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UV);
         addTierHull(output, provider, Polytetrafluoroethylene,Tier.UHV);
 
-        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.ENGINE_INTAKE_CASING, 1),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.ENGINE_INTAKE_CASING, 1),
                 of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
@@ -161,7 +161,7 @@ public class BlockParts {
         provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.GRATE_CASING,
                 of('B', Items.IRON_BARS, 'R', ROTOR.getMaterialTag(Steel), 'F', FRAME.getMaterialTag(Steel), 'M', GTCoreItems.MotorMV), "BRB", "BFB", "BMB");
 
-        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.BRONZE_PLATED_BRICK_CASING, 1),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.BRONZE_PLATED_BRICK_CASING, 1),
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Bronze))
                         .put('B', Blocks.BRICKS)
@@ -171,7 +171,7 @@ public class BlockParts {
                 ImmutableMap.<Character, Object>builder()
                         .put('P', PLATE.get(Steel))
                         .put('W', HAMMER.getTag()).build(), "PPP", "PWP", "PPP");
-        provider.addStackRecipe(output, GT5RRef.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.FUSION_CASING, 1),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "", "gtblockparts", new ItemStack(GT5RBlocks.FUSION_CASING, 1),
                 of('P', PLATE.getMaterialTag(TungstenSteel), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GT5RBlocks.CASING_LUV)
                 ,
                 "PHP", "PFP", "PWP");
@@ -196,9 +196,9 @@ public class BlockParts {
         provider.addItemRecipe(output, "long_distance_pipes", GT5RBlocks.LONG_DIST_FLUID_PIPE,
                 of('E', GT5RBlocks.FLUID_PIPE_STAINLESS_STEEL.getBlockItem(PipeSize.NORMAL), 'W', WRENCH.getTag(), 'P', PLATE.getMaterialTag(Plastic)), "PEP", "EWE", "PEP");
 
-        GTAPI.all(BlockAsphalt.class, GT5RRef.ID).forEach(b -> {
-            Block slab = GTAPI.get(BlockAsphaltSlab.class, b.getId() + "_slab", GT5RRef.ID);
-            Block stairs = GTAPI.get(BlockAsphaltStair.class, b.getId() + "_stairs", GT5RRef.ID);
+        GTAPI.all(BlockAsphalt.class, GT5Reimagined.ID).forEach(b -> {
+            Block slab = GTAPI.get(BlockAsphaltSlab.class, b.getId() + "_slab", GT5Reimagined.ID);
+            Block stairs = GTAPI.get(BlockAsphaltStair.class, b.getId() + "_stairs", GT5Reimagined.ID);
             if (slab != null){
                 addSlabRecipe(output, provider, b, slab);
             }
@@ -220,17 +220,17 @@ public class BlockParts {
     private static void addSlabRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block slab){
         provider.addStackRecipe(output, "slabs", new ItemStack(slab, 6), ImmutableMap.of('F', full), "FFF");
         provider.addItemRecipe(output, "slabs", full, ImmutableMap.of('S', slab), "S", "S");
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + RegistryUtils.getIdFromItem(slab.asItem()).getPath()));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/" + RegistryUtils.getIdFromItem(slab.asItem()).getPath()));
     }
 
     private static void addStairRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block stair){
         provider.addStackRecipe(output, "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "F  ", "FF ", "FFF");
-        provider.addStackRecipe(output, GT5RRef.ID, RegistryUtils.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5RRef.ID, "stonecutting/" + RegistryUtils.getIdFromItem(stair.asItem()).getPath()));
+        provider.addStackRecipe(output, GT5Reimagined.ID, RegistryUtils.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/" + RegistryUtils.getIdFromItem(stair.asItem()).getPath()));
     }
 
     private static void addCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
-        provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 ,
                 "PHP", "PFP", "PWP");
@@ -243,20 +243,20 @@ public class BlockParts {
     }
 
     private static void addFirebox(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
-        provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'R', ROD.getMaterialTag(mat), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "RFR", "PRP");
     }
 
     private static void addGearbox(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
-        provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem(), 'G', GEAR.getMaterialTag(mat))
                 ,
                 "PHP", "GFG", "PWP");
     }
 
     private static void addPipeCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, PipeType<?> pipe, Block casing) {
-        provider.addItemRecipe(output, GT5RRef.ID, "", "gtblockparts", casing,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "gtblockparts", casing,
                 of('P', PLATE.getMaterialTag(mat), 'R', pipe.getBlockItem(PipeSize.NORMAL), 'F', GTMaterialTypes.FRAME.get().get(mat).asItem())
                 , "PRP", "RFR", "PRP");
     }
@@ -274,14 +274,14 @@ public class BlockParts {
     }
 
     private static void addTierCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Tier tier) {
-        provider.addItemRecipe(output, "casings", GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID),
+        provider.addItemRecipe(output, "casings", GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5Reimagined.ID),
                 of('P', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', WRENCH.getTag())
                 , "PPP", "PWP", "PPP");
     }
 
     private static void addTierHull(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Tier tier) {
         provider.addItemRecipe(output, "hulls", HULL.getItem(tier),
-                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID))
+                of('P', PLATE.getMaterialTag(mat), 'R', PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 'W', CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 'K', GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5Reimagined.ID))
                 , "PRP", "WKW");
     }
 }

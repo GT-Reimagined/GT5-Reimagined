@@ -11,7 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
@@ -100,7 +100,7 @@ public class AppliedEnergisticsRegistrar extends GTMod {
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(Iron, 1), LENS.getMaterialIngredient(Glass, 1).setNoConsume()).io(new ItemStack(getAe2Item("silicon_press"))).add("inscriber_silicon_press_2", 2000, 1920);
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
-            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5Reimagined.ID, dyeName));
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_smart_cable")).io(getAe2Item(dye.getName() + "_smart_cable")).add(dye.getName() + "_smart_cable", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_covered_cable")).io(getAe2Item(dye.getName() + "_covered_cable")).add(dye.getName() + "_covered_cable", 64);
             BATH.RB().fi(FluidIngredient.of(dyeLiquid, L / 8)).ii(getAe2Item("fluix_glass_cable")).io(getAe2Item(dye.getName() + "_glass_cable")).add(dye.getName() + "_glass_cable", 64);
@@ -110,8 +110,8 @@ public class AppliedEnergisticsRegistrar extends GTMod {
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
-        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5RRef.ID + ":silicon");
-        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5RRef.ID + ":silicon_blasting");
+        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5Reimagined.ID + ":silicon");
+        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5Reimagined.ID + ":silicon_blasting");
     }
 
     @Override

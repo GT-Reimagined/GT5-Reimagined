@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.BlockPos;
@@ -25,7 +26,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,7 +33,7 @@ import static net.minecraft.world.level.block.TntBlock.UNSTABLE;
 
 public class BlockPowderBarrel extends BlockBasic {
     public BlockPowderBarrel() {
-        super(GT5RRef.ID, "powder_barrel", Properties.of(Material.WOOD).strength(1.0f, 1.0f).sound(SoundType.WOOD));
+        super(GT5Reimagined.ID, "powder_barrel", Properties.of(Material.WOOD).strength(1.0f, 1.0f).sound(SoundType.WOOD));
         this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, false));
     }
 
@@ -128,7 +128,7 @@ public class BlockPowderBarrel extends BlockBasic {
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GT5RRef.ID, "block/powder_barrel")};
+        return new Texture[]{new Texture(GT5Reimagined.ID, "block/powder_barrel")};
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

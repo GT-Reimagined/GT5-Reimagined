@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.items;
 
 import lombok.Getter;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.item.ItemBasic;
@@ -18,7 +19,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.fluids.FluidStack;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 import org.gtreimagined.gt5r.data.Materials;
 import org.jetbrains.annotations.Nullable;
@@ -152,7 +152,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
 
     @Override
     public Texture[] getTextures() {
-        return new Texture[]{new Texture(GT5RRef.ID, "item/basic/nuclear_fuel_rod"), new Texture(GT5RRef.ID, "item/basic/empty_nuclear_fuel_rod")};
+        return new Texture[]{new Texture(GT5Reimagined.ID, "item/basic/nuclear_fuel_rod"), new Texture(GT5Reimagined.ID, "item/basic/empty_nuclear_fuel_rod")};
     }
 
     @Override

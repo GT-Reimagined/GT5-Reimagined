@@ -10,7 +10,7 @@ import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
 public class GT5RPostRegistrar extends GTMod {
     @Override
     public String getId() {
-        return GT5RRef.ID + "_post";
+        return GT5Reimagined.ID + "_post";
     }
 
     @Override

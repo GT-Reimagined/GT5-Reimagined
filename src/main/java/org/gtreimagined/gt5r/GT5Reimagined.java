@@ -154,11 +154,16 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.PLATE;
 import static org.gtreimagined.gtlib.machine.Tier.IV;
 import static org.gtreimagined.gtlib.worldgen.GTLibWorldGenerator.removeDecoratedFeatureFromAllBiomes;
 
-@Mod(GT5RRef.ID)
+@Mod(GT5Reimagined.ID)
 public class GT5Reimagined extends GTMod {
 
+    public static final String NAME = "GT5 Reimagined";
     public static GT5Reimagined INSTANCE;
-    public static Logger LOGGER = LogManager.getLogger(GT5RRef.ID);
+    /**
+     * Mod Data
+     **/
+    public static final String ID = "gt5r";
+    public static Logger LOGGER = LogManager.getLogger(ID);
 
     public GT5Reimagined() {
         super();
@@ -168,11 +173,11 @@ public class GT5Reimagined extends GTMod {
         new TFCRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
-        GTLibDynamics.clientProvider(GT5RRef.ID,
-                () -> new GTBlockStateProvider(GT5RRef.ID, GT5RRef.NAME + " BlockStates"));
-        GTLibDynamics.clientProvider(GT5RRef.ID,
-                () -> new GTItemModelProvider(GT5RRef.ID, GT5RRef.NAME + " Item Models"));
-        GTLibDynamics.clientProvider(GT5RRef.ID, GT5RLocalizations.en_US::new);
+        GTLibDynamics.clientProvider(ID,
+                () -> new GTBlockStateProvider(ID, NAME + " BlockStates"));
+        GTLibDynamics.clientProvider(ID,
+                () -> new GTItemModelProvider(ID, NAME + " Item Models"));
+        GTLibDynamics.clientProvider(ID, GT5RLocalizations.en_US::new);
         GT5RConfig.createConfig();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
@@ -195,16 +200,16 @@ public class GT5Reimagined extends GTMod {
     public static void onProviders(GTProvidersEvent ev) {
         final GTBlockTagProvider[] p = new GTBlockTagProvider[1];
         ev.addProvider(() -> {
-            p[0] = new GT5RBlockTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Block Tags"), false);
+            p[0] = new GT5RBlockTagProvider(ID, NAME.concat(" Block Tags"), false);
             return p[0];
         });
-        ev.addProvider(() -> new GT5RItemTagProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Item Tags"),
+        ev.addProvider(() -> new GT5RItemTagProvider(ID, NAME.concat(" Item Tags"),
                 false, p[0]));
-        ev.addProvider(() -> new GT5RFluidTagProvider(GT5RRef.ID,
-                GT5RRef.NAME.concat(" Fluid Tags"), false));
-        ev.addProvider(() -> new GTAdvancementProvider(GT5RRef.ID,
-                GT5RRef.NAME.concat(" Advancements"), new ProgressionAdvancements()));
-        ev.addProvider(() -> new GT5RBlockLootProvider(GT5RRef.ID, GT5RRef.NAME.concat(" Loot generator")));
+        ev.addProvider(() -> new GT5RFluidTagProvider(ID,
+                NAME.concat(" Fluid Tags"), false));
+        ev.addProvider(() -> new GTAdvancementProvider(ID,
+                NAME.concat(" Advancements"), new ProgressionAdvancements()));
+        ev.addProvider(() -> new GT5RBlockLootProvider(ID, NAME.concat(" Loot generator")));
     }
     
     public static void registerCraftingLoaders(GTCraftingEvent event) {
@@ -226,7 +231,7 @@ public class GT5Reimagined extends GTMod {
     }
 
     public static void registerRecipeLoaders(GTLoaderEvent event) {
-        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5RRef.ID, a, b);
+        BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(ID, a, b);
         loader.accept("alloy_smelter", AlloySmelterLoader::init);
         loader.accept("arc_furnace", ArcFurnaceLoader::init);
         loader.accept("assembler", AssemblerLoader::init);
@@ -300,7 +305,7 @@ public class GT5Reimagined extends GTMod {
     }
 
     public static <T> T get(Class<? extends T> clazz, String id) {
-        return GTAPI.get(clazz, id, GT5RRef.ID);
+        return GTAPI.get(clazz, id, ID);
     }
 
     @Override
@@ -327,7 +332,7 @@ public class GT5Reimagined extends GTMod {
                         removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
                     }
                 };
-                GTAPI.register(IGTWorldgenFunction.class, "removed_ores", GT5RRef.ID, function);
+                GTAPI.register(IGTWorldgenFunction.class, "removed_ores", ID, function);
                 if (GTAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
                     REIRegistrar.init();
                 }
@@ -412,6 +417,6 @@ public class GT5Reimagined extends GTMod {
 
     @Override
     public String getId() {
-        return GT5RRef.ID;
+        return ID;
     }
 }

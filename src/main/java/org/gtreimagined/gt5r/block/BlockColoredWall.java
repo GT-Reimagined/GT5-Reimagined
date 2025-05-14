@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockFakeTile;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.registration.IColorHandler;
@@ -10,7 +11,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.Nullable;
 
 import static org.gtreimagined.gtlib.data.GTLibMaterials.Wood;
@@ -32,9 +32,9 @@ public class BlockColoredWall  extends BlockFakeTile implements IColorHandler {
 
     @Override
     public Texture[] getTextures() {
-        Texture side = material == Wood ? new Texture(GT5RRef.ID, "block/casing/wall/wood") : new Texture(GT5RRef.ID, "block/casing/wall/metal");
-        Texture overlay = new Texture(GT5RRef.ID, "block/machine/empty");
-        Texture sideOverlay = material == Wood ? new Texture(GT5RRef.ID, "block/casing/wall/wood_overlay_side") : overlay;
+        Texture side = material == Wood ? new Texture(GT5Reimagined.ID, "block/casing/wall/wood") : new Texture(GT5Reimagined.ID, "block/casing/wall/metal");
+        Texture overlay = new Texture(GT5Reimagined.ID, "block/machine/empty");
+        Texture sideOverlay = material == Wood ? new Texture(GT5Reimagined.ID, "block/casing/wall/wood_overlay_side") : overlay;
         return new Texture[]{side, side, side, side, side, side, overlay, overlay, sideOverlay, sideOverlay, sideOverlay, sideOverlay};
     }
 

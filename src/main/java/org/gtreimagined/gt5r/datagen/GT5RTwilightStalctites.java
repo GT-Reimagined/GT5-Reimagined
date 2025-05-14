@@ -3,13 +3,13 @@ package org.gtreimagined.gt5r.datagen;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import org.gtreimagined.gt5r.GT5RRef;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ public class GT5RTwilightStalctites {
         object.addProperty("ore", RegistryUtils.getIdFromBlock(ore).toString());
         object.addProperty("size_variation", sizeVariation);
         object.addProperty("weight", weight);
-        ResourceLocation id = new ResourceLocation(GT5RRef.ID, name);
+        ResourceLocation id = new ResourceLocation(GT5Reimagined.ID, name);
         hollowHillEntries.computeIfAbsent(hillSize, i -> new ArrayList<>()).add(id);
         GTLibDynamics.RUNTIME_DATA_PACK.addData(GTLibDynamics.fix(id, "stalactite/entries", ".json"), object.toString().getBytes());
     }

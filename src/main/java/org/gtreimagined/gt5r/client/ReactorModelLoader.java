@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.client;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.client.model.MachineModel;
@@ -12,7 +13,6 @@ import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.ResourceLocation;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -42,7 +42,7 @@ public class ReactorModelLoader extends GTModelLoader<MachineModel> {
         String[] array = new String[]{"north-west", "south-west", "north-east", "south-east"};
         //northwest is 0, southwest is 1, northeast is 2, southeast is 3
         for (int i = 0; i < 4; i++) {
-            ResourceLocation modelLocation = new ResourceLocation(GT5RRef.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
+            ResourceLocation modelLocation = new ResourceLocation(GT5Reimagined.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
             try {
                 rods[i] = ModelUtils.getModel(modelLocation);
             } catch (Exception ignored){

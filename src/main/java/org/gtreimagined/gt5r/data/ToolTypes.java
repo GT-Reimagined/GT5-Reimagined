@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import com.google.common.collect.ImmutableMap;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
@@ -22,7 +23,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySecondaryOutput;
 import org.gtreimagined.gt5r.items.ItemPortableScanner;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
@@ -42,13 +42,13 @@ import static org.gtreimagined.gt5r.data.GT5RItems.BatteryMediumLithium;
 
 public class ToolTypes {
 
-    public static final GTToolType SMALL_TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "small_turbine_rotor", 1, 1, 1, -1.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setToolSupplier(ItemTurbineRotor::new);
-    public static final GTToolType TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
-    public static final GTToolType LARGE_TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
-    public static final GTToolType HUGE_TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
-    public static final GTToolType PINCERS = GTAPI.register(GTToolType.class, new GTToolType(GT5RRef.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
+    public static final GTToolType SMALL_TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5Reimagined.ID, "small_turbine_rotor", 1, 1, 1, -1.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5Reimagined.ID, "turbine_rotor", 1, 1, 1, 1.5F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.BROKEN_TURBINE_ROTOR).setDurabilityMultiplier(2).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType LARGE_TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5Reimagined.ID, "large_turbine_rotor", 1, 1, 1, 4.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(3).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType HUGE_TURBINE_ROTOR = GTAPI.register(GTToolType.class, new GTToolType(GT5Reimagined.ID, "huge_turbine_rotor", 1, 1, 1, 2.0F, 0.0f, false)).setHasSecondary(false).setMaterialTypeItem(GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR).setTag(new ResourceLocation(Ref.ID, "turbine_rotor")).setDurabilityMultiplier(4).setToolSupplier(ItemTurbineRotor::new);
+    public static final GTToolType PINCERS = GTAPI.register(GTToolType.class, new GTToolType(GT5Reimagined.ID, "pincers", 1, 2, 10, 5.0f, 0.0f, false)).setRepairable(false);
 
-    public static final MaterialRecipe.Provider SCANNER_BUILDER = MaterialRecipe.registerProvider("portable-scanner", GT5RRef.ID, id -> new MaterialRecipe.ItemBuilder() {
+    public static final MaterialRecipe.Provider SCANNER_BUILDER = MaterialRecipe.registerProvider("portable-scanner", GT5Reimagined.ID, id -> new MaterialRecipe.ItemBuilder() {
 
         @Override
         public ItemStack build(CraftingContainer inv, MaterialRecipe.Result mats) {
@@ -64,7 +64,7 @@ public class ToolTypes {
             return ImmutableMap.of("energy", getEnergy(stack).getA(), "maxEnergy", getEnergy(stack).getB());
         }
     });
-    public static final MaterialRecipe.Provider POWERED_TOOL_BUILDER = MaterialRecipe.registerProvider("powered-tool", GT5RRef.ID, id -> new MaterialRecipe.ItemBuilder() {
+    public static final MaterialRecipe.Provider POWERED_TOOL_BUILDER = MaterialRecipe.registerProvider("powered-tool", GT5Reimagined.ID, id -> new MaterialRecipe.ItemBuilder() {
 
         @Override
         public ItemStack build(CraftingContainer inv, MaterialRecipe.Result mats) {
@@ -84,7 +84,7 @@ public class ToolTypes {
         }
     });
 
-    public static final MaterialRecipe.Provider UNIT_POWERED_TOOL_BUILDER = MaterialRecipe.registerProvider("powered-tool-from-unit", GT5RRef.ID, id -> new MaterialRecipe.ItemBuilder() {
+    public static final MaterialRecipe.Provider UNIT_POWERED_TOOL_BUILDER = MaterialRecipe.registerProvider("powered-tool-from-unit", GT5Reimagined.ID, id -> new MaterialRecipe.ItemBuilder() {
 
         @Override
         public ItemStack build(CraftingContainer inv, MaterialRecipe.Result mats) {

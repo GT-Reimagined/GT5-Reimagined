@@ -10,7 +10,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RConfig;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
@@ -18,6 +18,7 @@ import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -48,7 +49,7 @@ import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 public class Circuitry {
     public static void loadCraftingRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         // MANUAL COATED BOARD CRAFTING
-        provider.addStackRecipe(output, GT5RRef.ID, "", "board_basic", new ItemStack(GT5RItems.CircuitBoardCoated, 3),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "", "board_basic", new ItemStack(GT5RItems.CircuitBoardCoated, 3),
                 ImmutableMap.<Character, Object>builder()
                         .put('R', GTCoreItems.StickyResin)
                         .put('P', PLATE.get(Wood))
@@ -77,7 +78,7 @@ public class Circuitry {
                         .put('c', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('D', GT5RItems.Diode).build(), "SCc", "CDC", "cCS");
 
-        var wire = TagUtils.getItemTag(new ResourceLocation(GT5RRef.ANTIMATTER, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
+        var wire = TagUtils.getItemTag(new ResourceLocation(Ref.ID, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
         // MANUAL VAC TUBE CRAFTING
         provider.addItemRecipe(output, "vac_tube", GT5RItems.VacuumTube,
                 ImmutableMap.<Character, Object>builder()
@@ -87,7 +88,7 @@ public class Circuitry {
                         .build(),
                 "PGP", "WWW");
 
-        provider.addItemRecipe(output, GT5RRef.ID, "vacuum_tube_1", "vac_tube", GT5RItems.VacuumTube,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "vacuum_tube_1", "vac_tube", GT5RItems.VacuumTube,
                 ImmutableMap.<Character, Object>builder()
                         .put('G', GT5RItems.GlassTube)
                         .put('P', Items.PAPER)
@@ -103,50 +104,50 @@ public class Circuitry {
                         .put('W', WIRE_FINE.getMaterialTag(Copper))
                         .build(),
                 " P ", "WCW", " P ");
-        provider.addItemRecipe(output, GT5RRef.ID, "", "diodes", GT5RItems.Diode,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "diodes", GT5RItems.Diode,
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeTags.DYES_BLACK)
                         .put('T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', GT5RItems.Wafer)
                         .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addItemRecipe(output, GT5RRef.ID, "diode_2", "diodes", GT5RItems.Diode,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "diode_2", "diodes", GT5RItems.Diode,
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', GT5RItems.Wafer)
                         .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GT5RRef.ID, "diode_3", "diodes", new ItemStack(GT5RItems.Diode),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "diode_3", "diodes", new ItemStack(GT5RItems.Diode),
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeTags.DYES_BLACK)
                         .put('T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GT5RRef.ID, "diode_4", "diodes", new ItemStack(GT5RItems.Diode),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "diode_4", "diodes", new ItemStack(GT5RItems.Diode),
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeTags.DYES_BLACK)
                         .put('T', WIRE_FINE.getMaterialTag(Tin))
                         .put('W', DUST_TINY.getMaterialTag(Gallium))
                         .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
-        provider.addStackRecipe(output, GT5RRef.ID, "", "small_coils", new ItemStack(GT5RItems.SmallCoil, 2),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "", "small_coils", new ItemStack(GT5RItems.SmallCoil, 2),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(Steel)), "WWW", "WBW", "WWW");
-        provider.addStackRecipe(output, GT5RRef.ID, "small_coil_1", "small_coils", new ItemStack(GT5RItems.SmallCoil, 4),
+        provider.addStackRecipe(output, GT5Reimagined.ID, "small_coil_1", "small_coils", new ItemStack(GT5RItems.SmallCoil, 4),
                 ImmutableMap.of('W', WIRE_FINE.getMaterialTag(Copper), 'B', BOLT.getMaterialTag(NickelZincFerrite)), "WWW", "WBW", "WWW");
     }
 
     private static void circuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
-        provider.addItemRecipe(output, GT5RRef.ID, "circuit_basic_h", "circuits", CircuitBasic,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "circuit_basic_h", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', GT5RItems.CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GT5RRef.ID, "circuit_basic_v", "circuits", CircuitBasic,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "circuit_basic_v", "circuits", CircuitBasic,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', NandChip)
                         .put('S', GT5RItems.CircuitBoardCoated)
                         .build(), "CNC", "CSC", "CNC");
-        provider.addItemRecipe(output, GT5RRef.ID, "", "circuits", NandChip,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "", "circuits", NandChip,
                 ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
         /*provider.addItemRecipe(output, GT5RRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
                 ImmutableMap.of('C', CIRCUITS_ADVANCED, 'L', DUST_LAPIS_LAZURITE, 'E', GTCoreItems.EnergyCrystal), "LCL", "LEL", "LCL");

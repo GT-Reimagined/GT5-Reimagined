@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.events.forge;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTRemapping;
 import org.gtreimagined.gtlib.Ref;
@@ -26,7 +27,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.miniportals.BlockEntityMiniPortal;
 import org.gtreimagined.gt5r.blockentity.multi.MiningPipeStructureCache;
 import org.gtreimagined.gt5r.data.Materials;
@@ -86,7 +86,7 @@ public class RemappingEvents {
     @SubscribeEvent
     public static void onAttackCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
         if (event.getObject() instanceof BlockEntityMiniPortal miniPortal){
-            event.addCapability(new ResourceLocation(GT5RRef.ID, "mini_portal"), new ICapabilityProvider() {
+            event.addCapability(new ResourceLocation(GT5Reimagined.ID, "mini_portal"), new ICapabilityProvider() {
                 @NotNull
                 @Override
                 public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
@@ -221,12 +221,12 @@ public class RemappingEvents {
                     continue;
                 }
             }
-            Block replacement = GTAPI.get(Block.class, id, GT5RRef.ANTIMATTER_SHARED);
+            Block replacement = GTAPI.get(Block.class, id, Ref.SHARED_ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
-            replacement = GTAPI.get(Block.class, id, GT5RRef.ID);
+            replacement = GTAPI.get(Block.class, id, GT5Reimagined.ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
@@ -240,8 +240,8 @@ public class RemappingEvents {
             if (id.equals("rubber_sapling")){
                 map.remap(GTCoreBlocks.RUBBER_SAPLING);
             }
-            if (GTRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
-                Block block = GTAPI.get(Block.class, GTRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
+            if (GTRemapping.getRemappingMap().get(GT5Reimagined.ID).containsKey(id)){
+                Block block = GTAPI.get(Block.class, GTRemapping.getRemappingMap().get(GT5Reimagined.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -340,19 +340,19 @@ public class RemappingEvents {
         });
         for (var map : Stream.of(event.getMappings("gregtech"), event.getMappings("gti")).flatMap(Collection::stream).toList()) {
             String id = map.key.getPath();
-            Item replacement = GTAPI.get(Item.class, id, GT5RRef.ANTIMATTER_SHARED);
+            Item replacement = GTAPI.get(Item.class, id, Ref.SHARED_ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
-            replacement = GTAPI.get(Item.class, id, GT5RRef.ID);
+            replacement = GTAPI.get(Item.class, id, GT5Reimagined.ID);
             if (replacement != null){
                 map.remap(replacement);
                 continue;
             }
 
-            if (GTRemapping.getRemappingMap().get(GT5RRef.ID).containsKey(id)){
-                Item block = GTAPI.get(Item.class, GTRemapping.getRemappingMap().get(GT5RRef.ID).get(id));
+            if (GTRemapping.getRemappingMap().get(GT5Reimagined.ID).containsKey(id)){
+                Item block = GTAPI.get(Item.class, GTRemapping.getRemappingMap().get(GT5Reimagined.ID).get(id));
                 if (block != null){
                     map.remap(block);
                 }
@@ -362,7 +362,7 @@ public class RemappingEvents {
 
     @SubscribeEvent
     public static void remapMissingFluids(final RegistryEvent.MissingMappings<Fluid> event){
-        for (var map : event.getMappings(GT5RRef.ID)) {
+        for (var map : event.getMappings(GT5Reimagined.ID)) {
             String id = map.key.getPath();
             String liquid = id.startsWith("flowing_") ? id.replace("flowing_", "") : id;
             if (id.contains("polethylene")){

@@ -1,13 +1,13 @@
 package org.gtreimagined.gt5r.datagen;
 
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTLanguageProvider;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.util.Utils;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.block.BlockAsphaltSlab;
 import org.gtreimagined.gt5r.block.BlockAsphaltStair;
@@ -33,21 +33,21 @@ public class GT5RLocalizations {
     public static class en_US extends GTLanguageProvider {
 
         public en_US() {
-            super(GT5RRef.ID, GT5RRef.NAME + " en_us Localization", "en_us");
+            super(GT5Reimagined.ID, GT5Reimagined.NAME + " en_us Localization", "en_us");
         }
 
         @Override
         protected void addTranslations() {
             super.addTranslations();
-            add(GT5RRef.ID + ".advancements.greg", "GT5 Reimagined");
-            add(GT5RRef.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
-            add(GT5RRef.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
-            add(GT5RRef.ID + ".rei.tooltip.material_tree", "Material Tree");
+            add(GT5Reimagined.ID + ".advancements.greg", "GT5 Reimagined");
+            add(GT5Reimagined.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
+            add(GT5Reimagined.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
+            add(GT5Reimagined.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
             add("machine.upgraded_batch.parallel", "Runs up to %s recipes at a time");
-            add(GT5RRef.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
-            add(GT5RRef.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
-            add(GT5RRef.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
+            add(GT5Reimagined.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
+            add(GT5Reimagined.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
+            add(GT5Reimagined.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
             add("tooltip.gt5r.redstone_mode.2", "Ignore Redstone");
             add("tooltip.gt5r.redstone_mode.1", "Invert Conditional");
             add("tooltip.gt5r.redstone_mode.0", "Conditional");

@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.datagen;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
@@ -9,7 +10,6 @@ import org.gtreimagined.gtlib.util.RegistryUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.DyeColor;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.block.BlockAsphaltSlab;
 import org.gtreimagined.gt5r.block.BlockAsphaltStair;
@@ -34,39 +34,39 @@ public class GT5RBlockTagProvider extends GTBlockTagProvider {
     @Override
     public void processTags(String domain){
         super.processTags(domain);
-        GTAPI.all(BlockCasing.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockCasing.class, GT5Reimagined.ID, cas -> {
             if (cas.getId().contains("long_distance_wire")){
                 this.tag(GTTools.WIRE_CUTTER.getToolType()).add(cas);
                 return;
             }
             this.tag(GTTools.WRENCH.getToolType()).add(cas);
         });
-        GTAPI.all(BlockColoredWall.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockColoredWall.class, GT5Reimagined.ID, cas -> {
             if (cas.getMaterial() == Wood){
                 this.tag(GTTools.AXE.getToolType()).add(cas);
             } else {
                 this.tag(GTTools.WRENCH.getToolType()).add(cas);
             }
         });
-        GTAPI.all(BlockFakeCasing.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockFakeCasing.class, GT5Reimagined.ID, cas -> {
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
         for (DyeColor color : DyeColor.values()) {
             this.tag(GT5RTags.ASPHALT).add(RegistryUtils.getBlockFromId(new ResourceLocation(color.getName() + "_concrete")));
         }
-        GTAPI.all(BlockAsphalt.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockAsphalt.class, GT5Reimagined.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
-        GTAPI.all(BlockAsphaltSlab.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockAsphaltSlab.class, GT5Reimagined.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
-        GTAPI.all(BlockAsphaltStair.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockAsphaltStair.class, GT5Reimagined.ID, cas -> {
             this.tag(GT5RTags.ASPHALT).add(cas);
             this.tag(GTTools.PICKAXE.getToolType()).add(cas);
         });
-        GTAPI.all(BlockCoil.class, GT5RRef.ID, cas -> {
+        GTAPI.all(BlockCoil.class, GT5Reimagined.ID, cas -> {
             this.tag(GTTools.WRENCH.getToolType()).add(cas);
         });
         this.tag(GTTools.AXE.getToolType()).add(GT5RBlocks.BRITTLE_CHARCOAL, GT5RBlocks.POWDER_BARREL);

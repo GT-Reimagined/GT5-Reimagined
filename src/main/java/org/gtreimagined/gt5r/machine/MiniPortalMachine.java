@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.machine;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.MachineFlag;
 import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import net.minecraft.resources.ResourceLocation;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.Textures;
 
 import static org.gtreimagined.gtlib.machine.MachineFlag.UNCULLED;
@@ -16,7 +16,7 @@ public class MiniPortalMachine extends BasicMachine {
         this.setTiers(NONE);
         this.addFlags(UNCULLED);
         this.noCovers().allowFrontIO();
-        this.itemModelParent(new ResourceLocation(GT5RRef.ID, "block/mini_portal"));
+        this.itemModelParent(new ResourceLocation(GT5Reimagined.ID, "block/mini_portal"));
         this.custom(Textures.MINI_PORTAL);
         this.removeFlags(MachineFlag.COVERABLE);
         this.setToolTag(GTTools.PICKAXE.getToolType());

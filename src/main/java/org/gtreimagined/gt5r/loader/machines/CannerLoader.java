@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.items.ItemBreederRod;
 import org.gtreimagined.gt5r.items.ItemNuclearFuelRod;
@@ -35,12 +35,12 @@ public class CannerLoader {
         CANNER.RB().ii(ROD.getMaterialIngredient(Beryllium, 1), of(GT5RItems.EmptyNuclearFuelRod)).io(GT5RItems.NeutronReflectorRod).add("neutron_reflector_rod", 16, 16);
         CANNER.RB().ii(ROD.getMaterialIngredient(Graphite, 1), of(GT5RItems.EmptyNuclearFuelRod)).io(GT5RItems.NeutronModeratorRod).add("neutron_moderator_rod", 16, 16);
         CANNER.RB().ii(DUST.getMaterialIngredient(Iodine, 1), of(GTCoreItems.EmptyWaxPill)).io(GTCoreItems.Radaway).add("radaway", 16, 16);
-        GTAPI.all(ItemNuclearFuelRod.class, GT5RRef.ID).forEach(r -> {
+        GTAPI.all(ItemNuclearFuelRod.class, GT5Reimagined.ID).forEach(r -> {
             if (r.getMaterial().has(ROD)){
                 CANNER.RB().ii(ROD.getMaterialIngredient(r.getMaterial(), 1), of(GT5RItems.EmptyNuclearFuelRod)).io(r).add(r.getId(), 16, 16);
             }
         });
-        GTAPI.all(ItemBreederRod.class, GT5RRef.ID).forEach(r -> {
+        GTAPI.all(ItemBreederRod.class, GT5Reimagined.ID).forEach(r -> {
             if (r.getMaterial().has(BOLT)){
                 CANNER.RB().ii(BOLT.getMaterialIngredient(r.getMaterial(), 4), of(GT5RItems.EmptyNuclearFuelRod)).io(r).add(r.getId(), 16, 16);
             }

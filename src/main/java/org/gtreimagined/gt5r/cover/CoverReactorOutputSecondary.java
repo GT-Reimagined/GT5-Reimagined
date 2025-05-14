@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.cover.BaseCover;
@@ -11,7 +12,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,7 +30,7 @@ public class CoverReactorOutputSecondary extends BaseCover {
     @Override
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;
-        return new ResourceLocation(GT5RRef.ID + ":block/cover/nuclear");
+        return new ResourceLocation(GT5Reimagined.ID + ":block/cover/nuclear");
     }
 
     @Override

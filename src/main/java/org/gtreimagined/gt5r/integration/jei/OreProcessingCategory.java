@@ -4,12 +4,12 @@ import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.integration.jei.category.RecipeMapCategory;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 
 public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
@@ -21,10 +21,10 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     IDrawable sift = createDrawable("sift");
     IDrawable smelt = createDrawable("smelt");
     IDrawable vac = createDrawable("vac");
-    public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5RRef.ID, "ore_byproducts"), OreByProduct.class);
+    public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5Reimagined.ID, "ore_byproducts"), OreByProduct.class);
 
     private static IDrawable createDrawable(String id) {
-        return RecipeMapCategory.guiHelper.drawableBuilder(new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/" + id + ".png"), 3, 3, 180, 160).setTextureSize(186, 166).build();
+        return RecipeMapCategory.guiHelper.drawableBuilder(new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/" + id + ".png"), 3, 3, 180, 160).setTextureSize(186, 166).build();
     }
 
     @Override

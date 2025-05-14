@@ -1,10 +1,10 @@
 package org.gtreimagined.gt5r.machine;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.util.Utils;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -37,7 +37,7 @@ public class HeatExchangerMachine extends SecondaryOutputMachine {
         setSecondaryOutputCover(GT5RCovers.COVER_OUTPUT_SECONDARY);
         covers(ICover.emptyFactory, ICover.emptyFactory, ICover.emptyFactory, COVEROUTPUT, GT5RCovers.COVER_OUTPUT_SECONDARY, ICover.emptyFactory);
         setTiers(NONE);
-        baseTexture(new Texture(GT5RRef.ID, "block/machine/base/" + id));
+        baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/" + id));
         setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).frontCovers().allowFrontIO();
         addTooltipInfo((machine, stack, world, tooltip, flag) -> {
             tooltip.add(Utils.translatable("tooltip.gt5r.small_heat_exchanger.heat_rate", rate));

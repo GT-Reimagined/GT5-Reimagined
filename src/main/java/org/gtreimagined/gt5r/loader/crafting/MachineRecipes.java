@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RConfig;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
@@ -634,7 +633,7 @@ public class MachineRecipes {
                             .put('D', DataOrb)
                             .put('M', hull)
                             .put('C', conveyor).build(), "DMC"));
-            add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, GT5RRef.ID, "super_buffer_" + tier.getId() +"_1", "machines", item,
+            add(SUPER_BUFFER, tier, (m, item) -> provider.addItemRecipe(output, GT5Reimagined.ID, "super_buffer_" + tier.getId() +"_1", "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('D', GT5RItems.DataStick)
                             .put('M', hull)
@@ -723,10 +722,10 @@ public class MachineRecipes {
                 of('T', GT5RBlocks.ITEM_PIPE_PLATINUM.getBlock(PipeSize.NORMAL), 'C', PLATE.getMaterialTag(Plastic), 'W', GT5RBlocks.PLATINUM_CASING), "CTC", "TWT", "CTC");
         GTAPI.all(WorkbenchMachine.class).forEach(m -> {
             if (!m.getId().contains("charging")) {
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(m.getMaterial()), 'C', Tags.Items.CHESTS_WOODEN, 'c', Items.CRAFTING_TABLE, 'S', SCREWDRIVER.getTag()), "PSP", "PcP", "PCP");
             } else {
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(HV),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(HV),
                         of('S', SCREWDRIVER.getTag(), 'w', WIRE_CUTTER.getTag(), 'W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.SMALL, HV, false), 'C', CIRCUITS_ADVANCED, 'R', ROD.getMaterialTag(m.getMaterial())), "RCR", "SWw", "ccc");
             }
         });
@@ -735,10 +734,10 @@ public class MachineRecipes {
             ChestMachine chest = GTAPI.get(ChestMachine.class, material.getId() + "_chest", GTCore.ID);
             if (material.has(SCREW) && chest != null){
                 if (!m.getId().contains("charging")) {
-                    provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
+                    provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(NONE),
                             of('s', SCREW.getMaterialTag(m.getMaterial()), 'C', chest.getItem(NONE), 'c', GT5RBlocks.SOLID_STEEL_CASING, 'S', SCREWDRIVER.getTag(), 'R', ROD.getMaterialTag(material), 'L', Items.LEATHER), "RSR", "LCL", "scs");
                 } else {
-                    provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(HV),
+                    provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(HV),
                             of('W', Machine.get(m.getId().replace("charging_", ""), GTCore.ID).map(mch -> mch.getItem(NONE)).orElse(Items.AIR), 'c', CABLE_GETTER.apply(PipeSize.VTINY, HV, false), 'C', CIRCUITS_ADVANCED), "cCc", "cWc", "cCc");
                 }
             }
@@ -747,14 +746,14 @@ public class MachineRecipes {
         GTAPI.all(ChestMachine.class).forEach(m -> {
             Material material = m.getMaterial();
             if (material.has(RING) && material.has(PLATE)){
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(material), 'R', ROD.getMaterialTag(material), 'r', RING.getMaterialTag(material), 'S', SAW.getTag(), 'W', WRENCH.getTag()), "SPW", "rRr", "PPP");
             }
         });
         GTAPI.all(BarrelMachine.class).forEach(m -> {
             Material material = m.getMaterial();
             if (material.has(ROD) && material.has(PLATE)){
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(material), 'R', ROD.getMaterialTag(material), 'S', SAW.getTag(), 'W', WRENCH.getTag()), "SPW", "PRP", " P ");
             }
         });
@@ -762,23 +761,23 @@ public class MachineRecipes {
             Material material = m.getMaterial();
             ChestMachine chest = GTAPI.get(ChestMachine.class, material.getId() + "_chest", GTCore.ID);
             if (material.has(SCREW) && material.has(PLATE) && !material.has(MaterialTags.WOOD) && chest != null){
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "machines", m.getItem(NONE),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "machines", m.getItem(NONE),
                         of('C', chest.getItem(NONE), 'S', SCREW.getMaterialTag(material), 'c', GT5RBlocks.SOLID_STEEL_CASING, 's', SCREWDRIVER.getTag(), 'W', WRENCH.getTag()), "SCS", "Wcs", "SCS");
             }
         });
 
-        GTAPI.all(MultiblockTankMachine.class, GT5RRef.ID).forEach(m -> {
+        GTAPI.all(MultiblockTankMachine.class, GT5Reimagined.ID).forEach(m -> {
             if (m.isSmall()){
-                Block block = GTAPI.get(Block.class, m.getMaterial().getId() + "_wall", GT5RRef.ID);
+                Block block = GTAPI.get(Block.class, m.getMaterial().getId() + "_wall", GT5Reimagined.ID);
                 if (block == null) return;
                 Material ringMaterial = m.getMaterial() == Wood ? Lead : m.getMaterial();
                 TagKey<Item> hammer = m.getMaterial() == Wood ? SOFT_HAMMER.getTag() : HAMMER.getTag();
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "multiblock_tanks", m.getItem(NONE),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "multiblock_tanks", m.getItem(NONE),
                         of('R', RING.getMaterialTag(ringMaterial), 'S', SAW.getTag(), 'H', hammer, 'W', block.asItem()), " R ", "HWS", " R ");
             } else {
-                Block block = GTAPI.get(Block.class, m.getId().replace("large", "small"), GT5RRef.ID);
+                Block block = GTAPI.get(Block.class, m.getId().replace("large", "small"), GT5Reimagined.ID);
                 if (block == null) return;
-                provider.addItemRecipe(output, GT5RRef.ID, m.getId(), "multiblock_tanks", m.getItem(NONE),
+                provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "multiblock_tanks", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(m.getMaterial()), 'S', SAW.getTag(), 'H', HAMMER.getTag(), 'W', block.asItem()), "PPP", "HWS", "PPP");
             }
         });
@@ -810,7 +809,7 @@ public class MachineRecipes {
             add(SECONDARY_INPUT_HATCH, tier, (m, item) -> provider.shapeless(output, "", "machines", new ItemStack(item),
                     INPUT_HATCH.getItem(tier)));
 
-            add(INPUT_HATCH, tier, (m, item) -> provider.shapeless(output, GT5RRef.ID, "input_hatch_" + tier.getId() + "_from_secondary", "machines", new ItemStack(item),
+            add(INPUT_HATCH, tier, (m, item) -> provider.shapeless(output, GT5Reimagined.ID, "input_hatch_" + tier.getId() + "_from_secondary", "machines", new ItemStack(item),
                     SECONDARY_INPUT_HATCH.getItem(tier)));
 
             add(OUTPUT_BUS, tier, (m, item) ->  provider.addItemRecipe(output, "machines", item,
@@ -830,7 +829,7 @@ public class MachineRecipes {
             add(SECONDARY_OUTPUT_HATCH, tier, (m, item) -> provider.shapeless(output, "", "machines", new ItemStack(item),
                     OUTPUT_HATCH.getItem(tier)));
 
-            add(OUTPUT_HATCH, tier, (m, item) -> provider.shapeless(output, GT5RRef.ID, "output_hatch_" + tier.getId() + "_from_secondary", "machines", new ItemStack(item),
+            add(OUTPUT_HATCH, tier, (m, item) -> provider.shapeless(output, GT5Reimagined.ID, "output_hatch_" + tier.getId() + "_from_secondary", "machines", new ItemStack(item),
                     SECONDARY_OUTPUT_HATCH.getItem(tier)));
 
             add(ENERGY_HATCH, tier, (m, item) ->  provider.addItemRecipe(output, "machines", item,

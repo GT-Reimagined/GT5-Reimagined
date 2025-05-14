@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.items;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
 import org.gtreimagined.gtlib.item.ICustomDurability;
@@ -19,7 +20,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.data.GT5RData;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +32,7 @@ public class ItemSprayCan extends ItemBasic<ItemSprayCan> implements ICustomDura
     private final DyeColor color;
 
     public ItemSprayCan(DyeColor color) {
-        super(GT5RRef.ID, color.getName() + "_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(512));
+        super(GT5Reimagined.ID, color.getName() + "_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(512));
         this.color = color;
     }
 

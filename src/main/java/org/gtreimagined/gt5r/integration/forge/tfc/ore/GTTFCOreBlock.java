@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.integration.forge.tfc.ore;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.material.Material;
@@ -8,7 +9,6 @@ import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MaterialColor;
-import org.gtreimagined.gt5r.GT5RRef;
 
 public class GTTFCOreBlock extends BlockBasic {
     final Rock rock;
@@ -30,6 +30,6 @@ public class GTTFCOreBlock extends BlockBasic {
     @Override
     public Texture[] getTextures() {
         String prefix = grade == null ? "" : grade.name().toLowerCase() + "_";
-        return new Texture[]{new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), new Texture(GT5RRef.ID, "block/tfc/ore/" + prefix + material.getId())};
+        return new Texture[]{new Texture(Ref.MOD_TFC, "block/rock/raw/" + rock.name().toLowerCase()), new Texture(GT5Reimagined.ID, "block/tfc/ore/" + prefix + material.getId())};
     }
 }

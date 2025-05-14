@@ -11,7 +11,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockCoil;
@@ -222,7 +221,7 @@ public class AssemblerLoader {
     private static void carpet(){
         for (DyeColor dye : DyeColor.values()){
             String dyeName = dye.getName() + "_dye";
-            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5RRef.ID, dyeName));
+            TagKey<Fluid> dyeLiquid = TagUtils.getFluidTag(new ResourceLocation(GT5Reimagined.ID, dyeName));
             ASSEMBLER.RB().ii(of(Items.STRING, 2), SELECTOR_TAG_INGREDIENTS.get(2)).fi(FluidIngredient.of(dyeLiquid, L9 + (L9 / 2))).io(new ItemStack(RegistryUtils.getItemFromID(new ResourceLocation(dye.getName() + "_carpet")), 1)).add(dye.getName() + "_carpet", 128, 5);
         }
     }
@@ -297,12 +296,12 @@ public class AssemblerLoader {
     }
 
     private static void addTierCasing (Tier tier) {
-        ASSEMBLER.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID))).add("casing_" + tier.getId(),50, 16);
+        ASSEMBLER.RB().ii(of(PLATE.getMaterialTag(TIER_MATERIALS.get(tier)), 8), SELECTOR_TAG_INGREDIENTS.get(8)).io(new ItemStack(GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5Reimagined.ID))).add("casing_" + tier.getId(),50, 16);
     }
 
     private static void addTierHull(Tier tier) {
         Material liquid = tier == ZPM || tier == UV || tier == UHV ? Polytetrafluoroethylene : Plastic;
-        ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5RRef.ID)))
+        ASSEMBLER.RB().ii(ofObject(CABLE_GETTER.apply(tier == Tier.UV ? PipeSize.SMALL : PipeSize.VTINY, tier, false), 2), of(GTAPI.get(BlockCasing.class, "casing_" + tier.getId(), GT5Reimagined.ID)))
                 .fi(liquid.getLiquid(L * 2)).io(new ItemStack(HULL.getItem(tier))).add("hull_" + tier.getId(), 50, 16);
     }
 

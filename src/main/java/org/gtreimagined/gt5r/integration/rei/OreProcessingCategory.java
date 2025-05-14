@@ -22,7 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
@@ -40,8 +40,8 @@ import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);
-    private static final Component title = Utils.translatable(GT5RRef.ID + ".rei.tooltip.ore.byproducts");
-    static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(GT5RRef.ID, "ore_byproducts");
+    private static final Component title = Utils.translatable(GT5Reimagined.ID + ".rei.tooltip.ore.byproducts");
+    static CategoryIdentifier<? extends OreProcessingDisplay> id = CategoryIdentifier.of(GT5Reimagined.ID, "ore_byproducts");
 
     @Override
     public CategoryIdentifier<? extends OreProcessingDisplay> getCategoryIdentifier() {
@@ -53,22 +53,22 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
         widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             if (display.bathingMode != OreProcessingDisplay.BathingMode.NONE){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(GTMaterialTypes.GEM)){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.sepMode != OreProcessingDisplay.SepMode.NONE){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (!display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/smelt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/smelt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.ore.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && display.ore.has(INGOT_HOT)){
-                drawTexture(matrices, new ResourceLocation(GT5RRef.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/vac.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
         }));
         widgets.addAll(setupSlots(display, bounds));

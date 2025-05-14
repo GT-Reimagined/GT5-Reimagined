@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.items;
 
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
 import org.gtreimagined.gtlib.item.ICustomDurability;
@@ -18,7 +19,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.jetbrains.annotations.Nullable;
 
@@ -29,7 +29,7 @@ import static org.gtreimagined.gt5r.data.GT5RItems.EmptySprayCan;
 public class ItemChlorineSprayCan extends ItemBasic<ItemChlorineSprayCan> implements ICustomDurability {
 
     public ItemChlorineSprayCan() {
-        super(GT5RRef.ID, "chlorine_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(100));
+        super(GT5Reimagined.ID, "chlorine_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(100));
     }
 
     @Override

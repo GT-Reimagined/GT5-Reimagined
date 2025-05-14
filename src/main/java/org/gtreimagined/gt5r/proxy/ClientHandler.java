@@ -5,7 +5,6 @@ import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.fml.loading.FMLPaths;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockBedrockFlower;
 import org.gtreimagined.gt5r.block.BlockCasing;
@@ -40,7 +39,7 @@ public class ClientHandler {
         //if(!target.exists())
         try {
             dir.mkdirs();
-            InputStream in = GT5Reimagined.class.getResourceAsStream("/assets/" + GT5RRef.ID + "/" + readName + ".zip");
+            InputStream in = GT5Reimagined.class.getResourceAsStream("/assets/" + GT5Reimagined.ID + "/" + readName + ".zip");
             FileOutputStream out = new FileOutputStream(target);
 
             byte[] buf = new byte[16384];

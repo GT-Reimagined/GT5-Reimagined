@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.gui.widgets;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.ICanSyncData;
 import org.gtreimagined.gtlib.gui.IGuiElement;
@@ -9,15 +10,14 @@ import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
 import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.resources.ResourceLocation;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.blockentity.multi.BlockEntityFusionReactor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 
 public class FusionButtonWidget extends Widget {
-    ResourceLocation middle = new ResourceLocation(GT5RRef.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
-    ResourceLocation top_bottom = new ResourceLocation(GT5RRef.ID, "textures/gui/background/fusion_computer_top_bottom_overlay.png");
+    ResourceLocation middle = new ResourceLocation(GT5Reimagined.ID, "textures/gui/background/fusion_computer_middle_overlay.png");
+    ResourceLocation top_bottom = new ResourceLocation(GT5Reimagined.ID, "textures/gui/background/fusion_computer_top_bottom_overlay.png");
 
     BlockEntityFusionReactor.Display display = BlockEntityFusionReactor.Display.REGULAR;
 

@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
@@ -20,7 +21,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.machine.caps.SecondaryMultiFluidHandler;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipe;
 
@@ -153,7 +153,7 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
     }
 
     public Texture getTextureForHatches(Direction dir, BlockPos hatchPos){
-        return new Texture(GT5RRef.ID, "block/casing/fusion_1");
+        return new Texture(GT5Reimagined.ID, "block/casing/fusion_1");
     }
 
     @Override

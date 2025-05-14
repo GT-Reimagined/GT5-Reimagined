@@ -6,7 +6,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import org.gtreimagined.gt5r.GT5RRef;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
@@ -46,8 +46,8 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, GalliumArsenide, ImmutableMap.of(Gallium, 1, Arsenic, 1));
         addShapelessDustRecipe(output, provider, IndiumGalliumPhosphide, ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1));
         addShapelessDustRecipe(output, provider, GTCoreMaterials.Signalum, ImmutableMap.of(RedAlloy, 5, Silver, 2, Copper, 1));
-        provider.shapeless(output, GT5RRef.ID, "", "dusts", GTMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
-        provider.addItemRecipe(output, GT5RRef.ID, "copper_ingot", "ingots", GTMaterialTypes.INGOT.get(Copper), ImmutableMap.of('I', GTMaterialTypes.NUGGET.getMaterialTag(Copper)), "III", "III", "III");
+        provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        provider.addItemRecipe(output, GT5Reimagined.ID, "copper_ingot", "ingots", GTMaterialTypes.INGOT.get(Copper), ImmutableMap.of('I', GTMaterialTypes.NUGGET.getMaterialTag(Copper)), "III", "III", "III");
         loadAutoRecipes(output, provider);
         loadMixedMetal(output, provider);
     }
@@ -104,19 +104,19 @@ public class MaterialCrafting {
     }
 
     public static void mixedMetalRecipe(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider, Material top, Material middle, Material bottom, int amount){
-        provider.addStackRecipe(consumer, GT5RRef.ID, "mixed_metal_from_" + top.getId() + "_" + middle.getId() + "_" + bottom.getId(), "mixed_metal", Utils.ca(amount, GTCoreItems.MixedMetalIngot.getMixedMetalIngot(top, middle, bottom)),
+        provider.addStackRecipe(consumer, GT5Reimagined.ID, "mixed_metal_from_" + top.getId() + "_" + middle.getId() + "_" + bottom.getId(), "mixed_metal", Utils.ca(amount, GTCoreItems.MixedMetalIngot.getMixedMetalIngot(top, middle, bottom)),
                 of('T', PLATE.getMaterialTag(top), 'M', PLATE.getMaterialTag(middle), 'B', PLATE.getMaterialTag(bottom)), "T", "M", "B");
     }
 
     public static void loadAutoRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         DUST.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_small_dust", "gt_materials", DUST_SMALL.get(m, 4),
+            provider.addStackRecipe(consumer, GT5Reimagined.ID, m.getId() + "_small_dust", "gt_materials", DUST_SMALL.get(m, 4),
                     of('D', DUST.getMaterialTag(m)), " D");
             /*provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_tiny_dust", "gt_materials", "has_wrench", in, DUST_TINY.get(m, 9),
                     of('D', DUST.getMaterialTag(m)), "D ");*/
         });
         GT5RMaterialTypes.TURBINE_BLADE.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_materials",
+            provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "gt_materials",
                     GT5RMaterialTypes.TURBINE_BLADE.get(m, 1), ImmutableMap.<Character, Object>builder()
                             .put('S', SCREWDRIVER.getTag())
                             .put('F', FILE.getTag())
@@ -131,13 +131,13 @@ public class MaterialCrafting {
         });
         GTAPI.all(ItemPipe.class, i -> {
             if (i.getSizes().contains(PipeSize.NORMAL)){
-                provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
+                provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.NORMAL), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.NORMAL)), " H ", "RPR", " R ");
             }
             if (i.getSizes().contains(PipeSize.LARGE)){
-                provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
+                provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.LARGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.LARGE)), "HR ", "RPR", " R ");
             }
             if (i.getSizes().contains(PipeSize.HUGE)) {
-                provider.addStackRecipe(consumer, GT5RRef.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
+                provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "gt_pipes", new ItemStack(i.getRestrictedBlock(PipeSize.HUGE), 1), of('H', HAMMER.getTag(), 'R', RING.getMaterialTag(Steel), 'P', i.getBlock(PipeSize.HUGE)), " H ", "RPR", "RRR");
             }
         });
         RAW_ORE_BLOCK.all().forEach(m -> {
@@ -160,6 +160,6 @@ public class MaterialCrafting {
                 index++;
             }
         }
-        provider.shapeless(consumer, GT5RRef.ID, output.getId() + "_dust", "dusts", DUST.get(output, sum), inputArray);
+        provider.shapeless(consumer, GT5Reimagined.ID, output.getId() + "_dust", "dusts", DUST.get(output, sum), inputArray);
     }
 }

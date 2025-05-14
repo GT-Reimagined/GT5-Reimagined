@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.integration.xei.renderer.IRecipeInfoRenderer;
 import org.gtreimagined.gtlib.integration.xei.renderer.InfoRenderers;
@@ -23,7 +24,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
-import org.gtreimagined.gt5r.GT5RRef;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipe;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeBuilder;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
@@ -38,158 +38,158 @@ public class RecipeMaps {
 
     public static BiFunction<Integer, Integer, Proxy> DISSASSEMBLER_PROXY = (power, duration) -> new Proxy(RecipeType.CRAFTING, getDefaultCrafting(power, duration));
     public static RecipeMap<RecipeBuilder> STEAM_FUELS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "steam_fuels", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "steam_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> HP_STEAM_FUELS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "hp_steam_fuels", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "hp_steam_fuels", new RecipeBuilder()));
 
     public static RecipeMap<RecipeBuilder> ALLOY_SMELTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "alloy_smelter", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "alloy_smelter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> AMP_FABRICATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "amp_fabricator", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "amp_fabricator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ARC_FURNACE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "arc_furnace", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "arc_furnace", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ASSEMBLER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "assembler", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "assembler", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> AUTOCLAVE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "autoclave", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "autoclave", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRIMITIVE_BLAST_FURNACE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "primitive_blast_furnace", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "primitive_blast_furnace", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> BEDROCK_DRILL = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "bedrock_drill", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "bedrock_drill", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> BENDER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "bender", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "bender", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CANNER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "canner", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "canner", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CENTRIFUGE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "centrifuge", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "centrifuge", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> BATH = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "bath", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "bath", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CHEMICAL_REACTOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "chemical_reactor", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "chemical_reactor", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CIRCUIT_ASSEMBLER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "circuit_assembler", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "circuit_assembler", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SOLID_FUEL_BOILERS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "solid_fuel_boilers", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "solid_fuel_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COKE_OVEN = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "coke_oven", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "coke_oven", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COMBUSTION_FUELS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "combustion_fuels", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "combustion_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> COMPRESSOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "compressor", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "compressor", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CRYSTALLIZATION_CHAMBER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "crystallization_chamber", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "crystallization_chamber", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CUTTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "cutter", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "cutter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> CRACKING = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "cracking", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "cracking", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ASSEMBLY_LINE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "assembly_line", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY_FLUID);
+            new RecipeMap<>(GT5Reimagined.ID, "assembly_line", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> DEHYDRATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "dehydrator", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "dehydrator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> DISASSEMBLER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "disassembler", new RecipeBuilder())).setProxy(DISSASSEMBLER_PROXY.apply(8, 200));
+            new RecipeMap<>(GT5Reimagined.ID, "disassembler", new RecipeBuilder())).setProxy(DISSASSEMBLER_PROXY.apply(8, 200));
     public static RecipeMap<RecipeBuilder> DISTILLATION = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "distillation", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY_FLUID);
+            new RecipeMap<>(GT5Reimagined.ID, "distillation", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> CRYO_DISTILLATION = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "cryo_distillation", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY_FLUID);
+            new RecipeMap<>(GT5Reimagined.ID, "cryo_distillation", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> DISTILLERY = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "distillery", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "distillery", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilders.BlastingBuilder> E_BLAST_FURNACE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "electric_blast_furnace", new RecipeBuilders.BlastingBuilder())).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "electric_blast_furnace", new RecipeBuilders.BlastingBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ELECTRIC_FURNACE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "electric_furnace", new RecipeBuilder())
+            new RecipeMap<>(GT5Reimagined.ID, "electric_furnace", new RecipeBuilder())
                     .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 80)));
     public static RecipeMap<RecipeBuilder> ELECTRIC_OVEN = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "electric_oven", new RecipeBuilder())
+            new RecipeMap<>(GT5Reimagined.ID, "electric_oven", new RecipeBuilder())
                     .setProxy(RecipeProxies.SMOKING_PROXY.apply(8, 40)));
     public static RecipeMap<RecipeBuilder> ELECTROLYZER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "electrolyzer", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "electrolyzer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ELECTROMAGNETIC_SEPARATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "electromagnetic_separator", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "electromagnetic_separator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> EXTRACTOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "extractor", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "extractor", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> EXTRUDER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "extruder", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "extruder", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FERMENTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "fermenter", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "fermenter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_CANNER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "fluid_canner", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "fluid_canner", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_PRESS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "fluid_press", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "fluid_press", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_HEATER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "fluid_heater", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "fluid_heater", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FLUID_SOLIDIFYER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "fluid_solidifyer", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "fluid_solidifyer", new RecipeBuilder()));
     public static RecipeMap<FusionRecipeBuilder> FUSION = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "fusion", new FusionRecipeBuilder())).setRecipeSerializer(FusionRecipeSerializer.INSTANCE).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "fusion", new FusionRecipeBuilder())).setRecipeSerializer(FusionRecipeSerializer.INSTANCE).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> GAS_FUELS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "gas_fuels", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "gas_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> FORGE_HAMMER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "forge_hammer", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "forge_hammer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> HEAT_EXCHANGER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "heat_exchanger", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "heat_exchanger", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> IMPLOSION_COMPRESSOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "implosion_compressor", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "implosion_compressor", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> LARGE_BOILERS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "large_boilers", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "large_boilers", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> LASER_ENGRAVER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "laser_engraver", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "laser_engraver", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> LATHE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "lathe", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "lathe", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MACERATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "macerator", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "macerator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MAGIC_FUELS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "magic_fuels", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "magic_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MASS_FABRICATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "mass_fabricator", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "mass_fabricator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> MIXER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "mixer", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "mixer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ORE_BYPRODUCTS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "ore_byproducts", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "ore_byproducts", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ORE_WASHER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "ore_washer", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "ore_washer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PACKAGER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "packager", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "packager", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> POLARIZER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "polarizer", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "polarizer", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PULVERIZER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "pulverizer", new PulverizerBuilder()).setGuiTier(Tier.HV));
+            new RecipeMap<>(GT5Reimagined.ID, "pulverizer", new PulverizerBuilder()).setGuiTier(Tier.HV));
     public static RecipeMap<RecipeBuilder> FORMING_PRESS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "forming_press", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "forming_press", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PRINTING = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "printing", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "printing", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> PYROLYSE_OVEN = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "pyrolyse_oven", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "pyrolyse_oven", new RecipeBuilder())).setGuiData(Guis.MULTI_DISPLAY);
 
     public static RecipeMap<RecipeBuilder> ROASTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "roaster", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "roaster", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> RECYCLER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "recycler", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "recycler", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> REPLICATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "replicating", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "replicating", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ROCK_BREAKER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "rock_breaker", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "rock_breaker", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SCANNER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "scanning", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "scanning", new RecipeBuilder()));
 
     public static RecipeMap<RecipeBuilder> SEMI_FUELS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "semi_fuels", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "semi_fuels", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SIFTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "sifter", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "sifter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMELTER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "smelter", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "smelter", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> SMALL_BOILERS = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "small_boilers", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "small_boilers", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> THERMAL_CENTRIFUGE = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "thermal_centrifuge", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "thermal_centrifuge", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> TREE_GROWTH_SIMULATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "tree_growth_simulator", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "tree_growth_simulator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> UNPACKAGER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "unpackager", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "unpackager", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> VACUUM_FREEZER = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "vacuum_freezer", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY));
+            new RecipeMap<>(GT5Reimagined.ID, "vacuum_freezer", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY));
     public static RecipeMap<RecipeBuilder> WIRE_MILL = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5RRef.ID, "wire_mill", new RecipeBuilder()));
+            new RecipeMap<>(GT5Reimagined.ID, "wire_mill", new RecipeBuilder()));
 
     private static BiFunction<Recipe<?>, RecipeBuilder, IRecipe> getDefaultCrafting(int power, int duration) {
         return (t, b) -> {
@@ -445,10 +445,10 @@ public class RecipeMaps {
     };
 
     static {
-        PULVERIZER.addSubCategory("macerator_recycling", new SubCategory("jei.category.macerator_recycling", () -> new ResourceLocation(GT5RRef.ID, "textures/gui/icon/macerator_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
+        PULVERIZER.addSubCategory("macerator_recycling", new SubCategory("jei.category.macerator_recycling", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/macerator_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
         PULVERIZER.addSubCategory("macerator_ore_processing", new SubCategory("jei.category.macerator_ore_processing", () -> GT5RMachines.MACERATOR.getItem(Tier.LV), r -> r.getTags().contains(GT5RRecipeTags.MACERATOR_ORE_PROCESING)));
-        ARC_FURNACE.addSubCategory("arc_furnace_recycling", new SubCategory("jei.category.arc_furnace_recycling", () -> new ResourceLocation(GT5RRef.ID, "textures/gui/icon/arc_furnace_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
-        ALLOY_SMELTER.addSubCategory("alloy_smelter_molds", new SubCategory("jei.category.alloy_smelter_molds", () -> new ResourceLocation(GT5RRef.ID, "textures/gui/icon/alloy_smelter_molding.png"), r -> r.getTags().contains(GT5RRecipeTags.ALLOY_SMELTER_MOLDING)));
+        ARC_FURNACE.addSubCategory("arc_furnace_recycling", new SubCategory("jei.category.arc_furnace_recycling", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/arc_furnace_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
+        ALLOY_SMELTER.addSubCategory("alloy_smelter_molds", new SubCategory("jei.category.alloy_smelter_molds", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/alloy_smelter_molding.png"), r -> r.getTags().contains(GT5RRecipeTags.ALLOY_SMELTER_MOLDING)));
         SOLID_FUEL_BOILERS.setGuiData(Guis.SIMPLE_DISPLAY);
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
