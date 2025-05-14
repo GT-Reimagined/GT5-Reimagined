@@ -57,8 +57,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Quicklime),2)).fi(CarbonDioxide.getGas(3000)).io(DUST.get(Calcite,5)).add("calcite_1",80, 30);
         //METHANE
         CHEMICAL_REACTOR.RB().ii(DUST.getMaterialIngredient(Carbon, 1)).fi(Hydrogen.getGas(4000)).fo(Methane.getGas(5000)).add("methane",14000, 30);
-        //GLUE
-        CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(1000), AceticAcid.getLiquid(2000), Methanol.getLiquid(1000)).fo(Glue.getLiquid(4000)).add("glue",240,30);
         //GLYCERYL TRINITRATE
         CHEMICAL_REACTOR.RB().fi(Glycerol.getLiquid(2800),NitricAcid.getLiquid(3000), SulfuricAcid.getLiquid(4200)).fo(GlycerylTrinitrate.getLiquid(4000),SulfurDioxide.getGas(1200)).add("glyceryl_trinitrate",180,30);
         //NITRO DIESEL
@@ -68,8 +66,6 @@ public class ChemicalReactorLoader {
         //BIODIESEL
         CHEMICAL_REACTOR.RB().fi(SeedOil.getLiquid(100000),Ethanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(100000), Glycerol.getLiquid(10000)).add("biodiesel_from_ethanol",1200, 30);
         CHEMICAL_REACTOR.RB().fi(FishOil.getLiquid(100000),Ethanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(100000), Glycerol.getLiquid(10000)).add("biodiesel_from_ethanol_2",1200, 30);
-        CHEMICAL_REACTOR.RB().fi(SeedOil.getLiquid(100000),Methanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(105000), Glycerol.getLiquid(5000)).add("biodiesel_from_methanol",1200, 30);
-        CHEMICAL_REACTOR.RB().fi(FishOil.getLiquid(100000),Methanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(105000), Glycerol.getLiquid(5000)).add("biodiesel_from_methanol_2",1200, 30);
         //RUBBER
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Sulfur), 1), of(DUST.get(RawRubber), 9)).fo(Rubber.getLiquid(L * 9)).add("rubber",200, 8);
         CHEMICAL_REACTOR.RB().fi(Air.getGas(14000),Isoprene.getLiquid(2000)).io(new ItemStack(DUST.get(RawRubber),21)).add("raw_rubber_dust",2240, 30);
@@ -82,12 +78,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(Naphtha.getLiquid(3000), HydrogenSulfide.getGas(250)).add("naphtha",40, 30);
         //ETHYLENE
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).io(DUST_SMALL.get(Sulfur, 6)).fo(Ethylene.getGas(2000), Water.getLiquid(1500)).add("ethylene_2",400, 120);
-        //ACETIC ACID
-        CHEMICAL_REACTOR.RB().ii(SELECTOR_TAG_INGREDIENTS.get(9)).fi(Oxygen.getGas(1000), Ethylene.getGas(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid",50, 30);
-        CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Methanol.getLiquid(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid_1",150, 30);
-        CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Hydrogen.getGas(1000)).fo(AceticAcid.getLiquid(2000)).add("acetic_acid_2",80, 30);
-        //METHANOL
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).fo(Methanol.getLiquid(2000),Water.getLiquid(1000)).add("methanol",200, 120);
         //SALTPETER
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
         //NITROGEN DIOXIDE
@@ -146,6 +136,17 @@ public class ChemicalReactorLoader {
     }
 
     private static void addComplicated(){
+        //GLUE
+        CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(1000), AceticAcid.getLiquid(2000), Methanol.getLiquid(1000)).fo(Glue.getLiquid(4000)).add("glue",240,30);
+        //BIODIESEL FROM METHANOL
+        CHEMICAL_REACTOR.RB().fi(SeedOil.getLiquid(100000),Methanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(105000), Glycerol.getLiquid(5000)).add("biodiesel_from_methanol",1200, 30);
+        CHEMICAL_REACTOR.RB().fi(FishOil.getLiquid(100000),Methanol.getLiquid(10000)).ii(of(DUST.getMaterialTag(SodiumHydroxide), 1)).fo(BioDiesel.getLiquid(105000), Glycerol.getLiquid(5000)).add("biodiesel_from_methanol_2",1200, 30);
+        //ACETIC ACID
+        CHEMICAL_REACTOR.RB().ii(SELECTOR_TAG_INGREDIENTS.get(9)).fi(Oxygen.getGas(1000), Ethylene.getGas(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid",50, 30);
+        CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Methanol.getLiquid(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid_1",150, 30);
+        CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Hydrogen.getGas(1000)).fo(AceticAcid.getLiquid(2000)).add("acetic_acid_2",80, 30);
+        //METHANOL
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).fo(Methanol.getLiquid(2000),Water.getLiquid(1000)).add("methanol",200, 120);
         //STYRENE
         CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene",120, 30);
         //RAW STYRENE-BUDADIENE RUBBER PULP
