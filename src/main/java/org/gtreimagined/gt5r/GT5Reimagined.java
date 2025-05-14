@@ -389,11 +389,9 @@ public class GT5Reimagined extends GTMod {
                     }
                 });
                 GTLibXEIPlugin.addFluidsToHide(l -> {
-                    l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
-                });
-                GTLibXEIPlugin.addFluidsToHide(l -> {
                     if (!GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
-                        l.addAll(Arrays.asList(Materials.Chlorobenzene.getLiquid(), Materials.Acetone.getLiquid(), Materials.FermentedBiomass.getLiquid(),
+                        l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
+                        l.addAll(Arrays.asList(Materials.Chlorobenzene.getLiquid(), Materials.Acetone.getLiquid(), Materials.CalciumAcetateSolution.getLiquid(), Materials.FermentedBiomass.getLiquid(),
                                 Materials.WoodTar.getLiquid(), Materials.WoodVinegar.getLiquid(), Materials.Methanol.getLiquid(), Materials.Propanol.getLiquid(),
                                 Materials.AceticAcid.getLiquid(), Materials.AllylChloride.getLiquid(), Materials.BenzoylChloride.getLiquid(), Materials.BisphenolA.getLiquid(),
                                 Materials.MethylAcetate.getLiquid(), Materials.CharcoalByproducts.getLiquid(), Materials.Chloromethane.getLiquid(), Materials.SulfuricGas.getGas(),
