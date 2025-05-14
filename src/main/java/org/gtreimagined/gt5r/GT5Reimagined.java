@@ -395,10 +395,12 @@ public class GT5Reimagined extends GTMod {
                     if (!GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
                         l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                         l.addAll(Arrays.asList(Materials.Chlorobenzene.getLiquid(), Materials.Acetone.getLiquid(), Materials.CalciumAcetateSolution.getLiquid(), Materials.FermentedBiomass.getLiquid(),
-                                Materials.WoodTar.getLiquid(), Materials.WoodVinegar.getLiquid(), Materials.Methanol.getLiquid(), Materials.Propanol.getLiquid(),
+                                Materials.WoodTar.getLiquid(), Materials.WoodVinegar.getLiquid(), Materials.DilutedHydrochloricAcid.getLiquid(), Materials.Methanol.getLiquid(), Materials.Propanol.getLiquid(),
+                                Materials.Butanol.getLiquid(), Materials.Heptanol.getLiquid(), Materials.Ethenol.getLiquid(), Materials.Propenol.getLiquid(), Materials.Butenol.getLiquid(),
+                                Materials.Ethanediol.getLiquid(), Materials.Propanediol.getLiquid(), Materials.Butanediol.getLiquid(),
                                 Materials.AceticAcid.getLiquid(), Materials.AllylChloride.getLiquid(), Materials.BenzoylChloride.getLiquid(), Materials.BisphenolA.getLiquid(),
-                                Materials.MethylAcetate.getLiquid(), Materials.CharcoalByproducts.getLiquid(), Materials.Chloromethane.getLiquid(), Materials.SulfuricGas.getGas(),
-                                Materials.Ammonia.getLiquid()));
+                                Materials.MethylAcetate.getLiquid(), Materials.CharcoalByproducts.getGas(), Materials.Chloromethane.getGas(), Materials.SulfuricGas.getGas(),
+                                Materials.Ammonia.getGas()));
                     }
                 });
                 TerraformFuelRegistry.addFuel(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);
