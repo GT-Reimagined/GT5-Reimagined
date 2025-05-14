@@ -562,7 +562,6 @@ public class Materials {
     public static Material Coolant = GTAPI.register(Material.class, new Material(GT5RRef.ID, "coolant", 0x0506be, NONE));
     public static Material Cryolite = GTAPI.register(Material.class, new Material(GT5RRef.ID, "cryolite", 0xc8bebe, NONE));
     public static Material DilutedHydrochloricAcid = GTAPI.register(Material.class, new Material(GT5RRef.ID, "diluted_hydrochloric_acid", 0x99a7a3, NONE));
-    public static Material DilutedSulfuricAcid = GTAPI.register(Material.class, new Material(GT5RRef.ID, "diluted_sulfuric_acid", 0xc07820, NONE));
     public static Material DistilledWater = GTAPI.register(Material.class, new Material(GT5RRef.ID, "distilled_water", 0x5C5CFF, NONE));
     public static Material DrillingFluid = GTAPI.register(Material.class, new Material(GT5RRef.ID, "drilling_fluid", 0xffffff, NONE)); // TODO: Perhaps for a bedrock drill;
     public static Material HexafluorosilicicAcid = GTAPI.register(Material.class, new Material(GT5RRef.ID, "hexafluorosilicic_acid", 0xbec8be, NONE));
