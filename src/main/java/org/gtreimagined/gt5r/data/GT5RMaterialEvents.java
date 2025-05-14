@@ -88,7 +88,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Tin).asOre().asMetal(505, PLATE, ROD, SCREW, BOLT, RING, FOIL, WIRE_FINE, FRAME, ROTOR).harvestLevel(1);
         event.setMaterial(Materials.Antimony).asMetal(1449, PLATE);
         //Tellurium
-        event.setMaterial(Materials.Iodine).asSolid(387);
+        event.setMaterial(Materials.Iodine).asDust(387);
         event.setMaterial(Materials.Xenon).asGas().fluidDensity(5);
         event.setMaterial(Materials.Caesium).asMetal(301);
         event.setMaterial(Materials.Barium).asDust(1000);
