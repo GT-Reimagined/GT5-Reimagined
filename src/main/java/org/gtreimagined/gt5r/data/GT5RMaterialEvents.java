@@ -23,10 +23,11 @@ import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class GT5RMaterialEvents {
     public static void onMaterialEvent(GT5RMaterialEvent event){
-        flags(event);
+
         antimatterMaterials(event);
         byproducts(event);
         defaultMaterialFlags(event);
+        flags(event);
         processInto(event);
         nuclearIsotopes(event);
         toolsAndArmor(event);
@@ -1427,13 +1428,13 @@ public class GT5RMaterialEvents {
         CABLE.subTag(SubTag.COPPER_CABLE, Materials.AnnealedCopper);
         CABLE.subTag(SubTag.COPPER_CABLE, Copper);
 
-        event.setMaterial(Materials.AnnealedCopper).setDirectSmeltInto(Copper).setMacerateInto(Copper);
+        event.setMaterial(Materials.AnnealedCopper).setDirectSmeltInto(Copper).setMacerateInto(Copper).setMeltInto(Copper);
         event.setMaterial(Copper).setArcSmeltInto(Materials.AnnealedCopper);
         event.setMaterial(Iron).setArcSmeltInto(Materials.WroughtIron);
-        event.setMaterial(Materials.IronMagnetic).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(Materials.WroughtIron);
-        event.setMaterial(Materials.NeodymiumMagnetic).setDirectSmeltInto(Materials.Neodymium).setMacerateInto(Materials.Neodymium).setArcSmeltInto(Materials.Neodymium);
-        event.setMaterial(Materials.SteelMagnetic).setDirectSmeltInto(Materials.Steel).setMacerateInto(Materials.Steel).setArcSmeltInto(Materials.Steel);
-        event.setMaterial(Materials.WroughtIron).setDirectSmeltInto(Iron).setMacerateInto(Iron);
+        event.setMaterial(Materials.IronMagnetic).setDirectSmeltInto(Iron).setMacerateInto(Iron).setArcSmeltInto(Materials.WroughtIron).setMeltInto(Iron);
+        event.setMaterial(Materials.NeodymiumMagnetic).setDirectSmeltInto(Materials.Neodymium).setMacerateInto(Materials.Neodymium).setArcSmeltInto(Materials.Neodymium).setMeltInto(Neodymium);
+        event.setMaterial(Materials.SteelMagnetic).setDirectSmeltInto(Materials.Steel).setMacerateInto(Materials.Steel).setArcSmeltInto(Materials.Steel).setMeltInto(Steel);
+        event.setMaterial(Materials.WroughtIron).setDirectSmeltInto(Iron).setMacerateInto(Iron).setMeltInto(Iron);
 
         /*event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
         event.setMaterial(BrownLimonite).setDirectSmeltInto(Iron);

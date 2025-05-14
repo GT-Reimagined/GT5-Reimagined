@@ -27,7 +27,7 @@ public class SmelterLoader {
             });
         }
         DUST.all().forEach(m -> {
-            if (m.has(LIQUID) && m.has(MOLTEN) && !m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
+            if (!m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE)){
                 long amount = m == Alumina ? (DUST.getUnitValue() * 7) / 2 : DUST.getUnitValue();
                 add(m, DUST, amount);
             }
@@ -45,12 +45,13 @@ public class SmelterLoader {
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {
-        if (!m.has(GTMaterialTypes.LIQUID)) return;
+        Material molten = MaterialTags.MELT_INTO.get(m);
+        if (!molten.has(GTMaterialTypes.LIQUID)) return;
         int amount = (int) ((L * materialAmount) / U);
         long duration = Math.max(1, (24 * materialAmount) / U);
         SMELTER.RB()
                 .ii(RecipeIngredient.of(i.getMaterialTag(m),1))
-                .fo(m.getLiquid(amount))
+                .fo(molten.getLiquid(amount))
                 .add(m.getId() + "_from_" + i.getId(), (long)(m.getMass()*((float)amount/L)), Math.max(8, (int) Math.sqrt(2 * MaterialTags.MELTING_POINT.getInt(m))), duration);
     }
 
