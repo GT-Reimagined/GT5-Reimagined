@@ -58,6 +58,7 @@ public class DistillationTowerLoader {
                 new FluidProduct(Methane, 130),
                 new FluidProduct(CarbonMonoxide, 340),
                 new FluidProduct(Hydrogen, 20));
+        addDistillingRecipe(WoodGas, 100, 16, 64, ItemStack.EMPTY, new FluidProduct(Ethylene, 4));
         Material ethane = GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get() ? Ethane : Ethylene;
         addDistillationDistillingRecipe(RefineryGas, 1000, 240, 120,
                 new FluidProduct(Butane, 60),
