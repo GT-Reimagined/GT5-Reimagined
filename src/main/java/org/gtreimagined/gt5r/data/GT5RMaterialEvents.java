@@ -96,7 +96,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Cerium).asDust();
         //Praseodymium
         event.setMaterial(Materials.Neodymium).asOre().asMetal(1297, PLATE, ROD_LONG).harvestLevel(2); // TODO: Bastnasite or Monazite for Ore For;
-        event.setMaterial(Materials.Promethium).asMetal(1353);
+        //Promethium
         //Samarium
         event.setMaterial(Materials.Europium).asMetal(1099, PLATE);
         event.setMaterial(Materials.Gadolinium).asMetal(1585);
