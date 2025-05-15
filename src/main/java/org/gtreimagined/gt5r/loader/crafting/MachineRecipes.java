@@ -101,14 +101,6 @@ public class MachineRecipes {
                             .put('H', hull)
                             .put('C', circuit)
                             .put('G', cable).build(), "CLC", "LHL", "GLG"));
-            Tier tier2 = tier == LV ? tier : Tier.getTier(tier.getVoltage() * 4);
-            add(AMP_FABRICATOR, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
-                    ImmutableMap.<Character, Object>builder()
-                            .put('C', TIER_CIRCUITS.apply(tier2))
-                            .put('W', CABLE_GETTER.apply(PipeSize.SMALL, tier, true))
-                            .put('H', hull)
-                            .put('P', pump).build(), "WPW", "PHP", "CPC"));
-
             add(ARC_FURNACE, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.of(
                             'C', circuit,

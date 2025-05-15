@@ -165,7 +165,6 @@ public class Guis {
                 .add(IT_OUT, 107, 43).add(IT_OUT, 107 + 18, 43).add(IT_OUT, 107 + 18 * 2, 43)
                 .add(ENERGY, 80, 63);
         MASS_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
-        AMP_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         REPLICATOR.add(FLUID_CANNER);
         ROCK_BREAKER.add(COMPRESSOR);
         FERMENTER.add(FLUID_CANNER);
@@ -391,7 +390,6 @@ public class Guis {
         ORE_WASHER.getGui().getMachineData().setProgressLocation("ore_washer");
         CHEMICAL_REACTOR.getGui().getMachineData().setProgressLocation("chemical_reactor");
         FLUID_CANNER.getGui().getMachineData().setProgressLocation("canner");
-        AMP_FABRICATOR.getGui().getMachineData().setProgressLocation("extractor");
         FERMENTER.getGui().getMachineData().setProgressLocation("chemical_reactor");
         FLUID_PRESS.getGui().getMachineData().setProgressLocation("extractor");
         SMELTER.getGui().getMachineData().setProgressLocation("smelter");

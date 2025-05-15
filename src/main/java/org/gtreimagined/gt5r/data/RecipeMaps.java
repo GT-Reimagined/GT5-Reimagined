@@ -44,8 +44,6 @@ public class RecipeMaps {
 
     public static RecipeMap<RecipeBuilder> ALLOY_SMELTER = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5Reimagined.ID, "alloy_smelter", new RecipeBuilder()));
-    public static RecipeMap<RecipeBuilder> AMP_FABRICATOR = GTAPI.register(RecipeMap.class,
-            new RecipeMap<>(GT5Reimagined.ID, "amp_fabricator", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ARC_FURNACE = GTAPI.register(RecipeMap.class,
             new RecipeMap<>(GT5Reimagined.ID, "arc_furnace", new RecipeBuilder()));
     public static RecipeMap<RecipeBuilder> ASSEMBLER = GTAPI.register(RecipeMap.class,

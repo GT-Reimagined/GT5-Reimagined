@@ -154,7 +154,6 @@ public class GT5RMachines {
      * Processors
      **/
     public static BasicMachine ALLOY_SMELTER = new BasicMachine(GT5Reimagined.ID, "alloy_smelter").setMap(RecipeMaps.ALLOY_SMELTER).addFlags(GUI, ITEM).setSound(GT5RSounds.FURNACE,  0.6f);
-    public static BasicMachine AMP_FABRICATOR = new BasicMachine(GT5Reimagined.ID, "amp_fabricator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.AMP_FABRICATOR).addFlags(GUI, ITEM);
     public static BasicMachine ARC_FURNACE = new BasicMachine(GT5Reimagined.ID, "arc_furnace").setMap(RecipeMaps.ARC_FURNACE).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.FURNACE,  0.6f).amps(3);
     public static BasicMachine ASSEMBLER = new BasicMachine(GT5Reimagined.ID, "assembler").setMap(RecipeMaps.ASSEMBLER).setTile(BlockEntityAssembler::new).addFlags(GUI, ITEM, FLUID).custom();
     public static BasicMachine AUTOCLAVE = new BasicMachine(GT5Reimagined.ID, "autoclave").setMap(RecipeMaps.AUTOCLAVE).addFlags(GUI, ITEM, FLUID);
