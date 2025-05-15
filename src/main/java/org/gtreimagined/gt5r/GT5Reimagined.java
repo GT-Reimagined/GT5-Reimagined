@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
+import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTLibConfig;
@@ -320,6 +321,7 @@ public class GT5Reimagined extends GTMod {
                 TierMaps.init();
                 GT5RData.init(side);
                 GT5RCovers.init();
+                GT5RFluids.init();
                 GT5RItems.init();
                 GT5RBlocks.init();
                 GT5RMachines.init();
