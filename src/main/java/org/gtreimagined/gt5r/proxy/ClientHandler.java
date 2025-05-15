@@ -1,5 +1,8 @@
 package org.gtreimagined.gt5r.proxy;
 
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -10,6 +13,8 @@ import org.gtreimagined.gt5r.block.BlockBedrockFlower;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.data.GT5RMachines;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -51,6 +56,22 @@ public class ClientHandler {
             out.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void onTooltipEvent(ItemTooltipEvent event){
+        ItemStack stack = event.getItemStack();
+        if (stack.getItem() == GTCoreItems.DataOrb){
+            if (stack.getTag() != null){
+                if (stack.getTag().contains("scanned_gt_material")){
+                    String material = stack.getTag().getString("scanned_gt_material");
+                    Material mat = Material.get(material);
+                    if (mat != Material.NULL && mat.getElement() != null){
+                        event.getToolTip().add(Utils.translatable("tooltip.gt5r.data_orb.elemental_scan"));
+                        event.getToolTip().add(Utils.literal(mat.getChemicalFormula()));
+                    }
+                }
+            }
         }
     }
 }

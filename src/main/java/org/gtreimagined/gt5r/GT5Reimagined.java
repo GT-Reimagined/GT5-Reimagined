@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
+import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
 import org.gtreimagined.gtlib.GTAPI;
@@ -181,12 +182,16 @@ public class GT5Reimagined extends GTMod {
         GTLibDynamics.clientProvider(ID, GT5RLocalizations.en_US::new);
         GT5RConfig.createConfig();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+
         MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
         MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::registerRecipeLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GT5Reimagined::registerCraftingLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GT5Reimagined::onProviders);
         MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::onWorldGen);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+            MinecraftForge.EVENT_BUS.addListener(ClientHandler::onTooltipEvent);
+        });
     }
 
 
