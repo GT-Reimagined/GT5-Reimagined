@@ -38,7 +38,7 @@ public class UUMatterLoader {
             if (m.getNeutrons() > 0){
                 b.fo(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
             }
-            b.add("matter_from_" + m.getId(), 100, 32);
+            b.add("matter_from_" + m.getId(), m.getMass() * 4096, 32);
         });
     }
 }
