@@ -25,9 +25,9 @@ public class UUMatterLoader {
             if (m.has(GTMaterialTypes.DUST)){
                 b.ii(DUST.getMaterialIngredient(m, 1)); sb.ii(DUST.getMaterialIngredient(m, 1));
             } else if (m.has(LIQUID)){
-                b.fi(m.getLiquid(1000)); sb.fi(m.getLiquid(1000));
+                b.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getLiquid(1000));
             } else if (m.has(GAS)){
-                b.fi(m.getGas(1000)); sb.fi(m.getGas(1000));
+                b.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getGas(1000));
             }
             ItemStack dataOrb = new ItemStack(GTCoreItems.DataOrb);
             dataOrb.getOrCreateTag().putString("scanned_gt_material", m.getId());
