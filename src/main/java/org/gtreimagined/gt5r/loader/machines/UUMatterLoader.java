@@ -17,8 +17,6 @@ import static org.gtreimagined.gt5r.data.Materials.UUAmplifier;
 
 public class UUMatterLoader {
     public static void init(){
-        //RecipeMaps.MASS_FABRICATOR.RB().fi(UUAmplifier.getLiquid(1)).fo(Materials.UUMatter.getLiquid(1)).add("uu_matter", 803, 256);
-        //RecipeMaps.MASS_FABRICATOR.RB().ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fo(Materials.UUMatter.getLiquid(1)).add("uu_matter_expensive", 3215, 256);
         GTAPI.all(Material.class).stream().filter(m -> m.getElement() != null && (m.has(DUST) || m.has(LIQUID) || m.has(GAS))).forEach(m -> {
             RecipeBuilder b = RecipeMaps.MASS_FABRICATOR.RB();
             RecipeBuilder sb = RecipeMaps.SCANNER.RB();
