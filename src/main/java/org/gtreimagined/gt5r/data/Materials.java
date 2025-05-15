@@ -571,8 +571,8 @@ public class Materials {
     public static Material HotHeavyWater = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_heavy_water", 0xffff64, NONE));
     public static Material HotSemiheavyWater = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_semiheavy_water", 0xc8c89b, NONE));
     public static Material HotTritiatedWater = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_tritiated_water", 0xff6464, NONE));
-    public static Material HotMoltenSodium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_molten_sodium", 0x000096, NONE, S));
-    public static Material HotMoltenTin = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_molten_tin", 0xdcdcdc, NONE, Sn));
+    public static Material HotMoltenSodium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_molten_sodium", 0x000096, NONE));
+    public static Material HotMoltenTin = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_molten_tin", 0xdcdcdc, NONE));
     public static Material HotMoltenLithiumChloride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_molten_lithium_chloride", 0xdedefa, NONE));
     public static Material HydrochloricAcid = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hydrochloric_acid", 0x6f8a91, NONE));
     public static Material HydrofluoricAcid = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hydrofluoric_acid", 0x0088aa, NONE));
