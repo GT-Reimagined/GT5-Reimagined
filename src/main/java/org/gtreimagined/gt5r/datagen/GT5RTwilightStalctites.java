@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 import static org.gtreimagined.gtlib.data.VanillaStoneTypes.STONE;
-import static org.gtreimagined.gtcore.data.GTCoreMaterials.*;
 
 public class GT5RTwilightStalctites {
     private static Map<Integer, List<ResourceLocation>> hollowHillEntries = new Object2ObjectOpenHashMap<>();
