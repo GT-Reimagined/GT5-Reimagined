@@ -5,6 +5,7 @@ import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
 import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
+import org.gtreimagined.gt5r.loader.machines.RecyclingLoader;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTLibConfig;
 import org.gtreimagined.gtlib.GTMod;
@@ -276,6 +277,7 @@ public class GT5Reimagined extends GTMod {
         loader.accept("packager", PackagerLoader::init);
         loader.accept("polarizer", PolarizerLoader::init);
         loader.accept("printer", PrinterLoader::init);
+        loader.accept("recycling", RecyclingLoader::initRecyclingRecipes);
         loader.accept("roaster", RoasterLoader::init);
         loader.accept("rock_breaker", RockBreakerLoader::init);
         loader.accept("scanner", ScannerLoader::init);
