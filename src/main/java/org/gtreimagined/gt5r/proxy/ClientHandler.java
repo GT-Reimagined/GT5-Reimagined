@@ -67,8 +67,8 @@ public class ClientHandler {
                     String material = stack.getTag().getString("scanned_gt_material");
                     Material mat = Material.get(material);
                     if (mat != Material.NULL && mat.getElement() != null){
-                        event.getToolTip().add(Utils.translatable("tooltip.gt5r.data_orb.elemental_scan"));
-                        event.getToolTip().add(Utils.literal(mat.getChemicalFormula()));
+                        event.getToolTip().add(1, Utils.translatable("tooltip.gt5r.data_orb.elemental_scan"));
+                        event.getToolTip().add(2, Utils.literal(mat.getChemicalFormula()));
                     }
                 }
             }
