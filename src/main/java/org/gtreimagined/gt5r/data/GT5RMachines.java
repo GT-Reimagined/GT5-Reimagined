@@ -67,6 +67,7 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityInputHatch;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityItemFilter;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityLavaBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityMacerator;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityMassFabricator;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityNuclearReactorCore;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityPrinter;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityPump;
@@ -188,7 +189,7 @@ public class GT5RMachines {
     public static BasicMachine LASER_ENGRAVER = new BasicMachine(GT5Reimagined.ID, "laser_engraver").setMap(RecipeMaps.LASER_ENGRAVER).addFlags(GUI, ITEM).setSound(GT5RSounds.MAGNETIZER,  0.6f);
     public static BasicMachine LATHE = new BasicMachine(GT5Reimagined.ID, "lathe").setMap(RecipeMaps.LATHE).addFlags(GUI, ITEM);
     public static BasicMachine MACERATOR = new BasicMachine(GT5Reimagined.ID, "macerator").setTiers(LV, MV, HV, EV).setMap(RecipeMaps.PULVERIZER).setTile(BlockEntityMacerator::new).addTooltipInfo("tooltip.macerator.0").setTierSpecificLang().custom().addFlags(GUI, ITEM).setSound(GT5RSounds.MACERATOR,  0.6f);
-    public static BasicMachine MASS_FABRICATOR = new BasicMachine(GT5Reimagined.ID, "mass_fabricator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.MASS_FABRICATOR).addFlags(GUI, ITEM, FLUID);
+    public static BasicMachine MASS_FABRICATOR = new BasicMachine(GT5Reimagined.ID, "mass_fabricator").setTiers(Tier.getStandardWithIV()).setMap(RecipeMaps.MASS_FABRICATOR).addFlags(GUI, ITEM, FLUID).setTile(BlockEntityMassFabricator::new);
     public static BasicMachine MIXER = new BasicMachine(GT5Reimagined.ID, "mixer").setMap(RecipeMaps.MIXER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine ORE_WASHER = new BasicMachine(GT5Reimagined.ID, "ore_washer").setMap(RecipeMaps.ORE_WASHER).addFlags(GUI, ITEM, FLUID);
     public static BasicMachine PACKAGER = new BasicMachine(GT5Reimagined.ID, "packager").setMap(RecipeMaps.PACKAGER).addFlags(GUI, ITEM);
