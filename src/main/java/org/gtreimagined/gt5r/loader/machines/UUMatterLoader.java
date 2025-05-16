@@ -7,6 +7,7 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -20,22 +21,29 @@ public class UUMatterLoader {
         GTAPI.all(Material.class).stream().filter(m -> m.getElement() != null && (m.has(DUST) || m.has(LIQUID) || m.has(GAS))).forEach(m -> {
             RecipeBuilder b = RecipeMaps.MASS_FABRICATOR.RB();
             RecipeBuilder sb = RecipeMaps.SCANNER.RB();
+            RecipeBuilder rb = RecipeMaps.REPLICATOR.RB();
             if (m.has(GTMaterialTypes.DUST)){
                 b.ii(DUST.getMaterialIngredient(m, 1)); sb.ii(DUST.getMaterialIngredient(m, 1));
+                rb.io(DUST.get(m, 1));
             } else if (m.has(LIQUID)){
                 b.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getLiquid(1000));
+                rb.fo(m.getLiquid(1000));
             } else if (m.has(GAS)){
                 b.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getGas(1000));
+                rb.fo(m.getGas(1000));
             }
             ItemStack dataOrb = new ItemStack(GTCoreItems.DataOrb);
             dataOrb.getOrCreateTag().putString("scanned_gt_material", m.getId());
             sb.ii(GTCoreItems.DataOrb).io(dataOrb.copy()).add(m.getId() + "_scanning", m.getMass() * 8192, 32);
             if (m.getProtons() > 0){
                 b.fo(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
+                rb.fi(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
             }
             if (m.getNeutrons() > 0){
                 b.fo(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
+                rb.fi(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
             }
+            rb.ii(RecipeIngredient.of(dataOrb).setNoConsume()).add(m.getId(), m.getMass() * 16, 32);
             b.add("matter_from_" + m.getId(), m.getMass() * 4096, 32);
         });
     }
