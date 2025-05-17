@@ -124,6 +124,10 @@ public class Materials {
      * Fantasy/SciFi elements
      */
 
+    public static Material Tritanium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tritanium", 0x379B9B, DULL, Elements.Tn));
+    public static Material Trinium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "trinium", 0xeaeaea, SHINY, Elements.Ke));
+    public static Material Duranium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "duranium", 0x4bafaf, METALLIC, Elements.Dn));
+    public static Material Vibranium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "vibranium", 0x00ffff, SHINY, Elements.Vb));
     public static Material Naquadah = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "naquadah", 0x323232, METALLIC, Elements.Nq));
     public static Material EnrichedNaquadah = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "enriched_naquadah", 0x323232, SHINY, Elements.Nq528));
     public static Material Naquadria = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "naquadria", 0x1e1e1e, SHINY, Elements.Nq522));
@@ -167,7 +171,6 @@ public class Materials {
     public static Material CobaltBrass = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_brass", 0xb4b4a0, METALLIC));
     public static Material Cupronickel = GTCoreMaterials.Cupronickel;
     public static Material DamascusSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "damascus_steel", 0x6e6e6e, METALLIC));
-    public static Material Duranium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "duranium", 0xffffff, METALLIC));
     public static Material Electrum = GTCoreMaterials.Electrum;
     public static Material HSSE = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hsse", 0x336600, METALLIC)).setDisplayNameString("HSS-E");
     public static Material HSSG = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hssg", 0x999900, METALLIC)).setDisplayNameString("HSS-G");
@@ -199,7 +202,6 @@ public class Materials {
     public static Material Ultimet = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "ultimet", 0xb4b4e6, SHINY));
     public static Material VanadiumGallium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "vanadium_gallium", 0x80808c, SHINY));
     public static Material VanadiumSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "vanadium_steel", 0xc0c0c0, METALLIC));
-    public static Material Vibranium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "vibranium", 0x00ffff, SHINY));
     public static Material WroughtIron = GTCoreMaterials.WroughtIron;
     public static Material YttriumBariumCuprate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "yttrium_barium_cuprate", 0x504046, METALLIC));
 

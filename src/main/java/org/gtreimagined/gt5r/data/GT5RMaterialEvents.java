@@ -128,6 +128,10 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Americium).asMetal(1149, ROD_LONG);
         //Elements 96 - 118 not added
 
+        event.setMaterial(Tritanium).asMetal(2000);
+        event.setMaterial(Trinium).asMetal(2645);
+        event.setMaterial(Materials.Duranium).asMetal(1200);
+        event.setMaterial(Materials.Vibranium).asMetal(4852, FRAME);
         event.setMaterial(Materials.Neutronium).asMetal(10000, SCREW, BOLT, RING, FRAME);
         event.setMaterial(Materials.Naquadah).asOre().asMetal(5400);
         event.setMaterial(Materials.EnrichedNaquadah).asMetal(4500, POSITIVE_CHANGING_RGB);
@@ -151,7 +155,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
         event.setMaterial(DamascusSteel).asMetal(2000, 1500, PLATE).forceBF(false);
-        event.setMaterial(Materials.Duranium).asMetal(295, MOLTEN);
         event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, WIRE_FINE, ALLOY);
         event.setMaterial(Materials.GalliumArsenide).asMetal(295, 1200, PLATE, ALLOY);
         event.setMaterial(Materials.HSSE).asMetal(5400, FRAME);
@@ -177,13 +180,13 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).asMetal(1700, ALLOY);
         event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).forceBF(false);
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
-        event.setMaterial(Materials.TritaniumAlloy).asMetal(295, FRAME, MOLTEN);
+        event.setMaterial(Trinitanium).asMetal(2410);
+        event.setMaterial(Materials.TritaniumAlloy).asMetal(1800, FRAME, MOLTEN);
         event.setMaterial(Materials.TungstenCarbide).asMetal(2460);
         event.setMaterial(Materials.TungstenSteel).asMetal(3000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
         event.setMaterial(Materials.Ultimet).asMetal(2700, PLATE);
         event.setMaterial(Materials.VanadiumGallium).asMetal(4500, ROD, PLATE);
         event.setMaterial(Materials.VanadiumSteel).asMetal(1453).forceBF(false);
-        event.setMaterial(Materials.Vibranium).asMetal(295, FRAME);
         event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, ROD_LONG, SCREW, BOLT, RING, FRAME).remove(DUST, DUST_SMALL, DUST_TINY);
         event.setMaterial(Materials.YttriumBariumCuprate).asMetal(4500, PLATE, FOIL, ROD, WIRE_FINE, ALLOY);
 
@@ -659,6 +662,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).mats(of(Copper, 1, Silver, 4));
         event.setMaterial(Materials.StainlessSteel).mats(of(Iron, 6, Materials.Chromium, 1, Materials.Manganese, 1, Materials.Nickel, 1)).elecTicks(450);
         event.setMaterial(Materials.TinAlloy).mats(of(Materials.Tin, 1, Iron, 1));
+        event.setMaterial(Trinitanium).mats(of(Trinium, 2, Titanium, 1));
+        event.setMaterial(TritaniumAlloy).mats(of(Tritanium, 3, Duranium, 1));
         event.setMaterial(Materials.TungstenCarbide).mats(of(Materials.Tungsten, 1, Materials.Carbon, 1));
         event.setMaterial(Materials.TungstenSteel).mats(of(Materials.Steel, 1, Materials.Tungsten, 1));
         event.setMaterial(Materials.Ultimet).mats(of(Materials.Cobalt, 5, Materials.Chromium, 2, Materials.Nickel, 1, Materials.Molybdenum, 1)).elecTicks(504);
