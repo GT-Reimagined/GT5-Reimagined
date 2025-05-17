@@ -44,7 +44,6 @@ public class AlloySmelterLoader {
         addAlloyRecipes(ImmutableMap.of(Copper, 3, Electrum, 2), BlackBronze);
         addAlloyRecipes(ImmutableMap.of(Bismuth, 1, Brass, 4), BismuthBronze);
         addAlloyRecipes(ImmutableMap.of(Gold, 4, NetheriteScrap, 4), Netherite, 1);
-        addAlloyRecipes(ImmutableMap.of(Trinium, 2, Titanium, 1), Trinitanium);
         addAlloyRecipes(ImmutableMap.of(Tritanium, 3, Duranium, 1), TritaniumAlloy);
         if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             addAlloyRecipes(ImmutableMap.of(Magnesium, 1, Aluminium, 2), Magnalium);
