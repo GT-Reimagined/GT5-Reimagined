@@ -35,7 +35,7 @@ public class BenderLoader {
             }
         });
         GTMaterialTypes.FOIL.all().forEach(foil -> {
-            if (!foil.has(PLATE) || foil.has(MaterialTags.RUBBERTOOLS)) return;
+            if (!foil.has(PLATE) || foil.has(MaterialTags.RUBBERTOOLS) || foil == Materials.Silicon) return;
             BENDER.RB().ii(PLATE.getMaterialIngredient(foil,1), SELECTOR_TAG_INGREDIENTS.get(1)).io(GTMaterialTypes.FOIL.get(foil,4)).add("foil_" + foil.getId(), baseDuration.applyAsLong(foil),24);
         });
         GTMaterialTypes.SPRING.all().stream().filter(m -> !m.has(MaterialTags.RUBBERTOOLS)).forEach(spring -> {
