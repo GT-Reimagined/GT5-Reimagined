@@ -1065,6 +1065,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).tool().toolDamage(2).toolSpeed(13).toolDurability(128).toolQuality(2).build();
         event.setMaterial(Materials.StainlessSteel).tool().toolDamage(2).toolSpeed(7).toolDurability(480).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
         event.setMaterial(TitaniumGold).tool().toolDamage(4).toolQuality(4).toolSpeed(12).toolDurability(5120).toolEnchantments(of(Enchantments.SHARPNESS, 3, Enchantments.SMITE, 3, Enchantments.POWER_ARROWS, 3)).build();
+        event.setMaterial(Trinitanium).tool().toolDamage(4).toolQuality(4).toolSpeed(16).toolDurability(5120).toolEnchantments(of(Enchantments.SHARPNESS, 7, Enchantments.POWER_ARROWS, 7)).build();
         event.setMaterial(Materials.TritaniumAlloy).tool().toolDamage(5).toolSpeed(12).toolDurability(2560).toolQuality(5).build();
         event.setMaterial(Materials.TungstenCarbide).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.TungstenSteel).tool(Materials.TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
