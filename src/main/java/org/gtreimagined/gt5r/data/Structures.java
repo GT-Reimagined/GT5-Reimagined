@@ -126,10 +126,10 @@ public class Structures {
         );
 
         COMBUSTION_ENGINE.setStructure(BlockEntityCombustionEngine.class, b -> b.part("main")
-                .of("VVV", "CMC", "CMC", "CCC").of("V~V", "HGH", "HGH", "CEC").of("VVV", "CCC", "CCC", "CCC").build()
+                .of("---", "VVV", "CMC", "CMC", "CCC").of("---", "V~V", "HGH", "HGH", "CEC").of("---", "VVV", "CCC", "CCC", "CCC").build()
                 .at('C', GT5RBlocks.TITANIUM_CASING).at('V', GT5RBlocks.ENGINE_INTAKE_CASING).at('M', GT5RBlocks.TITANIUM_CASING, MUFFLER_HATCH)
                 .at('H', GT5RBlocks.TITANIUM_CASING, INPUT_HATCH, OUTPUT_HATCH).at('E', DYNAMO_HATCH).at('G', GT5RBlocks.TITANIUM_GEARBOX_CASING)
-                .offset(1, 1, 0).min(2, INPUT_HATCH).exact(1, MUFFLER_HATCH).build()
+                .offset(1, 1, 1).min(2, INPUT_HATCH).exact(1, MUFFLER_HATCH).build()
         );
 
         CRACKING_UNIT.setStructure(BlockEntityOilCrackingUnit.class, b -> b.part("main")
