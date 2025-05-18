@@ -19,32 +19,32 @@ import static org.gtreimagined.gt5r.data.Materials.UUAmplifier;
 public class UUMatterLoader {
     public static void init(){
         GTAPI.all(Material.class).stream().filter(m -> m.getElement() != null && (m.has(DUST) || m.has(LIQUID) || m.has(GAS))).forEach(m -> {
-            RecipeBuilder b = RecipeMaps.MASS_FABRICATOR.RB();
+            RecipeBuilder mb = RecipeMaps.MASS_FABRICATOR.RB();
             RecipeBuilder sb = RecipeMaps.SCANNER.RB();
             RecipeBuilder rb = RecipeMaps.REPLICATOR.RB();
             if (m.has(GTMaterialTypes.DUST)){
-                b.ii(DUST.getMaterialIngredient(m, 1)); sb.ii(DUST.getMaterialIngredient(m, 1));
+                mb.ii(DUST.getMaterialIngredient(m, 1)); sb.ii(DUST.getMaterialIngredient(m, 1));
                 rb.io(DUST.get(m, 1));
             } else if (m.has(LIQUID)){
-                b.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getLiquid(1000));
+                mb.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getLiquid(1000));
                 rb.fo(m.getLiquid(1000));
             } else if (m.has(GAS)){
-                b.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getGas(1000));
+                mb.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getGas(1000));
                 rb.fo(m.getGas(1000));
             }
             ItemStack dataOrb = new ItemStack(GTCoreItems.DataOrb);
             dataOrb.getOrCreateTag().putString("scanned_gt_material", m.getId());
             sb.ii(GTCoreItems.DataOrb).io(dataOrb.copy()).add(m.getId() + "_scanning", m.getMass() * 8192, 32);
             if (m.getProtons() > 0){
-                b.fo(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
+                mb.fo(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
                 rb.fi(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
             }
             if (m.getNeutrons() > 0){
-                b.fo(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
+                mb.fo(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
                 rb.fi(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
             }
             rb.ii(RecipeIngredient.of(dataOrb).setNoConsume()).add(m.getId(), m.getMass() * 32, 8);
-            b.add("matter_from_" + m.getId(), m.getMass() * 16384, 8);
+            mb.add("matter_from_" + m.getId(), m.getMass() * 16384, 8);
         });
     }
 }
