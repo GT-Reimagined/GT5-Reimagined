@@ -43,8 +43,8 @@ public class UUMatterLoader {
                 b.fo(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
                 rb.fi(new FluidStack(GT5RFluids.NEUTRAL_MATTER.getFluid(), (int)m.getNeutrons()));
             }
-            rb.ii(RecipeIngredient.of(dataOrb).setNoConsume()).add(m.getId(), m.getMass() * 16, 32);
-            b.add("matter_from_" + m.getId(), m.getMass() * 4096, 32);
+            rb.ii(RecipeIngredient.of(dataOrb).setNoConsume()).add(m.getId(), m.getMass() * 32, 8);
+            b.add("matter_from_" + m.getId(), m.getMass() * 16384, 8);
         });
     }
 }
