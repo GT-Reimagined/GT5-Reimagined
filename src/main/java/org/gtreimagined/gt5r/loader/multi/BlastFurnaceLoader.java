@@ -80,6 +80,8 @@ public class BlastFurnaceLoader {
         /* Tungsten Steel/Carbide*/
         addBlastAlloyRecipes(TungstenSteel, 2, 3000, 480, ImmutableMap.of(Steel, 1, Tungsten, 1));
         addBlastAlloyRecipes(TungstenCarbide, 1, 246 * 20, 480, ImmutableMap.of(Carbon, 1, Tungsten, 1));
+        /* Titanium Gold */
+        addBlastAlloyRecipes(TitaniumGold, 4, 2000, 120, ImmutableMap.of(Titanium, 3, Gold, 1));
         /* Niobium Titanium*/
         addBlastAlloyRecipes(NiobiumTitanium, 2, 225 * 20, 480, ImmutableMap.of(Niobium, 1, Titanium, 1));
         /* Vanadium Gallium*/

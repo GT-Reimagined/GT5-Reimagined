@@ -195,6 +195,7 @@ public class Materials {
     public static Material SterlingSilver = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sterling_silver", 0xfadce1, SHINY));
     public static Material StainlessSteel = GTCoreMaterials.StainlessSteel;
     public static Material TinAlloy = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tin_alloy", 0x9fadbb, NONE));
+    public static Material TitaniumGold = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "titanium_gold", 0xdedeff, METALLIC));
     public static Material Trinitanium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "trinitanium", 0xEBAFFF, METALLIC));
     public static Material TritaniumAlloy = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tritanium_alloy", 0x379B9B, SHINY));
     public static Material TungstenCarbide = GTCoreMaterials.TungstenCarbide;

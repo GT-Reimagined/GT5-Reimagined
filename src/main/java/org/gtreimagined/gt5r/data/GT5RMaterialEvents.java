@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
@@ -180,6 +181,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).asMetal(1700, ALLOY);
         event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).forceBF(false);
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
+        event.setMaterial(TitaniumGold).asMetal(1790).forceBF(false);
         event.setMaterial(Trinitanium).asMetal(2410);
         event.setMaterial(Materials.TritaniumAlloy).asMetal(1800, FRAME, MOLTEN);
         event.setMaterial(Materials.TungstenCarbide).asMetal(2460);
@@ -662,6 +664,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).mats(of(Copper, 1, Silver, 4));
         event.setMaterial(Materials.StainlessSteel).mats(of(Iron, 6, Materials.Chromium, 1, Materials.Manganese, 1, Materials.Nickel, 1)).elecTicks(450);
         event.setMaterial(Materials.TinAlloy).mats(of(Materials.Tin, 1, Iron, 1));
+        event.setMaterial(TitaniumGold).mats(of(Titanium, 3, Gold, 1));
         event.setMaterial(Trinitanium).mats(of(Trinium, 2, Titanium, 1));
         event.setMaterial(TritaniumAlloy).mats(of(Tritanium, 3, Duranium, 1));
         event.setMaterial(Materials.TungstenCarbide).mats(of(Materials.Tungsten, 1, Materials.Carbon, 1));
@@ -1061,6 +1064,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SterlingSilver).tool().toolDamage(2).toolSpeed(13).toolDurability(128).toolQuality(2).build();
         event.setMaterial(Materials.StainlessSteel).tool().toolDamage(2).toolSpeed(7).toolDurability(480).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
         event.setMaterial(Materials.TritaniumAlloy).tool().toolDamage(9).toolSpeed(15).toolDurability(9400).toolQuality(6).build();
+        event.setMaterial(TitaniumGold).tool().toolDamage(4).toolQuality(4).toolSpeed(12).toolDurability(5120).toolEnchantments(of(Enchantments.SHARPNESS, 3, Enchantments.SMITE, 3, Enchantments.POWER_ARROWS, 3)).build();
         event.setMaterial(Materials.TungstenCarbide).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.TungstenSteel).tool(Materials.TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
         event.setMaterial(Materials.VanadiumSteel).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
@@ -1330,7 +1334,7 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.CENT5.add(/*Chrysolite*/ Flint, /*Niter*/ Materials.Glass, /*Perlite*/ Materials.WroughtIron, Materials.DarkAsh, Materials.AnnealedCopper,
                 Materials.Cinnabar, DamascusSteel);
         GT5RMaterialTags.CENT10.add(Materials.Magnalium, Materials.VanadiumMagnetite, Materials.BrownLimonite, Materials.YellowLimonite, Materials.BlackGranite, Materials.Cupronickel, Materials.NiobiumTitanium, Materials.BorosilicateGlass,
-                Materials.GalliumArsenide, Materials.Marble, Materials.Limestone, Materials.Invar, Materials.TinAlloy, Materials.TungstenCarbide, EnderEye, Materials.Powellite, Materials.VanadiumGallium, Blaze,
+                Materials.GalliumArsenide, Materials.Marble, Materials.Limestone, Materials.Invar, Materials.TinAlloy, Materials.TungstenCarbide, TitaniumGold, TritaniumAlloy, Trinitanium, EnderEye, Materials.Powellite, Materials.VanadiumGallium, Blaze,
                 Materials.TungstenSteel, Materials.Brass, Materials.Nichrome, Materials.Electrum, Materials.Bronze, Materials.Stibnite, Materials.Wulfenite, Materials.RedAlloy, Materials.SterlingSilver, Materials.RoseGold, Materials.BatteryAlloy, Materials.SolderingAlloy, Materials.TricalciumPhosphate);
         GT5RMaterialTags.CENT15.add(Materials.Kanthal, Materials.IndiumGalliumPhosphide, Materials.BlackSteel, Materials.RedGarnet, Materials.YellowGarnet, Materials.BismuthBronze, Materials.BlackBronze, Materials.VanadiumSteel, Materials.CdInAGAlloy, Materials.CobaltBrass,
                 Materials.Pitchblende, Redstone, Materials.HSSS);
