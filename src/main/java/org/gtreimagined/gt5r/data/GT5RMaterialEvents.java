@@ -1021,6 +1021,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Uranium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build();
         event.setMaterial(Materials.Plutonium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build(); // TODO: Enchantment: Radioactivity;
 
+        event.setMaterial(Materials.Vibranium).tool().toolDamage(15).toolSpeed(1000).toolDurability(512).toolQuality(15).toolEnchantments(of(Enchantments.BLOCK_FORTUNE, 5, Enchantments.MOB_LOOTING, 10)).build();
         event.setMaterial(Materials.Neutronium).tool().toolDamage(9).toolSpeed(24).toolDurability(655360).toolQuality(6).build();
         event.setMaterial(Materials.Naquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
         event.setMaterial(Adamantium).tool().toolDamage(5).toolSpeed(10).toolDurability(5120).toolQuality(5).toolEnchantments(of(Enchantments.SILK_TOUCH, 1, Enchantments.SHARPNESS, 7, Enchantments.POWER_ARROWS, 7)).build();
@@ -1068,7 +1069,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.TungstenCarbide).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.TungstenSteel).tool(Materials.TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
         event.setMaterial(Materials.VanadiumSteel).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
-        event.setMaterial(Materials.Vibranium).tool().toolDamage(15).toolSpeed(1000).toolDurability(512).toolQuality(15).toolEnchantments(of(Enchantments.BLOCK_FORTUNE, 5, Enchantments.MOB_LOOTING, 10)).build();
         event.setMaterial(Materials.WroughtIron).tool(Iron).toolDurability(384).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 1.0F, 0.0F, 17, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
         /**
