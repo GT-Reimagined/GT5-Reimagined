@@ -7,8 +7,8 @@ import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.machine.MachineFlag;
 import org.gtreimagined.gtlib.machine.types.Machine;
 
-public class BlockEntityMassFabricator extends BlockEntityMachine<BlockEntityMassFabricator> {
-    public BlockEntityMassFabricator(Machine<?> type, BlockPos pos, BlockState state) {
+public class BlockEntityNoOverclockCharge extends BlockEntityMachine<BlockEntityNoOverclockCharge> {
+    public BlockEntityNoOverclockCharge(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
             @Override
