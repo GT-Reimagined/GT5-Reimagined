@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.rei;
 
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
+import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.integration.rei.REIUtils;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -35,13 +36,13 @@ public class REIRegistrar {
             GTMaterialTypes.ORE.all().forEach(m -> {
                 if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
                     if (m.has(GT5RMaterialTags.BATH_MERCURY)){
-                        r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.MERCURY));
+                        r.add(new OreProcessingDisplay(m, OreByProduct.BathingMode.MERCURY));
                     }
                     if (m.has(GT5RMaterialTags.BATH_PERSULFATE)){
-                        r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.PERSULFATE));
+                        r.add(new OreProcessingDisplay(m, OreByProduct.BathingMode.PERSULFATE));
                     }
                 } else {
-                    r.add(new OreProcessingDisplay(m, OreProcessingDisplay.BathingMode.NONE));
+                    r.add(new OreProcessingDisplay(m, OreByProduct.BathingMode.NONE));
                 }
             });
             GTMaterialTypes.DUST.all().forEach(m -> {

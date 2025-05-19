@@ -1,16 +1,28 @@
 package org.gtreimagined.gt5r.integration.jei;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
+import mezz.jei.api.recipe.IFocusGroup;
+import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
 import org.gtreimagined.gtlib.integration.jei.category.RecipeMapCategory;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 
 public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     IDrawable icon = RecipeMapCategory.guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, Items.IRON_ORE.getDefaultInstance());
@@ -25,6 +37,26 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
 
     private static IDrawable createDrawable(String id) {
         return RecipeMapCategory.guiHelper.drawableBuilder(new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/" + id + ".png"), 3, 3, 180, 160).setTextureSize(186, 166).build();
+    }
+
+    @Override
+    public void draw(OreByProduct recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+        base.draw(stack);
+        if (recipe.bathingMode() != BathingMode.NONE) chemical.draw(stack);
+        if (recipe.hasSiftingRecipe()) sift.draw(stack);
+        if (recipe.hasSepRecipes()) sep.draw(stack);
+        if (recipe.hasFurnaceSmeltingRecipe()) smelt.draw(stack);
+    }
+
+    @Override
+    public void setRecipe(IRecipeLayoutBuilder builder, OreByProduct recipe, IFocusGroup focuses) {
+        builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(VanillaTypes.ITEM_STACK, List.of(ORE.getMaterialIngredient(recipe.material(), 1).getItems()));
+        recipe.getMainOutputs().forEach(p -> {
+            builder.addSlot(RecipeIngredientRole.OUTPUT, p.key().x, p.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(p.value()));
+        });
+        recipe.getMainMachines().forEach(m -> {
+            builder.addSlot(RecipeIngredientRole.INPUT, m.key().x, m.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(new ItemStack(m.value().getItem(m.value().getFirstTier()))))lg;
+        });
     }
 
     @Override

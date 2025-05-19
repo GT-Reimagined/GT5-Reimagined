@@ -6,6 +6,9 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryStacks;
+import org.gtreimagined.gt5r.integration.xei.OreByProduct;
+import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
+import org.gtreimagined.gt5r.integration.xei.OreByProduct.SepMode;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -26,7 +29,7 @@ public class OreProcessingDisplay implements Display {
 
         this.ore = material;
         this.bathingMode = bathingMode;
-        this.sepMode = material.has(GT5RMaterialTags.ELECSEPI) ? SepMode.IRON : material.has(GT5RMaterialTags.ELECSEPG) ? SepMode.GOLD : material.has(GT5RMaterialTags.ELECSEPN) ? SepMode.NEODYMIUM : SepMode.NONE;
+        this.sepMode = material.has(GT5RMaterialTags.ELECSEPI) ? OreByProduct.SepMode.IRON : material.has(GT5RMaterialTags.ELECSEPG) ? OreByProduct.SepMode.GOLD : material.has(GT5RMaterialTags.ELECSEPN) ? OreByProduct.SepMode.NEODYMIUM : OreByProduct.SepMode.NONE;
         this.input = createInputEntries(List.of(GTMaterialTypes.ORE.getMaterialIngredient(material, 1)));
         Material aOreByProduct1 = ore.getByProducts().size() >= 1 ? ore.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(ore);
         Material aOreByProduct2 = ore.getByProducts().size() >= 2 ? ore.getByProducts().get(1) : aOreByProduct1;
@@ -60,16 +63,4 @@ public class OreProcessingDisplay implements Display {
         return OreProcessingCategory.id;
     }
 
-    public enum SepMode {
-        NONE,
-        IRON,
-        GOLD,
-        NEODYMIUM
-    }
-
-    public enum BathingMode {
-        NONE,
-        MERCURY,
-        PERSULFATE
-    }
 }
