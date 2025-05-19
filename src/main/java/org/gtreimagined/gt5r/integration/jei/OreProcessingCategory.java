@@ -55,7 +55,7 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
             builder.addSlot(RecipeIngredientRole.OUTPUT, p.key().x, p.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(p.value()));
         });
         recipe.getMainMachines().forEach(m -> {
-            builder.addSlot(RecipeIngredientRole.INPUT, m.key().x, m.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(new ItemStack(m.value().getItem(m.value().getFirstTier()))))lg;
+            builder.addSlot(RecipeIngredientRole.INPUT, m.key().x, m.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(new ItemStack(m.value().getItem(m.value().getFirstTier()))));
         });
     }
 
