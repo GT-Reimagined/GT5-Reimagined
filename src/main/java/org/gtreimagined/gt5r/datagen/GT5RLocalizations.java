@@ -150,6 +150,7 @@ public class GT5RLocalizations {
             add("jei.category.macerator_ore_processing", "Macerator Ore Processing");
             add("jei.category.arc_furnace_recycling", "Arc Furnace Recycling");
             add("jei.category.alloy_smelter_molds", "Alloy Smelter Molds");
+            add("jei.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
             add("block.gt5r.lava", "Lava");
             structureTranslations();
             advancements();

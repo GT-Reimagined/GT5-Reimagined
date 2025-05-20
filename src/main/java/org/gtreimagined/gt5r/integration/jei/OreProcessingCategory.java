@@ -2,13 +2,16 @@ package org.gtreimagined.gt5r.integration.jei;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
+import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
+import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
@@ -33,7 +36,7 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     IDrawable sift = createDrawable("sift");
     IDrawable smelt = createDrawable("smelt");
     IDrawable vac = createDrawable("vac");
-    public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5Reimagined.ID, "ore_byproducts"), OreByProduct.class);
+    public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5Reimagined.ID, "ore_byproducts_tree"), OreByProduct.class);
 
     private static IDrawable createDrawable(String id) {
         return RecipeMapCategory.guiHelper.drawableBuilder(new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/" + id + ".png"), 3, 3, 180, 160).setTextureSize(186, 166).build();
@@ -51,17 +54,25 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, OreByProduct recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(VanillaTypes.ITEM_STACK, List.of(ORE.getMaterialIngredient(recipe.material(), 1).getItems()));
-        recipe.getMainOutputs().forEach(p -> {
-            builder.addSlot(RecipeIngredientRole.OUTPUT, p.key().x, p.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(p.value()));
-        });
-        recipe.getMainMachines().forEach(m -> {
-            builder.addSlot(RecipeIngredientRole.INPUT, m.key().x, m.key().y).addIngredients(VanillaTypes.ITEM_STACK, List.of(new ItemStack(m.value().getItem(m.value().getFirstTier()))));
+        recipe.getSlots().forEach(r -> {
+            IRecipeSlotBuilder slotBuilder = builder.addSlot(r.input() ? RecipeIngredientRole.INPUT : RecipeIngredientRole.OUTPUT, r.x(), r.y());
+            if (!r.stacks().isEmpty()) {
+                slotBuilder.addIngredients(VanillaTypes.ITEM_STACK, r.stacks());
+            }
+            if (!r.fluidStacks().isEmpty()){
+                slotBuilder.addIngredients(ForgeTypes.FLUID_STACK, r.fluidStacks());
+            }
+            if (r.chance() > 0){
+                slotBuilder.addTooltipCallback((recipe1, tooltip) -> {
+                    tooltip.add(Utils.literal("Output Chance: " + ((float)r.chance() / 100) + "%").withStyle(ChatFormatting.WHITE));
+                });
+            }
         });
     }
 
     @Override
     public Component getTitle() {
-        return Utils.translatable("jei.category.gt5r.ore_byproducts");
+        return Utils.translatable("jei.category.gt5r.ore_byproducts_tree");
     }
 
     @Override
@@ -81,7 +92,7 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
 
     @Override
     public ResourceLocation getUid() {
-        return new ResourceLocation("gt5r", "ore_byproducts");
+        return new ResourceLocation("gt5r", "ore_byproducts_tree");
     }
 
     @Override
