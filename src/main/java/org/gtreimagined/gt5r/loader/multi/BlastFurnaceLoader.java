@@ -98,6 +98,8 @@ public class BlastFurnaceLoader {
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Trinitanium */
         addBlastAlloyRecipes(Trinitanium, 3, 2410, 120, ImmutableMap.of(Trinium, 2, Titanium, 1));
+        /* Tritanium Alloy*/
+        addBlastAlloyRecipes(TritaniumAlloy, 4, 1800, 120, ImmutableMap.of(Tritanium, 3, Duranium, 1));
         /* Osmiridium*/
         E_BLAST_FURNACE.RB().temperature(2900).ii(of(3, DUST.getMaterialTag(Iridium), INGOT.getMaterialTag(Iridium)), of(1, DUST.getMaterialTag(Osmium), INGOT.getMaterialTag(Osmium)))
                 .fi(Helium.getGas(1000))

@@ -183,7 +183,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
         event.setMaterial(TitaniumGold).asMetal(1790).forceBF(false);
         event.setMaterial(Trinitanium).asMetal(2410);
-        event.setMaterial(Materials.TritaniumAlloy).asMetal(1800, FRAME, MOLTEN);
+        event.setMaterial(Materials.TritaniumAlloy).asMetal(1800, FRAME, MOLTEN).forceBF(false);
         event.setMaterial(Materials.TungstenCarbide).asMetal(2460);
         event.setMaterial(Materials.TungstenSteel).asMetal(3000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
         event.setMaterial(Materials.Ultimet).asMetal(2700, PLATE);
