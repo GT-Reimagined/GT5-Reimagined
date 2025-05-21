@@ -4,6 +4,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
+import org.apache.commons.lang3.tuple.Triple;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -54,6 +55,40 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
         if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
         if (hasSepRecipes()) slots.addAll(getSepSlots());
         return slots;
+    }
+
+    public List<Triple<Integer, Integer, Integer>> getChanceOverlays(){
+        List<Triple<Integer, Integer, Integer>> overlays = new ArrayList<>(List.of(
+                Triple.of(1, 63, 1000),
+                Triple.of(22, 108, 1000),
+                Triple.of(163, 45, 1000),
+                Triple.of(69, 117, 1000)
+        ));
+        if (material.getByProducts().size() > 3){
+            overlays.add(Triple.of(87, 99, 1000));
+        }
+        if (material.getByProducts().size() > 4){
+            overlays.add(Triple.of(87, 117, 1000));
+        }
+        if (bathingMode != BathingMode.NONE) {
+            overlays.add(Triple.of(87, 45, 7000));
+        }
+        if (hasSiftingRecipe()){
+            boolean e = material.has(GEM_EXQUISITE);
+            overlays.addAll(List.of(
+                    Triple.of(127, 1, e ? 300 : 100),
+                    Triple.of(145, 1, e ? 1200 : 400),
+                    Triple.of(163, 1, e ? 4500 : 1500),
+                    Triple.of(127, 19, e ? 1400 : 2000),
+                    Triple.of(145, 19, e ? 2800 : 4000),
+                    Triple.of(163, 19, e ? 3500 : 5000)
+            ));
+        }
+        if (hasSepRecipes()){
+            overlays.add(Triple.of(163, 108, 4000));
+            overlays.add(Triple.of(163, 126, 2000));
+        }
+        return overlays;
     }
 
     public List<SlotResult> getMainSlots(){

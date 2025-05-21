@@ -1,20 +1,26 @@
 package org.gtreimagined.gt5r.integration.jei;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.ItemStack;
+import org.apache.commons.lang3.tuple.Triple;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
+import org.gtreimagined.gtlib.gui.SlotData;
+import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.integration.jei.category.RecipeMapCategory;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.network.chat.Component;
@@ -22,6 +28,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -49,6 +56,22 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
         if (recipe.hasSiftingRecipe()) sift.draw(stack);
         if (recipe.hasSepRecipes()) sep.draw(stack);
         if (recipe.hasFurnaceSmeltingRecipe()) smelt.draw(stack);
+        List<Triple<Integer, Integer, Integer>> chances = recipe.getChanceOverlays();
+        for (var chancePositions : chances){
+            int chance = chancePositions.getRight();
+            if (chance > 0 && chance < 10000){
+                RenderSystem.disableBlend();
+                RenderSystem.disableDepthTest();
+                stack.pushPose();
+                stack.scale(0.5f, 0.5f, 1);
+                String ch = (chance / 100) + "%";
+                Minecraft.getInstance().font.drawShadow(stack, ch, 2*((float)chancePositions.getLeft()), 2*((float) chancePositions.getMiddle()), 0xFFFF00);
+
+                stack.popPose();
+                RenderSystem.enableBlend();
+                RenderSystem.enableDepthTest();
+            }
+        }
     }
 
     @Override
