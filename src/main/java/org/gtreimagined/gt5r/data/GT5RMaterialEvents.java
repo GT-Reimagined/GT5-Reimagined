@@ -1445,27 +1445,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.SteelMagnetic).setDirectSmeltInto(Materials.Steel).setMacerateInto(Materials.Steel).setArcSmeltInto(Materials.Steel).setMeltInto(Steel);
         event.setMaterial(Materials.WroughtIron).setDirectSmeltInto(Iron).setMacerateInto(Iron).setMeltInto(Iron);
 
-        /*event.setMaterial(BandedIron).setDirectSmeltInto(Iron);
-        event.setMaterial(BrownLimonite).setDirectSmeltInto(Iron);
-        event.setMaterial(Cassiterite).setDirectSmeltInto(Tin);
-        event.setMaterial(Chalcopyrite).setDirectSmeltInto(Copper);
-        event.setMaterial(Cinnabar).setDirectSmeltInto(Mercury);
-        event.setMaterial(Cobaltite).setDirectSmeltInto(Cobalt);
-        event.setMaterial(Cooperite).setDirectSmeltInto(Platinum);
-        event.setMaterial(Galena).setDirectSmeltInto(Lead);
-        event.setMaterial(Garnierite).setDirectSmeltInto(Nickel);
-        event.setMaterial(Magnesite).setDirectSmeltInto(Magnesium);
-        event.setMaterial(Magnetite).setDirectSmeltInto(Iron);
-        event.setMaterial(Malachite).setDirectSmeltInto(Copper);
-        event.setMaterial(Molybdenite).setDirectSmeltInto(Molybdenum);
-        event.setMaterial(Pentlandite).setDirectSmeltInto(Nickel);
-        event.setMaterial(Pyrite).setDirectSmeltInto(Iron);
-        event.setMaterial(Pyrolusite).setDirectSmeltInto(Manganese);
-        event.setMaterial(Sphalerite).setDirectSmeltInto(Zinc);
-        event.setMaterial(Stibnite).setDirectSmeltInto(Antimony);
-        event.setMaterial(Tetrahedrite).setDirectSmeltInto(Copper);
-        event.setMaterial(YellowLimonite).setDirectSmeltInto(Iron);*/
-
         event.setMaterial(Materials.Cassiterite).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Glowstone).setOreMulti(5).setSmeltingMulti(5);
         event.setMaterial(Lapis).setOreMulti(6).setSmeltingMulti(6).setByProductMulti(4);
