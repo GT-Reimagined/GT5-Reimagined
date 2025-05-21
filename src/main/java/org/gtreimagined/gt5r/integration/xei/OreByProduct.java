@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.machine.Tier.LV;
 import static org.gtreimagined.gtlib.material.MaterialTags.SMELTING_MULTI;
 
 public record OreByProduct(Material material, BathingMode bathingMode) {
@@ -81,7 +82,16 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
                 createOutput(47, 117, DUST_TINY, getByproduct(1), 1),
                 mch(69, 78, MACERATOR),
                 createOutput(69, 99, DUST, getMacerateInto(), 1),
-                createOutput(69, 117, DUST, getByproduct(2), 1, 1000)
+                createOutput(69, 117, DUST, getByproduct(2), 1, 1000),
+                createOutput(1, 103, CRUSHED, getMacerateInto(), 1),
+                new SlotResult(1, 122, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
+                createOutput(1, 143, CRUSHED_PURIFIED, getMacerateInto(), 1),
+                createOutput(22, 143, DUST_IMPURE, getMacerateInto(), 1),
+                new SlotResult(40, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
+                createOutput(62, 143, DUST, getMacerateInto(), 1),
+                createOutput(83, 143, DUST_PURE, getMacerateInto(), 1),
+                new SlotResult(101, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
+                createOutput(123, 143, DUST, getMacerateInto(), 1)
         ));
         if (material.getByProducts().size() > 3){
             slots.add(createOutput(87, 99, DUST, getByproduct(3), 1, 1000));
