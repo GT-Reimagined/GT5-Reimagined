@@ -42,7 +42,6 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     IDrawable sep = createDrawable("sep");
     IDrawable sift = createDrawable("sift");
     IDrawable smelt = createDrawable("smelt");
-    IDrawable vac = createDrawable("vac");
     public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5Reimagined.ID, "ore_byproducts_tree"), OreByProduct.class);
 
     private static IDrawable createDrawable(String id) {
