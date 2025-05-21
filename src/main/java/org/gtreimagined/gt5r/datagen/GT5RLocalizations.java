@@ -41,7 +41,7 @@ public class GT5RLocalizations {
             super.addTranslations();
             add(GT5Reimagined.ID + ".advancements.greg", "GT5 Reimagined");
             add(GT5Reimagined.ID + ".advancements.greg.desc", "Getting familiar with your surroundings");
-            add(GT5Reimagined.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts List");
+            add(GT5Reimagined.ID + ".rei.tooltip.ore.byproducts", "Ore Byproducts Tree");
             add(GT5Reimagined.ID + ".rei.tooltip.material_tree", "Material Tree");
             add("machine.transformer.voltage_info", "%s -> %s (Use Soft Hammer to invert)");
             add("machine.upgraded_batch.parallel", "Runs up to %s recipes at a time");
