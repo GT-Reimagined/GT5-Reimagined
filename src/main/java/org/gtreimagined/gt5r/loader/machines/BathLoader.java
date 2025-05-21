@@ -11,6 +11,7 @@ import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
@@ -104,48 +105,17 @@ public class BathLoader {
         mercurybathing();
         persulfatebathing();
         BATH.RB().ii(CRUSHED.getMaterialIngredient(Cobaltite, 1)).fi(SodiumPersulfateSolution.getLiquid(1000)).io(CRUSHED_PURIFIED.get(Cobaltite), CRUSHED_PURIFIED.get(Cobalt), DUST.get(Stone)).outputChances(1.0, 0.25, 1.0).add("persulfate_cobaltite", 144);
-        addVitriolRecipe(Chalcopyrite, BlueVitriol);
-        addVitriolRecipe(Copper, BlueVitriol);
-        addVitriolRecipe(Gold, BlueVitriol);
-        addVitriolRecipe(Malachite, BlueVitriol);
-        addVitriolRecipe(Tetrahedrite, BlueVitriol);
-        addVitriolRecipe(Andradite, GreenVitriol);
-        addVitriolRecipe(Chromite, GreenVitriol);
-        addVitriolRecipe(Hematite, GreenVitriol);
-        addVitriolRecipe(Iron, GreenVitriol);
-        addVitriolRecipe(Ilmenite, GreenVitriol);
+        GT5RMaterialTags.VITRIOL.getAll().forEach((ore, vitriol) -> {
+            if (vitriol.has(LIQUID) && ore.has(CRUSHED_PURIFIED)){
+                addVitriolRecipe(ore, vitriol);
+            }
+        });
         BATH.RB().ii(DUST.getMaterialIngredient(Ilmenite, 5)).fi(SulfuricAcid.getLiquid(7000)).io(DUST.get(Rutile)).fo(GreenVitriol.getLiquid(6000), Water.getLiquid(3000)).add("ilmenite_to_rutile", 512);
-        addVitriolRecipe(Magnetite, GreenVitriol);
-        addVitriolRecipe(Pyrite, GreenVitriol);
-        addVitriolRecipe(Cobaltite, RedVitriol);
-        addVitriolRecipe(Cobalt, RedVitriol);
-        addVitriolRecipe(Magnesite, PinkVitriol);
-        addVitriolRecipe(Olivine, PinkVitriol);
-        addVitriolRecipe(Pyrope, PinkVitriol);
-        addVitriolRecipe(Sheldonite, CyanVitriol);
-        addVitriolRecipe(Garnierite, CyanVitriol);
-        addVitriolRecipe(Nickel, CyanVitriol);
-        addVitriolRecipe(Pentlandite, CyanVitriol);
-        addVitriolRecipe(Platinum, CyanVitriol);
-        addVitriolRecipe(Sphalerite, WhiteVitriol);
-        addVitriolRecipe(Tin, WhiteVitriol);
-        addVitriolRecipe(Zinc, WhiteVitriol);
-        addVitriolRecipe(Manganese, GrayVitriol);
-        addVitriolRecipe(Pyrolusite, GrayVitriol);
-        addVitriolRecipe(Scheelite, GrayVitriol);
-        addVitriolRecipe(Spessartine, GrayVitriol);
-        addVitriolRecipe(Tungstate, GrayVitriol);
-        addVitriolRecipe(Almandine, VitriolOfClay);
-        addVitriolRecipe(Bauxite, VitriolOfClay);
-        if (SpaceModRegistrar.Desh != null){
-            addVitriolRecipe(SpaceModRegistrar.Desh, MartianVitriol);
-        }
-        addPSGRecipe(Sheldonite);
-        addPSGRecipe(Iridium);
-        addPSGRecipe(Nickel);
-        addPSGRecipe(Osmium);
-        addPSGRecipe(Sperrylite);
-        addPSGRecipe(Platinum);
+        GT5RMaterialTags.PLATINUM_GROUP_SLUDGE.all().forEach(m -> {
+            if (m.has(CRUSHED_PURIFIED)){
+                addPSGRecipe(m);
+            }
+        });
     }
     public static void mercurybathing(){
         BATH_MERCURY.getAll().forEach((main, side) ->

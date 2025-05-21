@@ -49,6 +49,8 @@ public class GT5RMaterialTags {
     public static final NumberMaterialTag BLAST_FURNACE_TEMP = (NumberMaterialTag) GTAPI.register(MaterialTag.class, new NumberMaterialTag("blast_furnace_temp", true));
     public static final DoubleMaterialTag BATH_MERCURY = new DoubleMaterialTag("bath_mercury");
     public static final DoubleMaterialTag BATH_PERSULFATE = new DoubleMaterialTag("bath_persulfate");
+    public static final DoubleMaterialTag VITRIOL = new DoubleMaterialTag("vitriol");
+    public static final MaterialTag PLATINUM_GROUP_SLUDGE = new MaterialTag("platinum_group_sludge");
     public static final DoubleMaterialTag THERMAL_CENTRIFUGE_EXPLICIT = new DoubleMaterialTag("thermal_centrifuge_explicit");
     public static final ListMaterialTag<FluidProduct> DISTILL_INTO = new ListMaterialTag<>("distill_into");
     public static final NumberMaterialTag DISTILLATION_FLUID_INPUT_AMOUNT = new NumberMaterialTag("distillation_fluid_input_amount");

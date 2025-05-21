@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.data;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
@@ -17,7 +18,7 @@ import org.gtreimagined.gtlib.material.SubTag;
 import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static org.gtreimagined.gt5r.data.GT5RMaterialTags.ALLOY;
+import static org.gtreimagined.gt5r.data.GT5RMaterialTags.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
@@ -1464,6 +1465,42 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.TricalciumPhosphate).setOreMulti(3);
 
 
+        VITRIOL.add(Chalcopyrite, BlueVitriol);
+        VITRIOL.add(Copper, BlueVitriol);
+        VITRIOL.add(Gold, BlueVitriol);
+        VITRIOL.add(Malachite, BlueVitriol);
+        VITRIOL.add(Tetrahedrite, BlueVitriol);
+        VITRIOL.add(Andradite, GreenVitriol);
+        VITRIOL.add(Chromite, GreenVitriol);
+        VITRIOL.add(Hematite, GreenVitriol);
+        VITRIOL.add(Iron, GreenVitriol);
+        VITRIOL.add(Ilmenite, GreenVitriol);
+        VITRIOL.add(Magnetite, GreenVitriol);
+        VITRIOL.add(Pyrite, GreenVitriol);
+        VITRIOL.add(Cobalt, RedVitriol);
+        VITRIOL.add(Cobaltite, RedVitriol);
+        VITRIOL.add(Magnesite, PinkVitriol);
+        VITRIOL.add(Olivine, PinkVitriol);
+        VITRIOL.add(Pyrope, PinkVitriol);
+        VITRIOL.add(Sheldonite, CyanVitriol);
+        VITRIOL.add(Garnierite, CyanVitriol);
+        VITRIOL.add(Nickel, CyanVitriol);
+        VITRIOL.add(Pentlandite, CyanVitriol);
+        VITRIOL.add(Platinum, CyanVitriol);
+        VITRIOL.add(Sphalerite, WhiteVitriol);
+        VITRIOL.add(Tin, WhiteVitriol);
+        VITRIOL.add(Zinc, WhiteVitriol);
+        VITRIOL.add(Manganese, GrayVitriol);
+        VITRIOL.add(Pyrolusite, GrayVitriol);
+        VITRIOL.add(Scheelite, GrayVitriol);
+        VITRIOL.add(Spessartine, GrayVitriol);
+        VITRIOL.add(Tungstate, GrayVitriol);
+        VITRIOL.add(Almandine, VitriolOfClay);
+        VITRIOL.add(Bauxite, VitriolOfClay);
+        if (SpaceModRegistrar.Desh != null){
+            VITRIOL.add(SpaceModRegistrar.Desh, MartianVitriol);
+        }
+        PLATINUM_GROUP_SLUDGE.add(Sheldonite, Iridium, Nickel, Osmium, Sperrylite, Platinum);
         // Naquadah.mMoltenRGBa[0] = 0;
         // Naquadah.mMoltenRGBa[1] = 255;
         // Naquadah.mMoltenRGBa[2] = 0;
