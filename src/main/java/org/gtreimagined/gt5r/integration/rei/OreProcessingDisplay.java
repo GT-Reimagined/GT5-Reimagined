@@ -1,11 +1,13 @@
 package org.gtreimagined.gt5r.integration.rei;
 
+import lombok.Getter;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryStacks;
+import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.SepMode;
@@ -15,33 +17,37 @@ import org.gtreimagined.gtlib.material.MaterialTags;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+
 public class OreProcessingDisplay implements Display {
-    Material ore;
+    @Getter
+    OreByProduct oreByProduct;
     private final List<EntryIngredient> input, output;
-    SepMode sepMode;
-    BathingMode bathingMode;
-    Material byProduct1, byProduct2, byProduct3;
 
-    public OreProcessingDisplay(Material material, BathingMode bathingMode){
+    public OreProcessingDisplay(OreByProduct oreByProduct){
+        this.oreByProduct = oreByProduct;
+        this.input = createInputEntries(List.of(GTMaterialTypes.ORE.getMaterialIngredient(oreByProduct.material(), 1)));
 
-        this.ore = material;
-        this.bathingMode = bathingMode;
-        this.sepMode = material.has(GT5RMaterialTags.ELECSEPI) ? OreByProduct.SepMode.IRON : material.has(GT5RMaterialTags.ELECSEPG) ? OreByProduct.SepMode.GOLD : material.has(GT5RMaterialTags.ELECSEPN) ? OreByProduct.SepMode.NEODYMIUM : OreByProduct.SepMode.NONE;
-        this.input = createInputEntries(List.of(GTMaterialTypes.ORE.getMaterialIngredient(material, 1)));
-        Material aOreByProduct1 = ore.getByProducts().size() >= 1 ? ore.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(ore);
-        Material aOreByProduct2 = ore.getByProducts().size() >= 2 ? ore.getByProducts().get(1) : aOreByProduct1;
-        Material aOreByProduct3 = ore.getByProducts().size() >= 3 ? ore.getByProducts().get(2) : aOreByProduct2;
-        byProduct1 = aOreByProduct1;
-        byProduct2 = aOreByProduct2;
-        byProduct3 = aOreByProduct3;
-        this.output = List.of(EntryIngredient.of(EntryStack.of(VanillaEntryTypes.ITEM, GTMaterialTypes.DUST.get(material, 1)), EntryStack.of(VanillaEntryTypes.ITEM, GTMaterialTypes.DUST.get(byProduct1, 1)), EntryStack.of(VanillaEntryTypes.ITEM, GTMaterialTypes.DUST.get(byProduct2, 1)), EntryStack.of(VanillaEntryTypes.ITEM, GTMaterialTypes.DUST.get(byProduct3, 1))));
-    }
-
-    public Material getOre() {
-        return ore;
+        List<EntryStack<ItemStack>> outputs = new ArrayList<>();
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_PURIFIED.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_REFINED.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST_IMPURE.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST_PURE.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(oreByProduct.getMacerateInto(), 1)));
+        if (!oreByProduct.material().getByProducts().isEmpty()) {
+            for (Material byProduct : oreByProduct.material().getByProducts()) {
+                outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(byProduct, 1)));
+            }
+        }
+        if (oreByProduct.material().has(GT5RMaterialTags.THERMAL_CENTRIFUGE_EXPLICIT)){
+            outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(GT5RMaterialTags.THERMAL_CENTRIFUGE_EXPLICIT.get(oreByProduct.material()), 1)));
+        }
+        this.output = List.of(EntryIngredient.of(outputs));
     }
 
     public static List<EntryIngredient> createInputEntries(List<Ingredient> input) {
