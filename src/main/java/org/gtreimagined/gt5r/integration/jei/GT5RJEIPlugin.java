@@ -2,10 +2,13 @@ package org.gtreimagined.gt5r.integration.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.integration.rei.OreProcessingDisplay;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
@@ -16,6 +19,9 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static org.gtreimagined.gtlib.machine.Tier.LV;
+import static org.gtreimagined.gtlib.machine.Tier.NONE;
 
 @JeiPlugin
 public class GT5RJEIPlugin implements IModPlugin {
@@ -28,6 +34,17 @@ public class GT5RJEIPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         if (GTAPI.isModLoaded(Ref.MOD_REI)) return;
         registration.addRecipeCategories(new OreProcessingCategory());
+    }
+
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.MACERATOR.getItem(LV)), OreProcessingCategory.ORE_BYPRODUCTS);
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.ORE_WASHER.getItem(LV)), OreProcessingCategory.ORE_BYPRODUCTS);
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.CENTRIFUGE.getItem(LV)), OreProcessingCategory.ORE_BYPRODUCTS);
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.THERMAL_CENTRIFUGE.getItem(LV)), OreProcessingCategory.ORE_BYPRODUCTS);
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.BATH.getItem(NONE)), OreProcessingCategory.ORE_BYPRODUCTS);
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.ELECTROMAGNETIC_SEPARATOR.getItem(LV)), OreProcessingCategory.ORE_BYPRODUCTS);
+        registration.addRecipeCatalyst(new ItemStack(GT5RMachines.SIFTER.getItem(LV)), OreProcessingCategory.ORE_BYPRODUCTS);
     }
 
     @Override
