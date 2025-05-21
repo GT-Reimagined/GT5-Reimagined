@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.integration.xei;
 
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
@@ -51,7 +50,7 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
     public List<SlotResult> getSlots(){
         List<SlotResult> slots = new ArrayList<>(getMainSlots());
         if (hasFurnaceSmeltingRecipe()) slots.addAll(getSmeltSlots());
-        if (bathingMode != BathingMode.NONE) slots.addAll(getChemSlots());
+        if (bathingMode != BathingMode.NONE) slots.addAll(getBathSlots());
         if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
         if (hasSepRecipes()) slots.addAll(getSepSlots());
         return slots;
@@ -144,7 +143,7 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
         );
     }
 
-    private List<SlotResult> getChemSlots(){
+    private List<SlotResult> getBathSlots(){
         Material bathOutput = bathingMode == BathingMode.MERCURY ? GT5RMaterialTags.BATH_MERCURY.getMapping(material) : GT5RMaterialTags.BATH_PERSULFATE.getMapping(material);
         Material fluidOutput = bathingMode == BathingMode.MERCURY ? Materials.Mercury : Materials.SodiumPersulfateSolution;
         return List.of(
