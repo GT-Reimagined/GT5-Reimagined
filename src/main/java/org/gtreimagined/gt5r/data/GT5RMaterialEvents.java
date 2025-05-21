@@ -1463,47 +1463,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Sodalite).setOreMulti(6);
         event.setMaterial(Materials.TricalciumPhosphate).setOreMulti(3);
 
-        // Plastic.setEnchantmentForTools(Enchantment.knockback, 1);
-        // PolyvinylChloride.setEnchantmentForTools(Enchantment.knockback, 1);
-        // Polystyrene.setEnchantmentForTools(Enchantment.knockback, 1);
-        // Rubber.setEnchantmentForTools(Enchantment.knockback, 2);
-        // StyreneButadieneRubber.setEnchantmentForTools(Enchantment.knockback, 2);
-        // Flint.setEnchantmentForTools(Enchantment.fireAspect, 1);
-        // Blaze.setEnchantmentForTools(Enchantment.fireAspect, 3);
-        // EnderPearl.setEnchantmentForTools(Enchantment.silkTouch, 1);
-        // NetherStar.setEnchantmentForTools(Enchantment.silkTouch, 1);
-        // BlackBronze.setEnchantmentForTools(Enchantment.smite, 2);
-        // Gold.setEnchantmentForTools(Enchantment.smite, 3);
-        // RoseGold.setEnchantmentForTools(Enchantment.smite, 4);
-        // Platinum.setEnchantmentForTools(Enchantment.smite, 5);
-        // Lead.setEnchantmentForTools(Enchantment.baneOfArthropods, 2);
-        // Nickel.setEnchantmentForTools(Enchantment.baneOfArthropods, 2);
-        // Invar.setEnchantmentForTools(Enchantment.baneOfArthropods, 3);
-        // Antimony.setEnchantmentForTools(Enchantment.baneOfArthropods, 3);
-        // BatteryAlloy.setEnchantmentForTools(Enchantment.baneOfArthropods, 4);
-        // Bismuth.setEnchantmentForTools(Enchantment.baneOfArthropods, 4);
-        // BismuthBronze.setEnchantmentForTools(Enchantment.baneOfArthropods, 5);
-        // Iron.setEnchantmentForTools(Enchantment.sharpness, 1);
-        // Bronze.setEnchantmentForTools(Enchantment.sharpness, 1);
-        // Brass.setEnchantmentForTools(Enchantment.sharpness, 2);
-        // Steel.setEnchantmentForTools(Enchantment.sharpness, 2);
-        // WroughtIron.setEnchantmentForTools(Enchantment.sharpness, 2);
-        // StainlessSteel.setEnchantmentForTools(Enchantment.sharpness, 3);
-        // BlackSteel.setEnchantmentForTools(Enchantment.sharpness, 4);
-        // RedSteel.setEnchantmentForTools(Enchantment.sharpness, 4);
-        // BlueSteel.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // DamascusSteel.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // TungstenCarbide.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // HSSE.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // HSSG.setEnchantmentForTools(Enchantment.sharpness, 4);
-        // HSSS.setEnchantmentForTools(Enchantment.sharpness, 5);
-        // Lava.setTemperatureDamage(3.0F);
-
-
-        // Glue.mChemicalFormula = "No Horses were harmed for the Production";
-        // UUAmplifier.mChemicalFormula = "Accelerates the Mass Fabricator";
-        // WoodSealed.mChemicalFormula = "";
-        // Wood.mChemicalFormula = "";
 
         // Naquadah.mMoltenRGBa[0] = 0;
         // Naquadah.mMoltenRGBa[1] = 255;
@@ -1518,9 +1477,6 @@ public class GT5RMaterialEvents {
         // Naquadria.mMoltenRGBa[2] = 128;
         // Naquadria.mMoltenRGBa[3] = 0;
 
-        // NaquadahEnriched.mChemicalFormula = "Nq+";
-        // Naquadah.mChemicalFormula = "Nq";
-        // Naquadria.mChemicalFormula = "NqX";
     }
 
     private static void antimatterMaterials(GT5RMaterialEvent event){
