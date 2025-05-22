@@ -121,10 +121,10 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
                 new SlotResult(1, 122, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
                 createOutput(1, 143, CRUSHED_PURIFIED, getMacerateInto(), 1),
                 createOutput(22, 143, DUST_IMPURE, getMacerateInto(), 1),
-                new SlotResult(40, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
+                new SlotResult(40, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
                 createOutput(62, 143, DUST, getMacerateInto(), 1),
                 createOutput(83, 143, DUST_PURE, getMacerateInto(), 1),
-                new SlotResult(101, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
+                new SlotResult(101, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
                 createOutput(123, 143, DUST, getMacerateInto(), 1)
         ));
         if (material.getByProducts().size() > 3){
