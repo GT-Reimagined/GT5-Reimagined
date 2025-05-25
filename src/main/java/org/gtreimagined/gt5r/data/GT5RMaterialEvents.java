@@ -1160,7 +1160,7 @@ public class GT5RMaterialEvents {
                 GTCoreBlocks.createWorkbench(m, true);
                 GTCoreBlocks.createLocker(m, false);
                 GTCoreBlocks.createLocker(m, true);
-                if (m != GTCoreMaterials.Ironwood) {
+                if (m != Ironwood) {
                     GTCoreBlocks.createMassStorage(m, 1000000);
                 }
                 GTCoreBlocks.createChest(m, true);
@@ -1185,9 +1185,9 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Gold, 6);
         GTCoreBlocks.createHopper(Silver, 6);
         GTCoreBlocks.createHopper(Manganese, 6);
-        GTCoreBlocks.createHopper(GTCoreMaterials.Lumium, 6);
+        GTCoreBlocks.createHopper(Lumium, 6);
         if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)) {
-            GTCoreBlocks.createHopper(GTCoreMaterials.Knightmetal, 7);
+            GTCoreBlocks.createHopper(Knightmetal, 7);
         }
         GTCoreBlocks.createHopper(Molybdenum, 8);
         GTCoreBlocks.createHopper(Electrum, 9);

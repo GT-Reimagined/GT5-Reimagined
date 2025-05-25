@@ -74,12 +74,12 @@ public class BathLoader {
         }
         BATH.RB().ii(DUST.getMaterialIngredient(Magnesium, 2)).fi(TitaniumTetrachloride.getLiquid(5000)).io(DUST.get(Titanium, 1), DUST.get(MagnesiumChloride, 6)).add("titanium", 512);
         if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)){
-            GTCoreMaterials.FierySteel.getTypes().forEach(t -> {
+            FierySteel.getTypes().forEach(t -> {
                 if (Steel.has(t)){
                     if (t instanceof MaterialTypeItem<?> typeItem){
-                        addFieryBathing(t.getMaterialTag(Steel), typeItem.get(GTCoreMaterials.FierySteel), t.getUnitValue());
+                        addFieryBathing(t.getMaterialTag(Steel), typeItem.get(FierySteel), t.getUnitValue());
                     } else if (t.get() instanceof MaterialTypeBlock.IBlockGetter getter){
-                        addFieryBathing(t.getMaterialTag(Steel), getter.get(GTCoreMaterials.FierySteel).asItem(), t.getUnitValue());
+                        addFieryBathing(t.getMaterialTag(Steel), getter.get(FierySteel).asItem(), t.getUnitValue());
                     }
                 }
             });

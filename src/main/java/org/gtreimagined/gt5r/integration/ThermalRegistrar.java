@@ -10,6 +10,6 @@ public class ThermalRegistrar {
 
     public static void thermalMachineRecipes(){
 
-        addBlastAlloyRecipes(GTCoreMaterials.Enderium, 4, 1000, 120, ImmutableMap.of(Tin, 2, Silver, 1, Platinum, 1, EnderPearl, 4));
+        addBlastAlloyRecipes(Enderium, 4, 1000, 120, ImmutableMap.of(Tin, 2, Silver, 1, Platinum, 1, EnderPearl, 4));
     }
 }

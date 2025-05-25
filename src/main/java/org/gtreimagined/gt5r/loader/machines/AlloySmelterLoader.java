@@ -48,9 +48,9 @@ public class AlloySmelterLoader {
             addAlloyRecipes(ImmutableMap.of(Magnesium, 1, Aluminium, 2), Magnalium);
             addAlloyRecipes(ImmutableMap.of(Brass, 7, Aluminium, 1, Cobalt, 1), CobaltBrass);
         }
-        addAlloyRecipes(ImmutableMap.of(Copper, 1, Silver, 2, RedAlloy, 5), GTCoreMaterials.Signalum, 8);
-        addAlloyRecipes(ImmutableMap.of(Copper, 1, SterlingSilver, 5, RedAlloy, 10), GTCoreMaterials.Signalum, 16, "signalum_ingot_extra");
-        addAlloyRecipes(ImmutableMap.of(Tin, 3, Silver, 1, Glowstone, 4), GTCoreMaterials.Lumium, 4);
+        addAlloyRecipes(ImmutableMap.of(Copper, 1, Silver, 2, RedAlloy, 5), Signalum, 8);
+        addAlloyRecipes(ImmutableMap.of(Copper, 1, SterlingSilver, 5, RedAlloy, 10), Signalum, 16, "signalum_ingot_extra");
+        addAlloyRecipes(ImmutableMap.of(Tin, 3, Silver, 1, Glowstone, 4), Lumium, 4);
         //pre Chemical Reactor Rubber
         ALLOY_SMELTER.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
                 .io(INGOT.get(Rubber, 1)).add("rubber_via_alloy_smelter",20, 10);

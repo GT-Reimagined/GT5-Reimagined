@@ -48,20 +48,20 @@ public class Fuels {
         MAGIC_FUELS.RB().ii(Items.BEACON).add("beacon", 1, 100000000);
         MAGIC_FUELS.RB().ii(Items.ENCHANTED_BOOK).io(Items.BOOK).fake().add("enchanted_book", 1, 1000, 1);
         if (GTAPI.isModLoaded(Ref.TWILIGHT_FOREST)){
-            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Ironwood, 1)).add("ironwood_dust", 1, 8000);
-            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.Ironwood, 1)).add("ironwood_ingot", 1, 8000);
-            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.Ironwood, 1)).add("ironwood_plate", 1, 8000);
-            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Steeleaf, 1)).add("steeleaf_dust", 1, 24000);
-            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.Steeleaf, 1)).add("steeleaf_ingot", 1, 24000);
-            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.Steeleaf, 1)).add("steeleaf_plate", 1, 24000);
-            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Knightmetal, 1)).add("knightmetal_dust", 1, 24000);
-            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.Knightmetal, 1)).add("knightmetal_ingot", 1, 24000);
-            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.Knightmetal, 1)).add("knightmetal_plate", 1, 24000);
+            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(Ironwood, 1)).add("ironwood_dust", 1, 8000);
+            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(Ironwood, 1)).add("ironwood_ingot", 1, 8000);
+            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(Ironwood, 1)).add("ironwood_plate", 1, 8000);
+            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(Steeleaf, 1)).add("steeleaf_dust", 1, 24000);
+            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(Steeleaf, 1)).add("steeleaf_ingot", 1, 24000);
+            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(Steeleaf, 1)).add("steeleaf_plate", 1, 24000);
+            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(Knightmetal, 1)).add("knightmetal_dust", 1, 24000);
+            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(Knightmetal, 1)).add("knightmetal_ingot", 1, 24000);
+            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(Knightmetal, 1)).add("knightmetal_plate", 1, 24000);
             MAGIC_FUELS.RB().fi(new FluidStack(GTCoreFluids.FIERY_BLOOD.getFluid(), 1)).add("fiery_blood", 1, 2048);
             MAGIC_FUELS.RB().fi(new FluidStack(GTCoreFluids.FIERY_TEARS.getFluid(), 1)).add("fiery_tears", 1, 2048);
-            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.FierySteel, 1)).add("fiery_steel_dust", 1, 2048000);
-            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(GTCoreMaterials.FierySteel, 1)).add("fiery_steel_ingot", 1, 2048000);
-            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(GTCoreMaterials.FierySteel, 1)).add("fiery_steel_plate", 1, 2048000);
+            MAGIC_FUELS.RB().ii(DUST.getMaterialIngredient(FierySteel, 1)).add("fiery_steel_dust", 1, 2048000);
+            MAGIC_FUELS.RB().ii(INGOT.getMaterialIngredient(FierySteel, 1)).add("fiery_steel_ingot", 1, 2048000);
+            MAGIC_FUELS.RB().ii(PLATE.getMaterialIngredient(FierySteel, 1)).add("fiery_steel_plate", 1, 2048000);
         }
     }
 }
