@@ -22,6 +22,8 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
+
 public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> implements IFilterableHandler {
     public BlockEntityScanner(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -96,7 +98,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         if (slotType == SlotType.IT_IN && slot == 1){
-            return stack.getItem() == GT5RItems.DataStick || stack.getItem() == GTCoreItems.DataOrb;
+            return stack.getItem() == GT5RItems.DataStick || stack.getItem() == DataOrb;
         }
         return true;
     }

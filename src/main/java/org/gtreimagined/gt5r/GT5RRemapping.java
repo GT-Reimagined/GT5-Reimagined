@@ -86,23 +86,45 @@ public class GT5RRemapping {
         remapGTCore("rubber_leaves", "rubber_leaves");
         remapGTCore("rubber_sapling", "rubber_sapling");
         remapGTCore("circuit_basic", "basic_circuit");
-        remapGTCore("circuit_basic_electronic", "basic_circuit");
-        remapGTCore("basic_integrated_circuit", "basic_circuit");
-        remapGTCore("basic_electronic_circuit", "basic_circuit");
-        remapGTCore("good_integrated_circuit", "good_circuit");
-        remapGTCore("good_electronic_circuit", "good_circuit");
-        remapGTCore("circuit_good", "good_circuit");
-        remapGTCore("circuit_adv", "advanced_circuit");
-        remapGTCore("plant_ball", "plantball");
+        remap("circuit_basic_electronic", "basic_circuit");
+        remap("basic_integrated_circuit", "basic_circuit");
+        remap("basic_electronic_circuit", "basic_circuit");
+        remap("good_integrated_circuit", "good_circuit");
+        remap("good_electronic_circuit", "good_circuit");
+        remap("circuit_good", "good_circuit");
+        remap("circuit_adv", "advanced_circuit");
+        remap("plant_ball", "plantball");
         remap("circuit_nanoprocessor", "nanoprocessor");
         remap("circuit_quantumprocessor", "quantumprocessor");
-        remapGTCore("circuit_energy_flow", "energy_flow_circuit");
+        remap("circuit_energy_flow", "energy_flow_circuit");
         remap("circuit_wetware", "wetware_circuit");
         remap("vacuumtube", "vacuum_tube");
         remap("adv_circuit_parts", "advanced_circuit_parts");
         GTRemapping.remap(new ResourceLocation(GTCore.ID, "glass_tube"), new ResourceLocation(GT5Reimagined.ID, "glass_tube"));
         GTRemapping.remap(new ResourceLocation(GTCore.ID, "coated_circuit_board"), new ResourceLocation(GT5Reimagined.ID, "coated_circuit_board"));
         GTRemapping.remap(new ResourceLocation(GTCore.ID, "epoxy_circuit_board"), new ResourceLocation(GT5Reimagined.ID, "epoxy_circuit_board"));
+        remapFromGTCore("empty_circuit_board", "empty_circuit_plate");
+        remapFromGTCore("copper_etched_wiring");
+        remapFromGTCore("basic_circuit_board", "copper_circuit_plate");
+        remapFromGTCore("gold_etched_wiring");
+        remapFromGTCore("advanced_circuit_board", "gold_circuit_plate");
+        remapFromGTCore("platinum_etched_wiring");
+        remapFromGTCore("complex_circuit_board", "platinum_circuit_plate");
+        remapFromGTCore("nand_chip", "basic_circuit_parts");
+        remapFromGTCore("advanced_circuit_parts");
+        remapFromGTCore("complex_circuit_parts");
+        remapFromGTCore("engraved_crystal_chip");
+        remapFromGTCore("engraved_lapotron_chip");
+        remapFromGTCore("processor_circuit_board");
+        remapFromGTCore("empty_processor_circuit_board");
+        remapFromGTCore("basic_circuit");
+        remapFromGTCore("good_circuit");
+        remapFromGTCore("advanced_circuit");
+        remapFromGTCore("complex_circuit");
+        remapFromGTCore("data_storage_circuit");
+        remapFromGTCore("data_control_circuit");
+        remapFromGTCore("energy_flow_circuit");
+        remapFromGTCore("data_orb");
         remapGTCore("mold_plate", "plate_mold");
         remapGTCore("mold_casing", "casing_mold");
         remapGTCore("mold_gear", "gear_mold");
@@ -217,6 +239,10 @@ public class GT5RRemapping {
 
     private static void remapFromGTCore(String oldId, String newId){
         GTRemapping.remap(new ResourceLocation(GTCore.ID, oldId), new ResourceLocation(GT5Reimagined.ID, newId));
+    }
+
+    private static void remapFromGTCore(String id){
+        GTRemapping.remap(new ResourceLocation(GTCore.ID, id), new ResourceLocation(GT5Reimagined.ID, id));
     }
 
     public static Map<String, String> getRemappingMap() {

@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.proxy;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
@@ -61,7 +62,7 @@ public class ClientHandler {
 
     public static void onTooltipEvent(ItemTooltipEvent event){
         ItemStack stack = event.getItemStack();
-        if (stack.getItem() == GTCoreItems.DataOrb){
+        if (stack.getItem() == GT5RItems.DataOrb){
             if (stack.getTag() != null){
                 if (stack.getTag().contains("scanned_gt_material")){
                     String material = stack.getTag().getString("scanned_gt_material");

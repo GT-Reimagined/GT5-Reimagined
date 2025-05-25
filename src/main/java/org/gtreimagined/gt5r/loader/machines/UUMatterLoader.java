@@ -13,6 +13,7 @@ import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.Materials.UUAmplifier;
 
@@ -32,9 +33,9 @@ public class UUMatterLoader {
                 mb.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getGas(1000));
                 rb.fo(m.getGas(1000));
             }
-            ItemStack dataOrb = new ItemStack(GTCoreItems.DataOrb);
+            ItemStack dataOrb = new ItemStack(DataOrb);
             dataOrb.getOrCreateTag().putString("scanned_gt_material", m.getId());
-            sb.ii(GTCoreItems.DataOrb).io(dataOrb.copy()).add(m.getId() + "_scanning", m.getMass() * 8192, 32);
+            sb.ii(DataOrb).io(dataOrb.copy()).add(m.getId() + "_scanning", m.getMass() * 8192, 32);
             if (m.getProtons() > 0){
                 mb.fo(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
                 rb.fi(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)m.getProtons()));
