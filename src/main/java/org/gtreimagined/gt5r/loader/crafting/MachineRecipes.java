@@ -654,6 +654,19 @@ public class MachineRecipes {
                             .put('E', Tags.Items.CHESTS_WOODEN)
                             .put('c', conveyor).build(), " F ", "EHc", " C "));
         });
+        provider.addItemRecipe(output, "extenders", INVENTORY_BRIDGE.getItem(NONE),
+                of('P', GT5RBlocks.ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL),
+                        'C', GT5RBlocks.SOLID_STEEL_CASING,
+                        'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "HP ", " C ", " PW");
+        provider.addItemRecipe(output, "extenders", TANK_BRIDGE.getItem(NONE),
+                of('P', GT5RBlocks.FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL),
+                        'C', GT5RBlocks.SOLID_STEEL_CASING,
+                        'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "H  ", "PCP", "  W");
+        provider.addItemRecipe(output, "extenders", INVENTORY_TANK_BRIDGE.getItem(NONE),
+                of('P', GT5RBlocks.ITEM_PIPE_ELECTRUM.getBlockItem(PipeSize.NORMAL),
+                        'F', GT5RBlocks.FLUID_PIPE_STEEL.getBlockItem(PipeSize.NORMAL),
+                        'C', GT5RBlocks.SOLID_STEEL_CASING,
+                        'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "HP ", "FCF", " PW");
         provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', ROD_LONG.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
         provider.addItemRecipe(output, "mini_portals", MINIATURE_END_PORTAL.getItem(NONE), of('R', ROD_LONG.get(Endstone), 'G', Items.GHAST_TEAR, 'E', Items.ENDER_EYE), "ERE", "RGR", "ERE");
         if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)){

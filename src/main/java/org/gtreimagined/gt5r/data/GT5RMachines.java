@@ -64,6 +64,7 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityHull;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityIUpgradedBatchMachine;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityInputBus;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityInputHatch;
+import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityInventoryBridge;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityItemFilter;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityLavaBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityMacerator;
@@ -78,8 +79,11 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntitySolarBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySolarPanel;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamTurbine;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityTypeFilter;
+import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityInventoryTankBridge;
+import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityTankBridge;
 import org.gtreimagined.gt5r.client.GT5RModelManager;
 import org.gtreimagined.gt5r.items.IItemReactorRod;
+import org.gtreimagined.gt5r.machine.BridgeMachine;
 import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.MiniPortalMachine;
 import org.gtreimagined.gt5r.machine.SecondaryOutputMachine;
@@ -222,6 +226,14 @@ public class GT5RMachines {
     public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GT5Reimagined.ID, "electric_type_filter").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
     public static BasicMachine SUPER_BUFFER =new BasicMachine(GT5Reimagined.ID, "super_buffer").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
     public static BasicMachine CHEST_BUFFER =new BasicMachine(GT5Reimagined.ID, "chest_buffer").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+
+    /**
+     * Bridges and Extenders
+     */
+    public static BasicMachine INVENTORY_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "inventory_bridge").addFlags(ITEM).removeFlags(EU).setTile(BlockEntityInventoryBridge::new);
+    public static BasicMachine TANK_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "tank_bridge").addFlags(FLUID).removeFlags(EU).setTile(BlockEntityTankBridge::new);
+    public static BasicMachine INVENTORY_TANK_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "inventory_tank_bridge").addFlags(ITEM, FLUID).removeFlags(EU).setTile(BlockEntityInventoryTankBridge::new);
+
     /**
      * Drums
      */

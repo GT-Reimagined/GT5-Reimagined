@@ -109,6 +109,11 @@ public class Textures {
         };
     };
 
+    public static final IOverlayTexturer BRIDGE = (type, state, tier, index) -> {
+        Texture texture = new Texture(GT5Reimagined.ID, "block/machine/overlay/bridge/side");
+        return new Texture[] {texture, texture, texture, texture, texture, texture};
+    };
+
     public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier, i) -> {
         if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
         String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";

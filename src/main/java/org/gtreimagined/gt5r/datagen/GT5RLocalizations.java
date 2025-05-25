@@ -504,6 +504,7 @@ public class GT5RLocalizations {
             override(LARGE_BOILER, MV, "Large Steel Boiler");
             override(LARGE_BOILER, HV, "Large Titanium Boiler");
             override(LARGE_BOILER, EV, "Large Tungstensteel Boiler");
+            override(INVENTORY_TANK_BRIDGE, NONE, "Inventory and Tank Bridge");
             override(MACERATOR, HV, "Pulverizer (%s)");
             override(MACERATOR, EV, "Pulverizer (%s)");
             override(GT5RItems.EmptyGeigerCounter.getDescriptionId(), "Geiger Counter (Empty)");
