@@ -84,24 +84,6 @@ public class RemappingEvents {
 
 
     @SubscribeEvent
-    public static void onAttackCapabilitiesEvent(AttachCapabilitiesEvent<BlockEntity> event){
-        if (event.getObject() instanceof BlockEntityMiniPortal miniPortal){
-            event.addCapability(new ResourceLocation(GT5Reimagined.ID, "mini_portal"), new ICapabilityProvider() {
-                @NotNull
-                @Override
-                public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
-                    if (arg == null || miniPortal.getOtherSide() == null) return LazyOptional.empty();
-                    BlockEntity offset = miniPortal.getOtherSide().getCachedBlockEntity(arg.getOpposite());
-                    if (offset != null){
-                        return offset.getCapability(capability, arg);
-                    }
-                    return LazyOptional.empty();
-                }
-            });
-        }
-    }
-
-    @SubscribeEvent
     public static void remapMissingBlocks(final RegistryEvent.MissingMappings<Block> event){
         event.getMappings(Ref.SHARED_ID).forEach(map -> {
             String id = map.key.getPath();

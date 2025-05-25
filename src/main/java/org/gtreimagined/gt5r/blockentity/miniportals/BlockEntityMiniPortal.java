@@ -1,6 +1,8 @@
 package org.gtreimagined.gt5r.blockentity.miniportals;
 
 import lombok.Setter;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.machine.MachineState;
@@ -22,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.server.ServerLifecycleHooks;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -236,6 +239,17 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
             return otherSide.getCachedBlockEntity(side);
         }
         return this;
+    }
+
+    @NotNull
+    @Override
+    public <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction arg) {
+        if (arg == null || getOtherSide() == null) return LazyOptional.empty();
+        BlockEntity offset = getOtherSide().getCachedBlockEntity(arg.getOpposite());
+        if (offset != null){
+            return offset.getCapability(capability, arg);
+        }
+        return LazyOptional.empty();
     }
 
     @Override
