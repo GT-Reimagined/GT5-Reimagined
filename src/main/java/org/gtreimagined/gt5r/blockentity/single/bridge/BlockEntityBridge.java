@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.single.bridge;
 
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
+import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityExtender;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -21,7 +22,11 @@ public abstract class BlockEntityBridge extends BlockEntityMachine<BlockEntityBr
     @Override
     public BlockEntity getExtendedBlockEntity(Direction side) {
         BlockEntity entity = getCachedBlockEntity(side);
-        return canBridgeBlockEntity(entity) && !(entity instanceof IExtendingBlockEntity) ? entity : null;
+        return canBridgeBlockEntity(entity) && isNotExtendingBlockEntity(entity) ? entity : null;
+    }
+
+    private boolean isNotExtendingBlockEntity(BlockEntity entity) {
+        return !(entity instanceof BlockEntityBridge) && !(entity instanceof BlockEntityExtender);
     }
 
     protected abstract boolean canBridgeBlockEntity(BlockEntity entity);
@@ -32,7 +37,7 @@ public abstract class BlockEntityBridge extends BlockEntityMachine<BlockEntityBr
     public @NotNull <U> LazyOptional<U> getCapability(@NotNull Capability<U> cap, @Nullable Direction side) {
         if (side != null && canBridgeCapability(cap)) {
             BlockEntity neighbor = getCachedBlockEntity(side);
-            if (!(neighbor instanceof IExtendingBlockEntity)) {
+            if (isNotExtendingBlockEntity(neighbor)) {
                 if (neighbor != null) {
                     return neighbor.getCapability(cap, side);
                 }

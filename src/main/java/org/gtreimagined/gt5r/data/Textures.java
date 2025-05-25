@@ -114,6 +114,12 @@ public class Textures {
         return new Texture[] {texture, texture, texture, texture, texture, texture};
     };
 
+    public static final IOverlayTexturer EXTENDER = (type, state, tier, index) -> {
+        Texture texture = new Texture(GT5Reimagined.ID, "block/machine/overlay/extender/side");
+        Texture front = new Texture(GT5Reimagined.ID, "block/machine/overlay/extender/in");
+        return new Texture[] {texture, texture, texture, front, texture, texture};
+    };
+
     public static final IOverlayTexturer TIER_SPECIFIC_OVERLAY_HANDLER = (type, state, tier, i) -> {
         if (state != MachineState.ACTIVE && state != MachineState.INVALID_STRUCTURE) state = MachineState.IDLE;
         String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";

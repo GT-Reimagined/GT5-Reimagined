@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.cover.CoverExtenderOutput;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
 import org.gtreimagined.gtlib.cover.CoverFactory;
@@ -162,6 +163,8 @@ public class GT5RCovers {
             .addTextures(new Texture(GT5Reimagined.ID, "block/cover/reactor_output_secondary")).build(GT5Reimagined.ID, "reactor_output_secondary");
     public static final CoverFactory COVER_OUTPUT_SECONDARY = CoverFactory.builder(CoverSecondaryOutput::new)
             .addTextures(new Texture(GT5Reimagined.ID, "block/cover/output_secondary")).build(GT5Reimagined.ID, "output_secondary");
+    public static final CoverFactory COVER_OUTPUT_EXTENDER = CoverFactory.builder(CoverExtenderOutput::new)
+            .addTextures(new Texture(GT5Reimagined.ID, "block/cover/extender_output")).build(GT5Reimagined.ID, "extender_output");
     public static CoverFactory COVER_DYNAMO_COLORED = CoverFactory.builder(CoverDynamoColored::new).addTextures(new Texture(Ref.ID, "block/cover/dynamo")).build(GT5Reimagined.ID, "dynamo");
     public static CoverFactory COVER_ENERGY_COLORED = CoverFactory.builder(CoverEnergyColored::new).addTextures(new Texture(Ref.ID, "block/cover/energy")).build(GT5Reimagined.ID, "energy");
     public static CoverFactory COVER_SHUTTER = CoverFactory.builder(CoverShutter::new).item((a, b) ->
