@@ -1260,7 +1260,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Lapis).addByProduct(Materials.Calcite, Materials.Pyrite);
         event.setMaterial(Materials.Lead).addByProduct(Silver, Materials.Sulfur).bathMercury(Silver);
         event.setMaterial(Materials.Lepidolite).addByProduct(Materials.Lithium, Materials.Caesium, Materials.Boron);
-        event.setMaterial(Materials.Lignite).addByProduct(Coal);
+        event.setMaterial(Materials.Lignite).addByProduct(Coal, Germanium, Sulfur);
         event.setMaterial(Materials.Magnesite).addByProduct(Materials.Magnesium);
         event.setMaterial(Materials.Magnesium).addByProduct(Materials.Olivine);
         event.setMaterial(Materials.Magnetite).addByProduct(Iron, Gold).bathMercury(Gold);
