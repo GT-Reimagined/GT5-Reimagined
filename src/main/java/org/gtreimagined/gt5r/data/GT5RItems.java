@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
+import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemBattery;
 import org.gtreimagined.gtlib.item.ItemFluidCell;
@@ -76,6 +77,37 @@ public class GT5RItems {
     public static ItemBasic<?> RedSprayCan = new ItemSprayCan(DyeColor.RED);
     public static ItemBasic<?> BlackSprayCan = new ItemSprayCan(DyeColor.BLACK);
     /** CIRCUIT ITEMS **/
+
+    public static ItemBasic<?> EmptyCircuitPlate = new ItemBasic<>(GT5Reimagined.ID, "empty_circuit_plate", "circuits/parts/");
+    public static ItemBasic<?> CopperEtchedWiring = new ItemBasic<>(GT5Reimagined.ID, "copper_etched_wiring", "circuits/parts/").tip("Circuit board parts");
+    public static ItemBasic<?> CopperCircuitPlate = new ItemBasic<>(GT5Reimagined.ID, "copper_circuit_plate", "circuits/parts/").tip("Circuit board parts");
+    public static ItemBasic<?> GoldEtchedWiring = new ItemBasic<>(GT5Reimagined.ID, "gold_etched_wiring", "circuits/parts/").tip("Circuit board parts");
+    public static ItemBasic<?> GoldCircuitPlate = new ItemBasic<>(GT5Reimagined.ID, "gold_circuit_plate", "circuits/parts/").tip("Circuit board parts");
+    public static ItemBasic<?> PlatinumEtchedWiring = new ItemBasic<>(GT5Reimagined.ID, "platinum_etched_wiring", "circuits/parts/").tip("Circuit board parts");
+    public static ItemBasic<?> PlatinumCircuitPlate = new ItemBasic<>(GT5Reimagined.ID, "platinum_circuit_plate", "circuits/parts/").tip("Circuit board parts");
+
+    public static ItemBasic<?> BasicCircuitParts = new ItemBasic<>(GT5Reimagined.ID, "basic_circuit_parts", "circuits/parts/").tip("Used for making Basic Circuits");
+    public static ItemBasic<?> GoodCircuitParts = new ItemBasic<>(GT5Reimagined.ID, "good_circuit_parts", "circuits/parts/").tip("Used for making Good Circuits");
+    public static ItemBasic<?> AdvancedCircuitParts = new ItemBasic<>(GT5Reimagined.ID, "advanced_circuit_parts", "circuits/parts/").tip("Used for making Advanced Circuits");
+    public static ItemBasic<?> ComplexCircuitParts = new ItemBasic<>(GT5Reimagined.ID, "complex_circuit_parts", "circuits/parts/").tip("Used for making Complex Circuits");
+    public static ItemBasic<?> EngravedCrystalChip = new ItemBasic<>(GT5Reimagined.ID, "engraved_crystal_chip", "circuits/parts/").tip("Needed for Circuits");
+    public static ItemBasic<?> EngravedLapotronChip = new ItemBasic<>(GT5Reimagined.ID, "engraved_lapotron_chip", "circuits/parts/").tip("Needed for Circuits");
+
+    public static ItemBasic<?> BasicCircuitBoard = new ItemBasic<>(GT5Reimagined.ID, "basic_circuit_board", "circuits/parts/");
+    public static ItemBasic<?> GoodCircuitBoard = new ItemBasic<>(GT5Reimagined.ID, "good_circuit_board", "circuits/parts/");
+    public static ItemBasic<?> AdvancedCircuitBoard = new ItemBasic<>(GT5Reimagined.ID, "advanced_circuit_board", "circuits/parts/");
+    public static ItemBasic<?> ComplexCircuitBoard = new ItemBasic<>(GT5Reimagined.ID, "complex_circuit_board", "circuits/parts/");
+    public static ItemBasic<?> ProcessorCircuitBoard = new ItemBasic<>(GT5Reimagined.ID, "processor_circuit_board", "circuits/basic/");
+    public static ItemBasic<?> EmptyProcessorCircuitBoard = new ItemBasic<>(GT5Reimagined.ID, "empty_processor_circuit_board", "circuits/basic/");
+
+    public static ItemBasic<?> BasicCircuit = new ItemBasic<>(GT5Reimagined.ID, "basic_circuit", "circuits/basic/").tip("A Basic Circuit");
+    public static ItemBasic<?> GoodCircuit = new ItemBasic<>(GT5Reimagined.ID, "good_circuit", "circuits/basic/").tip("A Good Circuit");
+    public static ItemBasic<?> AdvancedCircuit = new ItemBasic<>(GT5Reimagined.ID, "advanced_circuit", "circuits/basic/").tip("A Advanced Circuit");
+    public static ItemBasic<?> ComplexCircuit = new ItemBasic<>(GT5Reimagined.ID, "complex_circuit", "circuits/basic/").tip("A Complex Circuit");
+    public static ItemBasic<?> DataStorageCircuit = new ItemBasic<>(GT5Reimagined.ID, "data_storage_circuit", "circuits/basic/");
+    public static ItemBasic<?> DataControlCircuit = new ItemBasic<>(GT5Reimagined.ID, "data_control_circuit", "circuits/basic/").tip("An Elite Circuit"); //could be considered BIO
+    public static ItemBasic<?> EnergyFlowCircuit = new ItemBasic<>(GT5Reimagined.ID, "energy_flow_circuit", "circuits/basic/").tip("A Master Circuit"); //maybe name futuristic
+    public static ItemBasic<?> DataOrb = new ItemBasic<>(GT5Reimagined.ID, "data_orb", "circuits/basic/");
 
     public static ItemBasic<?> GlassTube = new ItemBasic<>(GT5Reimagined.ID, "glass_tube", "circuits/");
     public static ItemBasic<?> VacuumTube = new ItemBasic<>(GT5Reimagined.ID, "vacuum_tube", "circuits/");

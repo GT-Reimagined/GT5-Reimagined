@@ -10,6 +10,8 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import static org.gtreimagined.gt5r.data.GT5RItems.*;
+import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtcore.data.GTCoreTags.*;
@@ -51,6 +53,14 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         if (GTAPI.isModLoaded(Ref.MOD_AE)){
             this.tag(GT5RTags.DUST_SIO).addTag(DUST.getMaterialTag(CertusQuartz));
         }
+        this.tag(CIRCUITS_BASIC).add(BasicCircuit);
+        this.tag(CIRCUITS_GOOD).add(GoodCircuit);
+        this.tag(CIRCUITS_ADVANCED).add(AdvancedCircuit);
+        this.tag(CIRCUITS_COMPLEX).add(ComplexCircuit);
+        this.tag(CIRCUITS_DATA).add(DataStorageCircuit);
+        this.tag(CIRCUITS_ELITE).add(DataControlCircuit);
+        this.tag(CIRCUITS_MASTER).add(EnergyFlowCircuit);
+        this.tag(CIRCUITS_DATA_ORB).add(DataOrb);
         this.tag(ForgeTags.DYES_BLACK).add(Items.INK_SAC);
         this.tag(ForgeTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite));
         this.tag(ForgeTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite));
