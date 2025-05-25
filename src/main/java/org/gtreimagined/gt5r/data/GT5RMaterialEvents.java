@@ -71,7 +71,7 @@ public class GT5RMaterialEvents {
         //Copper, by vanilla
         event.setMaterial(Materials.Zinc).asMetal(692, PLATE, FOIL).asOre();
         event.setMaterial(Materials.Gallium).asMetal(303, MOLTEN);
-        event.setMaterial(Materials.Germanium).asMetal(1211, PLATE);
+        event.setMaterial(Materials.Germanium).asMetal(1211, PLATE, FOIL);
         event.setMaterial(Materials.Arsenic).asMetal(1090);
         //event.setMaterial(Selenium).asMetal(494, 0);
         //Bromine, not added
@@ -79,7 +79,7 @@ public class GT5RMaterialEvents {
         //rubidium, strontium
         event.setMaterial(Materials.Yttrium).asMetal(1799);
         event.setMaterial(Materials.Zirconium).asMetal(2130).forceBF(true);
-        event.setMaterial(Materials.Niobium).asMetal(2750, PLATE);
+        event.setMaterial(Materials.Niobium).asMetal(2750, PLATE, FOIL);
         event.setMaterial(Materials.Molybdenum).asMetal(2896).asOre();
         event.setMaterial(Materials.Technetium).asMetal(2430);
         //event.setMaterial(Ruthenium).asMetal(2607,2607);
@@ -193,8 +193,9 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, ROD_LONG, SCREW, BOLT, RING, FRAME).remove(DUST, DUST_SMALL, DUST_TINY);
         event.setMaterial(Materials.YttriumBariumCuprate).asMetal(4500, PLATE, FOIL, ROD, WIRE_FINE, ALLOY);
 
-        event.setMaterial(GTCoreMaterials.Lumium).flags(PLATE);
-        event.setMaterial(GTCoreMaterials.Enderium).asMetal(1071).forceBF(false);
+        event.setMaterial(Lumium).flags(PLATE);
+        event.setMaterial(Signalum).flags(WIRE_FINE);
+        event.setMaterial(Enderium).asMetal(1071).forceBF(false);
         /**
          **  Dusts
          **/
