@@ -239,11 +239,13 @@ public class Circuitry {
     }
 
     private static void circuitParts(){
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lazurite, 1), DUST.getMaterialIngredient(Materials.Glowstone, 1)).io(new ItemStack(AdvancedCircuitParts, 2)).add("advanced_circuit_parts", 32, 64);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Lapis, 1), DUST.getMaterialIngredient(Materials.Glowstone, 1)).io(new ItemStack(AdvancedCircuitParts, 2)).add("advanced_circuit_parts_1", 32, 64);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Niobium, 1), WIRE_FINE.getMaterialIngredient(Platinum, 1)).io(new ItemStack(GT5RItems.ComplexCircuitParts, 2)).add("complex_circuit_parts", 32, 256);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 1)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_poly", 32, 16);
-        ASSEMBLER.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), of(GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 2)).fi(SolderingAlloy.getLiquid(L / 8)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_steel", 32, 16);
+        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Germanium, 1), WIRE_FINE.getMaterialIngredient(Tin, 1), WIRE_FINE.getMaterialIngredient(RedAlloy, 1)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_germanium", 32, 16);
+        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Silicon, 1), WIRE_FINE.getMaterialIngredient(Tin, 1), WIRE_FINE.getMaterialIngredient(RedAlloy, 1)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_silicon", 32, 16);
+        FORMING_PRESS.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), WIRE_FINE.getMaterialIngredient(Tin, 2), WIRE_FINE.getMaterialIngredient(RedAlloy, 2)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_steel", 32, 16);
+        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Silicon, 1), WIRE_FINE.getMaterialIngredient(Copper, 1), WIRE_FINE.getMaterialIngredient(RedAlloy,1)).io(GoodCircuitParts).add("good_circuit_parts_silicon", 32, 16);
+        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Germanium, 1), WIRE_FINE.getMaterialIngredient(Copper, 1), WIRE_FINE.getMaterialIngredient(RedAlloy,1)).io(GoodCircuitParts).add("good_circuit_parts_germanium", 32, 16);
+        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Silicon, 1), WIRE_FINE.getMaterialIngredient(Electrum, 1), WIRE_FINE.getMaterialIngredient(Signalum, 1)).io(AdvancedCircuitParts).add("advanced_circuit_parts", 32, 64);
+        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Niobium, 1), WIRE_FINE.getMaterialIngredient(Platinum, 1), WIRE_FINE.getMaterialIngredient(Signalum, 1)).io(new ItemStack(GT5RItems.ComplexCircuitParts)).add("complex_circuit_parts", 32, 256);
     }
 
     private static void boards(){
@@ -261,10 +263,10 @@ public class Circuitry {
     }
 
     private static void circuits(){
-        BATH.RB().ii(of(BasicCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 4)).io(BasicCircuit).add("basic_circuit", 64);
-        BATH.RB().ii(of(GoodCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 4)).io(GoodCircuit).add("good_circuit", 64);
-        BATH.RB().ii(of(AdvancedCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 4)).io(AdvancedCircuit).add("advanced_circuit", 64);
-        BATH.RB().ii(of(ComplexCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 4)).io(ComplexCircuit).add("complex_circuit", 64);
+        BATH.RB().ii(of(BasicCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 2)).io(BasicCircuit).add("basic_circuit", 64);
+        BATH.RB().ii(of(GoodCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 2)).io(GoodCircuit).add("good_circuit", 64);
+        BATH.RB().ii(of(AdvancedCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 2)).io(AdvancedCircuit).add("advanced_circuit", 64);
+        BATH.RB().ii(of(ComplexCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 2)).io(ComplexCircuit).add("complex_circuit", 64);
 
         ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.EngravedCrystalChip)).fi(Tin.getLiquid(L)).io(new ItemStack(DataStorageCircuit)).add("data_storage_circuit_tin", 32, 64);
         ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(DataStorageCircuit)).add("data_storage__circuit_soldering_alloy", 32, 64);
