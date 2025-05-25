@@ -191,7 +191,7 @@ public class Guis {
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 44, 63)
                 .add(FL_IN, 62, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
         LASER_ENGRAVER.add(ALLOY_SMELTER);
-        FORMING_PRESS.add(ALLOY_SMELTER);
+        FORMING_PRESS.add(IT_IN, 17, 25).add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         FORGE_HAMMER.add(FURNACE);
         UNPACKAGER.add(ALLOY_SMELTER);
         for (int y = 0; y < 3; y++){
