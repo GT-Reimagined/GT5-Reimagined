@@ -413,7 +413,7 @@ public class GT5Reimagined extends GTMod {
                                 Materials.VinylAcetate.getLiquid(), Materials.HydrofluoricAcid.getLiquid(), Materials.HydrogenPeroxide.getLiquid(), Materials.HypochlorousAcid.getLiquid(),
                                 Materials.PeroxydisulfuricAcid.getLiquid(), Materials.PhosphoricAcid.getLiquid(), Materials.CharcoalByproducts.getGas(), Materials.Butene.getGas(),
                                 Materials.Chloromethane.getGas(), Materials.SulfuricGas.getGas(), Materials.CalciumAcetateSolution.getLiquid(), Materials.Gasoline.getLiquid(),
-                                Materials.Ammonia.getGas()));
+                                Materials.Ammonia.getGas(), Materials.HydrogenSulfide.getGas()));
                     }
                 });
                 TerraformFuelRegistry.addFuel(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);

@@ -72,8 +72,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(2000),Isoprene.getLiquid(L * 2)).io(new ItemStack(DUST.get(RawRubber),3)).add("raw_rubber_dust_2",320, 30);
         //ISOPROPENE
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).fo(Isoprene.getLiquid(5000)).add("isopropene",120, 30);
-        //DESULFURIZATION
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(RefineryGas.getGas(2000), HydrogenSulfide.getGas(125)).add("refinery_gas",20, 30);
         //ETHYLENE
         CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).io(DUST_SMALL.get(Sulfur, 6)).fo(Ethylene.getGas(2000), Water.getLiquid(1500)).add("ethylene_2",400, 120);
         //SALTPETER
@@ -87,10 +85,8 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().ii(of(GT5RTags.DUST_SIO, 3), DUST.getMaterialIngredient(CalciumSulfate, 6)).io(DUST.get(Wollastonite, 5)).fo(SulfurTrioxide.getGas(4000)).add("wollastonite", 144, 16);
         //SULFURIC ACID chain
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(3000), SulfurTrioxide.getGas(4000)).fo(SulfuricAcid.getLiquid(7000)).add("sulfuric_acid_",320, 8);
-        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_1",320, 30);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000), SulfurDioxide.getGas(3000)).fo(SulfurTrioxide.getGas(4000)).add("sulfur_trioxide", 200, 30);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(2000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).fo(SulfurDioxide.getGas(3000)).add("sulfur_dioxide", 60, 8);
-        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(1000)).fo(SulfurDioxide.getGas(1000), Water.getLiquid(1000)).add("sulfur_dioxide_1", 40, 30);
         //HYDROCHLORIC ACID
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(3000), Chlorine.getGas(2000)).fo(HydrochloricAcid.getLiquid(4000), Oxygen.getGas(1000)).add("hydrochloric_acid", 60, 8);
         CHEMICAL_REACTOR.RB().fi(DistilledWater.getLiquid(3000), Chlorine.getGas(2000)).fo(HydrochloricAcid.getLiquid(4000), Oxygen.getGas(1000)).add("hydrochloric_acid_2", 60, 8);
@@ -134,6 +130,9 @@ public class ChemicalReactorLoader {
     }
 
     private static void addComplicated(){
+        //SULFURIC_ACID FROM HYDROGEN SULFIDE
+        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_1",320, 30);
+        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(1000)).fo(SulfurDioxide.getGas(1000), Water.getLiquid(1000)).add("sulfur_dioxide_1", 40, 30);
         //GLUE
         CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(1000), AceticAcid.getLiquid(2000), Methanol.getLiquid(1000)).fo(Glue.getLiquid(4000)).add("glue",240,30);
         //BIODIESEL FROM METHANOL
@@ -212,6 +211,7 @@ public class ChemicalReactorLoader {
         //NITROGEN MONOXIDE
         CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitrogen_monoxide", 160, 30, -1);
         //DESULFURIZATION
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(RefineryGas.getGas(2000), HydrogenSulfide.getGas(125)).add("refinery_gas",20, 30);
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(RefineryGas.getGas(1000), HydrogenSulfide.getGas(125)).add("refinery_gas_1",20, 30);
         CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(Naphtha.getLiquid(3000), HydrogenSulfide.getGas(250)).add("naphtha",40, 30);
     }
