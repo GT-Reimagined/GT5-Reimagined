@@ -90,9 +90,7 @@ public class CoverFluidFilter extends CoverFilter {
                 }
                 return false;
             }).orElse(false);
-            if (blacklist == matches){
-                return true;
-            }
+            return blacklist == matches;
         }
         return false;
     }
