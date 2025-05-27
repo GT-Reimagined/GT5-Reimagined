@@ -1,9 +1,11 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityFluidPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
-import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
@@ -24,13 +26,16 @@ import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Consumer;
 
 public class CoverFluidRegulator extends CoverBasicTransport {
 
     public static String ID = "pump";
 
     int fluidLimit;
-    int usedFluidLimit = 0;
+    int usedFluidLimitIn = 0;
+    int usedFluidLimitOut = 0;
     public CoverFluidRegulator(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         Objects.requireNonNull(tier);
@@ -56,6 +61,17 @@ public class CoverFluidRegulator extends CoverBasicTransport {
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (fluidLimit <= 0) return false;
         if (object instanceof FluidStack stack) {
+            if (exportMode.isExport() && !inputSide && handler.getTile() instanceof BlockEntityFluidPipe<?> fluidPipe) {
+                int unusedFluidLimit = fluidLimit - usedFluidLimitOut;
+                if (unusedFluidLimit <= 0) return true;
+                if (!simulate){
+                    BlockEntity neighbor = fluidPipe.getCachedBlockEntity(side);
+                    if (neighbor != null){
+                        LazyOptional<IFluidHandler> cap = neighbor.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
+                        return transferFluid(stack, cap.orElse(null), usedFluidLimitOut, false, i -> usedFluidLimitOut += i);
+                    }
+                }
+            }
             if (!exportMode.isExport() && inputSide) {
                 IFluidHandler handler1 = null;
                 if (handler.getTile() instanceof BlockEntityMachine<?> machine) {
@@ -69,22 +85,26 @@ public class CoverFluidRegulator extends CoverBasicTransport {
                     }
                 }
                 if (stack.isEmpty()) return true;
-                int unusedFluidLimit = fluidLimit - usedFluidLimit;
-                if (unusedFluidLimit <= 0) return true;
-                FluidStack toInsert = Utils.ca(unusedFluidLimit, stack);
-                if (handler1 == null) return true;
-                int inserted = handler1.fill(toInsert, FluidAction.SIMULATE);
-                if (inserted > 0) {
-                    if (!simulate) {
-                        handler1.fill(toInsert, FluidAction.EXECUTE);
-                        usedFluidLimit += inserted;
-                    }
-                    stack.setAmount(stack.getAmount() - inserted);
-                }
-                return true;
+                return transferFluid(stack, handler1, usedFluidLimitIn, simulate, i -> usedFluidLimitIn += i);
             }
         }
         return super.onTransfer(object, inputSide, simulate);
+    }
+
+    private boolean transferFluid(FluidStack stack, IFluidHandler destination, int usedFluidLimit, boolean simulate, Consumer<Integer> usedFluidLimitSetter) {
+        int unusedFluidLimit = fluidLimit - usedFluidLimit;
+        if (unusedFluidLimit <= 0) return true;
+        FluidStack toInsert = Utils.ca(unusedFluidLimit, stack);
+        if (destination == null) return true;
+        int inserted = destination.fill(toInsert, FluidAction.SIMULATE);
+        if (inserted > 0) {
+            if (!simulate) {
+                destination.fill(toInsert, FluidAction.EXECUTE);
+                usedFluidLimitSetter.accept(inserted);
+            }
+            stack.setAmount(stack.getAmount() - inserted);
+        }
+        return true;
     }
 
     @Override
@@ -110,7 +130,8 @@ public class CoverFluidRegulator extends CoverBasicTransport {
             Direction finalFromSide = fromSide;
             FluidUtils.getFluidHandler(handler.getTile().getLevel(), from, fromSide).ifPresent(ih -> FluidUtils.getFluidHandler(handler.getTile().getLevel(), finalTo, finalFromSide.getOpposite()).ifPresent(other -> Utils.transferFluids(ih, other, fluidLimit > 0 ? fluidLimit : CoverPump.speeds.get(tier))));
         }
-        usedFluidLimit = 0;
+        usedFluidLimitIn = 0;
+        usedFluidLimitOut = 0;
     }
     protected boolean canMove(Direction side){
         if (redstoneMode != RedstoneMode.NO_WORK){
