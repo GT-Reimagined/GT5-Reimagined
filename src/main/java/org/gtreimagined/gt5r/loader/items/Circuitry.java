@@ -134,13 +134,15 @@ public class Circuitry {
     }
 
     private static void circuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
-        provider.addItemRecipe(output, GT5Reimagined.ID, "circuit_basic_h", "circuits", BasicCircuit,
+        provider.addItemRecipe(output, "circuits", BasicCircuit,
+                ImmutableMap.of('S', WIRE_FINE.getMaterialTag(Tin), 'C', BasicCircuitBoard), " S ", "SCS", " S ");
+        provider.addItemRecipe(output, GT5Reimagined.ID, "basic_circuit_board_h", "circuits", BasicCircuitBoard,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', BasicCircuitParts)
                         .put('S', GT5RItems.CircuitBoardCoated)
                         .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GT5Reimagined.ID, "circuit_basic_v", "circuits", BasicCircuit,
+        provider.addItemRecipe(output, GT5Reimagined.ID, "basic_circuit_board_v", "circuits", BasicCircuitBoard,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', BasicCircuitParts)
