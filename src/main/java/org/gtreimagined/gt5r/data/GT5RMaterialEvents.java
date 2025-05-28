@@ -1132,7 +1132,7 @@ public class GT5RMaterialEvents {
         /**
          *** Isotopes (Gases/Plasmas)
          **/
-        event.setMaterial(Materials.HotHelium).asGas(0, 1150).fluidDensity(1000);
+        event.setMaterial(Materials.HotHelium).asGas(0, 1150).fluidDensity(1000).mats(of(Helium, 1));
         event.setMaterial(Materials.Deuterium).asGas().fluidDensity(-1112);
         event.setMaterial(Materials.Tritium).asGas().fluidDensity(-1112);
         event.setMaterial(Materials.Helium3).asGas().fluidDensity(-560);

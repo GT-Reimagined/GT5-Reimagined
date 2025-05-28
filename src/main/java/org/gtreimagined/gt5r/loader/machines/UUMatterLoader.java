@@ -14,6 +14,7 @@ import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
+import static org.gtreimagined.gt5r.data.Materials.Nitrogen;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.Materials.UUAmplifier;
 
@@ -26,7 +27,7 @@ public class UUMatterLoader {
             if (m.has(GTMaterialTypes.DUST)){
                 mb.ii(DUST.getMaterialIngredient(m, 1)); sb.ii(DUST.getMaterialIngredient(m, 1));
                 rb.io(DUST.get(m, 1));
-            } else if (m.has(LIQUID)){
+            } else if (m.has(LIQUID) && m != Nitrogen){
                 mb.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getLiquid(1000));
                 rb.fo(m.getLiquid(1000));
             } else if (m.has(GAS)){

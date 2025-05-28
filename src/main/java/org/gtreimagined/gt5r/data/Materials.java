@@ -137,7 +137,7 @@ public class Materials {
      *** Isotopes
      **/
 
-    public static Material HotHelium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_helium", 0xffff00, NONE, He));
+    public static Material HotHelium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hot_helium", 0xffff00, NONE));
     public static Material Deuterium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "deuterium", 0xffff00, NONE, D));
     public static Material Tritium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tritium", 0xff0000, METALLIC, T));
     public static Material Helium3 = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "helium_3", 0xffffff, NONE, He3));
