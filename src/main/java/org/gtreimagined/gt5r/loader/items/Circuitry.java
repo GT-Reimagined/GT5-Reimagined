@@ -255,9 +255,9 @@ public class Circuitry {
         FORMING_PRESS.RB().ii(of(EmptyCircuitPlate), of(GoldEtchedWiring, 4)).io(new ItemStack(GoldCircuitPlate)).add("gold_circuit_plate", 32, 16);
         FORMING_PRESS.RB().ii(of(EmptyCircuitPlate), of(PlatinumEtchedWiring, 4)).io(new ItemStack(PlatinumCircuitPlate)).add("platinum_circuit_plate", 32, 64);
         FORMING_PRESS.RB().ii(of(CopperCircuitPlate, 1), of(BasicCircuitParts, 4)).io(BasicCircuitBoard).add("basic_circuit_board", 32, 16);
-        FORMING_PRESS.RB().ii(of(CopperCircuitPlate,1), of(GoodCircuitParts)).io(GoodCircuitBoard).add("good_circuit_board", 32, 16);
-        FORMING_PRESS.RB().ii(of(GoldCircuitPlate, 1), of(AdvancedCircuitParts)).io(AdvancedCircuitBoard).add("advanced_circuit_board", 32, 16);
-        FORMING_PRESS.RB().ii(of(PlatinumCircuitPlate, 1),of(GT5RItems.ComplexCircuitParts)).io(ComplexCircuitBoard).add("complex_circuit_board", 32, 64);
+        FORMING_PRESS.RB().ii(of(CopperCircuitPlate,1), of(GoodCircuitParts, 4)).io(GoodCircuitBoard).add("good_circuit_board", 32, 16);
+        FORMING_PRESS.RB().ii(of(GoldCircuitPlate, 1), of(AdvancedCircuitParts, 4)).io(AdvancedCircuitBoard).add("advanced_circuit_board", 32, 16);
+        FORMING_PRESS.RB().ii(of(PlatinumCircuitPlate, 1),of(GT5RItems.ComplexCircuitParts, 4)).io(ComplexCircuitBoard).add("complex_circuit_board", 32, 64);
         FORMING_PRESS.RB().ii(of(EmptyProcessorCircuitBoard), of(PlatinumEtchedWiring, 4)).io(new ItemStack(ProcessorCircuitBoard)).add("processor_circuit_board", 32, 256);
         ASSEMBLER.RB().ii(of(GT5RItems.Wafer, 2), PLATE.getMaterialIngredient(Polytetrafluoroethylene, 1)).io(new ItemStack(EmptyProcessorCircuitBoard)).add("empty_processor_circuit_board", 32, 256);
     }
