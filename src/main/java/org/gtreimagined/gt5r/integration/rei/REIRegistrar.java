@@ -24,14 +24,6 @@ public class REIRegistrar {
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.BATH.getItem(Tier.NONE))));
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.ELECTROMAGNETIC_SEPARATOR.getItem(Tier.LV))));
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.SIFTER.getItem(Tier.LV))));
-            MaterialTreeCategory cat2 = new MaterialTreeCategory();
-            r.add(cat2);
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.LATHE.getItem(Tier.LV))));
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.BENDER.getItem(Tier.LV))));
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.CUTTER.getItem(Tier.LV))));
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.ASSEMBLER.getItem(Tier.LV))));
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.COMPRESSOR.getItem(Tier.LV))));
-            r.addWorkstations(cat2.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.FLUID_PRESS.getItem(Tier.LV))));
         });
         REIUtils.addExtraDisplay(r -> {
             GTMaterialTypes.ORE.all().forEach(m -> {
@@ -41,9 +33,6 @@ public class REIRegistrar {
                 } else {
                     r.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.NONE)));
                 }
-            });
-            GTMaterialTypes.DUST.all().forEach(m -> {
-                r.add(new MaterialTreeDisplay(m));
             });
         });
     }
