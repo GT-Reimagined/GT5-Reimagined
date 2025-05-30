@@ -115,6 +115,7 @@ import org.gtreimagined.gtlib.machine.types.MultiMachine;
 import org.gtreimagined.gtlib.machine.types.TankMachine;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Dir;
 import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.Nullable;
 
@@ -128,7 +129,7 @@ import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class GT5RMachines {
-    public static BasicMachine HULL = new BasicMachine(GT5Reimagined.ID, "hull").setTiers(Tier.getAllElectric()).overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().addFlags(GUI, ITEM, FLUID).setTile(BlockEntityHull::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine HULL = new BasicMachine(GT5Reimagined.ID, "hull").setTiers(Tier.getAllElectric()).overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER).noOutputCover().addFlags(GUI, ITEM, FLUID).setTile(BlockEntityHull::new).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.remove(tooltip.size() - 1);
         tooltip.remove(tooltip.size() - 1);
         tooltip.add(Utils.translatable("machine.voltage.in").append(": ").append(Utils.literal(machine.getTier().getVoltage() + " (" + machine.getTier().getId().toUpperCase() + ")")).withStyle(ChatFormatting.GREEN));
@@ -140,17 +141,17 @@ public class GT5RMachines {
     /**
      ** Steam Singleblock Machines
      **/
-    public static SteamMachine SOLID_FUEL_BOILER = new SteamMachine(GT5Reimagined.ID, "solid_fuel_boiler").setTiers(BRONZE, STEEL).setMap(RecipeMaps.SOLID_FUEL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityCoalBoiler::new).noCovers().addTooltipInfo("tooltip.gt5r.boiler");
-    public static SteamMachine LAVA_BOILER = new SteamMachine(GT5Reimagined.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityLavaBoiler::new).noCovers().addTooltipInfo("tooltip.gt5r.boiler");
-    public static SteamMachine SOLAR_BOILER = new SteamMachine(GT5Reimagined.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntitySolarBoiler::new).allowFrontIO().noCovers().addTooltipInfo("tooltip.gt5r.boiler");
-    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GT5Reimagined.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setSound(GT5RSounds.FURNACE,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GT5Reimagined.ID, "steam_compressor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GT5Reimagined.ID, "steam_extractor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GT5Reimagined.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
-    public static SteamMachine STEAM_FURNACE = new SteamMachine(GT5Reimagined.ID, "steam_furnace").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setSound(GT5RSounds.FURNACE,  0.6f).covers(GTCoreCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5Reimagined.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(RecipeMaps.MACERATOR).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
-    public static SteamMachine STEAM_CUTTER = new SteamMachine(GT5Reimagined.ID, "steam_cutter").setEuMultiplier(1).setDurationMultiplier(2).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_SIFTER = new SteamMachine(GT5Reimagined.ID, "steam_sifter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).covers(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine SOLID_FUEL_BOILER = new SteamMachine(GT5Reimagined.ID, "solid_fuel_boiler").setTiers(BRONZE, STEEL).setMap(RecipeMaps.SOLID_FUEL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).baseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityCoalBoiler::new).noOutputCover().addTooltipInfo("tooltip.gt5r.boiler");
+    public static SteamMachine LAVA_BOILER = new SteamMachine(GT5Reimagined.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityLavaBoiler::new).noOutputCover().addTooltipInfo("tooltip.gt5r.boiler");
+    public static SteamMachine SOLAR_BOILER = new SteamMachine(GT5Reimagined.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntitySolarBoiler::new).allowFrontIO().noOutputCover().addTooltipInfo("tooltip.gt5r.boiler");
+    public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GT5Reimagined.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setSound(GT5RSounds.FURNACE,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GT5Reimagined.ID, "steam_compressor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GT5Reimagined.ID, "steam_extractor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GT5Reimagined.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
+    public static SteamMachine STEAM_FURNACE = new SteamMachine(GT5Reimagined.ID, "steam_furnace").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).baseTexture(Textures.BRICKED_HANDLER).setSound(GT5RSounds.FURNACE,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5Reimagined.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(RecipeMaps.MACERATOR).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
+    public static SteamMachine STEAM_CUTTER = new SteamMachine(GT5Reimagined.ID, "steam_cutter").setEuMultiplier(1).setDurationMultiplier(2).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
+    public static SteamMachine STEAM_SIFTER = new SteamMachine(GT5Reimagined.ID, "steam_sifter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
     /**
      ** Hatchless Multiblock Machines (Steam Age)
      **/
@@ -219,17 +220,17 @@ public class GT5RMachines {
     /**
      * Battery Buffers
      **/
-    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(GT5Reimagined.ID, "16x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(GT5Reimagined.ID, "8x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(GT5Reimagined.ID, "4x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
-    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(GT5Reimagined.ID, "1x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noCovers().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_SIXTEEN = new BasicMachine(GT5Reimagined.ID, "16x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noOutputCover().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_EIGHT = new BasicMachine(GT5Reimagined.ID, "8x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noOutputCover().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_FOUR = new BasicMachine(GT5Reimagined.ID, "4x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noOutputCover().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
+    public static BasicMachine BATTERY_BUFFER_ONE = new BasicMachine(GT5Reimagined.ID, "1x_battery_buffer").setTiers(LV, MV, HV, EV, IV, LUV, ZPM, UV, UHV).addFlags(GUI, EU, ITEM).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).noOutputCover().setTile(BlockEntityBatteryBuffer::new).setVerticalFacingAllowed(true).allowFrontIO();
     /**
      * Filters
      **/
-    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GT5Reimagined.ID, "electric_item_filter").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityItemFilter::new).noCovers().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GT5Reimagined.ID, "electric_type_filter").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityTypeFilter::new).noCovers().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine SUPER_BUFFER =new BasicMachine(GT5Reimagined.ID, "super_buffer").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
-    public static BasicMachine CHEST_BUFFER =new BasicMachine(GT5Reimagined.ID, "chest_buffer").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noCovers().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_ITEM_FILTER = new BasicMachine(GT5Reimagined.ID, "electric_item_filter").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityItemFilter::new).noOutputCover().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine ELECTRIC_TYPE_FILTER = new BasicMachine(GT5Reimagined.ID, "electric_type_filter").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityTypeFilter::new).noOutputCover().frontCovers().allowFrontIO().setVerticalFacingAllowed(true).overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine SUPER_BUFFER =new BasicMachine(GT5Reimagined.ID, "super_buffer").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noOutputCover().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
+    public static BasicMachine CHEST_BUFFER =new BasicMachine(GT5Reimagined.ID, "chest_buffer").setTiers(Tier.getStandardWithIV()).addFlags(GUI, EU, ITEM).setTile(BlockEntityBuffer::new).setVerticalFacingAllowed(true).allowFrontIO().noOutputCover().frontCovers().overlayTexture(Textures.LEFT_RIGHT_HANDLER);
 
     /**
      * Bridges and Extenders
@@ -282,7 +283,7 @@ public class GT5RMachines {
     /**
      * Transformers
      **/
-    public static BasicMachine TRANSFORMER = new BasicMachine(GT5Reimagined.ID, "transformer").addFlags(EU).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noCovers().allowFrontIO().setVerticalFacingAllowed(true).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+    public static BasicMachine TRANSFORMER = new BasicMachine(GT5Reimagined.ID, "transformer").addFlags(EU).setTiers(ULV, LV, MV, HV, EV, IV, LUV, ZPM, UV).overlayTexture(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile((v, pos, state) -> new BlockEntityTransformer<>(v, pos, state, 1)).noOutputCover().allowFrontIO().setVerticalFacingAllowed(true).addTooltipInfo((machine, stack, world, tooltip, flag) -> {
         tooltip.remove(tooltip.size() - 1);
         tooltip.remove(tooltip.size() - 1);
         Tier upper = Tier.getTier(machine.getTier().getVoltage() * 4);
@@ -292,8 +293,8 @@ public class GT5RMachines {
         tooltip.add(Utils.translatable("generic.amp").append(": ").append(Utils.literal(String.valueOf(4)).withStyle(ChatFormatting.YELLOW)));
         tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal(String.valueOf(512L + machine.getTier().getVoltage() * 8L))).withStyle(ChatFormatting.BLUE));
     });
-    public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GT5Reimagined.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, EU).setTile(BlockEntityDigitalTransformer::new).noCovers().allowFrontIO();
-    public static BasicMachine FLUX_TRANSFORMER = new BasicMachine(GT5Reimagined.ID, "flux_transformer").setTiers(Tier.getAllElectric()).addFlags(EU, FE).setTile(BlockEntityFluxTransformer::new).noCovers().allowFrontIO().overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER);
+    public static BasicMachine ADJUSTABLE_TRANSFORMER = new BasicMachine(GT5Reimagined.ID, "adjustable_transformer").setTiers(EV, IV).addFlags(GUI, EU).setTile(BlockEntityDigitalTransformer::new).noOutputCover().allowFrontIO();
+    public static BasicMachine FLUX_TRANSFORMER = new BasicMachine(GT5Reimagined.ID, "flux_transformer").setTiers(Tier.getAllElectric()).addFlags(EU, FE).setTile(BlockEntityFluxTransformer::new).noOutputCover().allowFrontIO().overlayTexture(Textures.STATE_IGNORANT_TIER_SPECIFIC_OVERLAY_HANDLER);
     /**
      ** Generators
      **/
@@ -313,7 +314,7 @@ public class GT5RMachines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
-    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GT5Reimagined.ID, "nuclear_reactor_core").setSecondaryOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY).removeFlags(EU).setTiers(NONE).addFlags(GUI, ITEM, FLUID, UNCULLED).renderContainedLiquids(false).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(Textures.REACTOR_CORE_BASE_HANDLER).modelLoader(GT5RModelManager.LOADER_REACTOR).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(GT5RMachines::getBlockColorNuclear).itemColorHandler((stack, block, i) -> i == 0 ? Materials.Lead.getRGB() : -1).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT).covers(ICover.emptyFactory, ICover.emptyFactory, GT5RCovers.COVER_REACTOR_OUTPUT, GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY, ICover.emptyFactory, ICover.emptyFactory);
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GT5Reimagined.ID, "nuclear_reactor_core").setSecondaryOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY).removeFlags(EU).setTiers(NONE).addFlags(GUI, ITEM, FLUID, UNCULLED).renderContainedLiquids(false).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(Textures.REACTOR_CORE_BASE_HANDLER).modelLoader(GT5RModelManager.LOADER_REACTOR).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(GT5RMachines::getBlockColorNuclear).itemColorHandler((stack, block, i) -> i == 0 ? Materials.Lead.getRGB() : -1).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT).setOutputDir(Dir.FORWARD);
     public static BasicMachine INVAR_SMALL_HEAT_EXCHANGER = new HeatExchangerMachine(GT5Reimagined.ID, "invar_small_heat_exchanger", 16);
     public static BasicMachine TUNGSTEN_SMALL_HEAT_EXCHANGER = new HeatExchangerMachine(GT5Reimagined.ID, "tungsten_small_heat_exchanger", 128);
     public static BasicMachine TUNGSTENSTEEL_SMALL_HEAT_EXCHANGER = new HeatExchangerMachine(GT5Reimagined.ID, "tungstensteel_small_heat_exchanger", 128).setEfficiency(9000);
@@ -406,7 +407,7 @@ public class GT5RMachines {
      **/
     public static TankMachine QUANTUM_TANK = new TankMachine(GT5Reimagined.ID, "quantum_tank", t -> (int) (1602000 * Math.pow(6,  (t.getIntegerId() - 1)))).setTiers(Tier.getStandardWithIV()).addFlags(BASIC, GUI, CELL).frontCovers();
 
-    public static BasicMachine PUMP = new BasicMachine(GT5Reimagined.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noCovers();
+    public static BasicMachine PUMP = new BasicMachine(GT5Reimagined.ID, "electric_pump").addFlags(FLUID).setVerticalFacingAllowed(true).setTile(BlockEntityPump::new).noOutputCover();
     public static BasicMachine CROP_HARVESTER = new BasicMachine(GT5Reimagined.ID, "crop_harvester").setTiers(LV).addFlags(GUI, ITEM).setTile(BlockEntityCropHarvester::new);
     public static BasicMachine MINIATURE_NETHER_PORTAL = new MiniPortalMachine(GT5Reimagined.ID, "miniature_nether_portal").baseTexture(new Texture("block/obsidian")).overlayTexture(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniNetherPortal::new);
     public static BasicMachine MINIATURE_END_PORTAL = new MiniPortalMachine(GT5Reimagined.ID, "miniature_end_portal").baseTexture(new Texture("block/end_portal_frame_top")).overlayTexture(Textures.MINI_END_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of(WRENCH_MATERIAL).strength(3.0f, 9.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniEndPortal::new);

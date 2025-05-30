@@ -14,7 +14,7 @@ import static org.gtreimagined.gtlib.machine.Tier.NONE;
 public class ExtenderMachine extends BasicMachine {
     public ExtenderMachine(String domain, String id) {
         super(domain, id);
-        this.setTiers(NONE).covers(GT5RCovers.COVER_OUTPUT_EXTENDER).setVerticalFacingAllowed(true).frontCovers().outputCoversOnFacing(false);
+        this.setTiers(NONE).setOutputCover(GT5RCovers.COVER_OUTPUT_EXTENDER).setVerticalFacingAllowed(true).frontCovers().outputCoversOnFacing(false);
         this.overlayTexture(Textures.EXTENDER).baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/bridge"));
     }
 

@@ -4,6 +4,7 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Dir;
 import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.GT5RCovers;
@@ -35,7 +36,7 @@ public class HeatExchangerMachine extends SecondaryOutputMachine {
         });
         removeFlags(EU);
         setSecondaryOutputCover(GT5RCovers.COVER_OUTPUT_SECONDARY);
-        covers(ICover.emptyFactory, ICover.emptyFactory, ICover.emptyFactory, COVEROUTPUT, GT5RCovers.COVER_OUTPUT_SECONDARY, ICover.emptyFactory);
+        setSecondaryOutputDir(Dir.RIGHT);
         setTiers(NONE);
         baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/" + id));
         setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).frontCovers().allowFrontIO();

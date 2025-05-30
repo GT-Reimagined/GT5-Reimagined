@@ -15,7 +15,7 @@ public class MiniPortalMachine extends BasicMachine {
         super(domain, id);
         this.setTiers(NONE);
         this.addFlags(UNCULLED);
-        this.noCovers().allowFrontIO();
+        this.noOutputCover().allowFrontIO();
         this.itemModelParent(new ResourceLocation(GT5Reimagined.ID, "block/mini_portal"));
         this.custom(Textures.MINI_PORTAL);
         this.removeFlags(MachineFlag.COVERABLE);
