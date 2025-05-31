@@ -13,21 +13,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import org.gtreimagined.gt5r.machine.caps.SecondaryOutputCoverHandler;
 import org.jetbrains.annotations.Nullable;
 
 public class BlockEntitySecondaryOutput<T extends BlockEntitySecondaryOutput<T>> extends BlockEntityMachine<T> {
     public BlockEntitySecondaryOutput(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.coverHandler.set(() -> new SecondaryOutputCoverHandler<>((T)this));
     }
 
     public Direction getSecondaryOutputFacing() {
-        return coverHandler.map(c -> ((SecondaryOutputCoverHandler<?>)c).getSecondaryOutputFacing()).orElse(this.getFacing().getOpposite());
+        return coverHandler.map(c -> c.getSecondaryOutputFacing()).orElse(this.getFacing().getOpposite());
     }
 
     public boolean setSecondaryOutput(Player player, BlockHitResult result){
-        return coverHandler.map(c -> ((SecondaryOutputCoverHandler<?>)c).setSecondaryOutputFacing(player, Utils.getInteractSide(result))).orElse(false);
+        return coverHandler.map(c -> c.setSecondaryOutputFacing(player, Utils.getInteractSide(result))).orElse(false);
     }
 
     @Override

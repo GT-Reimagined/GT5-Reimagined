@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.machine;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.util.Dir;
 import org.gtreimagined.gtlib.util.Utils;
@@ -15,7 +16,7 @@ import static org.gtreimagined.gtlib.gui.SlotType.*;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
 
-public class HeatExchangerMachine extends SecondaryOutputMachine {
+public class HeatExchangerMachine extends BasicMachine {
     int rate;
     int efficiency = 10000;
     public HeatExchangerMachine(String domain, String id, int rate) {
