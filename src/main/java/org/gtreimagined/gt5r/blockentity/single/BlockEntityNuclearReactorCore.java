@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import lombok.Setter;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.IPostTickTile;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
@@ -56,7 +57,7 @@ import static org.gtreimagined.gtlib.Ref.B;
 import static net.minecraft.core.Direction.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 
-public class BlockEntityNuclearReactorCore extends BlockEntitySecondaryOutput<BlockEntityNuclearReactorCore> implements IFilterableHandler, IPostTickTile, IInventorySyncTile {
+public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntityNuclearReactorCore> implements IFilterableHandler, IPostTickTile, IInventorySyncTile {
     public int[] mNeutronCounts = new int[]{0, 0, 0, 0};
     public int[] oNeutronCounts = new int[]{0, 0, 0, 0};
     public long oldHeat = 0;

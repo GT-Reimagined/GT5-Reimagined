@@ -12,6 +12,7 @@ import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
@@ -24,7 +25,7 @@ import org.gtreimagined.gtlib.util.Utils;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 
-public class BlockEntitySmallHeatExchanger extends BlockEntitySecondaryOutput<BlockEntitySmallHeatExchanger> {
+public class BlockEntitySmallHeatExchanger extends BlockEntityMachine<BlockEntitySmallHeatExchanger> {
     boolean hadNoWater = false;
     int rate;
     int efficiency;

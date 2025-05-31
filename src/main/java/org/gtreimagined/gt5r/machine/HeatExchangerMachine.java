@@ -38,6 +38,7 @@ public class HeatExchangerMachine extends BasicMachine {
         removeFlags(EU);
         setSecondaryOutputCover(GT5RCovers.COVER_OUTPUT_SECONDARY);
         setSecondaryOutputDir(Dir.RIGHT);
+        outputCoversOnFacing(true);
         setTiers(NONE);
         baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/" + id));
         setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).frontCovers().allowFrontIO();

@@ -23,7 +23,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import org.gtreimagined.gt5r.blockentity.single.BlockEntitySecondaryOutput;
 import org.gtreimagined.gt5r.items.ItemPortableScanner;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 import org.gtreimagined.gtcore.GTCore;
@@ -113,14 +112,6 @@ public class ToolTypes {
 
     public static void init(){
         if (FMLEnvironment.dist.isClient()){
-            BiFunction<Direction, BlockEntity, Boolean> REACTOR_FUNCTION = (dir, tile) -> {
-                if (tile instanceof BlockEntitySecondaryOutput machine) {
-                    Direction direction = machine.getSecondaryOutputFacing();
-                    return direction != null && direction == dir;
-                }
-                return false;
-            };
-            BehaviourExtendedHighlight.EXTRA_PIPE_FUNCTIONS.add(REACTOR_FUNCTION);
             GTCoreTools.ELECTRIC_WRENCH_ALT.addBehaviour(new BehaviourExtendedHighlight(b -> b instanceof BlockMachine || (b instanceof BlockPipe && b.builtInRegistryHolder().is(GTTools.WRENCH.getToolType())) || b.defaultBlockState().hasProperty(BlockStateProperties.FACING_HOPPER) || b.defaultBlockState().hasProperty(BlockStateProperties.HORIZONTAL_FACING), BehaviourExtendedHighlight.PIPE_FUNCTION));
         }
 

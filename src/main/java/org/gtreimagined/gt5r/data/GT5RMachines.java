@@ -90,7 +90,6 @@ import org.gtreimagined.gt5r.machine.BridgeMachine;
 import org.gtreimagined.gt5r.machine.ExtenderMachine;
 import org.gtreimagined.gt5r.machine.HeatExchangerMachine;
 import org.gtreimagined.gt5r.machine.MiniPortalMachine;
-import org.gtreimagined.gt5r.machine.SecondaryOutputMachine;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreCovers;
 import org.gtreimagined.gtcore.machine.DrumMachine;
@@ -314,7 +313,7 @@ public class GT5RMachines {
             tooltip.add(Utils.translatable("machine.power.capacity").append(": ").append(Utils.literal("" + 80).withStyle(ChatFormatting.BLUE)));
         }
     });
-    public static BasicMachine NUCLEAR_REACTOR_CORE = new SecondaryOutputMachine(GT5Reimagined.ID, "nuclear_reactor_core").setSecondaryOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY).removeFlags(EU).setTiers(NONE).addFlags(GUI, ITEM, FLUID, UNCULLED).renderContainedLiquids(false).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(Textures.REACTOR_CORE_BASE_HANDLER).modelLoader(GT5RModelManager.LOADER_REACTOR).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(GT5RMachines::getBlockColorNuclear).itemColorHandler((stack, block, i) -> i == 0 ? Materials.Lead.getRGB() : -1).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT).setOutputDir(Dir.FORWARD);
+    public static BasicMachine NUCLEAR_REACTOR_CORE = new BasicMachine(GT5Reimagined.ID, "nuclear_reactor_core").setSecondaryOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY).setSecondaryOutputDir(Dir.BACK).removeFlags(EU).setTiers(NONE).addFlags(GUI, ITEM, FLUID, UNCULLED).renderContainedLiquids(false).custom().overlayTexture(Textures.REACTOR_CORE_OVERLAY_HANDLER).baseTexture(Textures.REACTOR_CORE_BASE_HANDLER).modelLoader(GT5RModelManager.LOADER_REACTOR).setTile(BlockEntityNuclearReactorCore::new).blockColorHandler(GT5RMachines::getBlockColorNuclear).itemColorHandler((stack, block, i) -> i == 0 ? Materials.Lead.getRGB() : -1).frontCovers().allowFrontIO().setNoTextureRotation(true).setOutputCover(GT5RCovers.COVER_REACTOR_OUTPUT).setOutputDir(Dir.FORWARD).outputCoversOnFacing(true);
     public static BasicMachine INVAR_SMALL_HEAT_EXCHANGER = new HeatExchangerMachine(GT5Reimagined.ID, "invar_small_heat_exchanger", 16);
     public static BasicMachine TUNGSTEN_SMALL_HEAT_EXCHANGER = new HeatExchangerMachine(GT5Reimagined.ID, "tungsten_small_heat_exchanger", 128);
     public static BasicMachine TUNGSTENSTEEL_SMALL_HEAT_EXCHANGER = new HeatExchangerMachine(GT5Reimagined.ID, "tungstensteel_small_heat_exchanger", 128).setEfficiency(9000);
