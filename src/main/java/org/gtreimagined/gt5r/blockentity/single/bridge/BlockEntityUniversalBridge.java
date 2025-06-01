@@ -1,0 +1,94 @@
+package org.gtreimagined.gt5r.blockentity.single.bridge;
+
+import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityCable;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import tesseract.TesseractGraphWrappers;
+import tesseract.api.gt.GTHolder;
+import tesseract.api.gt.IGTCable;
+
+import static org.gtreimagined.gtlib.machine.Tier.IV;
+
+public class BlockEntityUniversalBridge extends BlockEntityInventoryTankBridge implements IGTCable {
+    @Getter
+    @Setter
+    long holder;
+
+    public BlockEntityUniversalBridge(Machine<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
+    }
+
+    @Override
+    public void onLoad() {
+        this.holder = GTHolder.create(this, 0);
+        super.onLoad();
+        register();
+    }
+
+    @Override
+    public void onBlockUpdate(BlockPos neighbor) {
+        super.onBlockUpdate(neighbor);
+        deregister();
+        register();
+    }
+
+    @Override
+    public void onRemove() {
+        super.onRemove();
+        deregister();
+    }
+
+    @Override
+    public void serverTick(Level level, BlockPos pos, BlockState state) {
+        super.serverTick(level, pos, state);
+        this.setHolder(GTHolder.create(this, 0));
+    }
+
+
+    @Override
+    public double getLoss() {
+        return 1;
+    }
+
+    @Override
+    public int getAmps() {
+        return 32;
+    }
+
+    @Override
+    public long getVoltage() {
+        return IV.getVoltage();
+    }
+
+    @Override
+    public boolean insulated() {
+        return true;
+    }
+
+    @Override
+    public boolean connects(Direction direction) {
+        return internalConnects(direction) && internalConnects(direction.getOpposite());
+    }
+
+    private boolean internalConnects(Direction side){
+        return getCachedBlockEntity(side) instanceof BlockEntityCable<?> cable && cable.connects(side.getOpposite());
+    }
+
+    @Override
+    public boolean validate(Direction dir) {
+        return true;
+    }
+
+    protected void register() {
+        TesseractGraphWrappers.GT_ENERGY.registerConnector(getLevel(), getBlockPos().asLong(), this, true);
+    }
+
+    protected boolean deregister() {
+        return TesseractGraphWrappers.GT_ENERGY.remove(getLevel(), getBlockPos().asLong());
+    }
+}
