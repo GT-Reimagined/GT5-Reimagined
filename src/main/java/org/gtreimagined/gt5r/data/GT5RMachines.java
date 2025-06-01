@@ -81,6 +81,7 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamTurbine;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityTypeFilter;
 import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityInventoryTankBridge;
 import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityTankBridge;
+import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityUniversalBridge;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityInventoryExtender;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityInventoryTankExtender;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityTankExtender;
@@ -237,7 +238,7 @@ public class GT5RMachines {
     public static BasicMachine INVENTORY_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "inventory_bridge").addFlags(ITEM).removeFlags(EU).setTile(BlockEntityInventoryBridge::new);
     public static BasicMachine TANK_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "tank_bridge").addFlags(FLUID).removeFlags(EU).setTile(BlockEntityTankBridge::new);
     public static BasicMachine INVENTORY_TANK_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "inventory_tank_bridge").addFlags(ITEM, FLUID).removeFlags(EU).setTile(BlockEntityInventoryTankBridge::new);
-    public static BasicMachine UNIVERSAL_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "universal_bridge").addFlags(ITEM, FLUID).baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/universal_bridge")).setTile(BlockEntityInventoryTankBridge::new);
+    public static BasicMachine UNIVERSAL_BRIDGE = new BridgeMachine(GT5Reimagined.ID, "universal_bridge").addFlags(ITEM, FLUID).baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/universal_bridge")).setTile(BlockEntityUniversalBridge::new);
     public static BasicMachine INVENTORY_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "inventory_extender").addFlags(ITEM).removeFlags(EU).setTile(BlockEntityInventoryExtender::new);
     public static BasicMachine TANK_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "tank_extender").addFlags(FLUID).removeFlags(EU).setTile(BlockEntityTankExtender::new);
     public static BasicMachine INVENTORY_TANK_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "inventory_tank_extender").addFlags(ITEM, FLUID).removeFlags(EU).setTile(BlockEntityInventoryTankExtender::new);

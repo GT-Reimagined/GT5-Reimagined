@@ -5,7 +5,9 @@ import lombok.Setter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import org.gtreimagined.gtcore.blockentity.BlockEntityRedstoneWire;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityCable;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import tesseract.TesseractGraphWrappers;
@@ -21,6 +23,11 @@ public class BlockEntityUniversalBridge extends BlockEntityInventoryTankBridge i
 
     public BlockEntityUniversalBridge(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+    }
+
+    @Override
+    protected boolean canBridgeBlockEntity(BlockEntity entity) {
+        return super.canBridgeBlockEntity(entity) || entity instanceof BlockEntityRedstoneWire<?>;
     }
 
     @Override
