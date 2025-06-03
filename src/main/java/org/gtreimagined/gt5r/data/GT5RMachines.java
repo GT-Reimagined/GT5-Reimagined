@@ -85,6 +85,7 @@ import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityUniversalBridg
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityInventoryExtender;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityInventoryTankExtender;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityTankExtender;
+import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityUniversalExtender;
 import org.gtreimagined.gt5r.client.GT5RModelManager;
 import org.gtreimagined.gt5r.items.IItemReactorRod;
 import org.gtreimagined.gt5r.machine.BridgeMachine;
@@ -242,7 +243,7 @@ public class GT5RMachines {
     public static BasicMachine INVENTORY_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "inventory_extender").addFlags(ITEM).removeFlags(EU).setTile(BlockEntityInventoryExtender::new);
     public static BasicMachine TANK_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "tank_extender").addFlags(FLUID).removeFlags(EU).setTile(BlockEntityTankExtender::new);
     public static BasicMachine INVENTORY_TANK_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "inventory_tank_extender").addFlags(ITEM, FLUID).removeFlags(EU).setTile(BlockEntityInventoryTankExtender::new);
-    public static BasicMachine UNIVERSAL_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "universal_extender").addFlags(ITEM, FLUID).baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/universal_bridge")).setTile(BlockEntityInventoryTankExtender::new);
+    public static BasicMachine UNIVERSAL_EXTENDER = new ExtenderMachine(GT5Reimagined.ID, "universal_extender").addFlags(ITEM, FLUID).baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/universal_bridge")).setTile(BlockEntityUniversalExtender::new);
 
     /**
      * Drums
