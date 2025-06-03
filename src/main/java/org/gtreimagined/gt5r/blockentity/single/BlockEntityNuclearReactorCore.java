@@ -1,8 +1,10 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import lombok.Setter;
+import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityUniversalExtender;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.blockentity.IPostTickTile;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
@@ -132,14 +134,6 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         super.onRemove();
         TileTicker.SERVER_TICK_POST.remove(this);
         TileTicker.SERVER_TICK_PO2T.remove(this);
-        Direction.Plane.HORIZONTAL.forEach(d -> {
-            BlockPos offset = this.getBlockPos().relative(d);
-            if (!level.isLoaded(offset)) return;
-            BlockEntity entity = level.getBlockEntity(offset);
-            if (entity instanceof BlockEntityNuclearReactorCore reactorCore){
-                reactorCore.adjacentReactors[d.getOpposite().get2DDataValue()] = null;
-            }
-        });
     }
 
     @Override
@@ -147,14 +141,21 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         super.onLoad();
         TileTicker.SERVER_TICK_POST.add(this);
         TileTicker.SERVER_TICK_PO2T.add(this);
-        Direction.Plane.HORIZONTAL.forEach(d -> {
-            BlockPos offset = this.getBlockPos().relative(d);
-            BlockEntity entity = level.getBlockEntity(offset);
-            if (entity instanceof BlockEntityNuclearReactorCore reactorCore){
-                reactorCore.adjacentReactors[d.getOpposite().get2DDataValue()] = this;
-                adjacentReactors[d.get2DDataValue()] = reactorCore;
-            }
-        });
+    }
+
+    private BlockEntityNuclearReactorCore getCachedReactor(Direction side){
+        BlockEntity cached = getCachedBlockEntity(side);
+        return cached instanceof BlockEntityNuclearReactorCore core ? core : null;
+    }
+
+    @Override
+    protected BlockEntity findBlockEntity(Direction side) {
+        BlockEntity entity;
+        entity = level.getBlockEntity(this.getBlockPos().relative(side));
+        if (entity instanceof BlockEntityUniversalExtender universalExtender) {
+            entity = universalExtender.getCachedBlockEntity(universalExtender.getFacing() == side.getOpposite() ? universalExtender.getOutputFacing() : universalExtender.getFacing());
+        }
+        return entity;
     }
 
     // 0 and 2 are at SIDE_Z_NEG(North)    1 3      -->X+
@@ -259,6 +260,13 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             // It is == 19 because the Sensors react to == 0, so this is the realistic fastest a Sensor can display.
             if (level.getGameTime() % 20 == 19){
                 if (machineState != MachineState.DISABLED){
+                    BlockEntityNuclearReactorCore[] adjacentReactors = new BlockEntityNuclearReactorCore[4];
+                    Direction.Plane.HORIZONTAL.forEach(d -> {
+                        BlockEntityNuclearReactorCore core = getCachedReactor(d);
+                        if (core != null) {
+                            adjacentReactors[d.get2DDataValue()] = core;
+                        }
+                    });
                     BlockEntityNuclearReactorCore tAdjacent;
                     int tNeutronCount = getReactorRodNeutronEmission(0);
                     boolean tModerated = isReactorRodModerated(0);
