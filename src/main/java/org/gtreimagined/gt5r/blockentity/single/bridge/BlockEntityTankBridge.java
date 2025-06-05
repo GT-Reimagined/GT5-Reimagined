@@ -5,11 +5,15 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import org.gtreimagined.gt5r.machine.caps.BridgeFluidHandler;
+import org.gtreimagined.gt5r.machine.caps.ExtenderFluidHandler;
+import org.gtreimagined.gtlib.capability.FluidHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
 
 public class BlockEntityTankBridge extends BlockEntityBridge{
     public BlockEntityTankBridge(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
+        this.fluidHandler.set(() -> new BridgeFluidHandler(this));
     }
 
     @Override
@@ -19,6 +23,6 @@ public class BlockEntityTankBridge extends BlockEntityBridge{
 
     @Override
     protected <U> boolean canBridgeCapability(Capability<U> capability) {
-        return capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY;
+        return false;
     }
 }
