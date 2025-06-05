@@ -180,7 +180,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, WIRE_FINE).forceBF(false);
         event.setMaterial(Materials.SteelMagnetic).asMetal(1000, ROD_LONG).forceBF(false);
         event.setMaterial(Materials.SterlingSilver).asMetal(1700, ALLOY);
-        event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING).forceBF(false);
+        event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, SPRING).forceBF(false);
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
         event.setMaterial(TitaniumGold).asMetal(1790).forceBF(false);
         event.setMaterial(Trinitanium).asMetal(2410);
