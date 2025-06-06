@@ -1,19 +1,26 @@
 package org.gtreimagined.gt5r.blockentity.single.bridge;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import org.gtreimagined.gt5r.machine.caps.BridgeFluidHandler;
-import org.gtreimagined.gt5r.machine.caps.ExtenderFluidHandler;
-import org.gtreimagined.gtlib.capability.FluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.gtreimagined.gt5r.machine.caps.BridgeSidedWrapper;
+import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
 
 public class BlockEntityTankBridge extends BlockEntityBridge{
     public BlockEntityTankBridge(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.fluidHandler.set(() -> new BridgeFluidHandler(this));
+        this.fluidHandler.set(() -> new MachineFluidHandler<>(this){
+            @Override
+            public LazyOptional<IFluidHandler> forSide(Direction side) {
+                return LazyOptional.of(() -> new BridgeSidedWrapper(this.tile, this, this.tile.coverHandler.orElse(null), side));
+            }
+        });
     }
 
     @Override

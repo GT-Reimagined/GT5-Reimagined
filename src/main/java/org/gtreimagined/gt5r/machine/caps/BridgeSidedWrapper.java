@@ -5,17 +5,18 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityBridge;
-import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityExtender;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.CoverHandler;
+import org.gtreimagined.gtlib.capability.fluid.IFluidNode;
 
-public class BridgeFluidHandler extends ExtenderFluidHandler<BlockEntityBridge> {
-    public BridgeFluidHandler(BlockEntityBridge tile) {
-        super(tile);
+public class BridgeSidedWrapper extends ExtenderSidedWrapper{
+    public BridgeSidedWrapper(BlockEntityMachine<?> entity, IFluidNode fluidHandler, CoverHandler<?> coverHandler, Direction side) {
+        super(entity, fluidHandler, coverHandler, side);
     }
 
     @Override
     LazyOptional<IFluidHandler> getFluidHandler(Direction facing) {
-        BlockEntity entity = tile.getCachedBlockEntity(facing);
+        BlockEntity entity = blockEntity.getCachedBlockEntity(facing);
         return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing);
     }
 }
