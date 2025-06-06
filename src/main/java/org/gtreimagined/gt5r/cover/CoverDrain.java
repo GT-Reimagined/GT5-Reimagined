@@ -55,11 +55,11 @@ public class CoverDrain extends BaseCover {
         }
         if (tile.getLevel().isClientSide) return;
         Level world = tile.getLevel();
-        Optional<IFluidHandler> cap = Optional.empty();
+        Optional<? extends IFluidHandler> cap = Optional.empty();
         if (tile instanceof BlockEntityFluidPipe<?> pipe){
             cap = pipe.getPipeCapHolder().side(side).resolve();
         } else if (tile instanceof BlockEntityMachine<?> machine){
-            cap = machine.fluidHandler.map(FluidHandler::getInputTanks);
+            cap = machine.fluidHandler.side(side).resolve();
         }
         BlockPos offset = tile.getBlockPos().relative(side);
         if (side == Direction.UP && world.isRainingAt(offset) && world.getGameTime() % 60 == 0 && contained.isEmpty()){

@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityFluidPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
@@ -39,7 +40,7 @@ public class CoverFluidDetector extends CoverBasicRedstoneOutput {
     @Override
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
-        IFluidHandler fluidContainer = handler.getTile() instanceof BlockEntityMachine<?> machine ? machine.fluidHandler.map(f -> f).orElse(null) : ((BlockEntityFluidPipe<?>)handler.getTile()).getFluidHandler().orElse(null);
+        IFluidHandler fluidContainer = handler.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).map(f -> f).orElse(null);
         if (fluidContainer != null){
             int scale = IntStream.range(0, fluidContainer.getTanks()).map(fluidContainer::getTankCapacity).sum() / 15;
             int totalFluid = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {

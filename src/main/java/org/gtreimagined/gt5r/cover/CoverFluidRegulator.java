@@ -57,8 +57,11 @@ public class CoverFluidRegulator extends CoverBasicTransport {
         return getBasicDepthModel();
     }
 
+    boolean transferring = false;
+
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
+        if (transferring) return false;
         if (fluidLimit <= 0) return false;
         if (object instanceof FluidStack stack) {
             if (exportMode.isExport() && !inputSide && handler.getTile() instanceof BlockEntityFluidPipe<?> fluidPipe) {
@@ -68,7 +71,10 @@ public class CoverFluidRegulator extends CoverBasicTransport {
                     BlockEntity neighbor = fluidPipe.getCachedBlockEntity(side);
                     if (neighbor != null){
                         LazyOptional<IFluidHandler> cap = neighbor.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
-                        return transferFluid(stack, cap.orElse(null), usedFluidLimitOut, false, i -> usedFluidLimitOut += i);
+                        transferring = true;
+                        boolean transfer = transferFluid(stack, cap.orElse(null), usedFluidLimitOut, false, i -> usedFluidLimitOut += i);
+                        transferring = false;
+                        return transfer;
                     }
                 }
             }
@@ -76,7 +82,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
                 IFluidHandler handler1 = null;
                 if (handler.getTile() instanceof BlockEntityMachine<?> machine) {
                     if (machine.fluidHandler.isPresent()) {
-                        handler1 = machine.fluidHandler.get();
+                        handler1 = machine.fluidHandler.side(side).orElse(null);
                     }
                 }
                 if (handler.getTile() instanceof BlockEntityFluidPipe<?> fluidPipe) {
@@ -85,7 +91,10 @@ public class CoverFluidRegulator extends CoverBasicTransport {
                     }
                 }
                 if (stack.isEmpty()) return true;
-                return transferFluid(stack, handler1, usedFluidLimitIn, simulate, i -> usedFluidLimitIn += i);
+                transferring = true;
+                boolean transfer = transferFluid(stack, handler1, usedFluidLimitIn, simulate, i -> usedFluidLimitIn += i);
+                transferring = false;
+                return transfer;
             }
         }
         return super.onTransfer(object, inputSide, simulate);

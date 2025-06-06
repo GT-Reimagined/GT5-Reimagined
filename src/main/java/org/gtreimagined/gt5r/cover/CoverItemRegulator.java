@@ -73,27 +73,30 @@ public class CoverItemRegulator extends CoverBasicTransport {
         }
     }
 
+    boolean transferring = false;
+
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
+        if (transferring) return false;
         if (object instanceof ItemStack stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide) {
             if (machine.itemHandler.isPresent()){
                 if (stack.isEmpty()) return true;
                 if (slotLimit > 0 && stack.getCount() < slotLimit) return true;
+                transferring  = true;
                 ItemStack toInsert = slotLimit > 0 ? Utils.ca(slotLimit, stack) : stack.copy();
-                MachineItemHandler<?> itemHandler = machine.itemHandler.get();
-                if (itemHandler == null) return true;
-                ItemStack inserted = itemHandler.forSide(side).map(i -> Utils.insertItem(i, toInsert, true)).orElse(toInsert);
+                ItemStack inserted = machine.itemHandler.side(side).map(i -> Utils.insertItem(i, toInsert, true)).orElse(toInsert);
                 if (inserted.isEmpty()){
                     if (!simulate) {
-                        itemHandler.forSide(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
+                        machine.itemHandler.side(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
                     }
                     stack.setCount(0);
                 } else if (inserted.getCount() < toInsert.getCount()) {
                     if (!simulate) {
-                        itemHandler.forSide(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
+                        machine.itemHandler.side(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
                     }
                     stack.setCount(stack.getCount() - inserted.getCount());
                 }
+                transferring = false;
                 return true;
             }
         }
