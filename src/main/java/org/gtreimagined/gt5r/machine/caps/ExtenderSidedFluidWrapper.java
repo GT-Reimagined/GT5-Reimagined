@@ -12,11 +12,11 @@ import org.gtreimagined.gtlib.capability.fluid.FluidHandlerSidedWrapper;
 import org.gtreimagined.gtlib.capability.fluid.IFluidNode;
 import org.jetbrains.annotations.NotNull;
 
-public class ExtenderSidedWrapper extends FluidHandlerSidedWrapper {
+public class ExtenderSidedFluidWrapper extends FluidHandlerSidedWrapper {
 
     BlockEntityMachine<?> blockEntity;
 
-    public ExtenderSidedWrapper(BlockEntityMachine<?> entity, IFluidNode fluidHandler, CoverHandler<?> coverHandler, Direction side) {
+    public ExtenderSidedFluidWrapper(BlockEntityMachine<?> entity, IFluidNode fluidHandler, CoverHandler<?> coverHandler, Direction side) {
         super(fluidHandler, coverHandler, side);
         this.blockEntity = entity;
     }

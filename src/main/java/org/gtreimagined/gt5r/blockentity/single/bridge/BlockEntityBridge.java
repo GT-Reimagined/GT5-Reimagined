@@ -36,7 +36,7 @@ public abstract class BlockEntityBridge extends BlockEntityMachine<BlockEntityBr
     @Override
     public @NotNull <U> LazyOptional<U> getCapability(@NotNull Capability<U> cap, @Nullable Direction side) {
         if (side != null && canBridgeCapability(cap)) {
-            BlockEntity neighbor = getCachedBlockEntity(side);
+            BlockEntity neighbor = getCachedBlockEntity(side.getOpposite());
             if (isNotExtendingBlockEntity(neighbor)) {
                 if (neighbor != null) {
                     return neighbor.getCapability(cap, side);

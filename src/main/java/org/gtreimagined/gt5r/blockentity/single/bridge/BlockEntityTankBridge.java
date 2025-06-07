@@ -8,7 +8,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import org.gtreimagined.gt5r.machine.caps.BridgeSidedWrapper;
+import org.gtreimagined.gt5r.machine.caps.BridgeSidedFluidWrapper;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
 
@@ -18,7 +18,7 @@ public class BlockEntityTankBridge extends BlockEntityBridge{
         this.fluidHandler.set(() -> new MachineFluidHandler<>(this){
             @Override
             public LazyOptional<IFluidHandler> forSide(Direction side) {
-                return LazyOptional.of(() -> new BridgeSidedWrapper(this.tile, this, this.tile.coverHandler.orElse(null), side));
+                return LazyOptional.of(() -> new BridgeSidedFluidWrapper(this.tile, this, this.tile.coverHandler.orElse(null), side));
             }
         });
     }

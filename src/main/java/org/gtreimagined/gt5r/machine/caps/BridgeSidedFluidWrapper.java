@@ -9,14 +9,14 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.CoverHandler;
 import org.gtreimagined.gtlib.capability.fluid.IFluidNode;
 
-public class BridgeSidedWrapper extends ExtenderSidedWrapper{
-    public BridgeSidedWrapper(BlockEntityMachine<?> entity, IFluidNode fluidHandler, CoverHandler<?> coverHandler, Direction side) {
+public class BridgeSidedFluidWrapper extends ExtenderSidedFluidWrapper {
+    public BridgeSidedFluidWrapper(BlockEntityMachine<?> entity, IFluidNode fluidHandler, CoverHandler<?> coverHandler, Direction side) {
         super(entity, fluidHandler, coverHandler, side);
     }
 
     @Override
     LazyOptional<IFluidHandler> getFluidHandler(Direction facing) {
-        BlockEntity entity = blockEntity.getCachedBlockEntity(facing);
+        BlockEntity entity = blockEntity.getCachedBlockEntity(facing.getOpposite());
         return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing);
     }
 }

@@ -7,8 +7,11 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
-import org.gtreimagined.gt5r.machine.caps.ExtenderSidedWrapper;
+import net.minecraftforge.items.IItemHandler;
+import org.gtreimagined.gt5r.machine.caps.ExtenderSidedFluidWrapper;
+import org.gtreimagined.gt5r.machine.caps.ExtenderSidedItemWrapper;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
+import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
 
 public class BlockEntityInventoryTankExtender extends BlockEntityExtender {
@@ -17,13 +20,19 @@ public class BlockEntityInventoryTankExtender extends BlockEntityExtender {
         this.fluidHandler.set(() -> new MachineFluidHandler<>(this){
             @Override
             public LazyOptional<IFluidHandler> forSide(Direction side) {
-               return LazyOptional.of(() -> new ExtenderSidedWrapper(this.tile, this, this.tile.coverHandler.orElse(null), side));
+               return LazyOptional.of(() -> new ExtenderSidedFluidWrapper(this.tile, this, this.tile.coverHandler.orElse(null), side));
+            }
+        });
+        this.itemHandler.set(() -> new MachineItemHandler<>(this){
+            @Override
+            public LazyOptional<IItemHandler> forSide(Direction side) {
+                return LazyOptional.of(() -> new ExtenderSidedItemWrapper(tile, side, tile.coverHandler.map(c -> c).orElse(null), this::allowsInput, this::allowsOutput));
             }
         });
     }
 
     @Override
     protected <U> boolean canExtendCapability(Capability<U> capability) {
-        return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
+        return false;
     }
 }
