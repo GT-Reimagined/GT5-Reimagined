@@ -7,7 +7,7 @@ import net.dries007.tfc.common.TFCTags;
 import net.minecraft.world.level.block.Block;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE_SMALL;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.SMALL_ORE;
 import static org.gtreimagined.gtlib.data.VanillaStoneTypes.BEDROCK;
 
 public class TFCBlockTagProvider extends GTBlockTagProvider {
@@ -21,7 +21,7 @@ public class TFCBlockTagProvider extends GTBlockTagProvider {
         ORE.all().forEach(m -> {
             GTAPI.all(StoneType.class).stream().filter(s -> s.doesGenerateOre() && s != BEDROCK).forEach(s -> {
                 Block ore = ORE.get().get(m, s).asBlock();
-                Block smallOre = ORE_SMALL.get().get(m, s).asBlock();
+                Block smallOre = SMALL_ORE.get().get(m, s).asBlock();
                 this.tag(TFCTags.Blocks.CAN_COLLAPSE).add(ore, smallOre);
                 this.tag(TFCTags.Blocks.CAN_TRIGGER_COLLAPSE).add(ore, smallOre);
                 this.tag(TFCTags.Blocks.MONSTER_SPAWNS_ON).add(ore, smallOre);

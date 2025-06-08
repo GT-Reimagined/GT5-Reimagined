@@ -10,11 +10,11 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.PACKAGER;
 public class PackagerLoader {
     public static void init() {
         for (Material material : GTMaterialTypes.DUST.all()) {
-            if (material.has(GTMaterialTypes.DUST_TINY)) {
-                PACKAGER.RB().ii(GTMaterialTypes.DUST_TINY.getIngredient(material, 9)).io(GTMaterialTypes.DUST.get(material).getDefaultInstance()).add("dust_" + material.getId() + "_from_tiny",100, 2);
+            if (material.has(GTMaterialTypes.TINY_DUST)) {
+                PACKAGER.RB().ii(GTMaterialTypes.TINY_DUST.getIngredient(material, 9)).io(GTMaterialTypes.DUST.get(material).getDefaultInstance()).add("dust_" + material.getId() + "_from_tiny",100, 2);
             }
-            if (material.has(GTMaterialTypes.DUST_SMALL)) {
-                PACKAGER.RB().ii(GTMaterialTypes.DUST_SMALL.getIngredient(material, 4)).io(GTMaterialTypes.DUST.get(material).getDefaultInstance()).add("dust_" + material.getId() + "_from_small",100, 2);
+            if (material.has(GTMaterialTypes.SMALL_DUST)) {
+                PACKAGER.RB().ii(GTMaterialTypes.SMALL_DUST.getIngredient(material, 4)).io(GTMaterialTypes.DUST.get(material).getDefaultInstance()).add("dust_" + material.getId() + "_from_small",100, 2);
             }
         }
         for (Material material : INGOT.all()){

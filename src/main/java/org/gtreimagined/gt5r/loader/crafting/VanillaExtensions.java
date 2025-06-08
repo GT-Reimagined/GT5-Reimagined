@@ -44,9 +44,9 @@ public class VanillaExtensions {
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", ROD.get(Neodymium),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_coal", "torches", new ItemStack(Items.TORCH, 4),
-                of('C', Ingredient.of(RAW_ORE.get(Coal), DUST.get(Coal), DUST_IMPURE.get(Coal), DUST_PURE.get(Coal), CRUSHED.get(Coal),CRUSHED_PURIFIED.get(Coal), CRUSHED_REFINED.get(Coal)), 'S', Items.STICK), "C", "S");
+                of('C', Ingredient.of(RAW_ORE.get(Coal), DUST.get(Coal), IMPURE_DUST.get(Coal), PURE_DUST.get(Coal), CRUSHED_ORE.get(Coal), PURIFIED_ORE.get(Coal), REFINED_ORE.get(Coal)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_lignite", "torches", new ItemStack(Items.TORCH, 2),
-                of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), DUST_IMPURE.get(Lignite), DUST_PURE.get(Lignite), CRUSHED.get(Lignite),CRUSHED_PURIFIED.get(Lignite), CRUSHED_REFINED.get(Lignite)), 'S', Items.STICK), "C", "S");
+                of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), IMPURE_DUST.get(Lignite), PURE_DUST.get(Lignite), CRUSHED_ORE.get(Lignite), PURIFIED_ORE.get(Lignite), REFINED_ORE.get(Lignite)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_creosote", "torches", new ItemStack(Items.TORCH, 6),
                 of('W', ItemTags.WOOL, 'C', Creosote.getLiquid().getBucket(), 'S', Items.STICK), "C", "W", "S");
         provider.shapeless(consumer, GT5Reimagined.ID, "green_dye_from_malachite", "dyes", Items.GREEN_DYE.getDefaultInstance(), DUST.getMaterialTag(Malachite));

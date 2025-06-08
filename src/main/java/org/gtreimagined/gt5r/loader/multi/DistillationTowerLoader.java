@@ -10,11 +10,11 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_SMALL;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.SMALL_DUST;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_TINY;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 
 public class DistillationTowerLoader {
 
@@ -32,7 +32,7 @@ public class DistillationTowerLoader {
         addDistillingRecipe(Creosote, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(FishOil, 24, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
-        addDistillingRecipe(Water, 100, 16, 64, DUST_TINY.get(Calcite, 1), new FluidProduct(DistilledWater,80));
+        addDistillingRecipe(Water, 100, 16, 64, TINY_DUST.get(Calcite, 1), new FluidProduct(DistilledWater,80));
         DISTILLERY.RB()
                 .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
                 .fi(new FluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100))
@@ -44,7 +44,7 @@ public class DistillationTowerLoader {
         addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
                 new FluidProduct(HydrochloricAcid, 1000),
                 new FluidProduct(Water, 1000));
-        addDistillationDistillingRecipe(Biomass, 80, 16, 64, 24, 16, DUST_SMALL.get(Wood, 1),
+        addDistillationDistillingRecipe(Biomass, 80, 16, 64, 24, 16, SMALL_DUST.get(Wood, 1),
                 new FluidProduct(Ethanol, 20),
                 new FluidProduct(Glycerol, 20),
                 new FluidProduct(Methane, 4),
@@ -69,10 +69,10 @@ public class DistillationTowerLoader {
     }
 
     private static void initCracked(){
-        addDistillationRecipe(SteamCrackedButane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
+        addDistillationRecipe(SteamCrackedButane, 1000, 120, 120, SMALL_DUST.get(Carbon, 1),
                 new FluidProduct(Butadiene,500), new FluidProduct(Propene,1000),
                 new FluidProduct(Ethylene,1000),new FluidProduct(Methane,500));
-        addDistillationRecipe(SteamCrackedNaphtha, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
+        addDistillationRecipe(SteamCrackedNaphtha, 1000, 120, 120, SMALL_DUST.get(Carbon, 1),
                 new FluidProduct(Toluene,200),new FluidProduct(Benzene,400),
                 new FluidProduct(Butadiene,400),new FluidProduct(Propene,600),
                 new FluidProduct(Ethylene,600), new FluidProduct(Methane,600));
@@ -80,9 +80,9 @@ public class DistillationTowerLoader {
                 new FluidProduct(Butadiene,60),new FluidProduct(Propene,70),
                 new FluidProduct(Ethylene,100), new FluidProduct(Methane,750),
                 new FluidProduct(Helium, 20));*/
-        addDistillationRecipe(SteamCrackedEthane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
+        addDistillationRecipe(SteamCrackedEthane, 1000, 120, 120, SMALL_DUST.get(Carbon, 1),
                 new FluidProduct(Ethylene,1000), new FluidProduct(Methane,500));
-        addDistillationRecipe(SteamCrackedPropane, 1000, 120, 120, DUST_SMALL.get(Carbon, 1),
+        addDistillationRecipe(SteamCrackedPropane, 1000, 120, 120, SMALL_DUST.get(Carbon, 1),
                 new FluidProduct(Propene,500), new FluidProduct(Ethylene,1000),
                 new FluidProduct(Methane,500));
         addDistillationRecipe(HydroCrackedEthane, 1000, 120, 120, new FluidProduct(Methane,2000));
@@ -126,7 +126,7 @@ public class DistillationTowerLoader {
     }
 
     private static void initComplicated(){
-        addDistillationDistillingRecipe(CharcoalByproducts, 1000, 40, 256, 64, 80, DUST_SMALL.get(Charcoal,1),
+        addDistillationDistillingRecipe(CharcoalByproducts, 1000, 40, 256, 64, 80, SMALL_DUST.get(Charcoal,1),
                 new FluidProduct(WoodTar, 250),
                 new FluidProduct(WoodVinegar, 500),
                 new FluidProduct(WoodGas, 250));

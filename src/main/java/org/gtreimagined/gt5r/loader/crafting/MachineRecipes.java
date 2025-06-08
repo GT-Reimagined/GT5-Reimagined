@@ -21,7 +21,6 @@ import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.data.TierMaps;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
-import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtcore.machine.BarrelMachine;
 import org.gtreimagined.gtcore.machine.ChestMachine;
 import org.gtreimagined.gtcore.machine.LockerMachine;
@@ -696,13 +695,13 @@ public class MachineRecipes {
                         'G', GEAR.getMaterialTag(StainlessSteel),
                         'R', ROTOR.getMaterialTag(StainlessSteel),
                         'S', SPRING.getMaterialTag(StainlessSteel)), "FRP", "cCG", "PSF");
-        provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', ROD_LONG.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
-        provider.addItemRecipe(output, "mini_portals", MINIATURE_END_PORTAL.getItem(NONE), of('R', ROD_LONG.get(Endstone), 'G', Items.GHAST_TEAR, 'E', Items.ENDER_EYE), "ERE", "RGR", "ERE");
+        provider.addItemRecipe(output, "mini_portals", MINIATURE_NETHER_PORTAL.getItem(NONE), of('O', LONG_ROD.get(Obsidian), 'S', SAW.getTag()), "OOO", "OSO", "OOO");
+        provider.addItemRecipe(output, "mini_portals", MINIATURE_END_PORTAL.getItem(NONE), of('R', LONG_ROD.get(Endstone), 'G', Items.GHAST_TEAR, 'E', Items.ENDER_EYE), "ERE", "RGR", "ERE");
         if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)){
             provider.addItemRecipe(output, "mini_portals", MINIATURE_TWILIGHT_PORTAL.getItem(NONE), of('R', Items.GRASS_BLOCK, 'G', Items.WATER_BUCKET, 'E', ItemTags.SMALL_FLOWERS), "ERE", "RGR", "ERE");
         }
         if (MINIATURE_JAMD_PORTAL != null) {
-            provider.addItemRecipe(output, "mini_portals", MINIATURE_JAMD_PORTAL.getItem(NONE), of('R', ROD_LONG.getMaterialTag(Obsidian), 'S',SAW.getTag(), 'B', Items.STONE_BRICKS), "BRB", "RSR", "BRB");
+            provider.addItemRecipe(output, "mini_portals", MINIATURE_JAMD_PORTAL.getItem(NONE), of('R', LONG_ROD.getMaterialTag(Obsidian), 'S',SAW.getTag(), 'B', Items.STONE_BRICKS), "BRB", "RSR", "BRB");
         }
 
         var circuit = GT5RConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
@@ -817,11 +816,11 @@ public class MachineRecipes {
                         of('P', PLATE.getMaterialTag(m.getMaterial()), 'S', SAW.getTag(), 'H', HAMMER.getTag(), 'W', block.asItem()), "PPP", "HWS", "PPP");
             }
         });
-        provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', ROD_LONG.getMaterialTag(Lead), 'W', ItemTags.PLANKS, 's', SAW.getTag()), "SCs", "WRW", "WRW");
+        provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(Lead), 'W', ItemTags.PLANKS, 's', SAW.getTag()), "SCs", "WRW", "WRW");
         provider.addItemRecipe(output, "plastic_storage_box", GTCoreBlocks.PLASTIC_STORAGE_BOX.getItem(NONE),
                 of('S', SCREW.getMaterialTag(Plastic), 'C', Tags.Items.CHESTS_WOODEN, 'P', PLATE.getMaterialTag(Plastic)), "SPS", "PCP", "SPS");
         if (GTCoreBlocks.IRONWOOD_ITEM_BARREL != null) {
-            provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.IRONWOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', ROD_LONG.getMaterialTag(Iron), 'W', PLATE.getMaterialTag(Ironwood), 's', SAW.getTag()), "SCs", "WRW", "WRW");
+            provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.IRONWOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(Iron), 'W', PLATE.getMaterialTag(Ironwood), 's', SAW.getTag()), "SCs", "WRW", "WRW");
         }
     }
 
@@ -908,7 +907,7 @@ public class MachineRecipes {
                         .put('I', GT5RCovers.COVER_CONVEYOR.getItem(EV))
                         .put('H', GT5RBlocks.TITANIUM_CASING)
                         .put('G', GEAR.getMaterialTag(Titanium))
-                        .put('D', DRILLBIT.getMaterialTag(TungstenSteel)).build(), "cIc", "CHC", "GDG"));
+                        .put('D', DRILL_BIT.getMaterialTag(TungstenSteel)).build(), "cIc", "CHC", "GDG"));
         add(BLAST_FURNACE, LV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', CABLE_GETTER.apply(PipeSize.VTINY, LV, true))
@@ -965,13 +964,13 @@ public class MachineRecipes {
         add(LARGE_AUTOCLAVE, HV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('W', GT5RBlocks.STAINLESS_STEEL_CASING)
-                        .put('D', PLATE_DENSE.getMaterialTag(StainlessSteel))
+                        .put('D', DENSE_PLATE.getMaterialTag(StainlessSteel))
                         .put('C', TIER_CIRCUITS.apply(IV))
                         .put('c', TIER_CIRCUITS.apply(EV)).build(), "cCc", "DWD", "DDD"));
         add(LARGE_BATHING_VAT, NONE, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('W', GT5RBlocks.STAINLESS_STEEL_WALL)
-                        .put('D', PLATE_DENSE.getMaterialTag(StainlessSteel))
+                        .put('D', DENSE_PLATE.getMaterialTag(StainlessSteel))
                         .put('R', GT5RCovers.COVER_ROBOT_ARM.getItem(MV))
                         .put('C', TIER_CIRCUITS.apply(IV))
                         .put('c', TIER_CIRCUITS.apply(EV)).build(), "cCc", "DWD", "RDR"));

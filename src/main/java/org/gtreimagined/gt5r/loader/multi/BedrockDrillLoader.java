@@ -57,7 +57,7 @@ public class BedrockDrillLoader {
         RecipeBuilder rb = BEDROCK_DRILL.RB();
         List<Integer> chances = new ArrayList<>();
         chances.add(9687);
-        rb.ii(RecipeIngredient.of(1, ORE.getMaterialTag(main, VanillaStoneTypes.BEDROCK), ORE_SMALL.getMaterialTag(main, VanillaStoneTypes.BEDROCK))).fi(Materials.Lubricant.getLiquid(100)).io(RAW_ORE.get(main));
+        rb.ii(RecipeIngredient.of(1, ORE.getMaterialTag(main, VanillaStoneTypes.BEDROCK), SMALL_ORE.getMaterialTag(main, VanillaStoneTypes.BEDROCK))).fi(Materials.Lubricant.getLiquid(100)).io(RAW_ORE.get(main));
         for (Material m : byproduct){
             if (m.has(RAW_ORE)) {
                 rb.io(RAW_ORE.get(m));

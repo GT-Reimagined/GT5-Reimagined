@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
@@ -52,7 +51,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Neon).asGas().fluidDensity(-111);
         event.setMaterial(Materials.Sodium).asDust(370, MOLTEN).asFluid();
         event.setMaterial(Materials.Magnesium).asMetal(1383);
-        event.setMaterial(Materials.Aluminium).asMetal(933, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, FOIL, HAS_CUSTOM_SMELTING);
+        event.setMaterial(Materials.Aluminium).asMetal(933, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, SMALL_GEAR, FOIL, HAS_CUSTOM_SMELTING);
         event.setMaterial(Materials.Silicon).asMetal(1687, PLATE, FOIL, GT5RMaterialTypes.BOULE);
         event.setMaterial(Materials.Phosphor).asDust(933);
         event.setMaterial(Materials.Sulfur).asDust(388, MOLTEN).asOre().harvestLevel(2).asFluid();
@@ -61,12 +60,12 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Potassium).asSolid(337, MOLTEN);
         event.setMaterial(Materials.Calcium).asDust(1115);
         //Scandium, not added
-        event.setMaterial(Materials.Titanium).asMetal(1941, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, GEAR_SMALL, ROTOR, SPRING).forceBF(true);
-        event.setMaterial(Materials.Vanadium).asMetal(2183, INGOT_HOT);
+        event.setMaterial(Materials.Titanium).asMetal(1941, PLATE, LONG_ROD, SCREW, BOLT, RING, GEAR, FRAME, SMALL_GEAR, ROTOR, SPRING).forceBF(true);
+        event.setMaterial(Materials.Vanadium).asMetal(2183, HOT_INGOT);
         event.setMaterial(Materials.Chromium).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE).forceBF(false);
         event.setMaterial(Materials.Manganese).asMetal(1519, FOIL).asOre();
         //Iron, added by vanilla
-        event.setMaterial(Materials.Cobalt).asMetal(1768, CRUSHED);
+        event.setMaterial(Materials.Cobalt).asMetal(1768, CRUSHED_ORE);
         event.setMaterial(Materials.Nickel).asMetal(1728, PLATE).asOre();
         //Copper, by vanilla
         event.setMaterial(Materials.Zinc).asMetal(692, PLATE, FOIL).asOre();
@@ -88,7 +87,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Silver).asMetal(1234, PLATE, SCREW).asOre().harvestLevel(2);
         event.setMaterial(Materials.Cadmium).asDust(594);
         event.setMaterial(Materials.Indium).asSolid(430, MOLTEN);
-        event.setMaterial(Materials.Tin).asOre().asMetal(505, PLATE, ROD, SCREW, BOLT, RING, FOIL, WIRE_FINE, FRAME, ROTOR).harvestLevel(1);
+        event.setMaterial(Materials.Tin).asOre().asMetal(505, PLATE, ROD, SCREW, BOLT, RING, FOIL, FINE_WIRE, FRAME, ROTOR).harvestLevel(1);
         event.setMaterial(Materials.Antimony).asMetal(1449, PLATE);
         //Tellurium
         event.setMaterial(Materials.Iodine).asDust(387);
@@ -98,7 +97,7 @@ public class GT5RMaterialEvents {
         //Lanthanum
         event.setMaterial(Materials.Cerium).asDust();
         //Praseodymium
-        event.setMaterial(Materials.Neodymium).asOre().asMetal(1297, PLATE, ROD_LONG).harvestLevel(2); // TODO: Bastnasite or Monazite for Ore For;
+        event.setMaterial(Materials.Neodymium).asOre().asMetal(1297, PLATE, LONG_ROD).harvestLevel(2); // TODO: Bastnasite or Monazite for Ore For;
         //Promethium
         //Samarium
         event.setMaterial(Materials.Europium).asMetal(1099, PLATE);
@@ -110,11 +109,11 @@ public class GT5RMaterialEvents {
         //event.setMaterial(Rhenium).asMetal(3459,3459);
         event.setMaterial(Materials.Osmium).asOre().asMetal(3306, SCREW, BOLT, RING, PLATE);
         event.setMaterial(Materials.Iridium).asMetal(2719, FRAME, PLATE, GT5RMaterialTypes.CHAMBER).asOre();
-        event.setMaterial(Materials.Platinum).asMetal(2041, 0, PLATE, FOIL, WIRE_FINE, FRAME).asOre();
+        event.setMaterial(Materials.Platinum).asMetal(2041, 0, PLATE, FOIL, FINE_WIRE, FRAME).asOre();
         //Gold, added by vanilla
         event.setMaterial(Materials.Mercury).asFluid();
         // thalium
-        event.setMaterial(Materials.Lead).asOre().asMetal(600, PLATE, PLATE_DENSE, ROD_LONG, FRAME, BOLT, RING).harvestLevel(1);
+        event.setMaterial(Materials.Lead).asOre().asMetal(600, PLATE, DENSE_PLATE, LONG_ROD, FRAME, BOLT, RING).harvestLevel(1);
         event.setMaterial(Materials.Bismuth).asOre(PLATE).asMetal(544);
         //polonium
         //event.setMaterial(Astatine).asMetal(575, 0);
@@ -122,12 +121,12 @@ public class GT5RMaterialEvents {
         //event.setMaterial(Francium).asMetal(298, 0);
         //event.setMaterial(Radium).asMetal(973, 0);
         //event.setMaterial(Actinium).asMetal(1323, 0);
-        event.setMaterial(Materials.Thorium).asOre().asMetal(2115, 0, PLATE_DENSE);
+        event.setMaterial(Materials.Thorium).asOre().asMetal(2115, 0, DENSE_PLATE);
         //protactinium
         event.setMaterial(Materials.Uranium).asMetal(1405).harvestLevel(2);
         //event.setMaterial(Neptunium).asMetal(912, 0);
         event.setMaterial(Materials.Plutonium).asMetal(912);
-        event.setMaterial(Materials.Americium).asMetal(1149, ROD_LONG);
+        event.setMaterial(Materials.Americium).asMetal(1149, LONG_ROD);
         //Elements 96 - 118 not added
 
         event.setMaterial(Tritanium).asMetal(2000);
@@ -145,56 +144,56 @@ public class GT5RMaterialEvents {
         /**
          **  Metals
          **/
-        event.setMaterial(Materials.AnnealedCopper).asMetal(1357, PLATE, FOIL, ROD_LONG, WIRE_FINE, SCREW).remove(DUST, DUST_SMALL, DUST_TINY);
+        event.setMaterial(Materials.AnnealedCopper).asMetal(1357, PLATE, FOIL, LONG_ROD, FINE_WIRE, SCREW).remove(DUST, SMALL_DUST, TINY_DUST);
         event.setMaterial(Materials.BatteryAlloy).asMetal(295, PLATE, ALLOY);
         event.setMaterial(Materials.BismuthBronze).asMetal(1100, PLATE, ALLOY);
         event.setMaterial(Materials.BlackBronze).asMetal(2000, FRAME, ALLOY);
         event.setMaterial(Materials.BlackSteel).asMetal(1200, FRAME, PLATE).forceBF(false);
         event.setMaterial(Materials.BlueSteel).asMetal(1400, FRAME).forceBF(false);
-        event.setMaterial(Materials.Brass).asMetal(1170, FRAME, ROD, PLATE, GEAR_SMALL, ALLOY);
+        event.setMaterial(Materials.Brass).asMetal(1170, FRAME, ROD, PLATE, SMALL_GEAR, ALLOY);
         event.setMaterial(Materials.Bronze).asMetal(1125, GEAR, FRAME, ROTOR, ALLOY);
         event.setMaterial(Materials.CdInAGAlloy).asMetal(752, ROD, ALLOY);
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
         event.setMaterial(DamascusSteel).asMetal(2000, 1500, PLATE).forceBF(false);
-        event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, WIRE_FINE, ALLOY);
+        event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.GalliumArsenide).asMetal(295, 1200, PLATE, ALLOY);
         event.setMaterial(Materials.HSSE).asMetal(5400, FRAME);
         event.setMaterial(Materials.HSSG).asMetal(4500, FRAME);
         event.setMaterial(Materials.HSSS).asMetal(5400);
         event.setMaterial(Materials.Invar).asMetal(1700, FRAME, RING, ALLOY);
-        event.setMaterial(Materials.IronMagnetic).asMetal(1811, ROD_LONG);
+        event.setMaterial(Materials.IronMagnetic).asMetal(1811, LONG_ROD);
         event.setMaterial(Materials.Kanthal).asMetal(1800).forceBF(true);
         event.setMaterial(GTCoreMaterials.LeadedRedstone).asMetal(600, ALLOY);
-        event.setMaterial(Materials.Magnalium).asMetal(870, PLATE, ROD_LONG, ALLOY);
-        event.setMaterial(Materials.NeodymiumMagnetic).asMetal(1297, ROD_LONG);
+        event.setMaterial(Materials.Magnalium).asMetal(870, PLATE, LONG_ROD, ALLOY);
+        event.setMaterial(Materials.NeodymiumMagnetic).asMetal(1297, LONG_ROD);
         event.setMaterial(Materials.NaquadahAlloy).asMetal(7200);
         event.setMaterial(Materials.Nichrome).asMetal(2700);
         event.setMaterial(Materials.NickelZincFerrite).asMetal(1500);
-        event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD, WIRE_FINE);
+        event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD, FINE_WIRE);
         event.setMaterial(Materials.Osmiridium).asMetal(3333, 2500, FRAME);
-        event.setMaterial(Materials.RedAlloy).asMetal(295, PLATE, FOIL, ROD, WIRE_FINE, ALLOY);
+        event.setMaterial(Materials.RedAlloy).asMetal(295, PLATE, FOIL, ROD, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.RedSteel).asMetal(1300, 1300).forceBF(false);
-        event.setMaterial(Materials.RoseGold).asMetal(1600, WIRE_FINE, ALLOY);
+        event.setMaterial(Materials.RoseGold).asMetal(1600, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.SolderingAlloy).asMetal(400, PLATE, ROD, ALLOY);
-        event.setMaterial(Materials.Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, WIRE_FINE).forceBF(false);
-        event.setMaterial(Materials.SteelMagnetic).asMetal(1000, ROD_LONG).forceBF(false);
+        event.setMaterial(Materials.Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, SMALL_GEAR, ITEM_CASING, FINE_WIRE).forceBF(false);
+        event.setMaterial(Materials.SteelMagnetic).asMetal(1000, LONG_ROD).forceBF(false);
         event.setMaterial(Materials.SterlingSilver).asMetal(1700, ALLOY);
-        event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, PLATE_DENSE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL, ITEM_CASING, SPRING).forceBF(false);
+        event.setMaterial(Materials.StainlessSteel).asMetal(1700, PLATE, DENSE_PLATE, LONG_ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, SMALL_GEAR, ITEM_CASING, SPRING).forceBF(false);
         event.setMaterial(Materials.TinAlloy).asMetal(1158, ALLOY, PLATE);
         event.setMaterial(TitaniumGold).asMetal(1790).forceBF(false);
         event.setMaterial(Trinitanium).asMetal(2410);
         event.setMaterial(Materials.TritaniumAlloy).asMetal(1800, FRAME, MOLTEN).forceBF(false);
         event.setMaterial(Materials.TungstenCarbide).asMetal(2460);
-        event.setMaterial(Materials.TungstenSteel).asMetal(3000, PLATE, ROD_LONG, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, GEAR_SMALL);
+        event.setMaterial(Materials.TungstenSteel).asMetal(3000, PLATE, LONG_ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, SMALL_GEAR);
         event.setMaterial(Materials.Ultimet).asMetal(2700, PLATE);
         event.setMaterial(Materials.VanadiumGallium).asMetal(4500, ROD, PLATE);
         event.setMaterial(Materials.VanadiumSteel).asMetal(1453).forceBF(false);
-        event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, ROD_LONG, SCREW, BOLT, RING, FRAME).remove(DUST, DUST_SMALL, DUST_TINY);
-        event.setMaterial(Materials.YttriumBariumCuprate).asMetal(4500, PLATE, FOIL, ROD, WIRE_FINE, ALLOY);
+        event.setMaterial(Materials.WroughtIron).asMetal(1811, PLATE, LONG_ROD, SCREW, BOLT, RING, FRAME).remove(DUST, SMALL_DUST, TINY_DUST);
+        event.setMaterial(Materials.YttriumBariumCuprate).asMetal(4500, PLATE, FOIL, ROD, FINE_WIRE, ALLOY);
 
         event.setMaterial(Lumium).flags(PLATE);
-        event.setMaterial(Signalum).flags(WIRE_FINE);
+        event.setMaterial(Signalum).flags(FINE_WIRE);
         event.setMaterial(Enderium).asMetal(1071).forceBF(false);
         /**
          **  Dusts
@@ -210,7 +209,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Dibenzene).asDust();
         event.setMaterial(Materials.DibenzoylPeroxide).asDust();
         event.setMaterial(Materials.GelledToluene).asDust();
-        event.setMaterial(Materials.Graphene).asDust(PLATE, WIRE_FINE);
+        event.setMaterial(Materials.Graphene).asDust(PLATE, FINE_WIRE);
         event.setMaterial(Materials.Polydimethylsiloxane).asDust();
         event.setMaterial(Materials.RareEarth).asDust();
         event.setMaterial(Materials.RawRubber).asDust(RUBBERTOOLS);
@@ -254,7 +253,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.MagnesiumChloride).asDust();
         event.setMaterial(Materials.Marble).asDust(ROCK);
         event.setMaterial(Materials.Massicot).asDust();
-        event.setMaterial(Materials.Obsidian).asDust(ROD_LONG, PLATE);
+        event.setMaterial(Materials.Obsidian).asDust(LONG_ROD, PLATE);
         event.setMaterial(Materials.PlatinumGroupSludge).asDust();
         event.setMaterial(Materials.PhosphorousPentoxide).asDust();
         event.setMaterial(Materials.PotassiumBisulfate).asDust();
@@ -337,11 +336,11 @@ public class GT5RMaterialEvents {
         /**
          **  Ore Stones
          **/
-        event.setMaterial(Materials.Bauxite).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
-        event.setMaterial(Materials.Lignite).asGemBasic(false).asOreStone(0, 2, ORE_SMALL, ROCK);
-        event.setMaterial(Materials.OilShale).asDust(ORE, ORE_STONE, ORE_SMALL, RAW_ORE, RAW_ORE_BLOCK, BEARING_ROCK, ROCK).setExpRange(1,5).harvestLevel(1);
-        event.setMaterial(Materials.Sylvite).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
-        event.setMaterial(Materials.Salt).asOreStone(ORE_SMALL, ROCK).harvestLevel(1);
+        event.setMaterial(Materials.Bauxite).asOreStone(SMALL_ORE, ROCK).harvestLevel(1);
+        event.setMaterial(Materials.Lignite).asGemBasic(false).asOreStone(0, 2, SMALL_ORE, ROCK);
+        event.setMaterial(Materials.OilShale).asDust(ORE, ORE_STONE, SMALL_ORE, RAW_ORE, RAW_ORE_BLOCK, BEARING_ROCK, ROCK).setExpRange(1,5).harvestLevel(1);
+        event.setMaterial(Materials.Sylvite).asOreStone(SMALL_ORE, ROCK).harvestLevel(1);
+        event.setMaterial(Materials.Salt).asOreStone(SMALL_ORE, ROCK).harvestLevel(1);
         event.setMaterial(IodineSalt).asDust();
         /**
          **  Gems
@@ -350,7 +349,7 @@ public class GT5RMaterialEvents {
          *  Regular
          **/
         event.setMaterial(Materials.Amber).asGem(false).asOre(3, 7, true);
-        event.setMaterial(Materials.Amethyst).asGem(false).replaceItem(GEM_FLAWED, Items.AMETHYST_SHARD).asOre(3, 7, true);
+        event.setMaterial(Materials.Amethyst).asGem(false).replaceItem(FLAWED_GEM, Items.AMETHYST_SHARD).asOre(3, 7, true);
         event.setMaterial(Materials.Sapphire).asGem(true, GT5RMaterialTypes.BOULE).asOre(3, 7, true);
         event.setMaterial(Materials.BlueTopaz).asGem(true).asOre(3, 7, true);
         event.setMaterial(Materials.Glass).asDust(PLATE, LENS, MOLTEN).asFluid(0, 1500);
@@ -362,7 +361,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Olivine).asGem(false, PLATE).asOre(3, 7, true);
         event.setMaterial(Materials.Opal).asGem(true).asOre(3, 7, true);
         event.setMaterial(Materials.TricalciumPhosphate).asOre(3, 7, true).harvestLevel(2);
-        event.setMaterial(Materials.MilkyQuartz).asGemBasic(false, BEARING_ROCK, ROD_LONG, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
+        event.setMaterial(Materials.MilkyQuartz).asGemBasic(false, BEARING_ROCK, LONG_ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(Materials.RedGarnet).asGem(true).asOre(3, 7, true);
         event.setMaterial(Materials.Ruby).asGem(true, GT5RMaterialTypes.BOULE).asOre(3, 7, true);
         event.setMaterial(Materials.Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1);
@@ -1104,12 +1103,12 @@ public class GT5RMaterialEvents {
         /**
          **  Plastic Related
          **/
-        event.setMaterial(Materials.Rubber).tool().toolDamage(-1).toolSpeed(0.15f).toolDurability(1024).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.EpoxyResin).tool().toolSpeed(2.25f).toolDurability(256).toolQuality(1).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.Rubber).tool().toolDamage(-1).toolSpeed(0.15f).toolDurability(1024).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, LONG_ROD);
+        event.setMaterial(Materials.EpoxyResin).tool().toolSpeed(2.25f).toolDurability(256).toolQuality(1).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, LONG_ROD);
         event.setMaterial(Materials.Plastic).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build();
-        event.setMaterial(Materials.PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.SiliconeRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
-        event.setMaterial(Materials.StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1536).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, ROD_LONG);
+        event.setMaterial(Materials.PolyvinylChloride).tool().toolSpeed(0.3f).toolDurability(2048).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 1)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, LONG_ROD);
+        event.setMaterial(Materials.SiliconeRubber).tool().toolSpeed(0.3f).toolDurability(1024).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, LONG_ROD);
+        event.setMaterial(Materials.StyreneButadieneRubber).tool().toolSpeed(0.3f).toolDurability(1536).toolQuality(1).toolEnchantments(of(Enchantments.KNOCKBACK, 2)).allowedToolTypes(List.of(GTTools.SOFT_HAMMER)).build().remove(SCREW, BOLT, ROD, LONG_ROD);
     }
 
 
@@ -1353,11 +1352,11 @@ public class GT5RMaterialEvents {
         FURNACE_FUELS.add(Materials.Lignite, GEM, 800);
         FURNACE_FUELS.add(Materials.Lignite, DUST, 800);
         FURNACE_FUELS.add(Materials.Lignite, RAW_ORE, 800);
-        FURNACE_FUELS.add(Materials.Lignite, CRUSHED, 900);
-        FURNACE_FUELS.add(Materials.Lignite, CRUSHED_PURIFIED, 1000);
-        FURNACE_FUELS.add(Materials.Lignite, DUST_IMPURE, 800);
-        FURNACE_FUELS.add(Materials.Lignite, DUST_PURE, 800);
-        FURNACE_FUELS.add(Materials.Lignite, CRUSHED_REFINED, 1100);
+        FURNACE_FUELS.add(Materials.Lignite, CRUSHED_ORE, 900);
+        FURNACE_FUELS.add(Materials.Lignite, PURIFIED_ORE, 1000);
+        FURNACE_FUELS.add(Materials.Lignite, IMPURE_DUST, 800);
+        FURNACE_FUELS.add(Materials.Lignite, PURE_DUST, 800);
+        FURNACE_FUELS.add(Materials.Lignite, REFINED_ORE, 1100);
         FURNACE_FUELS.add(Materials.Lignite, BLOCK, 8000);
         FURNACE_FUELS.add(Materials.LigniteCoke, GEM, 1600);
         FURNACE_FUELS.add(Materials.LigniteCoke, DUST, 1600);
@@ -1367,11 +1366,11 @@ public class GT5RMaterialEvents {
         FURNACE_FUELS.add(Materials.PetroleumCoke, BLOCK, 64000);
         FURNACE_FUELS.add(Coal, DUST, 1600);
         FURNACE_FUELS.add(Coal, RAW_ORE, 1600);
-        FURNACE_FUELS.add(Coal, CRUSHED, 1800);
-        FURNACE_FUELS.add(Coal, CRUSHED_PURIFIED, 2000);
-        FURNACE_FUELS.add(Coal, DUST_IMPURE, 1600);
-        FURNACE_FUELS.add(Coal, DUST_PURE, 1600);
-        FURNACE_FUELS.add(Coal, CRUSHED_REFINED, 2200);
+        FURNACE_FUELS.add(Coal, CRUSHED_ORE, 1800);
+        FURNACE_FUELS.add(Coal, PURIFIED_ORE, 2000);
+        FURNACE_FUELS.add(Coal, IMPURE_DUST, 1600);
+        FURNACE_FUELS.add(Coal, PURE_DUST, 1600);
+        FURNACE_FUELS.add(Coal, REFINED_ORE, 2200);
         FURNACE_FUELS.add(Charcoal, DUST, 1600);
         FURNACE_FUELS.add(Charcoal, BLOCK, 16000);
         FURNACE_FUELS.add(Materials.OilShale, DUST, 400);
@@ -1521,15 +1520,15 @@ public class GT5RMaterialEvents {
 
         event.setMaterial(Blaze).mats(of(Materials.Sulfur, 1, Materials.DarkAsh, 1));
         event.setMaterial(Coal).asGemBasic(false).flags(ORE_STONE, ROCK).mats(of(Materials.Carbon, 2));
-        event.setMaterial(Copper).flags(PLATE, ROD_LONG, FOIL, WIRE_FINE, BOLT);
+        event.setMaterial(Copper).flags(PLATE, LONG_ROD, FOIL, FINE_WIRE, BOLT);
         event.setMaterial(Quartz).flags(GT5RMaterialTypes.CHAMBER);
         event.setMaterial(Diamond).asGem(true).mats(of(Materials.Carbon, 64), 1).elecTicks(768).harvestLevel(3);
         event.setMaterial(Emerald).asGem(true).mats(of(Materials.Alumina, 5, Materials.Beryllium, 3, Materials.SiliconDioxide, 18, Materials.Oxygen, 3)).elecTicks(540);
                 //.tool().toolDamage(3).toolSpeed(9).toolDurability(590).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();
-        event.setMaterial(EnderEye).asGemBasic(false, ROD_LONG, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
+        event.setMaterial(EnderEye).asGemBasic(false, LONG_ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
         event.setMaterial(EnderPearl).mats(of(Materials.Beryllium, 1, Materials.Potassium, 4, Materials.Nitrogen, 5, Materials.Chlorine, 6)).elecTicks(220);
-        event.setMaterial(Gold).flags(FOIL, ROD_LONG, WIRE_FINE);
-        event.setMaterial(Iron).flags(RING, ROD_LONG, FRAME, GEAR_SMALL);
+        event.setMaterial(Gold).flags(FOIL, LONG_ROD, FINE_WIRE);
+        event.setMaterial(Iron).flags(RING, LONG_ROD, FRAME, SMALL_GEAR);
         event.setMaterial(Wood).flags(FRAME);
         event.setMaterial(Netherite).asMetal(2246, 1300, RING);
         event.setMaterial(Lapis).asGemBasic(false, PLATE).mats(of(Materials.Lazurite, 12, Materials.Sodalite, 2, Materials.Pyrite, 1, Materials.Calcite, 1));
@@ -1538,7 +1537,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Water).mats(of(Materials.Hydrogen, 2, Materials.Oxygen, 1)).elecTicks(2000);
         event.setMaterial(Sugar).mats(of(Water, 11, Materials.Carbon, 12)).elecTicks(184);
         event.setMaterial(Glowstone).asFluid(0, 1000).flags(MOLTEN);
-        event.setMaterial(Endstone).flags(ROD_LONG);
+        event.setMaterial(Endstone).flags(LONG_ROD);
         event.setMaterial(Flint).mats(of(Materials.SiliconDioxide, 1)).elecTicks(80);
         event.setMaterial(Bedrock).asDust();
     }

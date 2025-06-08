@@ -73,7 +73,7 @@ public class AppliedEnergisticsRegistrar extends GTMod {
         RecipeMaps.FORMING_PRESS.RB().ii(PLATE.getMaterialIngredient(Gold, 1), of(getAe2Item("logic_processor_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_logic_processor"))).add("printed_logic_processor", 200, 16);
         RecipeMaps.FORMING_PRESS.RB().ii(of(TagUtils.getForgelikeItemTag("silicon")), of(getAe2Item("silicon_press"), 1).setNoConsume()).io(new ItemStack(getAe2Item("printed_silicon"))).add("printed_silicon", 200, 16);
         RecipeMaps.CENTRIFUGE.RB().ii(of(getAe2Item("sky_dust")))
-                .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */DUST_SMALL.get(Olivine, 1), DUST_SMALL.get(Obsidian, 1), DUST_SMALL.get(Basalt, 1), DUST_SMALL.get(Flint, 1),DUST_SMALL.get(RareEarth, 1))
+                .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */SMALL_DUST.get(Olivine, 1), SMALL_DUST.get(Obsidian, 1), SMALL_DUST.get(Basalt, 1), SMALL_DUST.get(Flint, 1), SMALL_DUST.get(RareEarth, 1))
                 .outputChances(0.2,0.2,0.2,0.2,0.2)
                 .add("sky_dust", 64, 20);
         RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed", 2000, 24);

@@ -80,7 +80,7 @@ public class MachineRecipes {
 
     private static void addMaceratorRecipe(Ore input, Material material){
         int multiplier = ORE_MULTI.getInt(material);
-        ItemStack crushedStack = GTMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
+        ItemStack crushedStack = GTMaterialTypes.CRUSHED_ORE.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
         if (input.isGraded()){
             RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Grade.POOR).get()).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
@@ -95,7 +95,7 @@ public class MachineRecipes {
 
     private static void addMaceratorRecipe(Material material){
         int multiplier = ORE_MULTI.getInt(material);
-        ItemStack crushedStack = GTMaterialTypes.CRUSHED.get(MACERATE_INTO.getMapping(material), multiplier);
+        ItemStack crushedStack = GTMaterialTypes.CRUSHED_ORE.get(MACERATE_INTO.getMapping(material), multiplier);
         Material oreByProduct1 = !material.getByProducts().isEmpty() ? material.getByProducts().get(0) : MACERATE_INTO.getMapping(material);
         RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "poor_" + material.getId())).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).add("poor_" + material.getId() + "_tfc", 400, 2);
         RecipeMaps.PULVERIZER.RB().ii(GT5Reimagined.get(Item.class, "normal_" + material.getId())).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).add("normal_" + material.getId() + "_tfc", 400, 2);

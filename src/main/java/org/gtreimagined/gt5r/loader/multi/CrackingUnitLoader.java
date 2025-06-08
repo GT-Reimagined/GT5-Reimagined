@@ -1,7 +1,7 @@
 package org.gtreimagined.gt5r.loader.multi;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_TINY;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.CRACKING;
 
@@ -17,7 +17,7 @@ public class CrackingUnitLoader {
         CRACKING.RB().fi(Steam.getGas(1000), Butane.getGas(1000)).fo(SteamCrackedButane.getGas(2000)).add("butane_steam", 20, 120);
         CRACKING.RB().fi(Hydrogen.getGas(1000), Ethane.getGas(1000)).fo(HydroCrackedEthane.getGas(2000)).add("ethane_hydrogen", 20, 120);
         CRACKING.RB().fi(Steam.getGas(1000), Ethane.getGas(1000)).fo(SteamCrackedEthane.getGas(2000)).add("ethane_steam", 20, 120);
-        CRACKING.RB().fi(Steam.getGas(100), Tar.getLiquid(100)).io(DUST.get(Sulfur), DUST_TINY.get(PetroleumCoke), DUST.get(Bitumen)).outputChances(1, 0.8, 0.3).add("tar", 20, 120);
+        CRACKING.RB().fi(Steam.getGas(100), Tar.getLiquid(100)).io(DUST.get(Sulfur), TINY_DUST.get(PetroleumCoke), DUST.get(Bitumen)).outputChances(1, 0.8, 0.3).add("tar", 20, 120);
 
         //moved from chemical reactor
         //CRACKING.RB().fi(Butene.getGas(1000)).ii(INT_CIRCUITS.get(12).setNoConsume()).fo(Ethylene.getGas(1000)).add("ethylene",720, 120);

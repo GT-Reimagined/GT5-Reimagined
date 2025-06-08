@@ -8,7 +8,6 @@ import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RItems;
-import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
@@ -99,13 +98,13 @@ public class MixerLoader {
     }
 
     private static void addDust(Material mat, int eut, int duration) {
-        for (MaterialTypeItem<?> type : new MaterialTypeItem[]{DUST, GTMaterialTypes.DUST_SMALL, GTMaterialTypes.DUST_TINY}) {
+        for (MaterialTypeItem<?> type : new MaterialTypeItem[]{DUST, GTMaterialTypes.SMALL_DUST, GTMaterialTypes.TINY_DUST}) {
             List<Ingredient> ings = mat.getProcessInto().stream().map(t -> type.getMaterialIngredient(t.m, t.s)).collect(Collectors.toList());
             if (ings.size() == 0) return;
             var type2 = type;
             int count = mat.getProcessInto().stream().mapToInt(t -> t.s).sum();
             if (type != DUST){
-                if (type == GTMaterialTypes.DUST_SMALL){
+                if (type == GTMaterialTypes.SMALL_DUST){
                     if (count % 4 == 0){
                         count /=4;
                         type2 = DUST;
@@ -167,8 +166,8 @@ public class MixerLoader {
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Charcoal, 1), of(GT5RItems.SuperFuelBinder, 4)).fi(NitroDiesel.getLiquid(800)).io(GT5RBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_charcoal_nitro", 120, 96);
         MIXER.RB().ii(BLOCK.getMaterialIngredient(Coal, 1), of(GT5RItems.SuperFuelBinder, 2)).fi(NitroDiesel.getLiquid(500)).io(GT5RBlocks.SOLID_SUPER_FUEL.asItem()).add("solid_super_fuel_coal_nitro", 120, 96);
         MIXER.RB().ii(DUST.getMaterialIngredient(Wood, 1)).fi(Glue.getLiquid(25)).io(GT5RItems.WoodPellet).add("wood_pellet", 16, 16);
-        MIXER.RB().ii(DUST_TINY.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 16)).fo(ThoriumSalt.getLiquid(L * 16)).add("thorium_salt_tiny", 128, 64);
-        MIXER.RB().ii(DUST_SMALL.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 36)).fo(ThoriumSalt.getLiquid(L * 36)).add("thorium_salt_small", 288, 64);
+        MIXER.RB().ii(TINY_DUST.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 16)).fo(ThoriumSalt.getLiquid(L * 16)).add("thorium_salt_tiny", 128, 64);
+        MIXER.RB().ii(SMALL_DUST.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 36)).fo(ThoriumSalt.getLiquid(L * 36)).add("thorium_salt_small", 288, 64);
         MIXER.RB().ii(DUST.getMaterialIngredient(Thorium, 1)).fi(LithiumChloride.getLiquid(L * 144)).fo(ThoriumSalt.getLiquid(L * 144)).add("thorium_salt_dust", 1152, 64);
     }
 

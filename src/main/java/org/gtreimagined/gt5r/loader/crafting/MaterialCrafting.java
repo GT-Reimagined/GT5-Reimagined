@@ -9,7 +9,6 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gtcore.data.GTCoreItems;
-import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
@@ -46,7 +45,7 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, GalliumArsenide, ImmutableMap.of(Gallium, 1, Arsenic, 1));
         addShapelessDustRecipe(output, provider, IndiumGalliumPhosphide, ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1));
         addShapelessDustRecipe(output, provider, Signalum, ImmutableMap.of(RedAlloy, 5, Silver, 2, Copper, 1));
-        provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.DUST_SMALL.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.SMALL_DUST.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
         provider.addItemRecipe(output, GT5Reimagined.ID, "copper_ingot", "ingots", GTMaterialTypes.INGOT.get(Copper), ImmutableMap.of('I', GTMaterialTypes.NUGGET.getMaterialTag(Copper)), "III", "III", "III");
         loadAutoRecipes(output, provider);
         loadMixedMetal(output, provider);
@@ -110,7 +109,7 @@ public class MaterialCrafting {
 
     public static void loadAutoRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         DUST.all().forEach(m -> {
-            provider.addStackRecipe(consumer, GT5Reimagined.ID, m.getId() + "_small_dust", "gt_materials", DUST_SMALL.get(m, 4),
+            provider.addStackRecipe(consumer, GT5Reimagined.ID, m.getId() + "_small_dust", "gt_materials", SMALL_DUST.get(m, 4),
                     of('D', DUST.getMaterialTag(m)), " D");
             /*provider.addStackRecipe(consumer, GT5RRef.ID, m.getId() + "_tiny_dust", "gt_materials", "has_wrench", in, DUST_TINY.get(m, 9),
                     of('D', DUST.getMaterialTag(m)), "D ");*/

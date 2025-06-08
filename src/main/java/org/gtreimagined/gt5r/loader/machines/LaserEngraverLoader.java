@@ -26,8 +26,8 @@ public class LaserEngraverLoader {
         RecipeMaps.LASER_ENGRAVER.RB().ii(FOIL.getMaterialIngredient(Electrum, 1), LENS.getMaterialIngredient(RedGarnet, 1).setNoConsume()).io(new ItemStack(GoldEtchedWiring)).add("gold_etched_wiring_4", 64, 120);
         RecipeMaps.LASER_ENGRAVER.RB().ii(FOIL.getMaterialIngredient(Platinum, 1), LENS.getMaterialIngredient(Ruby, 1).setNoConsume()).io(new ItemStack(PlatinumEtchedWiring)).add("platinum_etched_wiring_1", 64, 480);
         RecipeMaps.LASER_ENGRAVER.RB().ii(FOIL.getMaterialIngredient(Platinum, 1), LENS.getMaterialIngredient(RedGarnet, 1).setNoConsume()).io(new ItemStack(PlatinumEtchedWiring)).add("platinum_etched_wiring_2", 64, 480);
-        BOULE.all().stream().filter(m -> m.has(GEM_EXQUISITE)).forEach(m -> {
-            RecipeMaps.LASER_ENGRAVER.RB().ii(BOULE.getMaterialIngredient(m, 1), LENS.getMaterialIngredient(Diamond, 1).setNoConsume()).io(GEM_EXQUISITE.get(m)).add("gem_exquisite_" + m.getId(), 64, 256);
+        BOULE.all().stream().filter(m -> m.has(EXQUISITE_GEM)).forEach(m -> {
+            RecipeMaps.LASER_ENGRAVER.RB().ii(BOULE.getMaterialIngredient(m, 1), LENS.getMaterialIngredient(Diamond, 1).setNoConsume()).io(EXQUISITE_GEM.get(m)).add("gem_exquisite_" + m.getId(), 64, 256);
         });
     }
 }

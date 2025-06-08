@@ -9,11 +9,8 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct.SepMode;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.material.MaterialTags;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 
@@ -33,11 +30,11 @@ public class OreProcessingDisplay implements Display {
         this.input = createInputEntries(List.of(GTMaterialTypes.ORE.getMaterialIngredient(oreByProduct.material(), 1)));
 
         List<EntryStack<ItemStack>> outputs = new ArrayList<>();
-        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED.get(oreByProduct.getMacerateInto(), 1)));
-        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_PURIFIED.get(oreByProduct.getMacerateInto(), 1)));
-        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_REFINED.get(oreByProduct.getMacerateInto(), 1)));
-        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST_IMPURE.get(oreByProduct.getMacerateInto(), 1)));
-        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST_PURE.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, CRUSHED_ORE.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, PURIFIED_ORE.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, REFINED_ORE.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, IMPURE_DUST.get(oreByProduct.getMacerateInto(), 1)));
+        outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, PURE_DUST.get(oreByProduct.getMacerateInto(), 1)));
         outputs.add(EntryStack.of(VanillaEntryTypes.ITEM, DUST.get(oreByProduct.getMacerateInto(), 1)));
         if (!oreByProduct.material().getByProducts().isEmpty()) {
             for (Material byProduct : oreByProduct.material().getByProducts()) {

@@ -50,8 +50,8 @@ public class ElectricToolRecipes {
         provider.addItemRecipe(output, "tools", GTCoreItems.GlassMagnifyingGlass, of('G', LENS.getMaterialTag(Glass), 'S', Tags.Items.RODS_WOODEN), "G", "S");
         provider.addItemRecipe(output, "tools", GTCoreItems.DiamondMagnifyingGlass, of('G', LENS.getMaterialTag(Diamond), 'S', Tags.Items.RODS_WOODEN), "G", "S");
         PLATE.all().forEach(m -> {
-            if (m.has(DRILLBIT)){
-                provider.addItemRecipe(output, "bits", DRILLBIT.get(m),
+            if (m.has(DRILL_BIT)){
+                provider.addItemRecipe(output, "bits", DRILL_BIT.get(m),
                         ImmutableMap.of('P', PLATE.getMaterialTag(m), 'S', PLATE.getMaterialTag(Steel), 'H', HAMMER.getTag()), "PSP", "PSP", "SHS");
             }
             if (m.has(WRENCHBIT)){
@@ -63,8 +63,8 @@ public class ElectricToolRecipes {
                                 's', SCREWDRIVER.getTag()), "HPS", "PRP", "SPs");
             }
 
-            if (m.has(CHAINSAWBIT)){
-                provider.addItemRecipe(output, "bits", CHAINSAWBIT.get(m),
+            if (m.has(CHAINSAW_BIT)){
+                provider.addItemRecipe(output, "bits", CHAINSAW_BIT.get(m),
                         ImmutableMap.of('P', PLATE.getMaterialTag(m),
                                 'R', RING.getMaterialTag(Steel),
                                 'S', PLATE.getMaterialTag(Steel),
@@ -89,39 +89,39 @@ public class ElectricToolRecipes {
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(DRILL.getId() + "-lv"),output, GT5Reimagined.ID, DRILL.getId() + "_lv_" + "recipe", "gt_drills",
                 resolveStack(drill_lv, Material.NULL, Aluminium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(DRILLBIT, "primary"))
+                        .put('W', PropertyIngredient.of(DRILL_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(DRILL.getId() + "-mv"),output, GT5Reimagined.ID, DRILL.getId() + "_mv_" + "recipe", "gt_drills",
                 resolveStack(drill_mv, Material.NULL, StainlessSteel, 0, 200000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(DRILLBIT, "primary"))
+                        .put('W', PropertyIngredient.of(DRILL_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
+                        .put('G', SMALL_GEAR.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(DRILL.getId() + "-hv"),output, GT5Reimagined.ID, DRILL.getId() + "_hv_" + "recipe", "gt_drills",
                 resolveStack(drill_hv, Material.NULL, Titanium, 0, 800000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(DRILLBIT, "primary"))
+                        .put('W', PropertyIngredient.of(DRILL_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_HV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Titanium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(DRILL.getId() + "-lv"),output, GT5Reimagined.ID, DRILL.getId() + "_lv_power_unit_" + "recipe", "gt_drills",
-                resolveStack(drill_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.DRILLBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
+                resolveStack(drill_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.DRILL_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(DRILL.getId() + "-mv"),output, GT5Reimagined.ID, DRILL.getId() + "_mv_power_unit_" + "recipe", "gt_drills",
-                resolveStack(drill_mv, Material.NULL, StainlessSteel, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.DRILLBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_MV).build()), "BS", "P ");
+                resolveStack(drill_mv, Material.NULL, StainlessSteel, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.DRILL_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_MV).build()), "BS", "P ");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(DRILL.getId() + "-hv"),output, GT5Reimagined.ID, DRILL.getId() + "_hv_power_unit_" + "recipe", "gt_drills",
-                resolveStack(drill_hv, Material.NULL, Titanium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.DRILLBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build()), "BS", "P ");
+                resolveStack(drill_hv, Material.NULL, Titanium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.DRILL_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build()), "BS", "P ");
 
 
         IGTTool chainsaw_lv = GTAPI.get(IGTTool.class, "chainsaw_lv", GTCore.ID);
@@ -130,39 +130,39 @@ public class ElectricToolRecipes {
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-lv"),output, GT5Reimagined.ID, CHAINSAW.getId() + "_lv_" + "recipe", "gt_chainsaws",
                 resolveStack(chainsaw_lv, Material.NULL, Aluminium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(CHAINSAWBIT, "primary"))
+                        .put('W', PropertyIngredient.of(CHAINSAW_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-mv"),output, GT5Reimagined.ID, CHAINSAW.getId() + "_mv_" + "recipe", "gt_chainsaws",
                 resolveStack(chainsaw_mv, Material.NULL, StainlessSteel, 0, 200000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(CHAINSAWBIT, "primary"))
+                        .put('W', PropertyIngredient.of(CHAINSAW_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
+                        .put('G', SMALL_GEAR.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-hv"),output, GT5Reimagined.ID, CHAINSAW.getId() + "_hv_" + "recipe", "gt_chainsaws",
                 resolveStack(chainsaw_hv, Material.NULL, Titanium, 0, 800000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(CHAINSAWBIT, "primary"))
+                        .put('W', PropertyIngredient.of(CHAINSAW_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_HV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Titanium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-lv"),output, GT5Reimagined.ID, CHAINSAW.getId() + "_lv_power_unit_" + "recipe", "gt_chainsaws",
-                resolveStack(chainsaw_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.CHAINSAWBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
+                resolveStack(chainsaw_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.CHAINSAW_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-mv"),output, GT5Reimagined.ID, CHAINSAW.getId() + "_mv_power_unit_" + "recipe", "gt_chainsaws",
-                resolveStack(chainsaw_mv, Material.NULL, StainlessSteel, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.CHAINSAWBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_MV).build()), "BS", "P ");
+                resolveStack(chainsaw_mv, Material.NULL, StainlessSteel, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.CHAINSAW_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_MV).build()), "BS", "P ");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(CHAINSAW.getId() + "-hv"),output, GT5Reimagined.ID, CHAINSAW.getId() + "_hv_power_unit_" + "recipe", "gt_chainsaws",
-                resolveStack(chainsaw_hv, Material.NULL, Titanium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.CHAINSAWBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build()), "BS", "P ");
+                resolveStack(chainsaw_hv, Material.NULL, Titanium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.CHAINSAW_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build()), "BS", "P ");
 
         IGTTool electric_wrench_lv = GTAPI.get(IGTTool.class, "electric_wrench_lv", GTCore.ID);
         IGTTool electric_wrench_mv = GTAPI.get(IGTTool.class, "electric_wrench_mv", GTCore.ID);
@@ -175,7 +175,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-mv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_mv_" + "recipe", "gt_electric_wrenches",
                 resolveStack(electric_wrench_mv, Material.NULL, StainlessSteel, 0, 200000),
@@ -185,7 +185,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
+                        .put('G', SMALL_GEAR.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-hv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_hv_" + "recipe", "gt_electric_wrenches",
                 resolveStack(electric_wrench_hv, Material.NULL, Titanium, 0, 800000),
@@ -195,7 +195,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_HV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Titanium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-lv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_lv_power_unit_" + "recipe", "electric_wrenches",
                 resolveStack(electric_wrench_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCHBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
@@ -216,7 +216,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Aluminium))
                         .put('M', GTCoreItems.MotorLV).build(), "PbM", "SBG", "sGP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(BUZZSAW.getId() + "-mv"),output, GT5Reimagined.ID, "", "gt_buzzsaws",
                 resolveStack(buzzsaw_mv, Material.NULL, StainlessSteel, 0, 200000),
@@ -226,7 +226,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(StainlessSteel))
+                        .put('G', SMALL_GEAR.getMaterialTag(StainlessSteel))
                         .put('M', GTCoreItems.MotorMV).build(), "PbM", "SBG", "sGP");
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(BUZZSAW.getId() + "-hv"),output, GT5Reimagined.ID, "", "gt_buzzsaws",
                 resolveStack(buzzsaw_hv, Material.NULL, Titanium, 0, 800000),
@@ -236,7 +236,7 @@ public class ElectricToolRecipes {
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_HV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
                         .put('s', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Titanium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "PbM", "SBG", "sGP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(BUZZSAW.getId() + "-lv"),output, GT5Reimagined.ID, BUZZSAW.getId() + "_lv_power_unit_" + "recipe", "gt_buzzsaws",
                 resolveStack(buzzsaw_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(BUZZSAW_BLADE, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "PS", "B ");
@@ -250,21 +250,21 @@ public class ElectricToolRecipes {
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_SCREWDRIVER.getId() + "-lv"), output, GT5Reimagined.ID, "electric_screwdriver_lv", "gt_electric_screwdrivers",
                 electric_screwdriver_lv.resolveStack(Material.NULL, Aluminium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(ELECTRIC_SCREWDRIVER, true).build())
+                        .put('R', PropertyIngredient.builder("primary").types(LONG_ROD).tool(ELECTRIC_SCREWDRIVER, true).build())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LV).build())
                         .put('M', GTCoreItems.MotorLV)
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
                         .put('S', SCREW.getMaterialTag(Steel))
-                        .put('G', GEAR_SMALL.getMaterialTag(Aluminium))
+                        .put('G', SMALL_GEAR.getMaterialTag(Aluminium))
                         .put('s', SCREWDRIVER.getTag()).build(), "PsR", "MGS", "GbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_SCREWDRIVER.getId() + "-lv"), output, GT5Reimagined.ID, ELECTRIC_SCREWDRIVER.getId() + "_power_unit_lv", "gt_electric_screwdrivers",
-                electric_screwdriver_lv.resolveStack(Material.NULL, Aluminium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(ELECTRIC_SCREWDRIVER, true).build(),'S', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_SMALL).build(), 'W', WRENCH.getTag()), "R ", "WS");
+                electric_screwdriver_lv.resolveStack(Material.NULL, Aluminium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(LONG_ROD).tool(ELECTRIC_SCREWDRIVER, true).build(),'S', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_SMALL).build(), 'W', WRENCH.getTag()), "R ", "WS");
 
         IGTTool jackhammer_lv = GTAPI.get(IGTTool.class, "jackhammer_hv", GTCore.ID);
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(JACKHAMMER.getId() + "-hv"), output, GT5Reimagined.ID, "jackhammer_hv", "gt_jackhammers",
                 jackhammer_lv.resolveStack(Material.NULL, Titanium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build())
+                        .put('R', PropertyIngredient.builder("primary").types(LONG_ROD).tool(JACKHAMMER, true).build())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_HV).build())
                         .put('E', GT5RItems.PistonHV)
                         .put('S', SCREW.getMaterialTag(Steel))
@@ -272,7 +272,7 @@ public class ElectricToolRecipes {
                         .put('T', SPRING.getMaterialTag(Titanium))
                         .put('s', SCREWDRIVER.getTag()).build(), "SRs", "PTP", "EPb");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(JACKHAMMER.getId() + "-hv"), output, GT5Reimagined.ID, JACKHAMMER.getId() + "_hv_from_pu", "gt_jackhammers",
-                jackhammer_lv.resolveStack(Material.NULL, Titanium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(ROD_LONG).tool(JACKHAMMER, true).build(), 'b', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_JACKHAMMER).build(), 'S', SCREWDRIVER.getTag()), "RS", "b ");
+                jackhammer_lv.resolveStack(Material.NULL, Titanium, 0, 100000), of('R', PropertyIngredient.builder("primary").types(LONG_ROD).tool(JACKHAMMER, true).build(), 'b', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_JACKHAMMER).build(), 'S', SCREWDRIVER.getTag()), "RS", "b ");
     }
 
     public static ItemStack resolveStack(IGTTool tool, Material primary, Material secondary, long startingEnergy, long maxEnergy) {

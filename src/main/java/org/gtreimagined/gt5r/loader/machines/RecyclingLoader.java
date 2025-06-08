@@ -43,8 +43,8 @@ import static org.gtreimagined.gtlib.machine.Tier.*;
 public class RecyclingLoader {
     public static void initRecyclingRecipes() {
         for (MaterialType<?> t : GTAPI.all(MaterialType.class)) {
-            if (t.getUnitValue() <= 0 || t == DUST || t == DUST_TINY || t == DUST_SMALL || t == INGOT || t == NUGGET || t == CHUNK ||
-                    t == INGOT_HOT || t == GEM || t == GEM_CHIPPED || t == GEM_FLAWED || t == GEM_FLAWLESS || t == GEM_EXQUISITE || t == ROCK || t == BEARING_ROCK) continue;
+            if (t.getUnitValue() <= 0 || t == DUST || t == TINY_DUST || t == SMALL_DUST || t == INGOT || t == NUGGET || t == CHUNK ||
+                    t == HOT_INGOT || t == GEM || t == CHIPPED_GEM || t == FLAWED_GEM || t == FLAWLESS_GEM || t == EXQUISITE_GEM || t == ROCK || t == BEARING_ROCK) continue;
             double amount = (double) t.getUnitValue() / U;
             t.all().forEach(m -> {
                 if (!m.has(DUST) || m == Bone || m == Carbon || m == Blaze) return;
@@ -58,9 +58,9 @@ public class RecyclingLoader {
                         float mLeftover = mExtraF - mExtra;
                         int aExtra = (int) (leftover * 9);
                         if (mLeftover > 0){
-                            mac.io(DUST_TINY.get(m, (i * 9) + aExtra));
+                            mac.io(TINY_DUST.get(m, (i * 9) + aExtra));
                         } else {
-                            mac.io(DUST_SMALL.get(m, (i * 4) + mExtra));
+                            mac.io(SMALL_DUST.get(m, (i * 4) + mExtra));
                         }
                     } else {
                         mac.io(DUST.get(m, i));
@@ -280,9 +280,9 @@ public class RecyclingLoader {
                 float tinyLeftover = smallLeftover - smallExtra;
                 int tinyExtra = (int) (leftover * 9);
                 if (tinyLeftover > 0){
-                    mac.io(DUST_TINY.get(macOutput, (roundedAmount * 9) + tinyExtra));
+                    mac.io(TINY_DUST.get(macOutput, (roundedAmount * 9) + tinyExtra));
                 } else {
-                    mac.io(DUST_SMALL.get(macOutput, (roundedAmount * 4) + smallExtra));
+                    mac.io(SMALL_DUST.get(macOutput, (roundedAmount * 4) + smallExtra));
                 }
             } else {
                 mac.io(DUST.get(macOutput, roundedAmount));
@@ -297,9 +297,9 @@ public class RecyclingLoader {
                     int tinyExtra = (int) (arcLeftover * 9);
                     if (tinyLeftover > 0){
                         amount = (roundedArcAmount * 9) + tinyExtra;
-                        arcType = arcOutput == Ash ? DUST_TINY : NUGGET;
+                        arcType = arcOutput == Ash ? TINY_DUST : NUGGET;
                     } else {
-                        arcType = arcOutput == Ash ? DUST_SMALL : CHUNK;
+                        arcType = arcOutput == Ash ? SMALL_DUST : CHUNK;
                         amount = (roundedArcAmount * 4) + smallExtra;
                     }
                 } else {

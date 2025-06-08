@@ -14,11 +14,9 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
-import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
@@ -104,15 +102,15 @@ public class BathLoader {
         }
         mercurybathing();
         persulfatebathing();
-        BATH.RB().ii(CRUSHED.getMaterialIngredient(Cobaltite, 1)).fi(SodiumPersulfateSolution.getLiquid(1000)).io(CRUSHED_PURIFIED.get(Cobaltite), CRUSHED_PURIFIED.get(Cobalt), DUST.get(Stone)).outputChances(1.0, 0.25, 1.0).add("persulfate_cobaltite", 144);
+        BATH.RB().ii(CRUSHED_ORE.getMaterialIngredient(Cobaltite, 1)).fi(SodiumPersulfateSolution.getLiquid(1000)).io(PURIFIED_ORE.get(Cobaltite), PURIFIED_ORE.get(Cobalt), DUST.get(Stone)).outputChances(1.0, 0.25, 1.0).add("persulfate_cobaltite", 144);
         GT5RMaterialTags.VITRIOL.getAll().forEach((ore, vitriol) -> {
-            if (vitriol.has(LIQUID) && ore.has(CRUSHED_PURIFIED)){
+            if (vitriol.has(LIQUID) && ore.has(PURIFIED_ORE)){
                 addVitriolRecipe(ore, vitriol);
             }
         });
         BATH.RB().ii(DUST.getMaterialIngredient(Ilmenite, 5)).fi(SulfuricAcid.getLiquid(7000)).io(DUST.get(Rutile)).fo(GreenVitriol.getLiquid(6000), Water.getLiquid(3000)).add("ilmenite_to_rutile", 512);
         GT5RMaterialTags.PLATINUM_GROUP_SLUDGE.all().forEach(m -> {
-            if (m.has(CRUSHED_PURIFIED)){
+            if (m.has(PURIFIED_ORE)){
                 addPSGRecipe(m);
             }
         });
@@ -120,18 +118,18 @@ public class BathLoader {
     public static void mercurybathing(){
         BATH_MERCURY.getAll().forEach((main, side) ->
             BATH.RB()
-                    .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED.get(main),1))
+                    .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED_ORE.get(main),1))
                     .fi(Mercury.getLiquid(1000))
-                    .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(Materials.Stone)))
+                    .io(new ItemStack(GTMaterialTypes.PURIFIED_ORE.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(Materials.Stone)))
                     .outputChances(1.0, 0.7, 1.0)
                     .add("mercury_" + main.getId(),40*20));
     }
     public static void persulfatebathing(){
         BATH_PERSULFATE.getAll().forEach((main, side) ->
                 BATH.RB()
-                        .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED.get(main),1))
+                        .ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED_ORE.get(main),1))
                         .fi(SodiumPersulfateSolution.getLiquid(1000))
-                        .io(new ItemStack(GTMaterialTypes.CRUSHED_PURIFIED.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(Materials.Stone)))
+                        .io(new ItemStack(GTMaterialTypes.PURIFIED_ORE.get(main)),new ItemStack(GTMaterialTypes.DUST.get(side)),new ItemStack(GTMaterialTypes.DUST.get(Materials.Stone)))
                         .outputChances(1.0, 0.7, 1.0)
                         .add("persulfate_"+main.getId(),40*20));
     }
@@ -143,16 +141,16 @@ public class BathLoader {
     }
 
     private static void addVitriolRecipe(Material input, Material vitriol){
-        BATH.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(input, 1))
+        BATH.RB().ii(PURIFIED_ORE.getMaterialIngredient(input, 1))
                 .fi(SulfuricAcid.getLiquid(vitriol == VitriolOfClay ? 10500 : 3500))
                 .fo(vitriol.getLiquid(vitriol == VitriolOfClay ? 8500 : 3000), Hydrogen.getGas(vitriol == VitriolOfClay ? 3000 : 1000))
-                .io(CRUSHED_REFINED.get(input, 1), DUST_SMALL.get(input, 2)).add(vitriol.getId() + "_from_" + input.getId(), 256);
+                .io(REFINED_ORE.get(input, 1), SMALL_DUST.get(input, 2)).add(vitriol.getId() + "_from_" + input.getId(), 256);
     }
 
     private static void addPSGRecipe(Material input){
-        BATH.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(input, 1))
+        BATH.RB().ii(PURIFIED_ORE.getMaterialIngredient(input, 1))
                 .fi(AquaRegia.getLiquid(9750))
                 .fo(ChloroplatinicAcid.getLiquid(4500), NitrogenMonoxide.getGas(1500), Water.getLiquid(4125))
-                .io(CRUSHED_REFINED.get(input, 1), DUST_TINY.get(PlatinumGroupSludge, 1)).add( "psg_from_" + input.getId(), 256);
+                .io(REFINED_ORE.get(input, 1), TINY_DUST.get(PlatinumGroupSludge, 1)).add( "psg_from_" + input.getId(), 256);
     }
 }

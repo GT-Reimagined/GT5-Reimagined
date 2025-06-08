@@ -10,7 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
-import org.gtreimagined.gt5r.integration.rei.OreProcessingDisplay;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
 import org.gtreimagined.gtlib.GTAPI;
@@ -51,7 +50,7 @@ public class GT5RJEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         List<OreByProduct> oreByProducts = new ArrayList<>();
         GTMaterialTypes.ORE.all().forEach(m -> {
-            if (!m.has(GTMaterialTypes.CRUSHED)) return;
+            if (!m.has(GTMaterialTypes.CRUSHED_ORE)) return;
             if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
                 if (m.has(GT5RMaterialTags.BATH_MERCURY)) oreByProducts.add(new OreByProduct(m, BathingMode.MERCURY));
                 if (m.has(GT5RMaterialTags.BATH_PERSULFATE)) oreByProducts.add(new OreByProduct(m, BathingMode.PERSULFATE));

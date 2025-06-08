@@ -23,7 +23,7 @@ import org.gtreimagined.gtlib.datagen.providers.GTBlockLootProvider;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.CRUSHED;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.CRUSHED_ORE;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.RAW_ORE;
 
 public class GT5RBlockLootProvider extends GTBlockLootProvider {
@@ -46,22 +46,22 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         this.add(GT5RBlocks.SOLID_SUPER_FUEL);
         this.add(GT5RBlocks.POWDER_BARREL);
         tables.put(GT5RBlocks.MINING_PIPE, b -> this.build(GT5RBlocks.MINING_PIPE_THIN));
-        tables.put(Blocks.IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED.get(Iron), 1));
-        tables.put(Blocks.DEEPSLATE_IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED.get(Iron), 1));
-        tables.put(Blocks.LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 6));
-        tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED.get(Lapis), 6));
-        tables.put(Blocks.REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 5));
-        tables.put(Blocks.DEEPSLATE_REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED.get(Redstone), 5));
-        tables.put(Blocks.DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
-        tables.put(Blocks.DEEPSLATE_DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
-        tables.put(Blocks.EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED.get(Emerald), 1));
-        tables.put(Blocks.DEEPSLATE_EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED.get(Emerald), 1));
-        tables.put(Blocks.COPPER_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Copper), CRUSHED.get(Copper), 1));
-        tables.put(Blocks.DEEPSLATE_COPPER_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Copper), CRUSHED.get(Copper), 1));
-        tables.put(Blocks.COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED.get(Coal), 1));
-        tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED.get(Coal), 1));
+        tables.put(Blocks.IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED_ORE.get(Iron), 1));
+        tables.put(Blocks.DEEPSLATE_IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED_ORE.get(Iron), 1));
+        tables.put(Blocks.LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED_ORE.get(Lapis), 6));
+        tables.put(Blocks.DEEPSLATE_LAPIS_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Lapis), CRUSHED_ORE.get(Lapis), 6));
+        tables.put(Blocks.REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED_ORE.get(Redstone), 5));
+        tables.put(Blocks.DEEPSLATE_REDSTONE_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Redstone), CRUSHED_ORE.get(Redstone), 5));
+        tables.put(Blocks.DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED_ORE.get(Diamond), 1));
+        tables.put(Blocks.DEEPSLATE_DIAMOND_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED_ORE.get(Diamond), 1));
+        tables.put(Blocks.EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED_ORE.get(Emerald), 1));
+        tables.put(Blocks.DEEPSLATE_EMERALD_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Emerald), CRUSHED_ORE.get(Emerald), 1));
+        tables.put(Blocks.COPPER_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Copper), CRUSHED_ORE.get(Copper), 1));
+        tables.put(Blocks.DEEPSLATE_COPPER_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Copper), CRUSHED_ORE.get(Copper), 1));
+        tables.put(Blocks.COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED_ORE.get(Coal), 1));
+        tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED_ORE.get(Coal), 1));
         tables.put(GT5RBlocks.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
-        tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDropWithHammer(b, RAW_ORE.get(NetheriteScrap), CRUSHED.get(NetheriteScrap), 1));
+        tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDropWithHammer(b, RAW_ORE.get(NetheriteScrap), CRUSHED_ORE.get(NetheriteScrap), 1));
         tables.put(Blocks.ANDESITE, b -> createSingleItemTableWithSilkTouch(Blocks.ANDESITE, ((CobbleStoneType) VanillaStoneTypes.ANDESITE).getBlock("cobble")));
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType) VanillaStoneTypes.DIORITE).getBlock("cobble")));
         tables.put(Blocks.GRANITE, b -> createSingleItemTableWithSilkTouch(Blocks.GRANITE, ((CobbleStoneType) VanillaStoneTypes.GRANITE).getBlock("cobble")));
@@ -70,7 +70,7 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("deepslate_quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
         }
         if (GTAPI.isModLoaded("ad_astra")){
-            tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED.get(Diamond), 1));
+            tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED_ORE.get(Diamond), 1));
         }
     }
 }

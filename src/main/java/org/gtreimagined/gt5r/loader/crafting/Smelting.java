@@ -22,8 +22,8 @@ public class Smelting {
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(Items.IRON_NUGGET), NUGGET.get(Materials.WroughtIron), 0.5f, 200).unlockedBy("has_nugget_iron", provider.hasSafeItem(Items.IRON_NUGGET)).save(output, "smelting_nugget_wrought_iron");
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(Items.IRON_NUGGET), NUGGET.get(Materials.WroughtIron), 0.5f, 100).unlockedBy("has_nugget_iron", provider.hasSafeItem(Items.IRON_NUGGET)).save(output, "blasting_nugget_wrought_iron");
         SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(GTCoreItems.CompressedFireClay, 1), GTCoreItems.FireBrick, 0.5F, 200).unlockedBy("has_compressed_fire_clay", provider.hasSafeItem(GTCoreItems.CompressedFireClay)).save(output, GT5Reimagined.ID + ":firebrick");
-        MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Cassiterite, Tin);
-        MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED, NUGGET, 7, Garnierite, Nickel);
+        MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED_ORE, NUGGET, 7, Cassiterite, Tin);
+        MaterialRecipes.addSmeltingRecipe(output, provider, CRUSHED_ORE, NUGGET, 7, Garnierite, Nickel);
         if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             MaterialRecipes.addSmeltingRecipe(output, provider, DUST, NUGGET, 3, AluminiumHydroxide, Alumina);
             MaterialRecipes.addSmeltingRecipe(output, provider, DUST, INGOT, 1, Aluminium);

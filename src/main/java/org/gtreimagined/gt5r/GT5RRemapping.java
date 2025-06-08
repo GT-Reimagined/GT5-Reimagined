@@ -32,7 +32,7 @@ public class GT5RRemapping {
         Materials.Sylvite.getTypes().forEach(type -> {
             String id = type.getId() + "_sylvite";
             String oldId = type.getId() + "_rock_salt";
-            if (type != GTMaterialTypes.ORE && type != GTMaterialTypes.ORE_SMALL){
+            if (type != GTMaterialTypes.ORE && type != GTMaterialTypes.SMALL_ORE){
                 GTRemapping.remap(new ResourceLocation(Ref.SHARED_ID, oldId), new ResourceLocation(Ref.SHARED_ID, id));
             } else {
                 GTAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).forEach(a -> {

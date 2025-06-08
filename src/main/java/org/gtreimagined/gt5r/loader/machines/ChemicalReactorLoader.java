@@ -73,7 +73,7 @@ public class ChemicalReactorLoader {
         //ISOPROPENE
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).fo(Isoprene.getLiquid(5000)).add("isopropene",120, 30);
         //ETHYLENE
-        CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).io(DUST_SMALL.get(Sulfur, 6)).fo(Ethylene.getGas(2000), Water.getLiquid(1500)).add("ethylene_2",400, 120);
+        CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).io(SMALL_DUST.get(Sulfur, 6)).fo(Ethylene.getGas(2000), Water.getLiquid(1500)).add("ethylene_2",400, 120);
         //SALTPETER
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
         //NITROGEN DIOXIDE
@@ -160,8 +160,8 @@ public class ChemicalReactorLoader {
         //NITRIC ACID
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000),Ammonia.getGas(1000)).fo(NitricAcid.getLiquid(1000), Water.getLiquid(1000)).add("nitric_acid_2",160, 30);
         //ACETONE
-        CHEMICAL_REACTOR.RB().ii(DUST_SMALL.getMaterialIngredient(Calcite, 5)).fi(AceticAcid.getLiquid(8000)).fo(Acetone.getLiquid(5000), CarbonDioxide.getGas(3000)).add("acetone", 400, 480, -1);
-        CHEMICAL_REACTOR.RB().ii(DUST_SMALL.getMaterialIngredient(Quicklime, 5)).fi(AceticAcid.getLiquid(8000)).fo(Acetone.getLiquid(5000), CarbonDioxide.getGas(3000)).add("acetone_1", 400, 480, -1);
+        CHEMICAL_REACTOR.RB().ii(SMALL_DUST.getMaterialIngredient(Calcite, 5)).fi(AceticAcid.getLiquid(8000)).fo(Acetone.getLiquid(5000), CarbonDioxide.getGas(3000)).add("acetone", 400, 480, -1);
+        CHEMICAL_REACTOR.RB().ii(SMALL_DUST.getMaterialIngredient(Quicklime, 5)).fi(AceticAcid.getLiquid(8000)).fo(Acetone.getLiquid(5000), CarbonDioxide.getGas(3000)).add("acetone_1", 400, 480, -1);
         //METHYL ACETATE
         CHEMICAL_REACTOR.RB().fi(Methanol.getLiquid(6000), AceticAcid.getLiquid(8000)).fo(MethylAcetate.getLiquid(11000), Water.getLiquid(3000)).add("methyl_acetate", 240, 30, -1);
         //VINYL ACETATE

@@ -13,10 +13,10 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.ORE_BYPRODUCTS;
 
 public class OreByproducts {
     public static void init() {
-        GTMaterialTypes.CRUSHED.all().forEach(m -> {
+        GTMaterialTypes.CRUSHED_ORE.all().forEach(m -> {
             if (!m.has(GTMaterialTypes.ORE)) return;
             if (!m.has(GTMaterialTypes.INGOT)) return;
-            RecipeIngredient ore = GTMaterialTypes.ORE.getMaterialIngredient(m, 1), crushed = GTMaterialTypes.CRUSHED.getIngredient(m, 1);
+            RecipeIngredient ore = GTMaterialTypes.ORE.getMaterialIngredient(m, 1), crushed = GTMaterialTypes.CRUSHED_ORE.getIngredient(m, 1);
             if (m.hasByProducts()) {
                 List<Material> byProducts = m.getByProducts();
                 int byProductsCount = byProducts.size();
@@ -24,9 +24,9 @@ public class OreByproducts {
                 List<Ingredient> ores = new ObjectArrayList<>();
                 if (m.has(GTMaterialTypes.ORE)) ores.add(ore);
                 if (m.has(GTMaterialTypes.BEARING_ROCK)) ores.add(GTMaterialTypes.BEARING_ROCK.getIngredient(m, 1));
-                if (m.has(GTMaterialTypes.CRUSHED)) ores.add(crushed);
-                if (m.has(GTMaterialTypes.CRUSHED_PURIFIED)) ores.add(GTMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1));
-                if (m.has(GTMaterialTypes.CRUSHED_REFINED)) ores.add(GTMaterialTypes.CRUSHED_REFINED.getIngredient(m, 1));
+                if (m.has(GTMaterialTypes.CRUSHED_ORE)) ores.add(crushed);
+                if (m.has(GTMaterialTypes.PURIFIED_ORE)) ores.add(GTMaterialTypes.PURIFIED_ORE.getIngredient(m, 1));
+                if (m.has(GTMaterialTypes.REFINED_ORE)) ores.add(GTMaterialTypes.REFINED_ORE.getIngredient(m, 1));
 
 
                 List<ItemStack> dusts = new ObjectArrayList<>(byProductsCount);

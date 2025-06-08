@@ -22,10 +22,10 @@ public class CompressorLoader {
                         .add("block_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });
-        PLATE_DENSE.all().forEach(ingot -> {
+        DENSE_PLATE.all().forEach(ingot -> {
             if (ingot.has(GTMaterialTypes.PLATE)) {
                 int count = ingot.has(MaterialTags.QUARTZ_LIKE_BLOCKS) ? 4 : 9;
-                COMPRESSOR.RB().ii(PLATE.getMaterialIngredient(ingot, count)).io(PLATE_DENSE.get(ingot, 1))
+                COMPRESSOR.RB().ii(PLATE.getMaterialIngredient(ingot, count)).io(DENSE_PLATE.get(ingot, 1))
                         .add("dense_plate_" + ingot.getId(),Math.max(80, ingot.getMass() * 2), 16);
             }
         });

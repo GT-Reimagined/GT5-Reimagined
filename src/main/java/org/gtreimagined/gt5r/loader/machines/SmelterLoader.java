@@ -15,11 +15,10 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.SMELTER;
 import static org.gtreimagined.gtlib.Ref.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gtlib.material.MaterialTags.MOLTEN;
 
 public class SmelterLoader {
     public static void init() {
-        MaterialTypeItem<?>[] items = new MaterialTypeItem<?>[]{INGOT, NUGGET, PLATE, PLATE_DENSE, ROD, ROD_LONG, RING, FOIL, BOLT, SCREW, GEAR, GEAR_SMALL, WIRE_FINE, ROTOR};
+        MaterialTypeItem<?>[] items = new MaterialTypeItem<?>[]{INGOT, NUGGET, PLATE, DENSE_PLATE, ROD, LONG_ROD, RING, FOIL, BOLT, SCREW, GEAR, SMALL_GEAR, FINE_WIRE, ROTOR};
         for (MaterialTypeItem<?> item : items) {
             item.all().forEach(m -> {
                 long amount = m == Alumina ? (item.getUnitValue() * 7) / 2 : item.getUnitValue();
@@ -35,7 +34,7 @@ public class SmelterLoader {
         if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             SMELTER.RB().ii(DUST.getMaterialIngredient(AluminiumHydroxide, 1)).fo(Alumina.getLiquid(((L9 * 7 * 3) / 2) + (L9 * 3 / 4))).add("aluminium_hydroxide_to_alumina", 55, 16);
         }
-        addLava(Obsidian, ROD_LONG, ROD_LONG.getUnitValue());
+        addLava(Obsidian, LONG_ROD, LONG_ROD.getUnitValue());
         addLava(Obsidian, PLATE, PLATE.getUnitValue());
         addLava(Obsidian, DUST, DUST.getUnitValue());
         SMELTER.RB().ii(DUST.getMaterialIngredient(Limestone, 1)).fo(Calcite.getLiquid(L)).add("limestone_dust_to_calcite", Limestone.getMass(), 24);

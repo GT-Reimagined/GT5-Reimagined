@@ -10,16 +10,16 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.SIFTER;
 
 public class SifterLoader {
     public static void init() {
-        CRUSHED_PURIFIED.all().forEach(m -> {
+        PURIFIED_ORE.all().forEach(m -> {
             if (!m.has(GEM)) return;
             ItemStack gem = GEM.get(m, 1);
-            boolean e = m.has(GEM_EXQUISITE);
+            boolean e = m.has(EXQUISITE_GEM);
             double[] chances = e ? new double[]{0.03, 0.12, 0.45, 0.14, 0.28, 0.35} : new double[]{0.01, 0.04, 0.15, 0.2, 0.4, 0.5};
             ItemStack dustPurified = DUST.get(m, 1);
-            SIFTER.RB().ii(CRUSHED_PURIFIED.getMaterialIngredient(m,1)).io(e ? GEM_EXQUISITE.get(m, 1) : gem,
-                    e ? GEM_FLAWLESS.get(m, 1) : gem, gem,
-                    e ? GEM_FLAWED.get(m, 1) : gem,
-                    e ? GEM_CHIPPED.get(m, 1) : gem, dustPurified).outputChances(chances/*0.05, 0.125, 0.25, 0.5, 0.75, 1.0*/).add("crushed_" + m.getId(),800, 16);
+            SIFTER.RB().ii(PURIFIED_ORE.getMaterialIngredient(m,1)).io(e ? EXQUISITE_GEM.get(m, 1) : gem,
+                    e ? FLAWLESS_GEM.get(m, 1) : gem, gem,
+                    e ? FLAWED_GEM.get(m, 1) : gem,
+                    e ? CHIPPED_GEM.get(m, 1) : gem, dustPurified).outputChances(chances/*0.05, 0.125, 0.25, 0.5, 0.75, 1.0*/).add("crushed_" + m.getId(),800, 16);
         });
         SIFTER.RB().ii(RecipeIngredient.of(Tags.Items.GRAVEL, 1)).io(Items.FLINT).add("flint", 40 * 20, 16);
     }

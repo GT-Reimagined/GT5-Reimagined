@@ -54,11 +54,11 @@ public class ElectrolyzerLoader {
             long duration = t.has(ELEC_TICKS) ? ELEC_TICKS.getInt(t) : t.getMass() * 20;
             b.io(items).fo(fluids).add(prefix + "_" + t.getId(),duration, euPerTick);
         });
-        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(SodiumBisulfate, 2), WIRE_FINE.getMaterialIngredient(Platinum, 1).setNoConsume()).io(DUST.get(SodiumPersulfate)).fo(Hydrogen.getGas(1000)).add("sodium_persulfate_creation", 600, 30);
+        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(SodiumBisulfate, 2), FINE_WIRE.getMaterialIngredient(Platinum, 1).setNoConsume()).io(DUST.get(SodiumPersulfate)).fo(Hydrogen.getGas(1000)).add("sodium_persulfate_creation", 600, 30);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(ItemTags.SAND, 8)).io(DUST.get(Materials.SiliconDioxide)).add("sand_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(GT5RTags.DUST_SANDS, 32)).io(DUST.get(Materials.SiliconDioxide)).add("sand_dusts_to_silicon_dioxide", 500, 25);
         ELECTROLYZER.RB().ii(RecipeIngredient.of(Items.BONE_MEAL, 3)).io(DUST.get(Materials.Calcium)).add("bone_meal", 98, 26);
-        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Bentonite, 33)).io(DUST_SMALL.get(Sodium, 2), DUST.get(Magnesium, 3), DUST.get(Silicon, 6))
+        ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Bentonite, 33)).io(SMALL_DUST.get(Sodium, 2), DUST.get(Magnesium, 3), DUST.get(Silicon, 6))
                 .fo(Hydrogen.getGas(3000), Water.getLiquid(2500), Oxygen.getGas(18000)).add("dust_bentonite", 240, 120);
         if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()) {
             ELECTROLYZER.RB().ii(DUST.getMaterialIngredient(Carbon, 3), DUST.getMaterialIngredient(Alumina, 10))
@@ -83,8 +83,8 @@ public class ElectrolyzerLoader {
             addVitriolRecipe(CyanVitriol, Nickel);
             addVitriolRecipe(WhiteVitriol, Zinc);
             addVitriolRecipe(GrayVitriol, Manganese);
-            ELECTROLYZER.RB().fi(Water.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).io(DUST_SMALL.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2100)).add("vitriol_of_clay_to_alumina", 19, 64);
-            ELECTROLYZER.RB().fi(DistilledWater.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).io(DUST_SMALL.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2100)).add("vitriol_of_clay_to_alumina_distilled", 19, 64);
+            ELECTROLYZER.RB().fi(Water.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).io(SMALL_DUST.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2100)).add("vitriol_of_clay_to_alumina", 19, 64);
+            ELECTROLYZER.RB().fi(DistilledWater.getLiquid(900), VitriolOfClay.getLiquid(1700)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).io(SMALL_DUST.get(Alumina, 2)).fo(SulfuricAcid.getLiquid(2100)).add("vitriol_of_clay_to_alumina_distilled", 19, 64);
             ELECTROLYZER.RB().fi(Water.getLiquid(6000), ChloroplatinicAcid.getLiquid(9000)).ii(SELECTOR_TAG_INGREDIENTS.get(2)).io(DUST.get(Platinum)).fo(HydrochloricAcid.getLiquid(12000), Oxygen.getGas(2000)).add("chloroplatinic_acid", 96, 64);
             ELECTROLYZER.RB().fi(DistilledWater.getLiquid(6000), ChloroplatinicAcid.getLiquid(9000)).ii(SELECTOR_TAG_INGREDIENTS.get(2)).io(DUST.get(Platinum)).fo(HydrochloricAcid.getLiquid(12000), Oxygen.getGas(2000)).add("chloroplatinic_acid_distilled", 96, 64);
         }

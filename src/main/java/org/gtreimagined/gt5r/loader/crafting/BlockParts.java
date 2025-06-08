@@ -100,7 +100,7 @@ public class BlockParts {
         addCasing(output, provider, BlackBronze, GT5RBlocks.BLACK_BRONZE_CASING);
         addCasing(output, provider, Plastic, GT5RBlocks.PLASTIC_CASING);
         provider.addItemRecipe(output, "casings", GT5RBlocks.DENSE_LEAD_CASING,
-                of('L', PLATE_DENSE.getMaterialTag(Lead), 'R', ROD_LONG.getMaterialTag(Lead), 'W', WRENCH.getTag()), "RLL", "LWL", "LLR");
+                of('L', DENSE_PLATE.getMaterialTag(Lead), 'R', LONG_ROD.getMaterialTag(Lead), 'W', WRENCH.getTag()), "RLL", "LWL", "LLR");
 
         provider.addItemRecipe(output, "casings", GT5RBlocks.ELECTROLYTIC_CELL,
                 of('W', GT5RBlocks.WIRE_PLATINUM.getBlockItem(PipeSize.VTINY), 'M', GT5RBlocks.STAINLESS_STEEL_CASING, 'C', TIER_CIRCUITS.apply(EV)), "WWW", "WMW", "CCC");
@@ -110,7 +110,7 @@ public class BlockParts {
                 of('G', GEAR.getMaterialTag(Titanium), 'P', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlock(PipeSize.NORMAL),'C', GT5RBlocks.TITANIUM_CASING, 'W', WRENCH.getTag()), "GGG", "PCP", "PWP");
         provider.addItemRecipe(output, "casings", GT5RBlocks.FILTER_CASING, of('C', GT5RBlocks.TITANIUM_CASING, 'I', GT5RCovers.COVER_ITEM_FILTER.getItem()), " I ", "ICI", " I ");
         provider.addItemRecipe(output, "casings", GT5RBlocks.BEDROCK_DRILL_HEAD,
-                of('D', GT5RTags.GRIND_HEADS, 'd', DRILLBIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.TUNGSTENSTEEL_CASING), "GdG", "DCD", "GdG");
+                of('D', GT5RTags.GRIND_HEADS, 'd', DRILL_BIT.getMaterialTag(TungstenSteel), 'G', GEAR.getMaterialTag(TungstenSteel), 'C', GT5RBlocks.TUNGSTENSTEEL_CASING), "GdG", "DCD", "GdG");
         addCoil(output, provider, GT5RBlocks.WIRE_CUPRONICKEL.getBlockItem(PipeSize.TINY), GT5RBlocks.CUPRONICKEL_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_KANTHAL.getBlockItem(PipeSize.TINY), GT5RBlocks.KANTHAL_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_NICHROME.getBlockItem(PipeSize.TINY), GT5RBlocks.NICHROME_COIL);

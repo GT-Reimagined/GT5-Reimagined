@@ -25,7 +25,7 @@ import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.ROD_LONG;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.LONG_ROD;
 import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gtlib.machine.Tier.EV;
 import static org.gtreimagined.gtlib.machine.Tier.HV;
@@ -125,7 +125,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                                 if(stack.getItem() instanceof ItemTurbineRotor rotor && stack.hurt(1, getLevel().random, null)){
                                     var materialType = rotor.getGTToolType().getMaterialTypeItem();
                                     var material = rotor.getPrimaryMaterial(compare);
-                                    ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : ROD_LONG.get(rotor.getRodMaterial(), 1);
+                                    ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : LONG_ROD.get(rotor.getRodMaterial(), 1);
                                     i.getHandler(SlotType.STORAGE).setStackInSlot(0, broken);
                                 }
                             });

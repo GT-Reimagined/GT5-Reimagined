@@ -22,10 +22,10 @@ public class LatheLoader {
         ROD.all().forEach(t -> {
             if (t.has(INGOT)) {
                 RecipeMaps.LATHE.RB().ii(of(INGOT.getMaterialTag(t), 1))
-                .io(ROD.get(t, 1), DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(t), 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
+                .io(ROD.get(t, 1), SMALL_DUST.get(MaterialTags.MACERATE_INTO.get(t), 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
             } else if (t.has(GEM)) {
                 RecipeMaps.LATHE.RB().ii(of(GEM.getMaterialTag(t), 1))
-                .io(ROD.get(t, 1), DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(t), 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
+                .io(ROD.get(t, 1), SMALL_DUST.get(MaterialTags.MACERATE_INTO.get(t), 2)).add(t.getId() + "_rod",Math.max(baseDuration.applyAsLong(t), 1), 16);
             }
         });
         SCREW.all().forEach(t -> {
@@ -36,10 +36,10 @@ public class LatheLoader {
         });
         LENS.all().stream().filter(m -> m.has(DUST)).forEach(m -> {
             if (m.has(PLATE)){
-                RecipeMaps.LATHE.RB().ii(PLATE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST_SMALL.get(m, 1)).add(m.getId() + "_lens", Math.max(baseDuration.applyAsLong(m) / 2, 1), 24);
+                RecipeMaps.LATHE.RB().ii(PLATE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), SMALL_DUST.get(m, 1)).add(m.getId() + "_lens", Math.max(baseDuration.applyAsLong(m) / 2, 1), 24);
             }
-            if (m.has(GEM_EXQUISITE)){
-                RecipeMaps.LATHE.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST.get(m, 2)).add(m.getId() + "_lens_exquisite", Math.max(baseDuration.applyAsLong(m), 1), 24);
+            if (m.has(EXQUISITE_GEM)){
+                RecipeMaps.LATHE.RB().ii(EXQUISITE_GEM.getMaterialIngredient(m, 1)).io(LENS.get(m, 1), DUST.get(m, 2)).add(m.getId() + "_lens_exquisite", Math.max(baseDuration.applyAsLong(m), 1), 24);
             }
         });
         RecipeMaps.LATHE.RB().ii(of(ItemTags.PLANKS)).io(new ItemStack(Items.STICK, 2)).add("stick", 25, 4);

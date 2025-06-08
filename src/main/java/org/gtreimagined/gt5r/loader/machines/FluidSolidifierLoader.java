@@ -36,17 +36,17 @@ public class FluidSolidifierLoader {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldGear, 1).setNoConsume())
                 .fi(mat.getFluidIngredient(L * 4)).io(GEAR.get(mat,1)).add(mat.getId() + "_gear",128, 8);
             }
-            if (mat.has(GEAR_SMALL)) {
+            if (mat.has(SMALL_GEAR)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldGearSmall, 1).setNoConsume())
-                .fi(mat.getFluidIngredient(L)).io(GEAR_SMALL.get(mat,1)).add(mat.getId() + "_gear_small",16, 8);
+                .fi(mat.getFluidIngredient(L)).io(SMALL_GEAR.get(mat,1)).add(mat.getId() + "_gear_small",16, 8);
             }
             if (mat.has(NUGGET)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldNugget, 1).setNoConsume())
                 .fi(mat.getFluidIngredient(mat == Alumina ? (L9 * 7) / 2 : L9)).io(NUGGET.get(mat,1)).add(mat.getId() + "_nugget",16, 4);
             }
-            if (mat.has(ROD_LONG)) {
+            if (mat.has(LONG_ROD)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume())
-                        .fi(mat.getFluidIngredient(L)).io(ROD_LONG.get(mat,1)).add(mat.getId() + "_long_rod",16, 8);
+                        .fi(mat.getFluidIngredient(L)).io(LONG_ROD.get(mat,1)).add(mat.getId() + "_long_rod",16, 8);
             }
             if (mat.has(BLOCK)) {
                 FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume())
@@ -57,7 +57,7 @@ public class FluidSolidifierLoader {
             Material concrete = Material.get(dye.getName() + "_concrete");
             FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume()).fi(concrete.getLiquid(L)).io(RegistryUtils.getItemFromID(new ResourceLocation(dye.getName() + "_concrete"))).add(dye.getName() + "_concrete",288, 8);
         }
-        FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume()).fi(Lava.getLiquid(111)).io(ROD_LONG.get(Obsidian)).add("long_obsidian_rod", 16, 8);
+        FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldLongRod, 1).setNoConsume()).fi(Lava.getLiquid(111)).io(LONG_ROD.get(Obsidian)).add("long_obsidian_rod", 16, 8);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldPlate, 1).setNoConsume()).fi(Lava.getLiquid(111)).io(PLATE.get(Obsidian)).add("obsidian_plate", 16, 8);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldBlock, 1).setNoConsume()).fi(Lava.getLiquid(1000)).io(Items.OBSIDIAN).add("obsidian", 16, 8);
         FLUID_SOLIDIFYER.RB().ii(RecipeIngredient.of(GTCoreItems.MoldAnvil, 1).setNoConsume()).fi(Iron.getFluidIngredient(L * 31)).io(Items.ANVIL).add("anvil", 128, 16);

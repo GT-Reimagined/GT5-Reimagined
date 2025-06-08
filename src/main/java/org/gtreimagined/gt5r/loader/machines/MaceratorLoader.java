@@ -42,11 +42,11 @@ public class MaceratorLoader {
         ORE.all().forEach(m -> {
             GTAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).filter(s -> s != VanillaStoneTypes.BEDROCK).forEach(s -> {
                 Material sm = s.getMaterial();
-                if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED)) return;
+                if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED_ORE)) return;
                 ItemStack stoneDust = sm.has(GTMaterialTypes.DUST) ? GTMaterialTypes.DUST.get(sm, 1) : ItemStack.EMPTY;
                 TagKey<Item> oreTag = ORE.getMaterialTag(m, s);
                 RecipeIngredient ore = RecipeIngredient.of(oreTag,1);
-                ItemStack crushedStack = (m.has(CRUSHED) ? GTMaterialTypes.CRUSHED : DUST).get(m, ORE_MULTI.getInt(m));
+                ItemStack crushedStack = (m.has(CRUSHED_ORE) ? GTMaterialTypes.CRUSHED_ORE : DUST).get(m, ORE_MULTI.getInt(m));
                 Material oreByProduct1 = m.getByProducts().size() > 0 ? m.getByProducts().get(0) : MACERATE_INTO.getMapping(m);
                 RecipeMap<?> rm = s.isSandLike() ? SIFTER : PULVERIZER;
                 List<ItemStack> stacks = new ArrayList<>();
@@ -74,19 +74,19 @@ public class MaceratorLoader {
                 rm.RB().ii(ore).io(stackArray).outputChances(chances).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("ore_" + m.getId() + "_" + s.getId(),400, 2);
             });
         });
-        GTMaterialTypes.CRUSHED.all().forEach(m -> {
-            if (!m.has(GTMaterialTypes.CRUSHED)) return;
-            RecipeIngredient crushed = GTMaterialTypes.CRUSHED.getIngredient(m, 1);
+        GTMaterialTypes.CRUSHED_ORE.all().forEach(m -> {
+            if (!m.has(GTMaterialTypes.CRUSHED_ORE)) return;
+            RecipeIngredient crushed = GTMaterialTypes.CRUSHED_ORE.getIngredient(m, 1);
 
             //TODO better way to do this
             Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
             Material aOreByProduct2 = m.getByProducts().size() > 1 ? m.getByProducts().get(1) : aOreByProduct1;
             Material aOreByProduct3 = m.getByProducts().size() > 2 ? m.getByProducts().get(2) : aOreByProduct2;
-            PULVERIZER.RB().ii(crushed).io(GTMaterialTypes.DUST_IMPURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), GTMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("crushed_" + m.getId(),400, 2);
+            PULVERIZER.RB().ii(crushed).io(GTMaterialTypes.IMPURE_DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), GTMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("crushed_" + m.getId(),400, 2);
 
-            if (m.has(GTMaterialTypes.CRUSHED_REFINED)) {
+            if (m.has(GTMaterialTypes.REFINED_ORE)) {
                 var rb = PULVERIZER.RB();
-                rb.ii(RecipeIngredient.of(GTMaterialTypes.CRUSHED_REFINED.get(m,1))).io(GTMaterialTypes.DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), GTMaterialTypes.DUST.get(aOreByProduct3, 1));
+                rb.ii(RecipeIngredient.of(GTMaterialTypes.REFINED_ORE.get(m,1))).io(GTMaterialTypes.DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), GTMaterialTypes.DUST.get(aOreByProduct3, 1));
                 List<Integer> chances = new ArrayList<>();
                 chances.add(10000);
                 chances.add(1000);
@@ -100,22 +100,22 @@ public class MaceratorLoader {
                 }
                 rb.outputChances(chances.stream().mapToInt(i -> i).toArray()).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("refined_" + m.getId(),400, 2);
             }
-            if (m.has(GTMaterialTypes.CRUSHED_PURIFIED) && m.has(GTMaterialTypes.DUST_PURE)) {
-                PULVERIZER.RB().ii(GTMaterialTypes.CRUSHED_PURIFIED.getIngredient(m, 1)).io(GTMaterialTypes.DUST_PURE.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), GTMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("purified_" + m.getId(),400, 2);
+            if (m.has(GTMaterialTypes.PURIFIED_ORE) && m.has(GTMaterialTypes.PURE_DUST)) {
+                PULVERIZER.RB().ii(GTMaterialTypes.PURIFIED_ORE.getIngredient(m, 1)).io(GTMaterialTypes.PURE_DUST.get(MaterialTags.MACERATE_INTO.getMapping(m), 1), GTMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("purified_" + m.getId(),400, 2);
             }
         });
         RAW_ORE.all().forEach(m -> {
-            if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED)) return;
+            if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED_ORE)) return;
             Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
-            ItemStack crushedStack = (m.has(CRUSHED) ? GTMaterialTypes.CRUSHED : DUST).get(m, ORE_MULTI.getInt(m));
+            ItemStack crushedStack = (m.has(CRUSHED_ORE) ? GTMaterialTypes.CRUSHED_ORE : DUST).get(m, ORE_MULTI.getInt(m));
             PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m)) * 2, crushedStack), GTMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1 * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("raw_" + m.getId(),400, 2);
         });
-        GEM_EXQUISITE.all().forEach(m -> {
+        EXQUISITE_GEM.all().forEach(m -> {
             if (!m.has(GTMaterialTypes.DUST)) return;
-            PULVERIZER.RB().ii(GEM_EXQUISITE.getMaterialIngredient(m, 1)).io(DUST.get(MaterialTags.MACERATE_INTO.get(m), 4)).add(m.getId() + "_exquisite", m.getMass(), 4);
-            PULVERIZER.RB().ii(GEM_FLAWLESS.getMaterialIngredient(m, 1)).io(DUST.get(MaterialTags.MACERATE_INTO.get(m), 2)).add(m.getId() + "_flawless", m.getMass(), 4);
-            PULVERIZER.RB().ii(GEM_FLAWED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(m), 2)).add(m.getId() + "_flawed", m.getMass(), 4);
-            PULVERIZER.RB().ii(GEM_CHIPPED.getMaterialIngredient(m, 1)).io(DUST_SMALL.get(MaterialTags.MACERATE_INTO.get(m), 1)).add(m.getId() + "_chipped", m.getMass(), 4);
+            PULVERIZER.RB().ii(EXQUISITE_GEM.getMaterialIngredient(m, 1)).io(DUST.get(MaterialTags.MACERATE_INTO.get(m), 4)).add(m.getId() + "_exquisite", m.getMass(), 4);
+            PULVERIZER.RB().ii(FLAWLESS_GEM.getMaterialIngredient(m, 1)).io(DUST.get(MaterialTags.MACERATE_INTO.get(m), 2)).add(m.getId() + "_flawless", m.getMass(), 4);
+            PULVERIZER.RB().ii(FLAWED_GEM.getMaterialIngredient(m, 1)).io(SMALL_DUST.get(MaterialTags.MACERATE_INTO.get(m), 2)).add(m.getId() + "_flawed", m.getMass(), 4);
+            PULVERIZER.RB().ii(CHIPPED_GEM.getMaterialIngredient(m, 1)).io(SMALL_DUST.get(MaterialTags.MACERATE_INTO.get(m), 1)).add(m.getId() + "_chipped", m.getMass(), 4);
         });
         GTMaterialTypes.GEM.all().forEach(m -> {
             if (!m.has(GTMaterialTypes.DUST)) return;
@@ -127,20 +127,20 @@ public class MaceratorLoader {
             if (!MACERATE_INTO.get(t).has(GTMaterialTypes.DUST)) return;
             PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.INGOT.getMaterialTag(t),1)).io(GTMaterialTypes.DUST.get(MACERATE_INTO.get(t),1)).add("dust_" + t.getId(),40,2);
             if (t.has(NUGGET)){
-                PULVERIZER.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(DUST_TINY.get(MACERATE_INTO.get(t),1)).add("dust_tiny_" + t.getId(),10,2);
+                PULVERIZER.RB().ii(RecipeIngredient.of(NUGGET.getMaterialTag(t),1)).io(TINY_DUST.get(MACERATE_INTO.get(t),1)).add("dust_tiny_" + t.getId(),10,2);
             }
             if (t.has(CHUNK)){
-                PULVERIZER.RB().ii(RecipeIngredient.of(CHUNK.getMaterialTag(t),1)).io(DUST_SMALL.get(MACERATE_INTO.get(t),1)).add("dust_small_" + t.getId(),10,2);
+                PULVERIZER.RB().ii(RecipeIngredient.of(CHUNK.getMaterialTag(t),1)).io(SMALL_DUST.get(MACERATE_INTO.get(t),1)).add("dust_small_" + t.getId(),10,2);
             }
         });
         BEARING_ROCK.all().forEach(r -> {
             if (r.has(DUST)){
-                PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_bearing_rock",20,2);
+                PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.BEARING_ROCK.getMaterialTag(r),1)).io(SMALL_DUST.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_bearing_rock",20,2);
             }
         });
         ROCK.all().forEach(r -> {
             if (r.has(DUST)){
-                PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.ROCK.getMaterialTag(r),1)).io(DUST_SMALL.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_rock",20,2);
+                PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.ROCK.getMaterialTag(r),1)).io(SMALL_DUST.get(MACERATE_INTO.get(r),1)).add("dust_small_" + r.getId() + "_from_rock",20,2);
             }
         });
         GTAPI.all(StoneType.class, s -> {
@@ -159,10 +159,10 @@ public class MaceratorLoader {
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.STONE,1)).io(new ItemStack(Items.GRAVEL,1)).add("gravel",100,2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.COBBLESTONE,1)).io(new ItemStack(Items.SAND,1)).add("sand",100,2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.GRAVEL,1)).io(DUST.get(Stone,9)).add("stone_dust_from_gravel",100,2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(DUST_SMALL.get(Materials.Brick, 2)).add("brick_dust",50,4);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Items.BRICK,1)).io(SMALL_DUST.get(Materials.Brick, 2)).add("brick_dust",50,4);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.COAL,1)).io(GTMaterialTypes.DUST.get(Coal, 1)).add("coal_dust",50,4);
         PULVERIZER.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 1)).io(GTMaterialTypes.DUST.get(Wood, 2)).add("wood_dust",40, 2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Items.CLAY_BALL, 1)).io(DUST_SMALL.get(Clay, 2)).add("clay_dust_small",16, 4);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Items.CLAY_BALL, 1)).io(SMALL_DUST.get(Clay, 2)).add("clay_dust_small",16, 4);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.CLAY, 1)).io(DUST.get(Clay, 2)).add("clay_dust",30, 4);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.TERRACOTTA, 1)).io(DUST.get(Clay, 1)).add("clay_dust_1",16, 4);
         PULVERIZER.RB().ii(RecipeIngredient.of(GTCoreItems.Plantball, 1)).io(new ItemStack(Biochaff, 1)).add("biochaff",32, 2);

@@ -50,7 +50,7 @@ public class Parts {
               new ItemStack(GT5Reimagined.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
       provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
-              of('G', GEAR_SMALL.getMaterialTag(Iron), 'R', ROD.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
+              of('G', SMALL_GEAR.getMaterialTag(Iron), 'R', ROD.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
 
       provider.shapeless(output, GT5Reimagined.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalBall,
@@ -79,7 +79,7 @@ public class Parts {
 
       provider.addItemRecipe(output, GT5Reimagined.ID, "diamondsaw_blade", "gtparts", DiamondSawBlade, of(
               'G', GEAR.get(CobaltBrass),
-              'D', DUST_SMALL.get(Diamond)
+              'D', SMALL_DUST.get(Diamond)
       ), " D ", "DGD", " D ");
 
       provider.addItemRecipe(output, "mining_pipes", GT5RBlocks.MINING_PIPE_THIN,
@@ -95,7 +95,7 @@ public class Parts {
       provider.shapeless(output, GT5Reimagined.ID, "fluid_filter_reset", "filters", GT5RCovers.COVER_FLUID_FILTER.getItem(), GT5RCovers.COVER_FLUID_FILTER.getItem().getItem());
       provider.shapeless(output, GT5Reimagined.ID, "item_filter_reset", "filters", GT5RCovers.COVER_ITEM_FILTER.getItem(), GT5RCovers.COVER_ITEM_FILTER.getItem().getItem());
       provider.shapeless(output, GT5Reimagined.ID, "item_retriever_reset", "filters", GT5RCovers.COVER_ITEM_RETRIEVER.getItem(), GT5RCovers.COVER_ITEM_RETRIEVER.getItem().getItem());
-      provider.addItemRecipe(output, "covers", GT5RCovers.COVER_PROGRESS_SENSOR.getItem().getItem(), of('W', CABLE_GETTER.apply(PipeSize.VTINY, LV, false), 'A', PLATE.getMaterialTag(Aluminium), 'G', GEAR_SMALL.getMaterialTag(Brass), 'C', CIRCUITS_GOOD), "WAW", "GCG");
+      provider.addItemRecipe(output, "covers", GT5RCovers.COVER_PROGRESS_SENSOR.getItem().getItem(), of('W', CABLE_GETTER.apply(PipeSize.VTINY, LV, false), 'A', PLATE.getMaterialTag(Aluminium), 'G', SMALL_GEAR.getMaterialTag(Brass), 'C', CIRCUITS_GOOD), "WAW", "GCG");
       provider.addItemRecipe(output, "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "W", "A");
       provider.addItemRecipe(output, "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem().getItem(), of('W', GTCoreCables.WIRE_RED_ALLOY.getBlock(PipeSize.VTINY), 'A', PLATE.getMaterialTag(Aluminium)), "A", "W");
       provider.shapeless(output, GT5Reimagined.ID, "redstone_conductor_accept_conversion", "covers", GT5RCovers.COVER_REDSTONE_CONDUCTOR_EMIT.getItem(), GT5RCovers.COVER_REDSTONE_CONDUCTOR_ACCEPT.getItem().getItem());
@@ -123,7 +123,7 @@ public class Parts {
           Object cable = CABLE_GETTER.apply(PipeSize.VTINY, t, false);
           Material mat = TIER_MATERIALS.get(t);
           if (mat == null) return;
-          TagKey<Item> smallGear = GEAR_SMALL.getMaterialTag(mat);
+          TagKey<Item> smallGear = SMALL_GEAR.getMaterialTag(mat);
           TagKey<Item> plate = PLATE.getMaterialTag(mat);
           TagKey<Item> rod = ROD.getMaterialTag(mat);
           TagKey<Item> circuit = TIER_CIRCUITS.apply(t);
@@ -152,7 +152,7 @@ public class Parts {
                   of('R', emitterRod, 'G', ForgeTags.GEMS_QUARTZ_ALL, 'C', circuit, 'P', plate), "P G", "PR ", "CPP");
           PipeSize osmium = t == IV ? PipeSize.HUGE : PipeSize.values()[t.getIntegerId() - 1];
           provider.addItemRecipe(output, "gtparts", fieldGen,
-                  of('O', GT5RBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', ROD_LONG.getMaterialTag(NeodymiumMagnetic)), "OCO", "CGC", "OCO");
+                  of('O', GT5RBlocks.WIRE_OSMIUM.getBlockItem(osmium), 'C', circuit, 'G', LONG_ROD.getMaterialTag(NeodymiumMagnetic)), "OCO", "CGC", "OCO");
           Material rotorMat = TIER_ROTORS.get(t);
           provider.addItemRecipe(output, "gtparts", pump,
                   ImmutableMap.<Character, Object>builder().put('M', motor).put('C', cable).put('W', WRENCH.getTag())

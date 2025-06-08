@@ -8,7 +8,7 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.CRYSTALLIZATION_CHAMBER;
 import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gtlib.Ref.L9;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST_TINY;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 
 public class CrystallizationChamberLoader {
     public static void init(){
@@ -18,22 +18,22 @@ public class CrystallizationChamberLoader {
         addSapphireRecipe(Magnesium, GreenSapphire);
     }
     private static void addSapphireRecipe(Material input, Material output){
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(input, 6))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(input, 6))
                 .fi(Alumina.getLiquid(L9 * 105), Krypton.getGas(1000))
                 .io(BOULE.get(output)).add(output.getId() + "_boule_with_krypton_tiny", 4500, 256, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(input, 6))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(input, 6))
                 .fi(Alumina.getLiquid(L9 * 105), Helium.getGas(1000))
                 .io(BOULE.get(output)).add(output.getId() + "_boule_with_helium_tiny", 4500, 256, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(input, 6))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(input, 6))
                 .fi(Alumina.getLiquid(L9 * 105), Argon.getGas(1000))
                 .io(BOULE.get(output)).add(output.getId() + "_boule_with_argon_tiny", 4500, 256, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(input, 6))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(input, 6))
                 .fi(Alumina.getLiquid(L9 * 105), Neon.getGas(1000))
                 .io(BOULE.get(output)).add(output.getId() + "_boule_with_neon_tiny", 4500, 256, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(input, 6))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(input, 6))
                 .fi(Alumina.getLiquid(L9 * 105), Radon.getGas(1000))
                 .io(BOULE.get(output)).add(output.getId() + "_boule_with_radon_tiny", 4500, 256, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(input, 6))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(input, 6))
                 .fi(Alumina.getLiquid(L9 * 105), Xenon.getGas(1000))
                 .io(BOULE.get(output)).add(output.getId() + "_boule_with_xenon_tiny", 4500, 256, 0, 4);
 
@@ -58,22 +58,22 @@ public class CrystallizationChamberLoader {
     }
 
     private static void addRecipe(Material material){
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(material, 1))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid((L * 3) + (L9 * 8)), Krypton.getGas(1000))
                 .io(BOULE.get(material)).add(material.getId() + "_boule_with_krypton_tiny", 15 * 60 * 20, 16, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(material, 1))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid((L * 3) + (L9 * 8)), Helium.getGas(1000))
                 .io(BOULE.get(material)).add(material.getId() + "_boule_with_helium_tiny", 15 * 60 * 20, 16, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(material, 1))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid((L * 3) + (L9 * 8)), Argon.getGas(1000))
                 .io(BOULE.get(material)).add(material.getId() + "_boule_with_argon_tiny", 15 * 60 * 20, 16, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(material, 1))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid((L * 3) + (L9 * 8)), Neon.getGas(1000))
                 .io(BOULE.get(material)).add(material.getId() + "_boule_with_neon_tiny", 15 * 60 * 20, 16, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(material, 1))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid((L * 3) + (L9 * 8)), Radon.getGas(1000))
                 .io(BOULE.get(material)).add(material.getId() + "_boule_with_radon_tiny", 15 * 60 * 20, 16, 0, 4);
-        CRYSTALLIZATION_CHAMBER.RB().ii(DUST_TINY.getMaterialIngredient(material, 1))
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid((L * 3) + (L9 * 8)), Xenon.getGas(1000))
                 .io(BOULE.get(material)).add(material.getId() + "_boule_with_xenon_tiny", 15 * 60 * 20, 16, 0, 4);
 

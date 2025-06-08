@@ -73,7 +73,7 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
             overlays.add(Triple.of(87, 45, 7000));
         }
         if (hasSiftingRecipe()){
-            boolean e = material.has(GEM_EXQUISITE);
+            boolean e = material.has(EXQUISITE_GEM);
             overlays.addAll(List.of(
                     Triple.of(127, 1, e ? 300 : 100),
                     Triple.of(145, 1, e ? 1200 : 400),
@@ -93,37 +93,37 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
     public List<SlotResult> getMainSlots(){
         List<SlotResult> slots = new ArrayList<>(List.of(
                 mch(1, 23, MACERATOR),
-                createOutput(1, 45, CRUSHED, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
+                createOutput(1, 45, CRUSHED_ORE, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
                 createOutput(1, 63, DUST, getByproduct(0), 1, 1000),
                 mch(22, 69, MACERATOR),
-                createOutput(22, 90, DUST_IMPURE, getMacerateInto(), 1),
+                createOutput(22, 90, IMPURE_DUST, getMacerateInto(), 1),
                 createOutput(22, 108, DUST, getByproduct(0), 1, 1000),
                 mch(26, 23, ORE_WASHER),
                 new SlotResult(47, 23, true, List.of(Materials.Water.getLiquid(1000))),
-                createOutput(69, 23, CRUSHED_PURIFIED, getMacerateInto(), 1),
-                createOutput(87, 23, DUST_TINY, getByproduct(0), 1),
+                createOutput(69, 23, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(87, 23, TINY_DUST, getByproduct(0), 1),
                 mch(117, 45, MACERATOR),
-                createOutput(145, 45, DUST_PURE, getMacerateInto(), 1),
+                createOutput(145, 45, PURE_DUST, getMacerateInto(), 1),
                 createOutput(163, 45, DUST, getByproduct(1), 1, 1000),
                 mch(123, 69, THERMAL_CENTRIFUGE),
-                createOutput(123, 90, CRUSHED_REFINED, getMacerateInto(), 1),
-                createOutput(123, 108, DUST_TINY, getThermalByproduct(), 1),
+                createOutput(123, 90, REFINED_ORE, getMacerateInto(), 1),
+                createOutput(123, 108, TINY_DUST, getThermalByproduct(), 1),
                 mch(145, 69, CENTRIFUGE),
                 createOutput(145, 90, DUST, getMacerateInto(), 1),
-                createOutput(145, 108, DUST_TINY, getByproduct(1), 1),
+                createOutput(145, 108, TINY_DUST, getByproduct(1), 1),
                 mch(47, 78, CENTRIFUGE),
                 createOutput(47, 99, DUST, getMacerateInto(), 1),
-                createOutput(47, 117, DUST_TINY, getByproduct(0), 1),
+                createOutput(47, 117, TINY_DUST, getByproduct(0), 1),
                 mch(69, 78, MACERATOR),
                 createOutput(69, 99, DUST, getMacerateInto(), 1),
                 createOutput(69, 117, DUST, getByproduct(2), 1, 1000),
-                createOutput(1, 103, CRUSHED, getMacerateInto(), 1),
+                createOutput(1, 103, CRUSHED_ORE, getMacerateInto(), 1),
                 new SlotResult(1, 122, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
-                createOutput(1, 143, CRUSHED_PURIFIED, getMacerateInto(), 1),
-                createOutput(22, 143, DUST_IMPURE, getMacerateInto(), 1),
+                createOutput(1, 143, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(22, 143, IMPURE_DUST, getMacerateInto(), 1),
                 new SlotResult(40, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
                 createOutput(62, 143, DUST, getMacerateInto(), 1),
-                createOutput(83, 143, DUST_PURE, getMacerateInto(), 1),
+                createOutput(83, 143, PURE_DUST, getMacerateInto(), 1),
                 new SlotResult(101, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
                 createOutput(123, 143, DUST, getMacerateInto(), 1)
         ));
@@ -150,19 +150,19 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
                 mch(26, 45, BATH),
                 new SlotResult(47, 45, true, List.of(fluidOutput.getLiquid(1000))),
                 createOutput(87, 45, DUST, bathOutput, 1, 7000),
-                createOutput(69, 45, CRUSHED_PURIFIED, getMacerateInto(), 1)
+                createOutput(69, 45, PURIFIED_ORE, getMacerateInto(), 1)
         );
     }
 
     private List<SlotResult> getSiftSlots(){
-        boolean e = material.has(GEM_EXQUISITE);
+        boolean e = material.has(EXQUISITE_GEM);
         return List.of(
                 mch(107, 22, SIFTER),
-                createOutput(127, 1, e ? GEM_EXQUISITE : GEM, getMacerateInto(), 1, e ? 300 : 100),
-                createOutput(145, 1, e ? GEM_FLAWLESS : GEM, getMacerateInto(), 1, e ? 1200 : 400),
+                createOutput(127, 1, e ? EXQUISITE_GEM : GEM, getMacerateInto(), 1, e ? 300 : 100),
+                createOutput(145, 1, e ? FLAWLESS_GEM : GEM, getMacerateInto(), 1, e ? 1200 : 400),
                 createOutput(163, 1, GEM, getMacerateInto(), 1, e ? 4500 : 1500),
-                createOutput(127, 19, e ? GEM_FLAWED : GEM, getMacerateInto(), 1, e ? 1400 : 2000),
-                createOutput(145, 19, e ? GEM_CHIPPED : GEM, getMacerateInto(), 1, e ? 2800 : 4000),
+                createOutput(127, 19, e ? FLAWED_GEM : GEM, getMacerateInto(), 1, e ? 1400 : 2000),
+                createOutput(145, 19, e ? CHIPPED_GEM : GEM, getMacerateInto(), 1, e ? 2800 : 4000),
                 createOutput(163, 19, DUST, getMacerateInto(), 1, e ? 3500 : 5000)
         );
     }
@@ -172,7 +172,7 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
         return List.of(
                 mch(163, 69, ELECTROMAGNETIC_SEPARATOR),
                 createOutput(163, 90, DUST, getMacerateInto(), 1),
-                createOutput(163, 108, DUST_SMALL, byProduct, 2, 4000),
+                createOutput(163, 108, SMALL_DUST, byProduct, 2, 4000),
                 createOutput(163, 126, NUGGET, byProduct, 1, 2000)
         );
     }

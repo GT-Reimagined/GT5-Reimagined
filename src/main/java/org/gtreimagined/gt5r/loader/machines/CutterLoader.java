@@ -38,11 +38,11 @@ public class CutterLoader {
                 multiplier = 5;
             if (mat.has(GEM)){
                 addCutterRecipe(GEM.getMaterialTag(mat), PLATE.get(mat, 1), "plate_" + mat.getId() + "_from_gem", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
-                if (mat.has(GEM_FLAWLESS)) {
-                    addCutterRecipe(GEM_FLAWLESS.getMaterialTag(mat), PLATE.get(mat, 2), "plate_" + mat.getId() + "_from_gem_flawless", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
+                if (mat.has(FLAWLESS_GEM)) {
+                    addCutterRecipe(FLAWLESS_GEM.getMaterialTag(mat), PLATE.get(mat, 2), "plate_" + mat.getId() + "_from_gem_flawless", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
                 }
-                if (mat.has(GEM_EXQUISITE)) {
-                    addCutterRecipe(GEM_EXQUISITE.getMaterialTag(mat), PLATE.get(mat, 4), "plate_" + mat.getId() + "_from_gem_exquisite", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
+                if (mat.has(EXQUISITE_GEM)) {
+                    addCutterRecipe(EXQUISITE_GEM.getMaterialTag(mat), PLATE.get(mat, 4), "plate_" + mat.getId() + "_from_gem_exquisite", (int) (baseDuration.applyAsLong(mat) * multiplier), 96);
                 }
             }
             if (!mat.has(GTMaterialTypes.BLOCK))
@@ -72,8 +72,8 @@ public class CutterLoader {
                 addCutterRecipe(ROD.getMaterialTag(t), BOLT.get(t, 4), "bolt_" + t.getId(), (int) (baseDuration.applyAsLong(t) * 2), 4);
             }
         });
-        GTMaterialTypes.ROD_LONG.all().stream().filter(m -> m.has(ROD)).forEach(m -> {
-            addCutterRecipe(ROD_LONG.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (baseDuration.applyAsLong(m) * 2), 4);
+        GTMaterialTypes.LONG_ROD.all().stream().filter(m -> m.has(ROD)).forEach(m -> {
+            addCutterRecipe(LONG_ROD.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (baseDuration.applyAsLong(m) * 2), 4);
         });
         if (!GTAPI.isModLoaded(Ref.MOD_TFC)){
             addWoodRecipe(ItemTags.OAK_LOGS, Items.OAK_PLANKS, 1, "oak_planks", 200, 8);

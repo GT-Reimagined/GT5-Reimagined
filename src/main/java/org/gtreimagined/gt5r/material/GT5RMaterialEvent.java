@@ -17,7 +17,7 @@ public class GT5RMaterialEvent extends MaterialEvent<GT5RMaterialEvent> {
             flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         }
         if (blastFurnaceTemp > 2400) {
-            flags(GTMaterialTypes.INGOT_HOT);
+            flags(GTMaterialTypes.HOT_INGOT);
         }
         return this;
     }
@@ -31,7 +31,7 @@ public class GT5RMaterialEvent extends MaterialEvent<GT5RMaterialEvent> {
     public GT5RMaterialEvent forceBF(boolean hotIngot) {
         flags(GT5RMaterialTags.NEEDS_BLAST_FURNACE, HAS_CUSTOM_SMELTING);
         if (hotIngot) {
-            flags(GTMaterialTypes.INGOT_HOT);
+            flags(GTMaterialTypes.HOT_INGOT);
         }
         return this;
     }
@@ -53,7 +53,7 @@ public class GT5RMaterialEvent extends MaterialEvent<GT5RMaterialEvent> {
 
     @Override
     protected GT5RMaterialEvent buildTool(ToolData builder) {
-        flags(GTMaterialTypes.ROD_LONG);
+        flags(GTMaterialTypes.LONG_ROD);
         return super.buildTool(builder);
     }
 
