@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.machine;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -11,7 +10,6 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static org.gtreimagined.gtlib.Data.COVEROUTPUT;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
@@ -23,7 +21,7 @@ public class HeatExchangerMachine extends BasicMachine {
         super(domain, id);
         this.rate = rate;
         this.setTile((m, p, s) -> new BlockEntitySmallHeatExchanger(this, p, s, this.rate, this.efficiency));
-        this.overlayTexture((type, state, tier, i) -> {
+        this.setOverlayTextures((type, state, tier, i) -> {
             state = state.getTextureState();
             String stateDir = state == MachineState.IDLE ? "" : state.getId() + "/";
             return new Texture[]{
@@ -38,10 +36,10 @@ public class HeatExchangerMachine extends BasicMachine {
         removeFlags(EU);
         setSecondaryOutputCover(GT5RCovers.COVER_OUTPUT_SECONDARY);
         setSecondaryOutputDir(Dir.RIGHT);
-        outputCoversOnFacing(true);
+        setAllowsOutputCoversOnFacing(true);
         setTiers(NONE);
-        baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/" + id));
-        setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).frontCovers().allowFrontIO();
+        setBaseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/" + id));
+        setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, ITEM, FLUID).setAllowsFrontCovers().setAllowsFrontIO();
         addTooltipInfo((machine, stack, world, tooltip, flag) -> {
             tooltip.add(Utils.translatable("tooltip.gt5r.small_heat_exchanger.heat_rate", rate));
             tooltip.add(Utils.translatable("tooltip.gt5r.small_heat_exchanger.efficiency", ((double)efficiency / 100.0) + "%"));

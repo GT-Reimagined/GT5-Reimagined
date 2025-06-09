@@ -10,7 +10,7 @@ import static org.gtreimagined.gtlib.machine.Tier.NONE;
 public class BridgeMachine extends BasicMachine {
     public BridgeMachine(String domain, String id) {
         super(domain, id);
-        this.setTiers(NONE).noOutputCover().setNoFacing(true);
-        this.overlayTexture(Textures.BRIDGE).baseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/bridge"));
+        this.setTiers(NONE).setNoOutputCover().setNoFacing(true);
+        this.setOverlayTextures(Textures.BRIDGE).setBaseTexture(new Texture(GT5Reimagined.ID, "block/machine/base/bridge"));
     }
 }
