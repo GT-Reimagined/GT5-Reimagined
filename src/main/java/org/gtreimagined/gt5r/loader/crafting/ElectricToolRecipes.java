@@ -54,8 +54,8 @@ public class ElectricToolRecipes {
                 provider.addItemRecipe(output, "bits", DRILL_BIT.get(m),
                         ImmutableMap.of('P', PLATE.getMaterialTag(m), 'S', PLATE.getMaterialTag(Steel), 'H', HAMMER.getTag()), "PSP", "PSP", "SHS");
             }
-            if (m.has(WRENCHBIT)){
-                provider.addItemRecipe(output, "bits", WRENCHBIT.get(m),
+            if (m.has(WRENCH_BIT)){
+                provider.addItemRecipe(output, "bits", WRENCH_BIT.get(m),
                         ImmutableMap.of('P', PLATE.getMaterialTag(m),
                                 'R', RING.getMaterialTag(Steel),
                                 'S', SCREW.getMaterialTag(Steel),
@@ -170,7 +170,7 @@ public class ElectricToolRecipes {
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-lv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_lv_" + "recipe", "gt_electric_wrenches",
                 resolveStack(electric_wrench_lv, Material.NULL, Aluminium, 0, 100000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(WRENCHBIT, "primary"))
+                        .put('W', PropertyIngredient.of(WRENCH_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_LV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Aluminium).types(PLATE).build())
@@ -180,7 +180,7 @@ public class ElectricToolRecipes {
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-mv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_mv_" + "recipe", "gt_electric_wrenches",
                 resolveStack(electric_wrench_mv, Material.NULL, StainlessSteel, 0, 200000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(WRENCHBIT, "primary"))
+                        .put('W', PropertyIngredient.of(WRENCH_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_MV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(StainlessSteel).types(PLATE).build())
@@ -190,7 +190,7 @@ public class ElectricToolRecipes {
         provider.addToolRecipe(ToolTypes.POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-hv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_hv_" + "recipe", "gt_electric_wrenches",
                 resolveStack(electric_wrench_hv, Material.NULL, Titanium, 0, 800000),
                 ImmutableMap.<Character, Object>builder()
-                        .put('W', PropertyIngredient.of(WRENCHBIT, "primary"))
+                        .put('W', PropertyIngredient.of(WRENCH_BIT, "primary"))
                         .put('S', GTTools.SCREWDRIVER.getTag())
                         .put('b', PropertyIngredient.builder("battery").itemTags(BATTERIES_HV).build())
                         .put('P', PropertyIngredient.builder("secondary").mats(Titanium).types(PLATE).build())
@@ -198,11 +198,11 @@ public class ElectricToolRecipes {
                         .put('G', SMALL_GEAR.getMaterialTag(Titanium))
                         .put('M', GTCoreItems.MotorHV).build(), "sWS", "GMG", "PbP");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-lv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_lv_power_unit_" + "recipe", "electric_wrenches",
-                resolveStack(electric_wrench_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCHBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
+                resolveStack(electric_wrench_lv, Material.NULL, Aluminium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCH_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_LV).build()), "BS", "P ");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-mv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_mv_power_unit_" + "recipe", "electric_wrenches",
-                resolveStack(electric_wrench_mv, Material.NULL, StainlessSteel, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCHBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_MV).build()), "BS", "P ");
+                resolveStack(electric_wrench_mv, Material.NULL, StainlessSteel, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCH_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_MV).build()), "BS", "P ");
         provider.addToolRecipe(ToolTypes.UNIT_POWERED_TOOL_BUILDER.get(ELECTRIC_WRENCH.getId() + "-hv"),output, GT5Reimagined.ID, ELECTRIC_WRENCH.getId() + "_hv_power_unit_" + "recipe", "electric_wrenches",
-                resolveStack(electric_wrench_hv, Material.NULL, Titanium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCHBIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build()), "BS", "P ");
+                resolveStack(electric_wrench_hv, Material.NULL, Titanium, 0, 100000), of('B', PropertyIngredient.of(GTMaterialTypes.WRENCH_BIT, "primary"), 'S', GTTools.SCREWDRIVER.getTag(), 'P', PropertyIngredient.builder("secondary").itemTags(POWER_UNIT_HV).build()), "BS", "P ");
 
 
         IGTTool buzzsaw_lv = GTAPI.get(IGTTool.class, "buzzsaw_lv", GTCore.ID);
