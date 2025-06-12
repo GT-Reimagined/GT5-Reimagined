@@ -17,6 +17,7 @@ public class BridgeSidedFluidWrapper extends ExtenderSidedFluidWrapper {
     @Override
     LazyOptional<IFluidHandler> getFluidHandler(Direction facing) {
         BlockEntity entity = blockEntity.getCachedBlockEntity(facing.getOpposite());
+        if (entity == null) return LazyOptional.empty();
         return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing);
     }
 }

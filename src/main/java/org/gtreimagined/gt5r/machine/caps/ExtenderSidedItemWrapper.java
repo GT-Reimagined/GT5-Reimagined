@@ -25,6 +25,7 @@ public class ExtenderSidedItemWrapper extends SidedCombinedInvWrapper {
     LazyOptional<IItemHandler> getItemHandler(Direction facing) {
         Direction side = facing == blockEntity.getFacing() ? blockEntity.getOutputFacing() : blockEntity.getFacing();
         BlockEntity entity = blockEntity.getCachedBlockEntity(side);
+        if (entity == null) return LazyOptional.empty();
         return entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
     }
 

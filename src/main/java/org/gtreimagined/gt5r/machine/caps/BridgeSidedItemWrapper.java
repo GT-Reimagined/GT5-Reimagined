@@ -22,6 +22,7 @@ public class BridgeSidedItemWrapper extends ExtenderSidedItemWrapper {
     @Override
     LazyOptional<IItemHandler> getItemHandler(Direction facing) {
         BlockEntity entity = blockEntity.getCachedBlockEntity(facing.getOpposite());
+        if (entity == null) return LazyOptional.empty();
         return entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing);
     }
 }

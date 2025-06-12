@@ -24,6 +24,7 @@ public class ExtenderSidedFluidWrapper extends FluidHandlerSidedWrapper {
     LazyOptional<IFluidHandler> getFluidHandler(Direction facing) {
         Direction side = facing == blockEntity.getFacing() ? blockEntity.getOutputFacing() : blockEntity.getFacing();
         BlockEntity entity = blockEntity.getCachedBlockEntity(side);
+        if (entity == null) return LazyOptional.empty();
         return entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
     }
 
