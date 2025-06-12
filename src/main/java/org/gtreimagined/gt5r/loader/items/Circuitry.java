@@ -134,19 +134,13 @@ public class Circuitry {
 
     private static void circuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         provider.addItemRecipe(output, "circuits", BasicCircuit,
-                ImmutableMap.of('S', FINE_WIRE.getMaterialTag(Tin), 'C', BasicCircuitBoard), " S ", "SCS", " S ");
-        provider.addItemRecipe(output, GT5Reimagined.ID, "basic_circuit_board_h", "circuits", BasicCircuitBoard,
+                ImmutableMap.of('S', FINE_WIRE.getMaterialTag(Tin), 'C', BasicCircuitBoard), "SSS", "SCS", "SSS");
+        provider.addItemRecipe(output, GT5Reimagined.ID, "basic_circuit_board", "circuits", BasicCircuitBoard,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
                         .put('N', BasicCircuitParts)
                         .put('S', GT5RItems.CircuitBoardCoated)
-                        .build(), "CCC", "NSN", "CCC");
-        provider.addItemRecipe(output, GT5Reimagined.ID, "basic_circuit_board_v", "circuits", BasicCircuitBoard,
-                ImmutableMap.<Character, Object>builder()
-                        .put('C', CABLE_GETTER.apply(PipeSize.VTINY, MV, false))
-                        .put('N', BasicCircuitParts)
-                        .put('S', GT5RItems.CircuitBoardCoated)
-                        .build(), "CNC", "CSC", "CNC");
+                        .build(), "CNC", "NSN", "CNC");
         provider.addItemRecipe(output, GT5Reimagined.ID, "", "circuits", BasicCircuitParts,
                 ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
         /*provider.addItemRecipe(output, GT5RRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
