@@ -1,33 +1,53 @@
-package org.gtreimagined.gt5r.blockentity.miniportals;
+package org.gtreimagined.gt5r.blockentity.single.miniportals;
 
-import org.gtreimagined.gtlib.machine.MachineState;
-import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gt5r.loader.WorldGenLoader;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.tool.GTToolType;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
-    public static List<BlockEntityMiniPortal> sListEndSide = new ArrayList<>();
-    public BlockEntityMiniEndPortal(Machine<?> type, BlockPos pos, BlockState state) {
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.GEM;
+
+public class BlockEntityMiniTwilightPortal extends BlockEntityMiniPortal{
+    public static List<BlockEntityMiniPortal> sListTwilightSide = new ArrayList<>();
+    public BlockEntityMiniTwilightPortal(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
     @Override
     protected boolean isPortalSetter(ItemStack stack){
-        return stack.is(Items.ENDER_EYE);
+        return stack.is(GEM.getMaterialTag(Materials.Diamond));
+    }
+
+    @Override
+    public InteractionResult onInteractBoth(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit, @Nullable GTToolType type) {
+        InteractionResult result = super.onInteractBoth(state, world, pos, player, hand, hit, type);
+        if (result == InteractionResult.SUCCESS){
+            LightningBolt bolt = new LightningBolt(EntityType.LIGHTNING_BOLT, level);
+            bolt.setPos(this.getBlockPos().getX() + 0.5, this.getBlockPos().getY(), this.getBlockPos().getZ() + 0.5);
+            bolt.setVisualOnly(false);
+            level.addFreshEntity(bolt);
+        }
+        return result;
     }
 
     @Override
     protected void playActivationSound(Player player){
-        level.playSound(player, this.getBlockPos(), SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 1.0f, 1.0f);
+        
     }
 
     @Override
@@ -37,7 +57,7 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
 
     @Override
     public List<BlockEntityMiniPortal> getPortalListB() {
-        return sListEndSide;
+        return sListTwilightSide;
     }
 
 
@@ -45,8 +65,8 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
     public void addThisPortalToLists() {
         if (level.dimension() == Level.OVERWORLD) {
             if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-        } else if (level.dimension() == Level.END) {
-            if (!sListEndSide.contains(this)) sListEndSide.add(this);
+        } else if (level.dimension() == WorldGenLoader.TWILIGHT_FOREST) {
+            if (!sListTwilightSide.contains(this)) sListTwilightSide.add(this);
         }
     }
 
@@ -56,7 +76,7 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
         if (level != null && isServerSide()) {
             if (level.dimension() == Level.OVERWORLD) {
                 long tShortestDistance = 512*512;
-                for (BlockEntityMiniPortal tTarget : sListEndSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
+                for (BlockEntityMiniPortal tTarget : sListTwilightSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX(), tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
@@ -66,7 +86,7 @@ public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
                         otherSide = tTarget;
                     }
                 }
-            } else if (level.dimension() == Level.END) {
+            } else if (level.dimension() == WorldGenLoader.TWILIGHT_FOREST) {
                 long tShortestDistance = 512*512;
                 for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX(), tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ();

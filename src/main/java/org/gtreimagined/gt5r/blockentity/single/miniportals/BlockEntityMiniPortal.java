@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.blockentity.miniportals;
+package org.gtreimagined.gt5r.blockentity.single.miniportals;
 
 import lombok.Setter;
 import net.minecraftforge.common.capabilities.Capability;

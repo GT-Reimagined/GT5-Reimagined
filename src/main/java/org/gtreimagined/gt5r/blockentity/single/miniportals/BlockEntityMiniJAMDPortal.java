@@ -1,34 +1,32 @@
-package org.gtreimagined.gt5r.blockentity.miniportals;
+package org.gtreimagined.gt5r.blockentity.single.miniportals;
 
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.gtreimagined.gtcore.data.GTCoreTags;
+import org.gtreimagined.gt5r.loader.WorldGenLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
-    public static List<BlockEntityMiniPortal>
-            sListNetherSide = new ArrayList<>();
-    public BlockEntityMiniNetherPortal(Machine<?> type, BlockPos pos, BlockState state) {
+public class BlockEntityMiniJAMDPortal extends BlockEntityMiniPortal{
+    public static List<BlockEntityMiniPortal> sListJAMDSide = new ArrayList<>();
+    public BlockEntityMiniJAMDPortal(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
     @Override
-    protected boolean isPortalSetter(ItemStack stack){
-        return stack.is(GTCoreTags.FIRESTARTER);
+    protected boolean isPortalSetter(ItemStack stack) {
+        return stack.getItem() == Items.FLINT_AND_STEEL;
     }
 
     @Override
-    protected void playActivationSound(Player player){
-        level.playSound(player, this.getBlockPos(), SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+    protected void playActivationSound(Player player) {
+
     }
 
     @Override
@@ -38,15 +36,15 @@ public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
 
     @Override
     public List<BlockEntityMiniPortal> getPortalListB() {
-        return sListNetherSide;
+        return sListJAMDSide;
     }
 
     @Override
     public void addThisPortalToLists() {
         if (level.dimension() == Level.OVERWORLD) {
             if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-        } else if (level.dimension() == Level.NETHER) {
-            if (!sListNetherSide.contains(this)) sListNetherSide.add(this);
+        } else if (level.dimension() == WorldGenLoader.JAMD_MINING) {
+            if (!sListJAMDSide.contains(this)) sListJAMDSide.add(this);
         }
     }
 
@@ -56,8 +54,8 @@ public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
         if (level != null && isServerSide()) {
             if (level.dimension() == Level.OVERWORLD) {
                 long tShortestDistance = 128*128;
-                for (BlockEntityMiniPortal tTarget : sListNetherSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
-                    long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX()*8, tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ()*8;
+                for (BlockEntityMiniPortal tTarget : sListJAMDSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
+                    long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX(), tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
                         tShortestDistance = tTempDist;
@@ -66,10 +64,10 @@ public class BlockEntityMiniNetherPortal extends BlockEntityMiniPortal{
                         otherSide = tTarget;
                     }
                 }
-            } else if (level.dimension() == Level.NETHER) {
+            } else if (level.dimension() == WorldGenLoader.JAMD_MINING) {
                 long tShortestDistance = 128*128;
                 for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
-                    long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX()*8, tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ()*8;
+                    long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX(), tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
                         tShortestDistance = tTempDist;

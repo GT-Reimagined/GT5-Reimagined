@@ -1,32 +1,33 @@
-package org.gtreimagined.gt5r.blockentity.miniportals;
+package org.gtreimagined.gt5r.blockentity.single.miniportals;
 
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.gtreimagined.gt5r.loader.WorldGenLoader;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlockEntityMiniJAMDPortal extends BlockEntityMiniPortal{
-    public static List<BlockEntityMiniPortal> sListJAMDSide = new ArrayList<>();
-    public BlockEntityMiniJAMDPortal(Machine<?> type, BlockPos pos, BlockState state) {
+public class BlockEntityMiniEndPortal extends BlockEntityMiniPortal{
+    public static List<BlockEntityMiniPortal> sListEndSide = new ArrayList<>();
+    public BlockEntityMiniEndPortal(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
 
     @Override
-    protected boolean isPortalSetter(ItemStack stack) {
-        return stack.getItem() == Items.FLINT_AND_STEEL;
+    protected boolean isPortalSetter(ItemStack stack){
+        return stack.is(Items.ENDER_EYE);
     }
 
     @Override
-    protected void playActivationSound(Player player) {
-
+    protected void playActivationSound(Player player){
+        level.playSound(player, this.getBlockPos(), SoundEvents.END_PORTAL_SPAWN, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     @Override
@@ -36,15 +37,16 @@ public class BlockEntityMiniJAMDPortal extends BlockEntityMiniPortal{
 
     @Override
     public List<BlockEntityMiniPortal> getPortalListB() {
-        return sListJAMDSide;
+        return sListEndSide;
     }
+
 
     @Override
     public void addThisPortalToLists() {
         if (level.dimension() == Level.OVERWORLD) {
             if (!sListWorldSide.contains(this)) sListWorldSide.add(this);
-        } else if (level.dimension() == WorldGenLoader.JAMD_MINING) {
-            if (!sListJAMDSide.contains(this)) sListJAMDSide.add(this);
+        } else if (level.dimension() == Level.END) {
+            if (!sListEndSide.contains(this)) sListEndSide.add(this);
         }
     }
 
@@ -53,8 +55,8 @@ public class BlockEntityMiniJAMDPortal extends BlockEntityMiniPortal{
         otherSide = null;
         if (level != null && isServerSide()) {
             if (level.dimension() == Level.OVERWORLD) {
-                long tShortestDistance = 128*128;
-                for (BlockEntityMiniPortal tTarget : sListJAMDSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
+                long tShortestDistance = 512*512;
+                for (BlockEntityMiniPortal tTarget : sListEndSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = getBlockPos().getX()-tTarget.getBlockPos().getX(), tZDifference = getBlockPos().getZ()-tTarget.getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
                     if (tTempDist < tShortestDistance) {
@@ -64,8 +66,8 @@ public class BlockEntityMiniJAMDPortal extends BlockEntityMiniPortal{
                         otherSide = tTarget;
                     }
                 }
-            } else if (level.dimension() == WorldGenLoader.JAMD_MINING) {
-                long tShortestDistance = 128*128;
+            } else if (level.dimension() == Level.END) {
+                long tShortestDistance = 512*512;
                 for (BlockEntityMiniPortal tTarget : sListWorldSide) if (tTarget != this && !tTarget.isRemoved() && tTarget.isSame(this)) {
                     long tXDifference = tTarget.getBlockPos().getX()-getBlockPos().getX(), tZDifference = tTarget.getBlockPos().getZ()-getBlockPos().getZ();
                     long tTempDist = tXDifference * tXDifference + tZDifference * tZDifference;
