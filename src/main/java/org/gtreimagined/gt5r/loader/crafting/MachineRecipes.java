@@ -22,6 +22,7 @@ import org.gtreimagined.gt5r.data.TierMaps;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.machine.BarrelMachine;
+import org.gtreimagined.gtcore.machine.BookShelfMachine;
 import org.gtreimagined.gtcore.machine.ChestMachine;
 import org.gtreimagined.gtcore.machine.LockerMachine;
 import org.gtreimagined.gtcore.machine.MassStorageMachine;
@@ -814,6 +815,12 @@ public class MachineRecipes {
                 if (block == null) return;
                 provider.addItemRecipe(output, GT5Reimagined.ID, m.getId(), "multiblock_tanks", m.getItem(NONE),
                         of('P', PLATE.getMaterialTag(m.getMaterial()), 'S', SAW.getTag(), 'H', HAMMER.getTag(), 'W', block.asItem()), "PPP", "HWS", "PPP");
+            }
+        });
+        GTAPI.all(BookShelfMachine.class).forEach(m -> {
+            if (m.getWoodBlockSupplier() == null){
+                provider.addItemRecipe(output, "bookshelves", m.getItem(NONE),
+                        of('P', PLATE.getMaterialTag(m.getMaterial()), 'S', SCREW.getMaterialTag(m.getMaterial()), 's', SAW.getTag(), 'D', SCREWDRIVER.getTag(), 'H', HAMMER.getTag()), "PSP", "sDH", "PSP");
             }
         });
         provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(Lead), 'W', ItemTags.PLANKS, 's', SAW.getTag()), "SCs", "WRW", "WRW");

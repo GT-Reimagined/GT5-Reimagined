@@ -1165,6 +1165,7 @@ public class GT5RMaterialEvents {
                 GTCoreBlocks.createChest(m, true);
                 m.flags(RING, SCREW);
                 GTCoreBlocks.createBarrel(m, true);
+                GTCoreBlocks.createBookShelf(m);
             }
         });
         GTCoreBlocks.createHopper(Lead, 1);
