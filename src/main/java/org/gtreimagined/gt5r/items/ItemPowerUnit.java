@@ -17,8 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.context.TesseractItemContext;
 import tesseract.api.forge.TesseractCaps;
-import tesseract.api.gt.IEnergyHandlerItem;
-import tesseract.api.gt.IEnergyItem;
+import tesseract.api.eu.IEnergyHandlerItem;
+import tesseract.api.eu.IEnergyItem;
 
 import java.util.ArrayList;
 import java.util.List;

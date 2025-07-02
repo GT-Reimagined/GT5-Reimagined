@@ -14,13 +14,11 @@ import org.gtreimagined.gtlib.recipe.material.MaterialRecipe;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.tool.IGTTool;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourExtendedHighlight;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.gtreimagined.gt5r.items.ItemPortableScanner;
@@ -31,10 +29,9 @@ import org.gtreimagined.gtcore.data.GTCoreTools;
 import org.gtreimagined.gtcore.item.ItemPowerUnit;
 import org.jetbrains.annotations.NotNull;
 import tesseract.api.forge.TesseractCaps;
-import tesseract.api.gt.IGTNode;
+import tesseract.api.eu.IEnergyHandler;
 
 import java.util.Map;
-import java.util.function.BiFunction;
 
 import static org.gtreimagined.gtlib.material.Material.NULL;
 import static org.gtreimagined.gt5r.data.GT5RItems.BatteryMediumLithium;
@@ -119,13 +116,13 @@ public class ToolTypes {
 
     public static Tuple<Long, Long> getEnergy(ItemStack stack){
         if (stack.getItem() instanceof ItemBattery battery){
-            long energy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IGTNode::getEnergy).orElse((long)0);
-            long maxEnergy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IGTNode::getCapacity).orElse(battery.getCapacity());
+            long energy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IEnergyHandler::getEnergy).orElse((long)0);
+            long maxEnergy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IEnergyHandler::getCapacity).orElse(battery.getCapacity());
             return new Tuple<>(energy, maxEnergy);
         }
         if (stack.getItem() instanceof ItemPortableScanner){
-            long energy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IGTNode::getEnergy).orElse((long)0);
-            long maxEnergy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IGTNode::getCapacity).orElse(400000L);
+            long energy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IEnergyHandler::getEnergy).orElse((long)0);
+            long maxEnergy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IEnergyHandler::getCapacity).orElse(400000L);
             return new Tuple<>(energy, maxEnergy);
         }
         if (stack.getItem() instanceof IGTTool tool){

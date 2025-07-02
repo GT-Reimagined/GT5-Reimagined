@@ -32,7 +32,6 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtcore.item.ItemSelectorTag;
-import tesseract.api.heat.IHeatHandler;
 
 import java.util.ArrayList;
 import java.util.List;

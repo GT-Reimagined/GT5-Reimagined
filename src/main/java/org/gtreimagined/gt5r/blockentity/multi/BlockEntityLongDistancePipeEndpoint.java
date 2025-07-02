@@ -26,7 +26,7 @@ import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import tesseract.api.forge.TesseractCaps;
-import tesseract.api.gt.IEnergyHandler;
+import tesseract.api.eu.IEnergyHandler;
 
 public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMachine<BlockEntityLongDistancePipeEndpoint> {
     BlockEntityLongDistancePipeEndpoint target = null, sender = null;
