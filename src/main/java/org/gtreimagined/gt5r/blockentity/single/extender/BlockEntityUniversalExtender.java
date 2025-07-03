@@ -6,7 +6,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import tesseract.api.forge.TesseractCaps;
+import org.gtreimagined.tesseract.api.forge.TesseractCaps;
 
 public class BlockEntityUniversalExtender extends BlockEntityInventoryTankExtender{
     public BlockEntityUniversalExtender(Machine<?> type, BlockPos pos, BlockState state) {

@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.cover.base.CoverBasicRedstoneOutput;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.api.eu.IEnergyHandler;
+import org.gtreimagined.tesseract.api.eu.IEnergyHandler;
 
 public class CoverEnergyDetector extends CoverBasicRedstoneOutput {
     public CoverEnergyDetector(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {

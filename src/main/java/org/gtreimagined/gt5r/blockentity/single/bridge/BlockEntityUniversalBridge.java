@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gtcore.blockentity.BlockEntityRedstoneWire;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityCable;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import tesseract.api.eu.EUHolder;
+import org.gtreimagined.tesseract.api.eu.EUHolder;
 
 import static org.gtreimagined.gtlib.machine.Tier.IV;
 

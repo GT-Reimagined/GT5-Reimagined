@@ -28,8 +28,8 @@ import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtcore.data.GTCoreTools;
 import org.gtreimagined.gtcore.item.ItemPowerUnit;
 import org.jetbrains.annotations.NotNull;
-import tesseract.api.forge.TesseractCaps;
-import tesseract.api.eu.IEnergyHandler;
+import org.gtreimagined.tesseract.api.forge.TesseractCaps;
+import org.gtreimagined.tesseract.api.eu.IEnergyHandler;
 
 import java.util.Map;
 
