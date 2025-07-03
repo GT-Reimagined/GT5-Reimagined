@@ -14,11 +14,11 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import tesseract.api.context.TesseractItemContext;
-import tesseract.api.forge.TesseractCaps;
-import tesseract.api.gt.IEnergyHandlerItem;
-import tesseract.api.gt.IEnergyItem;
-import tesseract.api.gt.IGTNode;
+import org.gtreimagined.tesseract.api.context.TesseractItemContext;
+import org.gtreimagined.tesseract.api.forge.TesseractCaps;
+import org.gtreimagined.tesseract.api.eu.IEnergyHandler;
+import org.gtreimagined.tesseract.api.eu.IEnergyHandlerItem;
+import org.gtreimagined.tesseract.api.eu.IEnergyItem;
 
 import java.util.List;
 
@@ -58,7 +58,7 @@ public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag) {
-        long energy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IGTNode::getEnergy).orElse(0L);
+        long energy = stack.getCapability(TesseractCaps.ENERGY_HANDLER_CAPABILITY_ITEM).map(IEnergyHandler::getEnergy).orElse(0L);
         tooltip.add(Utils.translatable("item.charge").append(": ").append(Utils.literal(energy + "/" + 400000).withStyle(energy == 0 ? ChatFormatting.RED : ChatFormatting.GREEN)).append(" (MV)"));
         super.appendHoverText(stack, worldIn, tooltip, flag);
     }

@@ -10,13 +10,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gtcore.blockentity.BlockEntityRedstoneWire;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityCable;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import tesseract.TesseractGraphWrappers;
-import tesseract.api.gt.GTHolder;
-import tesseract.api.gt.IGTCable;
+import org.gtreimagined.tesseract.api.eu.EUHolder;
 
 import static org.gtreimagined.gtlib.machine.Tier.IV;
 
-public class BlockEntityUniversalBridge extends BlockEntityInventoryTankBridge implements IGTCable {
+public class BlockEntityUniversalBridge extends BlockEntityInventoryTankBridge {
     @Getter
     @Setter
     long holder;
@@ -32,28 +30,24 @@ public class BlockEntityUniversalBridge extends BlockEntityInventoryTankBridge i
 
     @Override
     public void onLoad() {
-        this.holder = GTHolder.create(this, 0);
+        this.holder = EUHolder.create(this, 0);
         super.onLoad();
-        register();
     }
 
     @Override
     public void onBlockUpdate(BlockPos neighbor) {
         super.onBlockUpdate(neighbor);
-        deregister();
-        register();
     }
 
     @Override
     public void onRemove() {
         super.onRemove();
-        deregister();
     }
 
     @Override
     public void serverTick(Level level, BlockPos pos, BlockState state) {
         super.serverTick(level, pos, state);
-        this.setHolder(GTHolder.create(this, 0));
+        this.setHolder(EUHolder.create(this, 0));
     }
 
 
@@ -91,11 +85,8 @@ public class BlockEntityUniversalBridge extends BlockEntityInventoryTankBridge i
         return true;
     }
 
-    protected void register() {
-        TesseractGraphWrappers.GT_ENERGY.registerConnector(getLevel(), getBlockPos().asLong(), this, true);
-    }
-
-    protected boolean deregister() {
-        return TesseractGraphWrappers.GT_ENERGY.remove(getLevel(), getBlockPos().asLong());
+    @Override
+    public boolean isActuallyNode() {
+        return false;
     }
 }
