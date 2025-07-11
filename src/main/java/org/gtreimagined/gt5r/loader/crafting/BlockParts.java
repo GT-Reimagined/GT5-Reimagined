@@ -118,9 +118,9 @@ public class BlockParts {
         addCoil(output, provider, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY), GT5RBlocks.HSSG_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY), GT5RBlocks.NAQUADAH_COIL);
         addCoil(output, provider, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY), GT5RBlocks.NAQUADAH_ALLOY_COIL);
-        addCoil(output, provider, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY), GT5RBlocks.SUPERCONDUCTOR_COIL);
+        addCoil(output, provider, GT5RBlocks.WIRE_IRIDIUM.getBlockItem(PipeSize.TINY), GT5RBlocks.IRIDIUM_COIL);
         provider.addItemRecipe(output, "coils", GT5RBlocks.FUSION_COIL,
-                of('C', TIER_CIRCUITS.apply(LUV), 'F', GT5RItems.FieldGenMV, 'c', GT5RBlocks.SUPERCONDUCTOR_COIL, 'I', GTCoreItems.IridiumNeutronReflector), "CIC", "FcF", "CIC");
+                of('C', TIER_CIRCUITS.apply(LUV), 'F', GT5RItems.FieldGenMV, 'c', GT5RBlocks.IRIDIUM_COIL, 'I', GT5RItems.NeutronReflectorRod), "CIC", "FcF", "CIC");
 
         addTierCasing(output, provider, Tier.ULV);
         addTierCasing(output, provider, LV);

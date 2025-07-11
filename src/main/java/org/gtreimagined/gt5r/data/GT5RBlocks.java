@@ -198,8 +198,8 @@ public class GT5RBlocks {
     public static final BlockCoil HSSG_COIL = new BlockCoil(GT5Reimagined.ID, "hssg_coil", new BlockCoil.CoilData(5400, 2.5f, 128,4));
     public static final BlockCoil NAQUADAH_COIL = new BlockCoil(GT5Reimagined.ID, "naquadah_coil", new BlockCoil.CoilData(7200, 3.0f, 256,5));
     public static final BlockCoil NAQUADAH_ALLOY_COIL = new BlockCoil(GT5Reimagined.ID, "naquadah_alloy_coil", new BlockCoil.CoilData(9001, 3.5f, 512,6));
+    public static final BlockCoil IRIDIUM_COIL = new BlockCoil(GT5Reimagined.ID, "iridium_coil", new BlockCoil.CoilData(9001, 4.0f, 1024,7));
     public static final BlockCoil FUSION_COIL = new BlockCoil(GT5Reimagined.ID, "fusion_coil", new BlockCoil.CoilData(9001, 4.0f, 1024,7));
-    public static final BlockCoil SUPERCONDUCTOR_COIL = new BlockCoil(GT5Reimagined.ID, "superconductor_coil", new BlockCoil.CoilData(9001, 4.0f, 1024,7));
     public static final Cable<?> CABLE_SOLDERING_ALLOY = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.SolderingAlloy, 0.02, Tier.ULV).amps(1));
     public static final Cable<?> CABLE_COBALT = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Cobalt, 2, Tier.LV).amps(2)); //L);
     public static final Cable<?> CABLE_LEAD = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Lead, 2, Tier.LV).amps(2));
@@ -254,6 +254,7 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_PLATINUM = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Platinum, 2, Tier.IV).amps(2));
     public static final Wire<?> WIRE_TUNGSTEN_STEEL = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.TungstenSteel, 2, Tier.IV).amps(3));
     public static final Wire<?> WIRE_TUNGSTEN = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Tungsten, 2, Tier.IV).amps(1));
+    public static final Wire<?> WIRE_IRIDIUM = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Iridium, 4, Tier.LUV).amps(4));
     public static final Wire<?> WIRE_HSSG = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.HSSG, 4, Tier.LUV).amps(4)); //LU);
     public static final Wire<?> WIRE_NIOBIUM_TITANIUM = GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.NiobiumTitanium, 4, Tier.LUV).amps(4));
     public static final Wire<?> WIRE_VANADIUM_GALLIUM = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.VanadiumGallium, 4, Tier.LUV).amps(4));

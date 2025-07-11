@@ -164,7 +164,7 @@ public class AssemblerLoader {
         addCoil(GT5RBlocks.HSSG_COIL, GT5RBlocks.WIRE_HSSG.getBlockItem(PipeSize.TINY));
         addCoil(GT5RBlocks.NAQUADAH_COIL, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.TINY));
         addCoil(GT5RBlocks.NAQUADAH_ALLOY_COIL, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.TINY));
-        addCoil(GT5RBlocks.SUPERCONDUCTOR_COIL, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.TINY));
+        addCoil(GT5RBlocks.IRIDIUM_COIL, GT5RBlocks.WIRE_IRIDIUM.getBlockItem(PipeSize.TINY));
     }
 
     private static void frames(){
