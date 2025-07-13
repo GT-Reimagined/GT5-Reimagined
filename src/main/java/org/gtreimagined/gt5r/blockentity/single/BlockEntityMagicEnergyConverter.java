@@ -25,51 +25,7 @@ public class BlockEntityMagicEnergyConverter extends BlockEntityGenerator<BlockE
     public BlockEntityMagicEnergyConverter(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
-            @Override
-            protected boolean consumeGeneratorResources(boolean simulate) {
-                MachineEnergyHandler<?> handler = tile.energyHandler.orElse(null);
-                if (handler == null) return false;
-                if (leftoverToInsert > 0) {
-                    long inserted = handler.insertInternal(leftoverToInsert, simulate);
-                    if (inserted > 0) {
-                        if (!simulate){
-                            leftoverToInsert -= inserted;
-                        }
-                        return true;
-                    }
-                    return false;
-                }
-                int toConsume = consumedFluidPerOperation(activeRecipe);
-                long toInsert = calculateGeneratorProduction(activeRecipe);
-                if (activeRecipe.hasInputItems()){
 
-                }
-                FluidStack mFluid = tile.fluidHandler.map(f -> f.getInputTanks().getTank(0).getFluid()).orElse(FluidStack.EMPTY);
-                if (mFluid.isEmpty()) return false;
-                int fluidAmount = mFluid.getAmount();
-                if (toInsert > 0 && toConsume > 0 && fluidAmount > toConsume) {
-                    int tFluidAmountToUse = (int) Math.min(fluidAmount / toConsume, (handler.getCapacity() - handler.getEnergy()) / toInsert);
-                    if (tFluidAmountToUse > 0 && handler.insertInternal(tFluidAmountToUse * toInsert, true) == tFluidAmountToUse * toInsert) {
-                        if (tile.getLevel().getGameTime() % 10 == 0 && !simulate){
-                            handler.insertInternal(tFluidAmountToUse * toInsert, false);
-                            tile.fluidHandler.ifPresent(f -> f.drainInput(Utils.ca(tFluidAmountToUse * toConsume, mFluid), FluidAction.EXECUTE));
-                        }
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            @Override
-            public int consumedFluidPerOperation(IRecipe r) {
-                if (r.hasInputItems()) return 1;
-                return super.consumedFluidPerOperation(r);
-            }
-
-            @Override
-            public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() instanceof ItemFluidCell;
-            }
         });
         this.itemHandler.set(() -> new MachineItemHandler<>(this){
             @Override

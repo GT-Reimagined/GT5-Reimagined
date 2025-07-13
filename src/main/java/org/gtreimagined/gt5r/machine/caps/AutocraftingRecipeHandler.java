@@ -96,7 +96,7 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
                     return;
                 }
                 calculateDurations();
-                if (!consumeResourceForRecipe(true) || !canRecipeContinue() || (generator && (!activeRecipe.hasInputFluids() || activeRecipe.getInputFluids().size() != 1))) {
+                if (!consumePower(true) || !canRecipeContinue()) {
                     activeRecipe = null;
                     tile.setMachineState(tile.getDefaultMachineState());
                     //wait half a second after trying again.

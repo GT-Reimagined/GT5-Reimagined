@@ -38,7 +38,7 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
             int lubeTicker = 0;
 
             @Override
-            protected boolean consumeGeneratorResources(boolean simulate) {
+            public boolean consumeGeneratorInputs(boolean simulate) {
                 boolean boostEU = fluidHandler.map(f -> f.drainInput(Oxygen.getGas(2), FluidAction.SIMULATE).getAmount() == 2).orElse(false);
                 int fuelConsumption = (int) (boostEU ? (4096 / activeRecipe.getPower()) : (2048 / activeRecipe.getPower()));
                 int lubeConsume = boostEU ? 2 : 1;

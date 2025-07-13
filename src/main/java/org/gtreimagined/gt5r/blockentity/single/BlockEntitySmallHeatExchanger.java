@@ -56,10 +56,10 @@ public class BlockEntitySmallHeatExchanger extends BlockEntityMachine<BlockEntit
             }
 
             @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
+            public boolean consumePower(boolean simulate) {
                 if (activeRecipe == null) return false;
                 if (currentProgress > 0 || simulate) return true;
-                if (!consumedResources && shouldConsumeResources()) {
+                if (!consumedResources) {
                     this.consumeInputs();
                 }
                 long totalPower = CodeUtils.units(activeRecipe.getTotalPower(), 10000, efficiency, false) * concurrentRecipes;

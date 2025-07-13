@@ -91,7 +91,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
             }
 
             @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
+            public boolean consumePower(boolean simulate) {
                 return true;
             }
 

@@ -92,7 +92,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                     }
 
                     @Override
-                    protected boolean consumeGeneratorResources(boolean simulate) {
+                    public boolean consumeGeneratorInputs(boolean simulate) {
                         long newPower = fluidIntoPower(optFlow, baseEfficiency, simulate);
                         if (newPower == 0){
                             lastEU = newPower;

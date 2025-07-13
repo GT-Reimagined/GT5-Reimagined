@@ -38,7 +38,7 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
             boolean consumedStartEu = false;
 
             @Override
-            public boolean consumeResourceForRecipe(boolean simulate) {
+            public boolean consumePower(boolean simulate) {
                 if (activeRecipe == null) return false;
                 if (!consumedStartEu){
                     boolean tConsumedStartEu = energyHandler.map(e -> e.extractEu(activeRecipe.getSpecialValue(), true) == activeRecipe.getSpecialValue()).orElse(false);
@@ -51,7 +51,7 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
                         return false;
                     }
                 }
-                boolean run = super.consumeResourceForRecipe(simulate) && consumedStartEu;
+                boolean run = super.consumePower(simulate) && consumedStartEu;
                 if (run) {
                     heatHandler.ifPresent(h -> h.insert(((FusionRecipe)activeRecipe).getHuOutput(), simulate));
                 }
