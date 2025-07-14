@@ -609,11 +609,11 @@ public class MachineRecipes {
                         .put('H', HULL.getItem(ZPM))
                         .put('C', GT5RBlocks.CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY))
                         .put('W', GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL)).build(), " CC", "WH ", " CC");
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(UV),
+       /*provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(UV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL.getItem(UV))
                         .put('C', GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL))
-                        .put('W', GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
+                        .put('W', GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");*/
     }
 
     private static void addUtilityBlockRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){

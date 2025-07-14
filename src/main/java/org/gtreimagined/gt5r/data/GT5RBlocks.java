@@ -230,7 +230,6 @@ public class GT5RBlocks {
     public static final Cable<?> CABLE_NAQUADAH = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Naquadah, 2, Tier.ZPM).amps(2)); //ZP);
     public static final Cable<?> CABLE_NAQUADAH_ALLOY = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.NaquadahAlloy, 4, Tier.ZPM).amps(2));
     public static final Cable<?> CABLE_DURANIUM = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Duranium, 8, Tier.ZPM).amps(1));
-    public static final Cable<?> CABLE_SUPERCONDUCTOR = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Superconductor, 0.1, Tier.UHV).amps(4)).loss(0.1); //MA);
     public static final Wire<?> WIRE_SOLDERING_ALLOY = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.SolderingAlloy, 0.04, Tier.ULV).amps(1));
     public static final Wire<?> WIRE_COBALT = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Cobalt, 4, Tier.LV).amps(2)); //L);
     public static final Wire<?> WIRE_LEAD = GTAPI.register(Wire.class,  new Wire<>(GT5Reimagined.ID, Materials.Lead, 4, Tier.LV).amps(2));
@@ -262,7 +261,6 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_NAQUADAH = GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.Naquadah, 4, Tier.ZPM).amps(2)); //ZP);
     public static final Wire<?> WIRE_NAQUADAH_ALLOY = GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.NaquadahAlloy, 8, Tier.ZPM).amps(2));
     public static final Wire<?> WIRE_DURANIUM = GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.Duranium, 16, Tier.ZPM).amps(1));
-    public static final Wire<?> WIRE_SUPERCONDUCTOR = (Wire<?>) GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.Superconductor, 1, Tier.UHV).amps(4)).loss(0.2); //MA);
     public static final FluidPipe<?> FLUID_PIPE_WOOD = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Wood, 350, false).caps(1).pressures(getPressures(150)));
     public static final FluidPipe<?> FLUID_PIPE_COPPER = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Copper, 1696, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_BRONZE = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Bronze, 1696, true).caps(1).pressures(getPressures(450)));

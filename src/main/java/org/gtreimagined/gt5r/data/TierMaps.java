@@ -98,7 +98,7 @@ public class TierMaps {
             if(tier == LUV) return GT5RBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(size);
             if(tier == ZPM) return GT5RBlocks.CABLE_NAQUADAH.getBlockItem(size);
             if(tier == UV) return GT5RBlocks.CABLE_NAQUADAH_ALLOY.getBlockItem(size);
-            if(tier == UHV) return GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(size);
+            if(tier == UHV) return GT5RBlocks.CABLE_NAQUADAH_ALLOY.getBlockItem(size);
             throw new IllegalArgumentException("Invalid tier in CABLE_GETTER");
         };
         PIPE_GETTER = (size, tier) -> {
@@ -145,7 +145,7 @@ public class TierMaps {
             builder.put(LUV, GT5RBlocks.WIRE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY));
             builder.put(ZPM, GT5RBlocks.WIRE_NAQUADAH.getBlockItem(PipeSize.VTINY));
             builder.put(UV, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL));
-            builder.put(UHV, GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY));
+            builder.put(UHV, GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.VTINY));
             TIER_WIRES = builder.build();
         }
         /*{
