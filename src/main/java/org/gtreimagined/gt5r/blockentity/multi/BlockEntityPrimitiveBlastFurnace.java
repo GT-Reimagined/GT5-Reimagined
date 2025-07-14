@@ -1,20 +1,30 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
+import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.CookingRecipeHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
 import org.gtreimagined.gtlib.util.int3;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 
+import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.GEM;
+
 public class BlockEntityPrimitiveBlastFurnace extends BlockEntityBasicMultiMachine<BlockEntityPrimitiveBlastFurnace> {
 
     public BlockEntityPrimitiveBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        recipeHandler.set(() -> new CookingRecipeHandler<>(this, 2.0f));
+        recipeHandler.set(() -> new CookingRecipeHandler<>(this, 2.0f){
+            public boolean accepts(ItemStack stack) {
+                IRecipeMap map = getRecipeMap();
+                return map == null || map.acceptsItem(stack) || stack.is(GEM.getMaterialTag(Charcoal)) || stack.is(GEM.getMaterialTag(CoalCoke)) || stack.is(GEM.getMaterialTag(LigniteCoke));
+            }
+        });
     }
 
     @Override
