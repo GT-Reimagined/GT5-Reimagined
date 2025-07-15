@@ -502,6 +502,27 @@ public class MachineRecipes {
                             .put('R', rotor)
                             .put('C', circuit)
                             .build(), "CRC", "RHR", "MLM"));
+            Tier magicTier = Tier.getTier(tier.getVoltage() * 4 * 4);
+            Material magicMaterial = tier == LV ? Platinum : tier == MV ? Iridium : Neutronium;
+            Material finalMagicMaterial = magicMaterial;
+            add(MAGIC_ENERGY_CONVERTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', TIER_CIRCUITS.apply(magicTier))
+                            .put('F', field)
+                            .put('H', hull)
+                            .put('P', PLATE.getMaterialTag(finalMagicMaterial))
+                            .put('B', Items.BEACON)
+                            .build(), "CFC", "PHP", "CBC"));
+            magicMaterial = tier == LV ? Platinum : tier == MV ? Iridium : tier == HV ? Europium : Neutronium;
+            Material finalMagicMaterial1 = magicMaterial;
+            add(MAGIC_ENERGY_ABSORBER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('C', TIER_CIRCUITS.apply(magicTier))
+                            .put('F', field)
+                            .put('H', hull)
+                            .put('P', PLATE.getMaterialTag(finalMagicMaterial1))
+                            .put('B', MAGIC_ENERGY_CONVERTER.getItem(tier == EV ? HV : tier))
+                            .build(), "CFC", "PHP", "CBC"));
         });
         add(BATH, NONE, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
