@@ -467,7 +467,7 @@ public class MachineRecipes {
 
 
 
-            add(STEAM_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
+            add(STEAM_TURBINE, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('M', motor)
                             .put('L', cable)
@@ -494,7 +494,7 @@ public class MachineRecipes {
                             .put('C', circuit)
                             .put('P',  PLATE.getMaterialTag(Invar))
                             .build(), "PCP", "MHM", "GLG"));
-            add(GAS_GENERATOR, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
+            add(GAS_TURBINE, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('M', motor)
                             .put('L', cable)

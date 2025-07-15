@@ -77,8 +77,8 @@ public class GT5RRemapping {
         GTRemapping.remapMachine("hatch_energy", ENERGY_HATCH);
         GTRemapping.remapMachine("hatch_dynamo", DYNAMO_HATCH);
         GTRemapping.remapMachine("hatch_muffler", MUFFLER_HATCH);
-        GTRemapping.remapMachine("steam_generator", STEAM_GENERATOR);
-        GTRemapping.remapMachine("gas_generator", GAS_GENERATOR);
+        GTRemapping.remapMachine("steam_generator", STEAM_TURBINE);
+        GTRemapping.remapMachine("gas_generator", GAS_TURBINE);
         GTRemapping.remapMachine("battery_buffer_one", BATTERY_BUFFER_ONE);
         GTRemapping.remapMachine("battery_buffer_four", BATTERY_BUFFER_FOUR);
         GTRemapping.remapMachine("battery_buffer_nine", BATTERY_BUFFER_EIGHT);

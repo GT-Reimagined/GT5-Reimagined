@@ -238,8 +238,8 @@ public class Guis {
         STEAM_FORGE_HAMMER.add(FORGE_HAMMER).add(FL_IN, 53, 63);
         STEAM_CUTTER.add(CUTTER).add(FL_IN, 35, 63);
         STEAM_SIFTER.add(SIFTER).add(FL_IN, 53, 63);
-        STEAM_GENERATOR.add(BASIC_TANK.getSlots());
-        GAS_GENERATOR.add(BASIC_TANK.getSlots());
+        STEAM_TURBINE.add(BASIC_TANK.getSlots());
+        GAS_TURBINE.add(BASIC_TANK.getSlots());
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
         MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5Reimagined.ID, "blank"));
@@ -334,8 +334,8 @@ public class Guis {
         SUPER_BUFFER.getGuiData().setBackgroundTexture("super_buffer");
         CHEST_BUFFER.getGuiData().setBackgroundTexture("chest_buffer");
         COKE_OVEN.getGuiData().setBackgroundTexture("coke_oven");
-        STEAM_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
-        GAS_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
+        STEAM_TURBINE.getGuiData().setBackgroundTexture("basic_tank");
+        GAS_TURBINE.getGuiData().setBackgroundTexture("basic_tank");
         COMBUSTION_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
         SEMIFLUID_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
         MAGIC_ENERGY_CONVERTER.getGuiData().setBackgroundTexture("basic_tank");
