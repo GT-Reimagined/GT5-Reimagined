@@ -238,7 +238,7 @@ public class BlockParts {
 
     private static void addBrickedCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {
         provider.addItemRecipe(output, "gtblockparts", casing,
-                of('B', Items.BRICK, 'P', PLATE.getMaterialTag(mat), 'H', GTTools.HAMMER.getTag())
+                of('B', Items.BRICKS, 'P', PLATE.getMaterialTag(mat), 'H', GTTools.HAMMER.getTag())
                 , "PPP", "PHP", "BBB");
     }
 
