@@ -181,23 +181,23 @@ public class WorldGenLoader {
 
     private static void initStoneVeins(GTWorldGenEvent ev) {
         List<ResourceKey<Level>> overworld = List.of(OVERWORLD, JAMD_MINING);
-        ev.stoneLayer(new StoneLayerBuilder(id("black_granite")).withStone(BLACK_GRANITE).withWeight(1).maxY(0, SHALE.getState().getBlock()).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("red_granite")).withStone(RED_GRANITE).withWeight(1).maxY(0, GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("komatiite")).withStone(KOMATIITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("basalt")).withStone(BASALT).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("marble")).withStone(MARBLE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("limestone")).withStone(LIMESTONE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("green_schist")).withStone(GREEN_SCHIST).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("blue_schist")).withStone(BLUE_SCHIST).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("kimberlite")).withStone(KIMBERLITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("quartzite")).withStone(QUARTZITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("shale")).withStone(SHALE).withWeight(1).minY(0, BLACK_GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("slate")).withStone(SLATE).withWeight(1).minY(0, DEEPSLATE.getState().getBlock()).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("deepslate")).withStone(DEEPSLATE).withWeight(1).maxY(0, SLATE.getState().getBlock()).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("granite")).withStone(GRANITE).withWeight(1).minY(0, RED_GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("diorite")).withStone(DIORITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("andesite")).withStone(ANDESITE).withWeight(1).inDimensions(overworld).buildVein());
-        ev.stoneLayer(new StoneLayerBuilder(id("tuff")).withStone(TUFF).withWeight(1).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("black_granite")).withStone(BLACK_GRANITE).withWeight(2).maxY(0, SHALE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("red_granite")).withStone(RED_GRANITE).withWeight(2).maxY(0, GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("komatiite")).withStone(KOMATIITE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("basalt")).withStone(BASALT).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("marble")).withStone(MARBLE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("limestone")).withStone(LIMESTONE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("green_schist")).withStone(GREEN_SCHIST).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("blue_schist")).withStone(BLUE_SCHIST).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("kimberlite")).withStone(KIMBERLITE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("quartzite")).withStone(QUARTZITE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("shale")).withStone(SHALE).withWeight(2).minY(0, BLACK_GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("slate")).withStone(SLATE).withWeight(2).minY(0, DEEPSLATE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("deepslate")).withStone(DEEPSLATE).withWeight(2).maxY(0, SLATE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("granite")).withStone(GRANITE).withWeight(2).minY(0, RED_GRANITE.getState().getBlock()).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("diorite")).withStone(DIORITE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("andesite")).withStone(ANDESITE).withWeight(2).inDimensions(overworld).buildVein());
+        ev.stoneLayer(new StoneLayerBuilder(id("tuff")).withStone(TUFF).withWeight(2).inDimensions(overworld).buildVein());
         if (GT5RConfig.GT6_ORE_GEN.get()){
             ev.stoneLayer(new StoneLayerBuilder(id("kimberlite_2")).withStone(KIMBERLITE).withWeight(1).inDimensions(overworld).buildVein());
             /*ev.stoneLayer(new StoneLayerBuilder("deepslate_ores").withStone(STONE).withWeight(1).addOres(
