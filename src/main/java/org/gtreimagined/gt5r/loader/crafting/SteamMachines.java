@@ -87,7 +87,7 @@ public class SteamMachines {
                         'B', bronzePipe,
                         'H', hullBronze,
                         'P', piston,
-                        'A', Items.ANVIL
+                        'A', GTMaterialTypes.BLOCK.getMaterialTag(Bronze)
                 ), "BPB", "BHB", "BAB");
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_COMPRESSOR.getItem(Tier.BRONZE),
                 ImmutableMap.of(
@@ -163,7 +163,7 @@ public class SteamMachines {
                         'B', steelPipe,
                         'H', hullSteel,
                         'P', piston,
-                        'A', Items.ANVIL
+                        'A', GTMaterialTypes.BLOCK.getMaterialTag(Steel)
                 ), "BPB", "BHB", "BAB");
         provider.addItemRecipe(output, "steam_machines", GT5RMachines.STEAM_CUTTER.getItem(Tier.STEEL),
                 ImmutableMap.of(
