@@ -13,6 +13,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.GTCoreConfig;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.function.Consumer;
@@ -44,9 +45,9 @@ public class VanillaExtensions {
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", ROD.get(Neodymium),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_coal", "torches", new ItemStack(Items.TORCH, 4),
-                of('C', Ingredient.of(RAW_ORE.get(Coal), DUST.get(Coal), IMPURE_DUST.get(Coal), PURE_DUST.get(Coal), CRUSHED_ORE.get(Coal), PURIFIED_ORE.get(Coal), REFINED_ORE.get(Coal)), 'S', Items.STICK), "C", "S");
+                of('C', RecipeIngredient.of(1, RAW_ORE.getMaterialTag(Coal), DUST.getMaterialTag(Coal), IMPURE_DUST.getMaterialTag(Coal), PURE_DUST.getMaterialTag(Coal), CRUSHED_ORE.getMaterialTag(Coal), PURIFIED_ORE.getMaterialTag(Coal), REFINED_ORE.getMaterialTag(Coal), ROCK.getMaterialTag(Coal)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_lignite", "torches", new ItemStack(Items.TORCH, 2),
-                of('C', Ingredient.of(GEM.get(Lignite), RAW_ORE.get(Lignite), DUST.get(Lignite), IMPURE_DUST.get(Lignite), PURE_DUST.get(Lignite), CRUSHED_ORE.get(Lignite), PURIFIED_ORE.get(Lignite), REFINED_ORE.get(Lignite)), 'S', Items.STICK), "C", "S");
+                of('C', RecipeIngredient.of(1, GEM.getMaterialTag(Lignite), RAW_ORE.getMaterialTag(Lignite), DUST.getMaterialTag(Lignite), IMPURE_DUST.getMaterialTag(Lignite), PURE_DUST.getMaterialTag(Lignite), CRUSHED_ORE.getMaterialTag(Lignite), PURIFIED_ORE.getMaterialTag(Lignite), REFINED_ORE.getMaterialTag(Lignite), ROCK.getMaterialTag(Lignite)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_creosote", "torches", new ItemStack(Items.TORCH, 6),
                 of('W', ItemTags.WOOL, 'C', Creosote.getLiquid().getBucket(), 'S', Items.STICK), "C", "W", "S");
         provider.shapeless(consumer, GT5Reimagined.ID, "green_dye_from_malachite", "dyes", Items.GREEN_DYE.getDefaultInstance(), DUST.getMaterialTag(Malachite));
