@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static org.gtreimagined.gtlib.machine.MachineFlag.EU;
+import static org.gtreimagined.gtlib.machine.MachineFlag.FE;
 import static org.gtreimagined.gtlib.machine.MachineState.OUTPUT_FULL;
 
 public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends MachineRecipeHandler<T> {
@@ -22,6 +24,25 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
         super(tile);
         this.maxSimultaneousRecipes = maxSimultaneousRecipes;
     }
+
+
+    @Override
+    public boolean consumePower(boolean simulate) {
+        if (processingBlocked) return false;
+        if (generator) return true;
+        long mult = simulate ? maxSimultaneousRecipes : concurrentRecipes;
+        if (getPower() > 0) {
+            if (tile.energyHandler.isPresent() && tile.has(EU)) {
+                return tile.energyHandler.map(e -> e.extractEu(getPower() * mult, simulate) >= getPower() * mult).orElse(false);
+            } else if (tile.feHandler.isPresent() && tile.has(FE)) {
+                return tile.feHandler.map(e -> e.extractEnergy((int) (getPower() * mult), simulate) >= getPower() * mult).orElse(false);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
 
     @Override
     public boolean consumeInputs() {
@@ -170,11 +191,6 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
     @Override
     public int getOverclock() {
         return 0;
-    }
-
-    @Override
-    public long getPower() {
-        return super.getPower() * (Math.max(1, Math.min(maxSimultaneousRecipes, 4)));
     }
 
     @Override
