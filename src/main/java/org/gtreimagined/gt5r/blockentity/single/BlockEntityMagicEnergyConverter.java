@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
+import net.minecraft.world.item.Items;
+import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityGenerator;
 import org.gtreimagined.gtlib.capability.item.ITrackedHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
@@ -9,6 +11,7 @@ import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.item.ItemFluidCell;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +28,28 @@ public class BlockEntityMagicEnergyConverter extends BlockEntityGenerator<BlockE
     public BlockEntityMagicEnergyConverter(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
+            @Override
+            public IRecipe findRecipe() {
+                IRecipe recipe = super.findRecipe();
+                if (recipe == null) {
+                    recipe = itemHandler.map(i -> i).map(i -> {
+                        ItemStack input = i.getInputHandler().getStackInSlot(0);
+                        long eu = BlockEntityMagicEnergyConverter.this.euFromItem(input);
+                        if (eu > 0){
+                            ItemStack output = input.getItem() == Items.ENCHANTED_BOOK ? new ItemStack(Items.BOOK) : input.copy();
+                            EnchantmentHelper.setEnchantments(Map.of(), output);
+                            return RecipeMaps.MAGIC_FUELS.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).io(output).add("enchanted_item", 1, eu);
+                        }
+                        return null;
+                    }).orElse(null);
+                }
+                return recipe;
+            }
 
+            @Override
+            public boolean accepts(ItemStack stack) {
+                return super.accepts(stack) || !EnchantmentHelper.getEnchantments(stack).isEmpty();
+            }
         });
         this.itemHandler.set(() -> new MachineItemHandler<>(this){
             @Override
@@ -50,7 +74,6 @@ public class BlockEntityMagicEnergyConverter extends BlockEntityGenerator<BlockE
 
     private long euFromItem(ItemStack tStack) {
         if (tStack.isEmpty()) return 0;
-        if (!tStack.isEnchanted()) return 0;
         long tEU = 0;
         // Convert enchantments to their EU Value
         Map<Enchantment, Integer> tMap = EnchantmentHelper.getEnchantments(tStack);

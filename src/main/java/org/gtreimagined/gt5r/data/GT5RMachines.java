@@ -17,6 +17,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityMagicEnergyConverter;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniEndPortal;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniJAMDPortal;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniNetherPortal;
@@ -304,7 +305,7 @@ public class GT5RMachines {
     public static GeneratorMachine STEAM_TURBINE = new GeneratorMachine(GT5Reimagined.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(RecipeMaps.STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setTile(BlockEntitySteamTurbine::new).setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setEfficiency(t -> {
         return (4 - t.getIntegerId()) + 6;
     }).setAllowsFrontIO().setCustomModel();
-    public static GeneratorMachine MAGIC_ENERGY_CONVERTER = new GeneratorMachine(GT5Reimagined.ID, "magic_energy_converter").setTiers(LV, MV, HV).setMap(RecipeMaps.MAGIC_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER);
+    public static GeneratorMachine MAGIC_ENERGY_CONVERTER = new GeneratorMachine(GT5Reimagined.ID, "magic_energy_converter").setTiers(LV, MV, HV).setMap(RecipeMaps.MAGIC_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(BlockEntityMagicEnergyConverter::new);
     public static GeneratorMachine MAGIC_ENERGY_ABSORBER = new GeneratorMachine(GT5Reimagined.ID, "magic_energy_absorber").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setEfficiency(t -> {
         return 100 - (10 * (5 - t.getIntegerId()));
     });
