@@ -41,7 +41,7 @@ public class GT5RConfig {
         COMPLICATED_CHEMICAL_PROCESSING = general.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
         ADD_LOOT = general.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
         ConfigSection worldgen = config.add("worldgen");
-        GT6_ORE_GEN = worldgen.addBool("gt6_ore_gen", false, "Enables gt6 style veins insteadof gt5 style veins. - Default: false");
+        GT6_ORE_GEN = worldgen.addBool("gt6_ore_gen", false, "Enables gt6 style veins instead of gt5 style veins. - Default: false");
         DEFAULT_STONE_LAYERS = worldgen.addBool("default_stone_layers", true, "Enables default stone layers. - Defalt: true");
         DEFAULT_ORE_VEINS = worldgen.addBool("default_ore_veins", true, "Enables default ore veins. Will not generate in the overworld when gt6_ore_gen is true. Default: true");
         DEFAULT_SMALL_ORES = worldgen.addBool("default_small_ores", true, "Enables default small ore gen. - Default: true");
