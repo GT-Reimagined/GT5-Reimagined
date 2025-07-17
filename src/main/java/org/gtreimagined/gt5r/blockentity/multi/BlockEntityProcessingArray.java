@@ -111,16 +111,10 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
             }
 
             @Override
-            public long getPower() {
-                if (activeRecipe == null) return 0;
-                return super.getPower() * (concurrentRecipes == 0 ? 1 : concurrentRecipes);
-            }
-
-            @Override
             public int getOverclock() {
                 if (activeRecipe == null || tier == null) return 0;
                 int oc = 0;
-                if (activeRecipe.getPower() > 0 && tier.getVoltage() > activeRecipe.getPower()) {
+                /*if (activeRecipe.getPower() > 0 && tier.getVoltage() > activeRecipe.getPower()) {
                     long voltage = this.activeRecipe.getPower();
                     int tier = Utils.getVoltageTier(voltage);
                     long tempoverclock = (this.tile.getPowerLevel().getVoltage() / Ref.V[tier]);
@@ -128,7 +122,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
                         tempoverclock >>= 2;
                         oc++;
                     }
-                }
+                }*/
                 return oc;
             }
 
