@@ -45,9 +45,9 @@ public class VanillaExtensions {
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", ROD.get(Neodymium),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_coal", "torches", new ItemStack(Items.TORCH, 4),
-                of('C', RecipeIngredient.of(1, RAW_ORE.getMaterialTag(Coal), DUST.getMaterialTag(Coal), IMPURE_DUST.getMaterialTag(Coal), PURE_DUST.getMaterialTag(Coal), CRUSHED_ORE.getMaterialTag(Coal), PURIFIED_ORE.getMaterialTag(Coal), REFINED_ORE.getMaterialTag(Coal), ROCK.getMaterialTag(Coal)), 'S', Items.STICK), "C", "S");
+                of('C', RecipeIngredient.ofIngredient(1, RAW_ORE.getMaterialTag(Coal), DUST.getMaterialTag(Coal), IMPURE_DUST.getMaterialTag(Coal), PURE_DUST.getMaterialTag(Coal), CRUSHED_ORE.getMaterialTag(Coal), PURIFIED_ORE.getMaterialTag(Coal), REFINED_ORE.getMaterialTag(Coal), ROCK.getMaterialTag(Coal)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_lignite", "torches", new ItemStack(Items.TORCH, 2),
-                of('C', RecipeIngredient.of(1, GEM.getMaterialTag(Lignite), RAW_ORE.getMaterialTag(Lignite), DUST.getMaterialTag(Lignite), IMPURE_DUST.getMaterialTag(Lignite), PURE_DUST.getMaterialTag(Lignite), CRUSHED_ORE.getMaterialTag(Lignite), PURIFIED_ORE.getMaterialTag(Lignite), REFINED_ORE.getMaterialTag(Lignite), ROCK.getMaterialTag(Lignite)), 'S', Items.STICK), "C", "S");
+                of('C', RecipeIngredient.ofIngredient(1, GEM.getMaterialTag(Lignite), RAW_ORE.getMaterialTag(Lignite), DUST.getMaterialTag(Lignite), IMPURE_DUST.getMaterialTag(Lignite), PURE_DUST.getMaterialTag(Lignite), CRUSHED_ORE.getMaterialTag(Lignite), PURIFIED_ORE.getMaterialTag(Lignite), REFINED_ORE.getMaterialTag(Lignite), ROCK.getMaterialTag(Lignite)), 'S', Items.STICK), "C", "S");
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "torch_from_creosote", "torches", new ItemStack(Items.TORCH, 6),
                 of('W', ItemTags.WOOL, 'C', Creosote.getLiquid().getBucket(), 'S', Items.STICK), "C", "W", "S");
         provider.shapeless(consumer, GT5Reimagined.ID, "green_dye_from_malachite", "dyes", Items.GREEN_DYE.getDefaultInstance(), DUST.getMaterialTag(Malachite));
@@ -77,5 +77,8 @@ public class VanillaExtensions {
         provider.shapeless(consumer, GT5Reimagined.ID, "light_blue_dye_from_bedrock_flower", "dyes", Items.LIGHT_BLUE_DYE.getDefaultInstance(), GT5RBlocks.NARCISSUS_SHELDONIA);
         provider.shapeless(consumer, GT5Reimagined.ID, "brown_dye_from_bedrock_flower", "dyes", Items.BROWN_DYE.getDefaultInstance(), GT5RBlocks.ORECHID);
 
+        provider.addItemRecipe(consumer, GT5Reimagined.ID, Items.PISTON,
+                of('P', ItemTags.PLANKS, 'C', Tags.Items.COBBLESTONE, 'R', DUST.getMaterialTag(Redstone),
+                        'I', RecipeIngredient.ofIngredient(1, INGOT.getMaterialTag(Iron), INGOT.getMaterialTag(Bronze), INGOT.getMaterialTag(WroughtIron), INGOT.getMaterialTag(Aluminium), INGOT.getMaterialTag(Steel), INGOT.getMaterialTag(Titanium))), "PPP", "CIC", "CRC");
     }
 }
