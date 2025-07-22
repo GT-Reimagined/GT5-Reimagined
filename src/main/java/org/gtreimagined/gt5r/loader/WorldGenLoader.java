@@ -280,7 +280,7 @@ public class WorldGenLoader {
             ev.stoneLayer(new StoneLayerBuilder(id("limestone_ores")).withStone(LIMESTONE).withWeight(1).inDimensions(overworld).addOres(
                     new StoneLayerOre(Stibnite, U24, 10, 30),
                     new StoneLayerOre(Galena, U8, 30, 120),
-                    new StoneLayerOre(Lead, U16, 50, 70)
+                    new StoneLayerOre(Lead, U16, 40, 100)
             ).buildVein());
             ev.stoneLayer(new StoneLayerBuilder(id("limestone_ores_2")).withStone(LIMESTONE).withWeight(1).inDimensions(overworld).addOres(
                     new StoneLayerOre(Pyrite, U16, 0, 30),
