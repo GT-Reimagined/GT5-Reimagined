@@ -52,10 +52,6 @@ public class CutterLoader {
             if (mat.has(ITEM_CASING)){
                 addCutterRecipe(PLATE.getMaterialTag(mat), ITEM_CASING.get(mat, 2), "item_casing_" + mat.getId(), (int) (baseDuration.applyAsLong(mat) * 5 * multiplier), 16);
             }
-            if (mat == Silicon){
-                addCutterRecipe(PLATE.getMaterialTag(Silicon), FOIL.get(Silicon, 4), "foil_silicon", (int)baseDuration.applyAsLong(Silicon), 24);
-            }
-
         }
         GTAPI.all(StoneType.class, s -> {
             if (s instanceof CobbleStoneType c){

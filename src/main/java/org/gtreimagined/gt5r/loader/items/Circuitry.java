@@ -171,7 +171,8 @@ public class Circuitry {
     private static void silicon(){
         //E_BLAST_FURNACE.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(GT5RItems.SiliconBoule).add("silicon_boule", 9000, 120);
         addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 1600, 384, 1);
-        addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48, 22);
+        addCuttingRecipe(Wafer, TINY_PLATE.get(Silicon), 2, 600, 48, 22, "silicon_tiny_plate");
+        //addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48, 22);
         if (GT5RConfig.HARDER_CIRCUITS){
             E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GT5RItems.GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
             E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(GT5RItems.NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
@@ -233,13 +234,25 @@ public class Circuitry {
                 .io(new ItemStack(output, amount)).add(output.getId() + "_with_lubricant", ticks / 2, power);
     }
 
+    private static void addCuttingRecipe(Item input, Item output, int amount, int ticks, int power, int liquidMultiplier, String id){
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(new FluidStack(Fluids.WATER, 5 * liquidMultiplier))
+                .io(new ItemStack(output, amount)).add(id + "_with_water", ticks, power);
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(DistilledWater.getLiquid(3 * liquidMultiplier))
+                .io(new ItemStack(output, amount)).add(id + "_with_distilled_water", ticks, power);
+        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
+                .fi(Lubricant.getLiquid(liquidMultiplier))
+                .io(new ItemStack(output, amount)).add(id + "_with_lubricant", ticks / 2, power);
+    }
+
     private static void circuitParts(){
         FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Germanium, 1), FINE_WIRE.getMaterialIngredient(Tin, 1), FINE_WIRE.getMaterialIngredient(RedAlloy, 1)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_germanium", 32, 16);
-        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Silicon, 1), FINE_WIRE.getMaterialIngredient(Tin, 1), FINE_WIRE.getMaterialIngredient(RedAlloy, 1)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_silicon", 32, 16);
+        FORMING_PRESS.RB().ii(TINY_PLATE.getMaterialIngredient(Silicon, 1), FINE_WIRE.getMaterialIngredient(Tin, 1), FINE_WIRE.getMaterialIngredient(RedAlloy, 1)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_silicon", 32, 16);
         FORMING_PRESS.RB().ii(ITEM_CASING.getMaterialIngredient(Steel, 1), FINE_WIRE.getMaterialIngredient(Tin, 2), FINE_WIRE.getMaterialIngredient(RedAlloy, 2)).io(new ItemStack(BasicCircuitParts)).add("basic_circuit_parts_steel", 32, 16);
-        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Silicon, 1), FINE_WIRE.getMaterialIngredient(Copper, 1), FINE_WIRE.getMaterialIngredient(RedAlloy,1)).io(GoodCircuitParts).add("good_circuit_parts_silicon", 32, 16);
+        FORMING_PRESS.RB().ii(TINY_PLATE.getMaterialIngredient(Silicon, 1), FINE_WIRE.getMaterialIngredient(Copper, 1), FINE_WIRE.getMaterialIngredient(RedAlloy,1)).io(GoodCircuitParts).add("good_circuit_parts_silicon", 32, 16);
         FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Germanium, 1), FINE_WIRE.getMaterialIngredient(Copper, 1), FINE_WIRE.getMaterialIngredient(RedAlloy,1)).io(GoodCircuitParts).add("good_circuit_parts_germanium", 32, 16);
-        FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Silicon, 1), FINE_WIRE.getMaterialIngredient(Electrum, 1), FINE_WIRE.getMaterialIngredient(Signalum, 1)).io(AdvancedCircuitParts).add("advanced_circuit_parts", 32, 64);
+        FORMING_PRESS.RB().ii(TINY_PLATE.getMaterialIngredient(Silicon, 1), FINE_WIRE.getMaterialIngredient(Electrum, 1), FINE_WIRE.getMaterialIngredient(Signalum, 1)).io(AdvancedCircuitParts).add("advanced_circuit_parts", 32, 64);
         FORMING_PRESS.RB().ii(FOIL.getMaterialIngredient(Niobium, 1), FINE_WIRE.getMaterialIngredient(Platinum, 1), FINE_WIRE.getMaterialIngredient(Signalum, 1)).io(new ItemStack(GT5RItems.ComplexCircuitParts)).add("complex_circuit_parts", 32, 256);
     }
 
