@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.IFuelMachine;
 import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
@@ -27,7 +28,7 @@ import static org.gtreimagined.gtlib.machine.MachineState.IDLE;
 import static org.gtreimagined.gtlib.machine.Tier.BRONZE;
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 
-public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoiler> {
+public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoiler> implements IFuelMachine {
     int maxHeat = 500, heat, fuel = 0, maxFuel, lossTimer = 0;
     boolean hadNoWater;
 
