@@ -5,6 +5,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
+import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -29,6 +30,7 @@ public class BlockEntityCokeOven extends BlockEntityBasicMultiMachine<BlockEntit
         positions[6] = start.back(1).immutable();
         positions[7] = start.left(1).immutable();
         positions[8] = start.left(1).immutable();
+        this.recipeHandler.set(() -> new ParallelRecipeHandler<>(this, 8));
     }
 
     @Override
