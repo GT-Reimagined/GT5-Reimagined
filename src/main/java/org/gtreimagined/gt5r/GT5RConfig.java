@@ -17,6 +17,7 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;
     public static ConfigEntry.BoolValue HARD_CARBON;
     public static ConfigEntry.BoolValue MORE_LOSSY_FORGE_HAMMER;
+    public static ConfigEntry.BoolValue NO_NATIVE_IRON;
     public static ConfigEntry.BoolValue GT6_ORE_GEN;
     public static ConfigEntry.BoolValue DEFAULT_ORE_VEINS;
     public static ConfigEntry.BoolValue DEFAULT_STONE_LAYERS;
@@ -41,8 +42,9 @@ public class GT5RConfig {
         COMPLICATED_CHEMICAL_PROCESSING = general.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
         ADD_LOOT = general.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
         ConfigSection worldgen = config.add("worldgen");
-        GT6_ORE_GEN = worldgen.addBool("gt6_ore_gen", false, "Enables gt6 style veins instead of gt5 style veins. - Default: false");
-        DEFAULT_STONE_LAYERS = worldgen.addBool("default_stone_layers", true, "Enables default stone layers. - Defalt: true");
+        NO_NATIVE_IRON = worldgen.addBool("no_native_iron", false, "Replaces all spawns of native iron with hematite. This config will be true if gt6_ore_gen is true. - Default: false");
+        GT6_ORE_GEN = worldgen.addBool("gt6_ore_gen", false, "Enables gt6 style veins instead of gt5 style veins. Requires default_stone_layers to be true. - Default: false");
+        DEFAULT_STONE_LAYERS = worldgen.addBool("default_stone_layers", true, "Enables default stone layers. - Default: true");
         DEFAULT_ORE_VEINS = worldgen.addBool("default_ore_veins", true, "Enables default ore veins. Will not generate in the overworld when gt6_ore_gen is true. Default: true");
         DEFAULT_SMALL_ORES = worldgen.addBool("default_small_ores", true, "Enables default small ore gen. - Default: true");
         DEFAULT_BEDROCK_VEINS = worldgen.addBool("default_bedrock_veins", true, "Enables default bedrock veins. - Default: true");

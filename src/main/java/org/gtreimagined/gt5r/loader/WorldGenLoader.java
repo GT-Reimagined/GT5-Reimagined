@@ -369,6 +369,8 @@ public class WorldGenLoader {
         List<ResourceKey<Level>> mars = List.of(BE_MARS, AA_MARS);
         List<ResourceKey<Level>> moon = List.of(BE_MOON, AA_MOON);
 
+        Material iron = GT5RConfig.GT6_ORE_GEN.get() || GT5RConfig.NO_NATIVE_IRON.get() ? Hematite : Iron;
+
         ev.vein(new VeinBuilder(id("gold")).asOreVein(-4, 26, 160, 3, 32, Magnetite, Magnetite, VanadiumMagnetite, Gold)
                 .inDimensions(moon).inDimensions(mars).inDimensions(overworld).buildVein());
         ev.vein(new VeinBuilder(id("iron")).asOreVein(-14, 51, 120, 4, 24, BrownLimonite, YellowLimonite, Hematite, Malachite)
@@ -378,11 +380,11 @@ public class WorldGenLoader {
         ev.vein(new VeinBuilder(id("tetrahedrite")).asOreVein(51, 131, 70, 4, 24, Tetrahedrite, Tetrahedrite, Copper, Stibnite)
                 .inDimensions(overworld).inDimension(NETHER).inDimensions(moon).inDimensions(mars).buildVein());
         Material sporadic = !GTLibConfig.STONE_LAYERS.get() ? Calcite : Alumina;
-        ev.vein(new VeinBuilder(id("magnetite")).asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, Iron, VanadiumMagnetite)
+        ev.vein(new VeinBuilder(id("magnetite")).asOreVein(-14, 91, 160, 3, 32, Magnetite, Magnetite, iron, VanadiumMagnetite)
                 .inDimensions(overworld).inDimension(NETHER).inDimensions(mars).buildVein());
-        ev.vein(new VeinBuilder(id("copper_nether")).asOreVein(10, 30, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
+        ev.vein(new VeinBuilder(id("copper_nether")).asOreVein(10, 30, 80, 4, 24, Chalcopyrite, iron, Pyrite, Copper)
                 .inDimension(NETHER).buildVein());
-        ev.vein(new VeinBuilder(id("copper")).asOreVein(-30, 0, 80, 4, 24, Chalcopyrite, Iron, Pyrite, Copper)
+        ev.vein(new VeinBuilder(id("copper")).asOreVein(-30, 0, 80, 4, 24, Chalcopyrite, iron, Pyrite, Copper)
                 .inDimensions(overworld).inDimensions(moon).inDimensions(mars).buildVein());
         ev.vein(new VeinBuilder(id("salts")).asOreVein(51, 66, 50, 3, 24, Sylvite, Salt, Lepidolite, Spodumene)
                 .inDimensions(overworld).inDimensions(moon).buildVein());
