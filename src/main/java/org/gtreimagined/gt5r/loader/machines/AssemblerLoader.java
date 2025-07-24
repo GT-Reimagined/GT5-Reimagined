@@ -24,6 +24,7 @@ import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.machine.ChestMachine;
 import org.gtreimagined.gtcore.machine.HopperMachine;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.item.ItemBasic;
@@ -66,6 +67,7 @@ public class AssemblerLoader {
         frames();
         misc();
         hoppers();
+        chests();
         motors();
         pistons();
         pumps();
@@ -215,6 +217,15 @@ public class AssemblerLoader {
         GTAPI.all(HopperMachine.class).forEach(hopper -> {
             if (!hopper.getMaterial().has(PLATE)) return;
             ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(hopper.getMaterial(), 5), Ingredient.of(Tags.Items.CHESTS_WOODEN)).io(hopper.getItem(NONE)).add(hopper.getId(), 800, 2);
+        });
+    }
+
+    private static void chests(){
+        GTAPI.all(ChestMachine.class).forEach(m -> {
+            if (m.getMaterial().has(PLATE) && m.getMaterial().has(RING) && m.getMaterial().has(ROD)){
+                ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(m.getMaterial(), 4), RING.getMaterialIngredient(m.getMaterial(), 2), ROD.getMaterialIngredient(m.getMaterial(), 1))
+                        .io(m.getItem(NONE)).add(m.getId(), 400, 4);
+            }
         });
     }
 
