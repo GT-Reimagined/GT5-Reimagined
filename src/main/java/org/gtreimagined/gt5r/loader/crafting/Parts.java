@@ -7,6 +7,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
@@ -24,6 +25,7 @@ import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
 import java.util.Arrays;
 import java.util.function.Consumer;
@@ -138,8 +140,9 @@ public class Parts {
           Item fieldGen = GT5Reimagined.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
           Object wire = t == EV || t == IV ? GT5RBlocks.WIRE_ANNEALED_COPPER.getBlock(fromTier(t)) : WIRE_GETTER.apply(fromTier(t), LV);
+          Object motorRod = t == LV ? RecipeIngredient.ofIngredient(1, rod, ROD.getMaterialTag(Iron)) : rod;
           provider.addItemRecipe(output, "gtparts", motor,
-                  of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', rod), "CWR", "WMW", "RWC");
+                  of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', motorRod), "CWR", "WMW", "RWC");
           provider.addItemRecipe(output, "gtparts", piston,
                   of('M', motor, 'C', cable, 'G', smallGear, 'P', plate, 'R', rod), "PPP", "CRR", "CMG");
           provider.addItemRecipe(output, "gtparts", conveyor,
