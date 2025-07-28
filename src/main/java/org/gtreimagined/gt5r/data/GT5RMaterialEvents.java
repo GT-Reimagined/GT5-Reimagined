@@ -1049,7 +1049,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HSSE).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
         event.setMaterial(Materials.HSSG).tool().toolDamage(3).toolSpeed(10).toolDurability(4000).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
         event.setMaterial(Materials.HSSS).tool().toolDamage(4).toolSpeed(14).toolDurability(3000).toolQuality(4).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
-        event.setMaterial(Materials.Invar).tool().toolDamage(2).toolSpeed(6).toolDurability(256).toolQuality(3).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 3)).build()
+        event.setMaterial(Materials.Invar).tool().toolDamage(2).toolSpeed(6).toolDurability(256).toolQuality(2).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 3)).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 0.0F, 0.0F, 15, of(Enchantments.FIRE_PROTECTION, 1));
         event.setMaterial(Materials.IronMagnetic).tool(Iron).toolEnchantments(of(Enchantments.SHARPNESS, 1)).build();
         event.setMaterial(Materials.Kanthal).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).build();
