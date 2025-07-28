@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.datagen;
 
 
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTLanguageProvider;
@@ -152,6 +153,7 @@ public class GT5RLocalizations {
             add("jei.category.alloy_smelter_molds", "Alloy Smelter Molds");
             add("jei.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
             add("block.gt5r.lava", "Lava");
+            GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
             structureTranslations();
             advancements();
         }

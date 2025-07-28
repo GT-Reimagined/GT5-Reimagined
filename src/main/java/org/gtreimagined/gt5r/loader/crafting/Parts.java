@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 import com.google.common.collect.ImmutableMap;
 import com.gtnewhorizon.structurelib.Registry;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -47,6 +48,9 @@ public class Parts {
       provider.shapeless(output, "nether_quartz_from_milky_quartz","parts", new ItemStack(Items.QUARTZ), GEM.getMaterialTag(MilkyQuartz));
       provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
               GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
+
+      provider.addItemRecipe(output, GT5Reimagined.ID, "", "buckets", WOODEN_BUCKET,
+              of('W', ItemTags.PLANKS, 'P', PLATE.getMaterialTag(Copper), 'H', HAMMER.getTag()), "WPW", " WH");
 
       provider.addStackRecipe(output, GT5Reimagined.ID, "drain_expensive", "parts",
               new ItemStack(GT5Reimagined.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");

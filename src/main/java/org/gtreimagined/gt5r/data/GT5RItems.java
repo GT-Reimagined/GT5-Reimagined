@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
+import net.minecraft.world.level.material.Fluids;
+import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemBattery;
@@ -29,6 +31,8 @@ public class GT5RItems {
     public static ItemFluidCell CellTin = new ItemFluidCell(GT5Reimagined.ID, Materials.Tin, 1000);
     public static ItemFluidCell CellSteel = new ItemFluidCell(GT5Reimagined.ID, Materials.Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GT5Reimagined.ID, Materials.TungstenSteel, 64000);
+    public static ItemWoodenBucket WOODEN_BUCKET = new ItemWoodenBucket(() -> Fluids.EMPTY, "wooden_bucket");
+    public static ItemWoodenBucket WOODEN_WATER_BUCKET = new ItemWoodenBucket(() -> Fluids.WATER, "wooden_water_bucket");
     public static ItemBasic<?> WoodPellet = new ItemBasic<>(GT5Reimagined.ID, "wood_pellet");
     public static ItemBasic<?> PrintedPages = new ItemPrintedPages(GT5Reimagined.ID, "printed_pages").tip("Used to make written Books");
     public static ItemBasic<?> DataStick = new ItemDataStick(GT5Reimagined.ID, "data_stick").tip("A Low Capacity Data Storage");
