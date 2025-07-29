@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.gtreimagined.gtlib.blockentity.IFuelMachine;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.CookingRecipeHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -17,7 +18,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.GEM;
 
-public class BlockEntityPrimitiveBlastFurnace extends BlockEntityBasicMultiMachine<BlockEntityPrimitiveBlastFurnace> {
+public class BlockEntityPrimitiveBlastFurnace extends BlockEntityBasicMultiMachine<BlockEntityPrimitiveBlastFurnace> implements IFuelMachine {
 
     public BlockEntityPrimitiveBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -52,5 +53,15 @@ public class BlockEntityPrimitiveBlastFurnace extends BlockEntityBasicMultiMachi
     @Override
     public int maxShares() {
        return 0;
+    }
+
+    @Override
+    public int getFuel() {
+        return recipeHandler.map(r -> ((CookingRecipeHandler<?>)r).getBurnDuration()).orElse(0);
+    }
+
+    @Override
+    public int getMaxFuel() {
+        return recipeHandler.map(r -> ((CookingRecipeHandler<?>)r).getMaxBurn()).orElse(0);
     }
 }

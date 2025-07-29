@@ -13,6 +13,7 @@ import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
+import org.gtreimagined.gtlib.gui.widget.FuelWidget;
 import org.gtreimagined.gtlib.gui.widget.IOWidget;
 import org.gtreimagined.gtlib.gui.widget.IconWidget;
 import org.gtreimagined.gtlib.gui.widget.MachineStateWidget;
@@ -412,9 +413,13 @@ public class Guis {
         FORGE_HAMMER.addGuiCallback(t -> {
             t.addWidget(IconWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
         });
+        PRIMITIVE_BLAST_FURNACE.addGuiCallback(t -> {
+            t.addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(79, 51, 18, 18));
+        });
         SOLID_FUEL_BOILER.addGuiCallback(t -> {
+            String tier = ((BlockEntityMachine<?>)t.handler).getMachineTier().getId();
             t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
-                    .addWidget(CoalBoilerFuelWidget.build().setSize(115, 43, 18, 18));
+                    .addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/" + tier + "_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(115, 43, 18, 18));
         });
 
         LAVA_BOILER.addGuiCallback(t -> {
