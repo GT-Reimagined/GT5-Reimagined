@@ -1,10 +1,12 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.CookingRecipeHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.recipe.IRecipe;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
 import org.gtreimagined.gtlib.util.int3;
 import net.minecraft.core.BlockPos;
@@ -20,9 +22,9 @@ public class BlockEntityPrimitiveBlastFurnace extends BlockEntityBasicMultiMachi
     public BlockEntityPrimitiveBlastFurnace(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         recipeHandler.set(() -> new CookingRecipeHandler<>(this, 2.0f){
-            public boolean accepts(ItemStack stack) {
-                IRecipeMap map = getRecipeMap();
-                return map == null || map.acceptsItem(stack) || stack.is(GEM.getMaterialTag(Charcoal)) || stack.is(GEM.getMaterialTag(CoalCoke)) || stack.is(GEM.getMaterialTag(LigniteCoke));
+            @Override
+            protected Ingredient getBurnable() {
+                return RecipeIngredient.ofIngredient(1, GEM.getMaterialTag(Charcoal), GEM.getMaterialTag(CoalCoke), GEM.getMaterialTag(LigniteCoke));
             }
         });
     }
