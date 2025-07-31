@@ -71,8 +71,8 @@ legacyForge {
 }
 
 mixin {
-    config "antimatter.mixins.json"
-    config "antimatter.rei.mixins.json"
+    config "gtlib.mixins.json"
+    config "gtlib.rei.mixins.json"
 }
 
 dependencies {
