@@ -92,7 +92,7 @@ dependencies {
     modImplementation("dev.trinsdar:terraform-utils-v1:${project.terraform_version}")
     modImplementation("org.gt-reimagined:structurelib-forge:${project.structurelib_version}-${project.minecraft_version}")
     modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-${project.minecraft_version}:${project.resourcefullib_version}")
-    modImplementation("maven.modrinth:carbon-config:${project.carbon_config_forge_version}")
+    modImplementation("maven.modrinth:carbon-config:${project.carbon_config_version}")
     modImplementation("curse.maven:kubejs-238086:4377177")
     modImplementation("curse.maven:rhino-416294:4069880")
     //modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
