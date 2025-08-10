@@ -93,10 +93,8 @@ dependencies {
     modImplementation("org.gt-reimagined:structurelib-forge:${project.structurelib_version}-${project.minecraft_version}")
     modImplementation("com.teamresourceful.resourcefullib:resourcefullib-forge-${project.minecraft_version}:${project.resourcefullib_version}")
     modImplementation("maven.modrinth:carbon-config:${project.carbon_config_version}")
-    modImplementation("curse.maven:kubejs-238086:4377177")
-    modImplementation("curse.maven:rhino-416294:4069880")
-    //modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
-    //modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
+    modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
+    modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
     //MIXIN
     if (System.getProperty('idea.sync.active') != 'true') {
@@ -115,6 +113,7 @@ dependencies {
     modImplementation("curse.maven:ctm-267602:3933537")
     modCompileOnly("curse.maven:terrafirmacraft-302973:4723717")
     //modRuntimeOnly("curse.maven:terrafirmacraft-302973:4723717")
+/*
     modRuntimeOnly("curse.maven:patchouli-306770:${project.patchouli_version}")
     modRuntimeOnly("curse.maven:the-twilight-forest-227639:${project.twilight_version}")
     modRuntimeOnly("curse.maven:beyond-earth-377448:3807783")
@@ -124,6 +123,7 @@ dependencies {
     modRuntimeOnly("curse.maven:sophisticated-core-618298:${project.sophisticated_core_version}")
     modRuntimeOnly("curse.maven:jade-324717:${project.jade_version}")
     modRuntimeOnly("curse.maven:jamd-422981:${project.jamd_version}")
+*/
     //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
 }
 
