@@ -26,29 +26,29 @@ public class BenderLoader {
         };
         PLATE.all().forEach(t -> {
             if (!t.has(GTMaterialTypes.INGOT) || t.has(MaterialTags.RUBBERTOOLS)) return;
-            BENDER.RB().ii(GTMaterialTypes.INGOT.getMaterialIngredient(t,1),SELECTOR_TAG_INGREDIENTS.get(1)).io(PLATE.get(t,1)).add("plate_" + t.getId(), baseDuration.applyAsLong(t), 24);
+            BENDER.RB().ii(GTMaterialTypes.INGOT.getMaterialIngredient(t,1),SELECTOR_TAG_INGREDIENTS.get(1).get()).io(PLATE.get(t,1)).add("plate_" + t.getId(), baseDuration.applyAsLong(t), 24);
         });
         DENSE_PLATE.all().forEach(t -> {
             if (t.has(MaterialTags.RUBBERTOOLS)) return;
             if (t.has(GTMaterialTypes.INGOT)) {
-                BENDER.RB().ii(GTMaterialTypes.INGOT.getMaterialIngredient(t,9),SELECTOR_TAG_INGREDIENTS.get(9)).io(DENSE_PLATE.get(t,1)).add("plate_dense_" + t.getId(), baseDuration.applyAsLong(t) * 9, 96);
+                BENDER.RB().ii(GTMaterialTypes.INGOT.getMaterialIngredient(t,9),SELECTOR_TAG_INGREDIENTS.get(9).get()).io(DENSE_PLATE.get(t,1)).add("plate_dense_" + t.getId(), baseDuration.applyAsLong(t) * 9, 96);
             }
         });
         GTMaterialTypes.FOIL.all().forEach(foil -> {
             if (!foil.has(PLATE) || foil.has(MaterialTags.RUBBERTOOLS)) return;
-            BENDER.RB().ii(PLATE.getMaterialIngredient(foil,1), SELECTOR_TAG_INGREDIENTS.get(1)).io(GTMaterialTypes.FOIL.get(foil,4)).add("foil_" + foil.getId(), baseDuration.applyAsLong(foil),24);
+            BENDER.RB().ii(PLATE.getMaterialIngredient(foil,1), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(GTMaterialTypes.FOIL.get(foil,4)).add("foil_" + foil.getId(), baseDuration.applyAsLong(foil),24);
         });
         GTMaterialTypes.SPRING.all().stream().filter(m -> !m.has(MaterialTags.RUBBERTOOLS)).forEach(spring -> {
-            BENDER.RB().ii(LONG_ROD.getMaterialIngredient(spring, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(SPRING.get(spring)).add(spring.getId() + "_spring", 200, 16);
+            BENDER.RB().ii(LONG_ROD.getMaterialIngredient(spring, 1), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(SPRING.get(spring)).add(spring.getId() + "_spring", 200, 16);
         });
         RING.all().stream().filter(m -> !m.has(MaterialTags.RUBBERTOOLS)).forEach(ring -> {
-            BENDER.RB().ii(ROD.getMaterialIngredient(ring, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(RING.get(ring, 2)).add(ring.getId() + "_ring", 200, 16);
+            BENDER.RB().ii(ROD.getMaterialIngredient(ring, 1), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(RING.get(ring, 2)).add(ring.getId() + "_ring", 200, 16);
         });
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellTin.getDefaultInstance()).add("tin_cell",80,24);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), SELECTOR_TAG_INGREDIENTS.get(4)).io(GT5RItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), SELECTOR_TAG_INGREDIENTS.get(1)).io(GT5RItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
-        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Iron, 3), SELECTOR_TAG_INGREDIENTS.get(3)).io(new ItemStack(Items.BUCKET)).add("bucket", 200, 16);
-        BENDER.RB().ii(RecipeIngredient.of(GTCoreTags.INGOTS_MIXED_METAL, 1).setIgnoreNbt(), SELECTOR_TAG_INGREDIENTS.get(1)).io(GTCoreItems.AdvancedAlloy).add("advanced_alloy", 100, 8);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Tin,2), SELECTOR_TAG_INGREDIENTS.get(4).get()).io(GT5RItems.CellTin.getDefaultInstance()).add("tin_cell",80,24);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Steel,2), SELECTOR_TAG_INGREDIENTS.get(4).get()).io(GT5RItems.CellSteel.getDefaultInstance()).add("steel_cell",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.TungstenSteel,2), SELECTOR_TAG_INGREDIENTS.get(4).get()).io(GT5RItems.CellTungstensteel.getDefaultInstance()).add("tungstensteel_cell",80,384);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Zirconium,1), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(GT5RItems.EmptyNuclearFuelRod).add("empty_fuel_rod",80,96);
+        BENDER.RB().ii(PLATE.getMaterialIngredient(Materials.Iron, 3), SELECTOR_TAG_INGREDIENTS.get(3).get()).io(new ItemStack(Items.BUCKET)).add("bucket", 200, 16);
+        BENDER.RB().ii(RecipeIngredient.of(GTCoreTags.INGOTS_MIXED_METAL, 1).setIgnoreNbt(), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(GTCoreItems.AdvancedAlloy).add("advanced_alloy", 100, 8);
     }
 }

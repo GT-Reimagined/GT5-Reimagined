@@ -7,13 +7,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.machine.caps.BridgeSidedFluidWrapper;
 import org.gtreimagined.gt5r.machine.caps.BridgeSidedItemWrapper;
-import org.gtreimagined.gt5r.machine.caps.ExtenderSidedItemWrapper;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -37,7 +34,7 @@ public class BlockEntityInventoryTankBridge extends BlockEntityBridge {
 
     @Override
     protected boolean canBridgeBlockEntity(BlockEntity entity) {
-        return entity != null && (entity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent() || entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY).isPresent());
+        return entity != null && (entity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent() || entity.getCapability(ForgeCapabilities.FLUID_HANDLER).isPresent());
     }
 
     @Override

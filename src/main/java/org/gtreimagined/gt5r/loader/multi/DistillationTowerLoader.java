@@ -1,19 +1,19 @@
 package org.gtreimagined.gt5r.loader.multi;
 
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.material.Material;
-import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.SMALL_DUST;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtcore.data.GTCoreItems.SELECTOR_TAG_INGREDIENTS;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.SMALL_DUST;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 
 public class DistillationTowerLoader {
@@ -34,11 +34,11 @@ public class DistillationTowerLoader {
         addDistillingRecipe(SeedOil, 32, 16, 96, ItemStack.EMPTY, new FluidProduct(Lubricant, 12));
         addDistillingRecipe(Water, 100, 16, 64, TINY_DUST.get(Calcite, 1), new FluidProduct(DistilledWater,80));
         DISTILLERY.RB()
-                .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
+                .ii(SELECTOR_TAG_INGREDIENTS.get(0).get().setNoConsume())
                 .fi(new FluidStack(GTCoreFluids.BEET_JUICE.getFluid(), 100))
                 .fo(DistilledWater.getLiquid(50)).io(Items.SUGAR).add("beet_juice", 80, 16);
         DISTILLERY.RB()
-                .ii(SELECTOR_TAG_INGREDIENTS.get(0).setNoConsume())
+                .ii(SELECTOR_TAG_INGREDIENTS.get(0).get().setNoConsume())
                 .fi(Honey.getLiquid(100))
                 .fo(DistilledWater.getLiquid(10)).io(Items.SUGAR).add("honey", 16, 16);
         addDistillingRecipe(DilutedHydrochloricAcid, 2000, 300, 64, ItemStack.EMPTY,
@@ -160,7 +160,7 @@ public class DistillationTowerLoader {
         addDistillationRecipe(input, amount, ticks, euPerTick, itemStack, outputs);
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
-                    .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).setNoConsume())
+                    .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).get().setNoConsume())
                     .fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);
@@ -175,7 +175,7 @@ public class DistillationTowerLoader {
     private static void addDistillingRecipe(Material input, int amount, int ticks, int euPerTick, ItemStack itemStack, FluidProduct... outputs){
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
-                    .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).setNoConsume())
+                    .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).get().setNoConsume())
                     .fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);

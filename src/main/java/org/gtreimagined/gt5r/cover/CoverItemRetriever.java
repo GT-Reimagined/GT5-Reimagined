@@ -1,5 +1,19 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemHandlerHelper;
+import org.gtreimagined.gt5r.gui.ButtonOverlays;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
@@ -15,20 +29,6 @@ import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.util.CodeUtils;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemHandlerHelper;
-import org.gtreimagined.gt5r.gui.ButtonOverlays;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -108,7 +108,7 @@ public class CoverItemRetriever extends BaseCover {
                                 if (p.canAcceptItemsFrom(dir, pipe) && (dir != this.side || p != pipe)){
                                     BlockEntity a = p.getCachedBlockEntity(dir);
                                     if (!(a instanceof BlockEntityItemPipe) && a != null){
-                                        IItemHandler itemHandler = a.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, dir.getOpposite()).resolve().orElse(null);
+                                        IItemHandler itemHandler = a.getCapability(ForgeCapabilities.ITEM_HANDLER, dir.getOpposite()).resolve().orElse(null);
                                         if (itemHandler != null) {
                                             Level world = handler.getTile().getLevel();
                                             BlockPos pos = handler.getTile().getBlockPos();
@@ -134,7 +134,7 @@ public class CoverItemRetriever extends BaseCover {
                 }
                 BlockEntity adjacent = pipe.getCachedBlockEntity(this.side);
                 if (adjacent == null) return;
-                IItemHandler to = adjacent.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, this.side.getOpposite()).resolve().orElse(null);
+                IItemHandler to = adjacent.getCapability(ForgeCapabilities.ITEM_HANDLER, this.side.getOpposite()).resolve().orElse(null);
                 if (to == null) return;
                 for (BlockEntityItemPipe<?> p : pipes){
                     if (tUsedPipes.add(p)){
@@ -142,7 +142,7 @@ public class CoverItemRetriever extends BaseCover {
                             if (p.canAcceptItemsFrom(dir, pipe) && (dir != this.side || p != pipe)){
                                 BlockEntity a = p.getCachedBlockEntity(dir);
                                 if (!(a instanceof BlockEntityItemPipe) && a != null){
-                                    IItemHandler itemHandler = a.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, dir.getOpposite()).resolve().orElse(null);
+                                    IItemHandler itemHandler = a.getCapability(ForgeCapabilities.ITEM_HANDLER, dir.getOpposite()).resolve().orElse(null);
                                     if (itemHandler != null && Utils.transferItems(itemHandler, to, true, s -> itemMatches(s, getInventory(SlotType.DISPLAY_SETTABLE).getStackInSlot(0)))){
                                         for (BlockEntityItemPipe<?> tUsedPipe : tUsedPipes){
                                             tUsedPipe.incrementTransferCounter(1);

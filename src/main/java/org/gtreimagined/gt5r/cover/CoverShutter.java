@@ -1,5 +1,11 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.BaseCover;
@@ -8,12 +14,6 @@ import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -63,16 +63,16 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
             this.handler.getTile().setChanged();
             switch (mode){
                 case OPEN_NO_REDSTONE -> {
-                    player.sendMessage(Utils.literal("Open if work disabled"), player.getUUID());
+                    player.displayClientMessage(Utils.literal("Open if work disabled"), false);
                 }
                 case OUTPUT_ONLY -> {
-                    player.sendMessage(Utils.literal("Output only"), player.getUUID());
+                    player.displayClientMessage(Utils.literal("Output only"), false);
                 }
                 case INPUT_ONLY -> {
-                    player.sendMessage(Utils.literal("Input only"), player.getUUID());
+                    player.displayClientMessage(Utils.literal("Input only"), false);
                 }
                 case OPEN_REDSTONE -> {
-                    player.sendMessage(Utils.literal("Open if work enabled"), player.getUUID());
+                    player.displayClientMessage(Utils.literal("Open if work enabled"), false);
                 }
             }
             return InteractionResult.SUCCESS;

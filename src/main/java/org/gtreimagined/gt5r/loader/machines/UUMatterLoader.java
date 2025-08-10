@@ -3,20 +3,17 @@ package org.gtreimagined.gt5r.loader.machines;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.data.GT5RFluids;
-import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.data.RecipeMaps;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
-import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.data.RecipeMaps;
-import org.gtreimagined.gtcore.data.GTCoreItems;
 
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
 import static org.gtreimagined.gt5r.data.Materials.Nitrogen;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
-import static org.gtreimagined.gt5r.data.Materials.UUAmplifier;
 
 public class UUMatterLoader {
     public static void init(){
@@ -28,10 +25,10 @@ public class UUMatterLoader {
                 mb.ii(DUST.getMaterialIngredient(m, 1)); sb.ii(DUST.getMaterialIngredient(m, 1));
                 rb.io(DUST.get(m, 1));
             } else if (m.has(LIQUID) && m != Nitrogen){
-                mb.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getLiquid(1000));
+                mb.fi(m.getLiquid(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0).get()).fi(m.getLiquid(1000));
                 rb.fo(m.getLiquid(1000));
             } else if (m.has(GAS)){
-                mb.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0)).fi(m.getGas(1000));
+                mb.fi(m.getGas(1000)); sb.ii(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(0).get()).fi(m.getGas(1000));
                 rb.fo(m.getGas(1000));
             }
             ItemStack dataOrb = new ItemStack(DataOrb);

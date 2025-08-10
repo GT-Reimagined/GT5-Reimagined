@@ -1,5 +1,12 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
+import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
@@ -8,13 +15,6 @@ import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -68,7 +68,7 @@ public class CoverFluidFilter extends CoverFilter {
         if (object instanceof FluidStack fluidHolder) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
             ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getStackInSlot(0);
-            boolean empty = filter.isEmpty() || filter.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).map(f -> {
+            boolean empty = filter.isEmpty() || filter.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(f -> {
                 for (int i = 0; i < f.getTanks(); i++){
                     if (!f.getFluidInTank(i).isEmpty()){
                         return false;
@@ -81,7 +81,7 @@ public class CoverFluidFilter extends CoverFilter {
                     return true;
                 }
             }
-            boolean matches = filter.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).map(f -> {
+            boolean matches = filter.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(f -> {
                 for (int i = 0; i < f.getTanks(); i++){
                     boolean match = ignoreNBT ? fluidHolder.getFluid() == f.getFluidInTank(i).getFluid() : f.getFluidInTank(i).isFluidEqual(fluidHolder);
                     if (match){

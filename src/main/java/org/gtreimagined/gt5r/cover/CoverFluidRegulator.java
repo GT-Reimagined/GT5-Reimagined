@@ -1,8 +1,17 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityFluidPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
@@ -14,19 +23,9 @@ import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.util.FluidUtils;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
-import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 public class CoverFluidRegulator extends CoverBasicTransport {
@@ -70,7 +69,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
                 if (!simulate){
                     BlockEntity neighbor = fluidPipe.getCachedBlockEntity(side);
                     if (neighbor != null){
-                        LazyOptional<IFluidHandler> cap = neighbor.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite());
+                        LazyOptional<IFluidHandler> cap = neighbor.getCapability(ForgeCapabilities.FLUID_HANDLER, side.getOpposite());
                         transferring = true;
                         boolean transfer = transferFluid(stack, cap.orElse(null), usedFluidLimitOut, false, i -> usedFluidLimitOut += i);
                         transferring = false;

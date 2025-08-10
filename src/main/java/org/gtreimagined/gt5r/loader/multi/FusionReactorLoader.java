@@ -7,9 +7,9 @@ import static org.gtreimagined.gtlib.Ref.L;
 
 public class FusionReactorLoader {
     public static void init(){
-        FUSION.RB().huOutput(8192).fi(Deuterium.getGas(2000)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).fo(Helium3.getGas(500), Tritium.getGas(500)).add("helium3", 730, 16, 191365120);
-        FUSION.RB().huOutput(8192).fi(Helium3.getGas(2000)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).fo(Helium.getGas(1000)).add("helium", 1280, 16, 338165760);
-        FUSION.RB().huOutput(8192).fi(Tritium.getGas(2000)).ii(SELECTOR_TAG_INGREDIENTS.get(1)).fo(Helium.getGas(1000)).add("helium_2", 1130, 16, 269222720);
+        FUSION.RB().huOutput(8192).fi(Deuterium.getGas(2000)).ii(SELECTOR_TAG_INGREDIENTS.get(1).get()).fo(Helium3.getGas(500), Tritium.getGas(500)).add("helium3", 730, 16, 191365120);
+        FUSION.RB().huOutput(8192).fi(Helium3.getGas(2000)).ii(SELECTOR_TAG_INGREDIENTS.get(1).get()).fo(Helium.getGas(1000)).add("helium", 1280, 16, 338165760);
+        FUSION.RB().huOutput(8192).fi(Tritium.getGas(2000)).ii(SELECTOR_TAG_INGREDIENTS.get(1).get()).fo(Helium.getGas(1000)).add("helium_2", 1130, 16, 269222720);
         FUSION.RB().huOutput(2048).fi(Helium3.getGas(1000), Deuterium.getGas(1000)).fo(Helium.getGas(1000)).add("helium_3", 1820, 8, 60000000); //plasma
         FUSION.RB().huOutput(8192).fi(Tritium.getGas(1000), Deuterium.getGas(1000)).fo(Helium.getGas(1000)).add("helium_4", 1760, 16, 40000000); //plasma
         FUSION.RB().huOutput(8192).fi(Helium.getGas(1000), Carbon.getLiquid(L)).fo(Oxygen.getGas(1000)).add("oxygen", 716, 16, 80000000); //plasma

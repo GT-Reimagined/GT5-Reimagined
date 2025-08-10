@@ -1,17 +1,17 @@
 package org.gtreimagined.gt5r.worldgen;
 
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
-import org.gtreimagined.gtlib.util.XSTR;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.saveddata.SavedData;
+import org.gtreimagined.gtlib.util.XSTR;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class OilSpoutSavedData extends SavedData {
 
@@ -73,7 +73,7 @@ public class OilSpoutSavedData extends SavedData {
      */
     public OilSpoutEntry getFluidVeinWorldEntry(int chunkX, int chunkZ) {
         if (!veinFluids.containsKey(new ChunkPos(chunkX, chunkZ))) {
-            Random random = new XSTR( (serverLevel.getSeed() +
+            RandomSource random = new XSTR( (serverLevel.getSeed() +
                     ((int)Math.floor((double)chunkX/(double)VEIN_CHUNK_SIZE)) +
                     (7 * ((int)Math.floor((double)chunkZ/VEIN_CHUNK_SIZE)))));
             OilSpoutFluid fluid = getRandomFluid(random);
@@ -93,7 +93,7 @@ public class OilSpoutSavedData extends SavedData {
         return veinFluids.get(new ChunkPos(chunkX, chunkZ));
     }
 
-    public OilSpoutFluid getRandomFluid (Random aRandom) {
+    public OilSpoutFluid getRandomFluid (RandomSource aRandom) {
         int random = aRandom.nextInt(1000);
         for (OilSpoutFluid fl : FLUID_MAP.values()) {
             int chance = fl.chance()*1000/ OilSpoutFluid.getTotalWeight();

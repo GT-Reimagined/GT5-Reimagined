@@ -1,16 +1,16 @@
 package org.gtreimagined.gt5r.cover;
 
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import org.gtreimagined.gt5r.cover.base.CoverBasicRedstoneOutput;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityFluidPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.machine.Tier;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import org.gtreimagined.gt5r.cover.base.CoverBasicRedstoneOutput;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +40,7 @@ public class CoverFluidDetector extends CoverBasicRedstoneOutput {
     @Override
     public void onUpdate() {
         if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
-        IFluidHandler fluidContainer = handler.getTile().getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side).map(f -> f).orElse(null);
+        IFluidHandler fluidContainer = handler.getTile().getCapability(ForgeCapabilities.FLUID_HANDLER, side).map(f -> f).orElse(null);
         if (fluidContainer != null){
             int scale = IntStream.range(0, fluidContainer.getTanks()).map(fluidContainer::getTankCapacity).sum() / 15;
             int totalFluid = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {

@@ -1,17 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
 import com.google.common.collect.ImmutableMap;
-import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
-import org.gtreimagined.gtlib.capability.ICoverHandler;
-import org.gtreimagined.gtlib.capability.IFilterableHandler;
-import org.gtreimagined.gtlib.capability.IGuiHandler;
-import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.event.GuiEvents;
-import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.machine.event.IMachineEvent;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -23,10 +12,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.gtreimagined.gt5r.data.GT5RCovers;
+import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.capability.IFilterableHandler;
+import org.gtreimagined.gtlib.capability.IGuiHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.event.GuiEvents;
+import org.gtreimagined.gtlib.gui.event.IGuiEvent;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -88,7 +88,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport() && canMove(side)) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = handler.getTile().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = handler.getTile().getCapability(ForgeCapabilities.ITEM_HANDLER, side).map(Utils::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             double x = pos.getX() + side.getStepX() + 0.5;
             double y = pos.getY() + side.getStepY() + 0.5;
@@ -112,7 +112,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            from.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, fromSide).ifPresent(ih -> finalTo.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, finalFromSide.getOpposite()).ifPresent(oh -> {
+            from.getCapability(ForgeCapabilities.ITEM_HANDLER, fromSide).ifPresent(ih -> finalTo.getCapability(ForgeCapabilities.ITEM_HANDLER, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Utils.transferItems(ih, oh, true);
             }));
         }

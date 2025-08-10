@@ -7,7 +7,6 @@ import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.builder.IRecipeSlotBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
-import mezz.jei.api.gui.ingredient.IRecipeSlotView;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -15,21 +14,16 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.ItemStack;
-import org.apache.commons.lang3.tuple.Triple;
-import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
-import org.gtreimagined.gtlib.gui.SlotData;
-import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.integration.jei.category.RecipeMapCategory;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import org.apache.commons.lang3.tuple.Triple;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
+import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
+import org.gtreimagined.gtlib.integration.jei.category.RecipeMapCategory;
+import org.gtreimagined.gtlib.util.Utils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
@@ -110,15 +104,5 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     @Override
     public RecipeType<OreByProduct> getRecipeType() {
        return ORE_BYPRODUCTS;
-    }
-
-    @Override
-    public ResourceLocation getUid() {
-        return new ResourceLocation("gt5r", "ore_byproducts_tree");
-    }
-
-    @Override
-    public Class<? extends OreByProduct> getRecipeClass() {
-        return OreByProduct.class;
     }
 }

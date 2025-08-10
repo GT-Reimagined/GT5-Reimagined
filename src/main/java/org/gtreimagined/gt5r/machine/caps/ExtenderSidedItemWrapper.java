@@ -3,8 +3,8 @@ package org.gtreimagined.gt5r.machine.caps;
 import net.minecraft.core.Direction;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
@@ -26,7 +26,7 @@ public class ExtenderSidedItemWrapper extends SidedCombinedInvWrapper {
         Direction side = facing == blockEntity.getFacing() ? blockEntity.getOutputFacing() : blockEntity.getFacing();
         BlockEntity entity = blockEntity.getCachedBlockEntity(side);
         if (entity == null) return LazyOptional.empty();
-        return entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side.getOpposite());
+        return entity.getCapability(ForgeCapabilities.ITEM_HANDLER, side.getOpposite());
     }
 
     @Override

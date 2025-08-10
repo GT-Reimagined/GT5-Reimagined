@@ -1,26 +1,19 @@
 package org.gtreimagined.gt5r.data;
 
-import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.cover.CoverExtenderOutput;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
-import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.item.ItemCover;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.texture.Texture;
-import org.gtreimagined.gtlib.util.FluidUtils;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.cover.CoverAirVent;
 import org.gtreimagined.gt5r.cover.CoverConveyor;
 import org.gtreimagined.gt5r.cover.CoverDrain;
 import org.gtreimagined.gt5r.cover.CoverDynamoColored;
 import org.gtreimagined.gt5r.cover.CoverEnergyColored;
 import org.gtreimagined.gt5r.cover.CoverEnergyDetector;
+import org.gtreimagined.gt5r.cover.CoverExtenderOutput;
 import org.gtreimagined.gt5r.cover.CoverFluidDetector;
 import org.gtreimagined.gt5r.cover.CoverFluidFilter;
 import org.gtreimagined.gt5r.cover.CoverFluidRegulator;
@@ -44,6 +37,13 @@ import org.gtreimagined.gt5r.cover.redstone.CoverRedstoneConductorAccept;
 import org.gtreimagined.gt5r.cover.redstone.CoverRedstoneConductorEmit;
 import org.gtreimagined.gt5r.cover.redstone.CoverRedstoneMachineController;
 import org.gtreimagined.gt5r.items.ItemCoverCustomTooltip;
+import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.item.ItemCover;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.FluidUtils;
 
 public class GT5RCovers {
     public static final CoverFactory COVER_CONVEYOR = CoverFactory.builder(CoverConveyor::new).gui().item((a, b) ->
@@ -115,7 +115,7 @@ public class GT5RCovers {
                             ListTag items = displayManager.getList("Items", Tag.TAG_COMPOUND);
                             if (!items.isEmpty()){
                                 ItemStack contained = ItemStack.of(items.getCompound(0));
-                                IFluidHandlerItem fluidItemHandler = contained.getCapability(CapabilityFluidHandler.FLUID_HANDLER_ITEM_CAPABILITY).resolve().orElse(null);
+                                IFluidHandlerItem fluidItemHandler = contained.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).resolve().orElse(null);
                                 if (fluidItemHandler != null && !fluidItemHandler.getFluidInTank(0).isEmpty()){
                                     tooltip.add(FluidUtils.getFluidDisplayName(fluidItemHandler.getFluidInTank(0)));
                                 }

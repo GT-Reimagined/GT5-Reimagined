@@ -1,16 +1,5 @@
 package org.gtreimagined.gt5r.cover;
 
-import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
-import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.capability.ICoverHandler;
-import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
-import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
-import org.gtreimagined.gtlib.gui.event.GuiEvents;
-import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -21,9 +10,19 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
+import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.gui.ButtonOverlay;
+import org.gtreimagined.gtlib.gui.event.GuiEvents;
+import org.gtreimagined.gtlib.gui.event.IGuiEvent;
+import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -112,7 +111,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         if (state == Blocks.AIR.defaultBlockState() && exportMode.isExport()) {
             Level world = handler.getTile().getLevel();
             BlockPos pos = handler.getTile().getBlockPos();
-            ItemStack stack = handler.getTile().getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, side).map(this::extractAny).orElse(ItemStack.EMPTY);
+            ItemStack stack = handler.getTile().getCapability(ForgeCapabilities.ITEM_HANDLER, side).map(this::extractAny).orElse(ItemStack.EMPTY);
             if (stack.isEmpty()) return;
             world.addFreshEntity(new ItemEntity(world, pos.getX() + side.getStepX(), pos.getY() + side.getStepY(), pos.getZ() + side.getStepZ(), stack));
         }
@@ -133,7 +132,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         BlockEntity finalTo = to;
         if (canMove(side)){
             Direction finalFromSide = fromSide;
-            from.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, fromSide).ifPresent(ih -> finalTo.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, finalFromSide.getOpposite()).ifPresent(oh -> {
+            from.getCapability(ForgeCapabilities.ITEM_HANDLER, fromSide).ifPresent(ih -> finalTo.getCapability(ForgeCapabilities.ITEM_HANDLER, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Predicate<ItemStack> filter = s -> {
                     if (isImporting || slotLimit == 0) return true;
                     if (s.getCount() < slotLimit) return false;

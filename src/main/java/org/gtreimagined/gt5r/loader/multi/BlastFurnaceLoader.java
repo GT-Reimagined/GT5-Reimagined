@@ -26,7 +26,7 @@ public class BlastFurnaceLoader {
             if (m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GT5RMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(HOT_INGOT) ? HOT_INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
                 int heat = GT5RMaterialTags.BLAST_FURNACE_TEMP.getInt(m);
-                E_BLAST_FURNACE.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
+                E_BLAST_FURNACE.RB().temperature(heat).ii(DUST.getMaterialIngredient(m, 1), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(ingot).add(DIRECT_SMELT_INTO.getMapping(m).getId() + "_ingot_from_" + m.getId() + "_dust", Math.max(m.getMass() / 40L, 1L) * heat, 120);
             }
         });
 
@@ -73,7 +73,7 @@ public class BlastFurnaceLoader {
                     .io(NUGGET.get(Aluminium, 3), TINY_DUST.get(DarkAsh, 1))
                     .add("aluminium_ingot_from_green_sapphire", 400, 100);
             int heat = GT5RMaterialTags.BLAST_FURNACE_TEMP.getInt(Aluminium);
-            E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), SELECTOR_TAG_INGREDIENTS.get(1)).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
+            E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Aluminium, 1), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(INGOT.get(Aluminium)).add( "aluminium_ingot_from_aluminium_dust", Math.max(Aluminium.getMass() / 40L, 1L) * heat, 120);
             E_BLAST_FURNACE.RB().temperature(1700).ii(DUST.getMaterialIngredient(Alumina, 4), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(INGOT.get(Aluminium)).add("alumina", 4 * 100, 120);
         }
 
@@ -95,7 +95,7 @@ public class BlastFurnaceLoader {
         /* Kanthal*/
         addBlastAlloyRecipes(Kanthal, 3, 1800, 120, ImmutableMap.of(Iron, 1, Aluminium, 1, Chromium, 1));
         /* Nichrome*/
-        E_BLAST_FURNACE.RB().temperature(2700).ii(of(4, DUST.getMaterialTag(Nickel), INGOT.getMaterialTag(Nickel)), of(1, DUST.getMaterialTag(Chromium), INGOT.getMaterialTag(Chromium)), SELECTOR_TAG_INGREDIENTS.get(2))
+        E_BLAST_FURNACE.RB().temperature(2700).ii(of(4, DUST.getMaterialTag(Nickel), INGOT.getMaterialTag(Nickel)), of(1, DUST.getMaterialTag(Chromium), INGOT.getMaterialTag(Chromium)), SELECTOR_TAG_INGREDIENTS.get(2).get())
                 .io(HOT_INGOT.get(Nichrome, 5))
                 .add("nichrome_ingot", 135 * 20, 480);
         /* Trinitanium */
