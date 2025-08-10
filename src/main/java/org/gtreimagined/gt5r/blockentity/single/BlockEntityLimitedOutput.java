@@ -69,9 +69,9 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
                 }
                 if (stackLimit == 65 || stackLimit == 0){
                     observeStackLimit = false;
-                    player.sendMessage(Utils.literal("Do not regulate Item Stack size"), player.getUUID());
+                    player.displayClientMessage(Utils.literal("Do not regulate Item Stack size"), false);
                 } else {
-                    player.sendMessage(Utils.literal("Item Output Limit: " +stackLimit), player.getUUID());
+                    player.displayClientMessage(Utils.literal("Item Output Limit: " +stackLimit), false);
                 }
                 stack.hurt(1, world.random, (ServerPlayer) player);
                 return InteractionResult.SUCCESS;

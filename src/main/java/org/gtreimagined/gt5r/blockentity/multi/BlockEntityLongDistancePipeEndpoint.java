@@ -2,13 +2,6 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
-import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
-import org.gtreimagined.gtlib.client.scene.TrackedDummyWorld;
-import org.gtreimagined.gtlib.machine.MachineFlag;
-import org.gtreimagined.gtlib.machine.MachineState;
-import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.structure.StructureCache;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
@@ -16,17 +9,23 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.items.CapabilityItemHandler;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RMachines;
+import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
+import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
+import org.gtreimagined.gtlib.client.scene.TrackedDummyWorld;
+import org.gtreimagined.gtlib.machine.MachineFlag;
+import org.gtreimagined.gtlib.machine.MachineState;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.structure.StructureCache;
+import org.gtreimagined.tesseract.api.eu.IEnergyHandler;
+import org.gtreimagined.tesseract.api.forge.TesseractCaps;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.gtreimagined.tesseract.api.forge.TesseractCaps;
-import org.gtreimagined.tesseract.api.eu.IEnergyHandler;
 
 public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMachine<BlockEntityLongDistancePipeEndpoint> {
     BlockEntityLongDistancePipeEndpoint target = null, sender = null;
@@ -216,8 +215,8 @@ public class BlockEntityLongDistancePipeEndpoint extends BlockEntityBasicMultiMa
     @Override
     public @NotNull <U> LazyOptional<U> getCapability(@NotNull Capability<U> cap, @Nullable Direction side) {
         if (side == getFacing().getOpposite()) {
-            if ((cap == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY && has(MachineFlag.FLUID)) ||
-                    (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY && has(MachineFlag.ITEM))) {
+            if ((cap == ForgeCapabilities.FLUID_HANDLER && has(MachineFlag.FLUID)) ||
+                    (cap == ForgeCapabilities.ITEM_HANDLER && has(MachineFlag.ITEM))) {
                 if (this.target != null){
                     BlockEntity sideBE = this.target.getCachedBlockEntity(target.getFacing());
                     if (sideBE != null){

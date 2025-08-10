@@ -5,6 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -36,7 +37,7 @@ public class BlockEntityInventoryTankBridge extends BlockEntityBridge {
 
     @Override
     protected boolean canBridgeBlockEntity(BlockEntity entity) {
-        return entity != null && (entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent() || entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY).isPresent());
+        return entity != null && (entity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent() || entity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY).isPresent());
     }
 
     @Override

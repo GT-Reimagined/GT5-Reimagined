@@ -14,7 +14,7 @@ import org.gtreimagined.gtlib.registration.IItemBlockProvider;
 
 public class BlockFakeLava extends LiquidBlock implements IItemBlockProvider {
     public BlockFakeLava() {
-        super(() -> Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noDrops());
+        super(() -> Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noLootTable());
         GTAPI.register(Block.class, "lava", GT5Reimagined.ID, this);
     }
 

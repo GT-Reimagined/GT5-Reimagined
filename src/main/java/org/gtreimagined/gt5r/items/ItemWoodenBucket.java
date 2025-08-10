@@ -62,7 +62,7 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
     }
 
     @Override
-    public int getItemStackLimit(ItemStack stack) {
+    public int getMaxStackSize(ItemStack stack) {
        return getFluid() == Fluids.EMPTY ? 16 : 1;
     }
 
@@ -151,11 +151,6 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
             }
         }
     }
-
-    private boolean canBlockContainFluid(Level worldIn, BlockPos posIn, BlockState blockstate) {
-        return blockstate.getBlock() instanceof LiquidBlockContainer && ((LiquidBlockContainer)blockstate.getBlock()).canPlaceLiquid(worldIn, posIn, blockstate, this.getFluid());
-    }
-
 
     private static ItemStack getEmptyBucket(ItemStack bucketStack, Player player) {
         return !player.getAbilities().instabuild ? new ItemStack(GT5RItems.WOODEN_BUCKET) : bucketStack;

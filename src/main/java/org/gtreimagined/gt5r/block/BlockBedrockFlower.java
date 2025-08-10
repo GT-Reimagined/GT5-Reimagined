@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.world.level.block.FlowerBlock;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
@@ -85,10 +86,10 @@ public class BlockBedrockFlower extends BushBlock implements IGTObject, IModelPr
         return SHAPE.move(vec3.x, vec3.y, vec3.z);
     }
 
-    @Override
+    /*@Override
     public BlockBehaviour.OffsetType getOffsetType() {
         return OffsetType.XZ;
-    }
+    }*/
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {

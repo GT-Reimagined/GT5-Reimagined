@@ -70,7 +70,7 @@ import org.gtreimagined.gt5r.datagen.GT5RItemTagProvider;
 import org.gtreimagined.gt5r.datagen.GT5RLocalizations;
 import org.gtreimagined.gt5r.datagen.GT5RTwilightStalctites;
 import org.gtreimagined.gt5r.datagen.ProgressionAdvancements;
-import org.gtreimagined.gt5r.events.forge.RemappingEvents;
+import org.gtreimagined.gt5r.events.forge.ForgeEvents;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.integration.ThermalRegistrar;
@@ -186,7 +186,7 @@ public class GT5Reimagined extends GTMod {
         GT5RConfig.createConfig();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
-        MinecraftForge.EVENT_BUS.register(RemappingEvents.class);
+        MinecraftForge.EVENT_BUS.register(ForgeEvents.class);
         MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::registerRecipeLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GT5Reimagined::registerCraftingLoaders);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(GT5Reimagined::onProviders);
@@ -338,7 +338,7 @@ public class GT5Reimagined extends GTMod {
                 Guis.init(side);
                 Models.init();
                 GT5RSounds.init();
-                IGTWorldgenFunction function = (name, climate, category, effects, gen , spawns) -> {
+                IGTWorldgenFunction function = (name, climate, effects, gen , spawns) -> {
                     if (GTLibConfig.VANILLA_ORE_GEN.get()) {
                         removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
                     }

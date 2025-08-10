@@ -102,7 +102,7 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
                         drops.forEach(i -> Block.popResource(level, pos, i));
                     }
                 }
-                state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY);
+                state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, false);
             }
         }
         return level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);

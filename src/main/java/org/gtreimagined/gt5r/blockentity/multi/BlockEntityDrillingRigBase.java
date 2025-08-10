@@ -159,7 +159,7 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
                 } else {
                     drops.forEach(i -> Block.popResource(level, pos, i));
                 }
-                state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY);
+                state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, false);
             }
         }
         return level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
@@ -197,7 +197,7 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
             int[] data = ((GuiEvents.GuiEvent)event).data;
             if (data[1] == 0) {
                 pullingUp = !pullingUp;
-                playerEntity.sendMessage(Utils.literal((pullingUp ? "Currently pulling up mining pipes" : "No longer pulling up mining pipes")), playerEntity.getUUID());
+                playerEntity.displayClientMessage(Utils.literal((pullingUp ? "Currently pulling up mining pipes" : "No longer pulling up mining pipes")), false);
             }
         }
     }

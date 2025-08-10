@@ -19,27 +19,16 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.data.GT5RMachines;
-import org.gtreimagined.gt5r.data.GT5RMaterialTags;
-import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.machine.types.Machine;
-import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.util.Utils;
-import org.lwjgl.system.CallbackI.S;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.integration.rei.REIUtils.toREIFLuidStack;
-import static org.gtreimagined.gtlib.material.MaterialTags.*;
 
 public class OreProcessingCategory implements DisplayCategory<OreProcessingDisplay> {
     protected static Renderer icon = EntryStacks.of(Items.IRON_ORE);

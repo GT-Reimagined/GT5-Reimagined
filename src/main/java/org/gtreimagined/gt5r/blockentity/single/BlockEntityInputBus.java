@@ -59,7 +59,7 @@ public class BlockEntityInputBus extends BlockEntityHatch<BlockEntityInputBus> {
                 }
             }
             diversityFiltering = !diversityFiltering;
-            player.sendMessage(Utils.translatable("tooltip.gt5r.diversity_filter." + (diversityFiltering ? "on" : "off")), player.getUUID());
+            player.displayClientMessage(Utils.translatable("tooltip.gt5r.diversity_filter." + (diversityFiltering ? "on" : "off")), false);
             Utils.damageStack(stack, player);
             return InteractionResult.SUCCESS;
         }

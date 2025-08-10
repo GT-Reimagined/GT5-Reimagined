@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.client;
 
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.util.RandomSource;
 import org.gtreimagined.gtlib.GTLibProperties;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
@@ -38,7 +39,7 @@ public class ReactorBakedModel extends MachineBakedModel {
     }
 
     @Override
-    public List<BakedQuad> getBlockQuads(BlockState state, Direction side, Random rand, BlockAndTintGetter level, @NotNull BlockPos pos) {
+    public List<BakedQuad> getBlockQuads(BlockState state, Direction side, RandomSource rand, BlockAndTintGetter level, @NotNull BlockPos pos) {
         if (side == null) {
             return Collections.emptyList();
         }

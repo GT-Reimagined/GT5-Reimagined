@@ -5,23 +5,30 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
 import net.minecraft.world.level.material.Material;
-import net.minecraftforge.fluids.FluidAttributes;
+import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
+import net.minecraftforge.common.SoundActions;
+import net.minecraftforge.fluids.FluidType;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.fluid.GTClientFluidTypeExtension;
 import org.gtreimagined.gtlib.fluid.GTFluid;
 
 public class GT5RFluids {
 
-    public static final GTFluid CHARGED_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "charged_matter", prepareAttributes("charged_matter"), prepareProperties()));
-    public static final GTFluid NEUTRAL_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "neutral_matter", prepareAttributes("neutral_matter"), prepareProperties()));
+    public static final GTFluid CHARGED_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "charged_matter", prepareFluidProperties(), prepareProperties(), prepareFluidExtension("charged_matter")));
+    public static final GTFluid NEUTRAL_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "neutral_matter", prepareFluidProperties(), prepareProperties(), prepareFluidExtension("neutral_matter")));
 
-    private static FluidAttributes.Builder prepareAttributes(String fluid) {
-        return FluidAttributes.builder(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid), new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).overlay(GTFluid.OVERLAY_TEXTURE).sound(SoundEvents.BUCKET_FILL, SoundEvents.BUCKET_EMPTY);
+    private static FluidType.Properties prepareFluidProperties(){
+        return FluidType.Properties.create().sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL);
+    }
+
+    private static IClientFluidTypeExtensions prepareFluidExtension(String fluid){
+        return GTClientFluidTypeExtension.builder().stillTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).flowingTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).flowingTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).overlayTexture(GTFluid.OVERLAY_TEXTURE).build();
     }
 
     private static BlockBehaviour.Properties prepareProperties() {
-        return Properties.of(Material.WATER).strength(100.0F).noDrops();
+        return Properties.of(Material.WATER).strength(100.0F).noLootTable();
     }
 
     public static void init(){

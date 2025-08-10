@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
+import net.minecraftforge.client.model.geometry.IGeometryBakingContext;
 import org.gtreimagined.gtlib.client.model.MachineModel;
 import org.gtreimagined.gtlib.machine.MachineState;
 import net.minecraft.client.renderer.block.model.ItemOverrides;
@@ -13,7 +14,6 @@ import net.minecraft.client.resources.model.ModelBakery;
 import net.minecraft.client.resources.model.ModelState;
 import net.minecraft.client.resources.model.UnbakedModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.client.model.IModelConfiguration;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -29,14 +29,14 @@ public class ReactorModel extends MachineModel {
     }
 
     @Override
-    public Collection<Material> getTextures(IModelConfiguration configuration, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
-        Collection<Material> materials = super.getTextures(configuration, modelGetter, missingTextureErrors);
+    public Collection<Material> getMaterials(IGeometryBakingContext configuration, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
+        Collection<Material> materials = super.getMaterials(configuration, modelGetter, missingTextureErrors);
         materials.addAll(Arrays.stream(rodModels).flatMap(i -> i.getMaterials(modelGetter, missingTextureErrors).stream()).toList());
         return materials;
     }
 
     @Override
-    public BakedModel bakeModel(IModelConfiguration configuration, ModelBakery bakery,
+    public BakedModel bakeModel(IGeometryBakingContext configuration, ModelBakery bakery,
                                 Function<Material, TextureAtlasSprite> getter, ModelState transform, ItemOverrides overrides,
                                 ResourceLocation loc) {
         ImmutableMap.Builder<MachineState, BakedModel[]> builder = ImmutableMap.builder();

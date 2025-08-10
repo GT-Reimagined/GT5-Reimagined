@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.util.RandomSource;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
@@ -66,7 +67,7 @@ public class BlockMiningPipe extends BlockBasic implements IItemBlockProvider, I
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (!canSurvive(state, level, pos)){
             level.destroyBlock(pos, true);
         }

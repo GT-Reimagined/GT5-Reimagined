@@ -5,8 +5,8 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.machine.caps.BridgeSidedItemWrapper;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
@@ -25,7 +25,7 @@ public class BlockEntityInventoryBridge extends BlockEntityBridge {
 
     @Override
     protected boolean canBridgeBlockEntity(BlockEntity entity) {
-        return entity != null && entity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).isPresent();
+        return entity != null && entity.getCapability(ForgeCapabilities.ITEM_HANDLER).isPresent();
     }
 
     @Override
