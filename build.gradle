@@ -109,9 +109,9 @@ dependencies {
     modRuntimeOnly("dev.trinsdar:terraform-wood-api-v1:${project.terraform_version}")
     jarJar("dev.trinsdar:terraform-wood-api-v1:${project.terraform_version}")
     //modRuntimeOnly("curse.maven:rubidium-574856:4451888")
-    modRuntimeOnly("curse.maven:worldstripper-250603:${project.worldstripper_version}")
+    //modRuntimeOnly("curse.maven:worldstripper-250603:${project.worldstripper_version}")
     modRuntimeOnly("curse.maven:ae2-223794:${project.ae2_version}")
-    modImplementation("curse.maven:ctm-267602:3933537")
+    //modImplementation("curse.maven:ctm-267602:3933537")
     modCompileOnly("curse.maven:terrafirmacraft-302973:4723717")
     //modRuntimeOnly("curse.maven:terrafirmacraft-302973:4723717")
 /*
