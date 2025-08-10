@@ -38,18 +38,6 @@ public class ReactorModelLoader extends GTModelLoader<MachineModel> {
                 m.put(t, a);
             }
         });
-        UnbakedModel[] rods = new UnbakedModel[4];
-        String[] array = new String[]{"north-west", "south-west", "north-east", "south-east"};
-        //northwest is 0, southwest is 1, northeast is 2, southeast is 3
-        for (int i = 0; i < 4; i++) {
-            ResourceLocation modelLocation = new ResourceLocation(GT5Reimagined.ID, "block/machine/overlay/nuclear_reactor_core/"+ array[i] + "-rod");
-            try {
-                rods[i] = ModelUtils.getModel(modelLocation);
-            } catch (Exception ignored){
-                //rods[i] = ModelUtils.getModel(modelLocation);
-            }
-
-        }
-        return new ReactorModel(m, particle, rods);
+        return new ReactorModel(m, particle);
     }
 }
