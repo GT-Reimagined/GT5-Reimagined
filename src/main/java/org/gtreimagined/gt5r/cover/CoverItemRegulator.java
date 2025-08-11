@@ -1,5 +1,17 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.nbt.CompoundTag;
+import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.capability.ICoverHandler;
+import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
+import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.gui.ButtonOverlay;
+import org.gtreimagined.gtlib.gui.event.GuiEvents;
+import org.gtreimagined.gtlib.gui.event.IGuiEvent;
+import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
+import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -134,7 +146,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
             Direction finalFromSide = fromSide;
             from.getCapability(ForgeCapabilities.ITEM_HANDLER, fromSide).ifPresent(ih -> finalTo.getCapability(ForgeCapabilities.ITEM_HANDLER, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Predicate<ItemStack> filter = s -> {
-                    if (isImporting || slotLimit == 0) return true;
+                    if (slotLimit == 0) return true;
                     if (s.getCount() < slotLimit) return false;
                     s.setCount(slotLimit);
                     return true;
@@ -161,5 +173,18 @@ public class CoverItemRegulator extends CoverBasicTransport {
             return (redstoneMode == RedstoneMode.INVERTED) != powered;
         }
         return true;
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag nbt = super.serialize();
+        nbt.putInt("slotLimit", slotLimit);
+        return nbt;
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        slotLimit = nbt.getInt("slotLimit");
     }
 }

@@ -62,7 +62,11 @@ public class ForgeHammerLoader {
         GTAPI.all(StoneType.class, s -> {
             if (!(s instanceof CobbleStoneType cs)) return;
             FORGE_HAMMER.RB().ii(RecipeIngredient.of(cs.getBlock(""), 1)).io(new ItemStack(cs.getBlock("cobble"))).add(s.getId() + "_to_cobble",10, 16);
+            FORGE_HAMMER.RB().ii(RecipeIngredient.of(cs.getBlock("bricks"), 1)).io(new ItemStack(cs.getBlock("cobble"))).add(s.getId() + "_bricks_to_cobble",10, 16);
+            FORGE_HAMMER.RB().ii(RecipeIngredient.of(cs.getBlock("smooth"), 1)).io(new ItemStack(cs.getBlock("cobble"))).add("smooth_" + s.getId() + "_to_cobble",10, 16);
         });
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.STONE_BRICKS)).io(new ItemStack(Items.COBBLESTONE)).add("stone_bricks_to_cobble", 10, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.SMOOTH_STONE)).io(new ItemStack(Items.COBBLESTONE)).add("smooth_stone_to_cobble", 10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.STONE, 1)).io(new ItemStack(Items.COBBLESTONE)).add("cobblestone",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GRAVEL, 1)).io(new ItemStack(Items.SAND)).add("sand",10, 16);

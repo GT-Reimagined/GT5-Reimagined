@@ -195,7 +195,6 @@ public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoi
         @Override
         protected MachineState tickRecipe() {
             if (this.activeRecipe == null) {
-                System.out.println("Check Recipe when active recipe is null");
                 return tile.getMachineState();
             }
             else {
