@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.cover;
 
+import net.minecraft.nbt.CompoundTag;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
@@ -135,7 +136,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
             Direction finalFromSide = fromSide;
             from.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, fromSide).ifPresent(ih -> finalTo.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, finalFromSide.getOpposite()).ifPresent(oh -> {
                 Predicate<ItemStack> filter = s -> {
-                    if (isImporting || slotLimit == 0) return true;
+                    if (slotLimit == 0) return true;
                     if (s.getCount() < slotLimit) return false;
                     s.setCount(slotLimit);
                     return true;
@@ -162,5 +163,18 @@ public class CoverItemRegulator extends CoverBasicTransport {
             return (redstoneMode == RedstoneMode.INVERTED) != powered;
         }
         return true;
+    }
+
+    @Override
+    public CompoundTag serialize() {
+        CompoundTag nbt = super.serialize();
+        nbt.putInt("slotLimit", slotLimit);
+        return nbt;
+    }
+
+    @Override
+    public void deserialize(CompoundTag nbt) {
+        super.deserialize(nbt);
+        slotLimit = nbt.getInt("slotLimit");
     }
 }
