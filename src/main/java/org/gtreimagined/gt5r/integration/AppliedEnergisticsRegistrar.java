@@ -76,17 +76,17 @@ public class AppliedEnergisticsRegistrar extends GTMod {
                 .io(/*DUST_SMALL.get(BasalticMineralSand, 1), */SMALL_DUST.get(Olivine, 1), SMALL_DUST.get(Obsidian, 1), SMALL_DUST.get(Basalt, 1), SMALL_DUST.get(Flint, 1), SMALL_DUST.get(RareEarth, 1))
                 .outputChances(0.2,0.2,0.2,0.2,0.2)
                 .add("sky_dust", 64, 20);
-        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed", 2000, 24);
-        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(Fluix, 2)).add("fluix_from_seed", 2000, 24);
-        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed_2", 1000, 24);
-        RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(Fluix, 1)).add("fluix_from_seed_2", 1000, 24);
+        //RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed", 2000, 24);
+        //RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(Water.getLiquid(200)).io(GEM.get(Fluix, 2)).add("fluix_from_seed", 2000, 24);
+        //RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("certus_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(CertusQuartz, 2)).add("certus_quartz_from_seed_2", 1000, 24);
+        //RecipeMaps.AUTOCLAVE.RB().ii(of(getAe2Item("fluix_crystal_seed"), 1).setIgnoreNbt()).fi(DistilledWater.getLiquid(200)).io(GEM.get(Fluix, 1)).add("fluix_from_seed_2", 1000, 24);
         RecipeMaps.MIXER.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), of(ForgeTags.GEMS_QUARTZ_ALL)).fi(Water.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal", 20, 16);
         RecipeMaps.MIXER.RB().ii(GEM.getIngredient(ChargedCertusQuartz, 1), DUST.getMaterialIngredient(Redstone, 1), of(ForgeTags.GEMS_QUARTZ_ALL)).fi(DistilledWater.getLiquid(500)).io(DUST.get(Fluix, 2)).add("fluix_crystal_2", 20, 16);
         RecipeMaps.ASSEMBLER.RB().ii(of(getAe2Item("printed_logic_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(144)).io(new ItemStack(getAe2Item("logic_processor"))).add("logic_processor", 64, 32);
         RecipeMaps.ASSEMBLER.RB().ii(of(getAe2Item("printed_engineering_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(144)).io(new ItemStack(getAe2Item("engineering_processor"))).add("engineering_processor", 64, 32);
         RecipeMaps.ASSEMBLER.RB().ii(of(getAe2Item("printed_calculation_processor")), of(getAe2Item("printed_silicon"))).fi(Redstone.getLiquid(144)).io(new ItemStack(getAe2Item("calculation_processor"))).add("calculation_processor", 64, 32);
-        RecipeMaps.ASSEMBLER.RB().ii(DUST.getMaterialIngredient(CertusQuartz, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("certus_crystal_seed"), 2)).add("certus_crystal_seed", 64, 8);
-        RecipeMaps.ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"), 2)).add("fluix_crystal_seed", 64, 8);
+        //RecipeMaps.ASSEMBLER.RB().ii(DUST.getMaterialIngredient(CertusQuartz, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("certus_crystal_seed"), 2)).add("certus_crystal_seed", 64, 8);
+        //RecipeMaps.ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Fluix, 1), of(ItemTags.SAND)).io(new ItemStack(getAe2Item("fluix_crystal_seed"), 2)).add("fluix_crystal_seed", 64, 8);
         PULVERIZER.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
         PULVERIZER.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZER.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
