@@ -251,6 +251,7 @@ public class RecyclingLoader {
             addRecyclingRecipe(GTTools.LEGGINGS.getToolStack(m).getItem(), of(m, 7f));
             addRecyclingRecipe(GTTools.BOOTS.getToolStack(m).getItem(), of(m, 4f));
         });
+        addRecyclingRecipe(Items.CAULDRON, of(Iron, 7f));
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
