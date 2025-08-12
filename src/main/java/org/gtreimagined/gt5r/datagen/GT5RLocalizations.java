@@ -152,6 +152,10 @@ public class GT5RLocalizations {
             add("jei.category.arc_furnace_recycling", "Arc Furnace Recycling");
             add("jei.category.alloy_smelter_molds", "Alloy Smelter Molds");
             add("jei.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
+            add("emi.category,gt.macerator_recycling", "Macerator Recycling");
+            add("emi.category,gt.macerator_ore_processing", "Macerator Ore Processing");
+            add("emi.category,gt.arc_furnace_recycling", "Arc Furnace Recycling");
+            add("emi.category,gt.alloy_smelter_molds", "Alloy Smelter Molds");
             add("block.gt5r.lava", "Lava");
             GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
             structureTranslations();
