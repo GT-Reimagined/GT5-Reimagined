@@ -635,7 +635,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.BismuthBronze).mats(of(Materials.Bismuth, 1, Materials.Zinc, 1, Copper, 3));
         event.setMaterial(Materials.BlackBronze).mats(of(Gold, 1, Silver, 1, Copper, 3));
         event.setMaterial(Materials.BlackSteel).mats(of(Materials.Nickel, 1, Materials.BlackBronze, 1, Materials.Steel, 3));
-        event.setMaterial(Materials.BlueSteel).mats(of(Materials.RoseGold, 1, Materials.Brass, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
+        event.setMaterial(Materials.BlueSteel).mats(of(SterlingSilver, 1, BismuthBronze, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
         event.setMaterial(Materials.Brass).mats(of(Materials.Zinc, 1, Copper, 3));
         event.setMaterial(Materials.Bronze).mats(of(Materials.Tin, 1, Copper, 3));
         event.setMaterial(Materials.CdInAGAlloy).mats(of(Materials.Cadmium, 1, Materials.Indium, 1, Silver, 1));
@@ -657,7 +657,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NiobiumTitanium).mats(of(Materials.Nickel, 4, Materials.Chromium, 1));
         event.setMaterial(Materials.Osmiridium).mats(of(Materials.Iridium, 3, Materials.Osmium, 1)).elecTicks(608);
         event.setMaterial(Materials.RedAlloy).mats(of(Copper, 1, Redstone, 4));
-        event.setMaterial(Materials.RedSteel).mats(of(Materials.SterlingSilver, 1, Materials.BismuthBronze, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
+        event.setMaterial(Materials.RedSteel).mats(of(RoseGold, 1, Brass, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
         event.setMaterial(Materials.RoseGold).mats(of(Copper, 1, Gold, 4));
         event.setMaterial(Materials.SolderingAlloy).mats(of(Materials.Tin, 9, Materials.Antimony, 1));
         event.setMaterial(Materials.Steel).mats(of(Iron, 50, Materials.Carbon, 1), 50).elecTicks(2600);
