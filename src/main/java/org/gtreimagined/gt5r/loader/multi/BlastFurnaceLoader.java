@@ -47,6 +47,7 @@ public class BlastFurnaceLoader {
         addCalciteRecipe(Stibnite, 4, INGOT.get(Antimony, 1));
         addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(Iron, 1));
         addCalciteRecipe(Malachite, 15, INGOT.get(Copper, 2));
+        addCalciteRecipe(Pentlandite, 11, INGOT.get(Nickel, 4));
         /* Annealed Copper*/
         E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Copper, 1))
                 .fi(Oxygen.getGas(1000))
