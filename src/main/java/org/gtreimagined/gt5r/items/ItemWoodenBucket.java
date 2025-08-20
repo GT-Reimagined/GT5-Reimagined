@@ -5,6 +5,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -15,6 +16,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.LiquidBlockContainer;
@@ -32,6 +34,7 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
 import org.gtreimagined.gtlib.registration.IGTObject;
 import org.gtreimagined.gtlib.registration.IModelProvider;
 import org.gtreimagined.gtlib.registration.ITextureProvider;
@@ -163,5 +166,15 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
 
     private static Item findFilledBucket(Fluid fluid){
         return GTAPI.all(ItemWoodenBucket.class).stream().filter(w -> w.getFluid() == fluid).findFirst().map(Item::asItem).orElse(Items.AIR);
+    }
+
+    @Override
+    public void onItemModelBuild(ItemLike item, GTItemModelProvider prov) {
+        prov.getGTBuilder(item).bucketProperties(this.getFluid(), true, false).parent(new ResourceLocation(Ref.ID + ":item/bucket")).tex((map) -> {
+            String id = "wooden_bucket";
+            map.put("base", getDomain() + ":item/basic/" + id);
+            map.put("cover", getDomain() + ":item/other/" + id + "_cover");
+            map.put("fluid", getDomain() + ":item/other/" + id + "_fluid");
+        });
     }
 }
