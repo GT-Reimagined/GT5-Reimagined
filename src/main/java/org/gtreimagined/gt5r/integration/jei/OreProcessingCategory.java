@@ -21,7 +21,7 @@ import org.apache.commons.lang3.tuple.Triple;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
-import org.gtreimagined.gtlib.integration.jei.category.RecipeMapCategory;
+import org.gtreimagined.gtlib.integration.jei.GTLibJEIPlugin;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.List;
@@ -29,7 +29,7 @@ import java.util.List;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 
 public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
-    IDrawable icon = RecipeMapCategory.guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, Items.IRON_ORE.getDefaultInstance());
+    IDrawable icon = GTLibJEIPlugin.guiHelper.createDrawableIngredient(VanillaTypes.ITEM_STACK, Items.IRON_ORE.getDefaultInstance());
     IDrawable background = createDrawable("background");
     IDrawable base = createDrawable("base");
     IDrawable chemical = createDrawable("chem");
@@ -39,7 +39,7 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5Reimagined.ID, "ore_byproducts_tree"), OreByProduct.class);
 
     private static IDrawable createDrawable(String id) {
-        return RecipeMapCategory.guiHelper.drawableBuilder(new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/" + id + ".png"), 3, 3, 180, 160).setTextureSize(186, 166).build();
+        return GTLibJEIPlugin.guiHelper.drawableBuilder(new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/" + id + ".png"), 3, 3, 180, 160).setTextureSize(186, 166).build();
     }
 
     @Override
