@@ -1,0 +1,90 @@
+{
+  "type": "tfc:cluster_vein",
+  "config": {
+    "rarity": 160,
+    "density": 0.4,
+    "min_y": -54,
+    "max_y": -9,
+    "size": 40,
+    "random_name": "deep_redstone",
+    "blocks": [
+      {
+        "replace": [
+          "tfc:rock/raw/quartzite"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_redstone_raw_quartzite",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ruby_raw_quartzite",
+            "weight": 20
+          },
+          {
+            "block": "antimatter_shared:ore_cinnabar_raw_quartzite",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/phyllite"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_redstone_raw_phyllite",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ruby_raw_phyllite",
+            "weight": 20
+          },
+          {
+            "block": "antimatter_shared:ore_cinnabar_raw_phyllite",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/gneiss"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_redstone_raw_gneiss",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ruby_raw_gneiss",
+            "weight": 20
+          },
+          {
+            "block": "antimatter_shared:ore_cinnabar_raw_gneiss",
+            "weight": 10
+          }
+        ]
+      }
+    ],
+	"indicator": {
+      "rarity": 12,
+      "depth": 60,
+      "underground_rarity": 40,
+      "underground_count": 200,
+      "blocks": [
+        {
+          "block": "minecraft:redstone_wire",
+          "weight": 60
+        },
+        {
+          "block": "antimatter_shared:surface_rock_ruby_stone",
+          "weight": 20
+        },
+        {
+          "block": "antimatter_shared:surface_rock_cinnabar_stone",
+          "weight": 20
+        }
+      ]
+    }
+  }
+}

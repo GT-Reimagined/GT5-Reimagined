@@ -1,0 +1,90 @@
+{
+  "type": "tfc:cluster_vein",
+  "config": {
+    "rarity": 185,
+    "density": 0.25,
+    "min_y": -44,
+    "max_y": -14,
+    "size": 40,
+    "random_name": "normal_monazite",
+    "blocks": [
+      {
+        "replace": [
+          "tfc:rock/raw/granite"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bastnasite_raw_granite",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_monazite_raw_granite",
+            "weight": 20
+          },
+          {
+            "block": "antimatter_shared:ore_neodymium_raw_granite",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/diorite"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bastnasite_raw_diorite",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_monazite_raw_diorite",
+            "weight": 20
+          },
+          {
+            "block": "antimatter_shared:ore_neodymium_raw_diorite",
+            "weight": 10
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/gabbro"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bastnasite_raw_gabbro",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_monazite_raw_gabbro",
+            "weight": 20
+          },
+          {
+            "block": "antimatter_shared:ore_neodymium_raw_gabbro",
+            "weight": 10
+          }
+        ]
+      }
+    ],
+	"indicator": {
+      "rarity": 15,
+      "depth": 20,
+      "underground_rarity": 40,
+      "underground_count": 200,
+      "blocks": [
+        {
+          "block": "antimatter_shared:surface_rock_bastnasite_stone",
+          "weight": 70
+        },
+        {
+          "block": "antimatter_shared:surface_rock_monazite_stone",
+          "weight": 20
+        },
+		    {
+          "block": "antimatter_shared:surface_rock_neodymium_stone",
+          "weight": 10
+        }
+      ]
+    }
+  }
+}

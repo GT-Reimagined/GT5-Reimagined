@@ -1,0 +1,166 @@
+{
+  "type": "tfc:cluster_vein",
+  "config": {
+    "rarity": 185,
+    "density": 0.3,
+    "min_y": -32,
+    "max_y": 60,
+    "size": 40,
+    "random_name": "normal_bauxite",
+    "blocks": [
+      {
+        "replace": [
+          "tfc:rock/raw/shale"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_shale",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_shale",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_shale",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/claystone"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_claystone",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_claystone",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_claystone",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/limestone"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_limestone",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_limestone",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_limestone",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/conglomerate"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_conglomerate",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_conglomerate",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_conglomerate",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/dolomite"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_dolomite",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_dolomite",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_dolomite",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/chert"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_chert",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_chert",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_chert",
+            "weight": 20
+          }
+        ]
+      },
+      {
+        "replace": [
+          "tfc:rock/raw/chalk"
+        ],
+        "with": [
+          {
+            "block": "antimatter_shared:ore_bauxite_raw_chalk",
+            "weight": 70
+          },
+          {
+            "block": "antimatter_shared:ore_ilmenite_raw_chalk",
+            "weight": 10
+          },
+          {
+            "block": "antimatter_shared:ore_alumina_raw_chalk",
+            "weight": 20
+          }
+        ]
+      }
+    ],
+	"indicator": {
+      "rarity": 15,
+      "depth": 20,
+      "underground_rarity": 40,
+      "underground_count": 200,
+      "blocks": [
+        {
+          "block": "antimatter_shared:surface_rock_bauxite_stone",
+          "weight": 70
+        },
+		    {
+          "block": "antimatter_shared:surface_rock_ilmenite_stone",
+          "weight": 10
+        },
+        {
+          "block": "antimatter_shared:surface_rock_alumina_stone",
+          "weight": 20
+        }
+      ]
+    }
+  }
+}
