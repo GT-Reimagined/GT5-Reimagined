@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.forge.tfc;
+package org.gtreimagined.gt5r.integration.tfc;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;

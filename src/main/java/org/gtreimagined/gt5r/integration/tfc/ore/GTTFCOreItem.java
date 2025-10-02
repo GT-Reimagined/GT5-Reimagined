@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.forge.tfc.ore;
+package org.gtreimagined.gt5r.integration.tfc.ore;
 
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.texture.Texture;

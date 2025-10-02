@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.forge.tfc.ore;
+package org.gtreimagined.gt5r.integration.tfc.ore;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;

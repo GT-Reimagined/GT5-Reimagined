@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.forge.tfc;
+package org.gtreimagined.gt5r.integration.tfc;
 
 
 import net.dries007.tfc.common.blocks.rock.Ore;

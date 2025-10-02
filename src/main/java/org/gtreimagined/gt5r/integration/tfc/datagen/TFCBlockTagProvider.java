@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.forge.tfc.datagen;
+package org.gtreimagined.gt5r.integration.tfc.datagen;
 
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
