@@ -142,6 +142,7 @@ public class TFCRegistrar extends GTMod {
                 return true;
             });
         }
+        if (event == RegistrationEvent.DATA_READY) TFCOreGen.init();
     }
 
     @Override
