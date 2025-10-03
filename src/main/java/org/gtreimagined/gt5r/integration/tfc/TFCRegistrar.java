@@ -1,6 +1,9 @@
 package org.gtreimagined.gt5r.integration.tfc;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.integration.tfc.datagen.TFCBlockTagProvider;
+import org.gtreimagined.gt5r.integration.tfc.datagen.TFCItemTagProvider;
+import org.gtreimagined.gt5r.integration.tfc.datagen.TFCLangProvider;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
@@ -36,9 +39,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCBlockTagProvider;
-import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCItemTagProvider;
-import org.gtreimagined.gt5r.integration.forge.tfc.datagen.TFCLangProvider;
 
 import java.util.function.BiConsumer;
 

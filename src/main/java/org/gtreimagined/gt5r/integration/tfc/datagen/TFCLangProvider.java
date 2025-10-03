@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.integration.tfc.datagen;
 
+import org.gtreimagined.gt5r.integration.tfc.ore.GTTFCOreBlock;
+import org.gtreimagined.gt5r.integration.tfc.ore.GTTFCOreItem;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.providers.GTLanguageProvider;
-import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreBlock;
-import org.gtreimagined.gt5r.integration.forge.tfc.ore.GTTFCOreItem;
 
 import static org.gtreimagined.gtlib.util.Utils.lowerUnderscoreToUpperSpaced;
 
