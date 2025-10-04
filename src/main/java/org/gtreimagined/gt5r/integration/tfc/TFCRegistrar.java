@@ -11,6 +11,7 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
+import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.fluid.GTFluid;
@@ -153,6 +154,11 @@ public class TFCRegistrar extends GTMod {
     public void registerRecipeLoaders(GTLoaderEvent event){
         BiConsumer<String, IRecipeRegistrate.IRecipeLoader> loader = (a, b) -> event.registrat.add(GT5Reimagined.ID, a, b);
         loader.accept("tfc_machine_recipes", MachineRecipes::init);
+    }
+
+    @SubscribeEvent
+    public void registerRecipes(GTCraftingEvent event){
+        event.addLoader(TFCRecipes::initRecipes);
     }
 
     @SubscribeEvent
