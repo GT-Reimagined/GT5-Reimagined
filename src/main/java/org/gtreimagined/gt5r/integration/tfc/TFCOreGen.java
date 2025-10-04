@@ -4,7 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.Pair;
 import net.devtech.arrp.json.tags.JTag;
-import net.dries007.tfc.world.feature.vein.Indicator;
+import net.dries007.tfc.common.blocks.rock.Ore;
+import net.dries007.tfc.common.blocks.rock.Ore.Grade;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
@@ -24,20 +25,55 @@ public class TFCOreGen {
 
     public static void init(){
         //surface
-        createClusterVein("surface_tetrahedrite", 7, 50, 0.5, 60, 210,
-                ofM(new WeightedMaterial(Tetrahedrite, 60), new WeightedMaterial(Copper, 20), new WeightedMaterial(Stibnite, 20)),
+        createClusterVein("surface_tetrahedrite", 20, 20, 0.5, 60, 210,
+                ofM(new WeightedBlock(Ore.TETRAHEDRITE, Grade.POOR, 36), new WeightedBlock(Ore.TETRAHEDRITE, Grade.NORMAL, 18), new WeightedBlock(Ore.TETRAHEDRITE, Grade.RICH, 6),
+                        new WeightedBlock(Ore.NATIVE_COPPER, Grade.POOR, 12), new WeightedBlock(Ore.NATIVE_COPPER, Grade.NORMAL, 6),
+                        new WeightedBlock(Ore.NATIVE_COPPER, Grade.RICH, 2), new WeightedBlock(Stibnite, 20)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(35, 8, List.of(Pair.of("tfc:ore/small_tetrahedrite", 80), Pair.of("tfc:ore/small_copper", 20))));
+                new Indicator(35, 12, new WeightedBlock(Ore.TETRAHEDRITE, 80), new WeightedBlock(Ore.NATIVE_COPPER, 20)));
+        createClusterVein("surface_sphalerite", 20, 20, 0.5, 60, 210,
+                ofM(new WeightedBlock(Ore.SPHALERITE, Grade.POOR, 36), new WeightedBlock(Ore.SPHALERITE, Grade.NORMAL, 18), new WeightedBlock(Ore.SPHALERITE, Grade.RICH, 6),
+                        new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(Ore.PYRITE, 20)),
+                new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                new Indicator(35, 12, new WeightedBlock(Ore.SPHALERITE, 60), new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(Ore.PYRITE, 20)));
 
-        createClusterVein("normal_bauxite", 185, 40, 0.3, -16, 44,
-                ofM(new WeightedMaterial(Bauxite, 70), new WeightedMaterial(Alumina, 20), new WeightedMaterial(Ilmenite, 10)),
+        createClusterVein("normal_tetrahedrite", 60, 25, 0.6, -32, 75,
+                ofM(new WeightedBlock(Ore.TETRAHEDRITE, Grade.POOR, 12), new WeightedBlock(Ore.TETRAHEDRITE, Grade.NORMAL, 30), new WeightedBlock(Ore.TETRAHEDRITE, Grade.RICH, 18),
+                        new WeightedBlock(Ore.NATIVE_COPPER, Grade.POOR, 4), new WeightedBlock(Ore.NATIVE_COPPER, Grade.NORMAL, 10),
+                        new WeightedBlock(Ore.NATIVE_COPPER, Grade.RICH, 6), new WeightedBlock(Stibnite, 20)),
+                new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                new Indicator(35, 12, new WeightedBlock(Ore.TETRAHEDRITE, 80), new WeightedBlock(Ore.NATIVE_COPPER, 20)));
+        createClusterVein("normal_sphalerite", 60, 25, 0.6, -32, 75,
+                ofM(new WeightedBlock(Ore.SPHALERITE, Grade.POOR, 12), new WeightedBlock(Ore.SPHALERITE, Grade.NORMAL, 30), new WeightedBlock(Ore.SPHALERITE, Grade.RICH, 18),
+                        new WeightedBlock(Ore.PYRITE, 20), new WeightedBlock(Chalcopyrite, 20)),
+                new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                new Indicator(35, 12, new WeightedBlock(Ore.SPHALERITE, 60), new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(Ore.PYRITE, 20)));
+        createClusterVein("normal_malachite", 60, 25, 0.6, -32, 75,
+                ofM(new WeightedBlock(Ore.MALACHITE, Grade.POOR, 16), new WeightedBlock(Ore.MALACHITE, Grade.NORMAL, 40), new WeightedBlock(Ore.MALACHITE, Grade.RICH, 24),
+                        new WeightedBlock(Ore.LIMONITE, Grade.POOR, 4), new WeightedBlock(Ore.LIMONITE, Grade.NORMAL, 10), new WeightedBlock(Ore.LIMONITE, Grade.RICH, 6)),
+                new String[]{"limestone", "marble"},
+                new Indicator(35, 12, new WeightedBlock(Ore.MALACHITE, 80), new WeightedBlock(Ore.LIMONITE, 20)));
+
+        createClusterVein("normal_magnetite", 60, 25, 0.6, -32, 75,
+                ofM(new WeightedBlock(Ore.MAGNETITE, Grade.POOR, 14), new WeightedBlock(Ore.MAGNETITE, Grade.NORMAL, 35), new WeightedBlock(Ore.MAGNETITE, Grade.RICH, 21),
+                        new WeightedBlock(Ore.HEMATITE, Grade.POOR, 4), new WeightedBlock(Ore.HEMATITE, Grade.NORMAL, 10), new WeightedBlock(Ore.HEMATITE, Grade.RICH, 6),
+                        new WeightedBlock(VanadiumMagnetite, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(20, 15, ofM(new WeightedMaterial(Bauxite, 70), new WeightedMaterial(Alumina, 20), new WeightedMaterial(Ilmenite, 10))));
-        GTLibDynamics.RUNTIME_DATA_PACK.addTag(new ResourceLocation("tfc", "worldgen/placed_feature/in_biome/veins"), JTag.tag().add(new ResourceLocation(GT5Reimagined.ID, "vein/surface_tetrahedrite")));
+                new Indicator(35, 12, new WeightedBlock(Ore.MAGNETITE, 70), new WeightedBlock(Ore.HEMATITE, 20), new WeightedBlock(VanadiumMagnetite, 10)));
+
+        createClusterVein("normal_bauxite", 185, 40, 0.3, -16, 48,
+                ofM(new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)),
+                new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
+                new Indicator(20, 15, ofM(new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10))));
+        JTag tag = JTag.tag().replace();
+        for (String vein : veins){
+            tag.add(new ResourceLocation(GT5Reimagined.ID, "vein/" + vein));
+        }
+        GTLibDynamics.RUNTIME_DATA_PACK.addTag(new ResourceLocation("tfc", "worldgen/placed_feature/in_biome/veins"), tag);
     }
 
 
-    public static void createClusterVein(String id, int rarity, int size, double density, int minY, int maxY, WeightedMaterial[] materials, String[] stones, Indicator indicator) {
+    public static void createClusterVein(String id, int rarity, int size, double density, int minY, int maxY, WeightedBlock[] materials, String[] stones, Indicator indicator) {
         JsonObject root = new JsonObject();
         root.addProperty("type", "tfc:cluster_vein");
         JsonObject config = new JsonObject();
@@ -79,15 +115,17 @@ public class TFCOreGen {
         veins.add(id);
     }
 
-    private static @NotNull JsonObject getBlock(WeightedMaterial[] materials, String stone) {
+    private static @NotNull JsonObject getBlock(WeightedBlock[] materials, String stone) {
         JsonObject block = new JsonObject();
         JsonArray replace = new JsonArray();
         replace.add("tfc:rock/raw/" + stone);
         block.add("replace", replace);
         JsonArray with = new JsonArray();
-        for (WeightedMaterial material : materials) {
+        for (WeightedBlock material : materials) {
             JsonObject materialBlock = new JsonObject();
-            materialBlock.addProperty("block", Ref.SHARED_ID + ":" + "ore_" + material.material.getId() + "_raw_" + stone);
+            String domain = material.material == null ? "tfc" : Ref.SHARED_ID;
+            String id = material.material == null ? "ore/" + (material.grade == null ? "" : material.grade.name().toLowerCase() + "_") + material.ore.name().toLowerCase() + "/" : "ore_" + material.material.getId() + "_raw_";
+            materialBlock.addProperty("block", domain + ":" + id + stone);
             materialBlock.addProperty("weight", material.weight);
             with.add(materialBlock);
         }
@@ -95,15 +133,31 @@ public class TFCOreGen {
         return block;
     }
 
-    private static WeightedMaterial[] ofM(WeightedMaterial... materials){
+    private static WeightedBlock[] ofM(WeightedBlock... materials){
         return materials;
     }
 
-    public record WeightedMaterial(Material material, int weight) {}
+    public record WeightedBlock(Material material, Ore ore, Grade grade, int weight) {
+        public WeightedBlock(Material material, int weight) {
+            this(material, null, null, weight);
+        }
+
+        public WeightedBlock(Ore ore, Grade grade, int weight){
+            this(null, ore, grade, weight);
+        }
+
+        public WeightedBlock(Ore ore, int weight) {
+            this(null, ore, null, weight);
+        }
+    }
 
     public record Indicator(int depth, int rarity, List<Pair<String, Integer>> blocks) {
-        public Indicator(int depth, int rarity, WeightedMaterial... blocks) {
-            this(depth, rarity, Stream.of(blocks).map(w -> Pair.of("antimatter_shared:surface_rock_" + w.material.getId() + "_stone", w.weight)).toList());
+        public Indicator(int depth, int rarity, WeightedBlock... blocks) {
+            this(depth, rarity, Stream.of(blocks).map(w -> {
+                String domain = w.material == null ? "tfc" : Ref.SHARED_ID;
+                String id = w.material == null ? "ore/small_" + w.ore.name().toLowerCase() : "surface_rock_" + w.material.getId() + "_stone";
+                return Pair.of(domain + ":" + id, w.weight);
+            }).toList());
         }
     }
 
