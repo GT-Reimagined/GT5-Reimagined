@@ -40,7 +40,19 @@ public class TFCOreGen {
         for (String vein : veins){
             tag.add(new ResourceLocation(GT5Reimagined.ID, "vein/" + vein));
         }
+        String[] tfcVeins = new String[]{"gravel", "granite_dike", "diorite_dike", "gabbro_dike",
+                "normal_native_copper", "surface_native_copper", "normal_native_gold", "deep_native_gold",
+                "normal_native_silver", "poor_native_silver", "normal_cassiterite", "surface_cassiterite",
+                "normal_bismuthinite", "surface_bismuthinite", "poor_garnierite", "poor_malachite",
+                "bituminous_coal", "lignite", "kaolinite", "graphite", "cryolite", "saltpeter",
+                "sulfur", "sylvite", "borax", "gypsum", "halite", "diamond", "emerald",
+                "volcanic_sulfur", "amethyst", "opal"};
+        for (String vein : tfcVeins){
+            tag.add(new ResourceLocation(Ref.MOD_TFC, "vein/" + vein));
+        }
+        tag.add(new ResourceLocation("tfc:geode"));
         GTLibDynamics.RUNTIME_DATA_PACK.addTag(new ResourceLocation("tfc", "worldgen/placed_feature/in_biome/veins"), tag);
+
     }
 
 
