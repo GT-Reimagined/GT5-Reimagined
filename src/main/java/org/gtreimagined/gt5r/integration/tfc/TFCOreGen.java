@@ -106,8 +106,9 @@ public class TFCOreGen {
                 new Indicator(35, 12, new WeightedBlock(SPHALERITE, 60), new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(PYRITE, 20)));
         createClusterVein("normal_malachite", 60, 25, 0.6, -32, 75,
                 ofM(new WeightedBlock(MALACHITE, POOR, 16), new WeightedBlock(MALACHITE, NORMAL, 40), new WeightedBlock(MALACHITE, RICH, 24),
-                        new WeightedBlock(LIMONITE, POOR, 4), new WeightedBlock(LIMONITE, NORMAL, 10), new WeightedBlock(LIMONITE, RICH, 6)),
-                new String[]{"limestone", "marble"},
+                        new WeightedBlock(LIMONITE, POOR, 4), new WeightedBlock(LIMONITE, NORMAL, 10), new WeightedBlock(LIMONITE, RICH, 6),
+                        new WeightedBlock(GYPSUM, "limestone", 11)),
+                new String[]{"marble", "limestone"},
                 new Indicator(35, 12, new WeightedBlock(MALACHITE, 80), new WeightedBlock(LIMONITE, 20)));
         createClusterVein("normal_magnetite", 60, 25, 0.6, -32, 75,
                 ofM(new WeightedBlock(MAGNETITE, POOR, 14), new WeightedBlock(MAGNETITE, NORMAL, 35), new WeightedBlock(MAGNETITE, RICH, 21),
@@ -146,10 +147,33 @@ public class TFCOreGen {
     }
 
     public static void initAdditions(){
-        createClusterVein("normal_bauxite", 185, 40, 0.3, -16, 48,
+        createClusterVein("chalcopyrite", 90, 30, 0.6, -32, 60,
+                ofM(new WeightedBlock(Chalcopyrite, 30),
+                        new WeightedBlock(HEMATITE, POOR, 6), new WeightedBlock(HEMATITE, NORMAL, 15), new WeightedBlock(HEMATITE, RICH, 9),
+                        new WeightedBlock(PYRITE, POOR, 6), new WeightedBlock(PYRITE, NORMAL, 15), new WeightedBlock(PYRITE, RICH, 9),
+                        new WeightedBlock(NATIVE_COPPER, NORMAL, 10)),
+                new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
+                new Indicator(35, 12, new WeightedBlock(Chalcopyrite, 30), new WeightedBlock(HEMATITE, 30), new WeightedBlock(PYRITE, 30), new WeightedBlock(NATIVE_COPPER, 10)));
+        createClusterVein("salts", 100, 15, 0.6, 0, 90,
+                ofM(new WeightedBlock(SYLVITE, 35), new WeightedBlock(HALITE, 35), new WeightedBlock(Lepidolite, 20), new WeightedBlock(Spodumene, 10)),
+                new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
+                null);
+        createClusterVein("pitchblende", 160, 40, 0.4, -56, 0,
+                ofM(new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)),
+                new String[]{"granite", "diorite", "gabbro"},
+                new Indicator(40, 12, new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)));
+        createClusterVein("soapstone", 120, 35, 0.6, -32, 48,
+                ofM(new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)),
+                new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                new Indicator(35, 12, new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)));
+        createClusterVein("platinum", 160, 40, 0.4, -56, 0,
+                ofM(new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)),
+                new String[]{"granite", "diorite", "gabbro"},
+                new Indicator(40, 12, new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)));
+        createClusterVein("bauxite", 185, 40, 0.3, -16, 56,
                 ofM(new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(20, 15, ofM(new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10))));
+                new Indicator(20, 15, new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)));
     }
 
 
@@ -204,6 +228,7 @@ public class TFCOreGen {
         block.add("replace", replace);
         JsonArray with = new JsonArray();
         for (WeightedBlock material : materials) {
+            if (material.filter != null && !material.filter.equals(stone)) continue;
             JsonObject materialBlock = new JsonObject();
             String domain = material.material == null ? "tfc" : Ref.SHARED_ID;
             String id = material.material == null ? "ore/" + (material.grade == null ? "" : material.grade.name().toLowerCase() + "_") + material.ore.name().toLowerCase() + "/" : "ore_" + material.material.getId() + "_raw_";
@@ -219,17 +244,20 @@ public class TFCOreGen {
         return materials;
     }
 
-    public record WeightedBlock(Material material, Ore ore, Grade grade, int weight) {
+    public record WeightedBlock(Material material, Ore ore, Grade grade, int weight, String filter) {
         public WeightedBlock(Material material, int weight) {
-            this(material, null, null, weight);
+            this(material, null, null, weight, null);
         }
 
         public WeightedBlock(Ore ore, Grade grade, int weight){
-            this(null, ore, grade, weight);
+            this(null, ore, grade, weight, null);
         }
 
         public WeightedBlock(Ore ore, int weight) {
-            this(null, ore, null, weight);
+            this(null, ore, null, weight, null);
+        }
+        public WeightedBlock(Ore ore, String stoneFilter, int weight) {
+            this(null, ore, null, weight, stoneFilter);
         }
     }
 
