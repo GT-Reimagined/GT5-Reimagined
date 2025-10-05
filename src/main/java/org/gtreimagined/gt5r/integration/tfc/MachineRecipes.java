@@ -56,6 +56,7 @@ public class MachineRecipes {
         addMaceratorRecipe(CRYOLITE, Redstone);
         addMaceratorRecipe(SALTPETER, Saltpeter);
         addMaceratorRecipe(HALITE, Salt);
+        addMaceratorRecipe(SYLVITE, Sylvite);
         addMaceratorRecipe(LAPIS_LAZULI, Lapis);
         addMaceratorRecipe(EMERALD, Emerald);
         addMaceratorRecipe(DIAMOND, Diamond);
