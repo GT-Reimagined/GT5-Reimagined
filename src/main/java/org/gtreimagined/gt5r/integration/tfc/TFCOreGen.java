@@ -135,14 +135,14 @@ public class TFCOreGen {
                 new Indicator(35, 12, new WeightedBlock(GARNIERITE, 70), new WeightedBlock(Cobaltite, 20), new WeightedBlock(Pentlandite, 10)));
         //other veins
         createClusterVein("cinnabar", 120, 20, 0.6, -48, 100,
-                ofM(new WeightedBlock(Redstone, 60), new WeightedBlock(CINNABAR, 30), new WeightedBlock(Ruby, 10)),
+                ofM(new WeightedBlock(Redstone, 60), new WeightedBlock(Cinnabar, 30), new WeightedBlock(Ruby, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "quartzite", "shale"},
-                new Indicator(35, 12));
+                null);
         createClusterVein("lapis_lazuli", 120, 20, 0.6, -48, 100,
                 ofM(new WeightedBlock(Lazurite, 35), new WeightedBlock(Sodalite, 35),
-                        new WeightedBlock(Lapis, 20), new WeightedBlock(Alumina, 10)),
+                        new WeightedBlock(Lapis, 30)),
                 new String[]{"limestone", "marble"},
-                new Indicator(35, 12));
+                null);
     }
 
     public static void initAdditions(){
@@ -174,18 +174,20 @@ public class TFCOreGen {
             blocks.add(block);
         }
         config.add("blocks", blocks);
-        JsonObject jIndicator = new JsonObject();
-        jIndicator.addProperty("rarity", indicator.rarity);
-        jIndicator.addProperty("depth", indicator.depth);
-        blocks = new JsonArray();
-        for (var block : indicator.blocks){
-            JsonObject b = new JsonObject();
-            b.addProperty("block", block.key());
-            b.addProperty("weight", block.value());
-            blocks.add(b);
+        if (indicator != null){
+            JsonObject jIndicator = new JsonObject();
+            jIndicator.addProperty("rarity", indicator.rarity);
+            jIndicator.addProperty("depth", indicator.depth);
+            blocks = new JsonArray();
+            for (var block : indicator.blocks){
+                JsonObject b = new JsonObject();
+                b.addProperty("block", block.key());
+                b.addProperty("weight", block.value());
+                blocks.add(b);
+            }
+            jIndicator.add("blocks", blocks);
+            config.add("indicator", jIndicator);
         }
-        jIndicator.add("blocks", blocks);
-        config.add("indicator", jIndicator);
         GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "worldgen/configured_feature/vein/" + id + ".json"), root.toString().getBytes());
         JsonObject placed = new JsonObject();
         placed.addProperty("feature", GT5Reimagined.ID + ":vein/" + id);
