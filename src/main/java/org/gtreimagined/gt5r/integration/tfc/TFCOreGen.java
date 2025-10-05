@@ -148,9 +148,8 @@ public class TFCOreGen {
 
     public static void initAdditions(){
         createClusterVein("chalcopyrite", 90, 30, 0.6, -32, 60,
-                ofM(new WeightedBlock(Chalcopyrite, 30),
+                ofM(new WeightedBlock(Chalcopyrite, 30), new WeightedBlock(PYRITE, 30),
                         new WeightedBlock(HEMATITE, POOR, 6), new WeightedBlock(HEMATITE, NORMAL, 15), new WeightedBlock(HEMATITE, RICH, 9),
-                        new WeightedBlock(PYRITE, POOR, 6), new WeightedBlock(PYRITE, NORMAL, 15), new WeightedBlock(PYRITE, RICH, 9),
                         new WeightedBlock(NATIVE_COPPER, NORMAL, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
                 new Indicator(35, 12, new WeightedBlock(Chalcopyrite, 30), new WeightedBlock(HEMATITE, 30), new WeightedBlock(PYRITE, 30), new WeightedBlock(NATIVE_COPPER, 10)));
