@@ -157,7 +157,7 @@ public class TFCOreGen {
                 ofM(new WeightedBlock(SYLVITE, 35), new WeightedBlock(HALITE, 35), new WeightedBlock(Lepidolite, 20), new WeightedBlock(Spodumene, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
                 null);
-        createClusterVein("pitchblende", 160, 40, 0.4, -56, 0,
+        createClusterVein("pitchblende", 220, 24, 0.45, -64, -20,
                 ofM(new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)),
                 new String[]{"granite", "diorite", "gabbro"},
                 new Indicator(40, 12, new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)));
@@ -165,22 +165,107 @@ public class TFCOreGen {
                 ofM(new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
                 new Indicator(35, 12, new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)));
-        createClusterVein("platinum", 160, 40, 0.4, -56, 0,
+        createClusterVein("platinum", 300, 30, 0.3, -64, 0,
                 ofM(new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
                 new Indicator(40, 12, new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)));
-        createClusterVein("bauxite", 185, 40, 0.3, -16, 56,
+        createClusterVein("monazite", 185, 40, 0.25, -32, 50,
+                ofM(new WeightedBlock(Bastnasite, 70), new WeightedBlock(Monazite, 20), new WeightedBlock(Neodymium, 10)),
+                new String[]{"granite", "diorite", "gabbro"},
+                new Indicator(35, 12, new WeightedBlock(Bastnasite, 70), new WeightedBlock(Monazite, 20), new WeightedBlock(Neodymium, 10)));
+        createClusterVein("molybdenum", 245, 26, 0.45, -64, 10,
+                ofM(new WeightedBlock(Wulfenite, 35), new WeightedBlock(Molybdenite, 35),
+                        new WeightedBlock(Molybdenum, 20), new WeightedBlock(Powellite, 10)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite", "granite", "diorite", "gabbro"},
+                new Indicator(35, 12, new WeightedBlock(Wulfenite, 35), new WeightedBlock(Molybdenite, 35), new WeightedBlock(Molybdenum, 20), new WeightedBlock(Powellite, 10)));
+        createClusterVein("scheelite", 220, 28, 0.35, -64, 0,
+                ofM(new WeightedBlock(Scheelite, 65), new WeightedBlock(Tungstate, 25), new WeightedBlock(Lithium, 10)),
+                new String[]{"granite", "diorite", "gabbro"},
+                new Indicator(35, 12, new WeightedBlock(Scheelite, 65), new WeightedBlock(Tungstate, 25), new WeightedBlock(Lithium, 10)));
+        createDiscVein("sapphire", 180, 28, 8, 0.35, -64, 26,
+                ofM(new WeightedBlock(Almandine, 35), new WeightedBlock(Pyrope, 35), new WeightedBlock(Sapphire, 15), new WeightedBlock(GreenSapphire, 15)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite"},
+                new Indicator(35, 12, new WeightedBlock(Almandine, 35), new WeightedBlock(Pyrope, 35), new WeightedBlock(Sapphire, 15), new WeightedBlock(GreenSapphire, 15)));
+        createClusterVein("manganese", 195, 40, 0.3, -32, 60,
+                ofM(new WeightedBlock(Grossular, 35), new WeightedBlock(Spessartine, 35), new WeightedBlock(Pyrolusite, 20), new WeightedBlock(Tantalite, 10)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite", "shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
+                new Indicator(35, 12, new WeightedBlock(Grossular, 35), new WeightedBlock(Spessartine, 35), new WeightedBlock(Pyrolusite, 20), new WeightedBlock(Tantalite, 10)));
+        WeightedBlock[] array = CertusQuartz.enabled ? ofM(new WeightedBlock(MilkyQuartz, 35), new WeightedBlock(CertusQuartz, 35), new WeightedBlock(Barite, 15), new WeightedBlock(Quartz, 15)) :
+                ofM(new WeightedBlock(MilkyQuartz, 70), new  WeightedBlock(Barite, 15), new WeightedBlock(Quartz, 15));
+        createClusterVein("quartz", 150, 40, 0.3, -32, 100,
+                array,
+                new String[]{"shale", "quartzite", "schist", "gneiss"},
+                new Indicator(40, 15, array));
+        createClusterVein("olivine", 180, 26, 0.25, -40, 30,
+                ofM(new WeightedBlock(Bentonite, 35), new WeightedBlock(Magnesite, 35), new WeightedBlock(Olivine, 20), new WeightedBlock(Glauconite, 10)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite", "granite", "diorite", "gabbro"},
+                new Indicator(35, 12, new WeightedBlock(Bentonite, 35), new WeightedBlock(Magnesite, 35), new WeightedBlock(Olivine, 20), new WeightedBlock(Glauconite, 10)));
+        createClusterVein("apatite", 110, 20, 0.5, 0, 180,
+                ofM(new WeightedBlock(Apatite, 70), new WeightedBlock(TricalciumPhosphate, 20), new WeightedBlock(Phosphate, 10)),
+                new String[]{"granite", "diorite", "gabbro", "quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                new Indicator(35, 12, new WeightedBlock(Apatite, 70), new WeightedBlock(TricalciumPhosphate, 20), new WeightedBlock(Phosphate, 10)));
+        createClusterVein("galena", 160, 40, 0.4, -32, 75,
+                ofM(new WeightedBlock(Galena, 60), new WeightedBlock(Lead, 10),
+                        new WeightedBlock(NATIVE_SILVER, POOR, 6), new WeightedBlock(NATIVE_SILVER, NORMAL, 15), new WeightedBlock(NATIVE_SILVER, RICH, 9)),
+                new String[]{"granite", "gneiss"},
+                new Indicator(35, 12, new WeightedBlock(Galena, 60), new WeightedBlock(NATIVE_SILVER, 30), new WeightedBlock(Lead, 10)));
+        createPipeVein("beryllium", 180, 10, 60, 6, 18, 0, 4, 0, 0.35, -32, 50,
+                ofM(new WeightedBlock(Beryllium, 60), new WeightedBlock(EMERALD, 30), new WeightedBlock(Thorium, 10)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite"},
+                new Indicator(30, 15, new WeightedBlock(Beryllium, 60), new WeightedBlock(Emerald, 30), new WeightedBlock(Thorium, 10)));
+        createClusterVein("bauxite", 185, 40, 0.3, -32, 60,
                 ofM(new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(20, 15, new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)));
+                new Indicator(35, 12, new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)));
+        createClusterVein("oil_shale", 185, 55, 0.2, 0, 60,
+                ofM(new WeightedBlock(OilShale, 1)),
+                new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
+                new Indicator(35, 12, new WeightedBlock(OilShale, 1)));
     }
 
 
     public static void createClusterVein(String id, int rarity, int size, double density, int minY, int maxY, WeightedBlock[] materials, String[] stones, Indicator indicator) {
-        JsonObject root = new JsonObject();
-        root.addProperty("type", "tfc:cluster_vein");
+        createVein("cluster", id, rarity, size, density, minY, maxY, materials, stones, indicator, new JsonObject());
+    }
+
+    public static void createDiscVein(String id, int rarity, int radius, int height, double density, int minY, int maxY, WeightedBlock[] materials, String[] stones, Indicator indicator) {
         JsonObject config = new JsonObject();
+        config.addProperty("height", height);
+        createVein("disc", id, rarity, radius, density, minY, maxY, materials, stones, indicator, config);
+    }
+
+    public static void createPipeVein(String id, int rarity, int radius, int height, int minSkew, int maxSkew, int minSlant, int maxSlant, double sign, double density, int minY, int maxY, WeightedBlock[] materials, String[] stones, Indicator indicator) {
+        JsonObject config = new JsonObject();
+        config.addProperty("radius", radius);
+        config.addProperty("height", height);
+        config.addProperty("minSkew", minSkew);
+        config.addProperty("maxSkew", maxSkew);
+        config.addProperty("minSlant", minSlant);
+        config.addProperty("maxSlant", maxSlant);
+        config.addProperty("sign", sign);
+        createVein("disc", id, rarity, radius, density, minY, maxY, materials, stones, indicator, config);
+    }
+
+    public static void createVein(String type, String id, int rarity, int radius, double density, int minY, int maxY, WeightedBlock[] materials, String[] stones, Indicator indicator, JsonObject config) {
+        JsonObject root = new JsonObject();
+        root.addProperty("type", "tfc:" + type + "_vein");
         root.add("config", config);
+        addCommonValues(id, rarity, radius, density, minY, maxY, config);
+        JsonArray blocks = new JsonArray();
+        for (String stone : stones) {
+            JsonObject block = getBlock(materials, stone);
+            blocks.add(block);
+        }
+        config.add("blocks", blocks);
+        if (indicator != null){
+            JsonObject jIndicator = getIndicator(indicator);
+            config.add("indicator", jIndicator);
+        }
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "worldgen/configured_feature/vein/" + id + ".json"), root.toString().getBytes());
+        createPlacedFeature(id);
+    }
+
+    private static void addCommonValues(String id, int rarity, int size, double density, int minY, int maxY, JsonObject config) {
         config.addProperty("rarity", rarity);
         config.addProperty("size", size);
         config.addProperty("density", density);
@@ -191,33 +276,30 @@ public class TFCOreGen {
         yObj.addProperty("absolute", maxY);
         config.add("max_y", yObj);
         config.addProperty("random_name", id);
-        JsonArray blocks = new JsonArray();
-        for (String stone : stones) {
-            JsonObject block = getBlock(materials, stone);
-            blocks.add(block);
-        }
-        config.add("blocks", blocks);
-        if (indicator != null){
-            JsonObject jIndicator = new JsonObject();
-            jIndicator.addProperty("rarity", indicator.rarity);
-            jIndicator.addProperty("depth", indicator.depth);
-            blocks = new JsonArray();
-            for (var block : indicator.blocks){
-                JsonObject b = new JsonObject();
-                b.addProperty("block", block.key());
-                b.addProperty("weight", block.value());
-                blocks.add(b);
-            }
-            jIndicator.add("blocks", blocks);
-            config.add("indicator", jIndicator);
-        }
-        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "worldgen/configured_feature/vein/" + id + ".json"), root.toString().getBytes());
+    }
+
+    private static void createPlacedFeature(String id){
         JsonObject placed = new JsonObject();
         placed.addProperty("feature", GT5Reimagined.ID + ":vein/" + id);
         JsonArray placement = new JsonArray();
         placed.add("placement", placement);
         GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "worldgen/placed_feature/vein/" + id + ".json"), placed.toString().getBytes());
         veins.add(id);
+    }
+
+    private static @NotNull JsonObject getIndicator(@NotNull Indicator indicator) {
+        JsonObject object = new JsonObject();
+        object.addProperty("rarity", indicator.rarity);
+        object.addProperty("depth", indicator.depth);
+        JsonArray blocks = new JsonArray();
+        for (var block : indicator.blocks){
+            JsonObject b = new JsonObject();
+            b.addProperty("block", block.key());
+            b.addProperty("weight", block.value());
+            blocks.add(b);
+        }
+        object.add("blocks", blocks);
+        return object;
     }
 
     private static @NotNull JsonObject getBlock(WeightedBlock[] materials, String stone) {
