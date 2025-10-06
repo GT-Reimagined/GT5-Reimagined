@@ -10,6 +10,7 @@ import net.dries007.tfc.world.feature.vein.Indicator;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
@@ -160,7 +161,7 @@ public class TFCOreGen {
         createClusterVein("pitchblende", 220, 24, 0.45, -64, -20,
                 ofM(new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)),
                 new String[]{"granite", "diorite", "gabbro"},
-                new Indicator(40, 12, new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)));
+                null);
         createClusterVein("soapstone", 120, 35, 0.6, -32, 48,
                 ofM(new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
@@ -168,7 +169,11 @@ public class TFCOreGen {
         createClusterVein("platinum", 300, 30, 0.3, -64, 0,
                 ofM(new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
-                new Indicator(40, 12, new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)));
+                null);
+        createClusterVein("chromite", 140, 25, 0.2, -32, 60,
+                ofM(new WeightedBlock(Chromite, 1)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite"},
+                null);
         createClusterVein("monazite", 185, 40, 0.25, -32, 50,
                 ofM(new WeightedBlock(Bastnasite, 70), new WeightedBlock(Monazite, 20), new WeightedBlock(Neodymium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
@@ -177,15 +182,15 @@ public class TFCOreGen {
                 ofM(new WeightedBlock(Wulfenite, 35), new WeightedBlock(Molybdenite, 35),
                         new WeightedBlock(Molybdenum, 20), new WeightedBlock(Powellite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "granite", "diorite", "gabbro"},
-                new Indicator(12, new WeightedBlock(Wulfenite, 35), new WeightedBlock(Molybdenite, 35), new WeightedBlock(Molybdenum, 20), new WeightedBlock(Powellite, 10)));
+                null);
         createClusterVein("scheelite", 220, 28, 0.35, -64, 0,
                 ofM(new WeightedBlock(Scheelite, 65), new WeightedBlock(Tungstate, 25), new WeightedBlock(Lithium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
-                new Indicator(12, new WeightedBlock(Scheelite, 65), new WeightedBlock(Tungstate, 25), new WeightedBlock(Lithium, 10)));
+                null);
         createDiscVein("sapphire", 180, 28, 8, 0.35, -64, 26,
                 ofM(new WeightedBlock(Almandine, 35), new WeightedBlock(Pyrope, 35), new WeightedBlock(Sapphire, 15), new WeightedBlock(GreenSapphire, 15)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite"},
-                new Indicator(12, new WeightedBlock(Almandine, 35), new WeightedBlock(Pyrope, 35), new WeightedBlock(Sapphire, 15), new WeightedBlock(GreenSapphire, 15)));
+                null);
         createClusterVein("manganese", 195, 40, 0.3, -32, 60,
                 ofM(new WeightedBlock(Grossular, 35), new WeightedBlock(Spessartine, 35), new WeightedBlock(Pyrolusite, 20), new WeightedBlock(Tantalite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
@@ -221,6 +226,12 @@ public class TFCOreGen {
                 ofM(new WeightedBlock(OilShale, 1)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
                 new Indicator(12, new WeightedBlock(OilShale, 1)));
+        if (!SpaceModRegistrar.INSTANCE.isEnabled()){
+            createClusterVein("naquadah", 310, 32, 0.3, -64, -20,
+                    ofM(new WeightedBlock(Naquadah, 1)),
+                    new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                    null);
+        }
     }
 
 
