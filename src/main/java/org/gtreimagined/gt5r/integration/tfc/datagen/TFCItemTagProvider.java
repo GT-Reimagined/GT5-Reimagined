@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.integration.tfc.datagen;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
@@ -29,6 +30,7 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "hoes"))).addTag(HOE.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "saws"))).addTag(SAW.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "knives"))).addTag(KNIFE.getTag());
+        this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "rock_knapping"))).add(Items.FLINT);
         Material[] tfcTools = new Material[]{BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel};
         GTAPI.all(GTToolType.class).forEach(t -> {
             if (t.hasOriginalTag()) {

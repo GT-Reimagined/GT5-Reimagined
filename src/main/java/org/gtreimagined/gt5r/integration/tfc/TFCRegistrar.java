@@ -14,6 +14,7 @@ import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
 import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
+import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.fluid.GTFluid;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeFluid;
@@ -43,6 +44,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.function.BiConsumer;
 
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.AXE_HEAD;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -66,16 +68,6 @@ public class TFCRegistrar extends GTMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
-            array = new Material[]{Bauxite, Cobaltite, Galena, Uraninite, VanadiumMagnetite, BrownLimonite, Hematite, Sheldonite, Sperrylite};
-            /*for (Material material : array) {
-                Helpers.mapOfKeys(Ore.Grade.class, (grade) -> {
-                    new GTTFCOreItem(GT5RRef.ID, grade.name().toLowerCase() + "_" + material.getId());
-                    return Helpers.mapOfKeys(Rock.class, (rock) -> {
-                        new GTTFCOreBlock(GT5RRef.ID, material, rock, grade);
-                        return true;
-                    });
-                });
-            }*/
             Helpers.mapOfKeys(Rock.class, (rock) -> {
                 Material material = Material.get(rock.name().toLowerCase());
                 if (material == Material.NULL){
@@ -175,6 +167,11 @@ public class TFCRegistrar extends GTMod {
         ev.addProvider(() -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
         ev.addProvider(() -> blockTagProviders[0]);
 
+    }
+
+    @Override
+    public void onMaterialEvent(MaterialEvent event) {
+        event.setMaterial(Flint).flags(AXE_HEAD);
     }
 
     @Override
