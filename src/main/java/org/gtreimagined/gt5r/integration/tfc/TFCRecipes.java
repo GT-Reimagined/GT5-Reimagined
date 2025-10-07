@@ -25,7 +25,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Consumer;
 
 import static org.gtreimagined.gt5r.data.Materials.Flint;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.AXE_HEAD;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class TFCRecipes {
     public static void initRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
@@ -39,6 +39,39 @@ public class TFCRecipes {
                         " X   "
                 },
                 Ingredient.of(Items.FLINT), AXE_HEAD.get(Flint, 1)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_hoe_head_1"),
+                new String[]{
+                        "XXXXX",
+                        "XX   ",
+                        "     ",
+                        "XXXXX",
+                        "XX   "
+                },
+                Ingredient.of(Items.FLINT), HOE_HEAD.get(Flint, 2)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_hoe_head_2"),
+                new String[]{
+                        "XXXXX",
+                        "XX   ",
+                        "     ",
+                        "XXXXX",
+                        "   XX"
+                },
+                Ingredient.of(Items.FLINT), HOE_HEAD.get(Flint, 2)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_hoe_head"),
+                new String[]{
+                        "XXXXX",
+                        "   XX"
+                },
+                Ingredient.of(Items.FLINT), HOE_HEAD.get(Flint, 1)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_shovel_head"),
+                new String[]{
+                        "XXX",
+                        "XXX",
+                        "XXX",
+                        "XXX",
+                        " X "
+                },
+                Ingredient.of(Items.FLINT), SHOVEL_HEAD.get(Flint, 1)));
     }
 
     private record QuernFinishedRecipe(ResourceLocation id, Ingredient input, ItemStack output) implements FinishedRecipe {
@@ -88,6 +121,7 @@ public class TFCRecipes {
                 array.add(new JsonPrimitive(s));
             }
             jsonObject.add("pattern", array);
+            jsonObject.addProperty("outside_slot_required", false);
             JsonObject resultObj = new JsonObject();
             resultObj.addProperty("item", RegistryUtils.getIdFromItem(this.output.getItem()).toString());
             if (this.output.getCount() > 1) {

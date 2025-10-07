@@ -44,10 +44,9 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 import java.util.function.BiConsumer;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.AXE_HEAD;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class TFCRegistrar extends GTMod {
 
@@ -171,7 +170,7 @@ public class TFCRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Flint).flags(AXE_HEAD);
+        event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD);
     }
 
     @Override
