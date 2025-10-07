@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.integration.tfc;
 
+import com.google.common.collect.ImmutableMap;
+import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCBlockTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCItemTagProvider;
@@ -8,6 +10,7 @@ import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
@@ -42,6 +45,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
@@ -170,7 +174,9 @@ public class TFCRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD);
+        event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD)
+                .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
+                .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE)).build();
     }
 
     @Override
