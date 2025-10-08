@@ -63,6 +63,42 @@ public class TFCRecipes {
                         "   XX"
                 },
                 Ingredient.of(Items.FLINT), HOE_HEAD.get(Flint, 1)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head_1"),
+                new String[]{
+                        "X  X ",
+                        "XX XX",
+                        "XX XX",
+                        "XX XX",
+                        "XX XX"
+                },
+                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 2)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head_2"),
+                new String[]{
+                        "X   X",
+                        "XX XX",
+                        "XX XX",
+                        "XX XX",
+                        "XX XX"
+                },
+                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 2)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head_3"),
+                new String[]{
+                        " X X ",
+                        "XX XX",
+                        "XX XX",
+                        "XX XX",
+                        "XX XX"
+                },
+                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 2)));
+        consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head"),
+                new String[]{
+                        "X ",
+                        "XX",
+                        "XX",
+                        "XX",
+                        "XX"
+                },
+                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 1)));
         consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_shovel_head"),
                 new String[]{
                         "XXX",
