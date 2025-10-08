@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.integration.tfc;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCBlockTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCItemTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCLangProvider;
@@ -71,6 +72,7 @@ public class TFCRegistrar extends GTMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
+            TFCToolTypes.init();
             Helpers.mapOfKeys(Rock.class, (rock) -> {
                 Material material = Material.get(rock.name().toLowerCase());
                 if (material == Material.NULL){
@@ -100,14 +102,14 @@ public class TFCRegistrar extends GTMod {
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });
-            // Make TFC logs strippable with AntiMatter tools
+            // Make TFC logs strippable with GT tools
             Helpers.mapOfKeys(Wood.class, (wood) -> {
                 var log = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "wood/log/" + wood.name().toLowerCase());
                 var log_stripped = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "wood/stripped_log/" + wood.name().toLowerCase());
                 BehaviourLogStripping.addStrippedBlock(log, log_stripped);
                 return true;
             });
-            // Make TFC dirt hoe-able with AntiMatter hoes
+            // Make TFC dirt hoe-able with GT hoes
             Helpers.mapOfKeys(SoilBlockType.class, (soil) -> {
                 switch (soil) {
                     case DIRT: case GRASS: case CLAY: case CLAY_GRASS:
@@ -126,7 +128,7 @@ public class TFCRegistrar extends GTMod {
                 }
                 return true;
             });
-            // Make TFC dirt path-able with AntiMatter shovels
+            // Make TFC dirt path-able with GT shovels
             Helpers.mapOfKeys(SoilBlockType.class, (path) -> {
                 if (path == GRASS_PATH) {
                     for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
@@ -176,7 +178,7 @@ public class TFCRegistrar extends GTMod {
     public void onMaterialEvent(MaterialEvent event) {
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_HEAD)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
-                .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE)).build();
+                .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
     }
 
     @Override
