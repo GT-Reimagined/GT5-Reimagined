@@ -195,6 +195,7 @@ public class GT5Reimagined extends GTMod {
         MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::onWorldGen);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientHandler::registerLayerDefinitions);
             MinecraftForge.EVENT_BUS.addListener(ClientHandler::onTooltipEvent);
         });
     }

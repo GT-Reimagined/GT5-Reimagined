@@ -1,8 +1,18 @@
 package org.gtreimagined.gt5r.proxy;
 
+import net.dries007.tfc.util.Helpers;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.registries.RegistryObject;
 import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.integration.tfc.client.JavelinModel;
+import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.client.ModelUtils;
@@ -15,6 +25,7 @@ import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.tool.IGTTool;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.io.File;
@@ -30,6 +41,25 @@ public class ClientHandler {
         GTAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         ModelUtils.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
+        GTAPI.all(IGTTool.class, GT5Reimagined.ID).stream().filter(t -> t.getGTToolType() == TFCToolTypes.JAVELIN).forEach(j -> {
+            Item javelin =j.getItem();
+            ItemProperties.register(javelin, Helpers.identifier("throwing"), (stack, level, entity, unused) ->
+                entity != null && ((entity.isUsingItem() && entity.getUseItem() == stack) || (entity instanceof Monster monster && monster.isAggressive())) ? 1.0F : 0.0F
+            );
+        });
+    }
+
+    public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event){
+        event.registerLayerDefinition(modelIdentifier("javelin_head"), JavelinModel::createHeadLayer);
+        event.registerLayerDefinition(modelIdentifier("javelin_handle"), JavelinModel::createHandleLayer);
+    }
+
+    public static ModelLayerLocation modelIdentifier(String name, String part) {
+        return new ModelLayerLocation(new ResourceLocation(GT5Reimagined.ID, name), part);
+    }
+
+    public static ModelLayerLocation modelIdentifier(String name) {
+        return modelIdentifier(name, "main");
     }
 
     private static void copyProgrammerArtIfMissing() {

@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.tfc.item;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.google.gson.JsonObject;
 import net.dries007.tfc.client.render.blockentity.JavelinItemRenderer;
 import net.dries007.tfc.common.items.JavelinItem;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
@@ -39,6 +41,8 @@ import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.behaviour.IBehaviour;
 import org.gtreimagined.gtlib.behaviour.IDestroySpeed;
 import org.gtreimagined.gtlib.capability.energy.ItemEnergyHandler;
+import org.gtreimagined.gtlib.datagen.builder.GTItemModelBuilder;
+import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.tool.GTItemTier;
 import org.gtreimagined.gtlib.tool.GTToolType;
@@ -91,7 +95,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     @Override
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
         consumer.accept(new IItemRenderProperties() {
-            private final NonNullLazy<JavelinItemRenderer> renderer = NonNullLazy.of(() -> new GTJavelinItemRenderer(MaterialJavelin.this.getTextureLocation(), new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin_overlay.png")));
+            private final NonNullLazy<GTJavelinItemRenderer> renderer = NonNullLazy.of(() -> new GTJavelinItemRenderer(MaterialJavelin.this.getTextureLocation(), new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin_overlay.png")));
 
             public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
                 return (BlockEntityWithoutLevelRenderer)this.renderer.get();
@@ -153,34 +157,6 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     }
 
     @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
-        float destroySpeed = genericIsCorrectToolForDrops(stack, state) ? getDefaultMiningSpeed(stack) : 1.0F;
-        if (type.isPowered() && getCurrentEnergy(stack)  == 0){
-            destroySpeed = 0.0f;
-        }
-        for (Map.Entry<String, IBehaviour<IBasicGTTool>> e : getGTToolType().getBehaviours().entrySet()) {
-            IBehaviour<?> b = e.getValue();
-            if (!(b instanceof IDestroySpeed destroySpeed1)) continue;
-            float i = destroySpeed1.getDestroySpeed(this, destroySpeed, stack, state);
-            if (i > 0){
-                destroySpeed = i;
-                break;
-            }
-        }
-        return destroySpeed;
-    }
-
-    @Override
-    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state){
-        return genericIsCorrectToolForDrops(stack, state);
-    }
-
-    @Override
-    public boolean mineBlock(ItemStack stack, Level world, BlockState state, BlockPos pos, LivingEntity entity) {
-        return onGenericBlockDestroyed(stack, world, state, pos, entity);
-    }
-
-    @Override
     public InteractionResult useOn(UseOnContext ctx) {
         return onGenericItemUse(ctx);
     }
@@ -197,11 +173,6 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
             return result;
         }
         return super.use(level, player, usedHand);
-    }
-
-    @Override
-    public boolean canAttackBlock(BlockState state, Level world, BlockPos pos, Player player) {
-        return type.getBlockBreakability();
     }
 
     @Override
@@ -256,5 +227,37 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     @Override
     public IEnergyHandlerItem createEnergyHandler(TesseractItemContext context) {
         return null;
+    }
+
+    @Override
+    public void onItemModelBuild(ItemLike item, GTItemModelProvider prov) {
+        var b = prov.getBuilder(item).loader(new ResourceLocation("forge", "separate-perspective")).override().model(new ResourceLocation(GT5Reimagined.ID, "item/" + this.getId() + "_throwing")).predicate(new ResourceLocation("tfc", "throwing"), 1.0f).end()
+                .property("gui_light", "front");
+        JsonObject base = new JsonObject();
+        base.addProperty("parent", GT5Reimagined.ID + ":item/" + this.getId() + "_in_hand");
+        JsonObject gui = new JsonObject();
+        gui.addProperty("parent", GT5Reimagined.ID + ":item/" + this.getId() + "_gui");
+        JsonObject perspectives = new JsonObject();
+        perspectives.add("none", gui);
+        perspectives.add("fixed", gui);
+        perspectives.add("ground", gui);
+        perspectives.add("gui", gui);
+        b.property("base", base).property("perspectives", perspectives);
+        GTItemModelBuilder builder = prov.getBuilder(getId() + "_gui");
+        builder.parent(new ResourceLocation("item/generated"));
+        for (int i = 0; i < getTextures().length; i++) {
+            builder.texture("layer" + i, getTextures()[i]);
+        }
+        builder = prov.getBuilder(getId() + "_in_hand");
+        builder.parent(new ResourceLocation("item/trident_in_hand"));
+        builder.texture("particle", getTextures()[0]);
+        builder = prov.getBuilder(getId() + "_throwing_base");
+        builder.parent(new ResourceLocation("item/trident_throwing"));
+        builder.texture("particle", getTextures()[0]);
+        b = prov.getBuilder(getId() + "_throwing").loader(new ResourceLocation("forge", "separate-perspective")).property("gui_light", "front");
+        base = new JsonObject();
+        base.addProperty("parent", GT5Reimagined.ID + ":item/" + this.getId() + "_throwing_base");
+        b.property("base", base).property("perspectives", perspectives);
+
     }
 }
