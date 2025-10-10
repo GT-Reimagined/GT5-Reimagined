@@ -71,6 +71,8 @@ legacyForge {
 }
 
 mixin {
+    add sourceSets.main, "gt5r.refmap.json"
+    config "gt5r.tfc.mixins.json"
     config "gtlib.mixins.json"
     config "gtlib.rei.mixins.json"
 }
@@ -83,6 +85,7 @@ dependencies {
 
     //antimatter deps
     implementation 'org.apache.commons:commons-collections4:4.4'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     implementation("org.jetbrains:annotations:26.0.1")
     modImplementation("mezz.jei:jei-1.18.2:9.7.2.1001")
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
@@ -127,8 +130,19 @@ dependencies {
     //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
 }
 
-jar {
-    zip64 true
+jar{
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : "GT-Reimagined",
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.version,
+                'Implementation-Vendor'   : "GT-Reimagined",
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs" : "gt5r.tfc.mixins.json"
+        ])
+    }
 }
 
 processResources {

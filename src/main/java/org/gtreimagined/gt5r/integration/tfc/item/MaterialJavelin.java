@@ -62,6 +62,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     protected String domain;
     protected GTToolType type;
     protected GTItemTier itemTier;
+    public static final ResourceLocation OVERLAY_LOCATION = new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin_overlay.png");
     public MaterialJavelin(String domain, GTToolType type, GTItemTier tier, Properties properties) {
         super(GTItemTier.NULL, 0, type.getBaseAttackSpeed(), properties, new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin.png"));  // 0 as base attack as it adds
         this.domain = domain;
@@ -95,7 +96,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     @Override
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
         consumer.accept(new IItemRenderProperties() {
-            private final NonNullLazy<GTJavelinItemRenderer> renderer = NonNullLazy.of(() -> new GTJavelinItemRenderer(MaterialJavelin.this.getTextureLocation(), new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin_overlay.png")));
+            private final NonNullLazy<GTJavelinItemRenderer> renderer = NonNullLazy.of(() -> new GTJavelinItemRenderer(MaterialJavelin.this.getTextureLocation(), OVERLAY_LOCATION));
 
             public BlockEntityWithoutLevelRenderer getItemStackRenderer() {
                 return (BlockEntityWithoutLevelRenderer)this.renderer.get();
