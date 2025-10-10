@@ -11,6 +11,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
@@ -33,25 +34,28 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 public class TFCOreGen {
 
     public static List<String> veins = new ArrayList<>();
+    public static List<ResourceLocation> veinsToRemove = new ArrayList<>();
 
     public static void init() {
         initTFCReplacements();
         initAdditions();
-        JTag tag = JTag.tag().replace();
+        JTag tag = JTag.tag();
         for (String vein : veins){
             tag.add(new ResourceLocation(GT5Reimagined.ID, "vein/" + vein));
         }
-        String[] tfcVeins = new String[]{"gravel", "granite_dike", "diorite_dike", "gabbro_dike",
-                "normal_native_copper", "surface_native_copper", "normal_native_gold", "deep_native_gold",
-                "normal_native_silver", "poor_native_silver", "normal_cassiterite", "surface_cassiterite",
-                "normal_bismuthinite", "surface_bismuthinite", "poor_garnierite", "poor_malachite",
-                "bituminous_coal", "lignite", "kaolinite", "graphite", "cryolite", "saltpeter",
-                "sulfur", "sylvite", "borax", "gypsum", "halite", "diamond", "emerald",
-                "volcanic_sulfur", "amethyst", "opal"};
-        for (String vein : tfcVeins){
-            tag.add(new ResourceLocation(Ref.MOD_TFC, "vein/" + vein));
+        String[] tfcVeinsToRemove = new String[]{
+                "normal_hematite", "deep_hematite", "normal_garnierite", "normal_malachite",
+                "normal_magnetite", "deep_magnetite", "normal_limonite", "deep_limonite",
+                "normal_sphalerite", "surface_sphalerite", "normal_tetrahedrite", "surface_tetrahedrite",
+                "cinnabar", "lapis_lazuli"
+        };
+        for (String vein : tfcVeinsToRemove){
+            veinsToRemove.add(new ResourceLocation(Ref.MOD_TFC, "vein/" + vein));
         }
-        tag.add(new ResourceLocation("tfc:geode"));
+        if (GTAPI.isModLoaded("firmalife")){
+            veinsToRemove.add(new ResourceLocation("firmalife", "vein/normal_chromite"));
+            veinsToRemove.add(new ResourceLocation("firmalife", "vein/deep_chromite"));
+        }
         GTLibDynamics.RUNTIME_DATA_PACK.addTag(new ResourceLocation("tfc", "worldgen/placed_feature/in_biome/veins"), tag);
 
     }
