@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.datagen;
 
+import net.minecraftforge.common.Tags;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -25,6 +26,7 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
     protected void processTags(String domain) {
         super.processTags(domain);
         //this.tag(GT5RTags.CIRCUITS_EXTREME).add(GT5RData.CircuitDataStorage);
+        this.tag(ROD.getMaterialTag(Wood)).addTag(Tags.Items.RODS_WOODEN);
         this.tag(CIRCUITS_ELITE).add(GT5RItems.NanoProcessor);
         this.tag(CIRCUITS_MASTER).add(GT5RItems.QuantumProcessor);
         this.tag(GT5RTags.RESISTORS).add(GT5RItems.Resistor, GT5RItems.SMDResistor);
