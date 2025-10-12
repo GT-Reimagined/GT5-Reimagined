@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.integration.tfc;
 
 import com.google.common.collect.ImmutableMap;
+import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
@@ -49,7 +50,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-import static net.dries007.tfc.common.blocks.soil.SoilBlockType.GRASS_PATH;
+import static net.dries007.tfc.common.blocks.soil.SoilBlockType.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
@@ -102,45 +103,43 @@ public class TFCRegistrar extends GTMod {
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });
+
+        }
+        if (event == RegistrationEvent.DATA_READY) {
+            TFCOreGen.init();
             // Make TFC logs strippable with GT tools
-            Helpers.mapOfKeys(Wood.class, (wood) -> {
-                var log = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "wood/log/" + wood.name().toLowerCase());
-                var log_stripped = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "wood/stripped_log/" + wood.name().toLowerCase());
+            Helpers.mapOfKeys(Wood.class, (woodType) -> {
+                var log = woodType.getBlock(BlockType.LOG).get();
+                var log_stripped = woodType.getBlock(BlockType.STRIPPED_LOG).get();
+                var wood = woodType.getBlock(BlockType.WOOD).get();
+                var wood_stripped = woodType.getBlock(BlockType.STRIPPED_WOOD).get();
                 BehaviourLogStripping.addStrippedBlock(log, log_stripped);
+                BehaviourLogStripping.addStrippedBlock(wood, wood_stripped);
                 return true;
             });
-            // Make TFC dirt hoe-able with GT hoes
+            // Make TFC dirt hoe-able with GT hoes and path-able with GT shovels
             Helpers.mapOfKeys(SoilBlockType.class, (soil) -> {
                 switch (soil) {
-                    case DIRT: case GRASS: case CLAY: case CLAY_GRASS:
+                    case DIRT, GRASS, CLAY, CLAY_GRASS -> {
                         for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
-                            var dirt = RegistryUtils.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
-                            var farmland = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "farmland/" + vary.name().toLowerCase());
+                            var dirt = vary.getBlock(soil).get();
+                            var farmland = vary.getBlock(FARMLAND).get();
+                            var path = vary.getBlock(GRASS_PATH).get();
                             BehaviourBlockTilling.addStrippedBlock(dirt, farmland);
-                        } break;
-                    case ROOTED_DIRT:
+                            BehaviourVanillaShovel.addStrippedBlock(dirt, path);
+                        }
+                    }
+                    case ROOTED_DIRT -> {
                         for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
-                            var rootdirt = RegistryUtils.getBlockFromId(Ref.MOD_TFC, soil.name().toLowerCase()+ "/" + vary.name().toLowerCase());
-                            var dirt = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "dirt/" + vary.name().toLowerCase());
+                            var rootdirt = vary.getBlock(soil).get();
+                            var dirt = vary.getBlock(DIRT).get();
                             BehaviourBlockTilling.addStrippedBlock(rootdirt, dirt);
-                        } break;
-                    default: break;
-                }
-                return true;
-            });
-            // Make TFC dirt path-able with GT shovels
-            Helpers.mapOfKeys(SoilBlockType.class, (path) -> {
-                if (path == GRASS_PATH) {
-                    for (SoilBlockType.Variant vary : SoilBlockType.Variant.values()) {
-                        var grasstype = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "grass/" + vary.name().toLowerCase());
-                        var pathtype = RegistryUtils.getBlockFromId(Ref.MOD_TFC, "grass_path/" + vary.name().toLowerCase());
-                        BehaviourVanillaShovel.addStrippedBlock(grasstype, pathtype);
+                        }
                     }
                 }
                 return true;
             });
         }
-        if (event == RegistrationEvent.DATA_READY) TFCOreGen.init();
     }
 
     @Override
