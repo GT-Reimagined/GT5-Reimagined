@@ -5,6 +5,7 @@ import net.minecraft.world.level.block.Blocks;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.item.MaterialJavelin;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.tool.GTToolType;
 
@@ -18,5 +19,6 @@ public class TFCToolTypes {
 
     public static void init(){
         JAVELIN_HEAD.unSplitName().setLang(UNSPLIT_FUNCTION).setIgnoreTextureSets();
+        GTTools.SCYTHE.addTags("hoe").addBehaviour(ScythHarvestBehaviour.INSTANCE);
     }
 }
