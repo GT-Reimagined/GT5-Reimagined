@@ -46,8 +46,8 @@ public class TFCOreGen {
         String[] tfcVeinsToRemove = new String[]{
                 "normal_hematite", "deep_hematite", "normal_garnierite", "normal_malachite",
                 "normal_magnetite", "deep_magnetite", "normal_limonite", "deep_limonite",
-                "normal_sphalerite", "surface_sphalerite", "normal_tetrahedrite", "surface_tetrahedrite",
-                "cinnabar", "lapis_lazuli"
+                "normal_sphalerite", "surface_sphalerite", "normal_tetrahedrite", "surface_tetrahedrite", "normal_native_copper",
+                "surface_native_copper", "normal_native_silver", "cinnabar", "lapis_lazuli"
         };
         for (String vein : tfcVeinsToRemove){
             veinsToRemove.add(new ResourceLocation(Ref.MOD_TFC, "vein/" + vein));
@@ -74,6 +74,12 @@ public class TFCOreGen {
                         new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(PYRITE, 20)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
                 new Indicator(12, new WeightedBlock(SPHALERITE, 60), new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(PYRITE, 20)));
+        createClusterVein("surface_native_copper", 60, 20, 0.6, 60, 210,
+                ofM(new WeightedBlock(NATIVE_COPPER, POOR, 42), new WeightedBlock(NATIVE_COPPER, NORMAL, 21),
+                        new WeightedBlock(NATIVE_COPPER, RICH, 7), new WeightedBlock(TETRAHEDRITE, POOR, 12),
+                        new WeightedBlock(TETRAHEDRITE, NORMAL, 6), new WeightedBlock(TETRAHEDRITE, RICH, 2), new WeightedBlock(Stibnite, 10)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite"},
+                new Indicator(12, new WeightedBlock(NATIVE_COPPER, 70), new WeightedBlock(TETRAHEDRITE, 20), new WeightedBlock(Stibnite, 10)));
 
         //deep veins
         createClusterVein("deep_magnetite", 100, 35, 0.7, -64, 30,
@@ -139,6 +145,17 @@ public class TFCOreGen {
                         new WeightedBlock(Cobaltite, 20), new WeightedBlock(Pentlandite, 10)),
                 new String[]{"gabbro"},
                 new Indicator(12, new WeightedBlock(GARNIERITE, 70), new WeightedBlock(Cobaltite, 20), new WeightedBlock(Pentlandite, 10)));
+        createClusterVein("normal_native_silver", 60, 22, 0.6, -32, 75,
+                ofM(new WeightedBlock(NATIVE_SILVER, POOR, 16), new WeightedBlock(NATIVE_SILVER, NORMAL, 40),
+                        new WeightedBlock(NATIVE_SILVER, RICH, 24), new WeightedBlock(Lead, 20)),
+                new String[]{"granite", "gneiss"},
+                new Indicator(12, new WeightedBlock(NATIVE_SILVER, 80), new WeightedBlock(Lead, 20)));
+        createClusterVein("normal_native_copper", 60, 25, 0.6, -32, 75,
+                ofM(new WeightedBlock(NATIVE_COPPER, POOR, 14), new WeightedBlock(NATIVE_COPPER, NORMAL, 35),
+                        new WeightedBlock(NATIVE_COPPER, RICH, 21), new WeightedBlock(TETRAHEDRITE, POOR, 4),
+                        new WeightedBlock(TETRAHEDRITE, NORMAL, 10), new WeightedBlock(TETRAHEDRITE, RICH, 6), new WeightedBlock(Stibnite, 10)),
+                new String[]{"rhyolite", "basalt", "andesite", "dacite"},
+                new Indicator(12, new WeightedBlock(NATIVE_COPPER, 70), new WeightedBlock(TETRAHEDRITE, 20), new WeightedBlock(Stibnite, 10)));
         //other veins
         createClusterVein("cinnabar", 120, 20, 0.6, -48, 100,
                 ofM(new WeightedBlock(Redstone, 60), new WeightedBlock(Cinnabar, 30), new WeightedBlock(Ruby, 10)),
