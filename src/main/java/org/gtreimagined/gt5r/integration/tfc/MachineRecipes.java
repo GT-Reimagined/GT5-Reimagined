@@ -87,7 +87,7 @@ public class MachineRecipes {
         if (input.isGraded()){
             RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Grade.POOR).get()).io(crushedStack, DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.05 * multiplier).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("poor_" + material.getId() + "_tfc", 400, 2);
             RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Grade.NORMAL).get()).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("normal_" + material.getId() + "_tfc", 400, 2);
-            RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Grade.RICH).get()).io(Utils.ca(multiplier * 3, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("rich_" + material.getId() + "_tfc", 400, 2);
+            RecipeMaps.PULVERIZER.RB().ii(TFCItems.GRADED_ORES.get(input).get(Grade.RICH).get()).io(Utils.ca(multiplier * 4, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.15 * multiplier).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("rich_" + material.getId() + "_tfc", 400, 2);
         } else {
             RecipeMaps.PULVERIZER.RB().ii(TFCItems.ORES.get(input).get()).io(Utils.ca(multiplier * 2, crushedStack), DUST.get(oreByProduct1, 1)).outputChances(1.0, 0.1 * multiplier).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("normal_" + material.getId() + "_tfc", 400, 2);
         }
