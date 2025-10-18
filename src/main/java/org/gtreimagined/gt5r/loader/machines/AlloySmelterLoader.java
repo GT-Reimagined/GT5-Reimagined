@@ -11,6 +11,7 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
@@ -27,9 +28,7 @@ public class AlloySmelterLoader {
 
     public static void init() {
         addAlloyRecipes(ImmutableMap.of(Lead, 1, Redstone, 4), GTCoreMaterials.LeadedRedstone, 1);
-        addAlloyRecipes(ImmutableMap.of(Tin, 1, Copper, 3), Bronze);
         addAlloyRecipes(ImmutableMap.of(Arsenic, 1, Gallium, 1), GalliumArsenide);
-        addAlloyRecipes(ImmutableMap.of(Copper, 1, Silver, 4), SterlingSilver);
         addAlloyRecipes(ImmutableMap.of(Tin, 1, Iron, 1), TinAlloy);
         addAlloyRecipes(ImmutableMap.of(Silver, 1, Gold, 1), Electrum);
         addAlloyRecipes(ImmutableMap.of(Tin, 9, Antimony, 1), SolderingAlloy);
@@ -38,18 +37,25 @@ public class AlloySmelterLoader {
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Redstone, 4), RedAlloy, 1);
         addAlloyRecipes(ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1), IndiumGalliumPhosphide);
         addAlloyRecipes(ImmutableMap.of(Lead, 4, Antimony, 1), BatteryAlloy);
-        addAlloyRecipes(ImmutableMap.of(Zinc, 1, Copper, 3), Brass);
-        addAlloyRecipes(ImmutableMap.of(Copper, 1, Gold, 4), RoseGold);
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Nickel, 1), Cupronickel);
+        if (GTAPI.isModLoaded("tfc")){
+            addAlloyRecipes(ImmutableMap.of(Tin, 1, Copper, 9), Bronze);
+            addAlloyRecipes(ImmutableMap.of(Zinc, 1, Copper, 9), Brass);
+        } else {
+            addAlloyRecipes(ImmutableMap.of(Tin, 1, Copper, 3), Bronze);
+            addAlloyRecipes(ImmutableMap.of(Zinc, 1, Copper, 3), Brass);
+        }
+        addAlloyRecipes(ImmutableMap.of(Bismuth, 2, Zinc, 3, Copper, 5), BismuthBronze, 10, 10, "bismuth_bronze_ingot");
+        addAlloyRecipes(ImmutableMap.of(Copper, 1, Gold, 4), RoseGold);
+        addAlloyRecipes(ImmutableMap.of(Copper, 1, Silver, 4), SterlingSilver);
         addAlloyRecipes(ImmutableMap.of(Copper, 3, Electrum, 2), BlackBronze);
-        addAlloyRecipes(ImmutableMap.of(Bismuth, 1, Brass, 4), BismuthBronze);
         addAlloyRecipes(ImmutableMap.of(Gold, 4, NetheriteScrap, 4), Netherite, 1);
         if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             addAlloyRecipes(ImmutableMap.of(Magnesium, 1, Aluminium, 2), Magnalium);
             addAlloyRecipes(ImmutableMap.of(Brass, 7, Aluminium, 1, Cobalt, 1), CobaltBrass);
         }
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Silver, 2, RedAlloy, 5), Signalum, 8);
-        addAlloyRecipes(ImmutableMap.of(Copper, 1, SterlingSilver, 5, RedAlloy, 10), Signalum, 16, "signalum_ingot_extra");
+        addAlloyRecipes(ImmutableMap.of(Copper, 1, SterlingSilver, 5, RedAlloy, 10), Signalum, 16, -1, "signalum_ingot_extra");
         addAlloyRecipes(ImmutableMap.of(Tin, 3, Silver, 1, Glowstone, 4), Lumium, 4);
         //pre Chemical Reactor Rubber
         ALLOY_SMELTER.RB().ii(of(DUST.get(RawRubber), 3), of(DUST.getMaterialTag(Sulfur), 1))
@@ -85,14 +91,14 @@ public class AlloySmelterLoader {
     }
 
     public static void addAlloyRecipes(ImmutableMap<Material, Integer> inputs, Material output){
-        addAlloyRecipes(inputs, output, inputs.values().stream().mapToInt(i -> i).sum(), output.getId() + "_ingot");
+        addAlloyRecipes(inputs, output, inputs.values().stream().mapToInt(i -> i).sum(), -1, output.getId() + "_ingot");
     }
 
     public static void addAlloyRecipes(ImmutableMap<Material, Integer> inputs, Material output, int amount){
-        addAlloyRecipes(inputs, output, amount, output.getId() + "_ingot");
+        addAlloyRecipes(inputs, output, amount, -1, output.getId() + "_ingot");
     }
 
-    public static void addAlloyRecipes(ImmutableMap<Material, Integer> inputs, Material output, int amount, String id){
+    public static void addAlloyRecipes(ImmutableMap<Material, Integer> inputs, Material output, int amount, int circuit, String id){
         if (inputs.size() > 1){
             List<Ingredient> ingredients = new ArrayList<>();
             inputs.forEach((m, i) -> {
@@ -108,6 +114,9 @@ public class AlloySmelterLoader {
                 }
                 ingredients.add(RecipeIngredient.of(i, tags.toArray(TagKey[]::new)));
             });
+            if (circuit >= 0){
+                ingredients.add(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(circuit));
+            }
             ALLOY_SMELTER.RB().ii(ingredients).io(INGOT.get(output, amount)).add(id, 100, 12);
         }
     }

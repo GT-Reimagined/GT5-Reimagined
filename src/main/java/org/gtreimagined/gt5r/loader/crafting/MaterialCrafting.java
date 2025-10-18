@@ -28,8 +28,10 @@ import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class MaterialCrafting {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
-        addShapelessDustRecipe(output, provider, Bronze, ImmutableMap.of(Copper, 3, Tin, 1));
-        addShapelessDustRecipe(output, provider, Brass, ImmutableMap.of(Copper, 3, Zinc, 1));
+        if (!GTAPI.isModLoaded("tfc")){
+            addShapelessDustRecipe(output, provider, Bronze, ImmutableMap.of(Copper, 3, Tin, 1));
+            addShapelessDustRecipe(output, provider, Brass, ImmutableMap.of(Copper, 3, Zinc, 1));
+        }
         addShapelessDustRecipe(output, provider, BlackBronze, ImmutableMap.of(Copper, 3, Silver, 1, Gold, 1));
         addShapelessDustRecipe(output, provider, TinAlloy, ImmutableMap.of(Tin, 1, Iron, 1));
         addShapelessDustRecipe(output, provider, BlackSteel, ImmutableMap.of(Steel, 3, BlackBronze, 1, Nickel, 1));
@@ -38,7 +40,7 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, Cupronickel, ImmutableMap.of(Copper, 1, Nickel, 1));
         addShapelessDustRecipe(output, provider, RoseGold, ImmutableMap.of(Gold, 4, Copper, 1));
         addShapelessDustRecipe(output, provider, SterlingSilver, ImmutableMap.of(Silver, 4, Copper, 1));
-        addShapelessDustRecipe(output, provider, BismuthBronze, ImmutableMap.of(Copper, 3, Bismuth, 1, Zinc, 1));
+        addShapelessDustRecipe(output, provider, BismuthBronze, ImmutableMap.of(Copper, 5, Bismuth, 2, Zinc, 3));
         addShapelessDustRecipe(output, provider, RedSteel, ImmutableMap.of(BlackSteel, 4, Steel, 2, Brass, 1, RoseGold, 1));
         addShapelessDustRecipe(output, provider, BlueSteel, ImmutableMap.of(BlackSteel, 4, Steel, 2, BismuthBronze, 1, SterlingSilver, 1));
         addShapelessDustRecipe(output, provider, CobaltBrass, ImmutableMap.of(Brass, 7, Aluminium, 1, Cobalt, 1));

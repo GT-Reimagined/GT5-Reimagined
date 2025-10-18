@@ -156,7 +156,6 @@ public class TFCRecipes {
                 }
             }
         }
-        //consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/ore/normal_bismuthinite"), ));
     }
 
     private static TFCMetal metalFromOre(Ore ore){
