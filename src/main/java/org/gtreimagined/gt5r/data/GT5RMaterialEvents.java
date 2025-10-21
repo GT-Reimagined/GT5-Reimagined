@@ -632,11 +632,14 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.AnnealedCopper).mats(of(Copper, 1));
         event.setMaterial(Materials.BatteryAlloy).mats(of(Materials.Lead, 4, Materials.Antimony, 1));
-        event.setMaterial(Materials.BismuthBronze).mats(of(Materials.Bismuth, 2, Materials.Zinc, 3, Copper, 5));
+        int copperAmount = GTAPI.isModLoaded("tfc") ? 5 : 3;
+        int zincAmount = GTAPI.isModLoaded("tfc") ? 3 : 1;
+        int bismuthAmount = GTAPI.isModLoaded("tfc") ? 2 : 1;
+        event.setMaterial(Materials.BismuthBronze).mats(of(Materials.Bismuth, bismuthAmount, Materials.Zinc, zincAmount, Copper, copperAmount));
         event.setMaterial(Materials.BlackBronze).mats(of(Gold, 1, Silver, 1, Copper, 3));
         event.setMaterial(Materials.BlackSteel).mats(of(Materials.Nickel, 1, Materials.BlackBronze, 1, Materials.Steel, 3));
         event.setMaterial(Materials.BlueSteel).mats(of(SterlingSilver, 1, BismuthBronze, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
-        int copperAmount = GTAPI.isModLoaded("tfc") ? 9 : 3;
+        copperAmount = GTAPI.isModLoaded("tfc") ? 9 : 3;
         event.setMaterial(Materials.Brass).mats(of(Materials.Zinc, 1, Copper, copperAmount));
         event.setMaterial(Materials.Bronze).mats(of(Materials.Tin, 1, Copper, copperAmount));
         event.setMaterial(Materials.CdInAGAlloy).mats(of(Materials.Cadmium, 1, Materials.Indium, 1, Silver, 1));

@@ -41,11 +41,12 @@ public class AlloySmelterLoader {
         if (GTAPI.isModLoaded("tfc")){
             addAlloyRecipes(ImmutableMap.of(Tin, 1, Copper, 9), Bronze);
             addAlloyRecipes(ImmutableMap.of(Zinc, 1, Copper, 9), Brass);
+            addAlloyRecipes(ImmutableMap.of(Bismuth, 2, Zinc, 3, Copper, 5), BismuthBronze, 10, 10, "bismuth_bronze_ingot");
         } else {
             addAlloyRecipes(ImmutableMap.of(Tin, 1, Copper, 3), Bronze);
             addAlloyRecipes(ImmutableMap.of(Zinc, 1, Copper, 3), Brass);
+            addAlloyRecipes(ImmutableMap.of(Bismuth, 1, Brass, 4), BismuthBronze);
         }
-        addAlloyRecipes(ImmutableMap.of(Bismuth, 2, Zinc, 3, Copper, 5), BismuthBronze, 10, 10, "bismuth_bronze_ingot");
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Gold, 4), RoseGold);
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Silver, 4), SterlingSilver);
         addAlloyRecipes(ImmutableMap.of(Copper, 3, Electrum, 2), BlackBronze);
