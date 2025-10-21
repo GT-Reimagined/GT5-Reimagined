@@ -1,17 +1,9 @@
 package org.gtreimagined.gt5r.integration.tfc;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Ore.Grade;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.TFCItems;
-import net.dries007.tfc.common.recipes.QuernRecipe;
-import net.dries007.tfc.common.recipes.SimpleItemRecipe;
-import net.dries007.tfc.common.recipes.TFCRecipeSerializers;
-import net.dries007.tfc.compat.jei.category.QuernRecipeCategory;
-import net.dries007.tfc.util.Metal;
 import net.dries007.tfc.util.Metal.Default;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -20,24 +12,22 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.AlloyingFinishedRecipe;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.AlloyingFinishedRecipe.Alloy;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.HeatingFinishedRecipe;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.QuernFinishedRecipe;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.RockKnappingFinishedRecipe;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.util.RegistryUtils;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import static com.google.common.collect.ImmutableMap.of;
-import static net.dries007.tfc.common.blocks.rock.Ore.BISMUTHINITE;
 import static org.gtreimagined.gt5r.data.Materials.Flint;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN_HEAD;
@@ -156,6 +146,10 @@ public class TFCRecipes {
                 }
             }
         }
+        consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/sterling_silver"), "tfc:sterling_silver", new Alloy("tfc:copper", 0.2, 0.25), new Alloy("tfc:silver", 0.75, 0.8)));
+        consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/rose_gold"), "tfc:rose_gold", new Alloy("tfc:copper", 0.2, 0.25), new Alloy("tfc:gold", 0.75, 0.8)));
+        consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/bismuth_bronze"), "tfc:bismuth_bronze", new Alloy("tfc:zinc", 0.25, 0.3), new Alloy("tfc:copper", 0.5, 0.6), new Alloy("tfc:bismuth", 0.15, 0.2)));
+        consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/black_bronze"), "tfc:black_bronze", new Alloy("tfc:copper", 0.6, 0.7), new Alloy("tfc:gold", 0.15, 0.2), new Alloy("tfc:silver", 0.15, 0.2)));
     }
 
     private static TFCMetal metalFromOre(Ore ore){
@@ -193,121 +187,4 @@ public class TFCRecipes {
         }
     }
 
-    private record QuernFinishedRecipe(ResourceLocation id, Ingredient input, ItemStack output) implements FinishedRecipe {
-
-        @Override
-        public void serializeRecipeData(JsonObject jsonObject) {
-            jsonObject.add("ingredient", this.input.toJson());
-            JsonObject resultObj = new JsonObject();
-            resultObj.addProperty("item", RegistryUtils.getIdFromItem(this.output.getItem()).toString());
-            if (this.output.getCount() > 1) {
-                resultObj.addProperty("count", this.output.getCount());
-            }
-            jsonObject.add("result", resultObj);
-            if (this.output.hasTag()) {
-                resultObj.addProperty("nbt", this.output.getTag().toString());
-            }
-        }
-
-        @Override
-        public ResourceLocation getId() {
-            return id;
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
-            return TFCRecipeSerializers.QUERN.get();
-        }
-
-        @Override
-        public @Nullable JsonObject serializeAdvancement() {
-            return null;
-        }
-
-        @Override
-        public @Nullable ResourceLocation getAdvancementId() {
-            return null;
-        }
-    }
-
-    private record HeatingFinishedRecipe(ResourceLocation id, Ingredient input, FluidStack output, int temperature) implements FinishedRecipe {
-
-        @Override
-        public void serializeRecipeData(JsonObject jsonObject) {
-            jsonObject.add("ingredient", this.input.toJson());
-            JsonObject resultObj = new JsonObject();
-            resultObj.addProperty("fluid", RegistryUtils.getIdFromFluid(this.output.getFluid()).toString());
-            if (this.output.getAmount() > 1) {
-                resultObj.addProperty("amount", this.output.getAmount());
-            }
-            jsonObject.add("result_fluid", resultObj);
-            if (this.output.hasTag()) {
-                resultObj.addProperty("nbt", this.output.getTag().toString());
-            }
-            jsonObject.addProperty("temperature", this.temperature);
-        }
-
-        @Override
-        public ResourceLocation getId() {
-            return id;
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
-            return TFCRecipeSerializers.HEATING.get();
-        }
-
-        @Override
-        public @Nullable JsonObject serializeAdvancement() {
-            return null;
-        }
-
-        @Override
-        public @Nullable ResourceLocation getAdvancementId() {
-            return null;
-        }
-    }
-
-    private record RockKnappingFinishedRecipe(ResourceLocation id, String[] pattern, Ingredient input, ItemStack output) implements FinishedRecipe {
-
-        @Override
-        public void serializeRecipeData(JsonObject jsonObject) {
-            jsonObject.add("ingredient", this.input.toJson());
-            JsonArray array = new JsonArray();
-            for (String s : pattern) {
-                array.add(new JsonPrimitive(s));
-            }
-            jsonObject.add("pattern", array);
-            jsonObject.addProperty("outside_slot_required", false);
-            JsonObject resultObj = new JsonObject();
-            resultObj.addProperty("item", RegistryUtils.getIdFromItem(this.output.getItem()).toString());
-            if (this.output.getCount() > 1) {
-                resultObj.addProperty("count", this.output.getCount());
-            }
-            jsonObject.add("result", resultObj);
-            if (this.output.hasTag()) {
-                resultObj.addProperty("nbt", this.output.getTag().toString());
-            }
-        }
-
-        @Override
-        public ResourceLocation getId() {
-            return id;
-        }
-
-        @Override
-        public RecipeSerializer<?> getType() {
-            return TFCRecipeSerializers.ROCK_KNAPPING.get();
-        }
-
-        @Override
-        public @Nullable JsonObject serializeAdvancement() {
-            return null;
-        }
-
-        @Override
-        public @Nullable ResourceLocation getAdvancementId() {
-            return null;
-        }
-    }
 }
