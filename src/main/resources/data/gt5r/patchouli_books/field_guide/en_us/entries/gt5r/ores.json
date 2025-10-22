@@ -1,0 +1,14 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "name": "Ores",
+  "category": "gt5r:gt5r",
+  "icon": "minecraft:iron_ore",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Jars are a way of storing certain items. They can be placed on the ground as blocks, in groups of up to four. They are most useful as a way of storing Honey indefinitely."
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 11
+}
