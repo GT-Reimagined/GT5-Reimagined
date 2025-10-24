@@ -136,7 +136,7 @@ public class TFCOreGen {
         createClusterVein("normal_limonite", 60, 25, 0.6, -32, 75,
                 ofM(new WeightedBlock(LIMONITE, POOR, 8), new WeightedBlock(LIMONITE, NORMAL, 20), new WeightedBlock(LIMONITE, RICH, 12),
                         new WeightedBlock(BrownLimonite, 40),
-                        new WeightedBlock(HEMATITE, POOR, 2), new WeightedBlock(MAGNETITE, NORMAL, 5), new WeightedBlock(MAGNETITE, RICH, 3),
+                        new WeightedBlock(HEMATITE, POOR, 2), new WeightedBlock(HEMATITE, NORMAL, 5), new WeightedBlock(HEMATITE, RICH, 3),
                         new WeightedBlock(MALACHITE, POOR, 2), new WeightedBlock(MALACHITE, NORMAL, 5), new WeightedBlock(MALACHITE, POOR, 3)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
                 new Indicator(12, new WeightedBlock(LIMONITE, 40), new WeightedBlock(BrownLimonite, 40), new WeightedBlock(HEMATITE, 10), new WeightedBlock(MALACHITE, 10)));
