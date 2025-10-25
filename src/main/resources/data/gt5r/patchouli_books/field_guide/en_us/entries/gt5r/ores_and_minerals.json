@@ -10,7 +10,7 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The next several pages show the different types of ores veins modified by gt5r, and where to find them."
+      "text": "The next several pages first show the different types of ores veins modified by gt5r, followed by the ore veins added by gt5r, and where to find them. The added veins start after lapis."
     },
     {
       "type": "patchouli:text",
@@ -976,6 +976,96 @@
           ],
           "mapping": {
             "X": "antimatter_shared:ore_lapis_raw_limestone"
+          }
+        }
+      ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "chalcopyrite",
+      "text": "Chalcopyrite is an ore of $(thing)Copper$() and $(thing)Iron$() metal. Veins are composed of mostly Chalcopyrite and Pyrite with some hematite and a little native copper. It can be found between -32 and 60 and spawns in $(l:the_world/geology#sedimentary)Sedimentary$() rocks.",
+      "title": "Chalcopyrite"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Chalcopyrite Ores in Chert.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_chalcopyrite_raw_chert"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/pyrite/chert"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/poor_hematite/chert"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/normal_hematite/chert"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/rich_hematite/chert"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/normal_native_copper/chert"
           }
         }
       ]
