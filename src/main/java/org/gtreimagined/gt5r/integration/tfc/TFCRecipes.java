@@ -153,55 +153,6 @@ public class TFCRecipes {
         consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/rose_gold"), "tfc:rose_gold", new Alloy("tfc:copper", 0.2, 0.25), new Alloy("tfc:gold", 0.75, 0.8)));
         consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/bismuth_bronze"), "tfc:bismuth_bronze", new Alloy("tfc:zinc", 0.25, 0.3), new Alloy("tfc:copper", 0.5, 0.6), new Alloy("tfc:bismuth", 0.15, 0.2)));
         consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/black_bronze"), "tfc:black_bronze", new Alloy("tfc:copper", 0.6, 0.7), new Alloy("tfc:gold", 0.15, 0.2), new Alloy("tfc:silver", 0.15, 0.2)));
-        JsonObject page = JsonParser.parseString("{\n" +
-                "  \"__comment__\": \"This file was automatically created by mcresources\",\n" +
-                "  \"name\": \"Primitive Alloys\",\n" +
-                "  \"category\": \"tfc:getting_started\",\n" +
-                "  \"icon\": \"tfc:ceramic/ingot_mold{tank:{\\\"Amount\\\":100,\\\"FluidName\\\":\\\"tfc:metal/bronze\\\"}}\",\n" +
-                "  \"pages\": [\n" +
-                "    {\n" +
-                "      \"type\": \"patchouli:text\",\n" +
-                "      \"text\": \"$(thing)Alloys$() are a method of mixing two or more metals together, to create a new, stronger metal. During the early game, while copper is a useful metal for creating tools, the next tier of metal is one of three types of $(thing)Bronze$(). An alloy is made up of component $(thing)metals$() which must each satisfy a specific percentage of the overall whole.\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"type\": \"patchouli:text\",\n" +
-                "      \"text\": \"One method through which alloys can be made during the early game is through the usage of a $(thing)Small Vessel$(). The process is very similar to $(l:getting_started/finding_ores#casting)Casting$(). However, instead of using just a single metal, place enough ore pieces inside the vessel in the correct ratio to form a known alloy mix.\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"type\": \"patchouli:text\",\n" +
-                "      \"text\": \"For example, to create 1000 mB of $(thing)Bronze$() (shown to the right), you would need between 880 and 920 mB of $(thing)Copper$(), and between 80 and 120 mB of $(thing)Tin$().$(br2)The next three pages show the recipes of the three bronzes. Each type of bronze can be used to make tools, $(l:mechanics/armor)Armor$(), and other metal items. They are slightly different so resulting tools will have different durability, efficiency, and attack damage.\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"type\": \"patchouli:spotlight\",\n" +
-                "      \"item\": \"tfc:metal/ingot/bronze\",\n" +
-                "      \"title\": \"Bronze\",\n" +
-                "      \"link_recipes\": false,\n" +
-                "      \"text\": \"$(br)$(bold)Requirements:$()$(br)$(li)88 - 92 % : $(thing)Copper$()$(li)8 - 12 % : $(thing)Tin$()$(br2)\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"type\": \"patchouli:spotlight\",\n" +
-                "      \"item\": \"tfc:metal/ingot/bismuth_bronze\",\n" +
-                "      \"title\": \"Bismuth Bronze\",\n" +
-                "      \"link_recipes\": false,\n" +
-                "      \"text\": \"$(br)$(bold)Requirements:$()$(br)$(li)25 - 30 % : $(thing)Zinc$()$(li)50 - 60 % : $(thing)Copper$()$(li)15 - 20 % : $(thing)Bismuth$()$(br2)\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"type\": \"patchouli:spotlight\",\n" +
-                "      \"item\": \"tfc:metal/ingot/black_bronze\",\n" +
-                "      \"title\": \"Black Bronze\",\n" +
-                "      \"link_recipes\": false,\n" +
-                "      \"text\": \"$(br)$(bold)Requirements:$()$(br)$(li)60 - 70 % : $(thing)Copper$()$(li)15 - 20 % : $(thing)Silver$()$(li)15 - 20 % : $(thing)Gold$()$(br2)\"\n" +
-                "    }\n" +
-                "  ],\n" +
-                "  \"read_by_default\": true,\n" +
-                "  \"sortnum\": 5,\n" +
-                "  \"extra_recipe_mappings\": {\n" +
-                "    \"tfc:metal/ingot/bronze\": 3,\n" +
-                "    \"tfc:metal/ingot/bismuth_bronze\": 4,\n" +
-                "    \"tfc:metal/ingot/black_bronze\": 5\n" +
-                "  }\n" +
-                "}\n").getAsJsonObject();
-        DynamicDataPack.addData(new ResourceLocation("tfc", "patchouli_books/field_guide/en_us/entries/getting_started/primitive_alloys.json"), page);
     }
 
     private static TFCMetal metalFromOre(Ore ore){
