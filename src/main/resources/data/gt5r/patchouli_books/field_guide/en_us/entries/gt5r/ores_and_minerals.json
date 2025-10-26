@@ -1069,6 +1069,70 @@
           }
         }
       ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "salts",
+      "text": "Salts is a veins composed of primarily halite and sylvite with some lepidolite and some apodumene. It can be found between 0 and 90 and spawns in $(l:the_world/geology#sedimentary)Sedimentary$() rocks.",
+      "title": "Salts"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Salt Ores in Chalk.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/halite/chalk"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "tfc:ore/sylvite/chalk"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_lepidolite_raw_chalk"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_spodumene_raw_chalk"
+          }
+        }
+      ]
     }
   ],
   "read_by_default": true,
