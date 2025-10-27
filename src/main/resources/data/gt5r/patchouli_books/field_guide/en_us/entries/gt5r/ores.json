@@ -1180,7 +1180,7 @@
     },
     {
       "type": "tfc:multimultiblock",
-      "text": "Pitchblende Ores in Gabbro.",
+      "text": "Soapstone Ores in Phyllite.",
       "multiblocks": [
         {
           "pattern": [
@@ -1321,6 +1321,57 @@
           ],
           "mapping": {
             "X": "antimatter_shared:ore_chromite_raw_rhyolite"
+          }
+        }
+      ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "monazite",
+      "text": "Monazite veins are composed of mostly Bastnasite with some monazite and a little neodymium. It can be found between -32 and 50 and spawns in $(l:the_world/geology#igneous_intrusive)Igneous Intrusive$() rocks.",
+      "title": "Soapstone"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Monazite Ores in Granite.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_bastnasite_raw_granite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_monazite_raw_granite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_neodymium_raw_granite"
           }
         }
       ]
