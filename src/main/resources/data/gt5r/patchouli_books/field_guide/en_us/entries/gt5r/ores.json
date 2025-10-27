@@ -1329,7 +1329,7 @@
       "type": "patchouli:text",
       "anchor": "monazite",
       "text": "Monazite veins are composed of mostly Bastnasite with some monazite and a little neodymium. It can be found between -32 and 50 and spawns in $(l:the_world/geology#igneous_intrusive)Igneous Intrusive$() rocks.",
-      "title": "Soapstone"
+      "title": "Monazite"
     },
     {
       "type": "tfc:multimultiblock",
@@ -1372,6 +1372,70 @@
           ],
           "mapping": {
             "X": "antimatter_shared:ore_neodymium_raw_granite"
+          }
+        }
+      ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "molybdenum",
+      "text": "Molybdenum veins are composed of mostly Wulfenite and Molybdenite with some native molybdenum and a little powellite. It can be found between -64 and 10 and spawns in $(l:the_world/geology#igneous_extrusive)Igneous Extrusive$() and $(l:the_world/geology#igneous_intrusive)Igneous Intrusive$() rocks.",
+      "title": "Molybdenum"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Molybdenum Ores in Basalt.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_wulfenite_raw_basalt"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_molybdenite_raw_basalt"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_molybdenum_raw_basalt"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_powellite_raw_basalt"
           }
         }
       ]
