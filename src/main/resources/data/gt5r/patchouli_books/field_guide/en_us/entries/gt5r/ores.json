@@ -1439,6 +1439,57 @@
           }
         }
       ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "scheelite",
+      "text": "Scheelite is an ore of $(thing)Tungsten$() metal. Veins are composed of mostly Scheelite with some tungstate and a little native lithium. It can be found between -64 and 0 and spawns in $(l:the_world/geology#igneous_intrusive)Igneous Intrusive$() rocks.",
+      "title": "Scheelite"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Scheelite Ores in Diorite.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_scheelite_raw_diorite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_tungstate_raw_diorite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_lithium_raw_diorite"
+          }
+        }
+      ]
     }
   ],
   "read_by_default": true,
