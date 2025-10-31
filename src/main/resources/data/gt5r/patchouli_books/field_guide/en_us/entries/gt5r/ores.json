@@ -1490,6 +1490,185 @@
           }
         }
       ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "sapphire",
+      "text": "Sapphire veins are composed of Almandine, Pyrope, and Blue/Green Sapphires. It can be found between -64 and 26 and spawns in $(l:the_world/geology#igneous_extrusive)Igneous Extrusive$() rocks.",
+      "title": "Sapphire"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Sapphire Ores in Andesite.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_almandine_raw_andesite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_pyrope_raw_andesite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_sapphire_raw_andesite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_green_sapphire_raw_andesite"
+          }
+        }
+      ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "manganese",
+      "text": "Manganese veins are composed of Grossular, Spessartine, some Pyrolusite, and a little Tantalite. It can be found between -32 and 60 and spawns in $(l:the_world/geology#sedimentary)Sedimentary$() rocks, $(thing)Rhyolite$(), $(thing)Basalt$(), $(thing)Andesite$() and $(thing)Dacite$().",
+      "title": "Manganese"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Manganese Ores in Claystone.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_grossular_raw_claystone"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_spessartine_raw_claystone"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_pyrolusite_raw_claystone"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_tantalite_raw_claystone"
+          }
+        }
+      ]
+    },
+    {
+      "type": "patchouli:text",
+      "anchor": "quartz",
+      "text": "Quartz veins are composed of Milky Quartz, Certus Quartz(if ae2 is loaded), some Barite and some Quartz. It can be found between -32 and 100 and spawns in $(thing)Shale$(), $(thing)Quartzite$(), $(thing)Schist$() and $(thing)Gneiss$().",
+      "title": "Quartz"
+    },
+    {
+      "type": "tfc:multimultiblock",
+      "text": "Quartz Ores in Quartzite.",
+      "multiblocks": [
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_milky_quartz_raw_quartzite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_barite_raw_quartzite"
+          }
+        },
+        {
+          "pattern": [
+            [
+              "X"
+            ],
+            [
+              "0"
+            ]
+          ],
+          "mapping": {
+            "X": "antimatter_shared:ore_quartz_raw_quartzite"
+          }
+        }
+      ]
     }
   ],
   "read_by_default": true,
