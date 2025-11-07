@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialEvents;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCBlockTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCItemTagProvider;
@@ -175,9 +176,7 @@ public class TFCRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_HEAD)
-                .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
-                .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
+        TFCMaterialEvents.onMaterialEvent(event);
     }
 
     @Override

@@ -38,7 +38,7 @@ public class BlastFurnaceLoader {
         addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
         addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
-        addCalciteRecipe(Chalcopyrite, 6, new ItemStack(Items.COPPER_INGOT), new ItemStack(Items.IRON_INGOT));
+        addCalciteRecipe(Chalcopyrite, 6, INGOT.get(Copper, 1), new ItemStack(Items.IRON_INGOT));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 1, INGOT.get(Nickel, 1));
         addCalciteRecipe(Cassiterite, 1, INGOT.get(Tin, 1));
