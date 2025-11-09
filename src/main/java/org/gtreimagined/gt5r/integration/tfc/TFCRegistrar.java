@@ -15,10 +15,12 @@ import org.gtreimagined.gt5r.integration.tfc.recipes.AlloyingRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.MiscTFCRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.RockKnappingRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.ToolCrafting;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
@@ -27,7 +29,9 @@ import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.fluid.GTFluid;
+import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.MaterialTypeFluid;
 import org.gtreimagined.gtlib.material.TextureSet;
 import org.gtreimagined.gtlib.ore.StoneType;
@@ -59,6 +63,7 @@ import java.util.function.BiConsumer;
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
 public class TFCRegistrar extends GTMod {
 
@@ -152,6 +157,12 @@ public class TFCRegistrar extends GTMod {
                     "  \"name\": \"gt5r field_guide extension\",\n" +
                     "  \"landing_text\": \"gt5r field_guide extension\"\n" +
                     "}").getBytes());
+            GTLibXEIPlugin.addItemsToHide(DUST.get(Fireclay), GTCoreItems.CompressedFireClay, GTCoreItems.FireBrick);
+            MaterialTags.HAS_MORTAR.all().forEach(m -> {
+                if (m.has(TOOLS) && TOOLS.get(m).toolTypes().contains(GTTools.MORTAR)){
+                    GTLibXEIPlugin.addItemsToHide(GTTools.MORTAR.getToolItem(m));
+                }
+            });
         }
     }
 

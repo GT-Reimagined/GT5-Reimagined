@@ -24,6 +24,7 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -64,8 +65,10 @@ public class BlockParts {
         });
 
         addBrickedCasing(output, provider, Bronze, GT5RBlocks.BRICKED_BRONZE_CASING);
-        provider.addStackRecipe(output, GT5Reimagined.ID, "firebricks", "blocks",
-                new ItemStack(GT5RBlocks.FIRE_BRICKS), of('F', GTCoreItems.FireBrick), "FF", "FF");
+        if (!GTAPI.isModLoaded(Ref.MOD_TFC)) {
+            provider.addStackRecipe(output, GT5Reimagined.ID, "firebricks", "blocks",
+                    new ItemStack(GT5RBlocks.FIRE_BRICKS), of('F', GTCoreItems.FireBrick), "FF", "FF");
+        }
         addBrickedCasing(output, provider, Steel, GT5RBlocks.BRICKED_STEEL_CASING);
 
         addFirebox(output, provider, Bronze, GT5RBlocks.BRONZE_FIREBOX_CASING);

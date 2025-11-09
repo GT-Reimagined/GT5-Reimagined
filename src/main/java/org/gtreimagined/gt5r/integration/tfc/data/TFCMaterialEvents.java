@@ -7,13 +7,20 @@ import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.KNIFE_BLADE;
+import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
@@ -31,13 +38,15 @@ public class TFCMaterialEvents {
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
             ROD.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/rod/"+material.getId()));
-            if (material.has(MaterialTags.TOOLS) && material != Gold && material != Nickel && material != RoseGold && material != SterlingSilver){
-                MaterialTypeItem<?>[] types = new  MaterialTypeItem<?>[]{PICKAXE_HEAD, TFCMaterialTypes.PROPICK_HEAD, AXE_HEAD, SHOVEL_HEAD,
-                        HOE_HEAD, TFCMaterialTypes.CHISEL_HEAD, HAMMER_HEAD, SAW_BLADE, TFCMaterialTypes.JAVELIN_HEAD, SWORD_BLADE,
-                        TFCMaterialTypes.MACE_HEAD, KNIFE_BLADE, SCYTHE_BLADE};
+            if (material.has(MaterialTags.TOOLS)){
+                GTToolType[] toolTypes = new GTToolType[]{PICKAXE, PROPICK, AXE, SHOVEL, HOE, HAMMER, SAW, JAVELIN, SWORD, KNIFE, SCYTHE};
+                List<MaterialTypeItem<?>> types = new ArrayList<>(Arrays.stream(toolTypes).map(GTToolType::getMaterialTypeItem).toList());
+                types.addAll(List.of(TFCMaterialTypes.CHISEL_HEAD, TFCMaterialTypes.MACE_HEAD));
                 for (MaterialTypeItem<?> type : types){
-                    String typeId = type == KNIFE_BLADE ? "knife_blade" : type.getId();
-                    type.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/" + typeId + "/" + material.getId()));
+                    type.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/" + type.getId() + "/" + material.getId()));
+                }
+                for (GTToolType toolType : toolTypes){
+                    toolType.addReplacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/" + toolType.getId() + "/" + material.getId()));
                 }
             }
         }

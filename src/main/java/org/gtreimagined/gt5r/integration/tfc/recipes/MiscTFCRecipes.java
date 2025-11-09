@@ -1,11 +1,15 @@
 package org.gtreimagined.gt5r.integration.tfc.recipes;
 
+import net.dries007.tfc.common.TFCTags;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Ore.Grade;
 import net.dries007.tfc.common.fluids.TFCFluids;
 import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.common.recipes.ChiselRecipe.Mode;
 import net.dries007.tfc.util.Metal.Default;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -13,12 +17,16 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.ChiselFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.HeatingFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.QuernFinishedRecipe;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
 import java.util.function.Consumer;
 
@@ -37,6 +45,9 @@ public class MiscTFCRecipes {
                 }
             }
         }
+        consumer.accept(new ChiselFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "chisel/firebricks"), TFCBlocks.FIRE_BRICKS.get(), GT5RBlocks.FIRE_BRICKS, Mode.SMOOTH));
+        provider.shapeless(consumer, GT5Reimagined.ID, "firebricks", "bricks", new ItemStack(GT5RBlocks.FIRE_BRICKS), TFCBlocks.FIRE_BRICKS.get(), TFCTags.Items.CHISELS);
+        SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(TFCItems.UNFIRED_FIRE_BRICK.get(), 1), TFCItems.FIRE_BRICK.get(), 0.5F, 200).unlockedBy("has_unfired_fire_brick", provider.hasSafeItem(TFCItems.UNFIRED_FIRE_BRICK.get())).save(consumer, GT5Reimagined.ID + ":firebrick");
     }
 
     private static TFCMetal metalFromOre(Ore ore){

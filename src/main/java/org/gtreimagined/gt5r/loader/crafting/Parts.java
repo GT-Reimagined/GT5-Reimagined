@@ -17,6 +17,7 @@ import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -46,8 +47,10 @@ public class Parts {
       tieredItems(output, provider);
       molds(output, provider);
       provider.shapeless(output, "nether_quartz_from_milky_quartz","parts", new ItemStack(Items.QUARTZ), GEM.getMaterialTag(MilkyQuartz));
-      provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
-              GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
+      if (!GTAPI.isModLoaded(Ref.MOD_TFC)) {
+          provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
+                  GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
+      }
 
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "buckets", WOODEN_BUCKET,
               of('W', ItemTags.PLANKS, 'P', PLATE.getMaterialTag(Copper), 'H', HAMMER.getTag()), "WPW", " WH");

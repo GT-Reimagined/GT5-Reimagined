@@ -79,10 +79,6 @@ public class ToolCrafting {
                     provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "", SOFT_HAMMER.getToolStack(m),
                             of('R', rod, 'P', ingotGem1), "PP ", "PPR", "PP ");
                 }
-                if (t.toolTypes().contains(MORTAR)){
-                    provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "", MORTAR.getToolStack(m),
-                            of('S', TagUtils.getForgelikeItemTag("stone"), 'P', ingotGem), " P ", "SPS", "SSS");
-                }
                 if (t.toolTypes().contains(FILE)){
                     provider.addStackRecipe(consumer, GT5Reimagined.ID, "", "", FILE.getToolStack(m),
                             of('R', rod, 'P', plateGem), "P", "P", "R");
