@@ -1,19 +1,23 @@
 package org.gtreimagined.gt5r.integration.tfc;
 
-import com.google.common.collect.ImmutableMap;
+import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
-import net.minecraft.world.item.enchantment.Enchantments;
+import net.dries007.tfc.common.items.TFCItems;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialEvents;
+import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCBlockTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCItemTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCLangProvider;
+import org.gtreimagined.gt5r.integration.tfc.recipes.AlloyingRecipes;
+import org.gtreimagined.gt5r.integration.tfc.recipes.MiscTFCRecipes;
+import org.gtreimagined.gt5r.integration.tfc.recipes.RockKnappingRecipes;
+import org.gtreimagined.gt5r.integration.tfc.recipes.ToolCrafting;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
@@ -31,6 +35,7 @@ import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourBlockTilling;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourLogStripping;
+import org.gtreimagined.gtlib.tool.behaviour.BehaviourTorchPlacing;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourVanillaShovel;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.TagUtils;
@@ -48,7 +53,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-import java.util.List;
 import java.util.function.BiConsumer;
 
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.*;
@@ -74,6 +78,7 @@ public class TFCRegistrar extends GTMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
+            TFCMaterialTypes.init();
             TFCToolTypes.init();
             Helpers.mapOfKeys(Rock.class, (rock) -> {
                 Material material = Material.get(rock.name().toLowerCase());
@@ -140,6 +145,7 @@ public class TFCRegistrar extends GTMod {
                 }
                 return true;
             });
+            BehaviourTorchPlacing.addTorch(TFCItems.TORCH.get(), TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
         }
     }
 
@@ -155,7 +161,10 @@ public class TFCRegistrar extends GTMod {
 
     @SubscribeEvent
     public void registerRecipes(GTCraftingEvent event){
-        event.addLoader(TFCRecipes::initRecipes);
+        event.addLoader(MiscTFCRecipes::initRecipes);
+        event.addLoader(ToolCrafting::init);
+        event.addLoader(AlloyingRecipes::init);
+        event.addLoader(RockKnappingRecipes::init);
     }
 
     @SubscribeEvent

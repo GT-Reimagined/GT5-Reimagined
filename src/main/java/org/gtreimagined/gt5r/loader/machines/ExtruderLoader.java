@@ -25,6 +25,7 @@ import java.util.function.ToLongFunction;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.EXTRUDER;
+import static org.gtreimagined.gtlib.Ref.U;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.RUBBERTOOLS;
@@ -160,7 +161,7 @@ public class ExtruderLoader {
                     var itemType = type.getMaterialTypeItem();
                     if (itemType == null) continue;
                     if (m.has(itemType)) {
-                        int amountIn = type == PICKAXE || type == AXE ? 3 : type == HAMMER ? 6 : type == SHOVEL ? 1 : 2;
+                        int amountIn = Math.toIntExact(itemType.getUnitValue() / U);
                         if (m.has(INGOT)) {
                             EXTRUDER.RB().ii(of(INGOT.getMaterialTag(m), amountIn), of(toolHeadShapes[i], 1).setNoConsume()).io(itemType.get(m, 1)).add(itemType.getId() + "_" + m.getId(), baseDuration.applyAsLong(m) * amountIn, energyPerTick.applyAsLong(m));
                         }

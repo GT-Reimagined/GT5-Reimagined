@@ -4,13 +4,16 @@ package org.gtreimagined.gt5r.integration.tfc;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Helpers;
+import net.dries007.tfc.util.Metal;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gt5r.loader.machines.CutterLoader;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtcore.integration.tfc.TFCRubberData;
 import org.gtreimagined.gtlib.Ref;
@@ -21,10 +24,14 @@ import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.TagUtils;
 import org.gtreimagined.gtlib.util.Utils;
 
+import java.util.function.ToLongFunction;
+
 import static net.dries007.tfc.common.blocks.rock.Ore.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.data.RecipeMaps.BENDER;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_PRESS;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
 import static org.gtreimagined.gtlib.material.MaterialTags.MACERATE_INTO;
 import static org.gtreimagined.gtlib.material.MaterialTags.ORE_MULTI;
 
@@ -71,6 +78,18 @@ public class MachineRecipes {
         }*/
         Helpers.mapOfKeys(net.dries007.tfc.common.blocks.wood.Wood.class, w -> {
             CutterLoader.addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, w.name().toLowerCase() + "_logs")), RegistryUtils.getItemFromID(Ref.MOD_TFC, "wood/lumber/" + w.name().toLowerCase()), 2, w.name().toLowerCase() + "_lumber", 200, 8);
+            return true;
+        });
+        ToLongFunction<Material> baseDuration = m -> {
+            if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
+            return m.getMass();
+        };
+        Helpers.mapOfKeys(Metal.Default.class, d -> {
+            Material material = Material.get(d.getSerializedName());
+            if (material != Material.NULL && material.has(INGOT) && d.hasParts()){
+                BENDER.RB().ii(INGOT.getMaterialIngredient(material, 2), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(2)).io(RegistryUtils.getItemFromID(Ref.MOD_TFC, "metal/sheet/" + material.getId())).add(material.getId() + "_sheet", baseDuration.applyAsLong(material) * 2, 24);
+                BENDER.RB().ii(INGOT.getMaterialIngredient(material, 4), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(4)).io(RegistryUtils.getItemFromID(Ref.MOD_TFC, "metal/double_sheet/" + material.getId())).add(material.getId() + "_double_sheet", baseDuration.applyAsLong(material) * 2, 24);
+            }
             return true;
         });
         CutterLoader.addWoodRecipe(GTCoreTags.RUBBER_LOGS, TFCRubberData.RUBBER_LUMBER, 2, "rubber_lumber", 200, 8);
