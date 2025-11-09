@@ -57,7 +57,7 @@ public class RockKnappingRecipes {
                         "XX XX",
                         "XX XX"
                 },
-                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 2)));
+                Ingredient.of(Items.FLINT), KNIFE_BLADE.get(Flint, 2)));
         consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head_2"),
                 new String[]{
                         "X   X",
@@ -66,7 +66,7 @@ public class RockKnappingRecipes {
                         "XX XX",
                         "XX XX"
                 },
-                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 2)));
+                Ingredient.of(Items.FLINT), KNIFE_BLADE.get(Flint, 2)));
         consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head_3"),
                 new String[]{
                         " X X ",
@@ -75,7 +75,7 @@ public class RockKnappingRecipes {
                         "XX XX",
                         "XX XX"
                 },
-                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 2)));
+                Ingredient.of(Items.FLINT), KNIFE_BLADE.get(Flint, 2)));
         consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_knife_head"),
                 new String[]{
                         "X ",
@@ -84,7 +84,7 @@ public class RockKnappingRecipes {
                         "XX",
                         "XX"
                 },
-                Ingredient.of(Items.FLINT), KNIFE_HEAD.get(Flint, 1)));
+                Ingredient.of(Items.FLINT), KNIFE_BLADE.get(Flint, 1)));
         consumer.accept(new RockKnappingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "rock_knapping/flint_shovel_head"),
                 new String[]{
                         "XXX",

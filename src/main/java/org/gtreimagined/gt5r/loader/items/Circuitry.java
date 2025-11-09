@@ -153,7 +153,7 @@ public class Circuitry {
 
         silicon();
         //phenolic
-        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Wood, 1), RecipeIngredient.of(MoldPlate, 1).setNoConsume())
+        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Wood, 1), RecipeIngredient.of(PlateMold, 1).setNoConsume())
                 .fi(Glue.getLiquid(100))
                 .io(new ItemStack(GT5RItems.CircuitBoardPhenolic,8))
                 .add("phenolic_circuit_board",30, 8);

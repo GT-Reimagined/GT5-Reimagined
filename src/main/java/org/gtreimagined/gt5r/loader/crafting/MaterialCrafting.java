@@ -47,7 +47,9 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, GalliumArsenide, ImmutableMap.of(Gallium, 1, Arsenic, 1));
         addShapelessDustRecipe(output, provider, IndiumGalliumPhosphide, ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1));
         addShapelessDustRecipe(output, provider, Signalum, ImmutableMap.of(RedAlloy, 5, Silver, 2, Copper, 1));
-        provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.SMALL_DUST.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        if (!GTAPI.isModLoaded("tfc")) {
+            provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.SMALL_DUST.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        }
         provider.addItemRecipe(output, GT5Reimagined.ID, "copper_ingot", "ingots", GTMaterialTypes.INGOT.get(Copper), ImmutableMap.of('I', GTMaterialTypes.NUGGET.getMaterialTag(Copper)), "III", "III", "III");
         loadAutoRecipes(output, provider);
         loadMixedMetal(output, provider);

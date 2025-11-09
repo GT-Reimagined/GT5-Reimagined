@@ -9,29 +9,29 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.FORMING_PRESS;
 
 public class FormingPressLoader {
     public static void init() {
-        molds(GTCoreItems.MoldAnvil);
-        molds(GTCoreItems.MoldBall);
-        molds(GTCoreItems.MoldBlock);
-        molds(GTCoreItems.MoldBottle);
-        molds(GTCoreItems.MoldCoinage);
-        molds(GTCoreItems.MoldGear);
-        molds(GTCoreItems.MoldGearSmall);
-        molds(GTCoreItems.MoldIngot);
-        molds(GTCoreItems.MoldNugget);
-        molds(GTCoreItems.MoldPlate);
+        molds(GTCoreItems.AnvilMold);
+        molds(GTCoreItems.BallMold);
+        molds(GTCoreItems.BlockMold);
+        molds(GTCoreItems.BottleMold);
+        molds(GTCoreItems.CoinageMold);
+        molds(GTCoreItems.GearMold);
+        molds(GTCoreItems.SmallGearMold);
+        molds(GTCoreItems.IngotMold);
+        molds(GTCoreItems.NuggetMold);
+        molds(GTCoreItems.PlateMold);
 
-        molds(GTCoreItems.ShapeBolt);
-        molds(GTCoreItems.ShapeGear);
-        molds(GTCoreItems.ShapeGearSmall);
-        molds(GTCoreItems.ShapeRing);
-        molds(GTCoreItems.ShapeRod);
-        molds(GTCoreItems.ShapePipeHuge);
-        molds(GTCoreItems.ShapePipeLarge);
-        molds(GTCoreItems.ShapePipeNormal);
-        molds(GTCoreItems.ShapePipeSmall);
-        molds(GTCoreItems.ShapePipeTiny);
-        molds(GTCoreItems.ShapeWire);
-        molds(GTCoreItems.ShapePlate);
+        molds(GTCoreItems.BoltShape);
+        molds(GTCoreItems.GearShape);
+        molds(GTCoreItems.SmallGearShape);
+        molds(GTCoreItems.RingShape);
+        molds(GTCoreItems.RodShape);
+        molds(GTCoreItems.HugePipeShape);
+        molds(GTCoreItems.LargePipeShape);
+        molds(GTCoreItems.NormalPipeShape);
+        molds(GTCoreItems.SmallPipeShape);
+        molds(GTCoreItems.TinyPipeShape);
+        molds(GTCoreItems.WireShape);
+        molds(GTCoreItems.PlateShape);
     }
     private static void molds(ItemBasic mold){
         FORMING_PRESS.RB().ii(of(GTCoreItems.EmptyShape,1),of(mold,1).setNoConsume()).io(new ItemStack(mold,1)).add(mold.getId(),120,20);
