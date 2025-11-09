@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.integration.tfc;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.dries007.tfc.common.items.TFCItems;
+import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialEvents;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes;
@@ -146,6 +147,11 @@ public class TFCRegistrar extends GTMod {
                 return true;
             });
             BehaviourTorchPlacing.addTorch(TFCItems.TORCH.get(), TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
+            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "patchouli_books/field_guide/book.json"), ("{\n" +
+                    "  \"extend\": \"tfc:field_guide\",\n" +
+                    "  \"name\": \"gt5r field_guide extension\",\n" +
+                    "  \"landing_text\": \"gt5r field_guide extension\"\n" +
+                    "}").getBytes());
         }
     }
 
