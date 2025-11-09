@@ -1351,6 +1351,7 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT15.all().toArray(new Material[0]));
         GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT20.all().toArray(new Material[0]));
         GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 64);
+        MaterialTags.HAS_MORTAR.add(Flint, Bronze, BismuthBronze, BlackBronze, Invar, WroughtIron);
         FURNACE_FUELS.add(Materials.CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, BLOCK, 32000);
