@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
@@ -27,17 +28,19 @@ public class TFCMaterialEvents {
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
-        event.setMaterial(Osmium).flags(TFCMaterialTypes.CHISEL_HEAD, TFCMaterialTypes.MACE_HEAD);
+        event.setMaterial(Invar).flags(SHEET);
         Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
             ROD.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/rod/"+material.getId()));
+            SHEET.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/sheet/"+ material.getId()));
         }
         materials = new Material[]{BismuthBronze, BlackBronze, BlackSteel,
                 BlueSteel, Bronze, RedSteel, Steel, WroughtIron};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
             ROD.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/rod/"+material.getId()));
+            SHEET.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/sheet/"+ material.getId()));
             if (material.has(MaterialTags.TOOLS)){
                 GTToolType[] toolTypes = new GTToolType[]{PICKAXE, PROPICK, AXE, SHOVEL, HOE, HAMMER, SAW, JAVELIN, SWORD, KNIFE, SCYTHE};
                 List<MaterialTypeItem<?>> types = new ArrayList<>(Arrays.stream(toolTypes).map(GTToolType::getMaterialTypeItem).toList());

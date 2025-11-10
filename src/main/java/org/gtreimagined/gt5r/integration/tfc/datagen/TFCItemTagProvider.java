@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.tfc.datagen;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -14,7 +15,9 @@ import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.TagUtils;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
 import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class TFCItemTagProvider extends GTItemTagProvider {
@@ -39,6 +42,12 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "rock_knapping"))).add(Items.FLINT);
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "flux"))).add(DUST.get(Limestone), DUST.get(Marble), DUST.get(Calcite));
         Material[] tfcTools = new Material[]{BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel};
+        INGOT.all().stream().filter(m -> !INGOT.hasReplacement(m)).forEach(m ->{
+            this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "pileable_ingots"))).add(INGOT.get(m));
+        });
+        SHEET.all().stream().filter(m -> !SHEET.hasReplacement(m)).forEach(m ->{
+            this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "pileable_sheets"))).add(SHEET.get(m));
+        });
         GTAPI.all(GTToolType.class).forEach(t -> {
             if (t.hasOriginalTag()) {
                 tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "usable_on_tool_rack"))).addTag(t.getTag());

@@ -116,6 +116,7 @@ public class TFCRegistrar extends GTMod {
                 return new FluidStack(fluid.getFluid(), i);
             });
 
+            Metals.init();
         }
         if (event == RegistrationEvent.DATA_READY) {
             TFCOreGen.init();
@@ -152,11 +153,6 @@ public class TFCRegistrar extends GTMod {
                 return true;
             });
             BehaviourTorchPlacing.addTorch(TFCItems.TORCH.get(), TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
-            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "patchouli_books/field_guide/book.json"), ("{\n" +
-                    "  \"extend\": \"tfc:field_guide\",\n" +
-                    "  \"name\": \"gt5r field_guide extension\",\n" +
-                    "  \"landing_text\": \"gt5r field_guide extension\"\n" +
-                    "}").getBytes());
             GTLibXEIPlugin.addItemsToHide(DUST.get(Fireclay), GTCoreItems.CompressedFireClay, GTCoreItems.FireBrick);
             MaterialTags.HAS_MORTAR.all().forEach(m -> {
                 if (m.has(TOOLS) && TOOLS.get(m).toolTypes().contains(GTTools.MORTAR)){

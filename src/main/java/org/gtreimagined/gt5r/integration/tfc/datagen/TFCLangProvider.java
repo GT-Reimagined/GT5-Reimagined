@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.integration.tfc.datagen;
 
+import org.gtreimagined.gt5r.integration.tfc.Metals;
 import org.gtreimagined.gt5r.integration.tfc.ore.GTTFCOreBlock;
 import org.gtreimagined.gt5r.integration.tfc.ore.GTTFCOreItem;
 import org.gtreimagined.gtlib.GTAPI;
@@ -27,6 +28,9 @@ public class TFCLangProvider extends GTLanguageProvider {
         GTAPI.all(BlockOre.class, o -> {
             String nativeSuffix = o.getMaterial().getElement() != null ? "Native " : "";
             add(o.getDescriptionId() + ".prospected", String.join("", nativeSuffix, getLocalizedType(o.getMaterial())));
+        });
+        Metals.METALS.forEach((m, i) -> {
+            add("metal.gt5r." + m.getId(), m.getDisplayNameString());
         });
     }
 }

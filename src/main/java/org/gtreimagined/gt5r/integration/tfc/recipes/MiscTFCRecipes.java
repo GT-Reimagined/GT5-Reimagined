@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.integration.tfc.recipes;
 
+import com.google.gson.JsonObject;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
@@ -19,12 +20,13 @@ import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gt5r.integration.tfc.Metals;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.ChiselFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.HeatingFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.QuernFinishedRecipe;
-import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
+import org.gtreimagined.gtlib.datagen.DynamicDataPack;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
@@ -48,6 +50,11 @@ public class MiscTFCRecipes {
         consumer.accept(new ChiselFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "chisel/firebricks"), TFCBlocks.FIRE_BRICKS.get(), GT5RBlocks.FIRE_BRICKS, Mode.SMOOTH));
         provider.shapeless(consumer, GT5Reimagined.ID, "firebricks", "bricks", new ItemStack(GT5RBlocks.FIRE_BRICKS), TFCBlocks.FIRE_BRICKS.get(), TFCTags.Items.CHISELS);
         SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(TFCItems.UNFIRED_FIRE_BRICK.get(), 1), TFCItems.FIRE_BRICK.get(), 0.5F, 200).unlockedBy("has_unfired_fire_brick", provider.hasSafeItem(TFCItems.UNFIRED_FIRE_BRICK.get())).save(consumer, GT5Reimagined.ID + ":firebrick");
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("extend", "tfc:field_guide");
+        jsonObject.addProperty("name", "gt5r field_guide extension");
+        jsonObject.addProperty("landing_text", "gt5r field_guide extension");
+        DynamicDataPack.addData(new ResourceLocation(GT5Reimagined.ID, "patchouli_books/field_guide/book.json"), jsonObject);
     }
 
     private static TFCMetal metalFromOre(Ore ore){
@@ -84,5 +91,6 @@ public class MiscTFCRecipes {
             this.temperature = temperature;
         }
     }
+
 
 }

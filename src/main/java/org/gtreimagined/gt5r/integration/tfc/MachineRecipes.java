@@ -30,6 +30,7 @@ import static net.dries007.tfc.common.blocks.rock.Ore.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.BENDER;
 import static org.gtreimagined.gt5r.data.RecipeMaps.FLUID_PRESS;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
 import static org.gtreimagined.gtlib.material.MaterialTags.MACERATE_INTO;
@@ -84,10 +85,12 @@ public class MachineRecipes {
             if (m.has(GT5RMaterialTags.RECIPE_MASS)) return GT5RMaterialTags.RECIPE_MASS.get(m);
             return m.getMass();
         };
+        SHEET.all().stream().filter(m -> m.has(INGOT)).forEach(material -> {
+            BENDER.RB().ii(INGOT.getMaterialIngredient(material, 2), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(2)).io(SHEET.get(material)).add(material.getId() + "_sheet", baseDuration.applyAsLong(material) * 2, 24);
+        });
         Helpers.mapOfKeys(Metal.Default.class, d -> {
             Material material = Material.get(d.getSerializedName());
             if (material != Material.NULL && material.has(INGOT) && d.hasParts()){
-                BENDER.RB().ii(INGOT.getMaterialIngredient(material, 2), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(2)).io(RegistryUtils.getItemFromID(Ref.MOD_TFC, "metal/sheet/" + material.getId())).add(material.getId() + "_sheet", baseDuration.applyAsLong(material) * 2, 24);
                 BENDER.RB().ii(INGOT.getMaterialIngredient(material, 4), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(4)).io(RegistryUtils.getItemFromID(Ref.MOD_TFC, "metal/double_sheet/" + material.getId())).add(material.getId() + "_double_sheet", baseDuration.applyAsLong(material) * 2, 24);
             }
             return true;
