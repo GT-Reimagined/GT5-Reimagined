@@ -2,11 +2,13 @@ package org.gtreimagined.gt5r.integration.tfc.recipes;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.AdvancedShapedCraftingFinishedRecipe;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.GTCoreConfig;
 import org.gtreimagined.gtcore.data.GTCoreTools;
@@ -50,7 +52,8 @@ public class ToolCrafting {
                     if (type.getMaterialTypeItem() == null) return;
                     if (type != FILE && type != SCREWDRIVER && tfcTools.contains(m)) return;
                     if (m.has(type.getMaterialTypeItem())){
-                        provider.addStackRecipe(consumer, GT5Reimagined.ID, m.getId() + "_" + type.getId() + "_from_" + type.getMaterialTypeItem().getId(), "gt_tools_from_tool_parts", type.getToolStack(m), of('T', type.getMaterialTypeItem().getMaterialTag(m), 'R', rod), "T", "R");
+                        consumer.accept(new AdvancedShapedCraftingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, m.getId() + "_" + type.getId()), type.getToolStack(m), 0, 0, new String[]{"tfc:copy_forging_bonus"},
+                                of('T', type.getMaterialTypeItem().getMaterialTag(m), 'R', rod), "T", "R"));
                     }
                 }
             });

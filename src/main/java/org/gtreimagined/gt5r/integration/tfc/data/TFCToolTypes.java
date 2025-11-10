@@ -16,6 +16,7 @@ import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
 import org.gtreimagined.gtlib.recipe.material.MaterialRecipe;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.tool.IGTTool;
@@ -26,7 +27,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.UNSPLIT_FUNCTION;
+import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.FLINT;
+import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
 public class TFCToolTypes {
     public static final GTToolType PROPICK = GTAPI.register(GTToolType.class, new GTToolType(GT5Reimagined.ID, "propick", 1, 2, 10, 1.0F, -2.8F, false)).setHasContainer(false).setMaterialTypeItem(TFCMaterialTypes.PROPICK_HEAD).setMaterialTypeItemPredicate(m -> !m.has(FLINT));
@@ -56,5 +59,23 @@ public class TFCToolTypes {
     public static void init(){
         GTTools.SCYTHE.addTags("hoe").addBehaviour(ScythHarvestBehaviour.INSTANCE);
         PROPICK.setCustomName("Prospector's Pick").addBehaviour(ProspectingBehaviour.INSTANCE);
+    }
+
+    public static void postInit(){
+        GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, KNIFE, SCYTHE, PROPICK, JAVELIN};
+        TOOLS.getAll().forEach((m, t) -> {
+            for (GTToolType toolType : toolTypes){
+                if (t.toolTypes().contains(toolType) && m.has(toolType.getMaterialTypeItem()) && toolType.getMaterialTypeItem() != null){
+                    PropertyIngredient.addGetter(toolType.getMaterialTypeItem().getMaterialTag(m).location(), TFCToolTypes::getForgingBonus);
+                }
+            }
+        });
+    }
+
+    public static int getForgingBonus(ItemStack stack){
+        if (stack.getTag() != null && stack.getTag().contains("tfc:forging_bonus")){
+            return stack.getTag().getInt("tfc:forging_bonus");
+        }
+        return 0;
     }
 }
