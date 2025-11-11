@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraftforge.fluids.FluidStack;
+import org.gtreimagined.gtlib.recipe.RecipeUtil;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,9 +21,7 @@ public record CastingFinishedRecipe(ResourceLocation id, Item mold, FluidStack f
         fluidObject.addProperty("ingredient", RegistryUtils.getIdFromFluid(fluid.getFluid()).toString());
         fluidObject.addProperty("amount", fluid.getAmount());
         jsonObject.add("fluid", fluidObject);
-        JsonObject outputObject = new JsonObject();
-        outputObject.addProperty("item", RegistryUtils.getIdFromItem(output).toString());
-        jsonObject.add("result", outputObject);
+        jsonObject.add("result", RecipeUtil.itemstackToJson(output.getDefaultInstance()));
         jsonObject.addProperty("break_chance", breakChance);
     }
 

@@ -11,15 +11,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
-import org.gtreimagined.gtlib.datagen.builder.GTShapedRecipeBuilder;
-import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
+import org.gtreimagined.gtlib.recipe.RecipeUtil;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-
-import static org.gtreimagined.gtlib.util.TagUtils.nc;
 
 public record AdvancedShapedCraftingFinishedRecipe(ResourceLocation id, ItemStack result, int inputRow, int inputColumn, String[] modifiers, ImmutableMap<Character, Object> inputs, String... pattern) implements FinishedRecipe {
     @Override
@@ -35,13 +32,7 @@ public record AdvancedShapedCraftingFinishedRecipe(ResourceLocation id, ItemStac
         jsonObject.add("pattern", patternObject);
         jsonObject.add("key", resolveKeys(inputs));
         JsonObject resultObject = new JsonObject();
-        JsonObject stack = new JsonObject();
-        stack.addProperty("item", RegistryUtils.getIdFromItem(this.result.getItem()).toString());
-        if (this.result.getCount() > 1) {
-            stack.addProperty("count", this.result.getCount());
-        }
-        if (this.result.getTag() != null) stack.addProperty("nbt", this.result.getTag().toString());
-        resultObject.add("stack", stack);
+        resultObject.add("stack", RecipeUtil.itemstackToJson(result));
         JsonArray modifiers = new JsonArray();
         for (String m : this.modifiers){
             modifiers.add(m);

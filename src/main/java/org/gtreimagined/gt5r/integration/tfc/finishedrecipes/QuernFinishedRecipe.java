@@ -7,7 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.recipe.RecipeUtil;
 import org.jetbrains.annotations.Nullable;
 
 public record QuernFinishedRecipe(ResourceLocation id, Ingredient input, ItemStack output) implements FinishedRecipe {
@@ -15,15 +15,7 @@ public record QuernFinishedRecipe(ResourceLocation id, Ingredient input, ItemSta
     @Override
     public void serializeRecipeData(JsonObject jsonObject) {
         jsonObject.add("ingredient", this.input.toJson());
-        JsonObject resultObj = new JsonObject();
-        resultObj.addProperty("item", RegistryUtils.getIdFromItem(this.output.getItem()).toString());
-        if (this.output.getCount() > 1) {
-            resultObj.addProperty("count", this.output.getCount());
-        }
-        jsonObject.add("result", resultObj);
-        if (this.output.hasTag()) {
-            resultObj.addProperty("nbt", this.output.getTag().toString());
-        }
+        jsonObject.add("result", RecipeUtil.itemstackToJson(this.output));
     }
 
     @Override
