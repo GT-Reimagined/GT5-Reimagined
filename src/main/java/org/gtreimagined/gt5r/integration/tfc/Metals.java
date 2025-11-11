@@ -5,11 +5,14 @@ import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.DynamicDataPack;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.material.data.ToolData;
+import org.gtreimagined.gtlib.tool.GTToolType;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +21,13 @@ import java.util.Map;
 
 import static org.gtreimagined.gt5r.data.Materials.Invar;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
 import static org.gtreimagined.gtlib.Ref.U;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
+import static org.gtreimagined.gtlib.data.GTTools.*;
+import static org.gtreimagined.gtlib.data.GTTools.SCYTHE;
+import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
 public class Metals {
     public static final Object2IntMap<Material> METALS = new Object2IntArrayMap<>();
@@ -35,7 +43,7 @@ public class Metals {
         METALS.put(material, tier);
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("tier", tier);
-        jsonObject.addProperty("fluid", "antimatter_shared:liquid_" + material.getId());
+        jsonObject.addProperty("fluid", Ref.SHARED_ID + ":" + material.getId());
         int meltTemp = MaterialTags.MELTING_POINT.get(material) - 273;
         jsonObject.addProperty("melt_temperature", meltTemp);
         jsonObject.addProperty("specific_heat_capacity", specificHeatCapacity);
@@ -57,7 +65,30 @@ public class Metals {
             j.addProperty("heat_capacity", heatCapacityForHeating * ratio);
             j.addProperty("forging_temperature", meltTemp * 0.6);
             j.addProperty("welding_temperature", meltTemp * 0.8);
-            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/item_heats/metal/" + material.getId() + "_" + t.getId()), j.toString().getBytes());
+            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/item_heats/metal/" + material.getId() + "_" + t.getId() + ".json"), j.toString().getBytes());
         });
+        if (material.has(TOOLS)){
+            ToolData td = TOOLS.get(material);
+            GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, KNIFE, SCYTHE, PROPICK, JAVELIN};
+            for(GTToolType toolType : toolTypes){
+                if (td.toolTypes().contains(toolType) && toolType.getMaterialTypeItem() != null) {
+                    var toolHead = toolType.getMaterialTypeItem();
+                    JsonObject j = new JsonObject();
+                    double ratio = (double) toolHead.getUnitValue() / U;
+                    j.addProperty("heat_capacity", heatCapacityForHeating * ratio);
+                    j.addProperty("forging_temperature", meltTemp * 0.6);
+                    j.addProperty("welding_temperature", meltTemp * 0.8);
+                    JsonObject ingrediient = new JsonObject();
+                    ingrediient.addProperty("tag", toolHead.getMaterialTag(material).location().toString());
+                    j.add("ingredient", ingrediient);
+                    GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/item_heats/metal/" + material.getId() + "_" + toolHead.getId() + ".json"), j.toString().getBytes());
+                    ingrediient = new JsonObject();
+                    ingrediient.addProperty("item", toolType.getDomain() + ":" + material.getId() + "_" + toolType.getId());
+                    j.add("ingredient", ingrediient);
+                    GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/item_heats/metal/" + material.getId() + "_" + toolType.getId() + ".json"), j.toString().getBytes());
+                }
+            }
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.tfc.item;
+package org.gtreimagined.gt5r.integration.tfc.behaviours;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.dries007.tfc.common.TFCTags.Blocks;

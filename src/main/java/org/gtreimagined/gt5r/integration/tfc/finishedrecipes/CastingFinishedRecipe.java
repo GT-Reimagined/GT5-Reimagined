@@ -23,7 +23,7 @@ public record CastingFinishedRecipe(ResourceLocation id, Item mold, FluidStack f
         JsonObject outputObject = new JsonObject();
         outputObject.addProperty("item", RegistryUtils.getIdFromItem(output).toString());
         jsonObject.add("result", outputObject);
-        jsonObject.addProperty("breakChance", breakChance);
+        jsonObject.addProperty("break_chance", breakChance);
     }
 
     @Override

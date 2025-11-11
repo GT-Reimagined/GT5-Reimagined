@@ -5,13 +5,16 @@ import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.dries007.tfc.common.items.TFCItems;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.integration.tfc.data.TFCGTFluids;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialEvents;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCBlockTagProvider;
+import org.gtreimagined.gt5r.integration.tfc.datagen.TFCFluidTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCItemTagProvider;
 import org.gtreimagined.gt5r.integration.tfc.datagen.TFCLangProvider;
 import org.gtreimagined.gt5r.integration.tfc.recipes.AlloyingRecipes;
+import org.gtreimagined.gt5r.integration.tfc.recipes.MetalRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.MiscTFCRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.RockKnappingRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.ToolCrafting;
@@ -86,6 +89,7 @@ public class TFCRegistrar extends GTMod {
         if (event == RegistrationEvent.DATA_INIT){
             TFCMaterialTypes.init();
             TFCToolTypes.init();
+            TFCGTFluids.init();
             Helpers.mapOfKeys(Rock.class, (rock) -> {
                 Material material = Material.get(rock.name().toLowerCase());
                 if (material == Material.NULL){
@@ -116,7 +120,6 @@ public class TFCRegistrar extends GTMod {
                 return new FluidStack(fluid.getFluid(), i);
             });
 
-            Metals.init();
         }
         if (event == RegistrationEvent.DATA_READY) {
             TFCOreGen.init();
@@ -178,20 +181,15 @@ public class TFCRegistrar extends GTMod {
         event.addLoader(ToolCrafting::init);
         event.addLoader(AlloyingRecipes::init);
         event.addLoader(RockKnappingRecipes::init);
+        event.addLoader(MetalRecipes::init);
     }
 
     @SubscribeEvent
     public void onProviders(GTProvidersEvent ev) {
-        ev.addProvider(() -> new GTFluidTagProvider(Ref.MOD_TFC, "TFC Fluid Tags", false){
-            @Override
-            protected void processTags(String domain) {
-                super.processTags(domain);
-                this.tag(TagUtils.getForgelikeFluidTag("salt_water")).add(TFCFluids.SALT_WATER.getSource());
-            }
-        });
         GTBlockTagProvider[] blockTagProviders = new GTBlockTagProvider[1];
         blockTagProviders[0] = new TFCBlockTagProvider( Ref.MOD_TFC, "TFC Block Tags", false);
         ev.addProvider(() -> new TFCItemTagProvider(Ref.MOD_TFC, "TFC Item Tags", false,  blockTagProviders[0]));
+        ev.addProvider(TFCFluidTagProvider::new);
         ev.addProvider(() -> blockTagProviders[0]);
 
     }
@@ -199,6 +197,7 @@ public class TFCRegistrar extends GTMod {
     @Override
     public void onMaterialEvent(MaterialEvent event) {
         TFCMaterialEvents.onMaterialEvent(event);
+        Metals.init();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.tfc.data;
+package org.gtreimagined.gt5r.integration.tfc.behaviours;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -9,7 +9,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gtlib.behaviour.IBlockDestroyed;
 import org.gtreimagined.gtlib.tool.IBasicGTTool;
-import org.gtreimagined.gtlib.tool.IGTTool;
 
 public class ScythHarvestBehaviour implements IBlockDestroyed<IBasicGTTool> {
     public static final ScythHarvestBehaviour INSTANCE = new ScythHarvestBehaviour();

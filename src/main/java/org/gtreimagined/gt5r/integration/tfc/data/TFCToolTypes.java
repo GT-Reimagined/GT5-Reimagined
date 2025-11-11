@@ -1,32 +1,25 @@
 package org.gtreimagined.gt5r.integration.tfc.data;
 
 import com.google.common.collect.ImmutableMap;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Tuple;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.block.Blocks;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gt5r.integration.tfc.behaviours.ScythHarvestBehaviour;
 import org.gtreimagined.gt5r.integration.tfc.item.MaterialJavelin;
-import org.gtreimagined.gt5r.integration.tfc.item.ProspectingBehaviour;
-import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gt5r.integration.tfc.behaviours.ProspectingBehaviour;
 import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
 import org.gtreimagined.gtlib.recipe.material.MaterialRecipe;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.tool.IGTTool;
-import org.gtreimagined.gtlib.tool.behaviour.BehaviourTorchPlacing;
-import org.gtreimagined.tesseract.api.forge.TesseractCaps;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.UNSPLIT_FUNCTION;
 import static org.gtreimagined.gtlib.data.GTTools.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.FLINT;
 import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
