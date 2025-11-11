@@ -16,6 +16,12 @@ import java.util.List;
 
 public class TFCGTFluids {
     public static final List<GTFluid> FLUIDS = new ArrayList<>();
+    public static final GTFluid ALUMINIUM = createFluid(Materials.Aluminium);
+    public static final GTFluid ANTIMONY = createFluid(Materials.Antimony);
+    public static final GTFluid LEAD = createFluid(Materials.Lead);
+    public static final GTFluid BATTERY_ALLOY = createFluid(Materials.BatteryAlloy);
+    public static final GTFluid CUPRONICKEL = createFluid(Materials.Cupronickel);
+    public static final GTFluid ELECTRUM = createFluid(Materials.Electrum);
     public static final GTFluid INVAR = createFluid(Materials.Invar);
 
     public static void init(){

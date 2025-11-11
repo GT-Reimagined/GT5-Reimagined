@@ -19,7 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import static org.gtreimagined.gt5r.data.Materials.Invar;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
@@ -32,6 +32,12 @@ import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 public class Metals {
     public static final Object2IntMap<Material> METALS = new Object2IntArrayMap<>();
     public static void init(){
+        addMetalFromMaterial(Aluminium, 3, 0.1, 3.333);
+        addMetalFromMaterial(Antimony, 1, 0.012, 4);
+        addMetalFromMaterial(Lead, 1, 0.01364, 4.545);
+        addMetalFromMaterial(BatteryAlloy, 1, 0.013312, 4.436);
+        addMetalFromMaterial(Cupronickel, 2,0.00741, 2.47);
+        addMetalFromMaterial(Electrum, 2, 0.005625, 1.875);
         addMetalFromMaterial(Invar, 3);
     }
 

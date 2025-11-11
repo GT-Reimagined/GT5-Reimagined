@@ -17,5 +17,7 @@ public class AlloyingRecipes {
         consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/bismuth_bronze"), "tfc:bismuth_bronze", new Alloy("tfc:zinc", 0.25, 0.3), new Alloy("tfc:copper", 0.5, 0.6), new Alloy("tfc:bismuth", 0.15, 0.2)));
         consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(Ref.MOD_TFC, "alloy/black_bronze"), "tfc:black_bronze", new Alloy("tfc:copper", 0.6, 0.7), new Alloy("tfc:gold", 0.15, 0.2), new Alloy("tfc:silver", 0.15, 0.2)));
         consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "alloy/invar"), "gt5r:invar", new Alloy("tfc:cast_iron", 0.65, 0.7), new Alloy("tfc:nickel", 0.3, 0.35)));
+        consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "alloy/battery_alloy"), "gt5r:battery_alloy", new Alloy("gt5r:antimony", 0.2, 0.25), new Alloy("gt5r:lead", 0.75, 0.8)));
+        consumer.accept(new AlloyingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "alloy/cupronickel"), "gt5r:cupronickel", new Alloy("tfc:copper", 0.45, 0.55), new Alloy("tfc:nickel", 0.45, 0.55)));
     }
 }
