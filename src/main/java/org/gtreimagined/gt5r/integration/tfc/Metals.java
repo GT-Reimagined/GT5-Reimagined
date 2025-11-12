@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.DOUBLE_INGOT;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
@@ -103,7 +104,7 @@ public class Metals {
         object.addProperty("tag", SHEET.getMaterialTag(material).location().toString());
         jsonObject.add("sheets", object);
         GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/metals/" + material.getId() + ".json"), jsonObject.toString().getBytes());
-        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, SHEET, PLATE, ROD, CHUNK, DUST};
+        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, CHUNK, DUST};
         Arrays.stream(types).forEach(t -> {
             if (!material.has(t)) return;
             JsonObject j = new JsonObject();

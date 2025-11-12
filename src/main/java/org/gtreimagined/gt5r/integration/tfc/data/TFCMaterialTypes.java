@@ -8,6 +8,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class TFCMaterialTypes {
 
+    public static final MaterialTypeItem<?> DOUBLE_INGOT = new MaterialTypeItem<>("double_ingot", 2, true, U * 2);
     public static final MaterialTypeItem<?> SHEET = new MaterialTypeItem<>("sheet", 2, true, U * 2);
     public static final MaterialTypeItem<?> CHISEL_HEAD = new MaterialTypeItem<>("chisel_head", 2, true, U);
     public static final MaterialTypeItem<?> MACE_HEAD = new MaterialTypeItem<>("mace_head", 2, true, U * 2);
@@ -19,7 +20,8 @@ public class TFCMaterialTypes {
         PROPICK_HEAD.unSplitName().setLang((t, m) -> m.getDisplayNameString() + " " + "Prospector's Pick Head").setIgnoreTextureSets();
         CHISEL_HEAD.unSplitName().setLang(UNSPLIT_FUNCTION).setIgnoreTextureSets();
         MACE_HEAD.unSplitName().setLang(UNSPLIT_FUNCTION).setIgnoreTextureSets();
-        SHEET.setIgnoreTextureSets();
+        DOUBLE_INGOT.unSplitName().setLang(UNSPLIT_FUNCTION);
+        SHEET.setIgnoreTextureSets().dependents(DOUBLE_INGOT);
         PICKAXE_HEAD.setUnitValue(U);
         AXE_HEAD.setUnitValue(U);
         SHOVEL_HEAD.setUnitValue(U);
