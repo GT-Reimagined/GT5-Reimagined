@@ -14,6 +14,7 @@ import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.AnvilWorkingFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.CastingFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.HeatingFinishedRecipe;
+import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.WeldingFinishedRecipe;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -71,8 +72,6 @@ public class MetalRecipes {
     public static void init(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         Metals.METALS.forEach((m, i) -> {
             int meltTemp = MaterialTags.MELTING_POINT.get(m) - 273;
-            int forgeTemp = (int) (meltTemp * 0.6);
-            int weldTemp = (int) (meltTemp * 0.8);
             boolean tfc = m == RoseGold || m == SterlingSilver;
             Function<Integer, FluidStack> fluid = amount -> new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(tfc ? "tfc" : Ref.SHARED_ID, (tfc ? "metal/" : "") + m.getId())), amount);
             if (m.has(TOOLS)) {
@@ -108,6 +107,7 @@ public class MetalRecipes {
                     }
                 }
             }
+            consumer.accept(new WeldingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "welding/" + m.getId() + "_double_ingot"), INGOT.getMaterialIngredient(m, 1), INGOT.getMaterialIngredient(m, 1),  DOUBLE_INGOT.get(m, 1), i));
         });
     }
 }
