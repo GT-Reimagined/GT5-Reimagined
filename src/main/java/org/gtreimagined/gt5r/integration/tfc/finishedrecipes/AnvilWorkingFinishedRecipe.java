@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 public record AnvilWorkingFinishedRecipe(ResourceLocation id, Ingredient input, ItemStack output, int tier, boolean applyForgingBonus, String... rules) implements FinishedRecipe {
     @Override
     public void serializeRecipeData(JsonObject jsonObject) {
-        jsonObject.add("ingredient", this.input.toJson());
+        jsonObject.add("input", this.input.toJson());
         jsonObject.add("result", RecipeUtil.itemstackToJson(output));
         JsonArray array = new JsonArray();
         for (String s : rules){

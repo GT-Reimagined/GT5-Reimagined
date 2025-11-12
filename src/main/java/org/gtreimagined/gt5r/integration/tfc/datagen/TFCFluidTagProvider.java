@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.integration.tfc.datagen;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.TFCTags.Fluids;
 import net.dries007.tfc.common.fluids.TFCFluids;
+import net.dries007.tfc.util.Metal.Default;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCGTFluids;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
@@ -22,5 +23,6 @@ public class TFCFluidTagProvider extends GTFluidTagProvider {
             this.tag(Fluids.USABLE_IN_INGOT_MOLD).add(fluid.getFluid());
             this.tag(Fluids.USABLE_IN_TOOL_HEAD_MOLD).add(fluid.getFluid());
         }
+        this.tag(Fluids.USABLE_IN_TOOL_HEAD_MOLD).add(TFCFluids.METALS.get(Default.ROSE_GOLD).getSource(), TFCFluids.METALS.get(Default.STERLING_SILVER).getSource());
     }
 }
