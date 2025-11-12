@@ -41,16 +41,16 @@ public class Metals {
         addMetalFromMaterial(DamascusSteel, 4);
         addMetalFromMaterial(Electrum, 2, 0.005625, 1.875);
         addMetalFromMaterial(Invar, 3);
-        addHeatableToolFromTFCMetal(RoseGold, 960, 2.857);
-        addHeatableToolFromTFCMetal(SterlingSilver, 950, 2.857);
+        addHeatableToolFromTFCMetal(RoseGold, 1, 960, 2.857);
+        addHeatableToolFromTFCMetal(SterlingSilver, 1, 950, 2.857);
     }
 
     private static void addMetalFromMaterial(Material material, int tier){
         addMetalFromMaterial(material, tier, 0.00857, 2.857);
     }
 
-    private static void addHeatableToolFromTFCMetal(Material material, int meltTemp, double heatCapacityForHeating){
-        METALS.put(material, meltTemp);
+    private static void addHeatableToolFromTFCMetal(Material material, int tier, int meltTemp, double heatCapacityForHeating){
+        METALS.put(material, tier);
         MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, PLATE, CHUNK, DUST};
         Arrays.stream(types).forEach(t -> {
             if (!material.has(t)) return;
