@@ -30,9 +30,11 @@ public class TFCMaterialEvents {
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
         event.setMaterial(Aluminium).flags(SHEET);
         event.setMaterial(Antimony).flags(SHEET);
+        event.setMaterial(Beryllium).flags(SHEET);
         event.setMaterial(Lead).flags(SHEET);
         event.setMaterial(BatteryAlloy).flags(SHEET);
         event.setMaterial(Cupronickel).flags(SHEET);
+        event.setMaterial(DamascusSteel).flags(SHEET);
         event.setMaterial(Electrum).flags(SHEET);
         event.setMaterial(Invar).flags(SHEET);
         Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc};

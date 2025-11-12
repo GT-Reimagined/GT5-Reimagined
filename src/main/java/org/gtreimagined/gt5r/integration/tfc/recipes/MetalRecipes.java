@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.tfc.Metals;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.CastingFinishedRecipe;
@@ -23,6 +24,8 @@ import org.gtreimagined.gtlib.util.RegistryUtils;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
+import static org.gtreimagined.gt5r.data.Materials.RoseGold;
+import static org.gtreimagined.gt5r.data.Materials.SterlingSilver;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
@@ -45,7 +48,8 @@ public class MetalRecipes {
             int meltTemp = MaterialTags.MELTING_POINT.get(m) - 273;
             int forgeTemp = (int) (meltTemp * 0.6);
             int weldTemp = (int) (meltTemp * 0.8);
-            Function<Integer, FluidStack> fluid = amount -> new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(Ref.SHARED_ID, m.getId())), amount);
+            boolean tfc = m == RoseGold || m == SterlingSilver;
+            Function<Integer, FluidStack> fluid = amount -> new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(tfc ? "tfc" : Ref.SHARED_ID, (tfc ? "metal/" : "") + m.getId())), amount);
             if (m.has(TOOLS)) {
                 GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, KNIFE, SCYTHE, PROPICK, JAVELIN};
                 ToolData t = TOOLS.get(m);
@@ -59,10 +63,10 @@ public class MetalRecipes {
                     }
                 }
             }
-            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{INGOT, SHEET, PLATE, ROD, CHUNK, DUST};
+            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, SHEET, PLATE, ROD, CHUNK, DUST};
             for(MaterialTypeItem<?> type : types){
-                if (m.has(type)){
-                    double ratio = (double)type.getUnitValue() / U;
+                if (m.has(type) && (!tfc || (type != INGOT && type != SHEET && type != ROD))){
+                    double ratio = type == RAW_ORE ? .5 : (double)type.getUnitValue() / U;
                     consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + type.getId()), Ingredient.of(type.getMaterialTag(m)), fluid.apply((int) (100 * ratio)), meltTemp));
                     if (type == INGOT){
                         consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_ingot"), TFCItems.MOLDS.get(ItemType.INGOT).get(), fluid.apply(100), INGOT.get(m), 0.1f));
