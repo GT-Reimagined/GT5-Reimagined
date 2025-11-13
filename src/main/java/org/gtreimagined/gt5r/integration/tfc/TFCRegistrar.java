@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.integration.tfc;
 
+import com.google.gson.JsonObject;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.dries007.tfc.common.items.TFCItems;
@@ -24,6 +25,7 @@ import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.datagen.DynamicDataPack;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
@@ -119,7 +121,11 @@ public class TFCRegistrar extends GTMod {
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });
-
+            JsonObject jsonObject = new JsonObject();
+            jsonObject.addProperty("extend", "tfc:field_guide");
+            jsonObject.addProperty("name", "gt5r field_guide extension");
+            jsonObject.addProperty("landing_text", "gt5r field_guide extension");
+            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "patchouli_books/field_guide/book.json"), jsonObject.toString().getBytes());
         }
         if (event == RegistrationEvent.DATA_READY) {
             TFCOreGen.init();

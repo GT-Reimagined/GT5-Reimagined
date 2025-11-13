@@ -50,11 +50,6 @@ public class MiscTFCRecipes {
         consumer.accept(new ChiselFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "chisel/firebricks"), TFCBlocks.FIRE_BRICKS.get(), GT5RBlocks.FIRE_BRICKS, Mode.SMOOTH));
         provider.shapeless(consumer, GT5Reimagined.ID, "firebricks", "bricks", new ItemStack(GT5RBlocks.FIRE_BRICKS), TFCBlocks.FIRE_BRICKS.get(), TFCTags.Items.CHISELS);
         SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(TFCItems.UNFIRED_FIRE_BRICK.get(), 1), TFCItems.FIRE_BRICK.get(), 0.5F, 200).unlockedBy("has_unfired_fire_brick", provider.hasSafeItem(TFCItems.UNFIRED_FIRE_BRICK.get())).save(consumer, GT5Reimagined.ID + ":firebrick");
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("extend", "tfc:field_guide");
-        jsonObject.addProperty("name", "gt5r field_guide extension");
-        jsonObject.addProperty("landing_text", "gt5r field_guide extension");
-        DynamicDataPack.addData(new ResourceLocation(GT5Reimagined.ID, "patchouli_books/field_guide/book.json"), jsonObject);
     }
 
     private static TFCMetal metalFromOre(Ore ore){
