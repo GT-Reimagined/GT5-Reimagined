@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.tfc.datagen;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gt5r.integration.tfc.Metals;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
 import org.gtreimagined.gtlib.GTAPI;
@@ -42,7 +43,7 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "rock_knapping"))).add(Items.FLINT);
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "flux"))).add(DUST.get(Limestone), DUST.get(Marble), DUST.get(Calcite));
         Material[] tfcTools = new Material[]{BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel};
-        INGOT.all().stream().filter(m -> !INGOT.hasReplacement(m)).forEach(m ->{
+        INGOT.all().stream().filter(m -> !INGOT.hasReplacement(m) && Metals.METALS.containsKey(m)).forEach(m ->{
             this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "pileable_ingots"))).add(INGOT.get(m));
         });
         SHEET.all().stream().filter(m -> !SHEET.hasReplacement(m)).forEach(m ->{
