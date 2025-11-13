@@ -146,12 +146,12 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.AnnealedCopper).asMetal(1357, PLATE, FOIL, LONG_ROD, FINE_WIRE, SCREW).remove(DUST, SMALL_DUST, TINY_DUST);
         event.setMaterial(Materials.BatteryAlloy).asMetal(295, PLATE, ALLOY);
-        event.setMaterial(Materials.BismuthBronze).asMetal(1100, PLATE, ALLOY);
-        event.setMaterial(Materials.BlackBronze).asMetal(2000, FRAME, ALLOY);
-        event.setMaterial(Materials.BlackSteel).asMetal(1200, FRAME, PLATE).forceBF(false);
-        event.setMaterial(Materials.BlueSteel).asMetal(1400, FRAME).forceBF(false);
+        event.setMaterial(Materials.BismuthBronze).asMetal(1258, PLATE, ALLOY);
+        event.setMaterial(Materials.BlackBronze).asMetal(1343, FRAME, ALLOY);
+        event.setMaterial(Materials.BlackSteel).asMetal(1758, 1200, FRAME, PLATE).forceBF(false);
+        event.setMaterial(Materials.BlueSteel).asMetal(1811, 1400, FRAME).forceBF(false);
         event.setMaterial(Materials.Brass).asMetal(1170, FRAME, ROD, PLATE, SMALL_GEAR, ALLOY);
-        event.setMaterial(Materials.Bronze).asMetal(1125, GEAR, FRAME, ROTOR, ALLOY);
+        event.setMaterial(Materials.Bronze).asMetal(1223, GEAR, FRAME, ROTOR, ALLOY);
         event.setMaterial(Materials.CdInAGAlloy).asMetal(752, ROD, ALLOY);
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
@@ -173,7 +173,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD, FINE_WIRE);
         event.setMaterial(Materials.Osmiridium).asMetal(3333, 2500, FRAME);
         event.setMaterial(Materials.RedAlloy).asMetal(295, PLATE, FOIL, ROD, FINE_WIRE, ALLOY);
-        event.setMaterial(Materials.RedSteel).asMetal(1300, 1300).forceBF(false);
+        event.setMaterial(Materials.RedSteel).asMetal(1811, 1300).forceBF(false);
         event.setMaterial(Materials.RoseGold).asMetal(1600, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.SolderingAlloy).asMetal(400, PLATE, ROD, ALLOY);
         event.setMaterial(Materials.Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, SMALL_GEAR, ITEM_CASING, FINE_WIRE).forceBF(false);
