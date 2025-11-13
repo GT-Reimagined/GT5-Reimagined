@@ -3,7 +3,10 @@ package org.gtreimagined.gt5r.integration.tfc;
 import com.google.gson.JsonObject;
 import it.unimi.dsi.fastutil.objects.Object2IntArrayMap;
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Tuple;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.DynamicDataPack;
@@ -31,7 +34,7 @@ import static org.gtreimagined.gtlib.data.GTTools.SCYTHE;
 import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
 public class Metals {
-    public static final Object2IntMap<Material> METALS = new Object2IntArrayMap<>();
+    public static final Object2ObjectMap<Material, Tuple<Boolean, Integer>> METALS = new Object2ObjectOpenHashMap<>();
     public static void init(){
         addMetalFromMaterial(Aluminium, 3, 0.1, 3.333);
         addMetalFromMaterial(Antimony, 1, 0.012, 4);
@@ -42,16 +45,24 @@ public class Metals {
         addMetalFromMaterial(DamascusSteel, 4);
         addMetalFromMaterial(Electrum, 2, 0.005625, 1.875);
         addMetalFromMaterial(Invar, 3);
-        addHeatableToolFromTFCMetal(RoseGold, 1, 960, 2.857);
-        addHeatableToolFromTFCMetal(SterlingSilver, 1, 950, 2.857);
+        addHeatableToolFromTFCMetal(RoseGold, 1, 960, 2.857, false);
+        addHeatableToolFromTFCMetal(SterlingSilver, 1, 950, 2.857, false);
+        addHeatableToolFromTFCMetal(BismuthBronze, 2, 985, 2.857, true);
+        addHeatableToolFromTFCMetal(Bronze, 2, 950, 2.857, true);
+        addHeatableToolFromTFCMetal(BlackBronze, 2, 1070, 2.857, true);
+        addHeatableToolFromTFCMetal(WroughtIron, 3, 1535, 2.857, true);
+        addHeatableToolFromTFCMetal(Steel, 4, 1540, 2.857, true);
+        addHeatableToolFromTFCMetal(BlackSteel, 5, 1485, 2.857, true);
+        addHeatableToolFromTFCMetal(BlueSteel, 6, 1540, 2.857, true);
+        addHeatableToolFromTFCMetal(RedSteel, 6, 1540, 2.857, true);
     }
 
     private static void addMetalFromMaterial(Material material, int tier){
         addMetalFromMaterial(material, tier, 0.00857, 2.857);
     }
 
-    private static void addHeatableToolFromTFCMetal(Material material, int tier, int meltTemp, double heatCapacityForHeating){
-        METALS.put(material, tier);
+    private static void addHeatableToolFromTFCMetal(Material material, int tier, int meltTemp, double heatCapacityForHeating, boolean fileOnly){
+        METALS.put(material, new Tuple<>(true, tier));
         MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, PLATE, CHUNK, DUST};
         Arrays.stream(types).forEach(t -> {
             if (!material.has(t)) return;
@@ -69,6 +80,7 @@ public class Metals {
             ToolData td = TOOLS.get(material);
             GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, KNIFE, SCYTHE, PROPICK, JAVELIN};
             for(GTToolType toolType : toolTypes){
+                if (fileOnly && toolType != FILE) continue;
                 if (td.toolTypes().contains(toolType) && toolType.getMaterialTypeItem() != null) {
                     var toolHead = toolType.getMaterialTypeItem();
                     JsonObject j = new JsonObject();
@@ -90,7 +102,7 @@ public class Metals {
     }
 
     private static void addMetalFromMaterial(Material material, int tier, double specificHeatCapacity, double heatCapacityForHeating){
-        METALS.put(material, tier);
+        METALS.put(material, new Tuple<>(false, tier));
         JsonObject jsonObject = new JsonObject();
         jsonObject.addProperty("tier", tier);
         jsonObject.addProperty("fluid", Ref.SHARED_ID + ":" + material.getId());

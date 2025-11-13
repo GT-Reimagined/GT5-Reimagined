@@ -67,6 +67,7 @@ import java.util.function.BiConsumer;
 
 import static net.dries007.tfc.common.blocks.soil.SoilBlockType.*;
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
@@ -204,6 +205,9 @@ public class TFCRegistrar extends GTMod {
     public void onMaterialEvent(MaterialEvent event) {
         TFCMaterialEvents.onMaterialEvent(event);
         Metals.init();
+        Metals.METALS.forEach((material, tuple) -> {
+            event.setMaterial(material).flags(SHEET);
+        });
     }
 
     @Override

@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.DOUBLE_INGOT;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
@@ -28,18 +29,10 @@ public class TFCMaterialEvents {
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
-        event.setMaterial(Aluminium).flags(SHEET);
-        event.setMaterial(Antimony).flags(SHEET);
-        event.setMaterial(Beryllium).flags(SHEET);
-        event.setMaterial(Lead).flags(SHEET);
-        event.setMaterial(BatteryAlloy).flags(SHEET);
-        event.setMaterial(Cupronickel).flags(SHEET);
-        event.setMaterial(DamascusSteel).flags(SHEET);
-        event.setMaterial(Electrum).flags(SHEET);
-        event.setMaterial(Invar).flags(SHEET);
         Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
+            DOUBLE_INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/double_ingot/" + material.getId()));
             ROD.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/rod/"+material.getId()));
             SHEET.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/sheet/"+ material.getId()));
         }
@@ -47,6 +40,7 @@ public class TFCMaterialEvents {
                 BlueSteel, Bronze, RedSteel, Steel, WroughtIron};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
+            DOUBLE_INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/double_ingot/" + material.getId()));
             ROD.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/rod/"+material.getId()));
             SHEET.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/sheet/"+ material.getId()));
             if (material.has(MaterialTags.TOOLS)){
