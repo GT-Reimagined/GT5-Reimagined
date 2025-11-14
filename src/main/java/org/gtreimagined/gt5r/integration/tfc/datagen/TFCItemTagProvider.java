@@ -1,5 +1,9 @@
 package org.gtreimagined.gt5r.integration.tfc.datagen;
 
+import net.dries007.tfc.common.items.TFCItems;
+import net.dries007.tfc.util.Metal;
+import net.dries007.tfc.util.Metal.Default;
+import net.dries007.tfc.util.Metal.ItemType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.integration.tfc.Metals;
@@ -17,8 +21,7 @@ import org.gtreimagined.gtlib.util.TagUtils;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.DUST;
-import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class TFCItemTagProvider extends GTItemTagProvider {
@@ -42,6 +45,12 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "propicks"))).addTag(TFCToolTypes.PROPICK.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "rock_knapping"))).add(Items.FLINT);
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "flux"))).add(DUST.get(Limestone), DUST.get(Marble), DUST.get(Calcite));
+        for (Metal.Default metal : Default.values()){
+            if (metal.hasTools()){
+                this.tag(HAMMER.getTag()).add(TFCItems.METAL_ITEMS.get(metal).get(ItemType.HAMMER).get());
+                this.tag(SAW.getTag()).add(TFCItems.METAL_ITEMS.get(metal).get(ItemType.SAW).get());
+            }
+        }
         Material[] tfcTools = new Material[]{BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel};
         INGOT.all().stream().filter(m -> !INGOT.hasReplacement(m) && Metals.METALS.containsKey(m)).forEach(m ->{
             this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "pileable_ingots"))).add(INGOT.get(m));
