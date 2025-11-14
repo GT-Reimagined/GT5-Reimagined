@@ -23,6 +23,9 @@ public class TFCFluidTagProvider extends GTFluidTagProvider {
             this.tag(Fluids.USABLE_IN_INGOT_MOLD).add(fluid.getFluid());
             this.tag(Fluids.USABLE_IN_TOOL_HEAD_MOLD).add(fluid.getFluid());
         }
-        this.tag(Fluids.USABLE_IN_TOOL_HEAD_MOLD).add(TFCFluids.METALS.get(Default.ROSE_GOLD).getSource(), TFCFluids.METALS.get(Default.STERLING_SILVER).getSource());
+        this.tag(Fluids.USABLE_IN_TOOL_HEAD_MOLD).add(TFCFluids.METALS.get(Default.ROSE_GOLD).getSource(),
+                TFCFluids.METALS.get(Default.STERLING_SILVER).getSource(),
+                TFCFluids.METALS.get(Default.NICKEL).getSource(),
+                TFCFluids.METALS.get(Default.GOLD).getSource());
     }
 }

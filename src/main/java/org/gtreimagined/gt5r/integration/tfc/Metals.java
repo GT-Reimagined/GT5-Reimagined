@@ -55,6 +55,14 @@ public class Metals {
         addHeatableToolFromTFCMetal(BlackSteel, 5, 1485, 2.857, true);
         addHeatableToolFromTFCMetal(BlueSteel, 6, 1540, 2.857, true);
         addHeatableToolFromTFCMetal(RedSteel, 6, 1540, 2.857, true);
+        addHeatableToolFromTFCMetal(Bismuth, 1, 270, 7.143, false);
+        addHeatableToolFromTFCMetal(Brass, 2, 930, 2.857, false);
+        addHeatableToolFromTFCMetal(Copper, 1, 1080, 2.857, false);
+        addHeatableToolFromTFCMetal(Gold, 1, 1060, 1.667, false);
+        addHeatableToolFromTFCMetal(Nickel, 1, 1453, 2.083, false);
+        addHeatableToolFromTFCMetal(Silver, 1, 961, 2.083, false);
+        addHeatableToolFromTFCMetal(Tin, 1, 230, 7.143, false);
+        addHeatableToolFromTFCMetal(Zinc, 1, 420, 4.762, false);
     }
 
     private static void addMetalFromMaterial(Material material, int tier){
