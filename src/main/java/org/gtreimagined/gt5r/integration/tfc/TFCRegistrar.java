@@ -103,6 +103,8 @@ public class TFCRegistrar extends GTMod {
                 GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, rock.name().toLowerCase() + "_gravel", material, new Texture(Ref.MOD_TFC, "block/rock/gravel/" + rock.name().toLowerCase()), SoundType.GRAVEL, false).setSandLike(true).setHardnessAndResistance(rock.category().hardness(2.0F)).setStateSupplier(() -> rock.getBlock(Rock.BlockType.GRAVEL).get().defaultBlockState()).setHarvestLevel(1).setRequiresTool(true));
                 return true;
             });
+            Material kaolinite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "kaolinite", 0xb68e86, TextureSet.NONE));
+            kaolinite.flags(DUST, BEARING_ROCK);
             Helpers.mapOfKeys(SandBlockType.class, (sand) -> {
                 Material material = Material.get(sand.name().toLowerCase() + "_sand");
                 if (material == Material.NULL){
