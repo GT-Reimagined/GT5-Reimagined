@@ -27,7 +27,7 @@ public class TFCLangProvider extends GTLanguageProvider {
         });
         GTAPI.all(BlockOre.class, o -> {
             String nativeSuffix = o.getMaterial().getElement() != null ? "Native " : "";
-            add(o.getDescriptionId() + ".prospected", String.join("", nativeSuffix, getLocalizedType(o.getMaterial())));
+            add("block.antimatter_shared." + o.getDescriptionId() + ".prospected", String.join("", nativeSuffix, getLocalizedType(o.getMaterial())));
         });
         Metals.METALS.forEach((m, i) -> {
             add("metal.gt5r." + m.getId(), m.getDisplayNameString());
