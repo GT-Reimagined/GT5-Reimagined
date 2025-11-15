@@ -6,19 +6,20 @@ import it.unimi.dsi.fastutil.Pair;
 import net.devtech.arrp.json.tags.JTag;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Ore.Grade;
-import net.dries007.tfc.world.feature.vein.Indicator;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static net.dries007.tfc.common.blocks.rock.Ore.*;
@@ -64,200 +65,200 @@ public class TFCOreGen {
     public static void initTFCReplacements() {
         //surface
         createClusterVein("surface_tetrahedrite", 20, 20, 0.5, 60, 210,
-                ofM(new WeightedBlock(TETRAHEDRITE, POOR, 36), new WeightedBlock(TETRAHEDRITE, NORMAL, 18), new WeightedBlock(TETRAHEDRITE, RICH, 6),
-                        new WeightedBlock(NATIVE_COPPER, POOR, 12), new WeightedBlock(NATIVE_COPPER, NORMAL, 6),
-                        new WeightedBlock(NATIVE_COPPER, RICH, 2), new WeightedBlock(Stibnite, 20)),
+                ofM(ofOre(TETRAHEDRITE, POOR, 36), ofOre(TETRAHEDRITE, NORMAL, 18), ofOre(TETRAHEDRITE, RICH, 6),
+                        ofOre(NATIVE_COPPER, POOR, 12), ofOre(NATIVE_COPPER, NORMAL, 6),
+                        ofOre(NATIVE_COPPER, RICH, 2), ofOre(Stibnite, 20)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(12, new WeightedBlock(TETRAHEDRITE, 80), new WeightedBlock(NATIVE_COPPER, 20)));
+                new Indicator(12, ofRock(TETRAHEDRITE, 80), ofRock(NATIVE_COPPER, 20)));
         createClusterVein("surface_sphalerite", 20, 20, 0.5, 60, 210,
-                ofM(new WeightedBlock(SPHALERITE, POOR, 36), new WeightedBlock(SPHALERITE, NORMAL, 18), new WeightedBlock(SPHALERITE, RICH, 6),
-                        new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(PYRITE, 20)),
+                ofM(ofOre(SPHALERITE, POOR, 36), ofOre(SPHALERITE, NORMAL, 18), ofOre(SPHALERITE, RICH, 6),
+                        ofOre(Chalcopyrite, 20), ofOre(PYRITE, 20)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(12, new WeightedBlock(SPHALERITE, 60), new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(PYRITE, 20)));
+                new Indicator(12, ofRock(SPHALERITE, 60), ofRock(Chalcopyrite, 20), ofRock(PYRITE, 20)));
         createClusterVein("surface_native_copper", 60, 20, 0.6, 60, 210,
-                ofM(new WeightedBlock(NATIVE_COPPER, POOR, 42), new WeightedBlock(NATIVE_COPPER, NORMAL, 21),
-                        new WeightedBlock(NATIVE_COPPER, RICH, 7), new WeightedBlock(TETRAHEDRITE, POOR, 12),
-                        new WeightedBlock(TETRAHEDRITE, NORMAL, 6), new WeightedBlock(TETRAHEDRITE, RICH, 2), new WeightedBlock(Stibnite, 10)),
+                ofM(ofOre(NATIVE_COPPER, POOR, 42), ofOre(NATIVE_COPPER, NORMAL, 21),
+                        ofOre(NATIVE_COPPER, RICH, 7), ofOre(TETRAHEDRITE, POOR, 12),
+                        ofOre(TETRAHEDRITE, NORMAL, 6), ofOre(TETRAHEDRITE, RICH, 2), ofOre(Stibnite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite"},
-                new Indicator(12, new WeightedBlock(NATIVE_COPPER, 70), new WeightedBlock(TETRAHEDRITE, 20), new WeightedBlock(Stibnite, 10)));
+                new Indicator(12, ofRock(NATIVE_COPPER, 70), ofRock(TETRAHEDRITE, 20), ofRock(Stibnite, 10)));
 
         //deep veins
         createClusterVein("deep_magnetite", 100, 35, 0.7, -64, 30,
-                ofM(new WeightedBlock(MAGNETITE, POOR, 7), new WeightedBlock(MAGNETITE, NORMAL, 21), new WeightedBlock(MAGNETITE, RICH, 42),
-                        new WeightedBlock(HEMATITE, POOR, 2), new WeightedBlock(HEMATITE, NORMAL, 6), new WeightedBlock(HEMATITE, RICH, 12),
-                        new WeightedBlock(VanadiumMagnetite, 10)),
+                ofM(ofOre(MAGNETITE, POOR, 7), ofOre(MAGNETITE, NORMAL, 21), ofOre(MAGNETITE, RICH, 42),
+                        ofOre(HEMATITE, POOR, 2), ofOre(HEMATITE, NORMAL, 6), ofOre(HEMATITE, RICH, 12),
+                        ofOre(VanadiumMagnetite, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(MAGNETITE, 70), new WeightedBlock(HEMATITE, 20), new WeightedBlock(VanadiumMagnetite, 10)));
+                new Indicator(12, ofRock(MAGNETITE, 70), ofRock(HEMATITE, 20), ofRock(VanadiumMagnetite, 10)));
         createClusterVein("deep_hematite", 100, 35, 0.7, -64, 30,
-                ofM(new WeightedBlock(HEMATITE, POOR, 7), new WeightedBlock(HEMATITE, NORMAL, 21), new WeightedBlock(HEMATITE, RICH, 42),
-                        new WeightedBlock(MAGNETITE, POOR, 2), new WeightedBlock(MAGNETITE, NORMAL, 6), new WeightedBlock(MAGNETITE, RICH, 12),
-                        new WeightedBlock(VanadiumMagnetite, 10)),
+                ofM(ofOre(HEMATITE, POOR, 7), ofOre(HEMATITE, NORMAL, 21), ofOre(HEMATITE, RICH, 42),
+                        ofOre(MAGNETITE, POOR, 2), ofOre(MAGNETITE, NORMAL, 6), ofOre(MAGNETITE, RICH, 12),
+                        ofOre(VanadiumMagnetite, 10)),
                 new String[]{"rhyolite", "andesite", "basalt", "dacite"},
-                new Indicator(12, new WeightedBlock(HEMATITE, 70), new WeightedBlock(MAGNETITE, 20), new WeightedBlock(VanadiumMagnetite, 10)));
+                new Indicator(12, ofRock(HEMATITE, 70), ofRock(MAGNETITE, 20), ofRock(VanadiumMagnetite, 10)));
         createClusterVein("deep_limonite", 100, 35, 0.7, -64, 30,
-                ofM(new WeightedBlock(LIMONITE, POOR, 4), new WeightedBlock(LIMONITE, NORMAL, 12), new WeightedBlock(LIMONITE, RICH, 24),
-                        new WeightedBlock(BrownLimonite, 40),
-                        new WeightedBlock(HEMATITE, NORMAL, 4), new WeightedBlock(HEMATITE, RICH, 6),
-                        new WeightedBlock(MALACHITE, NORMAL, 4), new WeightedBlock(MALACHITE, RICH, 6)),
+                ofM(ofOre(LIMONITE, POOR, 4), ofOre(LIMONITE, NORMAL, 12), ofOre(LIMONITE, RICH, 24),
+                        ofOre(BrownLimonite, 40),
+                        ofOre(HEMATITE, NORMAL, 4), ofOre(HEMATITE, RICH, 6),
+                        ofOre(MALACHITE, NORMAL, 4), ofOre(MALACHITE, RICH, 6)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(LIMONITE, 40), new WeightedBlock(BrownLimonite, 40), new WeightedBlock(HEMATITE, 10), new WeightedBlock(MALACHITE, 10)));
+                new Indicator(12, ofRock(LIMONITE, 40), ofRock(BrownLimonite, 40), ofRock(HEMATITE, 10), ofRock(MALACHITE, 10)));
 
 
         //normal veins
         createClusterVein("normal_tetrahedrite", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(TETRAHEDRITE, POOR, 12), new WeightedBlock(TETRAHEDRITE, NORMAL, 30), new WeightedBlock(TETRAHEDRITE, RICH, 18),
-                        new WeightedBlock(NATIVE_COPPER, POOR, 4), new WeightedBlock(NATIVE_COPPER, NORMAL, 10),
-                        new WeightedBlock(NATIVE_COPPER, RICH, 6), new WeightedBlock(Stibnite, 20)),
+                ofM(ofOre(TETRAHEDRITE, POOR, 12), ofOre(TETRAHEDRITE, NORMAL, 30), ofOre(TETRAHEDRITE, RICH, 18),
+                        ofOre(NATIVE_COPPER, POOR, 4), ofOre(NATIVE_COPPER, NORMAL, 10),
+                        ofOre(NATIVE_COPPER, RICH, 6), ofOre(Stibnite, 20)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(12, new WeightedBlock(TETRAHEDRITE, 80), new WeightedBlock(NATIVE_COPPER, 20)));
+                new Indicator(12, ofRock(TETRAHEDRITE, 80), ofRock(NATIVE_COPPER, 20)));
         createClusterVein("normal_sphalerite", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(SPHALERITE, POOR, 12), new WeightedBlock(SPHALERITE, NORMAL, 30), new WeightedBlock(SPHALERITE, RICH, 18),
-                        new WeightedBlock(PYRITE, 20), new WeightedBlock(Chalcopyrite, 20)),
+                ofM(ofOre(SPHALERITE, POOR, 12), ofOre(SPHALERITE, NORMAL, 30), ofOre(SPHALERITE, RICH, 18),
+                        ofOre(PYRITE, 20), ofOre(Chalcopyrite, 20)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(12, new WeightedBlock(SPHALERITE, 60), new WeightedBlock(Chalcopyrite, 20), new WeightedBlock(PYRITE, 20)));
+                new Indicator(12, ofRock(SPHALERITE, 60), ofRock(Chalcopyrite, 20), ofRock(PYRITE, 20)));
         createClusterVein("normal_malachite", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(MALACHITE, POOR, 16), new WeightedBlock(MALACHITE, NORMAL, 40), new WeightedBlock(MALACHITE, RICH, 24),
-                        new WeightedBlock(LIMONITE, POOR, 4), new WeightedBlock(LIMONITE, NORMAL, 10), new WeightedBlock(LIMONITE, RICH, 6),
-                        new WeightedBlock(GYPSUM, "limestone", 11)),
+                ofM(ofOre(MALACHITE, POOR, 16), ofOre(MALACHITE, NORMAL, 40), ofOre(MALACHITE, RICH, 24),
+                        ofOre(LIMONITE, POOR, 4), ofOre(LIMONITE, NORMAL, 10), ofOre(LIMONITE, RICH, 6),
+                        ofOre(GYPSUM, null, 11, s -> s.equals("limestone"))),
                 new String[]{"marble", "limestone"},
-                new Indicator(12, new WeightedBlock(MALACHITE, 80), new WeightedBlock(LIMONITE, 20)));
+                new Indicator(12, ofRock(MALACHITE, 80), ofRock(LIMONITE, 20)));
         createClusterVein("normal_magnetite", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(MAGNETITE, POOR, 14), new WeightedBlock(MAGNETITE, NORMAL, 35), new WeightedBlock(MAGNETITE, RICH, 21),
-                        new WeightedBlock(HEMATITE, POOR, 4), new WeightedBlock(HEMATITE, NORMAL, 10), new WeightedBlock(HEMATITE, RICH, 6),
-                        new WeightedBlock(VanadiumMagnetite, 10)),
+                ofM(ofOre(MAGNETITE, POOR, 14), ofOre(MAGNETITE, NORMAL, 35), ofOre(MAGNETITE, RICH, 21),
+                        ofOre(HEMATITE, POOR, 4), ofOre(HEMATITE, NORMAL, 10), ofOre(HEMATITE, RICH, 6),
+                        ofOre(VanadiumMagnetite, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(MAGNETITE, 70), new WeightedBlock(HEMATITE, 20), new WeightedBlock(VanadiumMagnetite, 10)));
+                new Indicator(12, ofRock(MAGNETITE, 70), ofRock(HEMATITE, 20), ofRock(VanadiumMagnetite, 10)));
         createClusterVein("normal_hematite", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(HEMATITE, POOR, 14), new WeightedBlock(HEMATITE, NORMAL, 35), new WeightedBlock(HEMATITE, RICH, 21),
-                        new WeightedBlock(MAGNETITE, POOR, 4), new WeightedBlock(MAGNETITE, NORMAL, 10), new WeightedBlock(MAGNETITE, RICH, 6),
-                        new WeightedBlock(VanadiumMagnetite, 10)),
+                ofM(ofOre(HEMATITE, POOR, 14), ofOre(HEMATITE, NORMAL, 35), ofOre(HEMATITE, RICH, 21),
+                        ofOre(MAGNETITE, POOR, 4), ofOre(MAGNETITE, NORMAL, 10), ofOre(MAGNETITE, RICH, 6),
+                        ofOre(VanadiumMagnetite, 10)),
                 new String[]{"rhyolite", "andesite", "basalt", "dacite"},
-                new Indicator(12, new WeightedBlock(HEMATITE, 70), new WeightedBlock(MAGNETITE, 20), new WeightedBlock(VanadiumMagnetite, 10)));
+                new Indicator(12, ofRock(HEMATITE, 70), ofRock(MAGNETITE, 20), ofRock(VanadiumMagnetite, 10)));
         createClusterVein("normal_limonite", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(LIMONITE, POOR, 8), new WeightedBlock(LIMONITE, NORMAL, 20), new WeightedBlock(LIMONITE, RICH, 12),
-                        new WeightedBlock(BrownLimonite, 40),
-                        new WeightedBlock(HEMATITE, POOR, 2), new WeightedBlock(HEMATITE, NORMAL, 5), new WeightedBlock(HEMATITE, RICH, 3),
-                        new WeightedBlock(MALACHITE, POOR, 2), new WeightedBlock(MALACHITE, NORMAL, 5), new WeightedBlock(MALACHITE, POOR, 3)),
+                ofM(ofOre(LIMONITE, POOR, 8), ofOre(LIMONITE, NORMAL, 20), ofOre(LIMONITE, RICH, 12),
+                        ofOre(BrownLimonite, 40),
+                        ofOre(HEMATITE, POOR, 2), ofOre(HEMATITE, NORMAL, 5), ofOre(HEMATITE, RICH, 3),
+                        ofOre(MALACHITE, POOR, 2), ofOre(MALACHITE, NORMAL, 5), ofOre(MALACHITE, POOR, 3)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(LIMONITE, 40), new WeightedBlock(BrownLimonite, 40), new WeightedBlock(HEMATITE, 10), new WeightedBlock(MALACHITE, 10)));
+                new Indicator(12, ofRock(LIMONITE, 40), ofRock(BrownLimonite, 40), ofRock(HEMATITE, 10), ofRock(MALACHITE, 10)));
         createClusterVein("normal_garnierite", 70, 20, 0.6, -32, 60,
-                ofM(new WeightedBlock(GARNIERITE, POOR, 14), new WeightedBlock(GARNIERITE, NORMAL, 35), new WeightedBlock(GARNIERITE, RICH, 21),
-                        new WeightedBlock(Cobaltite, 20), new WeightedBlock(Pentlandite, 10)),
+                ofM(ofOre(GARNIERITE, POOR, 14), ofOre(GARNIERITE, NORMAL, 35), ofOre(GARNIERITE, RICH, 21),
+                        ofOre(Cobaltite, 20), ofOre(Pentlandite, 10)),
                 new String[]{"gabbro"},
-                new Indicator(12, new WeightedBlock(GARNIERITE, 70), new WeightedBlock(Cobaltite, 20), new WeightedBlock(Pentlandite, 10)));
+                new Indicator(12, ofRock(GARNIERITE, 70), ofRock(Cobaltite, 20), ofRock(Pentlandite, 10)));
         createClusterVein("normal_native_silver", 60, 22, 0.6, -32, 75,
-                ofM(new WeightedBlock(NATIVE_SILVER, POOR, 16), new WeightedBlock(NATIVE_SILVER, NORMAL, 40),
-                        new WeightedBlock(NATIVE_SILVER, RICH, 24), new WeightedBlock(Lead, 20)),
+                ofM(ofOre(NATIVE_SILVER, POOR, 16), ofOre(NATIVE_SILVER, NORMAL, 40),
+                        ofOre(NATIVE_SILVER, RICH, 24), ofOre(Lead, 20)),
                 new String[]{"granite", "gneiss"},
-                new Indicator(12, new WeightedBlock(NATIVE_SILVER, 80), new WeightedBlock(Lead, 20)));
+                new Indicator(12, ofRock(NATIVE_SILVER, 80), ofRock(Lead, 20)));
         createClusterVein("normal_native_copper", 60, 25, 0.6, -32, 75,
-                ofM(new WeightedBlock(NATIVE_COPPER, POOR, 14), new WeightedBlock(NATIVE_COPPER, NORMAL, 35),
-                        new WeightedBlock(NATIVE_COPPER, RICH, 21), new WeightedBlock(TETRAHEDRITE, POOR, 4),
-                        new WeightedBlock(TETRAHEDRITE, NORMAL, 10), new WeightedBlock(TETRAHEDRITE, RICH, 6), new WeightedBlock(Stibnite, 10)),
+                ofM(ofOre(NATIVE_COPPER, POOR, 14), ofOre(NATIVE_COPPER, NORMAL, 35),
+                        ofOre(NATIVE_COPPER, RICH, 21), ofOre(TETRAHEDRITE, POOR, 4),
+                        ofOre(TETRAHEDRITE, NORMAL, 10), ofOre(TETRAHEDRITE, RICH, 6), ofOre(Stibnite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite"},
-                new Indicator(12, new WeightedBlock(NATIVE_COPPER, 70), new WeightedBlock(TETRAHEDRITE, 20), new WeightedBlock(Stibnite, 10)));
+                new Indicator(12, ofRock(NATIVE_COPPER, 70), ofRock(TETRAHEDRITE, 20), ofRock(Stibnite, 10)));
         //other veins
         createClusterVein("cinnabar", 120, 20, 0.6, -48, 100,
-                ofM(new WeightedBlock(Redstone, 60), new WeightedBlock(Cinnabar, 30), new WeightedBlock(Ruby, 10)),
+                ofM(ofOre(Redstone, 60), ofOre(Cinnabar, 30), ofOre(Ruby, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "quartzite", "shale"},
                 null);
         createClusterVein("lapis_lazuli", 120, 20, 0.6, -48, 100,
-                ofM(new WeightedBlock(Lazurite, 35), new WeightedBlock(Sodalite, 35),
-                        new WeightedBlock(Lapis, 30)),
+                ofM(ofOre(Lazurite, 35), ofOre(Sodalite, 35),
+                        ofOre(Lapis, 30)),
                 new String[]{"limestone", "marble"},
                 null);
     }
 
     public static void initAdditions(){
         createClusterVein("surface_kaolinite", 60, 20, 0.6, 50, 210,
-                ofM(new WeightedBlock(KAOLINITE, 1)),
+                ofM(ofOre(KAOLINITE, 1)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(Material.get("kaolinite"), 1)));
+                new Indicator(12, ofRock(Material.get("kaolinite"), 1)));
         createClusterVein("kaolinite", 60, 20, 0.6, 20, 60,
-                ofM(new WeightedBlock(KAOLINITE, 1)),
+                ofM(ofOre(KAOLINITE, 1)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(Material.get("kaolinite"), 1)));
+                new Indicator(12, ofRock(Material.get("kaolinite"), 1)));
         createClusterVein("chalcopyrite", 90, 30, 0.6, -32, 60,
-                ofM(new WeightedBlock(Chalcopyrite, 30), new WeightedBlock(PYRITE, 30),
-                        new WeightedBlock(HEMATITE, POOR, 6), new WeightedBlock(HEMATITE, NORMAL, 15), new WeightedBlock(HEMATITE, RICH, 9),
-                        new WeightedBlock(NATIVE_COPPER, NORMAL, 10)),
+                ofM(ofOre(Chalcopyrite, 30), ofOre(PYRITE, 30),
+                        ofOre(HEMATITE, POOR, 6), ofOre(HEMATITE, NORMAL, 15), ofOre(HEMATITE, RICH, 9),
+                        ofOre(NATIVE_COPPER, NORMAL, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(40, 12, new WeightedBlock(Chalcopyrite, 30), new WeightedBlock(HEMATITE, 30), new WeightedBlock(PYRITE, 30), new WeightedBlock(NATIVE_COPPER, 10)));
+                new Indicator(40, 12, ofRock(Chalcopyrite, 30), ofRock(HEMATITE, 30), ofRock(PYRITE, 30), ofRock(NATIVE_COPPER, 10)));
         createClusterVein("salts", 100, 15, 0.6, 0, 90,
-                ofM(new WeightedBlock(SYLVITE, 35), new WeightedBlock(HALITE, 35), new WeightedBlock(Lepidolite, 20), new WeightedBlock(Spodumene, 10)),
+                ofM(ofOre(SYLVITE, 35), ofOre(HALITE, 35), ofOre(Lepidolite, 20), ofOre(Spodumene, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(40, 12, new WeightedBlock(Sylvite, 35), new WeightedBlock(Salt, 35), new WeightedBlock(Lepidolite, 20), new WeightedBlock(Spodumene, 10)));
+                new Indicator(40, 12, ofRock(Sylvite, 35), ofRock(Salt, 35), ofRock(Lepidolite, 20), ofRock(Spodumene, 10)));
         createClusterVein("pitchblende", 220, 24, 0.45, -64, -20,
-                ofM(new WeightedBlock(Pitchblende, 60), new WeightedBlock(Uraninite, 40)),
+                ofM(ofOre(Pitchblende, 60), ofOre(Uraninite, 40)),
                 new String[]{"granite", "diorite", "gabbro"},
                 null);
         createClusterVein("soapstone", 120, 35, 0.6, -32, 48,
-                ofM(new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)),
+                ofM(ofOre(Soapstone, 35), ofOre(Talc, 35), ofOre(Glauconite, 20), ofOre(Pentlandite, 10)),
                 new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(40, 12, new WeightedBlock(Soapstone, 35), new WeightedBlock(Talc, 35), new WeightedBlock(Glauconite, 20), new WeightedBlock(Pentlandite, 10)));
+                new Indicator(40, 12, ofRock(Soapstone, 35), ofRock(Talc, 35), ofRock(Glauconite, 20), ofRock(Pentlandite, 10)));
         createClusterVein("platinum", 300, 30, 0.3, -64, 0,
-                ofM(new WeightedBlock(Sheldonite, 35), new WeightedBlock(Sperrylite, 35), new WeightedBlock(Platinum, 20), new WeightedBlock(Iridium, 10)),
+                ofM(ofOre(Sheldonite, 35), ofOre(Sperrylite, 35), ofOre(Platinum, 20), ofOre(Iridium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
                 null);
         createClusterVein("chromite", 140, 25, 0.2, -32, 60,
-                ofM(new WeightedBlock(Chromite, 1)),
+                ofM(ofOre(Chromite, 1)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite"},
                 null);
         createClusterVein("monazite", 185, 40, 0.25, -32, 50,
-                ofM(new WeightedBlock(Bastnasite, 70), new WeightedBlock(Monazite, 20), new WeightedBlock(Neodymium, 10)),
+                ofM(ofOre(Bastnasite, 70), ofOre(Monazite, 20), ofOre(Neodymium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
-                new Indicator(30, 12, new WeightedBlock(Bastnasite, 70), new WeightedBlock(Monazite, 20), new WeightedBlock(Neodymium, 10)));
+                new Indicator(30, 12, ofRock(Bastnasite, 70), ofRock(Monazite, 20), ofRock(Neodymium, 10)));
         createClusterVein("molybdenum", 245, 26, 0.45, -64, 10,
-                ofM(new WeightedBlock(Wulfenite, 35), new WeightedBlock(Molybdenite, 35),
-                        new WeightedBlock(Molybdenum, 20), new WeightedBlock(Powellite, 10)),
+                ofM(ofOre(Wulfenite, 35), ofOre(Molybdenite, 35),
+                        ofOre(Molybdenum, 20), ofOre(Powellite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "granite", "diorite", "gabbro"},
                 null);
         createClusterVein("scheelite", 220, 28, 0.35, -64, 0,
-                ofM(new WeightedBlock(Scheelite, 65), new WeightedBlock(Tungstate, 25), new WeightedBlock(Lithium, 10)),
+                ofM(ofOre(Scheelite, 65), ofOre(Tungstate, 25), ofOre(Lithium, 10)),
                 new String[]{"granite", "diorite", "gabbro"},
                 null);
         createDiscVein("sapphire", 180, 28, 8, 0.35, -64, 26,
-                ofM(new WeightedBlock(Almandine, 35), new WeightedBlock(Pyrope, 35), new WeightedBlock(Sapphire, 15), new WeightedBlock(GreenSapphire, 15)),
+                ofM(ofOre(Almandine, 35), ofOre(Pyrope, 35), ofOre(Sapphire, 15), ofOre(GreenSapphire, 15)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite"},
                 null);
         createClusterVein("manganese", 195, 40, 0.3, -32, 60,
-                ofM(new WeightedBlock(Grossular, 35), new WeightedBlock(Spessartine, 35), new WeightedBlock(Pyrolusite, 20), new WeightedBlock(Tantalite, 10)),
+                ofM(ofOre(Grossular, 35), ofOre(Spessartine, 35), ofOre(Pyrolusite, 20), ofOre(Tantalite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(40, 12, new WeightedBlock(Grossular, 35), new WeightedBlock(Spessartine, 35), new WeightedBlock(Pyrolusite, 20), new WeightedBlock(Tantalite, 10)));
-        WeightedBlock[] array = CertusQuartz.enabled ? ofM(new WeightedBlock(MilkyQuartz, 35), new WeightedBlock(CertusQuartz, 35), new WeightedBlock(Barite, 15), new WeightedBlock(Quartz, 15)) :
-                ofM(new WeightedBlock(MilkyQuartz, 70), new  WeightedBlock(Barite, 15), new WeightedBlock(Quartz, 15));
+                new Indicator(40, 12, ofRock(Grossular, 35), ofRock(Spessartine, 35), ofRock(Pyrolusite, 20), ofRock(Tantalite, 10)));
+        WeightedBlock[] array = CertusQuartz.enabled ? ofM(ofOre(MilkyQuartz, 35), ofOre(CertusQuartz, 35), ofOre(Barite, 15), ofOre(Quartz, 15)) :
+                ofM(ofOre(MilkyQuartz, 70), ofOre(Barite, 15), ofOre(Quartz, 15));
         createClusterVein("quartz", 150, 40, 0.3, -32, 100,
                 array,
                 new String[]{"shale", "quartzite", "schist", "gneiss"},
                 new Indicator(40, 15, array));
         createClusterVein("olivine", 180, 26, 0.25, -40, 30,
-                ofM(new WeightedBlock(Bentonite, 35), new WeightedBlock(Magnesite, 35), new WeightedBlock(Olivine, 20), new WeightedBlock(Glauconite, 10)),
+                ofM(ofOre(Bentonite, 35), ofOre(Magnesite, 35), ofOre(Olivine, 20), ofOre(Glauconite, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "granite", "diorite", "gabbro"},
-                new Indicator(12, new WeightedBlock(Bentonite, 35), new WeightedBlock(Magnesite, 35), new WeightedBlock(Olivine, 20), new WeightedBlock(Glauconite, 10)));
+                new Indicator(12, ofRock(Bentonite, 35), ofRock(Magnesite, 35), ofRock(Olivine, 20), ofRock(Glauconite, 10)));
         createClusterVein("apatite", 110, 20, 0.5, 0, 180,
-                ofM(new WeightedBlock(Apatite, 70), new WeightedBlock(TricalciumPhosphate, 20), new WeightedBlock(Phosphate, 10)),
+                ofM(ofOre(Apatite, 70), ofOre(TricalciumPhosphate, 20), ofOre(Phosphate, 10)),
                 new String[]{"granite", "diorite", "gabbro", "quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
-                new Indicator(40, 12, new WeightedBlock(Apatite, 70), new WeightedBlock(TricalciumPhosphate, 20), new WeightedBlock(Phosphate, 10)));
+                new Indicator(40, 12, ofRock(Apatite, 70), ofRock(TricalciumPhosphate, 20), ofRock(Phosphate, 10)));
         createClusterVein("galena", 160, 40, 0.4, -32, 75,
-                ofM(new WeightedBlock(Galena, 60), new WeightedBlock(Lead, 10),
-                        new WeightedBlock(NATIVE_SILVER, POOR, 6), new WeightedBlock(NATIVE_SILVER, NORMAL, 15), new WeightedBlock(NATIVE_SILVER, RICH, 9)),
+                ofM(ofOre(Galena, 60), ofOre(Lead, 10),
+                        ofOre(NATIVE_SILVER, POOR, 6), ofOre(NATIVE_SILVER, NORMAL, 15), ofOre(NATIVE_SILVER, RICH, 9)),
                 new String[]{"granite", "gneiss"},
-                new Indicator(40, 12, new WeightedBlock(Galena, 60), new WeightedBlock(NATIVE_SILVER, 30), new WeightedBlock(Lead, 10)));
+                new Indicator(40, 12, ofRock(Galena, 60), ofRock(NATIVE_SILVER, 30), ofRock(Lead, 10)));
         createPipeVein("beryllium", 180, 10, 60, 6, 18, 0, 4, 0, 0.35, -32, 50,
-                ofM(new WeightedBlock(Beryllium, 60), new WeightedBlock(EMERALD, 30), new WeightedBlock(Thorium, 10)),
+                ofM(ofOre(Beryllium, 60), ofOre(EMERALD, 30), ofOre(Thorium, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite"},
-                new Indicator(40, 15, new WeightedBlock(Beryllium, 60), new WeightedBlock(Emerald, 30), new WeightedBlock(Thorium, 10)));
+                new Indicator(40, 15, ofRock(Beryllium, 60), ofRock(Emerald, 30), ofRock(Thorium, 10)));
         createClusterVein("bauxite", 185, 40, 0.3, -32, 60,
-                ofM(new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)),
+                ofM(ofOre(Bauxite, 70), ofOre(Alumina, 20), ofOre(Ilmenite, 10)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(Bauxite, 70), new WeightedBlock(Alumina, 20), new WeightedBlock(Ilmenite, 10)));
+                new Indicator(12, ofRock(Bauxite, 70), ofRock(Alumina, 20), ofRock(Ilmenite, 10)));
         createClusterVein("oil_shale", 185, 55, 0.2, 0, 60,
-                ofM(new WeightedBlock(OilShale, 1)),
+                ofM(ofOre(OilShale, 1)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, new WeightedBlock(OilShale, 1)));
+                new Indicator(12, ofRock(OilShale, 1)));
         if (!SpaceModRegistrar.INSTANCE.isEnabled()){
             createClusterVein("naquadah", 310, 32, 0.3, -64, -20,
-                    ofM(new WeightedBlock(Naquadah, 1)),
+                    ofM(ofOre(Naquadah, 1)),
                     new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
                     null);
         }
@@ -349,11 +350,9 @@ public class TFCOreGen {
         block.add("replace", replace);
         JsonArray with = new JsonArray();
         for (WeightedBlock material : materials) {
-            if (material.filter != null && !material.filter.equals(stone)) continue;
+            if (!material.filter.test(stone)) continue;
             JsonObject materialBlock = new JsonObject();
-            String domain = material.material == null ? "tfc" : Ref.SHARED_ID;
-            String id = material.material == null ? "ore/" + (material.grade == null ? "" : material.grade.name().toLowerCase() + "_") + material.ore.name().toLowerCase() + "/" : "ore_" + material.material.getId() + "_raw_";
-            materialBlock.addProperty("block", domain + ":" + id + stone);
+            materialBlock.addProperty("block", material.block.apply(stone));
             materialBlock.addProperty("weight", material.weight);
             with.add(materialBlock);
         }
@@ -365,21 +364,35 @@ public class TFCOreGen {
         return materials;
     }
 
-    public record WeightedBlock(Material material, Ore ore, Grade grade, int weight, String filter) {
-        public WeightedBlock(Material material, int weight) {
-            this(material, null, null, weight, null);
-        }
+    private static WeightedBlock ofOre(Ore ore, @Nullable Grade grade, int weight, Predicate<String> filter){
+        return new WeightedBlock(s -> "tfc:ore/" + (grade == null ? "" : grade.name().toLowerCase() + "_") + ore.name().toLowerCase() + "/" + s, weight, filter);
+    }
 
-        public WeightedBlock(Ore ore, Grade grade, int weight){
-            this(null, ore, grade, weight, null);
-        }
+    private static WeightedBlock ofOre(Ore ore, int weight){
+        return ofOre(ore, null, weight, s -> true);
+    }
 
-        public WeightedBlock(Ore ore, int weight) {
-            this(null, ore, null, weight, null);
-        }
-        public WeightedBlock(Ore ore, String stoneFilter, int weight) {
-            this(null, ore, null, weight, stoneFilter);
-        }
+    private static WeightedBlock ofOre(Ore ore, Grade grade, int weight){
+        return ofOre(ore, grade, weight, s -> true);
+    }
+
+    private static WeightedBlock ofOre(Material material, int weight, Predicate<String> filter){
+        return new WeightedBlock(s -> Ref.SHARED_ID + ":ore_" + material.getId() + "_raw_" + s, weight, filter);
+    }
+
+    private static WeightedBlock ofOre(Material material, int weight){
+        return ofOre(material, weight, s -> true);
+    }
+
+    private static WeightedBlock ofRock(Material material, int weight){
+        return new WeightedBlock(s -> Ref.SHARED_ID + ":surface_rock_" + material.getId() + "_stone", weight, s -> true);
+    }
+
+    private static WeightedBlock ofRock(Ore ore, int weight){
+        return new WeightedBlock(s -> Ref.MOD_TFC + ":ore/small_" + ore.name().toLowerCase(), weight, s -> true);
+    }
+
+    public record WeightedBlock(Function<String, String> block, int weight, Predicate<String> filter) {
     }
 
     public record Indicator(int depth, int rarity, List<Pair<String, Integer>> blocks) {
@@ -389,9 +402,7 @@ public class TFCOreGen {
 
         public Indicator(int depth, int rarity, WeightedBlock... blocks) {
             this(depth, rarity, Stream.of(blocks).map(w -> {
-                String domain = w.material == null ? "tfc" : Ref.SHARED_ID;
-                String id = w.material == null ? "ore/small_" + w.ore.name().toLowerCase() : "surface_rock_" + w.material.getId() + "_stone";
-                return Pair.of(domain + ":" + id, w.weight);
+                return Pair.of(w.block.apply(""), w.weight);
             }).toList());
         }
     }
