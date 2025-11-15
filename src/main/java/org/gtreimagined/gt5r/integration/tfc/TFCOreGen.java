@@ -6,6 +6,7 @@ import it.unimi.dsi.fastutil.Pair;
 import net.devtech.arrp.json.tags.JTag;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Ore.Grade;
+import net.dries007.tfc.config.TFCConfig;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
@@ -161,7 +162,7 @@ public class TFCOreGen {
         createClusterVein("cinnabar", 120, 20, 0.6, -48, 100,
                 ofM(ofOre(Redstone, 60), ofOre(Cinnabar, 30), ofOre(Ruby, 10)),
                 new String[]{"rhyolite", "basalt", "andesite", "dacite", "quartzite", "shale"},
-                null);
+                new Indicator(12, ofRock(Redstone, 60), ofRock(Cinnabar, 30), ofRock(Ruby, 10)));
         createClusterVein("lapis_lazuli", 120, 20, 0.6, -48, 100,
                 ofM(ofOre(Lazurite, 35), ofOre(Sodalite, 35),
                         ofOre(Lapis, 30)),
@@ -256,6 +257,13 @@ public class TFCOreGen {
                 ofM(ofOre(OilShale, 1)),
                 new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
                 new Indicator(12, ofRock(OilShale, 1)));
+        if (!GTAPI.isModLoaded("beneath") && !TFCConfig.SERVER.enableNetherPortals.get()){
+            createClusterVein("nether_materials", 150, 20, 0.6, 0, 60,
+                    ofM(new WeightedBlock(s -> "minecraft:glowstone", 90, s -> true),
+                            new WeightedBlock(s -> "minecraft:ancient_debris", 10, s -> true)),
+                    new String[]{"quartzite", "slate", "phyllite", "schist", "gneiss", "marble"},
+                    null);
+        }
         if (!SpaceModRegistrar.INSTANCE.isEnabled()){
             createClusterVein("naquadah", 310, 32, 0.3, -64, -20,
                     ofM(ofOre(Naquadah, 1)),
