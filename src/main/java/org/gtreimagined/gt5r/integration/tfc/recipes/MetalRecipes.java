@@ -111,6 +111,9 @@ public class MetalRecipes {
             if (!DOUBLE_INGOT.hasReplacement(m)) {
                 consumer.accept(new WeldingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "welding/" + m.getId() + "_double_ingot"), INGOT.getMaterialIngredient(m, 1), INGOT.getMaterialIngredient(m, 1),  DOUBLE_INGOT.get(m, 1), i.getB()));
             }
+            if (m.has(ROD) && m.has(LONG_ROD)){
+                consumer.accept(new WeldingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "welding/" + m.getId() + "_long_rod"), ROD.getMaterialIngredient(m, 1), ROD.getMaterialIngredient(m, 1), LONG_ROD.get(m,1), i.getB()));
+            }
         });
     }
 }
