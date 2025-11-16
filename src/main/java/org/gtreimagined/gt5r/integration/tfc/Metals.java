@@ -124,9 +124,11 @@ public class Metals {
         object.addProperty("tag", SHEET.getMaterialTag(material).location().toString());
         jsonObject.add("sheets", object);
         GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/metals/" + material.getId() + ".json"), jsonObject.toString().getBytes());
-        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, CHUNK, DUST};
+        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, CHUNK, DUST};
         Arrays.stream(types).forEach(t -> {
-            if (!material.has(t)) return;
+            MaterialTypeItem<?> compare = t;
+            if (t == DOUBLE_INGOT || t == SHEET) compare = INGOT;
+            if (!material.has(compare)) return;
             JsonObject j = new JsonObject();
             JsonObject ingrediient = new JsonObject();
             ingrediient.addProperty("tag", t.getMaterialTag(material).location().toString());

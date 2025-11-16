@@ -92,7 +92,7 @@ public class MetalRecipes {
                     }
                 }
             }
-            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, CHUNK, DUST};
+            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, CHUNK, DUST};
             for(MaterialTypeItem<?> type : types){
                 if (m.has(type) && !type.hasReplacement(m)){
                     double ratio = type == RAW_ORE ? .5 : (double)type.getUnitValue() / U;
