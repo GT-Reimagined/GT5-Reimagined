@@ -94,10 +94,10 @@ public class MetalRecipes {
                     }
                 }
             }
-            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, CHUNK, DUST};
+            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, CHUNK, DUST};
             for(MaterialTypeItem<?> type : types){
                 if (m.has(type) && !type.hasReplacement(m)){
-                    double ratio = type == RAW_ORE ? .5 : (double)type.getUnitValue() / U;
+                    double ratio = type == RAW_ORE ? .5 : type == BEARING_ROCK ? .1 : (double)type.getUnitValue() / U;
                     consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + type.getId()), Ingredient.of(type.getMaterialTag(m)), fluid.apply((int) (100 * ratio)), meltTemp));
                     if (type == INGOT){
                         consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_ingot"), TFCItems.MOLDS.get(ItemType.INGOT).get(), fluid.apply(100), INGOT.get(m), 0.1f));
