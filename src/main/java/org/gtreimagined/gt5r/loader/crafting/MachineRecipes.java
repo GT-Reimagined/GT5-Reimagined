@@ -21,6 +21,7 @@ import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.data.TierMaps;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.machine.BarrelMachine;
 import org.gtreimagined.gtcore.machine.BookShelfMachine;
 import org.gtreimagined.gtcore.machine.ChestMachine;
@@ -40,7 +41,10 @@ import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.Wire;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 
+import java.rmi.registry.Registry;
 import java.util.Arrays;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -943,9 +947,10 @@ public class MachineRecipes {
                         .put('C', TIER_CIRCUITS.apply(LV))
                         .put('F', Items.FURNACE)
                         .build(), "FFF", "CHC", "LCL"));
+        Item firebrick = GTAPI.isModLoaded("tfc") ? RegistryUtils.getItemFromID("tfc", "ceramic/fire_brick") : FireBrick;
         provider.addItemRecipe(output, "machines", COKE_OVEN.getItem(COKE_OVEN.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', FireBrick).build(), "HHH", "H H", "HHH");
+                        .put('H', firebrick).build(), "HHH", "H H", "HHH");
         add(COMBUSTION_ENGINE, EV, (m,item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('L', GT5RBlocks.CABLE_TUNGSTEN_STEEL.getBlockItem(PipeSize.VTINY))
@@ -1081,10 +1086,11 @@ public class MachineRecipes {
                         .put('C', TIER_CIRCUITS.apply(EV))
                         .put('H', HULL.getItem(EV))
                         .put('F', FRAME.getMaterialTag(Titanium)).build(), "FFF", "CHC", "MMM"));
+        TagKey<Item> centerItem = GTAPI.isModLoaded("tfc") ? TagUtils.getForgelikeItemTag("double_sheets/steel") : PLATE.getMaterialTag(Iron);
         provider.addItemRecipe(output, "machines", PRIMITIVE_BLAST_FURNACE.getItem(PRIMITIVE_BLAST_FURNACE.getFirstTier()),
                 ImmutableMap.<Character, Object>builder()
-                        .put('H', FireBrick)
-                        .put('C', PLATE.getMaterialTag(Iron)).build(), "HHH", "HCH", "HHH");
+                        .put('H', firebrick)
+                        .put('C', centerItem).build(), "HHH", "HCH", "HHH");
         add(PROCESSING_ARRAY, EV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                 ImmutableMap.<Character, Object>builder()
                         .put('C', TIER_CIRCUITS.apply(LUV))
