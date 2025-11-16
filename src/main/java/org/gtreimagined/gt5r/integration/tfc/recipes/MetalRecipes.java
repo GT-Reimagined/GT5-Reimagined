@@ -61,6 +61,7 @@ public class MetalRecipes {
         FORGING_RULES.put(FILE_HEAD, List.of("hit_last", "punch_second_last"));
         FORGING_RULES.put(KNIFE_BLADE, List.of("hit_last", "draw_second_last", "draw_third_last"));
         FORGING_RULES.put(SCYTHE_BLADE, List.of("hit_last", "draw_second_last", "bend_third_last"));
+        FORGING_RULES.put(SCREWDRIVER_TIP, List.of("hit_last", "hit_second_last", "hit_third_last"));
         FORGING_RULES.put(PROPICK_HEAD, List.of("punch_last", "draw_not_last", "bend_not_last"));
         FORGING_RULES.put(JAVELIN_HEAD, List.of("hit_last", "hit_second_last", "draw_third_last"));
         FORGING_RULES.put(CHISEL_HEAD, List.of("hit_last", "hit_not_last", "draw_not_last"));
@@ -75,18 +76,19 @@ public class MetalRecipes {
             boolean tfc = i.getA();
             Function<Integer, FluidStack> fluid = amount -> new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(tfc ? "tfc" : Ref.SHARED_ID, (tfc ? "metal/" : "") + m.getId())), amount);
             if (m.has(TOOLS)) {
-                GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, KNIFE, SCYTHE, PROPICK, JAVELIN};
+                GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, SCREWDRIVER, KNIFE, SCYTHE, PROPICK, JAVELIN};
                 ToolData t = TOOLS.get(m);
                 for(GTToolType toolType : toolTypes){
                     if (toolType.getReplacements().containsKey(m.getId())) continue;
                     if (t.toolTypes().contains(toolType)){
                         MaterialTypeItem<?> toolHead = toolType.getMaterialTypeItem();
+                        if (toolType == SCREWDRIVER && !m.has(LONG_ROD)) continue;
                         double ratio = (double)toolHead.getUnitValue() / U;
                         consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + toolType.getId()), Ingredient.of(toolType.getToolItem(m)), fluid.apply((int)(ratio * 100)), meltTemp));
                         consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + toolHead.getId()), Ingredient.of(toolType.getMaterialTypeItem().getMaterialTag(m)), fluid.apply((int)(ratio * 100)), meltTemp));
-                        if (toolType != FILE) consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_" + toolHead.getId()), RegistryUtils.getItemFromID(new ResourceLocation("tfc", "ceramic/" + toolHead.getId() + "_mold")), fluid.apply((int)(ratio * 100)), toolHead.get(m), 1));
+                        if (toolType != FILE && toolType != SCREWDRIVER) consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_" + toolHead.getId()), RegistryUtils.getItemFromID(new ResourceLocation("tfc", "ceramic/" + toolHead.getId() + "_mold")), fluid.apply((int)(ratio * 100)), toolHead.get(m), 1));
                         if (toolHead.getUnitValue() == U || toolHead.getUnitValue() == U * 2){
-                            MaterialTypeItem<?> input = toolHead.getUnitValue() == U ? INGOT : DOUBLE_INGOT;
+                            MaterialTypeItem<?> input = toolHead == SCREWDRIVER_TIP ? LONG_ROD : toolHead.getUnitValue() == U ? INGOT : DOUBLE_INGOT;
                             consumer.accept(new AnvilWorkingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "anvil/" + m.getId() + "_" + toolHead.getId()), input.getMaterialIngredient(m, 1), toolHead.get(m, 1), i.getB(), true, FORGING_RULES.get(toolHead).toArray(String[]::new)));
                         }
                     }

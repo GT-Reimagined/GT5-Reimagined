@@ -141,7 +141,7 @@ public class Metals {
         });
         if (material.has(TOOLS)){
             ToolData td = TOOLS.get(material);
-            GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, KNIFE, SCYTHE, PROPICK, JAVELIN};
+            GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, SCREWDRIVER, KNIFE, SCYTHE, PROPICK, JAVELIN};
             for(GTToolType toolType : toolTypes){
                 if (td.toolTypes().contains(toolType) && toolType.getMaterialTypeItem() != null) {
                     var toolHead = toolType.getMaterialTypeItem();
