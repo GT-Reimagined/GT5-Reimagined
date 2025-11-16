@@ -11,6 +11,7 @@ import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.GTCoreConfig;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -36,8 +37,10 @@ public class VanillaExtensions {
                 Items.CHAINMAIL_LEGGINGS, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR", "R R");
         provider.addItemRecipe(consumer, GT5Reimagined.ID, "chainmail_boots", "chainmail_armor",
                 Items.CHAINMAIL_BOOTS, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "R R", "RHR");
-        provider.addItemRecipe(consumer, GT5Reimagined.ID, "saddle", "", Items.SADDLE,
-                of('L', Items.LEATHER, 'R', GTMaterialTypes.RING.getMaterialTag(Steel), 'S', GTMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
+        if (!GTAPI.isModLoaded("tfc")) {
+            provider.addItemRecipe(consumer, GT5Reimagined.ID, "saddle", "", Items.SADDLE,
+                    of('L', Items.LEATHER, 'R', GTMaterialTypes.RING.getMaterialTag(Steel), 'S', GTMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
+        }
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", ROD.get(IronMagnetic),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
