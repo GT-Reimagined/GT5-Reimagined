@@ -29,8 +29,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static org.gtreimagined.gt5r.data.Materials.RoseGold;
-import static org.gtreimagined.gt5r.data.Materials.SterlingSilver;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.*;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
@@ -73,8 +72,10 @@ public class MetalRecipes {
     public static void init(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         Metals.METALS.forEach((m, i) -> {
             int meltTemp = MaterialTags.MELTING_POINT.get(m) - 273;
-            boolean tfc = i.getA();
-            Function<Integer, FluidStack> fluid = amount -> new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(tfc ? "tfc" : Ref.SHARED_ID, (tfc ? "metal/" : "") + m.getId())), amount);
+            boolean magnetic = m == IronMagnetic || m == SteelMagnetic;
+            boolean tfc = i.getA() || magnetic;
+            String fluidId = m == WroughtIron || m == IronMagnetic ? "cast_iron" : m == SteelMagnetic ? "steel" : m.getId();
+            Function<Integer, FluidStack> fluid = amount -> new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation(tfc ? "tfc" : Ref.SHARED_ID, (tfc ? "metal/" : "") + fluidId)), amount);
             if (m.has(TOOLS)) {
                 GTToolType[] toolTypes = new GTToolType[]{SWORD, PICKAXE, SHOVEL, AXE, HOE, HAMMER, SAW, FILE, SCREWDRIVER, KNIFE, SCYTHE, PROPICK, JAVELIN};
                 ToolData t = TOOLS.get(m);
@@ -86,7 +87,7 @@ public class MetalRecipes {
                         double ratio = (double)toolHead.getUnitValue() / U;
                         consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + toolType.getId()), Ingredient.of(toolType.getToolItem(m)), fluid.apply((int)(ratio * 100)), meltTemp));
                         consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + toolHead.getId()), Ingredient.of(toolType.getMaterialTypeItem().getMaterialTag(m)), fluid.apply((int)(ratio * 100)), meltTemp));
-                        if (toolType != FILE && toolType != SCREWDRIVER) consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_" + toolHead.getId()), RegistryUtils.getItemFromID(new ResourceLocation("tfc", "ceramic/" + toolHead.getId() + "_mold")), fluid.apply((int)(ratio * 100)), toolHead.get(m), 1));
+                        if (!magnetic && toolType != FILE && toolType != SCREWDRIVER) consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_" + toolHead.getId()), RegistryUtils.getItemFromID(new ResourceLocation("tfc", "ceramic/" + toolHead.getId() + "_mold")), fluid.apply((int)(ratio * 100)), toolHead.get(m), 1));
                         if (toolHead.getUnitValue() == U || toolHead.getUnitValue() == U * 2){
                             MaterialTypeItem<?> input = toolHead == SCREWDRIVER_TIP ? LONG_ROD : toolHead.getUnitValue() == U ? INGOT : DOUBLE_INGOT;
                             consumer.accept(new AnvilWorkingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "anvil/" + m.getId() + "_" + toolHead.getId()), input.getMaterialIngredient(m, 1), toolHead.get(m, 1), i.getB(), true, FORGING_RULES.get(toolHead).toArray(String[]::new)));
@@ -99,7 +100,7 @@ public class MetalRecipes {
                 if (m.has(type) && !type.hasReplacement(m)){
                     double ratio = type == RAW_ORE ? .5 : type == BEARING_ROCK ? .1 : (double)type.getUnitValue() / U;
                     consumer.accept(new HeatingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "heating/" + m.getId() + "_" + type.getId()), Ingredient.of(type.getMaterialTag(m)), fluid.apply((int) (100 * ratio)), meltTemp));
-                    if (type == INGOT){
+                    if (!magnetic && type == INGOT){
                         consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_ingot"), TFCItems.MOLDS.get(ItemType.INGOT).get(), fluid.apply(100), INGOT.get(m), 0.1f));
                         consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_fire_ingot"), TFCItems.FIRE_INGOT_MOLD.get(), fluid.apply(100), INGOT.get(m), 0.01f));
                     }
