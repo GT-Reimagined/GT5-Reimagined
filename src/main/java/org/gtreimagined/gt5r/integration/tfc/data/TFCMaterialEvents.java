@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.tfc.data;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.item.enchantment.Enchantments;
+import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.Material;
@@ -26,6 +27,9 @@ import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
+        MaterialTags.TOOLS.remove(Gold);
+        MaterialTags.TOOLS.remove(Iron);
+        IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
@@ -36,6 +40,7 @@ public class TFCMaterialEvents {
             ROD.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/rod/"+material.getId()));
             SHEET.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/sheet/"+ material.getId()));
         }
+        Data.setMaterialTier(WroughtIron, 2);
         materials = new Material[]{BismuthBronze, BlackBronze, BlackSteel,
                 BlueSteel, Bronze, RedSteel, Steel, WroughtIron};
         for (Material material : materials){

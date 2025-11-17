@@ -14,6 +14,7 @@ import org.gtreimagined.gtcore.GTCoreConfig;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.TagUtils;
 
@@ -42,8 +43,9 @@ public class VanillaExtensions {
                     of('L', Items.LEATHER, 'R', GTMaterialTypes.RING.getMaterialTag(Steel), 'S', GTMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
         }
 
+        Material magnetBase = GTAPI.isModLoaded("tfc") ? WroughtIron : Iron;
         provider.addItemRecipe(consumer, "magnetic_rods_iron", ROD.get(IronMagnetic),
-                of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
+                of('R', Tags.Items.DUSTS_REDSTONE, 'S', ROD.getMaterialTag(magnetBase)), " R ", "RSR", " R ");
 
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", ROD.get(Neodymium),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
