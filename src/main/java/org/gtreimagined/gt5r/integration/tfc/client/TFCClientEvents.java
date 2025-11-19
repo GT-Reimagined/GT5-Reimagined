@@ -17,6 +17,7 @@ public class TFCClientEvents {
     public static void onTextureStichPre(TextureStitchEvent.Pre event){
         if (event.getAtlas().location() != TextureAtlas.LOCATION_BLOCKS) return;
         Metals.METALS.forEach((m, i) -> {
+            if (i.getA()) return;
             event.addSprite(new ResourceLocation(GT5Reimagined.ID, "block/metal/full/" + m.getId()));
         });
     }
