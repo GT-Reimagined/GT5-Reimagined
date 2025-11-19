@@ -29,6 +29,7 @@ public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
         MaterialTags.TOOLS.remove(Gold);
         MaterialTags.TOOLS.remove(Iron);
+        WroughtIron.setRgb(Iron.getRgb());
         IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
