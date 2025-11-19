@@ -29,6 +29,8 @@ public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
         MaterialTags.TOOLS.remove(Gold);
         MaterialTags.TOOLS.remove(Iron);
+        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE);
+        event.setMaterial(Gold).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE);
         WroughtIron.setRgb(Iron.getRGB());
         IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
