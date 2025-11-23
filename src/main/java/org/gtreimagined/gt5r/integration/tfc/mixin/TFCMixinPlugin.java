@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.integration.tfc.mixin;
 
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -20,8 +21,8 @@ public class TFCMixinPlugin implements IMixinConfigPlugin {
     }
 
     @Override
-    public boolean shouldApplyMixin(String s, String s1) {
-        return GTAPI.isModLoaded("tfc");
+    public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
+        return GTAPI.isModLoaded("tfc") && (GTAPI.isModLoaded(Ref.MOD_JEI) || !targetClassName.contains("JEIIntegration"));
     }
 
     @Override
