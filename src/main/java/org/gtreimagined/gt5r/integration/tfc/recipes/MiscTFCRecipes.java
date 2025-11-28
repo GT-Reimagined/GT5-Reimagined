@@ -6,6 +6,7 @@ import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Ore.Grade;
 import net.dries007.tfc.common.fluids.TFCFluids;
+import net.dries007.tfc.common.items.Powder;
 import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.recipes.ChiselRecipe.Mode;
 import net.dries007.tfc.util.Metal.Default;
@@ -37,6 +38,7 @@ import static com.google.common.collect.ImmutableMap.of;
 public class MiscTFCRecipes {
     public static void initRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
         consumer.accept(new QuernFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "quern/raw_redstone"), Ingredient.of(GTMaterialTypes.RAW_ORE.getMaterialTag(Materials.Redstone)), new ItemStack(Items.REDSTONE, 8)));
+        consumer.accept(new QuernFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "quern/raw_graphite"), Ingredient.of(GTMaterialTypes.RAW_ORE.getMaterialTag(Materials.Graphite)), new ItemStack(TFCItems.POWDERS.get(Powder.GRAPHITE).get(), 4)));
         for (Ore ore : Ore.values()){
             if (ore.isGraded()){
                 TFCMetal tfcMetal = metalFromOre(ore);
