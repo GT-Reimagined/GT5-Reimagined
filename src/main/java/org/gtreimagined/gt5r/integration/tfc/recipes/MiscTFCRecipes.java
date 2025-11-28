@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
@@ -30,10 +31,12 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.DynamicDataPack;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static org.gtreimagined.gtcore.data.GTCoreItems.Plantball;
 
 public class MiscTFCRecipes {
     public static void initRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
@@ -52,6 +55,15 @@ public class MiscTFCRecipes {
         consumer.accept(new ChiselFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "chisel/firebricks"), TFCBlocks.FIRE_BRICKS.get(), GT5RBlocks.FIRE_BRICKS, Mode.SMOOTH));
         provider.shapeless(consumer, GT5Reimagined.ID, "firebricks", "bricks", new ItemStack(GT5RBlocks.FIRE_BRICKS), TFCBlocks.FIRE_BRICKS.get(), TFCTags.Items.CHISELS);
         SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(TFCItems.UNFIRED_FIRE_BRICK.get(), 1), TFCItems.FIRE_BRICK.get(), 0.5F, 200).unlockedBy("has_unfired_fire_brick", provider.hasSafeItem(TFCItems.UNFIRED_FIRE_BRICK.get())).save(consumer, GT5Reimagined.ID + ":firebrick");
+        provider.addItemRecipe(consumer, GT5Reimagined.ID, "plantball_from_tfc_fruits", "misc", Plantball, of(
+                'C', TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "foods/fruits"))
+        ), "CCC", "C C", "CCC");
+        provider.addItemRecipe(consumer, GT5Reimagined.ID, "plantball_from_tfc_seeds", "misc", Plantball, of(
+                'S', TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "seeds"))
+        ), "SSS", "S S", "SSS");
+        provider.addStackRecipe(consumer, GT5Reimagined.ID, "plantball_from_tfc_saplings", "misc", new ItemStack(Plantball, 2), of(
+                'S', TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "saplings"))
+        ), "SSS", "S S", "SSS");
     }
 
     private static TFCMetal metalFromOre(Ore ore){
