@@ -45,6 +45,7 @@ public class MachineRecipes {
         addMaceratorRecipe(NATIVE_COPPER, Copper);
         addMaceratorRecipe(NATIVE_GOLD, Gold);
         addMaceratorRecipe(NATIVE_SILVER, Silver);
+        addMaceratorRecipe(BISMUTHINITE, Bismuth);
         addMaceratorRecipe(HEMATITE, Hematite);
         addMaceratorRecipe(CASSITERITE, Cassiterite);
         addMaceratorRecipe(BISMUTHINITE, Bismuth);
