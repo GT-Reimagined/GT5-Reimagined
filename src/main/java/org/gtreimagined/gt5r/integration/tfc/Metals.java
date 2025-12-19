@@ -71,7 +71,7 @@ public class Metals {
 
     private static void addHeatableToolFromTFCMetal(Material material, int tier, int meltTemp, double heatCapacityForHeating, boolean fileOnly){
         METALS.put(material, new Tuple<>(true, tier));
-        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, PLATE, CHUNK, LONG_ROD, DUST};
+        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, PLATE, CHUNK, LONG_ROD, RING, DUST};
         Arrays.stream(types).forEach(t -> {
             if (!material.has(t)) return;
             JsonObject j = new JsonObject();
@@ -124,7 +124,7 @@ public class Metals {
         object.addProperty("tag", SHEET.getMaterialTag(material).location().toString());
         jsonObject.add("sheets", object);
         GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/metals/" + material.getId() + ".json"), jsonObject.toString().getBytes());
-        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, CHUNK, DUST};
+        MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, RING, CHUNK, DUST};
         Arrays.stream(types).forEach(t -> {
             MaterialTypeItem<?> compare = t;
             if (t == DOUBLE_INGOT || t == SHEET) compare = INGOT;

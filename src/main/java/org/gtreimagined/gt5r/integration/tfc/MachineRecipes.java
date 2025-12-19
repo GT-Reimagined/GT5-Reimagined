@@ -48,7 +48,6 @@ public class MachineRecipes {
         addMaceratorRecipe(BISMUTHINITE, Bismuth);
         addMaceratorRecipe(HEMATITE, Hematite);
         addMaceratorRecipe(CASSITERITE, Cassiterite);
-        addMaceratorRecipe(BISMUTHINITE, Bismuth);
         addMaceratorRecipe(GARNIERITE, Garnierite);
         addMaceratorRecipe(MALACHITE, Malachite);
         addMaceratorRecipe(MAGNETITE, Magnetite);

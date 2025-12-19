@@ -5,6 +5,7 @@ import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.util.Metal.ItemType;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
@@ -17,6 +18,7 @@ import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.HeatingFinishedReci
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.WeldingFinishedRecipe;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.material.data.ToolData;
@@ -67,9 +69,11 @@ public class MetalRecipes {
         FORGING_RULES.put(MACE_HEAD, List.of("hit_last", "shrink_not_last", "bend_not_last"));
         FORGING_RULES.put(SHEET, List.of("hit_last", "hit_second_last", "hit_third_last"));
         FORGING_RULES.put(ROD, List.of("bend_last", "draw_second_last", "draw_third_last"));
+        FORGING_RULES.put(RING, List.of("hit_last", "bend_second_last", "bend_third_last"));
     }
 
     public static void init(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
+        List<Material> chains = List.of(BismuthBronze, BlackBronze, Bronze, Copper, WroughtIron, Steel, BlackSteel, BlueSteel, RedSteel);
         Metals.METALS.forEach((m, i) -> {
             int meltTemp = MaterialTags.MELTING_POINT.get(m) - 273;
             boolean magnetic = m == IronMagnetic || m == SteelMagnetic;
@@ -95,7 +99,7 @@ public class MetalRecipes {
                     }
                 }
             }
-            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, CHUNK, DUST};
+            MaterialTypeItem<?>[] types = new MaterialTypeItem[]{RAW_ORE, BEARING_ROCK, INGOT, DOUBLE_INGOT, SHEET, PLATE, ROD, LONG_ROD, RING, CHUNK, DUST};
             for(MaterialTypeItem<?> type : types){
                 if (m.has(type) && !type.hasReplacement(m)){
                     double ratio = type == RAW_ORE ? .5 : type == BEARING_ROCK ? .1 : (double)type.getUnitValue() / U;
@@ -104,9 +108,9 @@ public class MetalRecipes {
                         consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_ingot"), TFCItems.MOLDS.get(ItemType.INGOT).get(), fluid.apply(100), INGOT.get(m), 0.1f));
                         consumer.accept(new CastingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "casting/" + m.getId() + "_fire_ingot"), TFCItems.FIRE_INGOT_MOLD.get(), fluid.apply(100), INGOT.get(m), 0.01f));
                     }
-                    if (type == SHEET || type == ROD){
-                        int amount = type == ROD ? 2 : 1;
-                        MaterialTypeItem<?> in = type == ROD ? INGOT : DOUBLE_INGOT;
+                    if (type == SHEET || type == ROD || type == RING){
+                        int amount = type == ROD || type == RING ? 2 : 1;
+                        MaterialTypeItem<?> in = type == ROD ? INGOT : type == RING ? ROD :  DOUBLE_INGOT;
                         consumer.accept(new AnvilWorkingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "anvil/" + m.getId() + "_" + type.getId()), in.getMaterialIngredient(m, 1), type.get(m, amount), i.getB(), false, FORGING_RULES.get(type).toArray(String[]::new)));
                     }
                 }
@@ -117,6 +121,16 @@ public class MetalRecipes {
             if (m.has(ROD) && m.has(LONG_ROD)){
                 consumer.accept(new WeldingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "welding/" + m.getId() + "_long_rod"), ROD.getMaterialIngredient(m, 1), ROD.getMaterialIngredient(m, 1), LONG_ROD.get(m,1), i.getB()));
             }
+            if (m.has(RING) && chains.contains(m)){
+                consumer.accept(new WeldingFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "welding/" + m.getId() + "_chain"), RING.getMaterialIngredient(m, 1), RING.getMaterialIngredient(m, 1), new ItemStack(RegistryUtils.getItemFromID("tfc", "metal/chain/" + m.getId())), i.getB()));
+            }
         });
+
+        for (Material chain : chains){
+            String fluidId = chain == WroughtIron ? "cast_iron" : chain.getId();
+            int meltTemp = MaterialTags.MELTING_POINT.get(chain) - 273;
+            consumer.accept(new HeatingFinishedRecipe(new ResourceLocation("tfc", "heating/metal/" + chain.getId() + "_chain"), Ingredient.of(RegistryUtils.getItemFromID("tfc", "metal/chain/" + chain.getId())), new FluidStack(RegistryUtils.getFluidFromID(new ResourceLocation("tfc", "metal/" + fluidId)), 50), meltTemp));
+            provider.removeRecipe(new ResourceLocation("tfc", "anvil/" +  chain.getId() + "_chain"));
+        }
     }
 }
