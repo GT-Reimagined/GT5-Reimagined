@@ -5,6 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 
@@ -34,18 +35,19 @@ public class BlastFurnaceLoader {
         PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(BlueSteel, 1)).io(INGOT.get(BlueSteel)).add("blue_steel", 14400);
         PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(RedSteel, 1)).io(INGOT.get(RedSteel)).add("red_steel", 14400);
 
-        addCalciteRecipe(Hematite, 4, new ItemStack(Items.IRON_INGOT, 1));
-        addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
-        addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
-        addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
-        addCalciteRecipe(Chalcopyrite, 6, INGOT.get(Copper, 1), new ItemStack(Items.IRON_INGOT));
+        Material iron = GTAPI.isModLoaded("tfc") ? WroughtIron : Iron;
+        addCalciteRecipe(Hematite, 4, INGOT.get(iron, 1));
+        addCalciteRecipe(YellowLimonite, 6, INGOT.get(iron, 1));
+        addCalciteRecipe(BrownLimonite, 6, INGOT.get(iron, 1));
+        addCalciteRecipe(Magnetite, 11, INGOT.get(iron, 3));
+        addCalciteRecipe(Chalcopyrite, 6, INGOT.get(Copper, 1), INGOT.get(iron, 1));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 1, INGOT.get(Nickel, 1));
         addCalciteRecipe(Cassiterite, 1, INGOT.get(Tin, 1));
         addCalciteRecipe(Cobaltite, 5, INGOT.get(Cobalt, 1));
-        addCalciteRecipe(Pyrite, 4, new ItemStack(Items.IRON_INGOT));
+        addCalciteRecipe(Pyrite, 4, INGOT.get(iron, 1));
         addCalciteRecipe(Stibnite, 4, INGOT.get(Antimony, 1));
-        addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(Iron, 1));
+        addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(iron, 1));
         addCalciteRecipe(Malachite, 15, INGOT.get(Copper, 2));
         addCalciteRecipe(Pentlandite, 11, INGOT.get(Nickel, 4));
         /* Annealed Copper*/
