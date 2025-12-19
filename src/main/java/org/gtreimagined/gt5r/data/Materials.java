@@ -167,6 +167,7 @@ public class Materials {
     public static Material BlueSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "blue_steel", 0x3a4c9e, METALLIC));
     public static Material Brass = GTCoreMaterials.Brass;
     public static Material Bronze = GTCoreMaterials.Bronze;
+    public static Material CastIron = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cast_iron", 0x281f1c, METALLIC));
     public static Material CdInAGAlloy = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cd_in_ag_alloy", 0x646480, METALLIC)).setDisplayNameString("Cd-In-Ag-Alloy");
     public static Material CobaltBrass = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_brass", 0xb4b4a0, METALLIC));
     public static Material Cupronickel = GTCoreMaterials.Cupronickel;
