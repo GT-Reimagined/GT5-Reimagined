@@ -73,7 +73,6 @@ import static org.gtreimagined.gtlib.material.MaterialTags.TOOLS;
 
 public class TFCRegistrar extends GTMod {
 
-    public static Material[] array;
     public TFCRegistrar(){
         super();
         if (isEnabled()) {
@@ -215,5 +214,9 @@ public class TFCRegistrar extends GTMod {
     @Override
     public boolean isEnabled() {
         return GTAPI.isModLoaded(Ref.MOD_TFC);
+    }
+
+    public static Material getIron(){
+        return GTAPI.isModLoaded(Ref.MOD_TFC) ? WroughtIron : Iron;
     }
 }

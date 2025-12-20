@@ -29,10 +29,11 @@ public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
         MaterialTags.TOOLS.remove(Gold);
         MaterialTags.TOOLS.remove(Iron);
-        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE);
+        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR);
         event.setMaterial(Gold).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE);
         WroughtIron.setRgb(Iron.getRGB());
         IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
+        event.setMaterial(WroughtIron).flags(SMALL_GEAR);
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();

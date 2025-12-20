@@ -19,6 +19,7 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.data.TierMaps;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -371,7 +372,7 @@ public class MachineRecipes {
                             .put('L', cable)
                             .put('S', Tags.Items.CHESTS_WOODEN).build(), "SCS", "RHc", "LCL"));
             Item wire = tier == LV ? GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.TINY) : tier == MV ? GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.TINY) : tier == HV ? GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.SMALL) : GT5RBlocks.WIRE_ANNEALED_COPPER.getBlockItem(PipeSize.NORMAL);
-            Material rodMaterial = tier == LV ? Iron : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
+            Material rodMaterial = tier == LV ? TFCRegistrar.getIron() : tier == MV || tier == HV ? Steel : tier == EV ? Neodymium : VanadiumGallium;
             add(POLARIZER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('R', ROD.getMaterialTag(rodMaterial))
@@ -536,7 +537,7 @@ public class MachineRecipes {
                         .put('S', PLATE.getMaterialTag(StainlessSteel))
                         .build(), "CWC", "SHS", "SSS"));
         provider.addItemRecipe(output, "trash_bin", GTCoreBlocks.ENDER_GARBAGE_BIN.getItem(NONE),
-                of('O', PLATE.getMaterialTag(Obsidian), 'I', PLATE.getMaterialTag(Iron), 'E', Items.ENDER_EYE), "OOO", "OEO", "III");
+                of('O', PLATE.getMaterialTag(Obsidian), 'I', PLATE.getMaterialTag(TFCRegistrar.getIron()), 'E', Items.ENDER_EYE), "OOO", "OEO", "III");
 
         provider.addItemRecipe(output, "solar_panels", SOLAR_PANEL.getItem(NONE),
                 of('S', GT5RItems.Wafer, 'G', Tags.Items.GLASS_PANES, 'C', CIRCUITS_BASIC,
@@ -852,7 +853,7 @@ public class MachineRecipes {
         provider.addItemRecipe(output, "plastic_storage_box", GTCoreBlocks.PLASTIC_STORAGE_BOX.getItem(NONE),
                 of('S', SCREW.getMaterialTag(Plastic), 'C', Tags.Items.CHESTS_WOODEN, 'P', PLATE.getMaterialTag(Plastic)), "SPS", "PCP", "SPS");
         if (GTCoreBlocks.IRONWOOD_ITEM_BARREL != null) {
-            provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.IRONWOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(Iron), 'W', PLATE.getMaterialTag(Ironwood), 's', SAW.getTag()), "SCs", "WRW", "WRW");
+            provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.IRONWOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(TFCRegistrar.getIron()), 'W', PLATE.getMaterialTag(Ironwood), 's', SAW.getTag()), "SCs", "WRW", "WRW");
         }
     }
 

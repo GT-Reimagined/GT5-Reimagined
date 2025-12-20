@@ -40,7 +40,8 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(GEM.getMaterialTag(Amethyst)).remove(Items.AMETHYST_SHARD);
         this.tag(GEM.getTag()).remove(Items.AMETHYST_SHARD);
         this.tag(BLOCK.getMaterialTag(Amethyst)).remove(Items.AMETHYST_BLOCK);
-        this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(Iron)).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
+        var builder = this.tag(PLATES_IRON_ALUMINIUM).addTag(PLATE.getMaterialTag(WroughtIron)).addTag(PLATE.getMaterialTag(Aluminium));
+        if (!GTAPI.isModLoaded("tfc")) builder.addTag(PLATE.getMaterialTag(Iron));
         this.tag(DUST_LAPIS_LAZURITE).addTag(DUST.getMaterialTag(Lapis)).addTag(DUST.getMaterialTag(Lazurite));
         this.tag(GT5RTags.GRIND_HEADS).add(GTCoreItems.DiamondGrindHead, GTCoreItems.TungstenGrindHead);
         this.tag(DUST_COALS).addTag(DUST.getMaterialTag(Coal)).addTag(DUST.getMaterialTag(Charcoal)).addTag(DUST.getMaterialTag(Carbon));

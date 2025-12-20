@@ -14,6 +14,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtlib.GTAPI;
@@ -59,7 +60,7 @@ public class Parts {
               new ItemStack(GT5Reimagined.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
       provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
-              of('G', SMALL_GEAR.getMaterialTag(Iron), 'R', ROD.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
+              of('G', SMALL_GEAR.getMaterialTag(TFCRegistrar.getIron()), 'R', ROD.getMaterialTag(TFCRegistrar.getIron()), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
 
       provider.shapeless(output, GT5Reimagined.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalBall,
@@ -147,7 +148,7 @@ public class Parts {
           Item fieldGen = GT5Reimagined.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
           Object wire = t == EV || t == IV ? GT5RBlocks.WIRE_ANNEALED_COPPER.getBlock(fromTier(t)) : WIRE_GETTER.apply(fromTier(t), LV);
-          Object motorRod = t == LV ? RecipeIngredient.ofIngredient(1, rod, ROD.getMaterialTag(Iron)) : rod;
+          Object motorRod = t == LV ? RecipeIngredient.ofIngredient(1, rod, ROD.getMaterialTag(TFCRegistrar.getIron())) : rod;
           provider.addItemRecipe(output, "gtparts", motor,
                   of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', motorRod), "CWR", "WMW", "RWC");
           provider.addItemRecipe(output, "gtparts", piston,

@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -56,12 +57,12 @@ public class MaterialCrafting {
     }
 
     public static void loadMixedMetal(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
-        mixedMetalRecipe(consumer, provider, Iron, Bronze, Tin, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Bronze, Zinc, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Bronze, Aluminium, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Brass, Tin, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Brass, Zinc, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Brass, Aluminium, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Bronze, Tin, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Bronze, Zinc, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Bronze, Aluminium, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Brass, Tin, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Brass, Zinc, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Brass, Aluminium, 1);
         mixedMetalRecipe(consumer, provider, Nickel, Bronze, Tin, 1);
         mixedMetalRecipe(consumer, provider, Nickel, Bronze, Zinc, 1);
         mixedMetalRecipe(consumer, provider, Nickel, Bronze, Aluminium, 1);

@@ -21,12 +21,14 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gt5r.data.ToolTypes;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.machine.ChestMachine;
 import org.gtreimagined.gtcore.machine.HopperMachine;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
@@ -200,11 +202,11 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GT5RCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gold, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.LIGHT_WEIGHTED_PRESSURE_PLATE).add("light_weighted_pressure_plate", 800, 16);
-        ASSEMBLER.RB().ii(ROD.getMaterialIngredient(Iron, 6), SELECTOR_TAG_INGREDIENTS.get(6)).io(new ItemStack(Items.IRON_BARS, 8)).add("iron_bars", 800, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 2), SELECTOR_TAG_INGREDIENTS.get(6)).io(Items.IRON_DOOR).add("iron_door", 800, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 4), SELECTOR_TAG_INGREDIENTS.get(4)).io(Items.IRON_TRAPDOOR).add("iron_trapdoor", 800, 16);
+        ASSEMBLER.RB().ii(ROD.getMaterialIngredient(TFCRegistrar.getIron(), 6), SELECTOR_TAG_INGREDIENTS.get(6)).io(new ItemStack(Items.IRON_BARS, 8)).add("iron_bars", 800, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 2), SELECTOR_TAG_INGREDIENTS.get(6)).io(Items.IRON_DOOR).add("iron_door", 800, 16);
+        if (!GTAPI.isModLoaded(Ref.MOD_TFC)) ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 4), SELECTOR_TAG_INGREDIENTS.get(4)).io(Items.IRON_TRAPDOOR).add("iron_trapdoor", 800, 16);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Redstone, 1), of(GT5RItems.CellTin)).io(GT5RItems.EmptySprayCan).add("empty_spray_can", 800, 1);
         ASSEMBLER.RB().ii(of(Items.PAPER, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(Tape).add("tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3)).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);
@@ -213,7 +215,7 @@ public class AssemblerLoader {
     }
 
     private static void hoppers(){
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 5), of(Tags.Items.CHESTS_WOODEN)).io(Items.HOPPER).add("hopper", 800, 2);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 5), of(Tags.Items.CHESTS_WOODEN)).io(Items.HOPPER).add("hopper", 800, 2);
         GTAPI.all(HopperMachine.class).forEach(hopper -> {
             if (!hopper.getMaterial().has(PLATE)) return;
             ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(hopper.getMaterial(), 5), Ingredient.of(Tags.Items.CHESTS_WOODEN)).io(hopper.getItem(NONE)).add(hopper.getId(), 800, 2);
