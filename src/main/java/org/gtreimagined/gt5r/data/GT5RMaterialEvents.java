@@ -1157,6 +1157,7 @@ public class GT5RMaterialEvents {
     private static void workbenches(GT5RMaterialEvent event){
         GT5RMachines.initTanks();
         METAL.all().forEach(m -> {
+            if (m == Iron && GTAPI.isModLoaded("tfc")) return;
             if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
 
                 GTCoreBlocks.createWorkbench(m, false);
