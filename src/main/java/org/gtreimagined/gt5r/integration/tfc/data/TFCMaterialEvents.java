@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.tfc.data;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.item.enchantment.Enchantments;
+import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.event.MaterialEvent;
@@ -17,8 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
-import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.DOUBLE_INGOT;
-import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.SHEET;
+import static org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes.*;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.JAVELIN;
 import static org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes.PROPICK;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
@@ -29,8 +29,12 @@ public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
         MaterialTags.TOOLS.remove(Gold);
         MaterialTags.TOOLS.remove(Iron);
-        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR);
-        event.setMaterial(Gold).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE);
+        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR, BOLT, SCREW, FRAME, GT5RMaterialTypes.TURBINE_BLADE,
+                RING, SWORD_BLADE, PICKAXE_HEAD, SHOVEL_HEAD, AXE_HEAD, HOE_HEAD, HAMMER_HEAD, FILE_HEAD, KNIFE_BLADE, SAW_BLADE, SCREWDRIVER_TIP, SCYTHE_BLADE, PROPICK_HEAD, JAVELIN_HEAD,
+                GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR);
+        event.setMaterial(Gold).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, GT5RMaterialTypes.TURBINE_BLADE,
+                SWORD_BLADE, PICKAXE_HEAD, SHOVEL_HEAD, AXE_HEAD, HOE_HEAD, HAMMER_HEAD, FILE_HEAD, KNIFE_BLADE, SAW_BLADE, SCREWDRIVER_TIP, SCYTHE_BLADE, PROPICK_HEAD, JAVELIN_HEAD,
+                GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR);
         WroughtIron.setRgb(Iron.getRGB());
         IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
         event.setMaterial(WroughtIron).flags(SMALL_GEAR);
