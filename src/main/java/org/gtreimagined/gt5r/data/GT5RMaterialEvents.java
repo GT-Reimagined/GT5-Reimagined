@@ -162,7 +162,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HSSG).asMetal(4500, FRAME);
         event.setMaterial(Materials.HSSS).asMetal(5400);
         event.setMaterial(Materials.Invar).asMetal(1700, FRAME, RING, ALLOY);
-        event.setMaterial(Materials.IronMagnetic).asMetal(1811, LONG_ROD);
+        event.setMaterial(Materials.IronMagnetic).asMetal(1811, LONG_ROD).remove(DUST, SMALL_DUST, TINY_DUST);
         event.setMaterial(Materials.Kanthal).asMetal(1800).forceBF(true);
         event.setMaterial(GTCoreMaterials.LeadedRedstone).asMetal(600, ALLOY);
         event.setMaterial(Materials.Magnalium).asMetal(870, PLATE, LONG_ROD, ALLOY);

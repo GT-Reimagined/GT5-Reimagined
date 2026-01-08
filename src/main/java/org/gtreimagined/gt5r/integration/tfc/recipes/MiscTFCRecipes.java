@@ -36,7 +36,11 @@ import org.gtreimagined.gtlib.util.TagUtils;
 import java.util.function.Consumer;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static org.gtreimagined.gt5r.data.Materials.CastIron;
+import static org.gtreimagined.gt5r.data.Materials.Iron;
 import static org.gtreimagined.gtcore.data.GTCoreItems.Plantball;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
+import static org.gtreimagined.gtlib.datagen.loaders.MaterialRecipes.addSmeltingRecipe;
 
 public class MiscTFCRecipes {
     public static void initRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
@@ -64,6 +68,18 @@ public class MiscTFCRecipes {
         provider.addStackRecipe(consumer, GT5Reimagined.ID, "plantball_from_tfc_saplings", "misc", new ItemStack(Plantball, 2), of(
                 'S', TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "saplings"))
         ), "SSS", "S S", "SSS");
+        provider.removeRecipe(new ResourceLocation("iron_ingot_from_smelting_raw_iron"));
+        provider.removeRecipe(new ResourceLocation("iron_ingot_from_blasting_raw_iron"));
+        provider.removeRecipe(new ResourceLocation("iron_ingot_from_smelting_iron_ore"));
+        provider.removeRecipe(new ResourceLocation("iron_ingot_from_blasting_iron_ore"));
+        provider.removeRecipe(new ResourceLocation("iron_ingot_from_smelting_deepslate_iron_ore"));
+        provider.removeRecipe(new ResourceLocation("iron_ingot_from_blasting_deepslate_iron_ore"));
+        addSmeltingRecipe(consumer, provider, GTMaterialTypes.RAW_ORE, INGOT, 1, Iron, CastIron);
+        addSmeltingRecipe(consumer, provider, GTMaterialTypes.CRUSHED_ORE, GTMaterialTypes.NUGGET, 12, Iron, CastIron);
+        addSmeltingRecipe(consumer, provider, GTMaterialTypes.IMPURE_DUST, INGOT, 1, Iron, CastIron);
+        addSmeltingRecipe(consumer, provider, GTMaterialTypes.PURIFIED_ORE, GTMaterialTypes.NUGGET, 11, Iron, CastIron);
+        addSmeltingRecipe(consumer, provider, GTMaterialTypes.PURE_DUST, INGOT, 1, Iron, CastIron);
+        addSmeltingRecipe(consumer, provider, GTMaterialTypes.REFINED_ORE, GTMaterialTypes.NUGGET, 10, Iron, CastIron);
     }
 
     private static TFCMetal metalFromOre(Ore ore){

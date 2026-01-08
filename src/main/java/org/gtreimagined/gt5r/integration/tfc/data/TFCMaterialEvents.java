@@ -37,11 +37,13 @@ public class TFCMaterialEvents {
                 GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR);
         WroughtIron.setRgb(Iron.getRGB());
         IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
+        event.setMaterial(Iron).setSmeltInto(CastIron).setDirectSmeltInto(CastIron);
+        event.setMaterial(CastIron).flags(NUGGET, CHUNK, BLOCK).setMacerateInto(Iron).setMeltInto(Iron);
         event.setMaterial(WroughtIron).flags(SMALL_GEAR);
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
-        Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc};
+        Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc, CastIron};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
             DOUBLE_INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/double_ingot/" + material.getId()));
