@@ -29,7 +29,7 @@ public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
         MaterialTags.TOOLS.remove(Gold);
         MaterialTags.TOOLS.remove(Iron);
-        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR, BOLT, SCREW, LONG_ROD, FRAME, GT5RMaterialTypes.TURBINE_BLADE,
+        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR, BOLT, SCREW, ROD, LONG_ROD, FRAME, GT5RMaterialTypes.TURBINE_BLADE,
                 RING, SWORD_BLADE, PICKAXE_HEAD, SHOVEL_HEAD, AXE_HEAD, HOE_HEAD, HAMMER_HEAD, FILE_HEAD, KNIFE_BLADE, SAW_BLADE, SCREWDRIVER_TIP, SCYTHE_BLADE, PROPICK_HEAD, JAVELIN_HEAD,
                 GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR);
         event.setMaterial(Gold).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, GT5RMaterialTypes.TURBINE_BLADE,
