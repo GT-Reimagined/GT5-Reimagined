@@ -29,7 +29,7 @@ public class TFCMaterialEvents {
     public static void onMaterialEvent(MaterialEvent<?> event){
         MaterialTags.TOOLS.remove(Gold);
         MaterialTags.TOOLS.remove(Iron);
-        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR, BOLT, SCREW, LONG_ROD, FRAME, GT5RMaterialTypes.TURBINE_BLADE,
+        event.setMaterial(Iron).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, SMALL_GEAR, BOLT, SCREW, ROD, LONG_ROD, FRAME, GT5RMaterialTypes.TURBINE_BLADE,
                 RING, SWORD_BLADE, PICKAXE_HEAD, SHOVEL_HEAD, AXE_HEAD, HOE_HEAD, HAMMER_HEAD, FILE_HEAD, KNIFE_BLADE, SAW_BLADE, SCREWDRIVER_TIP, SCYTHE_BLADE, PROPICK_HEAD, JAVELIN_HEAD,
                 GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR);
         event.setMaterial(Gold).remove(DRILL_BIT, CHAINSAW_BIT, WRENCH_BIT, BUZZSAW_BLADE, GT5RMaterialTypes.TURBINE_BLADE,
@@ -37,11 +37,13 @@ public class TFCMaterialEvents {
                 GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR, GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR);
         WroughtIron.setRgb(Iron.getRGB());
         IronMagnetic.setDisplayNameString("Magnetic Wrought Iron");
+        event.setMaterial(Iron).setSmeltInto(CastIron).setDirectSmeltInto(CastIron);
+        event.setMaterial(CastIron).flags(NUGGET, CHUNK, BLOCK).setMacerateInto(Iron).setMeltInto(Iron);
         event.setMaterial(WroughtIron).flags(SMALL_GEAR);
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
                 .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
-        Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc};
+        Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc, CastIron};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));
             DOUBLE_INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/double_ingot/" + material.getId()));
