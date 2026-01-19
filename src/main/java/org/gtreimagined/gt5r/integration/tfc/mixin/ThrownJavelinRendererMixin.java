@@ -2,9 +2,10 @@ package org.gtreimagined.gt5r.integration.tfc.mixin;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Axis;
 import net.dries007.tfc.client.RenderHelpers;
 import net.dries007.tfc.client.render.entity.ThrownJavelinRenderer;
-import net.dries007.tfc.common.entities.ThrownJavelin;
+import net.dries007.tfc.common.entities.misc.ThrownJavelin;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider.Context;
@@ -50,7 +51,7 @@ public abstract class ThrownJavelinRendererMixin extends EntityRenderer<ThrownJa
         handle = new JavelinModel(context.bakeLayer(ClientHandler.modelIdentifier("javelin_handle")));
     }
 
-    @Inject(method = "render(Lnet/dries007/tfc/common/entities/ThrownJavelin;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "render(Lnet/dries007/tfc/common/entities/misc/ThrownJavelin;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V", at = @At("HEAD"), cancellable = true, remap = false)
     private void gt5r$injectRender(ThrownJavelin javelin, float ageInTicks, float pitch, PoseStack poseStack, MultiBufferSource buffers, int light, CallbackInfo ci){
         if (javelin.getItem().getItem() instanceof MaterialJavelin materialJavelin){
             poseStack.pushPose();
@@ -58,8 +59,10 @@ public abstract class ThrownJavelinRendererMixin extends EntityRenderer<ThrownJa
             int rgbSecondary = materialJavelin.getItemColor(javelin.getItem(), null, 1);
             int rP = CodeUtils.getR(rgbPrimary), gP = CodeUtils.getG(rgbPrimary), bP = CodeUtils.getB(rgbPrimary);
             int rS = CodeUtils.getR(rgbSecondary), gS = CodeUtils.getG(rgbSecondary), bS = CodeUtils.getB(rgbSecondary);
-            poseStack.mulPose(RenderHelpers.rotateDegreesY(Mth.lerp(pitch, javelin.yRotO, javelin.getYRot()) - 90.0F));
-            poseStack.mulPose(RenderHelpers.rotateDegreesZ(Mth.lerp(pitch, javelin.xRotO, javelin.getXRot()) + 90.0F));
+            float degrees = Mth.lerp(pitch, javelin.yRotO, javelin.getYRot()) - 90.0F;
+            poseStack.mulPose(Axis.YP.rotationDegrees(degrees));
+            float degrees1 = Mth.lerp(pitch, javelin.xRotO, javelin.getXRot()) + 90.0F;
+            poseStack.mulPose(Axis.ZP.rotationDegrees(degrees1));
             VertexConsumer vertexconsumer = ItemRenderer.getFoilBufferDirect(buffers, this.head.renderType(this.getTextureLocation(javelin)), false, javelin.isEnchantGlowing());
             this.head.renderToBuffer(poseStack, vertexconsumer, light, OverlayTexture.NO_OVERLAY, rP / 255F, gP / 255F, bP / 255F, 1.0F);
             vertexconsumer = ItemRenderer.getFoilBufferDirect(buffers, this.handle.renderType(MaterialJavelin.OVERLAY_LOCATION), false, javelin.isEnchantGlowing());
