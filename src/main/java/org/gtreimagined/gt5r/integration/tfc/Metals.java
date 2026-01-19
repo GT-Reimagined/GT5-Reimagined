@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Tuple;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.datagen.DynamicDataPack;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;

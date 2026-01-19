@@ -1,6 +1,8 @@
 package org.gtreimagined.gt5r.block;
 
 import net.minecraft.world.level.block.FlowerBlock;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
@@ -23,7 +25,6 @@ import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -38,7 +39,7 @@ public class BlockBedrockFlower extends BushBlock implements IGTObject, IModelPr
     private final boolean sand;
 
     public BlockBedrockFlower(String domain, String id, org.gtreimagined.gtlib.material.Material tooltipMaterial, boolean sand) {
-        this(domain, id, tooltipMaterial, sand, Properties.of(Material.PLANT).noCollission().instabreak().sound(SoundType.GRASS));
+        this(domain, id, tooltipMaterial, sand, Properties.of().mapColor(MapColor.PLANT).pushReaction(PushReaction.DESTROY).noCollission().instabreak().sound(SoundType.GRASS));
     }
 
     public BlockBedrockFlower(String domain, String id, org.gtreimagined.gtlib.material.Material tooltipMaterial, boolean sand, Properties props) {

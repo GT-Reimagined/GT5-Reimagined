@@ -116,19 +116,18 @@ dependencies {
     //modRuntimeOnly("curse.maven:rubidium-574856:4451888")
     //modRuntimeOnly("curse.maven:worldstripper-250603:${project.worldstripper_version}")
     modRuntimeOnly("curse.maven:ae2-223794:${project.ae2_version}")
-    modImplementation("curse.maven:ctm-267602:3933537")
+    //modImplementation("curse.maven:ctm-267602:3933537")
     modCompileOnly("curse.maven:terrafirmacraft-302973:${project.tfc_version}")
     //modRuntimeOnly("curse.maven:terrafirmacraft-302973:${project.tfc_version}")
     modRuntimeOnly("curse.maven:patchouli-306770:${project.patchouli_version}")
     modRuntimeOnly("curse.maven:the-twilight-forest-227639:${project.twilight_version}")
-    modRuntimeOnly("curse.maven:beyond-earth-377448:3807783")
+    //modRuntimeOnly("curse.maven:beyond-earth-377448:3807783")
     modRuntimeOnly("curse.maven:farmers-delight-398521:${project.farmers_delight_version}")
     modRuntimeOnly("curse.maven:sophisticated-backpacks-422301:${project.sophisticated_backpack_version}")
-    modRuntimeOnly("curse.maven:openblocks-elevator-250832:3670034")
+    //modRuntimeOnly("curse.maven:openblocks-elevator-250832:3670034")
     modRuntimeOnly("curse.maven:sophisticated-core-618298:${project.sophisticated_core_version}")
     modRuntimeOnly("curse.maven:jade-324717:${project.jade_version}")
     modRuntimeOnly("curse.maven:jamd-422981:${project.jamd_version}")
-*/
     //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
 }
 

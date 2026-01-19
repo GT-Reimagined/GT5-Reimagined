@@ -5,8 +5,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.block.BlockAsphaltSlab;
@@ -36,13 +36,13 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 public class GT5RBlocks {
 
     public static final LiquidBlock LAVA = new BlockFakeLava();
-    public static final BlockBasic BRITTLE_CHARCOAL = new BlockBasic(GT5Reimagined.ID, "brittle_charcoal", BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.WOOD, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
+    public static final BlockBasic BRITTLE_CHARCOAL = new BlockBasic(GT5Reimagined.ID, "brittle_charcoal", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).ignitedByLava().instrument(NoteBlockInstrument.BASS).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
         @Override
         public Texture[] getTextures() {
             return new Texture[]{new Texture("minecraft:block/coal_block")};
         }
     };
-    public static final BlockBasic SOLID_SUPER_FUEL = new BlockBasic(GT5Reimagined.ID, "solid_super_fuel", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
+    public static final BlockBasic SOLID_SUPER_FUEL = new BlockBasic(GT5Reimagined.ID, "solid_super_fuel", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(5.0F, 6.0F)){
         @Override
         public Texture[] getTextures() {
             return new Texture[]{new Texture("minecraft:block/coal_block")};
@@ -66,8 +66,8 @@ public class GT5RBlocks {
     public static final BlockBedrockFlower TUNGSTUS = new BlockBedrockFlower(GT5Reimagined.ID, "tungstus", Tungsten, true);
 
     public static final BlockBasic POWDER_BARREL = new BlockPowderBarrel();
-    public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GT5Reimagined.ID, "mining_pipe_thin", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(1.0f, 3.0f));
-    public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GT5Reimagined.ID, "mining_pipe", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(1.0f, 3.0f));
+    public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GT5Reimagined.ID, "mining_pipe_thin", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f, 3.0f));
+    public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GT5Reimagined.ID, "mining_pipe", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f, 3.0f));
     public static final BlockAsphalt WHITE_ASPHALT = new BlockAsphalt(GT5Reimagined.ID, "white_asphalt", DyeColor.WHITE.getTextColor());
     public static final BlockAsphalt ORANGE_ASPHALT = new BlockAsphalt(GT5Reimagined.ID, "orange_asphalt", DyeColor.ORANGE.getTextColor());
     public static final BlockAsphalt MAGENTA_ASPHALT = new BlockAsphalt(GT5Reimagined.ID, "magenta_asphalt", DyeColor.MAGENTA.getTextColor());
@@ -127,7 +127,7 @@ public class GT5RBlocks {
     public static final BlockCasing CASING_ZPM = new BlockCasing(GT5Reimagined.ID, "casing_zpm");
     public static final BlockCasing CASING_UV = new BlockCasing(GT5Reimagined.ID, "casing_uv");
     public static final BlockCasing CASING_UHV = new BlockCasing(GT5Reimagined.ID, "casing_uhv");
-    public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GT5Reimagined.ID, Materials.Wood, BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F).sound(SoundType.WOOD));
+    public static final BlockColoredWall WOOD_WALL = new BlockColoredWall(GT5Reimagined.ID, Materials.Wood, BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).ignitedByLava().instrument(NoteBlockInstrument.BASS).strength(2.0F, 3.0F).sound(SoundType.WOOD));
     public static final BlockColoredWall STEEL_WALL = new BlockColoredWall(GT5Reimagined.ID, Materials.Steel);
     public static final BlockColoredWall INVAR_WALL = new BlockColoredWall(GT5Reimagined.ID, Materials.Invar);
     public static final BlockColoredWall STAINLESS_STEEL_WALL = new BlockColoredWall(GT5Reimagined.ID, Materials.StainlessSteel);
@@ -138,12 +138,12 @@ public class GT5RBlocks {
     public static final BlockColoredWall ADAMANTIUM_WALL = new BlockColoredWall(GT5Reimagined.ID, Materials.Adamantium);
     public static final BlockCasing LONG_DIST_ITEM_PIPE = new BlockCasing(GT5Reimagined.ID, "long_distance_item_pipe");
     public static final BlockCasing LONG_DIST_FLUID_PIPE = new BlockCasing(GT5Reimagined.ID, "long_distance_fluid_pipe");
-    public static final BlockCasing LONG_DIST_WIRE_EV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_ev", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
-    public static final BlockCasing LONG_DIST_WIRE_IV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_iv", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
-    public static final BlockCasing LONG_DIST_WIRE_LUV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_luv", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
-    public static final BlockCasing LONG_DIST_WIRE_ZPM = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_zpm", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
-    public static final BlockCasing LONG_DIST_WIRE_UV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_uv", Block.Properties.of(Material.WOOL).strength(1.0f, 10.0f).sound(SoundType.WOOL));
-    public static final BlockFakeCasing FIRE_BRICKS = new BlockFakeCasing(GT5Reimagined.ID, "fire_bricks", BlockBehaviour.Properties.of(Material.STONE, MaterialColor.DIRT).strength(1.0f, 10.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
+    public static final BlockCasing LONG_DIST_WIRE_EV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_ev", Block.Properties.of().mapColor(MapColor.WOOL).ignitedByLava().strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_IV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_iv", Block.Properties.of().mapColor(MapColor.WOOL).ignitedByLava().strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_LUV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_luv", Block.Properties.of().mapColor(MapColor.WOOL).ignitedByLava().strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_ZPM = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_zpm", Block.Properties.of().mapColor(MapColor.WOOL).ignitedByLava().strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockCasing LONG_DIST_WIRE_UV = new BlockCasing(GT5Reimagined.ID, "long_distance_wire_uv", Block.Properties.of().mapColor(MapColor.WOOL).ignitedByLava().strength(1.0f, 10.0f).sound(SoundType.WOOL));
+    public static final BlockFakeCasing FIRE_BRICKS = new BlockFakeCasing(GT5Reimagined.ID, "fire_bricks", BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f, 10.0f).requiresCorrectToolForDrops().sound(SoundType.STONE));
     public static final BlockCasing BRONZE_CASING = new BlockCasing(GT5Reimagined.ID, "bronze_casing");
     public static final BlockCasing BRICKED_BRONZE_CASING = new BlockSidedCasing(GT5Reimagined.ID, "bricked_bronze_casing", "brick", "bronze");
     public static final BlockCasing BRONZE_PLATED_BRICK_CASING = new BlockCasing(GT5Reimagined.ID, "bronze_plated_brick_casing");

@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.proxy.ClientHandler;
 import org.gtreimagined.gtlib.registration.IColorHandler;
@@ -28,7 +29,8 @@ public class GTJavelinItemRenderer extends BlockEntityWithoutLevelRenderer {
         this.overlayLocation = overlayLocation;
     }
 
-    public void renderByItem(ItemStack stack, ItemTransforms.TransformType transforms, PoseStack poseStack, MultiBufferSource buffers, int packedLight, int packedOverlay) {
+    @Override
+    public void renderByItem(ItemStack stack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource buffers, int packedLight, int packedOverlay) {
         if (!(stack.getItem() instanceof IColorHandler colorHandler)) return;
         poseStack.pushPose();
         poseStack.scale(1.0F, -1.0F, -1.0F);

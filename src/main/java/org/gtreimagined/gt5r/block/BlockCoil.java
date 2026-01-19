@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.world.level.material.MapColor;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.util.Utils;
@@ -9,7 +10,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class BlockCoil extends BlockBasic {
     }
 
     public BlockCoil(String domain, String id, CoilData coilData) {
-        this(domain, id, coilData, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).isValidSpawn((blockState, blockGetter, blockPos, object) -> false).requiresCorrectToolForDrops());
+        this(domain, id, coilData, Block.Properties.of().mapColor(MapColor.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).isValidSpawn((blockState, blockGetter, blockPos, object) -> false).requiresCorrectToolForDrops());
     }
 
     public CoilData getCoilData() {

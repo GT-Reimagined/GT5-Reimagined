@@ -2,9 +2,10 @@ package org.gtreimagined.gt5r.data;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.Properties;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
@@ -16,8 +17,8 @@ import org.gtreimagined.gtlib.fluid.GTFluid;
 
 public class GT5RFluids {
 
-    public static final GTFluid CHARGED_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "charged_matter", prepareFluidProperties(), prepareProperties(), prepareFluidExtension("charged_matter")));
-    public static final GTFluid NEUTRAL_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "neutral_matter", prepareFluidProperties(), prepareProperties(), prepareFluidExtension("neutral_matter")));
+    public static final GTFluid CHARGED_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "charged_matter", prepareFluidProperties(), prepareProperties().mapColor(DyeColor.MAGENTA), prepareFluidExtension("charged_matter")));
+    public static final GTFluid NEUTRAL_MATTER = GTAPI.register(GTFluid.class, new GTFluid(GT5Reimagined.ID, "neutral_matter", prepareFluidProperties(), prepareProperties().mapColor(DyeColor.YELLOW), prepareFluidExtension("neutral_matter")));
 
     private static FluidType.Properties prepareFluidProperties(){
         return FluidType.Properties.create().sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY).sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL);
@@ -28,7 +29,7 @@ public class GT5RFluids {
     }
 
     private static BlockBehaviour.Properties prepareProperties() {
-        return Properties.of(Material.WATER).strength(100.0F).noLootTable();
+        return Properties.of().liquid().replaceable().pushReaction(PushReaction.DESTROY).strength(100.0F).noLootTable();
     }
 
     public static void init(){

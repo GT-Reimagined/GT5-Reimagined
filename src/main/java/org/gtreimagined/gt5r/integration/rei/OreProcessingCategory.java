@@ -15,7 +15,7 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -44,20 +44,20 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
     public List<Widget> setupDisplay(OreProcessingDisplay display, Rectangle bounds) {
         List<Widget> widgets = new ArrayList<>();
         widgets.add(Widgets.createRecipeBase(bounds));
-        widgets.add(Widgets.createDrawableWidget((helper, matrices, mouseX, mouseY, delta) -> {
-            drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
-            drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+        widgets.add(Widgets.createDrawableWidget((helper, mouseX, mouseY, delta) -> {
+            drawTexture(helper, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/background.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+            drawTexture(helper, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/base.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             if (display.oreByProduct.bathingMode() != OreByProduct.BathingMode.NONE){
-                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(helper, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/chem.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.oreByProduct.hasSiftingRecipe()){
-                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(helper, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/sift.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.oreByProduct.hasSepRecipes()){
-                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(helper, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/sep.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
             if (display.oreByProduct.hasFurnaceSmeltingRecipe()){
-                drawTexture(matrices, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/smelt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
+                drawTexture(helper, new ResourceLocation(GT5Reimagined.ID, "textures/gui/ore_byproducts/smelt.png"), bounds.x, bounds.y, 0, 0, bounds.getWidth(), bounds.getHeight());
             }
         }));
         widgets.addAll(setupSlots(display, bounds));
@@ -87,12 +87,8 @@ public class OreProcessingCategory implements DisplayCategory<OreProcessingDispl
         return new Point(offsetX + x + bounds.x, offsetY + y + bounds.y);
     }
 
-    private static void drawTexture(PoseStack stack, ResourceLocation loc, int left, int top, int x, int y, int sizeX, int sizeY) {
-        RenderSystem.setShaderColor(1, 1, 1, 1);
-        RenderSystem.setShader(GameRenderer::getPositionTexShader);
-        RenderSystem.setShaderTexture(0, loc);
-        //AbstractGui.blit(stack, left, top, x, y, sizeX, sizeY);
-        GuiComponent.blit(stack, left, top, 0, x, y, sizeX, sizeY, 186, 166);
+    private static void drawTexture(GuiGraphics graphics, ResourceLocation loc, int left, int top, int x, int y, int sizeX, int sizeY) {
+        graphics.blit(loc, left, top, 0, x, y, sizeX, sizeY, 186, 166);
     }
 
     @Override

@@ -202,11 +202,11 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 2), of(Items.IRON_TRAPDOOR)).io(new ItemStack(GT5RCovers.COVER_SHUTTER.getItem().getItem(), 2)).add("shutter",800, 16);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Invar, 2), of(Items.FLINT, 1)).io(GTCoreItems.LighterEmpty).add("empty_lighter", 256, 16);
         ASSEMBLER.RB().ii(of(Match, 64), of(Items.PAPER, 2)).fi(Glue.getLiquid(10)).io(MatchBook).add("matchbook", 100, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gold, 2), SELECTOR_TAG_INGREDIENTS.get(2)).io(Items.LIGHT_WEIGHTED_PRESSURE_PLATE).add("light_weighted_pressure_plate", 800, 16);
-        ASSEMBLER.RB().ii(ROD.getMaterialIngredient(TFCRegistrar.getIron(), 6), SELECTOR_TAG_INGREDIENTS.get(6)).io(new ItemStack(Items.IRON_BARS, 8)).add("iron_bars", 800, 16);
-        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 2), SELECTOR_TAG_INGREDIENTS.get(6)).io(Items.IRON_DOOR).add("iron_door", 800, 16);
-        if (!GTAPI.isModLoaded(Ref.MOD_TFC)) ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 4), SELECTOR_TAG_INGREDIENTS.get(4)).io(Items.IRON_TRAPDOOR).add("iron_trapdoor", 800, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 2), SELECTOR_TAG_INGREDIENTS.get(2).get()).io(Items.HEAVY_WEIGHTED_PRESSURE_PLATE).add("heavy_weighted_pressure_plate", 800, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gold, 2), SELECTOR_TAG_INGREDIENTS.get(2).get()).io(Items.LIGHT_WEIGHTED_PRESSURE_PLATE).add("light_weighted_pressure_plate", 800, 16);
+        ASSEMBLER.RB().ii(ROD.getMaterialIngredient(TFCRegistrar.getIron(), 6), SELECTOR_TAG_INGREDIENTS.get(6).get()).io(new ItemStack(Items.IRON_BARS, 8)).add("iron_bars", 800, 16);
+        ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 2), SELECTOR_TAG_INGREDIENTS.get(6).get()).io(Items.IRON_DOOR).add("iron_door", 800, 16);
+        if (!GTAPI.isModLoaded(Ref.MOD_TFC)) ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Iron, 4), SELECTOR_TAG_INGREDIENTS.get(4).get()).io(Items.IRON_TRAPDOOR).add("iron_trapdoor", 800, 16);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Redstone, 1), of(GT5RItems.CellTin)).io(GT5RItems.EmptySprayCan).add("empty_spray_can", 800, 1);
         ASSEMBLER.RB().ii(of(Items.PAPER, 3), SELECTOR_TAG_INGREDIENTS.get(3).get()).fi(Glue.getLiquid(1000)).io(Tape).add("tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3).get()).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);

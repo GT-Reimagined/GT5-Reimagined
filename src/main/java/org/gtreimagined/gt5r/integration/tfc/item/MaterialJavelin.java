@@ -32,7 +32,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.IItemRenderProperties;
 import net.minecraftforge.common.util.NonNullLazy;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.client.GTJavelinItemRenderer;
@@ -64,7 +63,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     protected GTItemTier itemTier;
     public static final ResourceLocation OVERLAY_LOCATION = new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin_overlay.png");
     public MaterialJavelin(String domain, GTToolType type, GTItemTier tier, Properties properties) {
-        super(GTItemTier.NULL, 0, type.getBaseAttackSpeed(), properties, new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin.png"));  // 0 as base attack as it adds
+        super(tier, 0, type.getBaseAttackDamage() + tier.getAttackDamageBonus(), type.getBaseAttackSpeed(), properties, new ResourceLocation(GT5Reimagined.ID, "textures/entity/javelin.png"));  // 0 as base attack as it adds
         this.domain = domain;
         this.type = type;
         this.itemTier = tier;
@@ -93,7 +92,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
         return itemTier;
     }
 
-    @Override
+    /*@Override
     public void initializeClient(Consumer<IItemRenderProperties> consumer) {
         consumer.accept(new IItemRenderProperties() {
             private final NonNullLazy<GTJavelinItemRenderer> renderer = NonNullLazy.of(() -> new GTJavelinItemRenderer(MaterialJavelin.this.getTextureLocation(), OVERLAY_LOCATION));
@@ -102,7 +101,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
                 return (BlockEntityWithoutLevelRenderer)this.renderer.get();
             }
         });
-    }
+    }*/
 
     @NotNull
     @Override
@@ -196,7 +195,7 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     }
 
     @Override
-    public int getItemEnchantability(ItemStack stack) {
+    public int getEnchantmentValue(ItemStack stack) {
         return getTier(stack).getEnchantmentValue();
     }
 
@@ -216,12 +215,12 @@ public class MaterialJavelin extends JavelinItem implements IGTTool {
     }
 
     @Override
-    public boolean hasContainerItem(ItemStack stack) {
+    public boolean hasCraftingRemainingItem(ItemStack stack) {
         return type.hasContainer();
     }
 
     @Override
-    public ItemStack getContainerItem(ItemStack oldStack) {
+    public ItemStack getCraftingRemainingItem(ItemStack oldStack) {
         return getGenericContainerItem(oldStack);
     }
 

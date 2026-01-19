@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.registration.IColorHandler;
@@ -10,7 +12,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -19,7 +20,7 @@ public class BlockAsphalt extends BlockBasic implements IColorHandler {
     public static final UUID SPEED_MODIFIER = UUID.fromString("b7e0665f-323d-403f-bc0c-be73792a2285");
     final int color;
     public BlockAsphalt(String domain, String id, int color) {
-        super(domain, id, Properties.of(Material.STONE).strength(1.0f, 1.0f).sound(SoundType.STONE));
+        super(domain, id, Properties.of().mapColor(DyeColor.byName(id.replace("_asphalt", ""), DyeColor.BLACK)).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f, 1.0f).sound(SoundType.STONE));
         this.color = color;
     }
 

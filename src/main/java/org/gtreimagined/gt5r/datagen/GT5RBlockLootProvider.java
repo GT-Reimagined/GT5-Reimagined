@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.datagen;
 
-import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
@@ -39,7 +38,7 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         GTAPI.all(BlockCoil.class,providerDomain, this::add);
         GTAPI.all(BlockFakeCasing.class, providerDomain, this::add);
         GTAPI.all(BlockAsphalt.class, providerDomain, this::add);
-        GTAPI.all(BlockAsphaltSlab.class, providerDomain, b -> tables.put(b, BlockLoot::createSlabItemTable));
+        GTAPI.all(BlockAsphaltSlab.class, providerDomain, b -> tables.put(b, this::createSlabItemTable));
         GTAPI.all(BlockAsphaltStair.class, providerDomain, this::add);
         GTAPI.all(BlockBedrockFlower.class, providerDomain, this::add);
         this.add(GT5RBlocks.MINING_PIPE_THIN);

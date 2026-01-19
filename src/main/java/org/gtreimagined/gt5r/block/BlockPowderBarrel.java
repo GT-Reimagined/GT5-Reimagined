@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -24,7 +26,6 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +34,7 @@ import static net.minecraft.world.level.block.TntBlock.UNSTABLE;
 
 public class BlockPowderBarrel extends BlockBasic {
     public BlockPowderBarrel() {
-        super(GT5Reimagined.ID, "powder_barrel", Properties.of(Material.WOOD).strength(1.0f, 1.0f).sound(SoundType.WOOD));
+        super(GT5Reimagined.ID, "powder_barrel", Properties.of().mapColor(MapColor.WOOD).ignitedByLava().pushReaction(PushReaction.DESTROY).strength(1.0f, 1.0f).sound(SoundType.WOOD));
         this.registerDefaultState(this.defaultBlockState().setValue(UNSTABLE, false));
     }
 
@@ -66,7 +67,7 @@ public class BlockPowderBarrel extends BlockBasic {
 
     public void wasExploded(Level level, BlockPos pos, Explosion explosion) {
         if (!level.isClientSide) {
-            PrimedTnt primedTnt = new PrimedTnt(level, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, explosion.getSourceMob());
+            PrimedTnt primedTnt = new PrimedTnt(level, (double)pos.getX() + 0.5, pos.getY(), (double)pos.getZ() + 0.5, explosion.getIndirectSourceEntity());
             int i = primedTnt.getFuse();
             primedTnt.setFuse((short)(level.random.nextInt(i / 4) + i / 8));
             level.addFreshEntity(primedTnt);

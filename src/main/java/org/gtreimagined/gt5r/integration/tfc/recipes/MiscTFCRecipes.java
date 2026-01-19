@@ -1,6 +1,5 @@
 package org.gtreimagined.gt5r.integration.tfc.recipes;
 
-import com.google.gson.JsonObject;
 import net.dries007.tfc.common.TFCTags;
 import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.rock.Ore;
@@ -11,24 +10,22 @@ import net.dries007.tfc.common.items.TFCItems;
 import net.dries007.tfc.common.recipes.ChiselRecipe.Mode;
 import net.dries007.tfc.util.Metal.Default;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.integration.tfc.Metals;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.ChiselFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.HeatingFinishedRecipe;
 import org.gtreimagined.gt5r.integration.tfc.finishedrecipes.QuernFinishedRecipe;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.datagen.DynamicDataPack;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.TagUtils;
@@ -58,7 +55,7 @@ public class MiscTFCRecipes {
         }
         consumer.accept(new ChiselFinishedRecipe(new ResourceLocation(GT5Reimagined.ID, "chisel/firebricks"), TFCBlocks.FIRE_BRICKS.get(), GT5RBlocks.FIRE_BRICKS, Mode.SMOOTH));
         provider.shapeless(consumer, GT5Reimagined.ID, "firebricks", "bricks", new ItemStack(GT5RBlocks.FIRE_BRICKS), TFCBlocks.FIRE_BRICKS.get(), TFCTags.Items.CHISELS);
-        SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(TFCItems.UNFIRED_FIRE_BRICK.get(), 1), TFCItems.FIRE_BRICK.get(), 0.5F, 200).unlockedBy("has_unfired_fire_brick", provider.hasSafeItem(TFCItems.UNFIRED_FIRE_BRICK.get())).save(consumer, GT5Reimagined.ID + ":firebrick");
+        SimpleCookingRecipeBuilder.smelting(RecipeIngredient.of(TFCItems.UNFIRED_FIRE_BRICK.get(), 1), RecipeCategory.MISC, TFCItems.FIRE_BRICK.get(), 0.5F, 200).unlockedBy("has_unfired_fire_brick", provider.hasSafeItem(TFCItems.UNFIRED_FIRE_BRICK.get())).save(consumer, GT5Reimagined.ID + ":firebrick");
         provider.addItemRecipe(consumer, GT5Reimagined.ID, "plantball_from_tfc_fruits", "misc", Plantball, of(
                 'C', TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "foods/fruits"))
         ), "CCC", "C C", "CCC");

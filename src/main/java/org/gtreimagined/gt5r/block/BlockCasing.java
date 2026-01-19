@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.world.level.material.MapColor;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.datagen.builder.GTBlockModelBuilder;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider;
@@ -7,7 +8,6 @@ import org.gtreimagined.gtlib.dynamic.BlockDynamic;
 import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.material.Material;
 
 public class BlockCasing extends BlockDynamic {
 
@@ -17,7 +17,7 @@ public class BlockCasing extends BlockDynamic {
     }
 
     public BlockCasing(String domain, String id) {
-        this(domain, id, Block.Properties.of(Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops());
+        this(domain, id, Block.Properties.of().mapColor(MapColor.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops());
     }
 
     @Override
