@@ -161,12 +161,13 @@ public class Materials {
 
     public static Material AnnealedCopper = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "annealed_copper", 0xff7814, SHINY));
     public static Material BatteryAlloy = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "battery_alloy", 0x9c7ca0, DULL));
-    public static Material BismuthBronze = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "bismuth_bronze", 0x647d7d, DULL));
-    public static Material BlackBronze = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_bronze", 0x64327d, DULL));
+    public static Material BismuthBronze = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "bismuth_bronze", 0x2d8040, DULL));
+    public static Material BlackBronze = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_bronze", 0x77488d, DULL));
     public static Material BlackSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_steel", 0x646464, METALLIC));
-    public static Material BlueSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "blue_steel", 0x64648c, METALLIC));
+    public static Material BlueSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "blue_steel", 0x3a4c9e, METALLIC));
     public static Material Brass = GTCoreMaterials.Brass;
     public static Material Bronze = GTCoreMaterials.Bronze;
+    public static Material CastIron = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cast_iron", 0x281f1c, METALLIC));
     public static Material CdInAGAlloy = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cd_in_ag_alloy", 0x646480, METALLIC)).setDisplayNameString("Cd-In-Ag-Alloy");
     public static Material CobaltBrass = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_brass", 0xb4b4a0, METALLIC));
     public static Material Cupronickel = GTCoreMaterials.Cupronickel;
@@ -187,12 +188,12 @@ public class Materials {
     public static Material NiobiumTitanium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "niobium_titanium", 0x1d1d29, DULL));
     public static Material Osmiridium = GTCoreMaterials.Osmiridium;
     public static Material RedAlloy = GTCoreMaterials.RedAlloy;
-    public static Material RedSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "red_steel", 0x8c6464, METALLIC));
-    public static Material RoseGold = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "rose_gold", 0xffe61e, SHINY));
+    public static Material RedSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "red_steel", 0x88281f, METALLIC));
+    public static Material RoseGold = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "rose_gold", 0xb8792d, SHINY));
     public static Material SolderingAlloy = GTCoreMaterials.SolderingAlloy;
     public static Material Steel = GTCoreMaterials.Steel;
     public static Material SteelMagnetic = GTCoreMaterials.SteelMagnetic;
-    public static Material SterlingSilver = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sterling_silver", 0xfadce1, SHINY));
+    public static Material SterlingSilver = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sterling_silver", 0xc3ab8f, SHINY));
     public static Material StainlessSteel = GTCoreMaterials.StainlessSteel;
     public static Material TinAlloy = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tin_alloy", 0x9fadbb, NONE));
     public static Material TitaniumGold = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "titanium_gold", 0xdedeff, METALLIC));

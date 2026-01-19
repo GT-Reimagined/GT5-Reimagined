@@ -5,18 +5,28 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.AbstractCauldronBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BucketPickup;
+import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.block.LiquidBlockContainer;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -32,13 +42,17 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
+import org.gtreimagined.gtlib.item.ItemFluidCell;
 import org.gtreimagined.gtlib.registration.IGTObject;
 import org.gtreimagined.gtlib.registration.IModelProvider;
 import org.gtreimagined.gtlib.registration.ITextureProvider;
 import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureProvider, IModelProvider {
@@ -152,11 +166,58 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
         }
     }
 
+    public static InteractionResult fillBucket(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack) {
+        if (blockState.getValue(LayeredCauldronBlock.LEVEL) != 3) {
+            return InteractionResult.PASS;
+        } else {
+            if (!level.isClientSide) {
+                Item item = stack.getItem();
+                player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(GT5RItems.WOODEN_WATER_BUCKET)));
+                player.awardStat(Stats.USE_CAULDRON);
+                player.awardStat(Stats.ITEM_USED.get(item));
+                level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
+                level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
+            }
+
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+    }
+
+    public static InteractionResult emptyBucket(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack) {
+        if (!level.isClientSide) {
+            Item item = stack.getItem();
+            player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(GT5RItems.WOODEN_BUCKET)));
+            player.awardStat(Stats.FILL_CAULDRON);
+            player.awardStat(Stats.ITEM_USED.get(item));
+            level.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 3));
+            level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
+        }
+
+        return InteractionResult.sidedSuccess(level.isClientSide);
+    }
+
+    private boolean canBlockContainFluid(Level worldIn, BlockPos posIn, BlockState blockstate) {
+        return blockstate.getBlock() instanceof LiquidBlockContainer && ((LiquidBlockContainer)blockstate.getBlock()).canPlaceLiquid(worldIn, posIn, blockstate, this.getFluid());
+    }
+
+
     private static ItemStack getEmptyBucket(ItemStack bucketStack, Player player) {
         return !player.getAbilities().instabuild ? new ItemStack(GT5RItems.WOODEN_BUCKET) : bucketStack;
     }
 
     private static Item findFilledBucket(Fluid fluid){
         return GTAPI.all(ItemWoodenBucket.class).stream().filter(w -> w.getFluid() == fluid).findFirst().map(Item::asItem).orElse(Items.AIR);
+    }
+
+    @Override
+    public void onItemModelBuild(ItemLike item, GTItemModelProvider prov) {
+        prov.getGTBuilder(item).bucketProperties(this.getFluid(), true, false).parent(new ResourceLocation(Ref.ID + ":item/bucket")).tex((map) -> {
+            String id = "wooden_bucket";
+            map.put("base", getDomain() + ":item/basic/" + id);
+            map.put("cover", getDomain() + ":item/other/" + id + "_cover");
+            map.put("fluid", getDomain() + ":item/other/" + id + "_fluid");
+        });
     }
 }

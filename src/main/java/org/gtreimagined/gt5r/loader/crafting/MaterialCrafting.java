@@ -8,6 +8,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -28,8 +29,11 @@ import static org.gtreimagined.gtlib.data.GTTools.*;
 
 public class MaterialCrafting {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
-        addShapelessDustRecipe(output, provider, Bronze, ImmutableMap.of(Copper, 3, Tin, 1));
-        addShapelessDustRecipe(output, provider, Brass, ImmutableMap.of(Copper, 3, Zinc, 1));
+        if (!GTAPI.isModLoaded("tfc")){
+            addShapelessDustRecipe(output, provider, Bronze, ImmutableMap.of(Copper, 3, Tin, 1));
+            addShapelessDustRecipe(output, provider, Brass, ImmutableMap.of(Copper, 3, Zinc, 1));
+            addShapelessDustRecipe(output, provider, BismuthBronze, ImmutableMap.of(Copper, 3, Bismuth, 1, Zinc, 1));
+        }
         addShapelessDustRecipe(output, provider, BlackBronze, ImmutableMap.of(Copper, 3, Silver, 1, Gold, 1));
         addShapelessDustRecipe(output, provider, TinAlloy, ImmutableMap.of(Tin, 1, Iron, 1));
         addShapelessDustRecipe(output, provider, BlackSteel, ImmutableMap.of(Steel, 3, BlackBronze, 1, Nickel, 1));
@@ -38,26 +42,27 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, Cupronickel, ImmutableMap.of(Copper, 1, Nickel, 1));
         addShapelessDustRecipe(output, provider, RoseGold, ImmutableMap.of(Gold, 4, Copper, 1));
         addShapelessDustRecipe(output, provider, SterlingSilver, ImmutableMap.of(Silver, 4, Copper, 1));
-        addShapelessDustRecipe(output, provider, BismuthBronze, ImmutableMap.of(Copper, 3, Bismuth, 1, Zinc, 1));
         addShapelessDustRecipe(output, provider, RedSteel, ImmutableMap.of(BlackSteel, 4, Steel, 2, Brass, 1, RoseGold, 1));
         addShapelessDustRecipe(output, provider, BlueSteel, ImmutableMap.of(BlackSteel, 4, Steel, 2, BismuthBronze, 1, SterlingSilver, 1));
         addShapelessDustRecipe(output, provider, CobaltBrass, ImmutableMap.of(Brass, 7, Aluminium, 1, Cobalt, 1));
         addShapelessDustRecipe(output, provider, GalliumArsenide, ImmutableMap.of(Gallium, 1, Arsenic, 1));
         addShapelessDustRecipe(output, provider, IndiumGalliumPhosphide, ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1));
         addShapelessDustRecipe(output, provider, Signalum, ImmutableMap.of(RedAlloy, 5, Silver, 2, Copper, 1));
-        provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.SMALL_DUST.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        if (!GTAPI.isModLoaded("tfc")) {
+            provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.SMALL_DUST.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
+        }
         provider.addItemRecipe(output, GT5Reimagined.ID, "copper_ingot", "ingots", GTMaterialTypes.INGOT.get(Copper), ImmutableMap.of('I', GTMaterialTypes.NUGGET.getMaterialTag(Copper)), "III", "III", "III");
         loadAutoRecipes(output, provider);
         loadMixedMetal(output, provider);
     }
 
     public static void loadMixedMetal(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
-        mixedMetalRecipe(consumer, provider, Iron, Bronze, Tin, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Bronze, Zinc, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Bronze, Aluminium, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Brass, Tin, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Brass, Zinc, 1);
-        mixedMetalRecipe(consumer, provider, Iron, Brass, Aluminium, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Bronze, Tin, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Bronze, Zinc, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Bronze, Aluminium, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Brass, Tin, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Brass, Zinc, 1);
+        mixedMetalRecipe(consumer, provider, TFCRegistrar.getIron(), Brass, Aluminium, 1);
         mixedMetalRecipe(consumer, provider, Nickel, Bronze, Tin, 1);
         mixedMetalRecipe(consumer, provider, Nickel, Bronze, Zinc, 1);
         mixedMetalRecipe(consumer, provider, Nickel, Bronze, Aluminium, 1);

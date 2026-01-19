@@ -20,6 +20,7 @@ import org.gtreimagined.gt5r.block.BlockFakeLava;
 import org.gtreimagined.gt5r.block.BlockMiningPipe;
 import org.gtreimagined.gt5r.block.BlockPowderBarrel;
 import org.gtreimagined.gt5r.block.BlockSidedCasing;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.data.GTLibMaterials;
@@ -205,7 +206,7 @@ public class GT5RBlocks {
     public static final Cable<?> CABLE_LEAD = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Lead, 2, Tier.LV).amps(2));
     public static final Cable<?> CABLE_TIN = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Tin, 1, Tier.LV).amps(1));
     public static final Cable<?> CABLE_ZINC = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Zinc, 1, Tier.LV).amps(1));
-    public static final Cable<?> CABLE_IRON = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Iron, 3, Tier.MV).amps(2)); //M);
+    public static final Cable<?> CABLE_IRON = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, TFCRegistrar.getIron(), 3, Tier.MV).amps(2)); //M);
     public static final Cable<?> CABLE_NICKEL = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Nickel, 3, Tier.MV).amps(3));
     public static final Cable<?> CABLE_CUPRONICKEL = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Cupronickel, 3, Tier.MV).amps(2));
     public static final Cable<?> CABLE_COPPER = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Copper, 2, Tier.MV).amps(1));
@@ -235,7 +236,7 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_LEAD = GTAPI.register(Wire.class,  new Wire<>(GT5Reimagined.ID, Materials.Lead, 4, Tier.LV).amps(2));
     public static final Wire<?> WIRE_TIN = GTAPI.register(Wire.class,  new Wire<>(GT5Reimagined.ID, Materials.Tin, 2, Tier.LV).amps(1));
     public static final Wire<?> WIRE_ZINC = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Zinc, 2, Tier.LV).amps(1));
-    public static final Wire<?> WIRE_IRON = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Iron, 6, Tier.MV).amps(2)); //M);
+    public static final Wire<?> WIRE_IRON = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, TFCRegistrar.getIron(), 6, Tier.MV).amps(2)); //M);
     public static final Wire<?> WIRE_NICKEL = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Nickel, 6, Tier.MV).amps(3));
     public static final Wire<?> WIRE_CUPRONICKEL = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Cupronickel, 6, Tier.MV).amps(2));
     public static final Wire<?> WIRE_COPPER = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Copper, 4, Tier.MV).amps(1));

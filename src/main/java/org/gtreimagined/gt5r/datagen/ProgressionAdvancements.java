@@ -10,6 +10,7 @@ import net.minecraft.world.level.ItemLike;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.Data;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 
@@ -33,6 +34,7 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
 
     @Override
     public void accept(Consumer<Advancement> consumer) {
+        if (GTAPI.isModLoaded("tfc")) return;
         progressionRoot = buildRootAdvancement(Data.DEBUG_SCANNER, new ResourceLocation(GT5Reimagined.ID, "textures/block/machine/base/lv.png"),
                 GT5Reimagined.ID + ".advancements.gt5r.title", GT5Reimagined.ID + ".advancements.gt5r.desc", FrameType.TASK, false, false, false)
                 .addCriterion("has_rocks", hasItem(getForgelikeItemTag("rocks"))).save(consumer, getLoc(GT5Reimagined.ID, "progression/root"));

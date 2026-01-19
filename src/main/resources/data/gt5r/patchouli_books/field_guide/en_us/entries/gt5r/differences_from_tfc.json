@@ -1,0 +1,24 @@
+{
+  "__comment__": "This file was automatically created by mcresources",
+  "name": "Changes made to TFC",
+  "category": "gt5r:gt5r",
+  "icon": "tfc:food/wheat_bread",
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "GT5R makes a few changes to recipes and ores in regular TFC. This chapter exists to help direct you towards areas where this is very different."
+    },
+    {
+      "type": "patchouli:text",
+      "text": "Some TFC $(l:gt5r:gt5r/ores)Ore Veins$() have had some gt ores injected into them, and in addition some new gt veins have been added.",
+      "title": "Ores"
+    },
+    {
+      "type": "patchouli:text",
+      "text": "By default Bismuth Bronze, Black Bronze, Sterling Silver, and Rose Gold alloy recipes have had their percentage variance decreased. Look at the recipes in jei/emi/rei to see what has changed.",
+      "title": "Alloys"
+    }
+  ],
+  "read_by_default": true,
+  "sortnum": 0
+}

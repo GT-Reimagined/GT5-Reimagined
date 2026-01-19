@@ -119,8 +119,8 @@ public class CentrifugeLoader {
         addMethaneRecipe(POISONOUS_POTATO, 48, 384);
         addMethaneRecipe(CAKE, 72, 576);
         //addMethaneRecipe(TerraWart, 36, 288);
-        addMethaneRecipe(GOLDEN_APPLE, 576, 9216, new ItemStack(GOLD_INGOT, 7));
-        addMethaneRecipe(ENCHANTED_GOLDEN_APPLE, 4608, 9216, new ItemStack(GOLD_INGOT, 64));
+        addMethaneRecipe(GOLDEN_APPLE, 576, 9216, INGOT.get(Gold, 7));
+        addMethaneRecipe(ENCHANTED_GOLDEN_APPLE, 4608, 9216, INGOT.get(Gold, 64));
         addMethaneRecipe(GOLDEN_CARROT, 576, 9216, new ItemStack(GOLD_NUGGET, 6));
         addMethaneRecipe(GLISTERING_MELON_SLICE, 576, 9216, new ItemStack(GOLD_NUGGET, 6));
 

@@ -10,9 +10,12 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.GTCoreConfig;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.TagUtils;
 
@@ -36,11 +39,13 @@ public class VanillaExtensions {
                 Items.CHAINMAIL_LEGGINGS, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "RRR", "RHR", "R R");
         provider.addItemRecipe(consumer, GT5Reimagined.ID, "chainmail_boots", "chainmail_armor",
                 Items.CHAINMAIL_BOOTS, of('R', GTMaterialTypes.RING.getMaterialTag(Steel), 'H', HAMMER.getTag()), "R R", "RHR");
-        provider.addItemRecipe(consumer, GT5Reimagined.ID, "saddle", "", Items.SADDLE,
-                of('L', Items.LEATHER, 'R', GTMaterialTypes.RING.getMaterialTag(Steel), 'S', GTMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
+        if (!GTAPI.isModLoaded("tfc")) {
+            provider.addItemRecipe(consumer, GT5Reimagined.ID, "saddle", "", Items.SADDLE,
+                    of('L', Items.LEATHER, 'R', GTMaterialTypes.RING.getMaterialTag(Steel), 'S', GTMaterialTypes.SCREW.getMaterialTag(Steel)), "LLL", "LSL", "R R");
+        }
 
         provider.addItemRecipe(consumer, "magnetic_rods_iron", ROD.get(IronMagnetic),
-                of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/iron")), " R ", "RSR", " R ");
+                of('R', Tags.Items.DUSTS_REDSTONE, 'S', ROD.getMaterialTag(TFCRegistrar.getIron())), " R ", "RSR", " R ");
 
         provider.addItemRecipe(consumer, "magnetic_rods_neodymium", ROD.get(Neodymium),
                 of('R', Tags.Items.DUSTS_REDSTONE, 'S', TagUtils.getForgelikeItemTag("rods/neodymium")), " R ", "RSR", " R ");
@@ -79,6 +84,6 @@ public class VanillaExtensions {
 
         provider.addItemRecipe(consumer, GT5Reimagined.ID, Items.PISTON,
                 of('P', ItemTags.PLANKS, 'C', Tags.Items.COBBLESTONE, 'R', DUST.getMaterialTag(Redstone),
-                        'I', RecipeIngredient.ofIngredient(1, INGOT.getMaterialTag(Iron), INGOT.getMaterialTag(Bronze), INGOT.getMaterialTag(WroughtIron), INGOT.getMaterialTag(Aluminium), INGOT.getMaterialTag(Steel), INGOT.getMaterialTag(Titanium))), "PPP", "CIC", "CRC");
+                        'I', RecipeIngredient.ofIngredient(1, INGOT.getMaterialTag(TFCRegistrar.getIron()), INGOT.getMaterialTag(Bronze), INGOT.getMaterialTag(WroughtIron), INGOT.getMaterialTag(Aluminium), INGOT.getMaterialTag(Steel), INGOT.getMaterialTag(Titanium))), "PPP", "CIC", "CRC");
     }
 }

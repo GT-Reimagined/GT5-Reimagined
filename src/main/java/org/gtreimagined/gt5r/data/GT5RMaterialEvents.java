@@ -146,12 +146,12 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.AnnealedCopper).asMetal(1357, PLATE, FOIL, LONG_ROD, FINE_WIRE, SCREW).remove(DUST, SMALL_DUST, TINY_DUST);
         event.setMaterial(Materials.BatteryAlloy).asMetal(295, PLATE, ALLOY);
-        event.setMaterial(Materials.BismuthBronze).asMetal(1100, PLATE, ALLOY);
-        event.setMaterial(Materials.BlackBronze).asMetal(2000, FRAME, ALLOY);
-        event.setMaterial(Materials.BlackSteel).asMetal(1200, FRAME, PLATE).forceBF(false);
-        event.setMaterial(Materials.BlueSteel).asMetal(1400, FRAME).forceBF(false);
+        event.setMaterial(Materials.BismuthBronze).asMetal(1258, PLATE, ALLOY);
+        event.setMaterial(Materials.BlackBronze).asMetal(1343, FRAME, ALLOY);
+        event.setMaterial(Materials.BlackSteel).asMetal(1758, 1200, FRAME, PLATE).forceBF(false);
+        event.setMaterial(Materials.BlueSteel).asMetal(1811, 1400, FRAME).forceBF(false);
         event.setMaterial(Materials.Brass).asMetal(1170, FRAME, ROD, PLATE, SMALL_GEAR, ALLOY);
-        event.setMaterial(Materials.Bronze).asMetal(1125, GEAR, FRAME, ROTOR, ALLOY);
+        event.setMaterial(Materials.Bronze).asMetal(1223, GEAR, FRAME, ROTOR, ALLOY);
         event.setMaterial(Materials.CdInAGAlloy).asMetal(752, ROD, ALLOY);
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
@@ -162,7 +162,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HSSG).asMetal(4500, FRAME);
         event.setMaterial(Materials.HSSS).asMetal(5400);
         event.setMaterial(Materials.Invar).asMetal(1700, FRAME, RING, ALLOY);
-        event.setMaterial(Materials.IronMagnetic).asMetal(1811, LONG_ROD);
+        event.setMaterial(Materials.IronMagnetic).asMetal(1811, LONG_ROD).remove(DUST, SMALL_DUST, TINY_DUST);
         event.setMaterial(Materials.Kanthal).asMetal(1800).forceBF(true);
         event.setMaterial(GTCoreMaterials.LeadedRedstone).asMetal(600, ALLOY);
         event.setMaterial(Materials.Magnalium).asMetal(870, PLATE, LONG_ROD, ALLOY);
@@ -173,7 +173,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD, FINE_WIRE);
         event.setMaterial(Materials.Osmiridium).asMetal(3333, 2500, FRAME);
         event.setMaterial(Materials.RedAlloy).asMetal(295, PLATE, FOIL, ROD, FINE_WIRE, ALLOY);
-        event.setMaterial(Materials.RedSteel).asMetal(1300, 1300).forceBF(false);
+        event.setMaterial(Materials.RedSteel).asMetal(1811, 1300).forceBF(false);
         event.setMaterial(Materials.RoseGold).asMetal(1600, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.SolderingAlloy).asMetal(400, PLATE, ROD, ALLOY);
         event.setMaterial(Materials.Steel).asMetal(1811, 1000, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, ROTOR, SMALL_GEAR, ITEM_CASING, FINE_WIRE).forceBF(false);
@@ -632,12 +632,16 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.AnnealedCopper).mats(of(Copper, 1));
         event.setMaterial(Materials.BatteryAlloy).mats(of(Materials.Lead, 4, Materials.Antimony, 1));
-        event.setMaterial(Materials.BismuthBronze).mats(of(Materials.Bismuth, 1, Materials.Zinc, 1, Copper, 3));
+        int copperAmount = GTAPI.isModLoaded("tfc") ? 5 : 3;
+        int zincAmount = GTAPI.isModLoaded("tfc") ? 3 : 1;
+        int bismuthAmount = GTAPI.isModLoaded("tfc") ? 2 : 1;
+        event.setMaterial(Materials.BismuthBronze).mats(of(Materials.Bismuth, bismuthAmount, Materials.Zinc, zincAmount, Copper, copperAmount));
         event.setMaterial(Materials.BlackBronze).mats(of(Gold, 1, Silver, 1, Copper, 3));
         event.setMaterial(Materials.BlackSteel).mats(of(Materials.Nickel, 1, Materials.BlackBronze, 1, Materials.Steel, 3));
-        event.setMaterial(Materials.BlueSteel).mats(of(Materials.RoseGold, 1, Materials.Brass, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
-        event.setMaterial(Materials.Brass).mats(of(Materials.Zinc, 1, Copper, 3));
-        event.setMaterial(Materials.Bronze).mats(of(Materials.Tin, 1, Copper, 3));
+        event.setMaterial(Materials.BlueSteel).mats(of(SterlingSilver, 1, BismuthBronze, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
+        copperAmount = GTAPI.isModLoaded("tfc") ? 9 : 3;
+        event.setMaterial(Materials.Brass).mats(of(Materials.Zinc, 1, Copper, copperAmount));
+        event.setMaterial(Materials.Bronze).mats(of(Materials.Tin, 1, Copper, copperAmount));
         event.setMaterial(Materials.CdInAGAlloy).mats(of(Materials.Cadmium, 1, Materials.Indium, 1, Silver, 1));
         event.setMaterial(Materials.CobaltBrass).mats(of(Materials.Brass, 7, Materials.Aluminium, 1, Materials.Cobalt, 1));
         event.setMaterial(Materials.Cupronickel).mats(of(Copper, 1, Materials.Nickel, 1));
@@ -657,7 +661,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NiobiumTitanium).mats(of(Materials.Nickel, 4, Materials.Chromium, 1));
         event.setMaterial(Materials.Osmiridium).mats(of(Materials.Iridium, 3, Materials.Osmium, 1)).elecTicks(608);
         event.setMaterial(Materials.RedAlloy).mats(of(Copper, 1, Redstone, 4));
-        event.setMaterial(Materials.RedSteel).mats(of(Materials.SterlingSilver, 1, Materials.BismuthBronze, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
+        event.setMaterial(Materials.RedSteel).mats(of(RoseGold, 1, Brass, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
         event.setMaterial(Materials.RoseGold).mats(of(Copper, 1, Gold, 4));
         event.setMaterial(Materials.SolderingAlloy).mats(of(Materials.Tin, 9, Materials.Antimony, 1));
         event.setMaterial(Materials.Steel).mats(of(Iron, 50, Materials.Carbon, 1), 50).elecTicks(2600);
@@ -1153,6 +1157,7 @@ public class GT5RMaterialEvents {
     private static void workbenches(GT5RMaterialEvent event){
         GT5RMachines.initTanks();
         METAL.all().forEach(m -> {
+            if (m == Iron && GTAPI.isModLoaded("tfc")) return;
             if ((m.getElement() == null || !m.getElement().isIsotope) && m.has(PLATE) && m.has(ROD)){
 
                 GTCoreBlocks.createWorkbench(m, false);
@@ -1347,6 +1352,7 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT15.all().toArray(new Material[0]));
         GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT20.all().toArray(new Material[0]));
         GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 64);
+        MaterialTags.HAS_MORTAR.add(Flint, Bronze, BismuthBronze, BlackBronze, Invar, WroughtIron);
         FURNACE_FUELS.add(Materials.CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, BLOCK, 32000);

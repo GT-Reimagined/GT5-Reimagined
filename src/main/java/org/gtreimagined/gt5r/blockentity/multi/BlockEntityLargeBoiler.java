@@ -11,14 +11,19 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCombustionEngine.CombustionEngineWidget;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.item.ItemSelectorTag;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.gui.GuiInstance;
+import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
+import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
+import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
@@ -27,15 +32,19 @@ import org.gtreimagined.gtlib.texture.Texture;
 
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 import static org.gtreimagined.gt5r.data.Materials.Steam;
+import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityLargeBoiler> {
+    private int euPerTick = 0;
+    private int efficiency = 0;
+
 
     public BlockEntityLargeBoiler(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
-            private int euPerTick = 0;
-            private int efficiency = 0;
+
+
             private int efficiencyIncrease;
             private int integratedCircuitConfig = 0; //Steam output is reduced by 1000L per config
             private int excessFuel = 0; //Eliminate rounding errors for fuels that burn half items
@@ -44,7 +53,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
             @Override
             public boolean consumePower(boolean simulate) {
                 if (processingBlocked) return false;
-                int tGeneratedEU = (int) (this.euPerTick * 2L * this.efficiency / 10000L);
+                int tGeneratedEU = (int) (euPerTick * 2L * efficiency / 10000L);
                 if (tGeneratedEU > 0 && !simulate) {
                     int amount = (tGeneratedEU + 160) / 160;
                     fluidHandler.ifPresent(f -> {
@@ -85,10 +94,10 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 }
                 super.onServerUpdate();
                 if (tile.machineState == MachineState.ACTIVE && efficiency < 10000){
-                    this.efficiency += efficiencyIncrease;
+                    efficiency += efficiencyIncrease;
                     if (efficiency > 10000) efficiency = 10000;
                 } else if (tile.machineState != MachineState.ACTIVE && efficiency > 0){
-                    this.efficiency -= Math.min(efficiency, 1000);
+                    efficiency -= Math.min(efficiency, 1000);
                 }
             }
 
@@ -101,14 +110,14 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                     this.excessFuel %= 80;
                 }
                 this.maxProgress = adjustBurnTimeForConfig(runtimeBoost(maxProgress));
-                this.euPerTick = adjustEUtForConfig(getEUt());
+                euPerTick = adjustEUtForConfig(getEUt());
                 this.efficiencyIncrease = getEfficiencyIncrease() * Math.max(activeRecipe.getSpecialValue(), 1);
             }
 
             @Override
             public void resetRecipe() {
                 super.resetRecipe();
-                this.euPerTick = 0;
+                euPerTick = 0;
                 this.efficiencyIncrease = 0;
             }
 
@@ -151,7 +160,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
                 super.deserialize(nbt);
                 this.excessProjectedEU = nbt.getInt("excessProjectedEu");
                 this.excessFuel = nbt.getInt("excessFuel");
-                this.efficiency = nbt.getInt("efficiency");
+                efficiency = nbt.getInt("efficiency");
             }
         });
     }
@@ -233,16 +242,48 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
     @Override
     public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
         renderer.draw(stack, this.getDisplayName().getString(), left, top, 0xFAFAFF);
+        if (!(instance instanceof LargeBoilerInforWidget w)) return 8;
         if (getMachineState() != MachineState.ACTIVE) {
             renderer.draw(stack, "Inactive.", left, top + 8, 0xFAFAFF);
             return 16;
         } else if (instance.drawActiveInfo()) {
+            int tGeneratedSteam = (int) (instance.euT * 2L * w.efficiency / 10000L);
             renderer.draw(stack, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
             renderer.draw(stack, "Overclock: " + instance.overclock, left, top + 16, 0xFAFAFF);
-            renderer.draw(stack, "EU/t: " + instance.euT, left, top + 24, 0xFAFAFF);
+            renderer.draw(stack, "Steam/t: " + tGeneratedSteam, left, top + 24, 0xFAFAFF);
             return 32;
         }
         return 8;
+    }
+
+    @Override
+    public WidgetSupplier getInfoWidget() {
+        return LargeBoilerInforWidget.build().setPos(10, 10);
+    }
+
+    private static class LargeBoilerInforWidget extends InfoRenderWidget.MultiRenderWidget{
+        int efficiency;
+
+        protected LargeBoilerInforWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
+            super(gui, parent, renderer);
+        }
+
+        @Override
+        public void init() {
+            super.init();
+            BlockEntityMultiMachine<?> m = (BlockEntityMultiMachine<?>) gui.handler;
+            gui.syncInt(() -> m.recipeHandler.map(MachineRecipeHandler::getCurrentProgress).orElse(0), i -> this.currentProgress = i, SERVER_TO_CLIENT);
+            gui.syncInt(() -> m.recipeHandler.map(MachineRecipeHandler::getMaxProgress).orElse(0), i -> this.maxProgress = i, SERVER_TO_CLIENT);
+            gui.syncInt(() -> m.recipeHandler.map(MachineRecipeHandler::getOverclock).orElse(0), i -> this.overclock = i, SERVER_TO_CLIENT);
+            if (m instanceof BlockEntityLargeBoiler b){
+                gui.syncInt(() -> b.euPerTick, i -> this.euT = i, SERVER_TO_CLIENT);
+                gui.syncInt(() -> b.efficiency, i -> this.efficiency = i, SERVER_TO_CLIENT);
+            }
+        }
+
+        public static WidgetSupplier build() {
+            return builder((a, b) -> new LargeBoilerInforWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
+        }
     }
 
 }

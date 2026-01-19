@@ -450,22 +450,22 @@ public class WorldGenLoader {
         ev.vein(new VeinBuilder(id("beryllium_end")).asOreVein(5, 30, 30, 3, 16, Beryllium, Beryllium, Emerald, Thorium,
                 END).buildVein());
         if (GT5RConfig.GT6_ORE_GEN.get()) return;
-        List<ResourceKey<Level>> overworldTFCStoneLayers = new ArrayList<>();
+        List<ResourceKey<Level>> overworldStoneLayers = new ArrayList<>();
         if (!GTAPI.isModLoaded(MOD_TFC) && !GT5RConfig.DEFAULT_STONE_LAYERS.get()){
-            overworldTFCStoneLayers.add(OVERWORLD);
+            overworldStoneLayers.add(OVERWORLD);
         }
         if (!GT5RConfig.DEFAULT_STONE_LAYERS.get()) {
-            overworldTFCStoneLayers.add(JAMD_MINING);
+            overworldStoneLayers.add(JAMD_MINING);
         }
-        if (!overworldTFCStoneLayers.isEmpty()){
+        if (!overworldStoneLayers.isEmpty()){
             ev.vein(new VeinBuilder(id("bauxite")).asOreVein(-14, 46, 80, 4, 24, Bauxite, Bauxite, Alumina, Ilmenite)
-                    .inDimensions(overworldTFCStoneLayers).inDimensions(moon).inDimensions(mars).buildVein());
+                    .inDimensions(overworldStoneLayers).inDimensions(moon).inDimensions(mars).buildVein());
             ev.vein(new VeinBuilder(id("oilshale")).asOreVein(-14, 31, 80, 6, 32, OilShale, OilShale, OilShale, OilShale)
-                    .inDimensions(overworldTFCStoneLayers).buildVein());
+                    .inDimensions(overworldStoneLayers).buildVein());
             ev.vein(new VeinBuilder(id("lignite")).asOreVein(0, 200, 160, 8, 32, Lignite, Lignite, Lignite, Coal)
-                    .inDimensions(overworldTFCStoneLayers).buildVein());
+                    .inDimensions(overworldStoneLayers).buildVein());
             ev.vein(new VeinBuilder(id("coal")).asOreVein(0, 200, 80, 6, 32, Coal, Coal, Coal, Lignite)
-                    .inDimensions(overworldTFCStoneLayers).buildVein());
+                    .inDimensions(overworldStoneLayers).buildVein());
         }
     }
 

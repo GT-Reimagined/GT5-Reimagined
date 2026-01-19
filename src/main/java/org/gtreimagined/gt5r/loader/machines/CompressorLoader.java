@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -44,7 +46,9 @@ public class CompressorLoader {
             }
         });
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Wood, 1)).io(GTMaterialTypes.PLATE.get(Wood, 1)).add("wood_plate",60, 4);
-        COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
+        if (!GTAPI.isModLoaded(Ref.MOD_TFC)) {
+            COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Fireclay, 1)).io(new ItemStack(CompressedFireClay)).add("compressed_fireclay",200, 2);
+        }
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).io(PLATE.get(Lapis)).add("lapis_plate", 300, 2);
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lazurite, 1)).io(PLATE.get(Lazurite)).add("lazurite", 300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4)).io(new ItemStack(Plantball)).add("plantball",300, 2);

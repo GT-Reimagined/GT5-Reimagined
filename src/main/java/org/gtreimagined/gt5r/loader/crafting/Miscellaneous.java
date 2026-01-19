@@ -16,17 +16,16 @@ import static org.gtreimagined.gtcore.data.GTCoreItems.Plantball;
 
 public class Miscellaneous {
     public static void loadRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider) {
-        provider.addItemRecipe(output, GT5Reimagined.ID, "plantball", "misc", Plantball, of(
+        provider.addItemRecipe(output, GT5Reimagined.ID, "plantball_from_crops", "misc", Plantball, of(
                 'C', Tags.Items.CROPS
         ), "CCC", "C C", "CCC");
-
-        provider.addItemRecipe(output, GT5Reimagined.ID, "plantball2", "misc", Plantball, of(
+        provider.addItemRecipe(output, GT5Reimagined.ID, "plantball_from_seeds", "misc", Plantball, of(
                 'S', Tags.Items.SEEDS
         ), "SSS", "S S", "SSS");
-        provider.addStackRecipe(output, GT5Reimagined.ID, "plantball3", "misc", new ItemStack(Plantball, 2), of(
+        provider.addStackRecipe(output, GT5Reimagined.ID, "plantball_from_saplings", "misc", new ItemStack(Plantball, 2), of(
                 'S', TagUtils.getItemTag(new ResourceLocation("saplings"))
         ), "SSS", "S S", "SSS");
-        provider.addStackRecipe(output, GT5Reimagined.ID, "plantball4", "misc", new ItemStack(Plantball, 2), of(
+        provider.addStackRecipe(output, GT5Reimagined.ID, "plantball_from_chorus_fruit", "misc", new ItemStack(Plantball, 2), of(
                 'S', Items.CHORUS_FRUIT
         ), "SSS", "S S", "SSS");
     }

@@ -14,9 +14,11 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
@@ -46,8 +48,10 @@ public class Parts {
       tieredItems(output, provider);
       molds(output, provider);
       provider.shapeless(output, "nether_quartz_from_milky_quartz","parts", new ItemStack(Items.QUARTZ), GEM.getMaterialTag(MilkyQuartz));
-      provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
-              GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
+      if (!GTAPI.isModLoaded(Ref.MOD_TFC)) {
+          provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
+                  GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
+      }
 
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "buckets", WOODEN_BUCKET,
               of('W', ItemTags.PLANKS, 'P', PLATE.getMaterialTag(Copper), 'H', HAMMER.getTag()), "WPW", " WH");
@@ -56,7 +60,7 @@ public class Parts {
               new ItemStack(GT5Reimagined.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
 
       provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
-              of('G', SMALL_GEAR.getMaterialTag(Iron), 'R', ROD.getMaterialTag(Iron), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
+              of('G', SMALL_GEAR.getMaterialTag(TFCRegistrar.getIron()), 'R', ROD.getMaterialTag(TFCRegistrar.getIron()), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
 
       provider.shapeless(output, GT5Reimagined.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalBall,
@@ -144,7 +148,7 @@ public class Parts {
           Item fieldGen = GT5Reimagined.get(ItemBasic.class, "field_gen_" + t.getId());
           Object emitterRod = ROD.getMaterialTag(EMITTER_RODS.get(t));
           Object wire = t == EV || t == IV ? GT5RBlocks.WIRE_ANNEALED_COPPER.getBlock(fromTier(t)) : WIRE_GETTER.apply(fromTier(t), LV);
-          Object motorRod = t == LV ? RecipeIngredient.ofIngredient(1, rod, ROD.getMaterialTag(Iron)) : rod;
+          Object motorRod = t == LV ? RecipeIngredient.ofIngredient(1, rod, ROD.getMaterialTag(TFCRegistrar.getIron())) : rod;
           provider.addItemRecipe(output, "gtparts", motor,
                   of('M', ROD.get(magnet), 'C', cable, 'W', wire, 'R', motorRod), "CWR", "WMW", "RWC");
           provider.addItemRecipe(output, "gtparts", piston,
@@ -176,51 +180,51 @@ public class Parts {
               'H', HAMMER.getTag(),
               'F', FILE.getTag()
       ), "HF","PP", "PP");
-      moldRecipe(output, provider, MoldPlate, "H", "P");
-      moldRecipe(output, provider, MoldIngot, "P", "H");
-      moldRecipe(output, provider, MoldCasing, " H", "P ");
-      moldRecipe(output, provider, MoldGear, "PH");
-      moldRecipe(output, provider, MoldCoinage, "H ", " P");
-      moldRecipe(output, provider, MoldBottle, "P ", " H");
-      moldRecipe(output, provider, MoldBall, " P", "H ");
-      moldRecipe(output, provider, MoldBlock, "HP");
-      moldRecipe(output, provider, MoldNugget, "P H");
+      moldRecipe(output, provider, PlateMold, "H", "P");
+      moldRecipe(output, provider, IngotMold, "P", "H");
+      moldRecipe(output, provider, CasingMold, " H", "P ");
+      moldRecipe(output, provider, GearMold, "PH");
+      moldRecipe(output, provider, CoinageMold, "H ", " P");
+      moldRecipe(output, provider, BottleMold, "P ", " H");
+      moldRecipe(output, provider, BallMold, " P", "H ");
+      moldRecipe(output, provider, BlockMold, "HP");
+      moldRecipe(output, provider, NuggetMold, "P H");
       //moldRecipe(output, provider, MoldBuns, "P  ", "  H");
       //moldRecipe(output, provider, MoldBread, "P  ", "   ", "  H");
       //moldRecipe(output, provider, MoldBaguettes, "P ", "  ", " H");
-      moldRecipe(output, provider, MoldAnvil, " P", "  ", "H ");
-      moldRecipe(output, provider, MoldGearSmall, "H P");
-      moldRecipe(output, provider, MoldLongRod, "  H", "P  ");
+      moldRecipe(output, provider, AnvilMold, " P", "  ", "H ");
+      moldRecipe(output, provider, SmallGearMold, "H P");
+      moldRecipe(output, provider, LongRodMold, "  H", "P  ");
 
-      shapeRecipe(output, provider, ShapeFoil, ShapePlate, "H ", " P");
-      shapeRecipe(output, provider, ShapeRod, ShapeLongRod, " H", "P ");
-      shapeRecipe(output, provider, ShapeRod, "PH");
-      shapeRecipe(output, provider, ShapeRod, ShapeBolt, "H ", " P");
-      shapeRecipe(output, provider, ShapeRing, "P", "H");
-      shapeRecipe(output, provider, ShapeRing, ShapeCell, "PH");
-      shapeRecipe(output, provider, ShapeIngot, "H ", " P");
-      shapeRecipe(output, provider, ShapeRod, ShapeWire, "H", "P");
-      shapeRecipe(output, provider, ShapeFoil, ShapeCasing, "H", "P");
-      shapeRecipe(output, provider, ShapePipeTiny, " H", "  ", "P ");
-      shapeRecipe(output, provider, ShapePipeSmall, "P  ", "  H");
-      shapeRecipe(output, provider, ShapePipeNormal, "P ", "  ", " H");
-      shapeRecipe(output, provider, ShapePipeLarge, "P  ", "   ", "  H");
-      shapeRecipe(output, provider, ShapePipeHuge, "  H", "   ", "P  ");
-      shapeRecipe(output, provider, ShapeIngot, ShapeBlock, "H ", " P");
-      shapeRecipe(output, provider, ShapeTinyPlate, ShapeBladeSword, "PH");
-      shapeRecipe(output, provider, ShapeIngot, ShapeHeadPickaxe, "H", "P");
-      shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadShovel, "H", "P");
-      shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadAxe, "H ", " P");
-      shapeRecipe(output, provider, ShapeIngot, ShapeHeadHoe, "PH");
-      shapeRecipe(output, provider, ShapeIngot, ShapeHeadHammer, " H", "P ");
-      shapeRecipe(output, provider, ShapeTinyPlate, ShapeHeadFile, " H", "P ");
-      shapeRecipe(output, provider, ShapeTinyPlate, ShapeBladeSaw, "P ", " H");
-      shapeRecipe(output, provider, ShapeRing, ShapeGear, "H ", " P");
-      shapeRecipe(output, provider, ShapeRing, ShapeBottle, " H", "P ");
-      shapeRecipe(output, provider, ShapeRing, ShapeGearSmall, "H", "P");
-      shapeRecipe(output, provider, ShapeFoil, "P ", " H");
-      shapeRecipe(output, provider, ShapeTinyPlate, "H", "P");
-      shapeRecipe(output, provider, ShapeRod, ShapeFineWire, "PH");
+      shapeRecipe(output, provider,FoilShape,PlateShape, "H ", " P");
+      shapeRecipe(output, provider,RodShape,LongRodShape, " H", "P ");
+      shapeRecipe(output, provider,RodShape, "PH");
+      shapeRecipe(output, provider,RodShape,BoltShape, "H ", " P");
+      shapeRecipe(output, provider,RingShape, "P", "H");
+      shapeRecipe(output, provider,RingShape,CellShape, "PH");
+      shapeRecipe(output, provider,IngotShape, "H ", " P");
+      shapeRecipe(output, provider,RodShape,WireShape, "H", "P");
+      shapeRecipe(output, provider,FoilShape,CasingShape, "H", "P");
+      shapeRecipe(output, provider,TinyPipeShape, " H", "  ", "P ");
+      shapeRecipe(output, provider,SmallPipeShape, "P  ", "  H");
+      shapeRecipe(output, provider,NormalPipeShape, "P ", "  ", " H");
+      shapeRecipe(output, provider,LargePipeShape, "P  ", "   ", "  H");
+      shapeRecipe(output, provider,HugePipeShape, "  H", "   ", "P  ");
+      shapeRecipe(output, provider,IngotShape,BlockShape, "H ", " P");
+      shapeRecipe(output, provider,TinyPlateShape,SwordBladeShape, "PH");
+      shapeRecipe(output, provider,IngotShape,PickaxeHeadShape, "H", "P");
+      shapeRecipe(output, provider,TinyPlateShape,ShovelHeadShape, "H", "P");
+      shapeRecipe(output, provider,TinyPlateShape,AxeHeadShape, "H ", " P");
+      shapeRecipe(output, provider,IngotShape,HoeHeadShape, "PH");
+      shapeRecipe(output, provider,IngotShape,HammerHeadShape, " H", "P ");
+      shapeRecipe(output, provider,TinyPlateShape,FileHeadShape, " H", "P ");
+      shapeRecipe(output, provider,TinyPlateShape,SawBladeShape, "P ", " H");
+      shapeRecipe(output, provider,RingShape,GearShape, "H ", " P");
+      shapeRecipe(output, provider,RingShape,BottleShape, " H", "P ");
+      shapeRecipe(output, provider,RingShape,SmallGearShape, "H", "P");
+      shapeRecipe(output, provider,FoilShape, "P ", " H");
+      shapeRecipe(output, provider,TinyPlateShape, "H", "P");
+      shapeRecipe(output, provider,RodShape,FineWireShape, "PH");
   }
 
   private static void moldRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item mold, String... shapes){

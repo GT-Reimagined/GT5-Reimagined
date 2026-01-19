@@ -2,10 +2,13 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
+import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
+import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gt5r.loader.machines.RecyclingLoader;
 import org.gtreimagined.gtcore.BookRegistration;
 import org.gtreimagined.gtlib.GTAPI;
@@ -74,7 +77,6 @@ import org.gtreimagined.gt5r.events.forge.ForgeEvents;
 import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.integration.ThermalRegistrar;
-import org.gtreimagined.gt5r.integration.forge.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.integration.rei.REIRegistrar;
 import org.gtreimagined.gt5r.loader.LootLoader;
 import org.gtreimagined.gt5r.loader.WorldGenLoader;
@@ -193,6 +195,7 @@ public class GT5Reimagined extends GTMod {
         MinecraftForge.EVENT_BUS.addListener(GT5Reimagined::onWorldGen);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientHandler::registerLayerDefinitions);
             MinecraftForge.EVENT_BUS.addListener(ClientHandler::onTooltipEvent);
         });
     }
@@ -368,6 +371,8 @@ public class GT5Reimagined extends GTMod {
                 });
             }
             case DATA_READY -> {
+                CauldronInteraction.WATER.put(GT5RItems.WOODEN_BUCKET, ItemWoodenBucket::fillBucket);
+                CauldronInteraction.EMPTY.put(GT5RItems.WOODEN_WATER_BUCKET, ItemWoodenBucket::emptyBucket);
                 Structures.init();
                 StructureInfo.init();
                 GT5RTwilightStalctites.init();

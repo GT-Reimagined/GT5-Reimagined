@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "org.gtreimagined.gt5r.integration.tfc.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "plugin": "org.gtreimagined.gt5r.integration.tfc.mixin.TFCMixinPlugin",
+  "mixins": [
+    "JEIIntegrationMixin",
+    "TagLoaderMixin"
+  ],
+  "minVersion": "0.8",
+  "refmap": "gt5r.refmap.json",
+  "client": [
+    "ThrownJavelinRendererMixin"
+  ]
+}

@@ -8,6 +8,8 @@ import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.client.baked.MachineBakedModel;
+import org.gtreimagined.gtlib.client.quad.ITextureReferenceBakedQuad;
+import org.gtreimagined.gtlib.client.quad.RetexturedBakedQuad;
 import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -51,24 +53,24 @@ public class ReactorBakedModel extends MachineBakedModel {
         List<BakedQuad> coverQuads = getCoverQuads(state, side, rand, props, core, level, pos);
         ICover cover = props.covers[side.get3DDataValue()];
         boolean isOutputCover = cover.getFactory() == GT5RCovers.COVER_REACTOR_OUTPUT || cover.getFactory() == GT5RCovers.COVER_REACTOR_OUTPUT_SECONDARY;
-        if (!coverQuads.isEmpty()) {
-            if (isOutputCover) {
-                return coverQuads;
-            }
-            Function<Direction, Texture> ft = core.getMultiTexture();
-            List<BakedQuad> machineQuads = props.machineTexturer.getQuads("machine", new ObjectArrayList<>(), state, props.type, new BlockEntityMachine.DynamicKey(new ResourceLocation(props.type.getId()), ft.apply(side), side, props.state, props), side.get3DDataValue(), level, pos);
-            for (int i = 0; i < 2; i++) {
-                BakedQuad quad = machineQuads.get(i);
-                if (quad.getDirection() == side.getOpposite())
-                    coverQuads.add(quad);
-            }
-            return coverQuads;
-        }
         BakedModel model = getModel(state, side, props.state, props.type);
         for (Direction dir : Ref.DIRS) {
             superBlockQuads.addAll(ModelUtils.getQuadsFromBaked(model, state, dir, rand, level, pos));
         }
         superBlockQuads.addAll(ModelUtils.getQuadsFromBaked(model, state, null, rand, level, pos));
+        if (!coverQuads.isEmpty()) {
+            if (isOutputCover) {
+                return coverQuads;
+            }
+            Function<Direction, Texture> ft = core.getMultiTexture();
+            for (int i = 0; i < superBlockQuads.size(); i++) {
+                BakedQuad quad = superBlockQuads.get(i);
+                if (((ITextureReferenceBakedQuad)quad).gtLib$getTextureId().equals("#base") && quad.getDirection() == side.getOpposite())
+                    coverQuads.add(new RetexturedBakedQuad(quad, ModelUtils.getSprite(ft.apply(side))));
+            }
+            return coverQuads;
+        }
+
         if (side == Direction.UP){
             List<BakedQuad> list = new ArrayList<>();
             for (int i = 0; i < 4; i++) {

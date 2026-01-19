@@ -5,6 +5,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 
@@ -21,7 +23,7 @@ import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 public class BlastFurnaceLoader {
     public static void init() {
         /* PRIMITIVE */
-        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(Steel, 1), SMALL_DUST.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(TFCRegistrar.getIron(),1)).io(INGOT.get(Steel, 1), SMALL_DUST.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
         DUST.all().forEach(m -> {
             if (m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GT5RMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(HOT_INGOT) ? HOT_INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
@@ -34,19 +36,21 @@ public class BlastFurnaceLoader {
         PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(BlueSteel, 1)).io(INGOT.get(BlueSteel)).add("blue_steel", 14400);
         PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(RedSteel, 1)).io(INGOT.get(RedSteel)).add("red_steel", 14400);
 
-        addCalciteRecipe(Hematite, 4, new ItemStack(Items.IRON_INGOT, 1));
-        addCalciteRecipe(YellowLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
-        addCalciteRecipe(BrownLimonite, 6, new ItemStack(Items.IRON_INGOT, 1));
-        addCalciteRecipe(Magnetite, 11, new ItemStack(Items.IRON_INGOT, 3));
-        addCalciteRecipe(Chalcopyrite, 6, new ItemStack(Items.COPPER_INGOT), new ItemStack(Items.IRON_INGOT));
+        Material iron = TFCRegistrar.getIron();
+        addCalciteRecipe(Hematite, 4, INGOT.get(iron, 1));
+        addCalciteRecipe(YellowLimonite, 6, INGOT.get(iron, 1));
+        addCalciteRecipe(BrownLimonite, 6, INGOT.get(iron, 1));
+        addCalciteRecipe(Magnetite, 11, INGOT.get(iron, 3));
+        addCalciteRecipe(Chalcopyrite, 6, INGOT.get(Copper, 1), INGOT.get(iron, 1));
         addCalciteRecipe(Galena, 4, INGOT.get(Lead, 1), INGOT.get(Silver, 1));
         addCalciteRecipe(Garnierite, 1, INGOT.get(Nickel, 1));
         addCalciteRecipe(Cassiterite, 1, INGOT.get(Tin, 1));
         addCalciteRecipe(Cobaltite, 5, INGOT.get(Cobalt, 1));
-        addCalciteRecipe(Pyrite, 4, new ItemStack(Items.IRON_INGOT));
+        addCalciteRecipe(Pyrite, 4, INGOT.get(iron, 1));
         addCalciteRecipe(Stibnite, 4, INGOT.get(Antimony, 1));
-        addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(Iron, 1));
+        addCalciteRecipe(Tetrahedrite, 12, INGOT.get(Copper, 3), INGOT.get(Antimony, 1), INGOT.get(iron, 1));
         addCalciteRecipe(Malachite, 15, INGOT.get(Copper, 2));
+        addCalciteRecipe(Pentlandite, 11, INGOT.get(Nickel, 4));
         /* Annealed Copper*/
         E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Copper, 1))
                 .fi(Oxygen.getGas(1000))
