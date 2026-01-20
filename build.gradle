@@ -127,7 +127,7 @@ dependencies {
     //modRuntimeOnly("curse.maven:openblocks-elevator-250832:3670034")
     modRuntimeOnly("curse.maven:sophisticated-core-618298:${project.sophisticated_core_version}")
     modRuntimeOnly("curse.maven:jade-324717:${project.jade_version}")
-    modRuntimeOnly("curse.maven:jamd-422981:${project.jamd_version}")
+    //modRuntimeOnly("curse.maven:jamd-422981:${project.jamd_version}")
     //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
 }
 
