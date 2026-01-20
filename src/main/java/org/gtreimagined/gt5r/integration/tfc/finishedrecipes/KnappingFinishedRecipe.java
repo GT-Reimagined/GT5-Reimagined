@@ -12,11 +12,12 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.gtreimagined.gtlib.recipe.RecipeUtil;
 import org.jetbrains.annotations.Nullable;
 
-public record RockKnappingFinishedRecipe(ResourceLocation id, String[] pattern, Ingredient input,
-                                         ItemStack output) implements FinishedRecipe {
+public record KnappingFinishedRecipe(ResourceLocation id, ResourceLocation knappingType, String[] pattern, Ingredient input,
+                                     ItemStack output) implements FinishedRecipe {
 
     @Override
     public void serializeRecipeData(JsonObject jsonObject) {
+        jsonObject.addProperty("knapping_type", knappingType.toString());
         jsonObject.add("ingredient", this.input.toJson());
         JsonArray array = new JsonArray();
         for (String s : pattern) {

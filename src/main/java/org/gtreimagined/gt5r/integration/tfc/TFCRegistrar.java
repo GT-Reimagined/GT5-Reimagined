@@ -17,7 +17,7 @@ import org.gtreimagined.gt5r.integration.tfc.datagen.TFCLangProvider;
 import org.gtreimagined.gt5r.integration.tfc.recipes.AlloyingRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.MetalRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.MiscTFCRecipes;
-import org.gtreimagined.gt5r.integration.tfc.recipes.RockKnappingRecipes;
+import org.gtreimagined.gt5r.integration.tfc.recipes.FlintKnappingRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.ToolCrafting;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
@@ -27,7 +27,6 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.datagen.providers.GTBlockTagProvider;
-import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
 import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
@@ -47,7 +46,6 @@ import org.gtreimagined.gtlib.tool.behaviour.BehaviourLogStripping;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourTorchPlacing;
 import org.gtreimagined.gtlib.tool.behaviour.BehaviourVanillaShovel;
 import org.gtreimagined.gtlib.util.RegistryUtils;
-import org.gtreimagined.gtlib.util.TagUtils;
 import net.dries007.tfc.common.blocks.rock.Rock;
 import net.dries007.tfc.common.blocks.soil.SandBlockType;
 import net.dries007.tfc.common.blocks.soil.SoilBlockType;
@@ -102,7 +100,7 @@ public class TFCRegistrar extends GTMod {
                 return true;
             });
             Material kaolinite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "kaolinite", 0xb68e86, TextureSet.NONE));
-            kaolinite.flags(DUST, BEARING_ROCK);
+            kaolinite.flags(DUST);
             Helpers.mapOfKeys(SandBlockType.class, (sand) -> {
                 Material material = Material.get(sand.name().toLowerCase() + "_sand");
                 if (material == Material.NULL){
@@ -122,14 +120,25 @@ public class TFCRegistrar extends GTMod {
                 if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
                 return new FluidStack(fluid.getFluid(), i);
             });
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("extend", "tfc:field_guide");
-            jsonObject.addProperty("name", "gt5r field_guide extension");
-            jsonObject.addProperty("landing_text", "gt5r field_guide extension");
-            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "patchouli_books/field_guide/book.json"), jsonObject.toString().getBytes());
         }
         if (event == RegistrationEvent.DATA_READY) {
             TFCOreGen.init();
+            JsonObject flintKnap = new JsonObject();
+            JsonObject input = new JsonObject();
+            JsonObject ingredient = new JsonObject();
+            ingredient.addProperty("item", "minecraft:flint");
+            input.add("ingredient", ingredient);
+            input.addProperty("count", 2);
+            flintKnap.add("input", input);
+            flintKnap.addProperty("amount_to_consume", 1);
+            flintKnap.addProperty("click_sound", "tfc:item.knapping.stone");
+            flintKnap.addProperty("consume_after_complete", false);
+            flintKnap.addProperty("use_disabled_texture", false);
+            flintKnap.addProperty("spawns_particles", true);
+            JsonObject jeiIcon = new JsonObject();
+            jeiIcon.addProperty("item", "minecraft:flint");
+            flintKnap.add("jei_icon_item", jeiIcon);
+            GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(GT5Reimagined.ID, "tfc/knapping_types/flint.json"), flintKnap.toString().getBytes());
             // Make TFC logs strippable with GT tools
             Helpers.mapOfKeys(Wood.class, (woodType) -> {
                 var log = woodType.getBlock(BlockType.LOG).get();
@@ -187,7 +196,7 @@ public class TFCRegistrar extends GTMod {
         event.addLoader(MiscTFCRecipes::initRecipes);
         event.addLoader(ToolCrafting::init);
         event.addLoader(AlloyingRecipes::init);
-        event.addLoader(RockKnappingRecipes::init);
+        event.addLoader(FlintKnappingRecipes::init);
         event.addLoader(MetalRecipes::init);
     }
 

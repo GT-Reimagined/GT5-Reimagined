@@ -43,7 +43,6 @@ public class TFCItemTagProvider extends GTItemTagProvider {
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "javelins"))).addTag(TFCToolTypes.JAVELIN.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "hammers"))).addTag(HAMMER.getTag());
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "propicks"))).addTag(TFCToolTypes.PROPICK.getTag());
-        this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "rock_knapping"))).add(Items.FLINT);
         this.tag(TagUtils.getItemTag(new ResourceLocation(Ref.MOD_TFC, "flux"))).add(DUST.get(Limestone), DUST.get(Marble), DUST.get(Calcite));
         for (Metal.Default metal : Default.values()){
             if (metal.hasTools()){
