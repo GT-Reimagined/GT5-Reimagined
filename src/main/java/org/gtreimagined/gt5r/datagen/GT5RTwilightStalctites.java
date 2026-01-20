@@ -61,6 +61,6 @@ public class GT5RTwilightStalctites {
         object.addProperty("weight", weight);
         ResourceLocation id = new ResourceLocation(GT5Reimagined.ID, name);
         hollowHillEntries.computeIfAbsent(hillSize, i -> new ArrayList<>()).add(id);
-        GTLibDynamics.RUNTIME_DATA_PACK.addData(GTLibDynamics.fix(id, "stalactite/entries", ".json"), object.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(GTLibDynamics.fix(id, "stalactite/entries", "json"), object.toString().getBytes());
     }
 }
