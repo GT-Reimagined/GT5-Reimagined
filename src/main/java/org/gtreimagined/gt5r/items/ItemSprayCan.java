@@ -32,7 +32,7 @@ public class ItemSprayCan extends ItemBasic<ItemSprayCan> implements ICustomDura
     private final DyeColor color;
 
     public ItemSprayCan(DyeColor color) {
-        super(GT5Reimagined.ID, color.getName() + "_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(512));
+        super(GT5Reimagined.ID, color.getName() + "_spray_can", "spray_cans/", new Properties().defaultDurability(512));
         this.color = color;
     }
 

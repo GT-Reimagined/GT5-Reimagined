@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.machine.caps;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.minecraftforge.server.ServerLifecycleHooks;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.machine.MachineFlag;
@@ -60,7 +61,7 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
             condensedMap.forEach((k, v) -> {
                 condensed.add(RecipeIngredient.of(k, v));
             });
-            recipe = new Recipe(condensed, new ItemStack[]{tile.getRecipe().getResultItem()}, List.of(), null, 1024, 16, 0, 1);
+            recipe = new Recipe(condensed, new ItemStack[]{tile.getRecipe().getResultItem(ServerLifecycleHooks.getCurrentServer().registryAccess())}, List.of(), null, 1024, 16, 0, 1);
             recipe.setId(tile.getRecipe().getId());
             recipe.setMapId("");
             boolean valid = validateRecipe(recipe);

@@ -341,7 +341,7 @@ public class GT5Reimagined extends GTMod {
                 Guis.init(side);
                 Models.init();
                 GT5RSounds.init();
-                IGTWorldgenFunction function = (name, climate, effects, gen , spawns) -> {
+                IGTWorldgenFunction function = (name, climate, effects, gen , spawns, registry) -> {
                     if (GTLibConfig.VANILLA_ORE_GEN.get()) {
                         removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
                     }
@@ -352,9 +352,9 @@ public class GT5Reimagined extends GTMod {
                 }
                 PlayerTickCallback.PLAYER_TICK_CALLBACKS.add((end, logicalServer, player) -> {
                     if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
-                        BlockState state = player.getLevel().getBlockState(player.getOnPos());
+                        BlockState state = player.level().getBlockState(player.getOnPos());
                         AttributeInstance attributeinstance = player.getAttribute(Attributes.MOVEMENT_SPEED);
-                        if (state.isAir()) state = player.getLevel().getBlockState(player.getOnPos().below());
+                        if (state.isAir()) state = player.level().getBlockState(player.getOnPos().below());
                         if (attributeinstance == null) {
                             return;
                         }

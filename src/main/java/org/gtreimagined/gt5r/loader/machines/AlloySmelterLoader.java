@@ -116,7 +116,7 @@ public class AlloySmelterLoader {
                 ingredients.add(RecipeIngredient.of(i, tags.toArray(TagKey[]::new)));
             });
             if (circuit >= 0){
-                ingredients.add(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(circuit));
+                ingredients.add(GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(circuit).get());
             }
             ALLOY_SMELTER.RB().ii(ingredients).io(INGOT.get(output, amount)).add(id, 100, 12);
         }

@@ -29,7 +29,7 @@ import static org.gtreimagined.gt5r.data.GT5RItems.EmptySprayCan;
 public class ItemChlorineSprayCan extends ItemBasic<ItemChlorineSprayCan> implements ICustomDurability {
 
     public ItemChlorineSprayCan() {
-        super(GT5Reimagined.ID, "chlorine_spray_can", "spray_cans/", new Properties().tab(Ref.TAB_ITEMS).defaultDurability(100));
+        super(GT5Reimagined.ID, "chlorine_spray_can", "spray_cans/", new Properties().defaultDurability(100));
     }
 
     @Override

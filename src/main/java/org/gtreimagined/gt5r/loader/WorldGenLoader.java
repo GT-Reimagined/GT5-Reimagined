@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.loader;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
@@ -39,16 +40,16 @@ import static org.gtreimagined.gtlib.data.VanillaStoneTypes.*;
 
 public class WorldGenLoader {
 
-    public static final ResourceKey<Level> TWILIGHT_FOREST = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation(Ref.TWILIGHT_FOREST));
-    public static final ResourceKey<Level> BE_MOON = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("beyond_earth", "moon"));
-    public static final ResourceKey<Level> AA_MOON = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("ad_astra", "moon"));
-    public static final ResourceKey<Level> BE_MARS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("beyond_earth", "mars"));
-    public static final ResourceKey<Level> AA_MARS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("ad_astra", "mars"));
-    public static final ResourceKey<Level> BE_MERCURY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("beyond_earth", "mercury"));
-    public static final ResourceKey<Level> AA_MERCURY = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("ad_astra", "mercury"));
-    public static final ResourceKey<Level> BE_VENUS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("beyond_earth", "venus"));
-    public static final ResourceKey<Level> AA_VENUS = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("ad_astra", "venus"));
-    public static final ResourceKey<Level> JAMD_MINING = ResourceKey.create(Registry.DIMENSION_REGISTRY, new ResourceLocation("jamd", "mining"));
+    public static final ResourceKey<Level> TWILIGHT_FOREST = ResourceKey.create(Registries.DIMENSION, new ResourceLocation(Ref.TWILIGHT_FOREST));
+    public static final ResourceKey<Level> BE_MOON = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("beyond_earth", "moon"));
+    public static final ResourceKey<Level> AA_MOON = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("ad_astra", "moon"));
+    public static final ResourceKey<Level> BE_MARS = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("beyond_earth", "mars"));
+    public static final ResourceKey<Level> AA_MARS = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("ad_astra", "mars"));
+    public static final ResourceKey<Level> BE_MERCURY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("beyond_earth", "mercury"));
+    public static final ResourceKey<Level> AA_MERCURY = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("ad_astra", "mercury"));
+    public static final ResourceKey<Level> BE_VENUS = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("beyond_earth", "venus"));
+    public static final ResourceKey<Level> AA_VENUS = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("ad_astra", "venus"));
+    public static final ResourceKey<Level> JAMD_MINING = ResourceKey.create(Registries.DIMENSION, new ResourceLocation("jamd", "mining"));
 
 
     public static void init(GTWorldGenEvent ev) {
