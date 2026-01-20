@@ -171,14 +171,6 @@ public class TFCOreGen {
     }
 
     public static void initAdditions(){
-        createClusterVein("surface_kaolinite", 60, 20, 0.6, 50, 210,
-                ofM(ofOre(KAOLINITE, 1)),
-                new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, ofRock(Material.get("kaolinite"), 1)));
-        createClusterVein("kaolinite", 60, 20, 0.6, 20, 60,
-                ofM(ofOre(KAOLINITE, 1)),
-                new String[]{"shale", "claystone", "limestone", "conglomerate", "dolomite", "chert", "chalk"},
-                new Indicator(12, ofRock(Material.get("kaolinite"), 1)));
         createClusterVein("chalcopyrite", 90, 30, 0.6, -32, 60,
                 ofM(ofOre(Chalcopyrite, 30), ofOre(PYRITE, 30),
                         ofOre(HEMATITE, POOR, 6), ofOre(HEMATITE, NORMAL, 15), ofOre(HEMATITE, RICH, 9),
