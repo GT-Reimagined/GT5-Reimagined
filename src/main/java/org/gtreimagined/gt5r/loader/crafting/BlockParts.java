@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.loader.crafting;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -223,13 +224,13 @@ public class BlockParts {
     private static void addSlabRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block slab){
         provider.addStackRecipe(output, "slabs", new ItemStack(slab, 6), ImmutableMap.of('F', full), "FFF");
         provider.addItemRecipe(output, "slabs", full, ImmutableMap.of('S', slab), "S", "S");
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/" + RegistryUtils.getIdFromItem(slab.asItem()).getPath()));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), RecipeCategory.MISC, slab, 2).group("slabs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/" + RegistryUtils.getIdFromItem(slab.asItem()).getPath()));
     }
 
     private static void addStairRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block stair){
         provider.addStackRecipe(output, "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "F  ", "FF ", "FFF");
         provider.addStackRecipe(output, GT5Reimagined.ID, RegistryUtils.getIdFromItem(stair.asItem()).getPath() + "_mirrored", "stairs", new ItemStack(stair, 4), ImmutableMap.of('F', full), "  F", " FF", "FFF");
-        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/" + RegistryUtils.getIdFromItem(stair.asItem()).getPath()));
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(full), RecipeCategory.MISC, stair, 1).group("stairs").unlockedBy("has_full", provider.hasSafeItem(full)).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/" + RegistryUtils.getIdFromItem(stair.asItem()).getPath()));
     }
 
     private static void addCasing(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Material mat, Block casing) {

@@ -16,6 +16,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,7 +44,7 @@ public class ProspectingBehaviour implements IItemUse<IBasicGTTool> {
             level.playSound(player, pos, sound.getHitSound(), SoundSource.PLAYERS, sound.getVolume(), sound.getPitch());
             c.getItemInHand().hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(c.getHand()));
             player.getCooldowns().addCooldown(instance.getItem(), 10);
-            BlockState found = state;
+            Block found = state.getBlock();
             RANDOM.setSeed((long) Helpers.hash(19827384739241223L, pos));
             ProspectResult result;
             if (Helpers.isBlock(state, Blocks.PROSPECTABLE)) {
@@ -51,12 +52,12 @@ public class ProspectingBehaviour implements IItemUse<IBasicGTTool> {
             } else if (RANDOM.nextFloat() < getFalseNegativeChance(instance, c.getItemInHand())) {
                 result = ProspectResult.NOTHING;
             } else {
-                Object2IntMap<BlockState> states = scanAreaFor(level, pos, 12, Blocks.PROSPECTABLE);
+                Object2IntMap<Block> states = scanAreaFor(level, pos, 12, Blocks.PROSPECTABLE);
                 if (states.isEmpty()) {
                     result = ProspectResult.NOTHING;
                 } else {
-                    ArrayList<BlockState> stateKeys = new ArrayList(states.keySet());
-                    found = (BlockState)stateKeys.get(RANDOM.nextInt(stateKeys.size()));
+                    ArrayList<Block> stateKeys = new ArrayList(states.keySet());
+                    found = stateKeys.get(RANDOM.nextInt(stateKeys.size()));
                     int amount = states.getOrDefault(found, 1);
                     if (amount < 10) {
                         result = ProspectResult.TRACES;
@@ -72,8 +73,8 @@ public class ProspectingBehaviour implements IItemUse<IBasicGTTool> {
                 }
             }
 
-            MinecraftForge.EVENT_BUS.post(new ProspectedEvent(player, result, found.getBlock()));
-            PacketHandler.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new ProspectedPacket(found.getBlock(), result));
+            MinecraftForge.EVENT_BUS.post(new ProspectedEvent(player, result, found));
+            PacketHandler.send(PacketDistributor.PLAYER.with(() -> serverPlayer), new ProspectedPacket(found, result));
         }
 
         return InteractionResult.SUCCESS;

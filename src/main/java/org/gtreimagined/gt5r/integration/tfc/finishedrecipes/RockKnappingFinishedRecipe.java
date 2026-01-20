@@ -34,7 +34,7 @@ public record RockKnappingFinishedRecipe(ResourceLocation id, String[] pattern, 
 
     @Override
     public RecipeSerializer<?> getType() {
-        return TFCRecipeSerializers.ROCK_KNAPPING.get();
+        return TFCRecipeSerializers.KNAPPING.get();
     }
 
     @Override
