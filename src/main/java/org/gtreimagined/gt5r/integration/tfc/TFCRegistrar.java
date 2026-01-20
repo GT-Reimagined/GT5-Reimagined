@@ -6,6 +6,7 @@ import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.dries007.tfc.common.items.TFCItems;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.integration.tfc.client.TFCClientHandler;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCGTFluids;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialEvents;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCMaterialTypes;
@@ -178,6 +179,9 @@ public class TFCRegistrar extends GTMod {
                     GTLibXEIPlugin.addItemsToHide(GTTools.MORTAR.getToolItem(m));
                 }
             });
+            if (side == Dist.CLIENT){
+                TFCClientHandler.setup();
+            }
         }
     }
 

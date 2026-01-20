@@ -41,12 +41,6 @@ public class ClientHandler {
         GTAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         ModelUtils.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
-        GTAPI.all(IGTTool.class, GT5Reimagined.ID).stream().filter(t -> t.getGTToolType() == TFCToolTypes.JAVELIN).forEach(j -> {
-            Item javelin =j.getItem();
-            ItemProperties.register(javelin, Helpers.identifier("throwing"), (stack, level, entity, unused) ->
-                entity != null && ((entity.isUsingItem() && entity.getUseItem() == stack) || (entity instanceof Monster monster && monster.isAggressive())) ? 1.0F : 0.0F
-            );
-        });
     }
 
     public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event){
