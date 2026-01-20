@@ -63,6 +63,6 @@ public class BlockEntitySolarPanel extends BlockEntityMachine<BlockEntitySolarPa
     public boolean isSunVisible(@NotNull Level world, BlockPos pos) {
         if (!world.isDay()) return false;
         Holder<Biome> biome = world.getBiome(pos);
-        return biome.value().getPrecipitation() == Biome.Precipitation.NONE || (!world.isRaining() && !world.isThundering());
+        return !biome.value().hasPrecipitation() || (!world.isRaining() && !world.isThundering());
     }
 }

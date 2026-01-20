@@ -27,7 +27,7 @@ public class ItemBreederRod extends ItemBasic<ItemBreederRod> implements IItemRe
     private final long needed;
 
     public ItemBreederRod(String domain, Material material, Supplier<Item> enrichedRod, int loss, long needed) {
-        super(domain, material.getId() + "_breeder_rod", new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
+        super(domain, material.getId() + "_breeder_rod", new Properties().stacksTo(16));
         this.material = material;
         this.enrichedRod = enrichedRod;
         this.loss = loss;

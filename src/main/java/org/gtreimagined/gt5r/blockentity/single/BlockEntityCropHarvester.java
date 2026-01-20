@@ -31,7 +31,7 @@ public class BlockEntityCropHarvester extends BlockEntityMachine<BlockEntityCrop
             BlockPos.betweenClosedStream(boundingBox).forEach(p -> {
                 BlockState blockState = level.getBlockState(p);
                 if (blockState.getBlock() instanceof CropBlock cropBlock){
-                    int age = blockState.getValue(cropBlock.getAgeProperty());
+                    int age = cropBlock.getAge(blockState);
                     if (age == cropBlock.getMaxAge() && energyHandler.map(e -> e.getEnergy() >= 16).orElse(false)){
                         List<ItemStack> drops = CropBlock.getDrops(blockState, (ServerLevel) level, p, null);
                         ItemStack replant = blockState.getBlock().getCloneItemStack(level, p, blockState);
@@ -43,7 +43,7 @@ public class BlockEntityCropHarvester extends BlockEntityMachine<BlockEntityCrop
                         }
                         if (itemHandler.map(i -> i.canOutputsFit(drops.toArray(new ItemStack[0]))).orElse(false)){
                             itemHandler.ifPresent(i -> i.addOutputs(drops.toArray(new ItemStack[0])));
-                            level.setBlock(p, blockState.setValue(cropBlock.getAgeProperty(), 0), 3);
+                            level.setBlock(p, cropBlock.getStateForAge(0), 3);
                             energyHandler.ifPresent(e -> e.extractEu(16, false));
                         }
                     }

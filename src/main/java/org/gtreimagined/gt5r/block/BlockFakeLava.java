@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,7 +15,7 @@ import org.gtreimagined.gtlib.registration.IItemBlockProvider;
 
 public class BlockFakeLava extends LiquidBlock implements IItemBlockProvider {
     public BlockFakeLava() {
-        super(() -> Fluids.LAVA, BlockBehaviour.Properties.of(net.minecraft.world.level.material.Material.LAVA).noCollission().randomTicks().strength(100.0F).lightLevel((blockStatex) -> 15).noLootTable());
+        super(() -> Fluids.LAVA, BlockBehaviour.Properties.copy(Blocks.LAVA));
         GTAPI.register(Block.class, "lava", GT5Reimagined.ID, this);
     }
 

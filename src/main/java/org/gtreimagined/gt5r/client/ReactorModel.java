@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;
+import net.minecraft.client.resources.model.ModelBaker;
 import net.minecraftforge.client.model.geometry.IGeometryBakingContext;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.client.ModelUtils;
@@ -31,21 +32,7 @@ public class ReactorModel extends MachineModel {
     }
 
     @Override
-    public Collection<Material> getMaterials(IGeometryBakingContext configuration, Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors) {
-        Collection<Material> materials = super.getMaterials(configuration, modelGetter, missingTextureErrors);
-        //materials.addAll(Arrays.stream(rodModels).flatMap(i -> i.getMaterials(modelGetter, missingTextureErrors).stream()).toList());
-        String[] strings = {
-                "gt5r:block/machine/base/reactor_rods/sides",
-                "gt5r:block/machine/base/reactor_rods/top",
-                "gt5r:block/machine/overlay/nuclear_reactor_core/rod_top",
-                "gt5r:block/machine/overlay/nuclear_reactor_core/rod_sides"
-        };
-        Arrays.stream(strings).forEach(s -> materials.add(ModelUtils.getBlockMaterial(new ResourceLocation(s))));
-        return materials;
-    }
-
-    @Override
-    public BakedModel bakeModel(IGeometryBakingContext configuration, ModelBakery bakery,
+    public BakedModel bakeModel(IGeometryBakingContext configuration, ModelBaker bakery,
                                 Function<Material, TextureAtlasSprite> getter, ModelState transform, ItemOverrides overrides,
                                 ResourceLocation loc) {
         ImmutableMap.Builder<MachineState, BakedModel[]> builder = ImmutableMap.builder();

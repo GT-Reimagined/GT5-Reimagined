@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
@@ -43,7 +44,7 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
     }
 
     @Override
-    public void draw(OreByProduct recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+    public void draw(OreByProduct recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics stack, double mouseX, double mouseY) {
         base.draw(stack);
         if (recipe.bathingMode() != BathingMode.NONE) chemical.draw(stack);
         if (recipe.hasSiftingRecipe()) sift.draw(stack);
@@ -55,12 +56,12 @@ public class OreProcessingCategory implements IRecipeCategory<OreByProduct> {
             if (chance > 0 && chance < 10000){
                 RenderSystem.disableBlend();
                 RenderSystem.disableDepthTest();
-                stack.pushPose();
-                stack.scale(0.5f, 0.5f, 1);
+                stack.pose().pushPose();
+                stack.pose().scale(0.5f, 0.5f, 1);
                 String ch = (chance / 100) + "%";
-                Minecraft.getInstance().font.drawShadow(stack, ch, 2*((float)chancePositions.getLeft()), 2*((float) chancePositions.getMiddle()), 0xFFFF00);
+                stack.drawString(Minecraft.getInstance().font, ch, 2*((float)chancePositions.getLeft()), 2*((float) chancePositions.getMiddle()), 0xFFFF00, true);
 
-                stack.popPose();
+                stack.pose().popPose();
                 RenderSystem.enableBlend();
                 RenderSystem.enableDepthTest();
             }

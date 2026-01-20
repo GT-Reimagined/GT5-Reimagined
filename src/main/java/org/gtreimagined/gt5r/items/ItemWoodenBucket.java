@@ -17,6 +17,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
@@ -44,6 +45,7 @@ import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
 import org.gtreimagined.gtlib.item.ItemFluidCell;
+import org.gtreimagined.gtlib.registration.ICreativeTabProvider;
 import org.gtreimagined.gtlib.registration.IGTObject;
 import org.gtreimagined.gtlib.registration.IModelProvider;
 import org.gtreimagined.gtlib.registration.ITextureProvider;
@@ -55,12 +57,12 @@ import javax.annotation.Nullable;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
-public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureProvider, IModelProvider {
+public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureProvider, IModelProvider, ICreativeTabProvider {
     @Getter
     private final String id;
 
     public ItemWoodenBucket(Supplier<? extends Fluid> supplier, String id) {
-        super(supplier, new Item.Properties().tab(Ref.TAB_ITEMS).stacksTo(1));
+        super(supplier, new Item.Properties().stacksTo(1));
         this.id = id;
         GTAPI.register(ItemWoodenBucket.class, this);
     }
@@ -198,7 +200,7 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 
-    private boolean canBlockContainFluid(Level worldIn, BlockPos posIn, BlockState blockstate) {
+    public boolean canBlockContainFluid(Level worldIn, BlockPos posIn, BlockState blockstate) {
         return blockstate.getBlock() instanceof LiquidBlockContainer && ((LiquidBlockContainer)blockstate.getBlock()).canPlaceLiquid(worldIn, posIn, blockstate, this.getFluid());
     }
 
@@ -219,5 +221,10 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
             map.put("cover", getDomain() + ":item/other/" + id + "_cover");
             map.put("fluid", getDomain() + ":item/other/" + id + "_fluid");
         });
+    }
+
+    @Override
+    public boolean allowedIn(CreativeModeTab tab) {
+        return tab == Ref.TAB_ITEMS;
     }
 }

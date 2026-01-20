@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.gui.GuiInstance;
@@ -123,16 +124,16 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
         CombustionEngineWidget widget = (CombustionEngineWidget) instance;
-        renderer.draw(stack, this.getDisplayName().getString(), left, top, 0xFAFAFF);
+        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
         if (getMachineState() != MachineState.ACTIVE) {
-            renderer.draw(stack, "Inactive.", left, top + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
             return 16;
         } else if (instance.drawActiveInfo()) {
-            renderer.draw(stack, "EU/t: " + widget.lastEU, left, top + 8, 0xFAFAFF);
-            renderer.draw(stack, "Startup progress: " + (((float)widget.startup / 100) * 100) + "%", left, top + 16, 0xFAFAFF);
-            renderer.draw(stack, "Current: " + widget.currentConsumption + " mb/t", left, top + 24, 0xFAFAFF);
+            graphics.drawString(renderer, "EU/t: " + widget.lastEU, left, top + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "Startup progress: " + (((float)widget.startup / 100) * 100) + "%", left, top + 16, 0xFAFAFF);
+            graphics.drawString(renderer, "Current: " + widget.currentConsumption + " mb/t", left, top + 24, 0xFAFAFF);
             return 32;
         }
         return 8;

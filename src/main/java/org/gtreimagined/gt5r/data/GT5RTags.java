@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
+import net.minecraft.core.registries.Registries;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.core.Registry;
@@ -10,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.Fluid;
 
 public class GT5RTags {
-    public static final TagKey<Fluid> STEAM =  TagKey.create(Registry.FLUID_REGISTRY, new ResourceLocation("forge", "steam"));
+    public static final TagKey<Fluid> STEAM =  TagKey.create(Registries.FLUID, new ResourceLocation("forge", "steam"));
     public static final TagKey<Item> GRIND_HEADS = getTag("grind_heads");
     public static final TagKey<Item> GEM_SAPPHIRES = getTag("gems/sapphires");
     public static final TagKey<Item> DUST_SAPPHIRES = getTag("dusts/sapphires");

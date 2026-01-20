@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
@@ -243,9 +244,9 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
-        int size = super.drawInfo(instance, stack, renderer, left, top);
-        renderer.draw(stack, "Heat: " + ((HeatInfoWidget)instance).heat, left, top + size, 0xFAFAFF);
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
+        int size = super.drawInfo(instance, graphics, renderer, left, top);
+        graphics.drawString(renderer, "Heat: " + ((HeatInfoWidget)instance).heat, left, top + size, 0xFAFAFF);
         return size + 8;
     }
 

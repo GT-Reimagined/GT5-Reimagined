@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
+import net.minecraft.world.level.Level.ExplosionInteraction;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -48,7 +49,7 @@ public interface ISteamBoilerHandler {
                         setHadNoWater(true);
                     } else {
                         if (hadNoWater()) {
-                            getTile().getLevel().explode(null, getTile().getBlockPos().getX(), getTile().getBlockPos().getY(), getTile().getBlockPos().getZ(), 4.0F, Explosion.BlockInteraction.DESTROY);
+                            getTile().getLevel().explode(null, getTile().getBlockPos().getX(), getTile().getBlockPos().getY(), getTile().getBlockPos().getZ(), 4.0F, ExplosionInteraction.BLOCK);
                             getTile().getLevel().setBlockAndUpdate(getTile().getBlockPos(), Blocks.AIR.defaultBlockState());
                             return;
                         }

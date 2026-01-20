@@ -32,7 +32,7 @@ public class ItemNuclearFuelRod extends ItemBasic<ItemNuclearFuelRod> implements
     private final long durability;
 
     public ItemNuclearFuelRod(String domain, Material material, long durability, int emission, int self, int maximum, int div) {
-        super(domain, material.getId() + "_nuclear_rod", new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
+        super(domain, material.getId() + "_nuclear_rod", new Properties().stacksTo(16));
         this.material = material;
         this.emission = emission;
         this.self = self;

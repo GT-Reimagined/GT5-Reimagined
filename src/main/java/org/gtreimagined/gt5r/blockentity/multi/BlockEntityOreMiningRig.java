@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineEnergyHandler;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.IGuiElement;
@@ -228,21 +229,21 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
         OreInfoWidget oilInfoWidget = (OreInfoWidget) instance;
-        renderer.draw(stack, this.getDisplayName().getString(), left, top, 0xFAFAFF);
+        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
         if (getMachineState() != MachineState.ACTIVE) {
-            renderer.draw(stack, "Inactive.", left, top + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
             if (oilInfoWidget.runningState == RunningState.FINISHED) {
-                renderer.draw(stack, "Finished mining to bedrock", left, top + 16, 0xFAFAFF);
+                graphics.drawString(renderer, "Finished mining to bedrock", left, top + 16, 0xFAFAFF);
                 return 24;
             }
             return 16;
         } else if (instance.drawActiveInfo()) {
             if (oilInfoWidget.foundBottom){
                 if (oilInfoWidget.runningState == RunningState.MINING) {
-                    renderer.draw(stack, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
-                    renderer.draw(stack, "Ores left at y-level " + oilInfoWidget.currentPos.above().getY() + ": " + oilInfoWidget.oresLeft, left, top + 16, 0xFAFAFF);
+                    graphics.drawString(renderer, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
+                    graphics.drawString(renderer, "Ores left at y-level " + oilInfoWidget.currentPos.above().getY() + ": " + oilInfoWidget.oresLeft, left, top + 16, 0xFAFAFF);
                     return 24;
                 }
 

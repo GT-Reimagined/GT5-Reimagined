@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ItemPortableScanner extends ScannerItem implements IEnergyItem {
     public ItemPortableScanner() {
-        super(GT5Reimagined.ID, "portable_scanner", false, new Properties().stacksTo(1).tab(Ref.TAB_ITEMS));
+        super(GT5Reimagined.ID, "portable_scanner", false, new Properties().stacksTo(1));
     }
 
     @Override

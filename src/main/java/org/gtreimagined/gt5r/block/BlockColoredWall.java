@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.block;
 
+import net.minecraft.world.level.material.MapColor;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockFakeTile;
 import org.gtreimagined.gtlib.material.Material;
@@ -23,7 +24,7 @@ public class BlockColoredWall  extends BlockFakeTile implements IColorHandler {
     }
 
     public BlockColoredWall(String domain, Material material){
-        this(domain, material, Block.Properties.of(net.minecraft.world.level.material.Material.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops());
+        this(domain, material, Block.Properties.of().mapColor(MapColor.METAL).strength(1.0f, 10.0f).sound(SoundType.METAL).requiresCorrectToolForDrops());
     }
 
     public Material getMaterial() {

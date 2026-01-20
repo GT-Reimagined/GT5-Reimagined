@@ -86,12 +86,12 @@ public class MachineRecipes {
             return m.getMass();
         };
         SHEET.all().stream().filter(m -> m.has(INGOT)).forEach(material -> {
-            BENDER.RB().ii(INGOT.getMaterialIngredient(material, 2), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(2)).io(SHEET.get(material)).add(material.getId() + "_sheet", baseDuration.applyAsLong(material) * 2, 24);
+            BENDER.RB().ii(INGOT.getMaterialIngredient(material, 2), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(2).get()).io(SHEET.get(material)).add(material.getId() + "_sheet", baseDuration.applyAsLong(material) * 2, 24);
         });
         Helpers.mapOfKeys(Metal.Default.class, d -> {
             Material material = Material.get(d.getSerializedName());
             if (material != Material.NULL && material.has(INGOT) && d.hasParts()){
-                BENDER.RB().ii(INGOT.getMaterialIngredient(material, 4), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(4)).io(RegistryUtils.getItemFromID(Ref.MOD_TFC, "metal/double_sheet/" + material.getId())).add(material.getId() + "_double_sheet", baseDuration.applyAsLong(material) * 2, 24);
+                BENDER.RB().ii(INGOT.getMaterialIngredient(material, 4), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(4).get()).io(RegistryUtils.getItemFromID(Ref.MOD_TFC, "metal/double_sheet/" + material.getId())).add(material.getId() + "_double_sheet", baseDuration.applyAsLong(material) * 2, 24);
             }
             return true;
         });

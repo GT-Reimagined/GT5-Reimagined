@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.single.miniportals;
 
 import lombok.Setter;
+import net.minecraft.core.registries.Registries;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
@@ -61,7 +62,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
     public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
         super.onFirstTickServer(level, pos, state);
         if (otherSidePos != null && otherSideDimension != null){
-            Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+            Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registries.DIMENSION, otherSideDimension));
             if (dimension != null && dimension.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                 this.otherSide = portal;
                 otherSideDimension = null;
@@ -175,7 +176,7 @@ public abstract class BlockEntityMiniPortal extends BlockEntityMachine<BlockEnti
             } else if (otherSide == null){
                 if (level.getGameTime() % 100 == 5){
                     if (otherSidePos != null && otherSideDimension != null){
-                        Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registry.DIMENSION_REGISTRY, otherSideDimension));
+                        Level dimension = ServerLifecycleHooks.getCurrentServer().getLevel(ResourceKey.create(Registries.DIMENSION, otherSideDimension));
                         if (dimension != null && level.isLoaded(otherSidePos) && dimension.getBlockEntity(otherSidePos) instanceof BlockEntityMiniPortal portal){
                             this.otherSide = portal;
                             otherSideDimension = null;

@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.gui.container.ContainerMultiMachine;
 import org.gtreimagined.gtlib.gui.screen.ScreenMultiMachine;
 import net.minecraft.network.chat.Component;
@@ -14,7 +15,7 @@ public class ScreenFusionReactor<T extends ContainerMultiMachine<BlockEntityFusi
     }
 
     @Override
-    protected void drawTitle(PoseStack stack, int mouseX, int mouseY) {
+    protected void drawTitle(GuiGraphics stack, int mouseX, int mouseY) {
 
     }
 }

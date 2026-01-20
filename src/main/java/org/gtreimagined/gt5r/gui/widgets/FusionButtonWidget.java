@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.gui.widgets;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.ICanSyncData;
@@ -50,7 +51,7 @@ public class FusionButtonWidget extends Widget {
     }
 
     @Override
-    public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
+    public void mouseOver(GuiGraphics stack, double mouseX, double mouseY, float partialTicks) {
         super.mouseOver(stack, mouseX, mouseY, partialTicks);
         if (isInside(154, 4, 18, 18, mouseX, mouseY)){
             renderTooltip(stack, Utils.translatable("gtlib.gui.show_recipes"), mouseX, mouseY);
@@ -68,7 +69,7 @@ public class FusionButtonWidget extends Widget {
     }
 
     @Override
-    public void render(PoseStack matrixStack, double mouseX, double mouseY, float partialTicks) {
+    public void render(GuiGraphics matrixStack, double mouseX, double mouseY, float partialTicks) {
         BlockEntityFusionReactor tile = getTile();
         if (display == BlockEntityFusionReactor.Display.REGULAR){
             drawTexture(matrixStack, gui.handler.getGuiTexture(), realX() + 154, realY() + 22, 176, 0, 18, 18);

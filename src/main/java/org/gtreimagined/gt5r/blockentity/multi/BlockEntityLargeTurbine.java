@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
@@ -209,13 +210,13 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
-        int size = super.drawInfo(instance, stack, renderer, left, top);
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
+        int size = super.drawInfo(instance, graphics, renderer, left, top);
         if (this.getMachineState() == MachineState.ACTIVE) {
             LargeTurbineWidget wid = (LargeTurbineWidget) instance;
-            renderer.draw(stack, "Current: " + wid.currentConsumption + " mb/t", left, top + size, 0xFAFAFF);
-            renderer.draw(stack, "Optimal: " + wid.recommendedConsumption + " mb/t", left, top + size + 8, 0xFAFAFF);
-            renderer.draw(stack, "EU generation: " + wid.lastEU, left, top + size + 16, 0xFAFAFF);
+            graphics.drawString(renderer, "Current: " + wid.currentConsumption + " mb/t", left, top + size, 0xFAFAFF);
+            graphics.drawString(renderer, "Optimal: " + wid.recommendedConsumption + " mb/t", left, top + size + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "EU generation: " + wid.lastEU, left, top + size + 16, 0xFAFAFF);
             return size + 24;
         }
         return size;

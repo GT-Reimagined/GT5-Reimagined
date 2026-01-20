@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
@@ -111,7 +112,7 @@ public class BlockEntitySmallHeatExchanger extends BlockEntityMachine<BlockEntit
                     }
                     if (waterToExtract > 0){
                         if (hadNoWater){
-                            Utils.createExplosion(this.level, worldPosition, 6.0F, Explosion.BlockInteraction.DESTROY);
+                            Utils.createExplosion(this.level, worldPosition, 6.0F, ExplosionInteraction.BLOCK);
                             return;
                         }
                         Material steam = Steam;

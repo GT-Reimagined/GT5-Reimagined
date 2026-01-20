@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 import com.mojang.blaze3d.vertex.PoseStack;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.gui.GuiInstance;
@@ -72,17 +73,17 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
-        int superDraw = super.drawInfo(instance, stack, renderer, left, top);
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
+        int superDraw = super.drawInfo(instance, graphics, renderer, left, top);
         if (!(instance instanceof MultiSmelterInfoWidget widget)) return superDraw;
         if (getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo()){
-            renderer.draw(stack, "Concurrent Recipes: " + widget.concurrentRecipes, left, top + 32, 0xFAFAFF);
+            graphics.drawString(renderer, "Concurrent Recipes: " + widget.concurrentRecipes, left, top + 32, 0xFAFAFF);
             superDraw += 8;
         }
         int add = getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo() ? 40 : 16;
         RecipeMap<?> map = GTAPI.get(RecipeMap.class, widget.recipeMap);
         if (map != null){
-            renderer.draw(stack, Utils.literal("Recipe map: ").append(map.getDisplayName()).getString(), left, top + add, 0xFAFAFF);
+            graphics.drawString(renderer, Utils.literal("Recipe map: ").append(map.getDisplayName()).getString(), left, top + add, 0xFAFAFF);
             superDraw += 8;
         }
 

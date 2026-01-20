@@ -11,9 +11,9 @@ public class GT5RSounds {
 
     }
 
-    public static final SoundEvent EXTRACTOR = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "extractor", new SoundEvent(new ResourceLocation(GT5Reimagined.ID, "extractor")));
-    public static final SoundEvent MACERATOR = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "macerator", new SoundEvent(new ResourceLocation(GT5Reimagined.ID, "macerator")));
-    public static final SoundEvent MAGNETIZER = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "magnetizer", new SoundEvent(new ResourceLocation(GT5Reimagined.ID, "magnetizer")));
-    public static final SoundEvent FURNACE = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "furnace", new SoundEvent(new ResourceLocation(GT5Reimagined.ID, "furnace")));
-    public static final SoundEvent TREETAP = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "treetap", new SoundEvent(new ResourceLocation(GT5Reimagined.ID, "treetap")));
+    public static final SoundEvent EXTRACTOR = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "extractor", SoundEvent.createVariableRangeEvent(new ResourceLocation(GT5Reimagined.ID, "extractor")));
+    public static final SoundEvent MACERATOR = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "macerator", SoundEvent.createVariableRangeEvent(new ResourceLocation(GT5Reimagined.ID, "macerator")));
+    public static final SoundEvent MAGNETIZER = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "magnetizer", SoundEvent.createVariableRangeEvent(new ResourceLocation(GT5Reimagined.ID, "magnetizer")));
+    public static final SoundEvent FURNACE = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "furnace", SoundEvent.createVariableRangeEvent(new ResourceLocation(GT5Reimagined.ID, "furnace")));
+    public static final SoundEvent TREETAP = GTAPI.register(SoundEvent.class, GT5Reimagined.ID, "treetap", SoundEvent.createVariableRangeEvent(new ResourceLocation(GT5Reimagined.ID, "treetap")));
 }

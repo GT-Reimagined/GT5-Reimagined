@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.gui.widgets;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.Widget;
@@ -38,7 +39,7 @@ public class CoalBoilerWidget extends Widget {
     }
 
     @Override
-    public void render(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
+    public void render(GuiGraphics stack, double mouseX, double mouseY, float partialTicks) {
         if (water >= 1) {
             float per = (float) water / (16000);
             if (per > 1.0F) {
@@ -79,7 +80,7 @@ public class CoalBoilerWidget extends Widget {
     }
 
     @Override
-    public void mouseOver(PoseStack stack, double mouseX, double mouseY, float partialTicks) {
+    public void mouseOver(GuiGraphics stack, double mouseX, double mouseY, float partialTicks) {
         if (water >= 1) {
             renderTooltip(stack,"Water: " + water + " MB", mouseX, mouseY, 14, 0, 10, 54);
         }
@@ -90,7 +91,7 @@ public class CoalBoilerWidget extends Widget {
     }
 
     @OnlyIn(Dist.CLIENT)
-    protected void renderTooltip(PoseStack matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
+    protected void renderTooltip(GuiGraphics matrixStack, String text, double mouseX, double mouseY, int x, int y, int w, int h) {
         if (isInside(x, y, w, h, mouseX, mouseY)){
             renderTooltip(matrixStack, Utils.literal(text), mouseX, mouseY);
         }

@@ -66,13 +66,13 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
                     displaySlots.putString("machineType", this.getMachineType().getLoc().toString());
                     stack.getOrCreateTag().put("displaySlots", displaySlots);
                 });
-                level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
+                level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 10.f, 1.0f);
                 return InteractionResult.SUCCESS;
             } else {
                 CompoundTag displaySlots = stack.getTagElement("displaySlots");
                 if (!displaySlots.isEmpty() && displaySlots.getString("machineType").equals(this.getMachineType().getLoc().toString())){
                     this.itemHandler.ifPresent(i -> i.getHandler(SlotType.DISPLAY_SETTABLE).deserializeNBT(displaySlots));
-                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
+                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 }
 

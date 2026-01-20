@@ -23,7 +23,7 @@ public class CoverEnergyColored extends CoverEnergy {
     public List<BakedQuad> transformQuads(BlockState state, List<BakedQuad> quads) {
         if (handler.getTile() instanceof BlockEntityMachine<?> machine){
             quads.forEach(q -> {
-                if (q.getSprite().getName().getPath().contains("energy")){
+                if (q.getSprite().contents().name().getPath().contains("energy")){
                     RenderHelper.colorQuad(q, TierMaps.TIER_WIRES.get(machine.getMachineTier()).getPipe().getRGB());
                 }
             });

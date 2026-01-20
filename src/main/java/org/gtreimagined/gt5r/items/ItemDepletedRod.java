@@ -22,7 +22,7 @@ public class ItemDepletedRod extends ItemBasic<ItemDepletedRod> implements IItem
     private final Material material;
 
     public ItemDepletedRod(String domain, Material material) {
-        super(domain, material.getId() + "_depleted_rod", new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
+        super(domain, material.getId() + "_depleted_rod", new Properties().stacksTo(16));
         this.material = material;
     }
 

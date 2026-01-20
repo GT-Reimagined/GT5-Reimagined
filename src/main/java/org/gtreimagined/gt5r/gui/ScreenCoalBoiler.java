@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.gui;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
@@ -19,7 +20,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
     }
 
     @Override
-    protected void renderLabels(PoseStack stack, int mouseX, int mouseY) {
+    protected void renderLabels(GuiGraphics stack, int mouseX, int mouseY) {
         drawTitle(stack, mouseX, mouseY);
         if (container.getTile().has(MachineFlag.RECIPE)) {
             drawTooltipInArea(stack, "Show Recipes", mouseX, mouseY, 115, 43, 18, 18);
@@ -47,7 +48,7 @@ public class ScreenCoalBoiler<T extends ContainerMachine<BlockEntityCoalBoiler>>
     }
 
     @Override
-    protected void renderBg(PoseStack stack, float partialTicks, int mouseX, int mouseY) {
+    protected void renderBg(GuiGraphics stack, float partialTicks, int mouseX, int mouseY) {
         super.renderBg(stack, partialTicks, mouseX, mouseY);
         drawTitle(stack, mouseX, mouseY);
         ResourceLocation gui = container.source().handler.getGuiTexture();

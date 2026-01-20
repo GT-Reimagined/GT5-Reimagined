@@ -25,7 +25,7 @@ public class ItemEnrichedRod extends ItemBasic<ItemEnrichedRod> implements IItem
     private final Supplier<Item> breederRod;
 
     public ItemEnrichedRod(String domain, Material material, Supplier<Item> breederRod) {
-        super(domain, material.getId() + "_enriched_rod", new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
+        super(domain, material.getId() + "_enriched_rod", new Properties().stacksTo(16));
         this.material = material;
         this.breederRod = breederRod;
     }

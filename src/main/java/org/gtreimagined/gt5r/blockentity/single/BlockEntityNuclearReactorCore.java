@@ -216,7 +216,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                     if (getMachineState() != MachineState.DISABLED) {
                         disableMachine();
                     }
-                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
+                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 } else if (!stack.isEmpty() && type == ToolTypes.PINCERS){
                     if (!player.addItem(stack)){
@@ -224,7 +224,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                     }
                     setRod(tSlot, ItemStack.EMPTY);
                     Utils.damageStack(held, player);
-                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK, SoundSource.BLOCKS, 10.f, 1.0f);
+                    level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 }
             }

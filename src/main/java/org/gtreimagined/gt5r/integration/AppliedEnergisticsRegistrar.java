@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.integration;
 
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -91,7 +92,7 @@ public class AppliedEnergisticsRegistrar extends GTMod {
         PULVERIZER.RB().ii(of(getAe2Item("sky_stone_chest"))).io(new ItemStack(getAe2Item("sky_dust"), 8)).add("sky_dust_from_chest", 400, 2);
         PULVERIZER.RB().ii(of(getAe2Item("sky_stone_block"))).io(new ItemStack(getAe2Item("sky_dust"))).add("sky_dust", 400, 2);
         RecipeMaps.ELECTROLYZER.RB().ii(GEM.getMaterialIngredient(CertusQuartz, 1)).io(new ItemStack(getAe2Item("charged_certus_quartz_crystal"))).add("charged_certus_quartz", 2000, 30);
-        E_BLAST_FURNACE.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(1)).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
+        E_BLAST_FURNACE.RB().ii(RecipeIngredient.of(TagUtils.getForgelikeItemTag("silicon")), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(1).get()).io(INGOT.get(Silicon)).add("silicon_ingot_from_silicon", 1683, 120, 1683);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(TFCRegistrar.getIron(), 1), LENS.getMaterialIngredient(GreenSapphire, 1).setNoConsume()).io(new ItemStack(getAe2Item("logic_processor_press"))).add("inscriber_logic_press", 2000, 1920);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(TFCRegistrar.getIron(), 1), LENS.getMaterialIngredient(Opal, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press", 2000, 1920);
         LASER_ENGRAVER.RB().ii(BLOCK.getMaterialIngredient(TFCRegistrar.getIron(), 1), LENS.getMaterialIngredient(BlueTopaz, 1).setNoConsume()).io(new ItemStack(getAe2Item("calculation_processor_press"))).add("inscriber_calculation_press_2", 2000, 1920);
@@ -111,8 +112,8 @@ public class AppliedEnergisticsRegistrar extends GTMod {
     }
     
     public static void craftingRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
-        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5Reimagined.ID + ":silicon");
-        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5Reimagined.ID + ":silicon_blasting");
+        SimpleCookingRecipeBuilder.smelting(DUST.getMaterialIngredient(Silicon, 1), RecipeCategory.MISC, getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5Reimagined.ID + ":silicon");
+        SimpleCookingRecipeBuilder.blasting(DUST.getMaterialIngredient(Silicon, 1), RecipeCategory.MISC, getAe2Item("silicon"), 0.5F, 200).unlockedBy("has_silicon_dust", provider.hasSafeItem(DUST.getMaterialTag(Silicon))).save(output, GT5Reimagined.ID + ":silicon_blasting");
     }
 
     @Override

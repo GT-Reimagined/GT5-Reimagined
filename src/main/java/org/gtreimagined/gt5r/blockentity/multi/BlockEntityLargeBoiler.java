@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -240,17 +241,17 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
-        renderer.draw(stack, this.getDisplayName().getString(), left, top, 0xFAFAFF);
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
+        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
         if (!(instance instanceof LargeBoilerInforWidget w)) return 8;
         if (getMachineState() != MachineState.ACTIVE) {
-            renderer.draw(stack, "Inactive.", left, top + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
             return 16;
         } else if (instance.drawActiveInfo()) {
             int tGeneratedSteam = (int) (instance.euT * 2L * w.efficiency / 10000L);
-            renderer.draw(stack, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
-            renderer.draw(stack, "Overclock: " + instance.overclock, left, top + 16, 0xFAFAFF);
-            renderer.draw(stack, "Steam/t: " + tGeneratedSteam, left, top + 24, 0xFAFAFF);
+            graphics.drawString(renderer, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "Overclock: " + instance.overclock, left, top + 16, 0xFAFAFF);
+            graphics.drawString(renderer, "Steam/t: " + tGeneratedSteam, left, top + 24, 0xFAFAFF);
             return 32;
         }
         return 8;

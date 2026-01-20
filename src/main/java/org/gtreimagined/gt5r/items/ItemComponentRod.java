@@ -24,7 +24,7 @@ public class ItemComponentRod extends ItemBasic<ItemComponentRod> implements IIt
     private final int tooltips;
 
     public ItemComponentRod(String domain, String id, Material material, int tooltips) {
-        super(domain, id, new Properties().stacksTo(16).tab(Ref.TAB_ITEMS));
+        super(domain, id, new Properties().stacksTo(16));
         this.material = material;
         this.tooltips = tooltips;
     }

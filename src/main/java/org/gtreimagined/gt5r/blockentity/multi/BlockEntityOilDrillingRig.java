@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineEnergyHandler;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.IGuiElement;
@@ -132,23 +133,23 @@ public class BlockEntityOilDrillingRig extends BlockEntityDrillingRigBase<BlockE
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
         OilInfoWidget oilInfoWidget = (OilInfoWidget) instance;
-        renderer.draw(stack, this.getDisplayName().getString(), left, top, 0xFAFAFF);
+        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
         if (getMachineState() != MachineState.ACTIVE) {
-            renderer.draw(stack, "Inactive.", left, top + 8, 0xFAFAFF);
+            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
             return 16;
         } else if (instance.drawActiveInfo()) {
             if (oilInfoWidget.foundBottom){
-                renderer.draw(stack, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
+                graphics.drawString(renderer, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
                 return 16;
             } else if (oilInfoWidget.stopped && oilInfoWidget.currentPos != null){
-                renderer.draw(stack, "Can't mine at: " + oilInfoWidget.currentPos, left, top + 8, 0xFAFAFF);
-                renderer.draw(stack, "Y: " + oilInfoWidget.currentPos.getY(), left, top + 16, 0xFAFAFF);
+                graphics.drawString(renderer, "Can't mine at: " + oilInfoWidget.currentPos, left, top + 8, 0xFAFAFF);
+                graphics.drawString(renderer, "Y: " + oilInfoWidget.currentPos.getY(), left, top + 16, 0xFAFAFF);
                 return 24;
             } else if (oilInfoWidget.currentPos != null){
-                renderer.draw(stack, "Mining Position at: ", left, top + 8, 0xFAFAFF);
-                renderer.draw(stack, "Y: " + oilInfoWidget.currentPos.getY(), left, top + 16, 0xFAFAFF);
+                graphics.drawString(renderer, "Mining Position at: ", left, top + 8, 0xFAFAFF);
+                graphics.drawString(renderer, "Y: " + oilInfoWidget.currentPos.getY(), left, top + 16, 0xFAFAFF);
                 return 24;
             }
         }

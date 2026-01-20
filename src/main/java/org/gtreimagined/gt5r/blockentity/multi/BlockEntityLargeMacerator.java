@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.ICanSyncData;
@@ -38,10 +39,10 @@ public class BlockEntityLargeMacerator extends BlockEntityMultiMachine<BlockEnti
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, PoseStack stack, Font renderer, int left, int top) {
+    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics stack, Font renderer, int left, int top) {
         int superDraw = super.drawInfo(instance, stack, renderer, left, top);
         if (getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo()){
-            renderer.draw(stack, "Concurrent Recipes: " + ((MultiSmelterInfoWidget)instance).concurrentRecipes, left, top + 32, 0xFAFAFF);
+            stack.drawString(renderer, "Concurrent Recipes: " + ((MultiSmelterInfoWidget)instance).concurrentRecipes, left, top + 32, 0xFAFAFF);
             return superDraw + 8;
         }
         return superDraw;
