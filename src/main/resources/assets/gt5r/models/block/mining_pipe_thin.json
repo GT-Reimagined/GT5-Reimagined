@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"parent": "block/block",
 	"textures": {
-        "all": "gtlib:material/metallic/pipe/pipe_side",
+        "all": "gtlib:block/material/metallic/pipe/pipe_side",
 		"particle": "#all"
 	},
 	"elements": [
