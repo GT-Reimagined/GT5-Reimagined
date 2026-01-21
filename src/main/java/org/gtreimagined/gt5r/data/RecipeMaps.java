@@ -195,7 +195,7 @@ public class RecipeMaps {
         return (t, b) -> {
             if (!(t instanceof ShapedRecipe shapedRecipe)) return null;
             List<Ingredient> ingredients = t.getIngredients();
-            if (!(t.getResultItem(ServerLifecycleHooks.getCurrentServer().registryAccess()).getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof BlockMachine machine)) return null;
+            if (!(t.getResultItem(null).getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof BlockMachine machine)) return null;
             if (machine.getType() == GT5RMachines.HULL) return null;
             List<ItemStack> list = new ObjectArrayList<>();
             for (Ingredient i : ingredients){
@@ -206,7 +206,7 @@ public class RecipeMaps {
                     }
                 }
             }
-            ItemStack craftingOut = shapedRecipe.getResultItem(ServerLifecycleHooks.getCurrentServer().registryAccess());
+            ItemStack craftingOut = shapedRecipe.getResultItem(null);
             if (list.isEmpty()) return null;
             RecipeIngredient ing = RecipeIngredient.of(craftingOut);
             IRecipe recipe = b.recipeMapOnly().ii(ing)
