@@ -92,7 +92,7 @@ dependencies {
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
     modCompileOnly("me.shedaniel.cloth:cloth-config-forge:6.5.133")
     modCompileOnly("org.appliedenergistics:guideme:${project.guideme_version}:api")
-    modRuntimeOnly(jarJar("org.appliedenergistics:guideme:${project.guideme_version}"))
+    //modRuntimeOnly(jarJar("org.appliedenergistics:guideme:${project.guideme_version}"))
     modImplementation("com.blamejared.crafttweaker:CraftTweaker-forge-${project.minecraft_version}:${project.crafttweaker_version}")
     modImplementation("dev.trinsdar:arrp-forge:${project.arrp_version}")
     modImplementation("dev.trinsdar:terraform-utils-v1:${project.terraform_version}")
