@@ -131,6 +131,10 @@ dependencies {
     modRuntimeOnly("curse.maven:jade-324717:${project.jade_version}")
     //modRuntimeOnly("curse.maven:jamd-422981:${project.jamd_version}")
     //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
+    modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}")// Mekanism
+    modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:additions")// Mekanism: Additions
+    modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:generators")// Mekanism: Generators
+    modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:tools")// Mekanism: Tools
 }
 
 jar{

@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
+import org.gtreimagined.gt5r.integration.mekanism.MekanismRegistrar;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gt5r.loader.machines.RecyclingLoader;
@@ -179,6 +180,7 @@ public class GT5Reimagined extends GTMod {
         new SpaceModRegistrar();
         new GT5RPostRegistrar();
         new TFCRegistrar();
+        new MekanismRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
         GTLibDynamics.clientProvider(ID,
