@@ -33,6 +33,12 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue ENABLE_GT_TFC_VEINS;
     public static ConfigEntry.BoolValue TFC_VEIN_REMOVALS;
 
+    //Mekanism Compat
+    public static ConfigEntry.BoolValue ENABLE_MEKANISM_COMPAT;
+    public static ConfigEntry.BoolValue DISABLE_MEKANISM_OREGEN;
+    public static ConfigEntry.BoolValue REPLACE_MEK_OSMIUM_WITH_GERMANIUM;
+    public static ConfigEntry.BoolValue GREGIFY_MEK_RECIPES;
+
     static ConfigHandler CONFIG;
 
     public static void createConfig(){
@@ -61,6 +67,11 @@ public class GT5RConfig {
         ENABLE_TFC_COMPAT = tfc.addBool("enable_tfc_compat", true, "Enables all TFC compat. I do not recommend turning this off unless you know what you are doing. Default: true").setRequiredReload(ReloadMode.GAME);
         ENABLE_GT_TFC_VEINS = tfc.addBool("enable_gt_tfc_veins", true, "Enables custom tfc type veins added by GT5R. - Default: true.");
         TFC_VEIN_REMOVALS = tfc.addBool("tfc_vein_removals", true, "Removes a few default tfc veins from the tfc:in_biome/veins placed feature tag. Default: true");
+        ConfigSection mekanism = compat.addSubSection("mekanism");
+        ENABLE_MEKANISM_COMPAT = mekanism.addBool("enable_mekanism_compat", true, "Enables all mekanism compat. Default: true").setRequiredReload(ReloadMode.GAME);
+        DISABLE_MEKANISM_OREGEN = mekanism.addBool("disable_mekanism_oregen", true, "Disables mekanism ore gen. - Default: true");
+        REPLACE_MEK_OSMIUM_WITH_GERMANIUM = mekanism.addBool("replace_mek_osmium_with_germanium", true, "Replaces all uses of osmium in mekanism with germanium for balance. Default: true");
+        GREGIFY_MEK_RECIPES = mekanism.addBool("gregify_mek_recipes", true, "Gregifies all mekanism recipes, mostly replacing ingots with plates, Default: true");
 
         CONFIG = CarbonConfig.CONFIGS.createConfig(config);
         CONFIG.register();
