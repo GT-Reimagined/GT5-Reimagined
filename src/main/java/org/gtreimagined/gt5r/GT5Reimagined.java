@@ -174,6 +174,7 @@ public class GT5Reimagined extends GTMod {
 
     public GT5Reimagined() {
         super();
+        GT5RConfig.createConfig();
         new AppliedEnergisticsRegistrar();
         new SpaceModRegistrar();
         new GT5RPostRegistrar();
@@ -185,7 +186,6 @@ public class GT5Reimagined extends GTMod {
         GTLibDynamics.clientProvider(ID,
                 () -> new GTItemModelProvider(ID, NAME + " Item Models"));
         GTLibDynamics.clientProvider(ID, GT5RLocalizations.en_US::new);
-        GT5RConfig.createConfig();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         MinecraftForge.EVENT_BUS.register(ForgeEvents.class);

@@ -5,6 +5,7 @@ import net.dries007.tfc.common.blocks.TFCBlocks;
 import net.dries007.tfc.common.blocks.wood.Wood.BlockType;
 import net.dries007.tfc.common.items.TFCItems;
 import net.minecraft.resources.ResourceLocation;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.tfc.client.TFCClientHandler;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCGTFluids;
@@ -225,7 +226,7 @@ public class TFCRegistrar extends GTMod {
 
     @Override
     public boolean isEnabled() {
-        return GTAPI.isModLoaded(Ref.MOD_TFC);
+        return GTAPI.isModLoaded(Ref.MOD_TFC) && GT5RConfig.ENABLE_TFC_COMPAT.get();
     }
 
     public static Material getIron(){

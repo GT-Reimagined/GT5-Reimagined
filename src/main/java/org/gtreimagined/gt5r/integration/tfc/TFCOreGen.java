@@ -8,6 +8,7 @@ import net.dries007.tfc.common.blocks.rock.Ore;
 import net.dries007.tfc.common.blocks.rock.Ore.Grade;
 import net.dries007.tfc.config.TFCConfig;
 import net.minecraft.resources.ResourceLocation;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtlib.GTAPI;
@@ -39,27 +40,30 @@ public class TFCOreGen {
     public static List<ResourceLocation> veinsToRemove = new ArrayList<>();
 
     public static void init() {
-        initTFCReplacements();
-        initAdditions();
-        JTag tag = JTag.tag();
-        for (String vein : veins){
-            tag.add(new ResourceLocation(GT5Reimagined.ID, "vein/" + vein));
+        if (GT5RConfig.ENABLE_GT_TFC_VEINS.get()){
+            initTFCReplacements();
+            initAdditions();
+            JTag tag = JTag.tag();
+            for (String vein : veins){
+                tag.add(new ResourceLocation(GT5Reimagined.ID, "vein/" + vein));
+            }
+            GTLibDynamics.RUNTIME_DATA_PACK.addTag(new ResourceLocation("tfc", "worldgen/placed_feature/in_biome/veins"), tag);
         }
-        String[] tfcVeinsToRemove = new String[]{
-                "normal_hematite", "deep_hematite", "normal_garnierite", "normal_malachite",
-                "normal_magnetite", "deep_magnetite", "normal_limonite", "deep_limonite",
-                "normal_sphalerite", "surface_sphalerite", "normal_tetrahedrite", "surface_tetrahedrite", "normal_native_copper",
-                "surface_native_copper", "normal_native_silver", "cinnabar", "lapis_lazuli"
-        };
-        for (String vein : tfcVeinsToRemove){
-            veinsToRemove.add(new ResourceLocation(Ref.MOD_TFC, "vein/" + vein));
+        if (GT5RConfig.TFC_VEIN_REMOVALS.get()){
+            String[] tfcVeinsToRemove = new String[]{
+                    "normal_hematite", "deep_hematite", "normal_garnierite", "normal_malachite",
+                    "normal_magnetite", "deep_magnetite", "normal_limonite", "deep_limonite",
+                    "normal_sphalerite", "surface_sphalerite", "normal_tetrahedrite", "surface_tetrahedrite", "normal_native_copper",
+                    "surface_native_copper", "normal_native_silver", "cinnabar", "lapis_lazuli"
+            };
+            for (String vein : tfcVeinsToRemove){
+                veinsToRemove.add(new ResourceLocation(Ref.MOD_TFC, "vein/" + vein));
+            }
+            if (GTAPI.isModLoaded("firmalife")){
+                veinsToRemove.add(new ResourceLocation("firmalife", "vein/normal_chromite"));
+                veinsToRemove.add(new ResourceLocation("firmalife", "vein/deep_chromite"));
+            }
         }
-        if (GTAPI.isModLoaded("firmalife")){
-            veinsToRemove.add(new ResourceLocation("firmalife", "vein/normal_chromite"));
-            veinsToRemove.add(new ResourceLocation("firmalife", "vein/deep_chromite"));
-        }
-        GTLibDynamics.RUNTIME_DATA_PACK.addTag(new ResourceLocation("tfc", "worldgen/placed_feature/in_biome/veins"), tag);
-
     }
 
 

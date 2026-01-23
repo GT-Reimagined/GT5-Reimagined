@@ -5,6 +5,7 @@ import carbonconfiglib.config.Config;
 import carbonconfiglib.config.ConfigEntry;
 import carbonconfiglib.config.ConfigHandler;
 import carbonconfiglib.config.ConfigSection;
+import carbonconfiglib.impl.ReloadMode;
 
 public class GT5RConfig {
 
@@ -26,6 +27,12 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue DEFAULT_TWILIGHT_ORE_GEN;
     public static ConfigEntry.DoubleValue ASPHALT_MULTIPLIER;
     public static ConfigEntry.BoolValue ADD_LOOT;
+
+    //TFC Compat
+    public static ConfigEntry.BoolValue ENABLE_TFC_COMPAT;
+    public static ConfigEntry.BoolValue ENABLE_GT_TFC_VEINS;
+    public static ConfigEntry.BoolValue TFC_VEIN_REMOVALS;
+
     static ConfigHandler CONFIG;
 
     public static void createConfig(){
@@ -49,6 +56,12 @@ public class GT5RConfig {
         DEFAULT_SMALL_ORES = worldgen.addBool("default_small_ores", true, "Enables default small ore gen. - Default: true");
         DEFAULT_BEDROCK_VEINS = worldgen.addBool("default_bedrock_veins", true, "Enables default bedrock veins. - Default: true");
         DEFAULT_TWILIGHT_ORE_GEN = worldgen.addBool("default_twilight_ore_gen", true, "Enables default twilight ore gen. - Default: true");
+        ConfigSection compat = config.add("mod_compat");
+        ConfigSection tfc = compat.addSubSection("tfc");
+        ENABLE_TFC_COMPAT = tfc.addBool("enable_tfc_compat", true, "Enables all TFC compat. I do not recommend turning this off unless you know what you are doing. Default: true").setRequiredReload(ReloadMode.GAME);
+        ENABLE_GT_TFC_VEINS = tfc.addBool("enable_gt_tfc_veins", true, "Enables custom tfc type veins added by GT5R. - Default: true.");
+        TFC_VEIN_REMOVALS = tfc.addBool("tfc_vein_removals", true, "Removes a few default tfc veins from the tfc:in_biome/veins placed feature tag. Default: true");
+
         CONFIG = CarbonConfig.CONFIGS.createConfig(config);
         CONFIG.register();
     }
