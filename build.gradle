@@ -88,7 +88,7 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     implementation("org.jetbrains:annotations:26.0.1")
     modCompileOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
-    //modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
+    modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
     modCompileOnly("me.shedaniel.cloth:cloth-config-forge:6.5.133")
     modCompileOnly("org.appliedenergistics:guideme:${project.guideme_version}:api")
