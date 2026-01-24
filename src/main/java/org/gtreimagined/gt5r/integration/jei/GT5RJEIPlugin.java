@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
+import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
@@ -24,6 +25,7 @@ import static org.gtreimagined.gtlib.machine.Tier.NONE;
 
 @JeiPlugin
 public class GT5RJEIPlugin implements IModPlugin {
+    static IGuiHelper helper;
     @Override
     public ResourceLocation getPluginUid() {
         return new ResourceLocation(GT5Reimagined.ID, "jei");
@@ -32,6 +34,7 @@ public class GT5RJEIPlugin implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         if (GTAPI.isModLoaded(Ref.MOD_REI)) return;
+        helper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(new OreProcessingCategory());
     }
 
