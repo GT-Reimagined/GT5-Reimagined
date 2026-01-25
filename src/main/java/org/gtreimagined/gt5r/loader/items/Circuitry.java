@@ -141,6 +141,8 @@ public class Circuitry {
                         .put('N', BasicCircuitParts)
                         .put('S', GT5RItems.CircuitBoardCoated)
                         .build(), "CNC", "NSN", "CNC");
+        provider.addItemRecipe(output, GT5Reimagined.ID, "good_circuit_board", "circuits", GoodCircuitBoard,
+                ImmutableMap.of('P', GoodCircuitParts, 'C', BasicCircuitBoard), " P ", "PCP", " P ");
         provider.addItemRecipe(output, GT5Reimagined.ID, "", "circuits", BasicCircuitParts,
                 ImmutableMap.of('C', ITEM_CASING.getMaterialTag(Steel), 'R', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY), 'T', GT5RBlocks.WIRE_TIN.getBlockItem(PipeSize.VTINY)), "CR", "RT");
         /*provider.addItemRecipe(output, GT5RRef.ID, "lapotron_crystal_upgrade", "energy_orbs", GTCoreItems.LapotronCrystal,
