@@ -180,6 +180,7 @@ public class GT5Reimagined extends GTMod {
         new SpaceModRegistrar();
         new GT5RPostRegistrar();
         new TFCRegistrar();
+        new ThermalRegistrar();
         new MekanismRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
