@@ -4,6 +4,7 @@ import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.world.BiomeModifier.Phase;
 import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
@@ -346,8 +347,8 @@ public class GT5Reimagined extends GTMod {
                 Guis.init(side);
                 Models.init();
                 GT5RSounds.init();
-                IGTWorldgenFunction function = (name, climate, effects, gen , spawns, registry) -> {
-                    if (GTLibConfig.VANILLA_ORE_GEN.get()) {
+                IGTWorldgenFunction function = (phase, name, climate, effects, gen , spawns, registry) -> {
+                    if (GTLibConfig.VANILLA_ORE_GEN.get() && phase == Phase.REMOVE) {
                         removeDecoratedFeatureFromAllBiomes(gen, GenerationStep.Decoration.UNDERGROUND_DECORATION, Feature.ORE, Blocks.NETHER_QUARTZ_ORE.defaultBlockState(), Blocks.NETHER_GOLD_ORE.defaultBlockState());
                     }
                 };

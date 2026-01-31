@@ -50,11 +50,6 @@ public class ThermalRegistrar extends GTMod implements IGTWorldgenFunction {
     }
 
     @Override
-    public void build(Holder<Biome> biomeHolder, ClimateSettings climate, BiomeSpecialEffects effects, BiomeGenerationSettingsBuilder gen, Builder spawns, Registry<PlacedFeature> placedFeatureRegistry) {
-        //NOOP
-    }
-
-    @Override
     public void build(Phase phase, Holder<Biome> biomeHolder, ClimateSettings climate, BiomeSpecialEffects effects, BiomeGenerationSettingsBuilder gen, Builder spawns, Registry<PlacedFeature> placedFeatureRegistry) {
         if (phase == Phase.REMOVE){
             String[] oreTypes = new String[]{"apatite", "cinnabar", "niter", "sulfur", "tin", "lead", "silver", "nickel", "ruby", "sapphire"};
