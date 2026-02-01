@@ -43,24 +43,29 @@ public class GT5RTwilightStalctites {
         JsonArray array = new JsonArray();
         hollowHillEntries.get(2).forEach(r -> array.add(r.toString()));
         medium.add("stalactites", array);
-        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/medium_hollow_hill.json"), medium.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(Ref.MOD_TWILIGHT, "stalactites/medium_hollow_hill.json"), medium.toString().getBytes());
         JsonObject large = new JsonObject();
         large.addProperty("replace", false);
         JsonArray array2 = new JsonArray();
         hollowHillEntries.get(3).forEach(r -> array2.add(r.toString()));
         large.add("stalactites", array2);
-        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation("twilightforest", "stalactites/large_hollow_hill.json"), large.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(new ResourceLocation(Ref.MOD_TWILIGHT, "stalactites/large_hollow_hill.json"), large.toString().getBytes());
         hollowHillEntries = null;
     }
 
     private static void addStalctite(String name, int hillSize, int maxLength, Block ore, float sizeVariation, int weight){
         JsonObject object = new JsonObject();
         object.addProperty("max_length", maxLength);
-        object.addProperty("ore", RegistryUtils.getIdFromBlock(ore).toString());
+        JsonObject block = new JsonObject();
+        block.addProperty("block", RegistryUtils.getIdFromBlock(ore).toString());
+        block.addProperty("weight", 1);
+        JsonArray array = new JsonArray();
+        array.add(block);
+        object.add("blocks", array);
         object.addProperty("size_variation", sizeVariation);
         object.addProperty("weight", weight);
         ResourceLocation id = new ResourceLocation(GT5Reimagined.ID, name);
         hollowHillEntries.computeIfAbsent(hillSize, i -> new ArrayList<>()).add(id);
-        GTLibDynamics.RUNTIME_DATA_PACK.addData(GTLibDynamics.fix(id, "stalactite/entries", "json"), object.toString().getBytes());
+        GTLibDynamics.RUNTIME_DATA_PACK.addData(GTLibDynamics.fix(id, "stalactites/entries", "json"), object.toString().getBytes());
     }
 }
