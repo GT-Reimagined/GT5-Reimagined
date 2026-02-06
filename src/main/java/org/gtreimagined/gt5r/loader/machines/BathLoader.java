@@ -63,7 +63,7 @@ public class BathLoader {
         BATH.RB().ii(DUST.getMaterialIngredient(Tungstate, 7)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(LithiumChloride, 4), DUST.get(TungsticAcid, 7)).add("tungstate", 512);
         BATH.RB().ii(DUST.getMaterialIngredient(Scheelite, 6)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(CalciumChloride, 3), DUST.get(TungsticAcid, 7)).add("scheelite", 512);
         BATH.RB().ii(RecipeIngredient.of(FRAME.getMaterialTag(Steel))).fi(Concrete.getLiquid(L)).io(GTCoreBlocks.REINFORCED_STONE.asItem()).add("reinforced_stone", 200, 4);
-        if (GT5RConfig.HARDER_CIRCUITS) {
+        if (GT5RConfig.HARDER_CIRCUITS.get()) {
             BATH.RB().ii(GTCoreItems.CarbonFibre).fi(EpoxyResin.getLiquid(L)).io(PLATE.get(FiberReinforcedEpoxyResin)).add("fiber_reinforced_epoxy_resin", 240);
         }
         if (GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){

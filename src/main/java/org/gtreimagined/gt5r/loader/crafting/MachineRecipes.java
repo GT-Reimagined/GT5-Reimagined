@@ -731,7 +731,7 @@ public class MachineRecipes {
             provider.addItemRecipe(output, "mini_portals", MINIATURE_JAMD_PORTAL.getItem(NONE), of('R', LONG_ROD.getMaterialTag(Obsidian), 'S',SAW.getTag(), 'B', Items.STONE_BRICKS), "BRB", "RSR", "BRB");
         }
 
-        var circuit = GT5RConfig.HARDER_CIRCUITS ? CIRCUITS_ADVANCED : EngravedCrystalChip;
+        var circuit = GT5RConfig.HARDER_CIRCUITS.get() ? CIRCUITS_ADVANCED : EngravedCrystalChip;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.LV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL.getItem(LV))
@@ -739,7 +739,7 @@ public class MachineRecipes {
                         .put('F', GT5RItems.FieldGenLV)
                         .put('P', PLATE.get(Steel)).build(), "CFC", "PHP", "CPC");
 
-        circuit = GT5RConfig.HARDER_CIRCUITS ? CIRCUITS_COMPLEX : CIRCUITS_DATA;
+        circuit = GT5RConfig.HARDER_CIRCUITS.get() ? CIRCUITS_COMPLEX : CIRCUITS_DATA;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(MV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL.getItem(MV))
@@ -761,7 +761,7 @@ public class MachineRecipes {
                         .put('F', GT5RItems.FieldGenEV)
                         .put('P', PLATE.get(Titanium)).build(), "CFC", "PHP", "CPC");
 
-        circuit = GT5RConfig.HARDER_CIRCUITS ? CIRCUITS_DATA_ORB : CIRCUITS_DATA_ORB;
+        circuit = GT5RConfig.HARDER_CIRCUITS.get() ? CIRCUITS_DATA_ORB : CIRCUITS_DATA_ORB;
         provider.addItemRecipe(output, "machines", QUANTUM_TANK.getItem(Tier.IV),
                 ImmutableMap.<Character, Object>builder()
                         .put('H', HULL.getItem(IV))
