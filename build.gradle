@@ -136,6 +136,7 @@ dependencies {
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:additions")// Mekanism: Additions
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:generators")// Mekanism: Generators
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:tools")// Mekanism: Tools
+    modCOmpileOnly("curse.maven:immersive-engineering-231951:${project.ie_version}")
 }
 
 jar{
