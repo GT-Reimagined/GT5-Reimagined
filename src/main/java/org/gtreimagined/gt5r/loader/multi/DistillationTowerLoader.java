@@ -8,7 +8,9 @@ import org.gtreimagined.gt5r.material.FluidProduct;
 import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
@@ -107,7 +109,7 @@ public class DistillationTowerLoader {
                 new FluidProduct(RefineryGas, 25),
                 new FluidProduct(Lubricant, 15),
                 new FluidProduct(Tar, 15));
-        addDistillationDistillingRecipe(Oil, 25, 64, 64,
+        addDistillationDistillingRecipe(FluidIngredient.of(TagUtils.getForgelikeFluidTag("oil"), 25), "oil", 64, 64,
                 new FluidProduct(FuelOil,25),
                 new FluidProduct(Diesel,15),
                 new FluidProduct(Naphtha, 15),
@@ -115,7 +117,7 @@ public class DistillationTowerLoader {
                 new FluidProduct(RefineryGas, 15),
                 new FluidProduct(Lubricant, 25),
                 new FluidProduct(Tar, 15));
-        addDistillationDistillingRecipe(OilHeavy, 25, 64, 64,
+        addDistillationDistillingRecipe(FluidIngredient.of(TagUtils.getForgelikeFluidTag("heavy_oil"), 25), "heavy_oil", 64, 64,
                 new FluidProduct(FuelOil,30),
                 new FluidProduct(Diesel,20),
                 new FluidProduct(Naphtha, 20),
@@ -157,19 +159,27 @@ public class DistillationTowerLoader {
     }
 
     private static void addDistillationDistillingRecipe(Material input, int amount, int ticks, int euPerTick, int distilleryPerTick, int distilleryTicks, ItemStack itemStack, FluidProduct... outputs){
-        addDistillationRecipe(input, amount, ticks, euPerTick, itemStack, outputs);
+        addDistillationDistillingRecipe(input.getFluidIngredient(amount), input.getId(), ticks, euPerTick, distilleryPerTick, distilleryTicks, itemStack, outputs);
+    }
+
+    private static void addDistillationDistillingRecipe(FluidIngredient input, String id, int ticks, int euPerTick, int distilleryPerTick, int distilleryTicks, ItemStack itemStack, FluidProduct... outputs){
+        addDistillationRecipe(input, id, ticks, euPerTick, itemStack, outputs);
         for (int i = 0; i < outputs.length; i++){
             RecipeBuilder b = DISTILLERY.RB()
                     .ii(SELECTOR_TAG_INGREDIENTS.get(i + 1).get().setNoConsume())
-                    .fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount))
+                    .fi(input)
                     .fo(outputs[i].convert());
             if (!itemStack.isEmpty()) b.io(itemStack);
-            b.add(input.getId() + "_" + outputs[i].mat().getId(), distilleryTicks, distilleryPerTick);
+            b.add(id + "_" + outputs[i].mat().getId(), distilleryTicks, distilleryPerTick);
         }
     }
 
     private static void addDistillationDistillingRecipe(Material input, int amount, int ticks, int euPerTick, FluidProduct... outputs){
         addDistillationDistillingRecipe(input, amount, ticks, euPerTick, euPerTick / 4, ticks, ItemStack.EMPTY, outputs);
+    }
+
+    private static void addDistillationDistillingRecipe(FluidIngredient input, String id, int ticks, int euPerTick, FluidProduct... outputs){
+        addDistillationDistillingRecipe(input, id, ticks, euPerTick, euPerTick / 4, ticks, ItemStack.EMPTY, outputs);
     }
 
     private static void addDistillingRecipe(Material input, int amount, int ticks, int euPerTick, ItemStack itemStack, FluidProduct... outputs){
@@ -184,7 +194,11 @@ public class DistillationTowerLoader {
     }
 
     private static void addDistillationRecipe(Material input, int amount, int ticks, int euPerTick, ItemStack itemOutput, FluidProduct... outputs){
-        RecipeBuilder builder = DISTILLATION.RB().fi(input.has(GTMaterialTypes.LIQUID) ? input.getLiquid(amount) : input.getGas(amount));
+        addDistillationRecipe(input.getFluidIngredient(amount), input.getId(), ticks, euPerTick, itemOutput, outputs);
+    }
+
+    private static void addDistillationRecipe(FluidIngredient input, String id, int ticks, int euPerTick, ItemStack itemOutput, FluidProduct... outputs){
+        RecipeBuilder builder = DISTILLATION.RB().fi(input);
         for(int i=0;i<outputs.length;i++){
             Material fo = outputs[i].mat();
             if (fo.has(GTMaterialTypes.LIQUID)){
@@ -196,7 +210,7 @@ public class DistillationTowerLoader {
         }
 
         if (!itemOutput.isEmpty()) builder.io(itemOutput);
-        builder.add(input.getId(), ticks, euPerTick);
+        builder.add(id, ticks, euPerTick);
     }
 
     private static void addDistillationRecipe(Material input, int amount, int ticks, int euPerTick, FluidProduct... outputs){
