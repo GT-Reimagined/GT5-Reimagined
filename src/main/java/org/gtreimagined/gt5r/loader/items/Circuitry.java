@@ -54,18 +54,18 @@ public class Circuitry {
                         .build(),
                 " R ", "PPP", " R ");
         if (GT5RConfig.HARDER_CIRCUITS.get()){
-            bloodyCircuits(output, provider);
+            hardCircuits(output, provider);
         } else {
             circuits(output, provider);
         }
     }
 
-    private static void bloodyCircuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
+    private static void hardCircuits(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
         // MANUAL TIER 0 CIRCUIT CRAFTING
-        provider.addItemRecipe(output, "circuit_basic", BasicCircuit,
+        provider.addItemRecipe(output, "basic_circuit", BasicCircuit,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', GT5RItems.VacuumTube).put('B', GT5RItems.CircuitBoardCoated)
-                        .put('W', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('W', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.TINY))
                         .put('R', GT5RItems.Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
@@ -73,7 +73,7 @@ public class Circuitry {
                 ImmutableMap.<Character, Object>builder()
                         .put('S', ITEM_CASING.getMaterialTag(Steel))
                         .put('C', CIRCUITS_BASIC)
-                        .put('c', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
+                        .put('c', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.TINY))
                         .put('D', GT5RItems.Diode).build(), "SCc", "CDC", "cCS");
 
         var wire = TagUtils.getItemTag(new ResourceLocation(Ref.ID, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
@@ -164,9 +164,9 @@ public class Circuitry {
             circuitParts();
             circuits();
         } else {
-            bloodyBoards();
-            bloodyCircuitParts();
-            bloodyCircuits();
+            hardBoards();
+            hardCircuitParts();
+            hardCircuits();
         }
     }
 
@@ -296,7 +296,7 @@ public class Circuitry {
         CHEMICAL_REACTOR.RB().ii(FOIL.getMaterialIngredient(Copper, 4)).fi(EpoxyResin.getLiquid(L)).io(GT5RItems.CircuitBoardEpoxy).add("epoxy_circuit_board", 500, 10);
     }
 
-    private static void bloodyBoards() {
+    private static void hardBoards() {
         //Plastic
         CHEMICAL_REACTOR.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), FOIL.getMaterialIngredient(Copper, 1))
                 .fi(SulfuricAcid.getLiquid(125))
@@ -326,13 +326,13 @@ public class Circuitry {
                 .io(new ItemStack(GT5RItems.CircuitBoardMultiFiber,1))
                 .add("multi_fiber_circuit_board",5*20, 480);
         //Wetware
-        ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(GT5RItems.PetriDish), of(GT5RItems.SensorLV), of(GT5RCovers.COVER_PUMP.getItem(LV)))
+        /*ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardMultiFiber,1), of(CIRCUITS_GOOD,1), of(GT5RItems.PetriDish), of(GT5RItems.SensorLV), of(GT5RCovers.COVER_PUMP.getItem(LV)))
                 .fi(Polystyrene.getLiquid(144))
                 .io(new ItemStack(GT5RItems.CircuitBoardWetware,1))
-                .add("wetware_circuit_board",8*20, 32768);
+                .add("wetware_circuit_board",8*20, 32768);*/
     }
 
-    private static void bloodyCircuitParts(){
+    private static void hardCircuitParts(){
         ASSEMBLER.RB().ii(of(GT5RItems.SiliconChip, 1), FINE_WIRE.getMaterialIngredient(Tin, 6)).fi(Plastic.getLiquid(L)).io(new ItemStack(GT5RItems.Transistor,8)).add("transistor",80, 24);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), FOIL.getMaterialIngredient(Aluminium, 2)).io(new ItemStack(GT5RItems.Capacitor, 2)).add("capacitor", 80, 96);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gallium, 1), FINE_WIRE.getMaterialIngredient(AnnealedCopper, 6)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.SMDTransistor,32)).add("smd_transistor",80, 96);
@@ -342,13 +342,14 @@ public class Circuitry {
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Tantalum, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(GT5RItems.SMDCapacitor,32)).add("smd_capacitor_tantalum_rubber",60, 120);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Aluminium, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(GT5RItems.SMDCapacitor,16)).add("smd_capacitor_aluminium_rubber",60, 120);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(AnnealedCopper, 4), SMALL_DUST.getMaterialIngredient(Gallium, 1)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.Diode, 16)).add("diode", 400, 48);
+        ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Platinum, 4), SMALL_DUST.getMaterialIngredient(Gallium, 1)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.Diode, 32)).add("smd_diode", 400, 48);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(GT5RItems.SmallCoil, 2)).add("small_coil_1", 80, 8);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(GT5RItems.SmallCoil, 4)).add("small_coil_2", 80, 8);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(GT5RItems.SmallCoil, 2)).add("small_coil_3", 80, 8);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(GT5RItems.SmallCoil, 4)).add("small_coil_4", 80, 8);
     }
 
-    private static void bloodyCircuits() {
+    private static void hardCircuits() {
         for (Material material : SOLDER.all()) {
             int base = L / 8;
             boolean hasGood = SOLDER.has(SubTag.GOOD_SOLDER, material);
@@ -359,7 +360,7 @@ public class Circuitry {
                             FINE_WIRE.getMaterialIngredient(Copper, 4), of(GT5RItems.IntegratedLogicCircuit, 1))
                     .io(new ItemStack(BasicCircuit,1))
                     .fi(material.getLiquid(base * 4)).add("basic_circuit_using_" + material.getId(),200, 8);
-            CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.IntegratedLogicCircuit, 4),
+            CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(CentralProcessingUnit, 4),
                             of(GT5RTags.RESISTORS, 4), of(GT5RTags.CAPACITORS, 4),
                             of(GT5RTags.TRANSISTORS, 4), FINE_WIRE.getMaterialIngredient(Copper, 2))
                     .io(new ItemStack(GT5RItems.MicroProcessor, 4))
@@ -375,7 +376,7 @@ public class Circuitry {
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.CentralProcessingUnit, 1),
                             of(GT5RTags.RESISTORS, 2), of(GT5RTags.CAPACITORS, 2),
                             of(GT5RTags.TRANSISTORS, 2), FINE_WIRE.getMaterialIngredient(RedAlloy, 2))
-                    .io(new ItemStack(GT5RItems.IntegratedProcessor, 4))
+                    .io(new ItemStack(GT5RItems.IntegratedProcessor, 1))
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.SOC, 1), FINE_WIRE.getMaterialIngredient(RedAlloy, 2))
                     .io(new ItemStack(GT5RItems.IntegratedProcessor, 1))
