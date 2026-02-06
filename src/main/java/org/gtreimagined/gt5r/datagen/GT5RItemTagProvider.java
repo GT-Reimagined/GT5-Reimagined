@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.datagen;
 
 import net.minecraftforge.common.Tags;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -64,6 +65,11 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(CIRCUITS_ELITE).add(DataControlCircuit);
         this.tag(CIRCUITS_MASTER).add(EnergyFlowCircuit);
         this.tag(CIRCUITS_DATA_ORB).add(DataOrb);
+        if (GT5RConfig.HARDER_CIRCUITS.get()){
+            this.tag(CIRCUITS_BASIC).add(MicroProcessor);
+            this.tag(CIRCUITS_GOOD).add(IntegratedProcessor);
+            this.tag(CIRCUITS_ADVANCED).add(ProcessorAssembly, NanoProcessor);
+        }
         this.tag(ForgeTags.DYES_BLACK).add(Items.INK_SAC);
         this.tag(ForgeTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite));
         this.tag(ForgeTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite));
