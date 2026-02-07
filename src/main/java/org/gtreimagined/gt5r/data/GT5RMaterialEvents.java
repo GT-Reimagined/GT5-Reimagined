@@ -325,7 +325,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Stibnite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Tantalite).asOre().harvestLevel(3);
         event.setMaterial(Materials.Talc).asOre();
-        event.setMaterial(Materials.Tetrahedrite).asOre().harvestLevel(2);
+        event.setMaterial(Materials.Tetrahedrite).asOre().harvestLevel(1);
         event.setMaterial(Materials.Tungstate).asOre().harvestLevel(3);
         event.setMaterial(Materials.Uraninite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Uvarovite).asOre();
