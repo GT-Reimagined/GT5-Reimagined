@@ -158,6 +158,8 @@ public class GT5RLocalizations {
             add("emi.category.gt.alloy_smelter_molds", "Alloy Smelter Molds");
             add("block.gt5r.lava", "Lava");
             GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
+            add(GT5RBlocks.BRONZE_CAULDRON, "Bronze Cauldron");
+            add(GT5RBlocks.BRONZE_WATER_CAULDRON, "Bronze Water Cauldron");
             structureTranslations();
             advancements();
         }

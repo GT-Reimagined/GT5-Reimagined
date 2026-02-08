@@ -70,7 +70,7 @@ public class GT5RBlockTagProvider extends GTBlockTagProvider {
             this.tag(GTTools.WRENCH.getToolType()).add(cas);
         });
         this.tag(GTTools.AXE.getToolType()).add(GT5RBlocks.BRITTLE_CHARCOAL, GT5RBlocks.POWDER_BARREL);
-        this.tag(GTTools.PICKAXE.getToolType()).add(GT5RBlocks.MINING_PIPE, GT5RBlocks.MINING_PIPE_THIN, GT5RBlocks.SOLID_SUPER_FUEL);
+        this.tag(GTTools.PICKAXE.getToolType()).add(GT5RBlocks.MINING_PIPE, GT5RBlocks.MINING_PIPE_THIN, GT5RBlocks.SOLID_SUPER_FUEL, GT5RBlocks.BRONZE_CAULDRON, GT5RBlocks.BRONZE_WATER_CAULDRON);
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(GT5RMachines.MINIATURE_NETHER_PORTAL.getBlockState(Tier.NONE));
         if (GTAPI.isModLoaded(Ref.MOD_AE)){
             //TODO config for this

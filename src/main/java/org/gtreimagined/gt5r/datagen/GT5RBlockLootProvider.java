@@ -44,6 +44,8 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         this.add(GT5RBlocks.MINING_PIPE_THIN);
         this.add(GT5RBlocks.SOLID_SUPER_FUEL);
         this.add(GT5RBlocks.POWDER_BARREL);
+        this.add(GT5RBlocks.BRONZE_CAULDRON);
+        tables.put(GT5RBlocks.BRONZE_WATER_CAULDRON, b -> this.build(GT5RBlocks.BRONZE_CAULDRON));
         tables.put(GT5RBlocks.MINING_PIPE, b -> this.build(GT5RBlocks.MINING_PIPE_THIN));
         tables.put(Blocks.IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED_ORE.get(Iron), 1));
         tables.put(Blocks.DEEPSLATE_IRON_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Iron), CRUSHED_ORE.get(Iron), 1));
