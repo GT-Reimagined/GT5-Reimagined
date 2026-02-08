@@ -30,7 +30,7 @@ import java.util.function.Predicate;
 
 @Mixin(CauldronInteraction.class)
 public interface CauldronInteractionMixin {
-    @Inject(method = "lambda$bootStrap$8", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;"), cancellable = true)
+    @Inject(method = {"lambda$bootStrap$8", "m_175731_"}, at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;getItem()Lnet/minecraft/world/item/Item;"), cancellable = true)
     private static void gt5r$injectEmptyBottle(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack, CallbackInfoReturnable<InteractionResult> cir){
         if (state.is(GT5RBlocks.BRONZE_CAULDRON)){
             Item item = stack.getItem();
