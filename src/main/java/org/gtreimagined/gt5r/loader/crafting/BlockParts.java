@@ -219,6 +219,8 @@ public class BlockParts {
         provider.removeRecipe(new ResourceLocation("tnt"));
         provider.addItemRecipe(output, "misc", GT5RBlocks.POWDER_BARREL,
                 of('W', ItemTags.PLANKS, 'G', Items.GUNPOWDER, 'S', Items.STRING), "WSW" ,"GGG", "WGW");
+        provider.addItemRecipe(output, "misc", GT5RBlocks.BRONZE_CAULDRON,
+                of('B', PLATE.getMaterialTag(Bronze), 'H', HAMMER.getTag()), "B B", "BHB", "BBB");
     }
 
     private static void addSlabRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Block full, Block slab){
