@@ -78,6 +78,17 @@ mixin {
     config "gtlib.rei.mixins.json"
 }
 
+repositories {
+    maven {
+        name = 'Su5eD'
+        url = 'https://maven.su5ed.dev/releases/'
+    }
+    maven {
+        name = 'Fabric'
+        url = 'https://maven.fabricmc.net/'
+    }
+}
+
 dependencies {
     //subprojects
     implementation(project(":tesseract-forge"))
@@ -86,7 +97,8 @@ dependencies {
 
     //antimatter deps
     implementation 'org.apache.commons:commons-collections4:4.4'
-    annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
+    //annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
+    annotationProcessor 'net.fabricmc:sponge-mixin:0.11.4+mixin.0.8.5'
     implementation("org.jetbrains:annotations:26.0.1")
     modCompileOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
     modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
@@ -95,6 +107,7 @@ dependencies {
     modCompileOnly("org.appliedenergistics:guideme:${project.guideme_version}:api")
     modRuntimeOnly("org.appliedenergistics:guideme:${project.guideme_version}")
     //jarJar("org.appliedenergistics:guideme:${project.guideme_version}")
+    implementation("org.sinytra.mixinbooster:mixin-booster:${mixinbooster_version}+${minecraft_version}")
     modImplementation("com.blamejared.crafttweaker:CraftTweaker-forge-${project.minecraft_version}:${project.crafttweaker_version}")
     modImplementation("dev.trinsdar:arrp-forge:${project.arrp_version}")
     modImplementation("dev.trinsdar:terraform-utils-v1:${project.terraform_version}")

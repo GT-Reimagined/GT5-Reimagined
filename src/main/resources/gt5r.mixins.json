@@ -3,6 +3,7 @@
   "package": "org.gtreimagined.gt5r.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "CauldronInteractionMixin",
     "LayeredCauldronBlockMixin"
   ],
   "minVersion": "0.8",

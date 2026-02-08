@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BucketPickup;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
@@ -38,6 +40,7 @@ import net.minecraftforge.event.ForgeEventFactory;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.wrappers.FluidBucketWrapper;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTCreativeTabs;
@@ -165,21 +168,7 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
     }
 
     public static InteractionResult fillBucket(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack) {
-        if (blockState.getValue(LayeredCauldronBlock.LEVEL) != 3) {
-            return InteractionResult.PASS;
-        } else {
-            if (!level.isClientSide) {
-                Item item = stack.getItem();
-                player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(GT5RItems.WOODEN_WATER_BUCKET)));
-                player.awardStat(Stats.USE_CAULDRON);
-                player.awardStat(Stats.ITEM_USED.get(item));
-                level.setBlockAndUpdate(pos, Blocks.CAULDRON.defaultBlockState());
-                level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0F, 1.0F);
-                level.gameEvent(null, GameEvent.FLUID_PICKUP, pos);
-            }
-
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
+        return CauldronInteraction.fillBucket(blockState, level, pos, player, hand, stack, new ItemStack(GT5RItems.WOODEN_WATER_BUCKET), b -> blockState.getValue(LayeredCauldronBlock.LEVEL) == 3, SoundEvents.BUCKET_FILL);
     }
 
     public static InteractionResult emptyBucket(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, ItemStack stack) {
@@ -188,7 +177,8 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
             player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(GT5RItems.WOODEN_BUCKET)));
             player.awardStat(Stats.FILL_CAULDRON);
             player.awardStat(Stats.ITEM_USED.get(item));
-            level.setBlockAndUpdate(pos, Blocks.WATER_CAULDRON.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 3));
+            Block waterCauldron = state.getBlock() == GT5RBlocks.BRONZE_CAULDRON ? GT5RBlocks.BRONZE_WATER_CAULDRON : Blocks.WATER_CAULDRON;
+            level.setBlockAndUpdate(pos, waterCauldron.defaultBlockState().setValue(LayeredCauldronBlock.LEVEL, 3));
             level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
             level.gameEvent(null, GameEvent.FLUID_PLACE, pos);
         }
