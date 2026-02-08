@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/template_cauldron_level2",
+  "textures": {
+    "bottom": "gt5r:block/bronze_cauldron_bottom",
+    "content": "minecraft:block/water_still",
+    "inside": "gt5r:block/bronze_cauldron_inner",
+    "particle": "gt5r:block/bronze_cauldron_side",
+    "side": "gt5r:block/bronze_cauldron_side",
+    "top": "gt5r:block/bronze_cauldron_top"
+  }
+}

@@ -17,6 +17,8 @@ import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.block.BlockFakeCasing;
 import org.gtreimagined.gt5r.block.BlockFakeLava;
+import org.gtreimagined.gt5r.block.BlockGTCauldron;
+import org.gtreimagined.gt5r.block.BlockGTWaterCauldron;
 import org.gtreimagined.gt5r.block.BlockMiningPipe;
 import org.gtreimagined.gt5r.block.BlockPowderBarrel;
 import org.gtreimagined.gt5r.block.BlockSidedCasing;
@@ -68,6 +70,8 @@ public class GT5RBlocks {
     public static final BlockBasic POWDER_BARREL = new BlockPowderBarrel();
     public static final BlockBasic MINING_PIPE_THIN = new BlockMiningPipe(GT5Reimagined.ID, "mining_pipe_thin", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f, 3.0f));
     public static final BlockBasic MINING_PIPE = new BlockMiningPipe(GT5Reimagined.ID, "mining_pipe", BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).instrument(NoteBlockInstrument.BASEDRUM).strength(1.0f, 3.0f));
+    public static final BlockGTCauldron BRONZE_CAULDRON = new BlockGTCauldron();
+    public static final BlockGTWaterCauldron BRONZE_WATER_CAULDRON = new BlockGTWaterCauldron();
     public static final BlockAsphalt WHITE_ASPHALT = new BlockAsphalt(GT5Reimagined.ID, "white_asphalt", DyeColor.WHITE.getTextColor());
     public static final BlockAsphalt ORANGE_ASPHALT = new BlockAsphalt(GT5Reimagined.ID, "orange_asphalt", DyeColor.ORANGE.getTextColor());
     public static final BlockAsphalt MAGENTA_ASPHALT = new BlockAsphalt(GT5Reimagined.ID, "magenta_asphalt", DyeColor.MAGENTA.getTextColor());

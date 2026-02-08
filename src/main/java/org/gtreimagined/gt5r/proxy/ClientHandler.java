@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.registries.RegistryObject;
+import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.integration.tfc.client.JavelinModel;
 import org.gtreimagined.gt5r.integration.tfc.data.TFCToolTypes;
@@ -39,6 +40,8 @@ public class ClientHandler {
         GTAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         GTAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         GTAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        ModelUtils.setRenderLayer(GT5RBlocks.BRONZE_CAULDRON, RenderType.cutout());
+        ModelUtils.setRenderLayer(GT5RBlocks.BRONZE_WATER_CAULDRON, RenderType.cutout());
         ModelUtils.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());
         copyProgrammerArtIfMissing();
     }
