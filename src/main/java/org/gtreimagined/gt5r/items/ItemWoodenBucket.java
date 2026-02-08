@@ -45,7 +45,9 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTCreativeTabs;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.client.ModelUtils;
 import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider;
+import org.gtreimagined.gtlib.registration.IColorHandler;
 import org.gtreimagined.gtlib.registration.ICreativeTabProvider;
 import org.gtreimagined.gtlib.registration.IGTObject;
 import org.gtreimagined.gtlib.registration.IModelProvider;
@@ -56,7 +58,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
-public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureProvider, IModelProvider, ICreativeTabProvider {
+public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureProvider, IModelProvider, ICreativeTabProvider, IColorHandler {
     @Getter
     private final String id;
 
@@ -212,5 +214,11 @@ public class ItemWoodenBucket extends BucketItem implements IGTObject, ITextureP
     @Override
     public boolean allowedIn(ResourceKey<CreativeModeTab> tab) {
         return tab == GTCreativeTabs.ITEMS.getKey();
+    }
+
+
+    @Override
+    public int getItemColor(ItemStack stack, @org.jetbrains.annotations.Nullable Block block, int i) {
+        return ModelUtils.ITEM_COLORS.getColor(stack, i);
     }
 }
