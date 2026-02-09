@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.enchantment.Enchantments;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.material.GT5RMaterialEvent;
@@ -1077,6 +1078,13 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.VanadiumSteel).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
         event.setMaterial(Materials.WroughtIron).tool(Iron).toolDurability(384).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 1.0F, 0.0F, 17, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
+        /**
+         * Rocks
+         */
+        event.setMaterial(RedGranite).tool().allowedToolTypes(List.of(GTTools.PICKAXE, GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.SWORD)).toolDamage(Tiers.STONE.getAttackDamageBonus()).toolSpeed(Tiers.STONE.getSpeed()).toolDurability(Tiers.STONE.getUses()).toolQuality(3).build();
+        event.setMaterial(BlackGranite).tool().allowedToolTypes(List.of(GTTools.PICKAXE, GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.SWORD)).toolDamage(Tiers.STONE.getAttackDamageBonus()).toolSpeed(Tiers.STONE.getSpeed()).toolDurability(Tiers.STONE.getUses()).toolQuality(3).build();
+        event.setMaterial(RedGranite).remove(PICKAXE_HEAD, AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, SWORD_BLADE);
+        event.setMaterial(BlackGranite).remove(PICKAXE_HEAD, AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, SWORD_BLADE);
         /**
          **  Gems
          **/

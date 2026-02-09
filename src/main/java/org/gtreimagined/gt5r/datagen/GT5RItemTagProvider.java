@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.datagen;
 
 import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.ForgeTags;
@@ -75,5 +76,6 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(ForgeTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite));
         this.tag(ForgeTags.DYES_GREEN).addTag(DUST.getMaterialTag(Malachite));
         this.tag(ForgeTags.DYES_WHITE).add(Items.BONE_MEAL);
+        this.tag(STONE_ROCKS).remove(ROCK.get(RedGranite), ROCK.get(BlackGranite));
     }
 }

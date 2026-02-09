@@ -49,6 +49,7 @@ public class Parts {
       molds(output, provider);
       provider.shapeless(output, "nether_quartz_from_milky_quartz","parts", new ItemStack(Items.QUARTZ), GEM.getMaterialTag(MilkyQuartz));
       if (!GTAPI.isModLoaded(Ref.MOD_TFC)) {
+          graniteTools(output, provider);
           provider.shapeless(output, "fire_clay_dust", "parts", GTMaterialTypes.DUST.get(Fireclay, 2),
                   GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
       }
@@ -225,6 +226,19 @@ public class Parts {
       shapeRecipe(output, provider,FoilShape, "P ", " H");
       shapeRecipe(output, provider,TinyPlateShape, "H", "P");
       shapeRecipe(output, provider,RodShape,FineWireShape, "PH");
+  }
+
+  private static void graniteTools(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_pickaxe", "tools", PICKAXE.getToolItem(RedGranite), ImmutableMap.of('R', ROCK.getMaterialTag(RedGranite), 'S', Items.STICK), "RRR", " S ");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_axe", "tools", AXE.getToolItem(RedGranite), ImmutableMap.of('R', ROCK.getMaterialTag(RedGranite), 'S', Items.STICK), "RR", "RS");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_shovel", "tools", SHOVEL.getToolItem(RedGranite), ImmutableMap.of('R', ROCK.getMaterialTag(RedGranite), 'S', Items.STICK), "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_hoe", "tools", HOE.getToolItem(RedGranite), ImmutableMap.of('R', ROCK.getMaterialTag(RedGranite), 'S', Items.STICK), "RR", " S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_sword", "tools", SWORD.getToolItem(RedGranite), ImmutableMap.of('R', ROCK.getMaterialTag(RedGranite), 'S', Items.STICK), "R", "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_pickaxe", "tools", PICKAXE.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "RRR", " S ");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_axe", "tools", AXE.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "RR", "RS");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_shovel", "tools", SHOVEL.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_hoe", "tools", HOE.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "RR", " S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_sword", "tools", SWORD.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "R", "R", "S");
   }
 
   private static void moldRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item mold, String... shapes){
