@@ -6,8 +6,10 @@ import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.GTAPI;
@@ -47,8 +49,8 @@ public class ProgressionAdvancements implements Consumer<Consumer<Advancement>> 
                 .addCriterion("has_raw_copper", hasItem(RAW_ORE.getMaterialTag(Copper))).save(consumer, getLoc(GT5Reimagined.ID, "progression/raw_copper"));
         Advancement rawTin = buildBasicAdvancement(rawCopper, RAW_ORE.get(Tin), "raw_tin", FrameType.TASK)
                 .addCriterion("has_raw_tin", hasItem(RAW_ORE.getMaterialTag(Tin))).save(consumer, getLoc(GT5Reimagined.ID, "progression/raw_tin"));
-        Advancement mortar = buildBasicAdvancement(rawTin, MORTAR.getToolItem(Flint), "mortar", FrameType.TASK)
-                .addCriterion("has_mortar", hasItem(MORTAR.getTag())).save(consumer, getLoc(GT5Reimagined.ID, "progression/mortar"));
+        Advancement mortar = buildBasicAdvancement(rawTin, GTCoreBlocks.IRON_MORTAR, "mortar", FrameType.TASK)
+                .addCriterion("has_mortar", hasItem(GTCoreBlocks.IRON_MORTAR)).save(consumer, getLoc(GT5Reimagined.ID, "progression/mortar"));
         Advancement bronzeDust = buildBasicAdvancement(mortar, DUST.get(Bronze), "bronze_dust", FrameType.TASK)
                 .addCriterion("has_raw_copper", hasItem(DUST.getMaterialTag(Bronze))).save(consumer, getLoc(GT5Reimagined.ID, "progression/bronze_dust"));
         Advancement hammer = buildBasicAdvancement(bronzeDust, HAMMER.getToolItem(Bronze), "hammer", FrameType.TASK)

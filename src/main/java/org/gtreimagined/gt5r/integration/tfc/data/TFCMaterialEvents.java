@@ -42,7 +42,7 @@ public class TFCMaterialEvents {
         event.setMaterial(WroughtIron).flags(SMALL_GEAR);
         event.setMaterial(Flint).flags(AXE_HEAD, SHOVEL_HEAD, HOE_HEAD, KNIFE_BLADE)
                 .tool(Flint).toolDurability(32).toolEnchantments(ImmutableMap.of(Enchantments.FIRE_ASPECT, 1))
-                .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.MORTAR, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
+                .allowedToolTypes(List.of(GTTools.AXE, GTTools.SHOVEL, GTTools.HOE, GTTools.KNIFE, TFCToolTypes.JAVELIN)).build();
         Material[] materials = new Material[]{Bismuth, Brass, Copper, Gold, Nickel, RoseGold, Silver, SterlingSilver, Tin, Zinc, CastIron};
         for (Material material : materials){
             INGOT.replacement(material, () -> RegistryUtils.getItemFromID("tfc", "metal/ingot/"+material.getId()));

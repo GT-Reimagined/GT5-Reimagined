@@ -21,6 +21,7 @@ import org.gtreimagined.gt5r.integration.tfc.recipes.MetalRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.MiscTFCRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.FlintKnappingRecipes;
 import org.gtreimagined.gt5r.integration.tfc.recipes.ToolCrafting;
+import org.gtreimagined.gtcore.block.BlockMortar;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
@@ -175,11 +176,7 @@ public class TFCRegistrar extends GTMod {
             });
             BehaviourTorchPlacing.addTorch(TFCItems.TORCH.get(), TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
             GTLibXEIPlugin.addItemsToHide(DUST.get(Fireclay), GTCoreItems.CompressedFireClay, GTCoreItems.FireBrick);
-            MaterialTags.HAS_MORTAR.all().forEach(m -> {
-                if (m.has(TOOLS) && TOOLS.get(m).toolTypes().contains(GTTools.MORTAR)){
-                    GTLibXEIPlugin.addItemsToHide(GTTools.MORTAR.getToolItem(m));
-                }
-            });
+            GTLibXEIPlugin.addItemsToHide(l -> l.addAll(GTAPI.all(BlockMortar.class)));
             if (side == Dist.CLIENT){
                 TFCClientHandler.setup();
             }
