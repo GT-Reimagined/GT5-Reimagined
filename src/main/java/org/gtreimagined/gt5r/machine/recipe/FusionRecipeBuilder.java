@@ -26,7 +26,7 @@ public class FusionRecipeBuilder extends RecipeBuilder {
         recipe.setHuOutput(huOutput);
         recipe.addTags(new ObjectOpenHashSet<>(tags));
         recipe.setId(this.id);
-        recipe.setMapId(this.recipeMap.getId());
+        recipe.setMapId(this.recipeMap.getLoc().toString());
         return recipe;
     }
 
