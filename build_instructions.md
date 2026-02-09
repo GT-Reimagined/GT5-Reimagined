@@ -28,11 +28,11 @@
 
 [comment]: <> (## Using local dependencies.)
 
-  * IntelliJ Idea (2020.3!) or Visual Studio Code/Neovim
+  * IntelliJ Idea or Visual Studio Code/Neovim
   * GT5 Reimagined and GT-Lib
 ```console
    git clone --recurse-submodules https://github.com/GT-Reimagined/GT5-Reimagined
 ```
 * Open folder in your editor, import as a gradle project in Idea.
 
-* Run **Minecraft Client** configuration to run GTI. You might have to set classpath to GT5-Reimagined.main.
+* Run **Client** configuration to run GTI. You might have to set classpath to GT5-Reimagined.main.
