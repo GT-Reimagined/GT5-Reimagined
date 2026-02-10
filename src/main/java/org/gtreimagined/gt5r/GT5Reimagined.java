@@ -12,6 +12,7 @@ import org.gtreimagined.gt5r.integration.IERegistrar;
 import org.gtreimagined.gt5r.integration.mekanism.MekanismRegistrar;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
+import org.gtreimagined.gt5r.loader.machines.MortarLoader;
 import org.gtreimagined.gt5r.loader.machines.RecyclingLoader;
 import org.gtreimagined.gtcore.BookRegistration;
 import org.gtreimagined.gtcore.block.BlockMortar;
@@ -285,6 +286,7 @@ public class GT5Reimagined extends GTMod {
         loader.accept("macerator_auto", MaceratorLoader::initAuto);
         loader.accept("macerator", MaceratorLoader::init);
         loader.accept("mixer", MixerLoader::init);
+        loader.accept("mortar", MortarLoader::init);
         loader.accept("ore_byproducts", OreByproducts::init);
         loader.accept("ore_washer", OreWasherLoader::init);
         loader.accept("packager", PackagerLoader::init);
