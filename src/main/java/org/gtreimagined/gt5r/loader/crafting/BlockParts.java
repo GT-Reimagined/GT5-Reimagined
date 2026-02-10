@@ -23,6 +23,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -217,6 +218,8 @@ public class BlockParts {
                         'B', GTAPI.get(Item.class, "liquid_creosote_bucket", Ref.SHARED_ID)
         ), "PCP", "CBC", "PCP");*/
         provider.removeRecipe(new ResourceLocation("tnt"));
+        provider.addItemRecipe(output, "mortars", GTCoreBlocks.IRON_MORTAR,
+                of('I', INGOT.getMaterialTag(Iron), 'B', Items.BRICK), " I ", "BIB", "BBB");
         provider.addItemRecipe(output, "misc", GT5RBlocks.POWDER_BARREL,
                 of('W', ItemTags.PLANKS, 'G', Items.GUNPOWDER, 'S', Items.STRING), "WSW" ,"GGG", "WGW");
         provider.addItemRecipe(output, "misc", GT5RBlocks.BRONZE_CAULDRON,
