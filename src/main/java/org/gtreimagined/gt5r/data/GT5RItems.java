@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import net.minecraft.world.level.material.Fluids;
+import org.gtreimagined.gt5r.items.ItemGuide;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtlib.item.ItemBasic;
@@ -28,6 +29,7 @@ public class GT5RItems {
     public static ItemBasic<?> ComputerMonitor = new ItemBasic<>(GT5Reimagined.ID, "computer_monitor").tip("Can be placed on machines as a cover");
     public static ItemPortableScanner PortableScanner = new ItemPortableScanner();
     public static ItemBasic<?> PDA = new ItemBasic<>(GT5Reimagined.ID, "pda");
+    public static ItemBasic<?> Guide = new ItemGuide();
     public static ItemFluidCell CellTin = new ItemFluidCell(GT5Reimagined.ID, Materials.Tin, 1000);
     public static ItemFluidCell CellSteel = new ItemFluidCell(GT5Reimagined.ID, Materials.Steel, 16000);
     public static ItemFluidCell CellTungstensteel = new ItemFluidCell(GT5Reimagined.ID, Materials.TungstenSteel, 64000);

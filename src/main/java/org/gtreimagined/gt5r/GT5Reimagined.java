@@ -2,8 +2,12 @@ package org.gtreimagined.gt5r;
 
 import com.terraformersmc.terraform.utils.TerraformFlammableBlockRegistry;
 import com.terraformersmc.terraform.utils.TerraformFuelRegistry;
+import guideme.Guide;
+import guideme.GuidesCommon;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.cauldron.CauldronInteraction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.world.BiomeModifier.Phase;
 import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
@@ -177,6 +181,8 @@ public class GT5Reimagined extends GTMod {
      **/
     public static final String ID = "gt5r";
     public static Logger LOGGER = LogManager.getLogger(ID);
+    private static ResourceLocation GUIDE_ID = new ResourceLocation(GT5Reimagined.ID, "guide");
+    private final Guide guide;
 
     public GT5Reimagined() {
         super();
@@ -207,8 +213,18 @@ public class GT5Reimagined extends GTMod {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientHandler::registerLayerDefinitions);
             MinecraftForge.EVENT_BUS.addListener(ClientHandler::onTooltipEvent);
         });
+        this.guide = Guide.builder(GUIDE_ID).build();
     }
 
+
+    @OnlyIn(Dist.CLIENT)
+    public static void openGuideAtPreviousPage(ResourceLocation initialPage) {
+        try {
+            GuidesCommon.openGuide(Minecraft.getInstance().player, GUIDE_ID);
+        } catch (Exception e) {
+            LOGGER.error("Failed to open guide.", e);
+        }
+    }
 
 
     private void clientSetup(final FMLClientSetupEvent e) {

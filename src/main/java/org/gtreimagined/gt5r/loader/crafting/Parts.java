@@ -54,6 +54,9 @@ public class Parts {
                   GTMaterialTypes.DUST.getMaterialTag(Brick), GTMaterialTypes.DUST.getMaterialTag(Clay));
       }
 
+      provider.addItemRecipe(output, "parts", Guide,
+              of('B', Items.BOOK, 'C', CIRCUITS_BASIC), "BC");
+
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "buckets", WOODEN_BUCKET,
               of('W', ItemTags.PLANKS, 'P', PLATE.getMaterialTag(Copper), 'H', HAMMER.getTag()), "WPW", " WH");
 
