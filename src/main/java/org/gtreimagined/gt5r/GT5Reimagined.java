@@ -399,9 +399,6 @@ public class GT5Reimagined extends GTMod {
             case DATA_READY -> {
                 CauldronInteraction.WATER.put(GT5RItems.WOODEN_BUCKET, ItemWoodenBucket::fillBucket);
                 CauldronInteraction.EMPTY.put(GT5RItems.WOODEN_WATER_BUCKET, ItemWoodenBucket::emptyBucket);
-                GTAPI.all(BlockMortar.class, b-> {
-                    GTLibXEIPlugin.registerCategoryWorkstation(GTCoreRecipeMaps.MORTAR, b.getLoc());
-                });
                 Structures.init();
                 StructureInfo.init();
                 GT5RTwilightStalctites.init();
