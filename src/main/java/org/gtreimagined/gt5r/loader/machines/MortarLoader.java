@@ -16,6 +16,8 @@ public class MortarLoader {
         MORTAR.RB().ii(INGOT.getMaterialIngredient(Tin, 1)).io(DUST.get(Tin)).add("tin_dust");
         MORTAR.RB().ii(Items.CLAY_BALL).io(SMALL_DUST.get(Clay, 2)).add("small_clay_dust");
         MORTAR.RB().ii(Ingredient.of(Tags.Items.GRAVEL)).io(Items.FLINT).add("flint");
+        MORTAR.RB().ii(Ingredient.of(Tags.Items.GLASS_PANES)).io(DUST.get(Glass)).add("glass_dust");
+        MORTAR.RB().ii(Ingredient.of(Tags.Items.GLASS)).io(DUST.get(Glass, 9)).add("glass_dust_from_block");
         CRUSHED_ORE.all().forEach(m -> {
             if (m.has(IMPURE_DUST)){
                 MORTAR.RB().ii(CRUSHED_ORE.getMaterialIngredient(m, 1)).io(IMPURE_DUST.get(m)).add(m.getId() + "_impure_dust");
