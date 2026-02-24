@@ -444,10 +444,14 @@ public class GT5RLocalizations {
             addAdvancement("bronze_dust", "Make some bronze dust using a mortar");
             addAdvancement("hammer", "Craft a hammer");
             addAdvancement("bronze_solid_fuel_boiler", "Craft a Solid Fuel Boiler");
+            addAdvancement("bronze_steam_furnace", "Craft a Steam Furnace");
+            addAdvancement("bronze_steam_macerator", "Craft a Steam Macerator");
             addAdvancement("bronze_steam_forge_hammer", "Craft a Steam Forge Hammer");
             addAdvancement("bronze_steam_compressor", "Craft a Steam Compressor");
             addAdvancement("fire_brick", "Craft a Fire Brick");
             addAdvancement("coke_oven", "Craft a Coke Oven");
+            addAdvancement("primitive_blast_furnace", "Craft a Primitive Blast Furnace");
+            addAdvancement("steel_ingot", "Steel!", "Make Steel in the Primitive Blast Furnace");
         }
 
         private void addAdvancement(String key, String translatedTitle, String translatedDesc){
