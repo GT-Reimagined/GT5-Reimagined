@@ -303,7 +303,7 @@ public class GT5RMachines {
     public static GeneratorMachine SEMIFLUID_GENERATOR = new GeneratorMachine(GT5Reimagined.ID, "semifluid_generator").setTiers(LV, MV, HV).setMap(RecipeMaps.SEMI_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER);
     public static GeneratorMachine GAS_TURBINE = new GeneratorMachine(GT5Reimagined.ID, "gas_turbine").setTiers(LV, MV, HV).setMap(RecipeMaps.GAS_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setCustomModel();
     public static GeneratorMachine STEAM_TURBINE = new GeneratorMachine(GT5Reimagined.ID, "steam_turbine").setTiers(LV, MV, HV).setMap(RecipeMaps.STEAM_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setTile(BlockEntitySteamTurbine::new).setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setEfficiency(t -> {
-        return (4 - t.getIntegerId()) + 6;
+        return t.getIntegerId() == 1 ? 66 : t.getIntegerId() == 2 ? 75 : 86;
     }).setAllowsFrontIO().setCustomModel();
     public static GeneratorMachine MAGIC_ENERGY_CONVERTER = new GeneratorMachine(GT5Reimagined.ID, "magic_energy_converter").setTiers(LV, MV, HV).setMap(RecipeMaps.MAGIC_FUELS).addFlags(GUI, ITEM, FLUID, CELL).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setTile(BlockEntityMagicEnergyConverter::new);
     public static GeneratorMachine MAGIC_ENERGY_ABSORBER = new GeneratorMachine(GT5Reimagined.ID, "magic_energy_absorber").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM).setAllowsFrontIO().setOverlayTextures(Textures.TIER_SPECIFIC_OVERLAY_HANDLER).setEfficiency(t -> {

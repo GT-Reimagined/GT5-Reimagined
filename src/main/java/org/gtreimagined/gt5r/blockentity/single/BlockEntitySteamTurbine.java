@@ -14,7 +14,7 @@ public class BlockEntitySteamTurbine extends BlockEntityGenerator<BlockEntitySte
         this.recipeHandler.set(() -> new MachineRecipeHandler<>(this){
             @Override
             public int consumedFluidPerOperation(IRecipe r) {
-                return getEfficiency();
+                return (4 - tier.getIntegerId()) + 6;
             }
 
             @Override
