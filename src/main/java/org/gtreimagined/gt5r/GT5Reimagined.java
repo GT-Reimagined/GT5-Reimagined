@@ -12,6 +12,7 @@ import net.minecraftforge.common.world.BiomeModifier.Phase;
 import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
+import org.gtreimagined.gt5r.integration.CCTweakedRegistrar;
 import org.gtreimagined.gt5r.integration.IERegistrar;
 import org.gtreimagined.gt5r.integration.mekanism.MekanismRegistrar;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
@@ -264,6 +265,9 @@ public class GT5Reimagined extends GTMod {
         event.addLoader(WoodCrafting::loadRecipes);
         if (GTAPI.isModLoaded(Ref.MOD_AE)){
             event.addLoader(AppliedEnergisticsRegistrar::craftingRecipes);
+        }
+        if (GTAPI.isModLoaded("computercraft")){
+            event.addLoader(CCTweakedRegistrar::craftingRecipes);
         }
     }
 
