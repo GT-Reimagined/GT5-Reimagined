@@ -61,7 +61,7 @@ public class Parts {
               of('W', ItemTags.PLANKS, 'P', PLATE.getMaterialTag(Copper), 'H', HAMMER.getTag()), "WPW", " WH");
 
       provider.addStackRecipe(output, GT5Reimagined.ID, "drain_expensive", "parts",
-              new ItemStack(GT5Reimagined.get(ItemCover.class, "drain"), 1), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS), "ABA", "B B", "ABA");
+              GT5RCovers.COVER_DRAIN.getItem(), of('A', PLATES_IRON_ALUMINIUM, 'B', Items.IRON_BARS, 'W', WRENCH.getTag()), "ABA", "BWB", "ABA");
 
       provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
               of('G', SMALL_GEAR.getMaterialTag(TFCRegistrar.getIron()), 'R', ROD.getMaterialTag(TFCRegistrar.getIron()), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
