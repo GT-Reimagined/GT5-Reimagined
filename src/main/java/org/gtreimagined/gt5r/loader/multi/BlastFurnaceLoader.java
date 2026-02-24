@@ -5,6 +5,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.material.Material;
@@ -23,7 +24,10 @@ import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
 public class BlastFurnaceLoader {
     public static void init() {
         /* PRIMITIVE */
-        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(TFCRegistrar.getIron(),1)).io(INGOT.get(Steel, 1), SMALL_DUST.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(WroughtIron,1)).io(INGOT.get(Steel, 1), SMALL_DUST.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",7200, 0);
+        if (!GTAPI.isModLoaded("tfc")){
+            PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(WroughtIron, 1)).add("wrought_iron_ingot",3600, 0);
+        }
         DUST.all().forEach(m -> {
             if (m.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && m.has(GT5RMaterialTags.BLAST_FURNACE_TEMP)){
                 ItemStack ingot = DIRECT_SMELT_INTO.getMapping(m).has(HOT_INGOT) ? HOT_INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1) : INGOT.get(DIRECT_SMELT_INTO.getMapping(m), 1);
