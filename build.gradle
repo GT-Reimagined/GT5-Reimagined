@@ -128,6 +128,7 @@ dependencies {
     jarJar("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
     modRuntimeOnly("dev.trinsdar:terraform-wood-api-v1:${project.terraform_version}")
     jarJar("dev.trinsdar:terraform-wood-api-v1:${project.terraform_version}")
+    modRuntimeOnly("cc.tweaked:cc-tweaked-${project.minecraft_version}-forge:${project.cc_tweaked_version}")
     //modRuntimeOnly("curse.maven:rubidium-574856:4451888")
     modRuntimeOnly("curse.maven:worldstripper-250603:${project.worldstripper_version}")
     modRuntimeOnly("curse.maven:ae2-223794:${project.ae2_version}")
