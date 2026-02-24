@@ -277,7 +277,7 @@ public class GT5RBlocks {
     public static final FluidPipe<?> FLUID_PIPE_STEEL = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Steel, 2557, true).caps(1).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_CHROMIUM = GTAPI.register(FluidPipe.class, new FluidPipe<>(GT5Reimagined.ID, Materials.Chromium, 2725, true).acidProof(true).pressures(getPressures(600)));
     public static final FluidPipe<?> FLUID_PIPE_STAINLESS_STEEL = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.StainlessSteel, 2428, true).acidProof(true).caps(1).pressures(getPressures(750)));
-    public static final FluidPipe<?> FLUID_PIPE_NETHERRITE = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, GTLibMaterials.Netherite, 2807, true).acidProof(true).caps(1).pressures(getPressures(900)));
+    public static final FluidPipe<?> FLUID_PIPE_NETHERRITE = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Netherite, 2807, true).acidProof(true).caps(1).pressures(getPressures(900)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Tungsten, 4618, true).acidProof(true).caps(1).pressures(getPressures(1200)));
     public static final FluidPipe<?> FLUID_PIPE_TITANIUM = GTAPI.register(FluidPipe.class, new FluidPipe<>(GT5Reimagined.ID, Materials.Titanium, 1668, true).caps(1).pressures(getPressures(900)));
     public static final FluidPipe<?> FLUID_PIPE_TUNGSTEN_STEEL = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.TungstenSteel, 3587, true).caps(1).pressures(getPressures(1050)));
