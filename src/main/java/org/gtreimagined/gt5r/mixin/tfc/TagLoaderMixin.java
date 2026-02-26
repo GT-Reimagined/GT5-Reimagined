@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.tfc.mixin;
+package org.gtreimagined.gt5r.mixin.tfc;
 
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;

@@ -1,9 +1,8 @@
-package org.gtreimagined.gt5r.integration.tfc.mixin;
+package org.gtreimagined.gt5r.mixin.tfc;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import net.dries007.tfc.client.RenderHelpers;
 import net.dries007.tfc.client.render.entity.ThrownJavelinRenderer;
 import net.dries007.tfc.common.entities.misc.ThrownJavelin;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.tfc.mixin;
+package org.gtreimagined.gt5r.mixin.tfc;
 
 import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;

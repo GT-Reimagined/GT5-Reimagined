@@ -2,10 +2,16 @@
   "required": true,
   "package": "org.gtreimagined.gt5r.mixin",
   "compatibilityLevel": "JAVA_17",
+  "plugin": "org.gtreimagined.gt5r.mixin.GT5RMixinPlugin",
   "mixins": [
     "CauldronInteractionMixin",
-    "LayeredCauldronBlockMixin"
+    "LayeredCauldronBlockMixin",
+    "tfc.JEIIntegrationMixin",
+    "tfc.TagLoaderMixin"
   ],
   "minVersion": "0.8",
-  "refmap": "gt5r.refmap.json"
+  "refmap": "gt5r.refmap.json",
+  "client": [
+    "tfc.ThrownJavelinRendererMixin"
+  ]
 }
