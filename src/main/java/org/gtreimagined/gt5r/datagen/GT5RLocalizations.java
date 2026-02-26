@@ -49,6 +49,8 @@ public class GT5RLocalizations {
             add(GT5Reimagined.ID + ".rotor.tooltip.efficiency", "Turbine Efficiency: %s");
             add(GT5Reimagined.ID + ".rotor.tooltip.steam_flow", "Optimal Steam flow: %sL/sec");
             add(GT5Reimagined.ID + ".rotor.tooltip.gas_flow", "Optimal Gas flow(EU burnvalue per tick): %sEU/t");
+            add("resourcePack." + GT5Reimagined.ID + ".classic_textures", "Classic GT5 Machine Textures");
+            add("resourcePack." + GT5Reimagined.ID + ".gti_textures", "Old GTI Machine Textures");
             add("tooltip.gt5r.redstone_mode.2", "Ignore Redstone");
             add("tooltip.gt5r.redstone_mode.1", "Invert Conditional");
             add("tooltip.gt5r.redstone_mode.0", "Conditional");

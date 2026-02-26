@@ -21,8 +21,6 @@ import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gt5r.loader.machines.MortarLoader;
 import org.gtreimagined.gt5r.loader.machines.RecyclingLoader;
 import org.gtreimagined.gtcore.BookRegistration;
-import org.gtreimagined.gtcore.block.BlockMortar;
-import org.gtreimagined.gtcore.data.GTCoreRecipeMaps;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTLibConfig;
 import org.gtreimagined.gtlib.GTMod;
@@ -213,6 +211,7 @@ public class GT5Reimagined extends GTMod {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
             FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientHandler::registerLayerDefinitions);
+            FMLJavaModLoadingContext.get().getModEventBus().addListener(ClientHandler::onPackEvent);
             MinecraftForge.EVENT_BUS.addListener(ClientHandler::onTooltipEvent);
         });
         this.guide = Guide.builder(GUIDE_ID).build();
