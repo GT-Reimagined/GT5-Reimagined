@@ -44,10 +44,10 @@ public class Materials {
     public static Material Vanadium = GTCoreMaterials.Vanadium;
     public static Material Chromium = GTCoreMaterials.Chromium;
     public static Material Manganese = GTCoreMaterials.Manganese;
-    public static Material Iron = GTLibMaterials.Iron;
+    public static Material Iron = GTCoreMaterials.Iron;
     public static Material Cobalt = GTCoreMaterials.Cobalt;
     public static Material Nickel = GTCoreMaterials.Nickel;
-    public static Material Copper = GTLibMaterials.Copper;
+    public static Material Copper = GTCoreMaterials.Copper;
     public static Material Zinc = GTCoreMaterials.Zinc;
     public static Material Gallium = GTCoreMaterials.Gallium;
     public static Material Germanium = GTCoreMaterials.Germanium;
@@ -96,7 +96,7 @@ public class Materials {
     public static Material Osmium = GTCoreMaterials.Osmium;
     public static Material Iridium = GTCoreMaterials.Iridium;
     public static Material Platinum = GTCoreMaterials.Platinum;
-    public static Material Gold = GTLibMaterials.Gold;
+    public static Material Gold = GTCoreMaterials.Gold;
     public static Material Mercury = GTCoreMaterials.Mercury;
     public static Material Thallium = GTCoreMaterials.Thallium;
     public static Material Lead = GTCoreMaterials.Lead;
@@ -165,6 +165,7 @@ public class Materials {
     public static Material BlackBronze = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_bronze", 0x77488d, DULL));
     public static Material BlackSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_steel", 0x646464, METALLIC));
     public static Material BlueSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "blue_steel", 0x3a4c9e, METALLIC));
+    public static Material BlueAlloy = GTCoreMaterials.BlueAlloy;
     public static Material Brass = GTCoreMaterials.Brass;
     public static Material Bronze = GTCoreMaterials.Bronze;
     public static Material CastIron = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cast_iron", 0x281f1c, METALLIC));
@@ -187,6 +188,7 @@ public class Materials {
     public static Material NickelZincFerrite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "nickel_zinc_ferrite", 0x3c3c3c, ROUGH));
     public static Material NiobiumTitanium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "niobium_titanium", 0x1d1d29, DULL));
     public static Material Osmiridium = GTCoreMaterials.Osmiridium;
+    public static Material PurpleAlloy = GTCoreMaterials.PurpleAlloy;
     public static Material RedAlloy = GTCoreMaterials.RedAlloy;
     public static Material RedSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "red_steel", 0x88281f, METALLIC));
     public static Material RoseGold = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "rose_gold", 0xb8792d, SHINY));
@@ -383,6 +385,9 @@ public class Materials {
     public static Material YellowGarnet = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "yellow_garnet", 0xc8c850, GARNET));
 
     public static Material PetroleumCoke = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "petroleum_coke", 0x9696b4, LIGNITE));
+
+    public static Material Redstone = GTCoreMaterials.Redstone;
+    public static Material Teslatite = GTCoreMaterials.Teslatite;
 
     /**
      ** Plastic / Rubber
@@ -697,24 +702,23 @@ public class Materials {
     public static Material Uranium235Hexafluoride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "uranium_235_hexafluoride", 0x10c810, NONE));
     public static Material Uranium238Hexafluoride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "uranium_238_hexafluoride", 0x10c810, NONE));
 
-    public static Material Glowstone = GTLibMaterials.Glowstone;
-    public static Material Sugar = GTLibMaterials.Sugar;
-    public static Material Bone = GTLibMaterials.Bone;
+    public static Material Glowstone = GTCoreMaterials.Glowstone;
+    public static Material Sugar = GTCoreMaterials.Sugar;
+    public static Material Bone = GTCoreMaterials.Bone;
     public static Material Wood = GTLibMaterials.Wood;
-    public static Material Blaze = GTLibMaterials.Blaze;
-    public static Material Flint = GTLibMaterials.Flint;
-    public static Material Charcoal = GTLibMaterials.Charcoal;
-    public static Material Coal = GTLibMaterials.Coal;
-    public static Material Diamond = GTLibMaterials.Diamond;
-    public static Material Emerald = GTLibMaterials.Emerald;
-    public static Material EnderPearl = GTLibMaterials.EnderPearl;
-    public static Material EnderEye = GTLibMaterials.EnderEye;
-    public static Material Lapis = GTLibMaterials.Lapis;
-    public static Material Redstone = GTLibMaterials.Redstone;
-    public static Material Quartz = GTLibMaterials.Quartz;
-    public static Material Netherite = GTLibMaterials.Netherite;
-    public static Material NetherizedDiamond = GTLibMaterials.NetherizedDiamond;
-    public static Material NetheriteScrap = GTLibMaterials.NetheriteScrap;
+    public static Material Blaze = GTCoreMaterials.Blaze;
+    public static Material Flint = GTCoreMaterials.Flint;
+    public static Material Charcoal = GTCoreMaterials.Charcoal;
+    public static Material Coal = GTCoreMaterials.Coal;
+    public static Material Diamond = GTCoreMaterials.Diamond;
+    public static Material Emerald = GTCoreMaterials.Emerald;
+    public static Material EnderPearl = GTCoreMaterials.EnderPearl;
+    public static Material EnderEye = GTCoreMaterials.EnderEye;
+    public static Material Lapis = GTCoreMaterials.Lapis;
+    public static Material Quartz = GTCoreMaterials.Quartz;
+    public static Material Netherite = GTCoreMaterials.Netherite;
+    public static Material NetherizedDiamond = GTCoreMaterials.NetherizedDiamond;
+    public static Material NetheriteScrap = GTCoreMaterials.NetheriteScrap;
     public static Material Lava = GTLibMaterials.Lava;
     public static Material Water = GTLibMaterials.Water;
 
