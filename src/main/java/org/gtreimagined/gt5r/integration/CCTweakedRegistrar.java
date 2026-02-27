@@ -47,7 +47,7 @@ public class CCTweakedRegistrar {
                 ImmutableMap.of('S', PLATE.getMaterialIngredient(TFCRegistrar.getIron(), 1), 'C', Ingredient.of(getCCItem("computer_normal")), 'c', Ingredient.of(Items.CHESTS_WOODEN)), List.of("SSS", "SCS", "ScS"), RecipeSerializers.TURTLE.get()));
         output.accept(new CCShapedRecipe(new ResourceLocation("computercraft", "turtle_advanced"), new ItemStack(getCCItem("turtle_advanced")), "computers",
                 ImmutableMap.of('S', PLATE.getMaterialIngredient(Gold, 1), 'C', Ingredient.of(getCCItem("computer_advanced")), 'c', Ingredient.of(Items.CHESTS_WOODEN)), List.of("SSS", "SCS", "ScS"), RecipeSerializers.TURTLE.get()));
-        output.accept(new CCShapedRecipe(new ResourceLocation("computercraft", "turtle_advanced_upgrade"), new ItemStack(getCCItem("computer_advanced")), "computers",
+        output.accept(new CCShapedRecipe(new ResourceLocation("computercraft", "turtle_advanced_upgrade"), new ItemStack(getCCItem("turtle_advanced")), "computers",
                 ImmutableMap.of('S', PLATE.getMaterialIngredient(Gold, 1), 'C', Ingredient.of(getCCItem("turtle_normal")), 'G', BLOCK.getMaterialIngredient(Gold, 1)), List.of("SSS", "SCS", " G "), RecipeSerializers.COMPUTER_UPGRADE.get()));
     }
 
