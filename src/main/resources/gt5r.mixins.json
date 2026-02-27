@@ -5,6 +5,7 @@
   "plugin": "org.gtreimagined.gt5r.mixin.GT5RMixinPlugin",
   "mixins": [
     "CauldronInteractionMixin",
+    "ExperienceOrbMixin",
     "LayeredCauldronBlockMixin",
     "tfc.JEIIntegrationMixin",
     "tfc.TagLoaderMixin"
