@@ -39,6 +39,10 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue REPLACE_MEK_OSMIUM_WITH_GERMANIUM;
     public static ConfigEntry.BoolValue GREGIFY_MEK_RECIPES;
 
+    //CC Tweaked Compat
+    public static ConfigEntry.BoolValue GREGIFY_CC_RECIPES;
+    public static ConfigEntry.BoolValue REPLACE_COMPUTER_TEXTURES;
+
     static ConfigHandler CONFIG;
 
     public static void createConfig(){
@@ -72,7 +76,9 @@ public class GT5RConfig {
         DISABLE_MEKANISM_OREGEN = mekanism.addBool("disable_mekanism_oregen", true, "Disables mekanism ore gen. - Default: true");
         REPLACE_MEK_OSMIUM_WITH_GERMANIUM = mekanism.addBool("replace_mek_osmium_with_germanium", true, "Replaces all uses of osmium in mekanism with germanium for balance. Default: true");
         GREGIFY_MEK_RECIPES = mekanism.addBool("gregify_mek_recipes", true, "Gregifies all mekanism recipes, mostly replacing ingots with plates, Default: true");
-
+        ConfigSection ccTweaked = compat.addSubSection("cc_tweaked");
+        GREGIFY_CC_RECIPES = ccTweaked.addBool("gregify_cc_recipes", true, "Gregifies all the recipes for cc tweaked computer and other related items. Default: true");
+        REPLACE_COMPUTER_TEXTURES = ccTweaked.addBool("replace_computer_textures", true, "Replaces the textures of basic computers with ones based off gt steel blocks. Requires gregify_cc_recipes to also be true. Default: true").setRequiredReload(ReloadMode.GAME);
         CONFIG = CarbonConfig.CONFIGS.createConfig(config);
         CONFIG.register();
     }

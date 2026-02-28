@@ -14,6 +14,7 @@ import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.forgespi.language.IModFileInfo;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.integration.tfc.client.JavelinModel;
@@ -130,6 +131,18 @@ public class ClientHandler {
                     Position.TOP,
                     PackSource.BUILT_IN);
             consumer.accept(gtiTextures);
+            if (GTAPI.isModLoaded("computercraft") && GT5RConfig.REPLACE_COMPUTER_TEXTURES.get() && GT5RConfig.GREGIFY_CC_RECIPES.get()){
+                var ccTextures = Pack.readMetaAndCreate(
+                        GT5Reimagined.ID + ":cc_textures",
+                        Utils.translatable("resourcePack." + GT5Reimagined.ID + ".cc_textures"),
+                        true,
+                        n -> new PathPackResources(GT5Reimagined.ID + ":cc_textures", modFile.getFile().findResource("texture_packs/cc-tweaked-overrides/"), true),
+                        PackType.CLIENT_RESOURCES,
+                        Position.TOP,
+                        PackSource.BUILT_IN);
+                consumer.accept(ccTextures);
+            }
+
         }
     }
 }

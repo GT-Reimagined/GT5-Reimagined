@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "pack_format": 15,
+    "description": "Different textures for basic computers in computercraft to match with recipe changes. Can be disabled in the config."
+  }
+}
