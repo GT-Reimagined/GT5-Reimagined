@@ -4,11 +4,15 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraftforge.api.distmarker.Dist;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
+import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.Utils;
 
@@ -19,9 +23,27 @@ import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtlib.Ref.L;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
-public class ForestryRegistrar {
+public class ForestryRegistrar extends GTMod {
 
     public static boolean EASY_COMB_RECIPES = false;
+
+
+    @Override
+    public void onRegistrationEvent(RegistrationEvent event, Dist side) {
+        if (event == RegistrationEvent.DATA_READY){
+            BlockEntityScanner.addScannerFunction((input, data) -> {
+                return null;
+            });
+        }
+    }
+
+    @Override
+    public String getId() {
+        return Ref.MOD_FR;
+    }
+
+
+
 
     public static void init() {
         /*
@@ -264,4 +286,5 @@ public class ForestryRegistrar {
     private static Item getFRItem(String id){
         return RegistryUtils.getItemFromID(Ref.MOD_FR, id);
     }
+
 }

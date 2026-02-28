@@ -22,9 +22,14 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
 
 public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> implements IFilterableHandler {
+    private static final List<ScannerFunction> SCANNER_FUNCTIONS = new ArrayList<>();
+
     public BlockEntityScanner(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
         recipeHandler.set(() -> new MachineRecipeHandler<>(this){
@@ -34,31 +39,14 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                 if (recipe == null){
                     MachineItemHandler<?> ih = itemHandler.orElse(null);
                     IItemHandler inputHandler = ih.getInputHandler();
-                    ItemStack input0 = inputHandler.getStackInSlot(0);
-                    ItemStack input1 = inputHandler.getStackInSlot(1);
-                    if (!input0.isEmpty()) {
-                        if (input0.getItem() == GT5RItems.DataStick) {
-                            CompoundTag prospect = input0.getTagElement("prospectData");
-                            if (prospect != null) {
-                                ItemStack output = input0.copy();
-                                output.getTagElement("prospectData").putBoolean("analyzed", true);
-                                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("data_stick_prospection", 1000, 32);
-                            } else if (input1.getItem() == GT5RItems.DataStick && input1.getTag() != null) {
-                                ItemStack output = input1.copy();
-                                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy()).setNoConsume()).io(output).add("data_stick_copying", 128, 32);
+                    ItemStack input = inputHandler.getStackInSlot(0);
+                    ItemStack data = inputHandler.getStackInSlot(1);
+                    if (!input.isEmpty()) {
+                        for (ScannerFunction scannerFunction : SCANNER_FUNCTIONS) {
+                            IRecipe r = scannerFunction.findRecipe(input, data);
+                            if (r != null){
+                                return r;
                             }
-                        } else if (input0.getItem() == Items.WRITTEN_BOOK && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
-                            ItemStack output = new ItemStack(GT5RItems.DataStick);
-                            output.getOrCreateTag().put("bookData", input0.getTag().copy());
-                            return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("book_copying", 128, 32);
-                        } else if (input0.getItem() == GTCoreItems.Blueprint && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
-                            ItemStack output = new ItemStack(GT5RItems.DataStick);
-                            output.getOrCreateTag().put("blueprintData", input0.getTag().copy());
-                            return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy()), RecipeIngredient.of(input1.copy())).io(output).add("blueprint_copying", 128, 32);
-                        } else if (input0.getItem() == Items.FILLED_MAP && input0.getTag() != null && input1.getItem() == GT5RItems.DataStick && input1.getTag() == null){
-                            ItemStack output = new ItemStack(GT5RItems.DataStick);
-                            output.getOrCreateTag().put("filledMapData", input0.getTag().copy());
-                            return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input0.copy())).io(output).add("filled_map_copying", 128, 32);
                         }
                     }
                 }
@@ -101,5 +89,43 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
             return stack.getItem() == GT5RItems.DataStick || stack.getItem() == DataOrb;
         }
         return true;
+    }
+
+    public static void initDefaultScannerFunctions(){
+        addScannerFunction((input, data) ->{
+            if (input.getItem() == GT5RItems.DataStick) {
+                CompoundTag prospect = input.getTagElement("prospectData");
+                if (prospect != null) {
+                    ItemStack output = input.copy();
+                    output.getTagElement("prospectData").putBoolean("analyzed", true);
+                    return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).io(output).add("data_stick_prospection", 1000, 32);
+                } else if (data.getItem() == GT5RItems.DataStick && data.getTag() != null) {
+                    ItemStack output = data.copy();
+                    return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy()), RecipeIngredient.of(data.copy()).setNoConsume()).io(output).add("data_stick_copying", 128, 32);
+                }
+            } else if (input.getItem() == Items.WRITTEN_BOOK && input.getTag() != null && data.getItem() == GT5RItems.DataStick && data.getTag() == null){
+                ItemStack output = new ItemStack(GT5RItems.DataStick);
+                output.getOrCreateTag().put("bookData", input.getTag().copy());
+                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy()), RecipeIngredient.of(data.copy())).io(output).add("book_copying", 128, 32);
+            } else if (input.getItem() == GTCoreItems.Blueprint && input.getTag() != null && data.getItem() == GT5RItems.DataStick && data.getTag() == null){
+                ItemStack output = new ItemStack(GT5RItems.DataStick);
+                output.getOrCreateTag().put("blueprintData", input.getTag().copy());
+                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy()), RecipeIngredient.of(data.copy())).io(output).add("blueprint_copying", 128, 32);
+            } else if (input.getItem() == Items.FILLED_MAP && input.getTag() != null && data.getItem() == GT5RItems.DataStick && data.getTag() == null){
+                ItemStack output = new ItemStack(GT5RItems.DataStick);
+                output.getOrCreateTag().put("filledMapData", input.getTag().copy());
+                return RecipeMaps.SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(input.copy())).io(output).add("filled_map_copying", 128, 32);
+            }
+            return null;
+        });
+    }
+
+    public static void addScannerFunction(ScannerFunction function) {
+        SCANNER_FUNCTIONS.add(function);
+    }
+
+    @FunctionalInterface
+    public interface ScannerFunction {
+        IRecipe findRecipe(ItemStack input, ItemStack data);
     }
 }
