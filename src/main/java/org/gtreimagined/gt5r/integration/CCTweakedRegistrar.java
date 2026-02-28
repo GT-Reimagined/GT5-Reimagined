@@ -65,7 +65,7 @@ public class CCTweakedRegistrar {
                 ImmutableMap.of('S', PLATE.getMaterialTag(Steel), 'C', GTCoreTags.CIRCUITS_BASIC), "SSS", "SCS", "SCS");
         provider.addItemRecipe(output, "computers", getCCItem("wired_modem"),
                 ImmutableMap.of('S', PLATE.getMaterialTag(Steel), 'C', GTCoreTags.CIRCUITS_BASIC), "SSS", "SCS", "SSS");
-        provider.addItemRecipe(output, "computers", getCCItem("wireless_modem"),
+        provider.addItemRecipe(output, "computers", getCCItem("wireless_modem_normal"),
                 ImmutableMap.of('S', PLATE.getMaterialTag(Steel), 'C', GT5RItems.EmitterLV), "SSS", "SCS", "SSS");
         provider.addItemRecipe(output, "computers", getCCItem("wireless_modem_advanced"),
                 ImmutableMap.of('S', PLATE.getMaterialTag(Gold), 'C', GT5RItems.EmitterHV), "SSS", "SCS", "SSS");
