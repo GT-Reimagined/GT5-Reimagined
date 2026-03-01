@@ -1,8 +1,13 @@
 package org.gtreimagined.gt5r.events.forge;
 
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraftforge.event.entity.player.PlayerXpEvent.PickupXp;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.LevelEvent;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.data.GTTools;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -13,6 +18,7 @@ import org.gtreimagined.gt5r.blockentity.multi.MiningPipeStructureCache;
 import org.gtreimagined.gt5r.worldgen.PlayerPlacedBlockSavedData;
 import org.gtreimagined.gtcore.events.GTCommonEvents;
 
+import java.util.Map;
 import java.util.UUID;
 
 public class ForgeEvents {
@@ -28,6 +34,43 @@ public class ForgeEvents {
             RandomSource random = event.getEntity().getRandom();
             targetPlayer.moveTo(targetPlayer.getX(), targetPlayer.getY(), targetPlayer.getZ(), random.nextInt(180), targetPlayer.getXRot());
         }
+    }
+
+    @SubscribeEvent
+    public static void onPickupXpEvent(PickupXp event){
+        Player player = event.getEntity();
+        int original = event.getOrb().getValue();
+        player.takeXpDelay = 2;
+        player.take(event.getOrb(), 1);
+        int repaired = repairPlayerItems(player, original, original);
+        if (repaired > 0){
+            player.giveExperiencePoints(repaired);
+        }
+        event.getOrb().discard();
+        event.setCanceled(true);
+    }
+
+    private static int repairPlayerItems(Player player, int repairAmount, int originalXp) {
+        Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, player, ItemStack::isDamaged);
+        GT5Reimagined.LOGGER.info(entry != null);
+        if (entry != null) {
+            ItemStack itemstack = entry.getValue();
+            int mendingRepairs = itemstack.getTag() != null ? itemstack.getTag().getInt("mendingRepairs") : 0;
+            float reductionRatio = 1f;
+            if (mendingRepairs > itemstack.getMaxDamage() / 2) reductionRatio = 0.75f;
+            if (mendingRepairs > itemstack.getMaxDamage()) reductionRatio = 0.5f;
+            if (mendingRepairs > itemstack.getMaxDamage() * 2) reductionRatio = 0.25f;
+            if (mendingRepairs > itemstack.getMaxDamage() * 3) reductionRatio = 0f;
+            if (reductionRatio == 0f) return repairAmount;
+            float xpRepairRatio = itemstack.getXpRepairRatio() * reductionRatio;
+            float exactToRepair = originalXp * xpRepairRatio;
+            int toRepair = Math.min((int)(exactToRepair), itemstack.getDamageValue());
+            GT5Reimagined.LOGGER.info("repair amount: " + toRepair);
+            itemstack.setDamageValue(itemstack.getDamageValue() - toRepair);
+            itemstack.getOrCreateTag().putInt("mendingRepairs", mendingRepairs + toRepair);
+            int j = repairAmount - (int)(exactToRepair / xpRepairRatio);
+            return j > 0 ? repairPlayerItems(player, j, originalXp) : 0;
+        } else return repairAmount;
     }
 
     @SubscribeEvent
