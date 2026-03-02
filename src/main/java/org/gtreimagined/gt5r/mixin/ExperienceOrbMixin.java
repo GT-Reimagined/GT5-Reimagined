@@ -28,7 +28,7 @@ public abstract class ExperienceOrbMixin {
 
     @Inject(method = "repairPlayerItems", at = @At("HEAD"), cancellable = true)
     private void gt5r$injectRepairPlayerItems(Player player, int repairAmount, CallbackInfoReturnable<Integer> cir){
-        Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, player, ItemStack::isDamaged);
+        /*Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, player, ItemStack::isDamaged);
         if (entry != null) {
             ItemStack itemstack = entry.getValue();
             int mendingRepairs = itemstack.getTag() != null ? itemstack.getTag().getInt("mendingRepairs") : 0;
@@ -44,6 +44,6 @@ public abstract class ExperienceOrbMixin {
             itemstack.getOrCreateTag().putInt("mendingRepairs", mendingRepairs + toRepair);
             int j = repairAmount - this.durabilityToXp(toRepair);
             cir.setReturnValue(j > 0 ? this.repairPlayerItems(player, j) : 0);
-        }
+        }*/
     }
 }
