@@ -2,6 +2,9 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
@@ -21,14 +24,19 @@ import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.function.Predicate;
 
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
 
 public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> implements IFilterableHandler {
     private static final List<ScannerFunction> SCANNER_FUNCTIONS = new ArrayList<>();
+    private static final List<Predicate<ItemStack>> SCANNER_FILTERS = new ArrayList<>();
+    private UUID placedBy = null;
 
     public BlockEntityScanner(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -43,7 +51,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
                     ItemStack data = inputHandler.getStackInSlot(1);
                     if (!input.isEmpty()) {
                         for (ScannerFunction scannerFunction : SCANNER_FUNCTIONS) {
-                            IRecipe r = scannerFunction.findRecipe(input, data);
+                            IRecipe r = scannerFunction.findRecipe(input, data, placedBy != null ? level.getPlayerByUUID(placedBy) : null);
                             if (r != null){
                                 return r;
                             }
@@ -55,7 +63,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
 
             @Override
             public boolean accepts(ItemStack stack) {
-                return super.accepts(stack) || stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK || stack.getItem() == Items.FILLED_MAP || stack.getItem() == GTCoreItems.Blueprint;
+                return super.accepts(stack) || SCANNER_FILTERS.stream().anyMatch(scannerFunction -> scannerFunction.test(stack));
             }
 
             @Override
@@ -92,7 +100,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
     }
 
     public static void initDefaultScannerFunctions(){
-        addScannerFunction((input, data) ->{
+        addScannerFunction((input, data, player) ->{
             if (input.getItem() == GT5RItems.DataStick) {
                 CompoundTag prospect = input.getTagElement("prospectData");
                 if (prospect != null) {
@@ -118,14 +126,44 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
             }
             return null;
         });
+        SCANNER_FILTERS.add(stack -> {
+            return stack.getItem() == GT5RItems.DataStick || stack.getItem() == Items.WRITTEN_BOOK || stack.getItem() == Items.FILLED_MAP || stack.getItem() == GTCoreItems.Blueprint;
+        });
+    }
+
+    @Override
+    public void onPlacedBy(Level world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        if (placer != null){
+            placedBy = placer.getUUID();
+        }
+    }
+
+    @Override
+    public void deserializeNBT(CompoundTag nbt) {
+        super.deserializeNBT(nbt);
+        if (nbt.contains("placedBy")){
+            placedBy = nbt.getUUID("placedBy");
+        }
+    }
+
+    @Override
+    public void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        if (placedBy != null) {
+            tag.putUUID("placedBy", placedBy);
+        }
     }
 
     public static void addScannerFunction(ScannerFunction function) {
         SCANNER_FUNCTIONS.add(function);
     }
 
+    public static void addScannerFilter(Predicate<ItemStack> filter) {
+        SCANNER_FILTERS.add(filter);
+    }
+
     @FunctionalInterface
     public interface ScannerFunction {
-        IRecipe findRecipe(ItemStack input, ItemStack data);
+        IRecipe findRecipe(ItemStack input, ItemStack data, @Nullable Player player);
     }
 }

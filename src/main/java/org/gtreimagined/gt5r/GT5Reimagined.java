@@ -199,6 +199,7 @@ public class GT5Reimagined extends GTMod {
         new IERegistrar();
         new ThermalRegistrar();
         new MekanismRegistrar();
+        new ForestryRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
         GTLibDynamics.clientProvider(ID,

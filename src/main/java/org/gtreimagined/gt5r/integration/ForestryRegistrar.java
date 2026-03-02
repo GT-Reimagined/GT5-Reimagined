@@ -1,5 +1,9 @@
 package org.gtreimagined.gt5r.integration;
 
+import forestry.api.genetics.IBreedingTracker;
+import forestry.api.genetics.IIndividual;
+import forestry.api.genetics.capability.IIndividualHandlerItem;
+import forestry.core.utils.GeneticsUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -31,9 +35,34 @@ public class ForestryRegistrar extends GTMod {
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_READY){
-            BlockEntityScanner.addScannerFunction((input, data) -> {
+            BlockEntityScanner.addScannerFunction((specimen, data, player) -> {
+                if (IIndividualHandlerItem.isIndividual(specimen)){
+                    ItemStack out = specimen.copy();
+                    ItemStack convertedSpecimen = GeneticsUtil.convertToGeneticEquivalent(specimen);
+                    if (!ItemStack.matches(specimen, convertedSpecimen)) {
+                        out = convertedSpecimen.copy();
+                    }
+                    IIndividual individual = IIndividualHandlerItem.getIndividual(out);
+
+                    // Analyze if necessary
+                    if (individual != null) {
+                        if (!individual.isAnalyzed()) {
+                            if (individual.analyze()) {
+                                if (player != null){
+                                    IBreedingTracker breedingTracker = individual.getType().getBreedingTracker(player.level(), player.getGameProfile());
+                                    breedingTracker.registerSpecies(individual.getSpecies());
+                                    breedingTracker.registerSpecies(individual.getInactiveSpecies());
+                                }
+
+                                individual.saveToStack(out);
+                                return SCANNER.RB().recipeMapOnly().ii(RecipeIngredient.of(specimen)).fi(Honey.getFluidIngredient(100)).io(out).add("foresty_bee_"+ individual.getType().id().getPath(), 500, 2);
+                            }
+                        }
+                    }
+                }
                 return null;
             });
+            BlockEntityScanner.addScannerFilter(IIndividualHandlerItem::isIndividual);
         }
     }
 
