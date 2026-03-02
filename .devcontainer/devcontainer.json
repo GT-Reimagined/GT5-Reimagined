@@ -1,6 +1,6 @@
 {
 	"name": "Java",
-	"image": "mcr.microsoft.com/devcontainers/java:3-21-trixie",
+	"image": "mcr.microsoft.com/devcontainers/java:3-17-trixie",
 
 	"features": {
 		"ghcr.io/devcontainers/features/java:1": {
