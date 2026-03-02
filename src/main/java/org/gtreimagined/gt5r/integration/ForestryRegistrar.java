@@ -261,6 +261,8 @@ public class ForestryRegistrar extends GTMod {
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Redstone, 2), GEM.getMaterialIngredient(Apatite, 5)).fi(Glass.getLiquid(L / 2 )).io(new ItemStack(getFRItem("electron_tube_apatite"), 4)).add("electron_tube_apatite", 64, 32);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Redstone, 2), GEM.getMaterialIngredient(Lapis, 5)).fi(Glass.getLiquid(L / 2 )).io(new ItemStack(getFRItem("electron_tube_lapis"), 4)).add("electron_tube_lapis", 64, 32);
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(EnderEye, 2), RecipeIngredient.of(Items.END_STONE, 5)).fi(Glass.getLiquid(L / 2 )).io(new ItemStack(getFRItem("electron_tube_ender"), 4)).add("electron_tube_ender", 64, 32);
+        FLUID_PRESS.RB().ii(getFRItem("honey_drop")).io(getFRItem("propolis_normal")).outputChances(0.05).fo(Honey.getLiquid(100)).add("honey_drop", 400, 2);
+        FLUID_PRESS.RB().ii(getFRItem("honeydew")).fo(Honey.getLiquid(100)).add("honeydew", 400, 2);
     }
 
     public static void addProcessMain(String id, ItemStack stack, Material... materials) {
