@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.loader.machines.generator;
 
+import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -12,6 +13,7 @@ import static org.gtreimagined.gt5r.data.GT5RMaterialTags.SEMIFUELS;
 public class LargeBoilerLoader {
     public static void init(){
         RegistryUtils.getAllBurnables().forEach((i, b) -> {
+            if (i.hasCraftingRemainingItem(new ItemStack(i))) return;
             ResourceLocation id = RegistryUtils.getIdFromItem(i);
             RecipeMaps.LARGE_BOILERS.RB().ii(RecipeIngredient.of(i)).add(id.getNamespace() + "." + id.getPath(), b / 80, b % 80);
         });
