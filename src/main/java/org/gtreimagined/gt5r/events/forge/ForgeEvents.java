@@ -36,7 +36,7 @@ public class ForgeEvents {
         }
     }
 
-    @SubscribeEvent
+    /*@SubscribeEvent
     public static void onPickupXpEvent(PickupXp event){
         Player player = event.getEntity();
         int original = event.getOrb().getValue();
@@ -48,7 +48,7 @@ public class ForgeEvents {
         }
         event.getOrb().discard();
         event.setCanceled(true);
-    }
+    }*/
 
     private static int repairPlayerItems(Player player, int repairAmount, int originalXp) {
         Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, player, ItemStack::isDamaged);
