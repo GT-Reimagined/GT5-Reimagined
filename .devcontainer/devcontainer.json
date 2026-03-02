@@ -8,7 +8,7 @@
 			"installMaven": "false",
 			"installGradle": "false"
 		},
-		"ghcr.io/georgofenbeck/features/lazygit-linuxbinary:1": {}
+    "ghcr.io/GeorgOfenbeck/features/lazygit-linuxbinary:1": {}
 	}
 
 }
