@@ -1,6 +1,6 @@
 modLoader="javafml"
 license="LGPLv3"
-loaderVersion="[47,)"
+loaderVersion="${loader_version_range}"
 issueTrackerURL="https://github.com/GT-Reimagined/GT5-Reimagined/issues"
 
 [[mods]]
@@ -16,19 +16,19 @@ description='''A Reimagining of GregTech 5U for modern minecraft versions'''
 [[dependencies.gt5r]]
     modId="gtlib"
     mandatory=true
-    versionRange="[0.5,)"
+    versionRange="${gtlib_version_range}"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gt5r]]
     modId="forge"
     mandatory=true
-    versionRange="[47.1.0,)"
+    versionRange="${forge_version_range}"
     ordering="AFTER"
     side="BOTH"
 [[dependencies.gt5r]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1,)"
+    versionRange="${minecraft_version_range}"
     ordering="NONE"
     side="BOTH"
 [[dependencies.gt5r]]

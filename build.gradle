@@ -88,25 +88,28 @@ repositories {
     }
 }
 
+configurations {
+    runtimeClasspath.extendsFrom localRuntime
+}
+obfuscation {
+    createRemappingConfiguration(configurations.localRuntime)
+}
+
 dependencies {
     //subprojects
     implementation(project(":tesseract-forge"))
     compileOnly(project(":tesseract-common"))
     implementation(project(":GT-Lib"))
 
-    //antimatter deps
+    //gt lib deps
     implementation 'org.apache.commons:commons-collections4:4.4'
     //annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     annotationProcessor 'net.fabricmc:sponge-mixin:0.11.4+mixin.0.8.5'
+    implementation("org.sinytra.mixinbooster:mixin-booster:${mixinbooster_version}+${minecraft_version}")
     implementation("org.jetbrains:annotations:26.0.1")
     modCompileOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
-    modRuntimeOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
     modCompileOnly("me.shedaniel.cloth:cloth-config-forge:6.5.133")
-    modCompileOnly("org.appliedenergistics:guideme:${project.guideme_version}:api")
-    modRuntimeOnly("org.appliedenergistics:guideme:${project.guideme_version}")
-    //jarJar("org.appliedenergistics:guideme:${project.guideme_version}")
-    implementation("org.sinytra.mixinbooster:mixin-booster:${mixinbooster_version}+${minecraft_version}")
     modImplementation("com.blamejared.crafttweaker:CraftTweaker-forge-${project.minecraft_version}:${project.crafttweaker_version}")
     modImplementation("dev.trinsdar:arrp-forge:${project.arrp_version}")
     modImplementation("dev.trinsdar:terraform-utils-v1:${project.terraform_version}")
@@ -116,19 +119,19 @@ dependencies {
     modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
     modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
-    //MIXIN
-    if (System.getProperty('idea.sync.active') != 'true') {
-        annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
-    }
 
-    //gt5r deps
-    //minecraftRuntimeLibraries(group: 'com.github.Speiger', name: 'Primitive-Collections', version: '[0.8,0.9)')
+    //required gt5r deps
     modImplementation("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
     jarJar("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
     modRuntimeOnly("dev.trinsdar:terraform-wood-api-v1:${project.terraform_version}")
     jarJar("dev.trinsdar:terraform-wood-api-v1:${project.terraform_version}")
+    modCompileOnly("org.appliedenergistics:guideme:${project.guideme_version}:api")
+    modRuntimeOnly("org.appliedenergistics:guideme:${project.guideme_version}")
+    //optional deps
     modImplementation("cc.tweaked:cc-tweaked-${project.minecraft_version}-forge:${project.cc_tweaked_version}")
-    //modRuntimeOnly("curse.maven:rubidium-574856:4451888")
+    modCompileOnly("curse.maven:immersive-engineering-231951:${project.ie_version}")
+    modImplementation "maven.modrinth:forestry-community-edition:${forestry_version}"
+    //runtime deps
     modRuntimeOnly("curse.maven:worldstripper-250603:${project.worldstripper_version}")
     modRuntimeOnly("curse.maven:ae2-223794:${project.ae2_version}")
     //modImplementation("curse.maven:ctm-267602:3933537")
@@ -141,17 +144,35 @@ dependencies {
     //modRuntimeOnly("curse.maven:ad-astra-635042:6262032")
     modRuntimeOnly("curse.maven:farmers-delight-398521:${project.farmers_delight_version}")
     modRuntimeOnly("curse.maven:sophisticated-backpacks-422301:${project.sophisticated_backpack_version}")
-    //modRuntimeOnly("curse.maven:openblocks-elevator-250832:3670034")
     modRuntimeOnly("curse.maven:sophisticated-core-618298:${project.sophisticated_core_version}")
-    modRuntimeOnly("curse.maven:jade-324717:${project.jade_version}")
+    switch (project.runtime_itemviewer) {
+        case "emi":
+            modLocalRuntime("dev.emi:emi-forge:${emi_version}")
+            break
+        case "rei":
+            modLocalRuntime("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
+            break
+        case "jei":
+            modLocalRuntime("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
+            break
+    }
+
+    switch (project.runtime_tooltip_mod) {
+    //case "wthit":
+    //    localRuntime "mcp.mobius.waila:wthit:neo-${project.wthit_version}"
+    //    break
+        case "jade":
+            modLocalRuntime("curse.maven:jade-324717:${project.jade_version}")
+            break
+        case "top":
+            modLocalRuntime("curse.maven:the-one-probe-245211:${project.top_forge_version}")
+            break
+    }
     //modRuntimeOnly("curse.maven:jamd-422981:${project.jamd_version}")
-    //modRuntimeOnly("curse.maven:tfcm-819850:4449385")
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}")// Mekanism
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:additions")// Mekanism: Additions
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:generators")// Mekanism: Generators
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:tools")// Mekanism: Tools
-    modCompileOnly("curse.maven:immersive-engineering-231951:${project.ie_version}")
-    modImplementation "maven.modrinth:forestry-community-edition:${forestry_version}"
 }
 
 jar{
@@ -172,10 +193,15 @@ jar{
 processResources {
     exclude('gtuassets1.14')
     exclude('assets/gt4r/textures/old_textures')
-
-    inputs.property "version", project.mod_version
+    var replaceProperties = [
+            minecraft_version_range  : project.minecraft_version_range,
+            forge_version_range      : project.forge_version_range,
+            loader_version_range     : project.loader_version_range,
+            version                  : project.mod_version
+    ]
+    inputs.properties replaceProperties
 
     filesMatching("META-INF/mods.toml") {
-        expand "version": project.mod_version
+        expand replaceProperties
     }
 }
