@@ -21,29 +21,28 @@ public abstract class ExperienceOrbMixin {
     protected abstract int repairPlayerItems(Player player, int repairAmount);
 
     @Shadow
-    protected abstract int durabilityToXp(int durability);
-
-    @Shadow
     public int value;
 
     @Inject(method = "repairPlayerItems", at = @At("HEAD"), cancellable = true)
     private void gt5r$injectRepairPlayerItems(Player player, int repairAmount, CallbackInfoReturnable<Integer> cir){
-        /*Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, player, ItemStack::isDamaged);
+        Map.Entry<EquipmentSlot, ItemStack> entry = EnchantmentHelper.getRandomItemWith(Enchantments.MENDING, player, ItemStack::isDamaged);
         if (entry != null) {
             ItemStack itemstack = entry.getValue();
             int mendingRepairs = itemstack.getTag() != null ? itemstack.getTag().getInt("mendingRepairs") : 0;
             float reductionRatio = 1f;
-            if (mendingRepairs > 50) reductionRatio = 0.75f;
-            if (mendingRepairs > 100) reductionRatio = 0.5f;
-            if (mendingRepairs > 150) reductionRatio = 0.25f;
-            if (mendingRepairs > 200) reductionRatio = 0f;
+            if (mendingRepairs > itemstack.getMaxDamage() / 2) reductionRatio = 0.75f;
+            if (mendingRepairs > itemstack.getMaxDamage()) reductionRatio = 0.5f;
+            if (mendingRepairs > itemstack.getMaxDamage() * 2) reductionRatio = 0.25f;
+            if (mendingRepairs > itemstack.getMaxDamage() * 3) reductionRatio = 0f;
+            if (reductionRatio == 0f) cir.setReturnValue(repairAmount);
             float xpRepairRatio = itemstack.getXpRepairRatio() * reductionRatio;
-            int toRepair = Math.min((int)((float)this.value * xpRepairRatio), itemstack.getDamageValue());
-            GT5Reimagined.LOGGER.info("repair amount: " + toRepair);
+            float exactToRepair = this.value * xpRepairRatio;
+            int toRepair = Math.min((int)(exactToRepair), itemstack.getDamageValue());
+            if (toRepair == 0) cir.setReturnValue(repairAmount);
             itemstack.setDamageValue(itemstack.getDamageValue() - toRepair);
             itemstack.getOrCreateTag().putInt("mendingRepairs", mendingRepairs + toRepair);
-            int j = repairAmount - this.durabilityToXp(toRepair);
+            int j = repairAmount - (int)(exactToRepair / xpRepairRatio);
             cir.setReturnValue(j > 0 ? this.repairPlayerItems(player, j) : 0);
-        }*/
+        }
     }
 }
