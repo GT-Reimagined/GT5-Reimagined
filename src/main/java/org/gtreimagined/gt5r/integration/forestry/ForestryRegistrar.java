@@ -321,7 +321,7 @@ public class ForestryRegistrar extends GTMod {
 //        }
     }
 
-    private static Item getFRItem(String id){
+    static Item getFRItem(String id){
         return RegistryUtils.getItemFromID(Ref.MOD_FR, id);
     }
 
