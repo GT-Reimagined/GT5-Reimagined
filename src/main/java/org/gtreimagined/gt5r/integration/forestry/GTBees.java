@@ -20,7 +20,7 @@ import org.gtreimagined.gtlib.util.Utils;
 
 public enum GTBees {
     //FUELIS
-    CLAY(GTGenera.FUELIS,"clay", 0x19d0ec, 0xe0c113){
+    CLAY(GTGenera.FUELIS,"clay", 0x19d0ec, 0xffdc16){
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(ForestryRegistrar.getFRItem("bee_comb_honey")), 0.3f);
@@ -30,7 +30,7 @@ public enum GTBees {
             });
         }
     },
-    SLIME(GTGenera.FUELIS, "slime", 0x4e9e55, 0x00e012, "Slimeball"){
+    SLIME(GTGenera.FUELIS, "slime", 0x4e9e55, 0x00ff15, "Slimeball"){
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.RESIN_COMB), 0.3f);
@@ -41,7 +41,7 @@ public enum GTBees {
             });
         }
     },
-    LIGNITE(GTGenera.FUELIS, "lignite", 0x906237, 0x522d0a, "Peat") {
+    LIGNITE(GTGenera.FUELIS, "lignite", 0x906237, 0x58300b, "Peat") {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(ForestryRegistrar.getFRItem("bee_comb_honey")), 0.15f);
@@ -61,7 +61,7 @@ public enum GTBees {
             });
         }
     },
-    COAL(GTGenera.FUELIS, "coal", 0x666666, 0x484848) {
+    COAL(GTGenera.FUELIS, "coal", 0x666666, 0x525252) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.LIGNITE_COMB), 0.3f);
@@ -71,7 +71,7 @@ public enum GTBees {
             });
         }
     },
-    OIL(GTGenera.FUELIS, "oil", 0x4c4c4c, 0x2d2d2d) {
+    OIL(GTGenera.FUELIS, "oil", 0x4c4c4c, 0x333333) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.OIL_COMB), 0.15f);
@@ -86,7 +86,7 @@ public enum GTBees {
         }
     },
     //ORNAMENTIS
-    REDSTONE(GTGenera.ORNAMENTIS, "redstone", 0x7d0f0f, 0xb81616) {
+    REDSTONE(GTGenera.ORNAMENTIS, "redstone", 0x7d0f0f, 0xd11919) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.REDSTONE_COMB), 0.15f);
@@ -96,7 +96,7 @@ public enum GTBees {
             });
         }
     },
-    LAPIS(GTGenera.ORNAMENTIS, "lapis", 0x1947d1, 0x3e5fbf) {
+    LAPIS(GTGenera.ORNAMENTIS, "lapis", 0x1947d1, 0x476cda) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.LAPIS_COMB), 0.15f);
@@ -106,7 +106,7 @@ public enum GTBees {
             });
         }
     },
-    CERTUS(GTGenera.ORNAMENTIS, "certus", 0x57cffb, 0xaedded) {
+    CERTUS(GTGenera.ORNAMENTIS, "certus", 0x57cffb, 0xbbeeff) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.STONE_COMB), 0.3f);
@@ -116,7 +116,7 @@ public enum GTBees {
             });
         }
     },
-    RUBY(GTGenera.ORNAMENTIS, "ruby", 0xe6005c, 0xbe004c) {
+    RUBY(GTGenera.ORNAMENTIS, "ruby", 0xe6005c, 0xcc0052) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.STONE_COMB), 0.3f);
@@ -126,7 +126,7 @@ public enum GTBees {
             });
         }
     },
-    SAPPHIRE(GTGenera.ORNAMENTIS, "sapphire", 0x0033cc, 0x002185) {
+    SAPPHIRE(GTGenera.ORNAMENTIS, "sapphire", 0x0033cc, 0x00248f) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.STONE_COMB), 0.3f);
@@ -146,7 +146,7 @@ public enum GTBees {
             });
         }
     },
-    OLIVINE(GTGenera.ORNAMENTIS,"olivine", 0x248f24, 0xbeedbe) {
+    OLIVINE(GTGenera.ORNAMENTIS,"olivine", 0x248f24, 0xccffcc) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.STONE_COMB), 0.3f);
@@ -156,7 +156,7 @@ public enum GTBees {
             });
         }
     },
-    EMERALD(GTGenera.ORNAMENTIS, "emerald", 0x248f24, 0x2bab2b) {
+    EMERALD(GTGenera.ORNAMENTIS, "emerald", 0x248f24, 0x2eb82e) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.STONE_COMB), 0.3f);
@@ -168,7 +168,7 @@ public enum GTBees {
         }
     },
     //METALIFERIS
-    COPPER(GTGenera.METALIFERIS, "copper", 0xff6600, 0xca5100) {
+    COPPER(GTGenera.METALIFERIS, "copper", 0xff6600, 0xe65c80) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -178,7 +178,7 @@ public enum GTBees {
             });
         }
     },
-    TIN(GTGenera.METALIFERIS,"tin", 0xd4d4d4, 0xcdcdcd) {
+    TIN(GTGenera.METALIFERIS,"tin", 0xd4d4d4, 0xdddddd) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -188,7 +188,7 @@ public enum GTBees {
             });
         }
     },
-    LEAD(GTGenera.METALIFERIS,"lead", 0x666699, 0x9393b8) {
+    LEAD(GTGenera.METALIFERIS,"lead", 0x666699, 0xa3a3cc) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -209,7 +209,7 @@ public enum GTBees {
             });
         }
     },
-    STEEL(GTGenera.METALIFERIS,"steel", 0x808080, 0x8a8a8a) {
+    STEEL(GTGenera.METALIFERIS,"steel", 0x808080, 0x999999) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -219,7 +219,7 @@ public enum GTBees {
             });
         }
     },
-    NICKEL(GTGenera.METALIFERIS,"nickel", 0x8585ad, 0x7c7ca1) {
+    NICKEL(GTGenera.METALIFERIS,"nickel", 0x8585ad, 0x8585ad) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -229,7 +229,7 @@ public enum GTBees {
             });
         }
     },
-    ZINC(GTGenera.METALIFERIS,"zinc", 0xf0def0, 0xe1d1e1) {
+    ZINC(GTGenera.METALIFERIS,"zinc", 0xf0def0, 0xf2e1f2) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -239,7 +239,7 @@ public enum GTBees {
             });
         }
     },
-    SILVER(GTGenera.METALIFERIS,"silver", 0xc2c2d6, 0xbfbfce) {
+    SILVER(GTGenera.METALIFERIS,"silver", 0xc2c2d6, 0xcecede) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -249,7 +249,7 @@ public enum GTBees {
             });
         }
     },
-    GOLD(GTGenera.METALIFERIS,"gold", 0xebc633, 0xd6b840) {
+    GOLD(GTGenera.METALIFERIS,"gold", 0xebc633, 0xedcc47) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -260,7 +260,7 @@ public enum GTBees {
         }
     },
     //MINERALLIS
-    ALUMINIUM(GTGenera.MINERALLIS,"aluminium", 0xb8b8ff, 0xc1c1e6) {
+    ALUMINIUM(GTGenera.MINERALLIS,"aluminium", 0xb8b8ff, 0xd6d6ff) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -271,7 +271,7 @@ public enum GTBees {
             });
         }
     },
-    TITANIUM(GTGenera.MINERALLIS, "titanium", 0xcc99ff, 0xccabed) {
+    TITANIUM(GTGenera.MINERALLIS, "titanium", 0xcc99ff, 0xdbb8ff) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -282,7 +282,7 @@ public enum GTBees {
             });
         }
     },
-    CHROMIUM(GTGenera.MINERALLIS, "chromium", 0xeba1eb, 0xe1b5e1) {
+    CHROMIUM(GTGenera.MINERALLIS, "chromium", 0xeba1eb, 0xf2c3f2) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -294,7 +294,7 @@ public enum GTBees {
             });
         }
     },
-    MANGANESE(GTGenera.MINERALLIS, "manganese", 0xd5d5d5, 0x999999) {
+    MANGANESE(GTGenera.MINERALLIS, "manganese", 0xd5d5d5, 0xaaaaaa) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -306,7 +306,7 @@ public enum GTBees {
             });
         }
     },
-    TUNGSTEN(GTGenera.MINERALLIS, "tungsten", 0x5c5c8a, 0x717191) {
+    TUNGSTEN(GTGenera.MINERALLIS, "tungsten", 0x5c5c8a, 0x7d7da1) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -318,7 +318,7 @@ public enum GTBees {
             });
         }
     },
-    PLATINUM(GTGenera.MINERALLIS, "platinum", 0xe6e6e6, 0xededbe) {
+    PLATINUM(GTGenera.MINERALLIS, "platinum", 0xe6e6e6, 0xffffcc) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -330,7 +330,7 @@ public enum GTBees {
             });
         }
     },
-    IRIDIUM(GTGenera.MINERALLIS, "iridium", 0xdadada, 0xbcbcca) {
+    IRIDIUM(GTGenera.MINERALLIS, "iridium", 0xdadada, 0xd1d1e0) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.TUNGSTEN_COMB), 0.15f);
@@ -344,7 +344,7 @@ public enum GTBees {
         }
     },
     //CRITICALIS
-    URANIUM(GTGenera.CRITICALIS, "uranium", 0x19af19, 0x149314) {
+    URANIUM(GTGenera.CRITICALIS, "uranium", 0x19af19, 0x169e16) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -357,7 +357,7 @@ public enum GTBees {
             });
         }
     },
-    PLUTONIUM(GTGenera.CRITICALIS, "plutonium", 0x335c33, 0x688500) {
+    PLUTONIUM(GTGenera.CRITICALIS, "plutonium", 0x335c33, 0x6b8f00) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
@@ -369,7 +369,7 @@ public enum GTBees {
             });
         }
     },
-    NAQUADAH(GTGenera.CRITICALIS, "naquadah", 0x003300, 0x002000) {
+    NAQUADAH(GTGenera.CRITICALIS, "naquadah", 0x003300, 0x002400) {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
