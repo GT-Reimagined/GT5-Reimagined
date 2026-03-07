@@ -43,6 +43,7 @@ public enum GTGenera {
             taxonBuilder.setDefaultChromosome(BeeChromosomes.POLLINATION, ForestryAlleles.POLLINATION_AVERAGE);
             taxonBuilder.setDefaultChromosome(BeeChromosomes.ACTIVITY, ForestryAlleles.ACTIVITY_NOCTURNAL);
             taxonBuilder.setDefaultChromosome(BeeChromosomes.FLOWER_TYPE, ForestryAlleles.FLOWER_TYPE_END);
+            taxonBuilder.setDefaultChromosome(BeeChromosomes.EFFECT, ForestryAlleles.EFFECT_RADIOACTIVE);
         }
     };
 
