@@ -10,10 +10,12 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
+import org.gtreimagined.gt5r.datagen.GT5RLocalizations;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -24,6 +26,7 @@ import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.Arrays;
 
+import static org.gtreimagined.gt5r.GT5Reimagined.ID;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.*;
 import static org.gtreimagined.gtlib.Ref.L;
@@ -33,6 +36,11 @@ public class ForestryRegistrar extends GTMod {
 
     public static boolean EASY_COMB_RECIPES = false;
 
+    public ForestryRegistrar() {
+        if (isEnabled()){
+            GTLibDynamics.clientProvider(ID, ForestryLangProvider::new);
+        }
+    }
 
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {

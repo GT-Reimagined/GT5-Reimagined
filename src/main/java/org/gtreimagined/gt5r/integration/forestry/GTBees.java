@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.forestry;
 
 import forestry.api.apiculture.ForestryBeeSpecies;
 import forestry.api.core.HumidityType;
+import forestry.api.core.TemperatureType;
 import forestry.api.genetics.alleles.BeeChromosomes;
 import forestry.api.genetics.alleles.ForestryAlleles;
 import forestry.api.genetics.alleles.IAllele;
@@ -29,7 +30,7 @@ public enum GTBees {
             });
         }
     },
-    SLIME(GTGenera.FUELIS, "slime", 0x4e9e55, 0x00e012){
+    SLIME(GTGenera.FUELIS, "slime", 0x4e9e55, 0x00e012, "Slimeball"){
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.RESIN_COMB), 0.3f);
@@ -40,7 +41,7 @@ public enum GTBees {
             });
         }
     },
-    LIGNITE(GTGenera.FUELIS, "lignite", 0x906237, 0x522d0a) {
+    LIGNITE(GTGenera.FUELIS, "lignite", 0x906237, 0x522d0a, "Peat") {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(ForestryRegistrar.getFRItem("bee_comb_honey")), 0.15f);
@@ -50,7 +51,7 @@ public enum GTBees {
             });
         }
     },
-    RUBBERY(GTGenera.FUELIS, "rubbery", 0x2e8f5b, 0xdcc289) {
+    RUBBERY(GTGenera.FUELIS, "rubbery", 0x2e8f5b, 0xdcc289, "Stickyresin") {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCoreItems.StickyResin), 0.15f);
@@ -160,6 +161,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.STONE_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.EMERALD_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.COLD);
             speciesBuilder.addMutations(m -> {
                 m.add(OLIVINE.getResourceLocation(), DIAMOND.getResourceLocation(), 0.08f);
             });
@@ -191,6 +193,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.LEAD_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.WARM).setHumidity(HumidityType.DAMP);
             speciesBuilder.addMutations(m -> {
                 m.add(COAL.getResourceLocation(), COPPER.getResourceLocation(), 0.25f);
             });
@@ -262,6 +265,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.ALUMINIUM_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(NICKEL.getResourceLocation(), ZINC.getResourceLocation(), 0.18f);
             });
@@ -272,6 +276,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.TITANIUM_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(REDSTONE.getResourceLocation(), ALUMINIUM.getResourceLocation(), 0.05f);
             });
@@ -282,6 +287,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.CHROME_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(TITANIUM.getResourceLocation(), RUBY.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Chromium).asState());
@@ -293,6 +299,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.MAGANESE_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(TITANIUM.getResourceLocation(), ALUMINIUM.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Manganese).asState());
@@ -304,6 +311,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.TUNGSTEN_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(ForestryBeeSpecies.HEROIC, MANGANESE.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Tungsten).asState());
@@ -315,6 +323,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.PLATINUM_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(DIAMOND.getResourceLocation(), CHROMIUM.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Platinum).asState());
@@ -327,6 +336,7 @@ public enum GTBees {
             speciesBuilder.addProduct(new ItemStack(GTCombs.TUNGSTEN_COMB), 0.15f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.PLATINUM_COMB), 0.15f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.IRIDIUM_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.HELLISH).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(TUNGSTEN.getResourceLocation(), PLATINUM.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Iridium).asState());
@@ -339,6 +349,8 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.URANIUM_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.COLD);
+            speciesBuilder.setGenome(g -> g.set(BeeChromosomes.ACTIVITY, ForestryAlleles.ACTIVITY_DIURNAL));
             speciesBuilder.addMutations(m -> {
                 m.add(ForestryBeeSpecies.AVENGING, PLATINUM.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Uranium).asState());
@@ -350,6 +362,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.PLUTONIUM_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.ICY);
             speciesBuilder.addMutations(m -> {
                 m.add(URANIUM.getResourceLocation(), EMERALD.getResourceLocation(), 0.05f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Plutonium).asState());
@@ -361,6 +374,7 @@ public enum GTBees {
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
             speciesBuilder.addProduct(new ItemStack(GTCombs.NAQUADAH_COMB), 0.15f);
+            speciesBuilder.setTemperature(TemperatureType.ICY).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(PLUTONIUM.getResourceLocation(), IRIDIUM.getResourceLocation(), 0.03f)
                         .requireResource(GTMaterialTypes.BLOCK.get().get(Materials.Naquadah).asState());
@@ -370,29 +384,31 @@ public enum GTBees {
 
     private final GTGenera genus;
     final String id;
-    final int primary, secondary;
+    final int primary;
+    final int secondary;
+    final String name;
 
     GTBees(GTGenera genus, String id, int primary, int secondary){
+        this(genus, id, primary, secondary, Utils.lowerUnderscoreToUpperSpaced(id));
+    }
+
+    GTBees(GTGenera genus, String id, int primary, int secondary, String name){
         this.genus = genus;
         this.id = "bee_" + id;
         this.primary = primary;
         this.secondary = secondary;
+        this.name = name;
     }
 
     ResourceLocation getResourceLocation(){
-        return id(this.id);
+        return new ResourceLocation(GT5Reimagined.ID, this.id);
     }
 
     protected abstract void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder);
 
-    public static ResourceLocation id(String id) {
-        return new ResourceLocation(GT5Reimagined.ID, "bee_" + id);
-    }
-
     public static void defineBees(IApicultureRegistration registration){
-        //registration.registerSpecies()
         for(GTBees bee : GTBees.values()){
-            IBeeSpeciesBuilder b = registration.registerSpecies(new ResourceLocation(GT5Reimagined.ID, bee.id), bee.genus.scientific, Utils.lowerUnderscoreToUpperSpaced(bee.id), true, TextColor.fromRgb(bee.secondary))
+            IBeeSpeciesBuilder b = registration.registerSpecies(new ResourceLocation(GT5Reimagined.ID, bee.id), bee.genus.scientific, bee.name, true, TextColor.fromRgb(bee.secondary))
                     .setBody(TextColor.fromRgb(bee.primary)).setStripes(TextColor.fromRgb(bee.secondary)).setOutline(TextColor.fromRgb(bee.secondary));
             bee.setSpeciesProperties(b);
         }
