@@ -119,6 +119,7 @@ dependencies {
     modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
     modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
+    modImplementation("brachy.modularui:modularui-mc${project.minecraft_version}:${project.mui_version}")
 
     //required gt5r deps
     modImplementation("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
