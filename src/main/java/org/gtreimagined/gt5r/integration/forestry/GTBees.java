@@ -5,7 +5,6 @@ import forestry.api.core.HumidityType;
 import forestry.api.core.TemperatureType;
 import forestry.api.genetics.alleles.BeeChromosomes;
 import forestry.api.genetics.alleles.ForestryAlleles;
-import forestry.api.genetics.alleles.IAllele;
 import forestry.api.plugin.IApicultureRegistration;
 import forestry.api.plugin.IBeeSpeciesBuilder;
 import net.minecraft.network.chat.TextColor;
@@ -286,7 +285,7 @@ public enum GTBees {
         @Override
         protected void setSpeciesProperties(IBeeSpeciesBuilder speciesBuilder) {
             speciesBuilder.addProduct(new ItemStack(GTCombs.SLAG_COMB), 0.3f);
-            speciesBuilder.addProduct(new ItemStack(GTCombs.CHROME_COMB), 0.15f);
+            speciesBuilder.addProduct(new ItemStack(GTCombs.CHROMIUM_COMB), 0.15f);
             speciesBuilder.setTemperature(TemperatureType.HOT).setHumidity(HumidityType.ARID);
             speciesBuilder.addMutations(m -> {
                 m.add(TITANIUM.getResourceLocation(), RUBY.getResourceLocation(), 0.05f)

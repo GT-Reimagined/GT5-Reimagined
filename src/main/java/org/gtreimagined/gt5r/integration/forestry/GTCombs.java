@@ -1,11 +1,9 @@
 package org.gtreimagined.gt5r.integration.forestry;
 
-import org.gtreimagined.gtlib.item.ItemBasic;
-
 public class GTCombs {
     public static final ItemGTComb ALUMINIUM_COMB = new ItemGTComb("aluminium");
     public static final ItemGTComb CERTUS_COMB = new ItemGTComb("certus");
-    public static final ItemGTComb CHROME_COMB = new ItemGTComb("chrome");
+    public static final ItemGTComb CHROMIUM_COMB = new ItemGTComb("chromium");
     public static final ItemGTComb COAL_COMB = new ItemGTComb("coal");
     public static final ItemGTComb COPPER_COMB = new ItemGTComb("copper");
     public static final ItemGTComb DIAMOND_COMB = new ItemGTComb("diamond");

@@ -10,7 +10,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
-import org.gtreimagined.gt5r.datagen.GT5RLocalizations;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
@@ -226,7 +225,7 @@ public class ForestryRegistrar extends GTMod {
         addProcessMain("titanium_comb", comb, Titanium);
         addProcess("titanium_comb_to_ilmenite", comb, Ilmenite);
         addProcess("titanium_comb_to_bauxite", comb, Bauxite);
-        comb = new ItemStack(GTCombs.CHROME_COMB);
+        comb = new ItemStack(GTCombs.CHROMIUM_COMB);
         addProcessMain("chromium_comb", comb, 50, Chromite);
         addProcess("chromium_comb_to_ruby", comb, Ruby);
         addProcess("chromium_comb_to_chromite", comb, 50, Chromite);
