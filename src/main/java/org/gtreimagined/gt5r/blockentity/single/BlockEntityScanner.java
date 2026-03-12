@@ -139,10 +139,10 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
     }
 
     @Override
-    public void deserializeNBT(CompoundTag nbt) {
-        super.deserializeNBT(nbt);
-        if (nbt.contains("placedBy")){
-            placedBy = nbt.getUUID("placedBy");
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        if (tag.contains("placedBy")){
+            placedBy = tag.getUUID("placedBy");
         }
     }
 
