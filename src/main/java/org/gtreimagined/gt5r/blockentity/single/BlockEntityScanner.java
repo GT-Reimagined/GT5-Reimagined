@@ -24,6 +24,7 @@ import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -144,6 +145,15 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
         if (tag.contains("placedBy")){
             placedBy = tag.getUUID("placedBy");
         }
+    }
+
+    @Override
+    public @NotNull CompoundTag getUpdateTag() {
+        CompoundTag updateTag = super.getUpdateTag();
+        if (placedBy != null){
+            updateTag.putUUID("placedBy", placedBy);
+        }
+        return updateTag;
     }
 
     @Override
