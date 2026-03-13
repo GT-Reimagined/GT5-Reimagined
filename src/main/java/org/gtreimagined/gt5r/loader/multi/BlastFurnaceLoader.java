@@ -148,7 +148,9 @@ public class BlastFurnaceLoader {
     private static void addCalciteRecipe(Material ore, int input, ItemStack... outputs){
         PRIMITIVE_BLAST_FURNACE.RB().ii(RAW_ORE.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add(ore.getId(), Arrays.stream(outputs).mapToInt(ItemStack::getCount).sum() * 500L);
         PRIMITIVE_BLAST_FURNACE.RB().ii(CRUSHED_ORE.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("crushed_" + ore.getId(), Arrays.stream(outputs).mapToInt(ItemStack::getCount).sum() * 500L);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(PURIFIED_ORE.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("purified_" + ore.getId(), Arrays.stream(outputs).mapToInt(ItemStack::getCount).sum() * 500L);
         PRIMITIVE_BLAST_FURNACE.RB().ii(IMPURE_DUST.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("impure_" + ore.getId(), Arrays.stream(outputs).mapToInt(ItemStack::getCount).sum() * 500L);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(PURE_DUST.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("pure_" + ore.getId(), Arrays.stream(outputs).mapToInt(ItemStack::getCount).sum() * 500L);
         PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(ore, input), of(1, DUST.getMaterialTag(Calcite), DUST.getMaterialTag(Limestone), DUST.getMaterialTag(Marble))).io(outputs).add("dust_" + ore.getId(), Arrays.stream(outputs).mapToInt(ItemStack::getCount).sum() * 500L);
     }
 }
