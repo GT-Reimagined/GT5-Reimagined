@@ -166,6 +166,7 @@ import org.gtreimagined.gt5r.proxy.CommonHandler;
 import org.gtreimagined.gtcore.GTCore;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.PLATE;
@@ -431,6 +432,11 @@ public class GT5Reimagined extends GTMod {
                                 GT5RItems.NanoCpuWafer, GT5RItems.NanoCpu, GT5RItems.NorMemoryChipWafer, GT5RItems.NorMemoryChip, GT5RItems.PICWafer, GT5RItems.PowerIC,
                                 GT5RItems.QBitWafer, GT5RItems.QBitProcessingUnit, GT5RItems.RandomAccessMemoryChipWafer, GT5RItems.RandomAccessMemoryChip, GT5RItems.SOCWafer, GT5RItems.SOC));
                         l.addAll(GT5RMachines.CIRCUIT_ASSEMBLER.getTiers().stream().map(GT5RMachines.CIRCUIT_ASSEMBLER::getBlockState).toList());
+                    } else {
+                        l.addAll(List.of(GT5RItems.BasicCircuitParts, GT5RItems.GoodCircuitParts, GT5RItems.AdvancedCircuitParts, GT5RItems.ComplexCircuitParts,
+                                GT5RItems.BasicCircuitBoard, GT5RItems.GoodCircuitBoard, GT5RItems.AdvancedCircuitBoard, GT5RItems.ComplexCircuitBoard,
+                                GT5RItems.EmptyCircuitPlate, GT5RItems.CopperEtchedWiring, GT5RItems.CopperCircuitPlate, GT5RItems.GoldEtchedWiring,
+                                GT5RItems.GoldCircuitPlate, GT5RItems.PlatinumEtchedWiring, GT5RItems.PlatinumCircuitPlate));
                     }
                     if (!GT5RConfig.HARD_SETTINGS){
                         l.add(GT5RMachines.ASSEMBLY_LINE.getItem(IV));
