@@ -95,7 +95,7 @@ public class Circuitry {
                 "PGP", "WWW");
 
         // MANUAL RESISTOR CRAFTING
-        provider.addItemRecipe(output, "resistor", GT5RItems.Resistor,
+        provider.addStackRecipe(output, "resistor", new ItemStack(GT5RItems.Resistor, 3),
                 ImmutableMap.<Character, Object>builder()
                         .put('C', DUST_COALS)
                         .put('P', Items.PAPER)
@@ -345,7 +345,7 @@ public class Circuitry {
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Tantalum, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(GT5RItems.SMDCapacitor,32)).add("smd_capacitor_tantalum_rubber",60, 120);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(SiliconeRubber, 4), FOIL.getMaterialIngredient(Aluminium, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(GT5RItems.SMDCapacitor,16)).add("smd_capacitor_aluminium_rubber",60, 120);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(AnnealedCopper, 4), SMALL_DUST.getMaterialIngredient(Gallium, 1)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.Diode, 16)).add("diode", 400, 48);
-        ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Platinum, 4), SMALL_DUST.getMaterialIngredient(Gallium, 1)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.Diode, 32)).add("smd_diode", 400, 48);
+        ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Platinum, 4), SMALL_DUST.getMaterialIngredient(Gallium, 1)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(SMDDiode, 32)).add("smd_diode", 400, 48);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(GT5RItems.SmallCoil, 2)).add("small_coil_1", 80, 8);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Copper, 8), BOLT.getMaterialIngredient(NickelZincFerrite, 1)).io(new ItemStack(GT5RItems.SmallCoil, 4)).add("small_coil_2", 80, 8);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(AnnealedCopper, 8), BOLT.getMaterialIngredient(Steel, 1)).io(new ItemStack(GT5RItems.SmallCoil, 2)).add("small_coil_3", 80, 8);
