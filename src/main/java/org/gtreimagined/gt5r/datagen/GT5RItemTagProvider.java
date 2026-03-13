@@ -29,8 +29,6 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         super.processTags(domain);
         //this.tag(GT5RTags.CIRCUITS_EXTREME).add(GT5RData.CircuitDataStorage);
         this.tag(ROD.getMaterialTag(Wood)).addTag(Tags.Items.RODS_WOODEN);
-        this.tag(CIRCUITS_ELITE).add(GT5RItems.NanoProcessor);
-        this.tag(CIRCUITS_MASTER).add(GT5RItems.QuantumProcessor);
         this.tag(GT5RTags.RESISTORS).add(GT5RItems.Resistor, GT5RItems.SMDResistor);
         this.tag(GT5RTags.CAPACITORS).add(GT5RItems.Capacitor, GT5RItems.SMDCapacitor);
         this.tag(GT5RTags.TRANSISTORS).add(GT5RItems.Transistor, GT5RItems.SMDTransistor);
@@ -66,11 +64,6 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(CIRCUITS_ELITE).add(DataControlCircuit);
         this.tag(CIRCUITS_MASTER).add(EnergyFlowCircuit);
         this.tag(CIRCUITS_DATA_ORB).add(DataOrb);
-        if (GT5RConfig.HARDER_CIRCUITS.get()){
-            this.tag(CIRCUITS_BASIC).add(MicroProcessor);
-            this.tag(CIRCUITS_GOOD).add(IntegratedProcessor);
-            this.tag(CIRCUITS_ADVANCED).add(ProcessorAssembly, NanoProcessor);
-        }
         this.tag(ForgeTags.DYES_BLACK).add(Items.INK_SAC);
         this.tag(ForgeTags.DYES_BLUE).addTag(GEM.getMaterialTag(Lapis)).addTag(GEM.getMaterialTag(Sodalite));
         this.tag(ForgeTags.DYES_CYAN).addTag(GEM.getMaterialTag(Lazurite));

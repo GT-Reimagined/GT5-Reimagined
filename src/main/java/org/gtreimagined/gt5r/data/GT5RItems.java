@@ -135,13 +135,6 @@ public class GT5RItems {
     public static ItemBasic<?> CircuitBoardMultiFiber = new ItemBasic<>(GT5Reimagined.ID, "multilayer_fiber_reinforced_circuit_board", "circuits/").tip("6th Tier Board");
     public static ItemBasic<?> CircuitBoardWetware = new ItemBasic<>(GT5Reimagined.ID, "wetware_circuit_board", "circuits/").tip("7th Tier Board");
 
-    public static ItemBasic<?> MicroProcessor = new ItemBasic<>(GT5Reimagined.ID, "microprocessor", "circuits/").tip("A Basic Circuit");
-    public static ItemBasic<?> IntegratedProcessor = new ItemBasic<>(GT5Reimagined.ID, "integrated_processor", "circuits/").tip("A Good Circuit");
-    public static ItemBasic<?> ProcessorAssembly = new ItemBasic<>(GT5Reimagined.ID, "processor_assembly", "circuits/").tip("An advanced Circuit");
-    public static ItemBasic<?> NanoProcessor = new ItemBasic<>(GT5Reimagined.ID, "nanoprocessor", "circuits/").tip("An advanced Circuit");
-    public static ItemBasic<?> Workstation = new ItemBasic<>(GT5Reimagined.ID, "workstation", "circuits/").tip("An extreme Circuit");
-    public static ItemBasic<?> QuantumProcessor = new ItemBasic<>(GT5Reimagined.ID, "quantumprocessor", "circuits/").tip("An extreme Circuit");
-    public static ItemBasic<?> NanoprocessorAssembly = new ItemBasic<>(GT5Reimagined.ID, "nanoprocessor_assembly", "circuits/").tip("An extreme Circuit");
     public static ItemBasic<?> Mainframe = new ItemBasic<>(GT5Reimagined.ID, "mainframe", "circuits/").tip("An elite circuit");
     public static ItemBasic<?> QuantumProcessorAssembly = new ItemBasic<>(GT5Reimagined.ID, "quantumprocessor_assembly", "circuits/").tip("An elite circuit");
     public static ItemBasic<?> CrystalProcessor = new ItemBasic<>(GT5Reimagined.ID, "crystal_processor", "circuits/").tip("An elite Circuit");
