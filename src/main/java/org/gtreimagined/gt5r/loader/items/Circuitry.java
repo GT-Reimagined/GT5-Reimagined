@@ -333,9 +333,12 @@ public class Circuitry {
     }
 
     private static void hardCircuitParts(){
+        ASSEMBLER.RB().ii(of(GlassTube), FINE_WIRE.getMaterialIngredient(Copper, 2), of(TagUtils.getForgelikeItemTag("paper"), 2)).io(VacuumTube).add("vacuum_tube_fine_wire", 120, 8);
+        ASSEMBLER.RB().ii(of(GlassTube), of(GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY), 2), of(TagUtils.getForgelikeItemTag("paper"), 2)).io(VacuumTube).add("vacuum_tube", 120, 8);
         ASSEMBLER.RB().ii(of(GT5RItems.SiliconChip, 1), FINE_WIRE.getMaterialIngredient(Tin, 6)).fi(Plastic.getLiquid(L)).io(new ItemStack(GT5RItems.Transistor,8)).add("transistor",80, 24);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), FOIL.getMaterialIngredient(Aluminium, 2)).io(new ItemStack(GT5RItems.Capacitor, 2)).add("capacitor", 80, 96);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gallium, 1), FINE_WIRE.getMaterialIngredient(AnnealedCopper, 6)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.SMDTransistor,32)).add("smd_transistor",80, 96);
+        ASSEMBLER.RB().ii(of(DUST_COALS), FINE_WIRE.getMaterialIngredient(Copper, 4), of(TagUtils.getForgelikeItemTag("paper"), 2)).io(new ItemStack(Resistor, 12)).add("resistor", 160, 6);
         ASSEMBLER.RB().ii(of(DUST.get(Carbon), 1), of(FINE_WIRE.get(Electrum), 4)).fi(Plastic.getLiquid(L)).io(new ItemStack(GT5RItems.SMDResistor,24)).add("smd_resistor",80, 96);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(PolyvinylChloride, 4), FOIL.getMaterialIngredient(Tantalum, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(GT5RItems.SMDCapacitor,32)).add("smd_capacitor_tantalum",50, 96);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(PolyvinylChloride, 4), FOIL.getMaterialIngredient(Aluminium, 1)).fi(Plastic.getLiquid(L / 4)).io(new ItemStack(GT5RItems.SMDCapacitor,16)).add("smd_capacitor_aluminium",50, 96);
