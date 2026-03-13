@@ -70,7 +70,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Nickel).asMetal(1728, PLATE).asOre();
         //Copper, by vanilla
         event.setMaterial(Materials.Zinc).asMetal(692, PLATE, FOIL).asOre();
-        event.setMaterial(Materials.Gallium).asMetal(303, MOLTEN);
+        event.setMaterial(Materials.Gallium).asMetal(303, MOLTEN, PLATE);
         event.setMaterial(Materials.Germanium).asMetal(1211, PLATE, FOIL);
         event.setMaterial(Materials.Arsenic).asMetal(1090);
         //event.setMaterial(Selenium).asMetal(494, 0);
@@ -105,7 +105,7 @@ public class GT5RMaterialEvents {
         //Gadolinium, Terbium
         //dysprosium, holmium, erbium, thulium, ytterbium, lutetium
         event.setMaterial(Materials.Hafnium).asMetal(2506);
-        event.setMaterial(Materials.Tantalum).asSolid(3290);
+        event.setMaterial(Materials.Tantalum).asSolid(3290, FOIL);
         event.setMaterial(Materials.Tungsten).asMetal(3695, 3000, FOIL, RING, FRAME);
         //event.setMaterial(Rhenium).asMetal(3459,3459);
         event.setMaterial(Materials.Osmium).asOre().asMetal(3306, SCREW, BOLT, RING, PLATE);
@@ -386,9 +386,9 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Plastic).asSolid(295, 0, PLATE, FOIL, FRAME, MINED_WITH_AXE).asFluid();
         //event.setMaterial(Polystyrene).asSolid(295, 0);
         event.setMaterial(Materials.Polytetrafluoroethylene).asSolid(1400, 0, PLATE, MINED_WITH_AXE);
-        event.setMaterial(Materials.PolyvinylChloride).asSolid(295, 0, PLATE, MINED_WITH_AXE);
+        event.setMaterial(Materials.PolyvinylChloride).asSolid(295, 0, PLATE, FOIL, MINED_WITH_AXE);
         event.setMaterial(Materials.Rubber).asSolid(295, 0, PLATE, RING, MOLTEN, MINED_WITH_AXE);
-        event.setMaterial(Materials.SiliconeRubber).asSolid(900, 0, PLATE, MOLTEN, MINED_WITH_AXE);
+        event.setMaterial(Materials.SiliconeRubber).asSolid(900, 0, PLATE, FOIL, MOLTEN, MINED_WITH_AXE);
         event.setMaterial(Materials.StyreneButadieneRubber).asSolid(295, 0, PLATE, MINED_WITH_AXE);
         /**
          ***  Fluids
