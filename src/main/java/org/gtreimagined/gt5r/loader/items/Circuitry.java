@@ -189,8 +189,8 @@ public class Circuitry {
             CHEMICAL_REACTOR.RB().ii(of(GT5RItems.PICWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 2)).fi(RedAlloy.getLiquid(L * 2)).io(GT5RItems.HPICWafer).add("hpic_wafer", 1200, 1920);
             addCuttingRecipe(GT5RItems.HPICWafer, GT5RItems.HighPowerIC, 2, 600, 48, 22);
             addLensRecipe(GT5RItems.Wafer, GT5RItems.IntegratedLogicCircuitWafer, 1, 900, 120, Ruby, RedGarnet, Jade);
-            addLensRecipe(GT5RItems.GlowstoneDopedWafer, GT5RItems.IntegratedLogicCircuitWafer, 4, 500, 480, Ruby, RedGarnet, Jade);
-            addLensRecipe(GT5RItems.NaquadahDopedWafer, GT5RItems.IntegratedLogicCircuitWafer, 8, 200, 1920, Ruby, RedGarnet, Jade);
+            addLensRecipe(GT5RItems.GlowstoneDopedWafer, GT5RItems.IntegratedLogicCircuitWafer, 4, 500, 480, Ruby, RedGarnet);
+            addLensRecipe(GT5RItems.NaquadahDopedWafer, GT5RItems.IntegratedLogicCircuitWafer, 8, 200, 1920, Ruby, RedGarnet);
             addCuttingRecipe(GT5RItems.IntegratedLogicCircuitWafer, GT5RItems.IntegratedLogicCircuit, 8, 600, 48, 22);
             addLensRecipe(GT5RItems.GlowstoneDopedWafer, GT5RItems.NANDMemoryChipWafer, 1, 500, 480, EnderPearl);
             addLensRecipe(GT5RItems.NaquadahDopedWafer, GT5RItems.NANDMemoryChipWafer, 4, 200, 1920, EnderPearl);
