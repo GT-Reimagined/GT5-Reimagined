@@ -21,6 +21,7 @@ import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gt5r.loader.machines.MortarLoader;
 import org.gtreimagined.gt5r.loader.machines.RecyclingLoader;
+import org.gtreimagined.gt5r.machine.caps.BronzeCauldronWrapper;
 import org.gtreimagined.gtcore.BookRegistration;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTLibConfig;
@@ -42,6 +43,7 @@ import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
 import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.tool.IGTTool;
+import org.gtreimagined.gtlib.util.FluidUtils;
 import org.gtreimagined.gtlib.worldgen.IGTWorldgenFunction;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -407,6 +409,12 @@ public class GT5Reimagined extends GTMod {
             case DATA_READY -> {
                 CauldronInteraction.WATER.put(GT5RItems.WOODEN_BUCKET, ItemWoodenBucket::fillBucket);
                 CauldronInteraction.EMPTY.put(GT5RItems.WOODEN_WATER_BUCKET, ItemWoodenBucket::emptyBucket);
+                FluidUtils.addStateFluidHandler((state, level, pos) -> {
+                    if (state.getBlock() == GT5RBlocks.BRONZE_WATER_CAULDRON || state.getBlock() == GT5RBlocks.BRONZE_CAULDRON){
+                        return new BronzeCauldronWrapper(state, level, pos);
+                    }
+                    return null;
+                });
                 Structures.init();
                 StructureInfo.init();
                 GT5RTwilightStalctites.init();
