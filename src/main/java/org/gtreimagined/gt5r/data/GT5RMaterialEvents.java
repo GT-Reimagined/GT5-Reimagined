@@ -1321,7 +1321,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Sodalite).addByProduct(Materials.Lazurite, Lapis);
         event.setMaterial(Materials.Sperrylite).addByProduct(Materials.Antimony, Copper, Materials.Sheldonite, Materials.Hematite).bathMercury(Materials.Sheldonite).bathPersulfate(Copper);
         event.setMaterial(Materials.Spessartine).addByProduct(Materials.RedGarnet, Materials.Manganese);
-        event.setMaterial(Materials.Sphalerite).addByProduct(Materials.YellowGarnet, Materials.Cadmium, Materials.Indium, Materials.Zinc).bathPersulfate(Materials.Zinc);
+        event.setMaterial(Materials.Sphalerite).addByProduct(Materials.YellowGarnet, Materials.Cadmium, Materials.Indium, Gallium).bathPersulfate(Materials.Zinc);
         event.setMaterial(Materials.Spodumene).addByProduct(Materials.Alumina, Materials.Lithium);
         event.setMaterial(Materials.Steel).addByProduct(Iron);
         event.setMaterial(Materials.Stibnite).addByProduct(Materials.Antimony);
