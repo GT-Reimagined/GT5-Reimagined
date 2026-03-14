@@ -1,5 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -19,9 +21,16 @@ import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
 import org.gtreimagined.gtlib.ore.StoneType;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
+import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.gtreimagined.gtlib.util.TagUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.ToLongFunction;
 
+import static com.google.common.collect.ImmutableMap.of;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gt5r.data.RecipeMaps.CUTTER;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
@@ -71,17 +80,53 @@ public class CutterLoader {
         GTMaterialTypes.LONG_ROD.all().stream().filter(m -> m.has(ROD)).forEach(m -> {
             addCutterRecipe(LONG_ROD.getMaterialTag(m), ROD.get(m, 2), "rod_" + m.getId(), (int) (baseDuration.applyAsLong(m) * 2), 4);
         });
-        if (!GTAPI.isModLoaded(Ref.MOD_TFC)){
-            addWoodRecipe(ItemTags.OAK_LOGS, Items.OAK_PLANKS, 1, "oak_planks", 200, 8);
-            addWoodRecipe(ItemTags.BIRCH_LOGS, Items.BIRCH_PLANKS, 1, "birch_planks", 200, 8);
-            addWoodRecipe(ItemTags.SPRUCE_LOGS, Items.SPRUCE_PLANKS, 1, "spruce_planks", 200, 8);
-            addWoodRecipe(ItemTags.ACACIA_LOGS, Items.ACACIA_PLANKS, 1, "acacia_planks", 200, 8);
-            addWoodRecipe(ItemTags.DARK_OAK_LOGS, Items.DARK_OAK_PLANKS, 1, "dark_oak_planks", 200, 8);
-            addWoodRecipe(ItemTags.JUNGLE_LOGS, Items.JUNGLE_PLANKS, 1, "jungle_planks", 200, 8);
-            addWoodRecipe(ItemTags.CRIMSON_STEMS, Items.CRIMSON_PLANKS, 1, "crimson_planks", 200, 8);
-            addWoodRecipe(ItemTags.WARPED_STEMS, Items.WARPED_PLANKS, 1, "warped_planks", 200, 8);
-            addWoodRecipe(GTCoreTags.RUBBER_LOGS, GTCoreBlocks.RUBBER_PLANKS.asItem(), 1, "rubber_planks", 200, 8);
+        addWoodRecipes();
+    }
+
+    private static void addWoodRecipes(){
+        Map<String, String> customSuffixes = new HashMap<>();
+        Map<String, List<String>> modWoods = new Object2ObjectOpenHashMap<>();
+        customSuffixes.put("crimson", "stems");
+        customSuffixes.put("warped", "stems");
+        modWoods.put("minecraft", List.of("oak", "birch", "spruce", "jungle", "acacia", "dark_oak", "mangrove", "cherry", "crimson", "warped"));
+        if (GTAPI.isModLoaded("northstar")){
+            modWoods.put("northstar", List.of("wilter", "argyre", "coiler", "calorian"));
         }
+        if (GTAPI.isModLoaded("ad_astra")){
+            modWoods.put("ad_astra", List.of("aeronos", "strophar", "glacian"));
+            customSuffixes.put("aeronos", "caps");
+            customSuffixes.put("strophar", "caps");
+        }
+        if (GTAPI.isModLoaded("terrestria")){
+            modWoods.put ("terrestria", List.of("cypress", "hemlock", "japanese_maple", "rainbow_eucalyptus", "redwood", "rubber", "sakura", "willow", "yucca_palm"));
+        }
+        if (GTAPI.isModLoaded("undergarden")) modWoods.put("undergarden", List.of("smogstem", "wigglewood", "grongle"));
+        if (GTAPI.isModLoaded("botania")) modWoods.put("botania", List.of("livingwood", "dreamwood"));
+        if (GTAPI.isModLoaded("traverse")) modWoods.put("traverse", List.of("fir"));
+        if (GTAPI.isModLoaded("forestry")){
+            String domain = "forestry";
+            modWoods.put(domain, List.of("larch", "teak", "acacia_desert", "lime", "chestnut", "wenge", "baobab", "sequoia", "kapok", "ebony", "mahogany",
+                    "balsa", "willow", "walnut", "greenheart", "hill_cherry", "mahoe", "poplar", "palm", "papaya", "pine", "plum", "maple", "citrus", "giganteum", "ipe", "padauk",
+                    "cocobolo", "zebrawood"));
+            List<String> fireProofPlanks = new ArrayList<>(modWoods.get(domain));
+            fireProofPlanks.addAll(modWoods.get("minecraft"));
+            fireProofPlanks.removeAll(List.of("mangrove", "crimson", "warped"));
+            for (String wood : fireProofPlanks){
+                String suffix = customSuffixes.getOrDefault(wood, "logs");
+                ResourceLocation planks = new ResourceLocation(domain, wood + "_fireproof_planks");
+                addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(domain, "fireproof_" + wood + "_" + suffix)), RegistryUtils.getItemFromID(planks), 1, planks, 200, 8);
+            }
+
+        }
+
+        modWoods.forEach((domain, w) -> {
+            if (domain.equals("minecraft") && GTAPI.isModLoaded("tfc")) return;
+            for (String wood : w){
+                String suffix = customSuffixes.getOrDefault(wood, "logs");
+                ResourceLocation planks = new ResourceLocation(domain, wood + "_planks");
+                addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(domain, wood + "_" + suffix)), RegistryUtils.getItemFromID(planks), 1, planks, 200, 8);
+            }
+        });
     }
 
     private static void addCutterRecipe(TagKey<Item> input, ItemStack output, String id, int duration, int euPerTick){
@@ -108,15 +153,15 @@ public class CutterLoader {
                 .io(output, dust).add(id + "_with_distilled_water", duration * 2L, euPerTick);
     }
 
-    public static void addWoodRecipe(TagKey<Item> input, Item output, int multiplier, String id, int duration, int euPerTick){
+    public static void addWoodRecipe(TagKey<Item> input, Item output, int multiplier, ResourceLocation id, int duration, int euPerTick){
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(new FluidStack(Fluids.WATER, Math.max(4, Math.min(1000, duration * euPerTick / 320))))
-                .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id + "_with_water", duration * 2L, euPerTick);
+                .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id.getNamespace(), id.getPath() + "_with_water", duration * 2L, euPerTick, 0, 1);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.Lubricant.getLiquid(Math.max(1, Math.min(250, duration * euPerTick / 1280))))
-                .io(new ItemStack(output, 6 * multiplier), DUST.get(Wood, 1)).add(id + "_with_lubricant", duration, euPerTick);
+                .io(new ItemStack(output, 6 * multiplier), DUST.get(Wood, 1)).add(id.getNamespace(), id.getPath() + "_with_lubricant", duration, euPerTick, 0, 1);
         CUTTER.RB().ii(RecipeIngredient.of(input, 1))
                 .fi(Materials.DistilledWater.getLiquid(Math.max(3, Math.min(750, duration * euPerTick / 426))))
-                .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id + "_with_distilled_water", duration * 2L, euPerTick);
+                .io(new ItemStack(output, 4 * multiplier), DUST.get(Wood, 2)).add(id.getNamespace(), id.getPath() + "_with_distilled_water", duration * 2L, euPerTick, 0, 1);
     }
 }
