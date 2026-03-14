@@ -1,6 +1,8 @@
 package org.gtreimagined.gt5r.data;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.Tags.Blocks;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -111,7 +113,7 @@ public class ToolTypes {
         if (FMLEnvironment.dist.isClient()){
             GTCoreTools.ELECTRIC_WRENCH_ALT.addBehaviour(new BehaviourExtendedHighlight(b -> b instanceof BlockMachine || (b instanceof BlockPipe && b.builtInRegistryHolder().is(GTTools.WRENCH.getToolType())) || b.defaultBlockState().hasProperty(BlockStateProperties.FACING_HOPPER) || b.defaultBlockState().hasProperty(BlockStateProperties.HORIZONTAL_FACING), BehaviourExtendedHighlight.PIPE_FUNCTION));
         }
-
+        GTTools.HAMMER.addEffectiveBlockTags(Blocks.GLASS, Tags.Blocks.GLASS_PANES);
     }
 
     public static Tuple<Long, Long> getEnergy(ItemStack stack){
