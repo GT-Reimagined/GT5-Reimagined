@@ -451,8 +451,6 @@ public class GT5RMachines {
             MINIATURE_JAMD_PORTAL = new MiniPortalMachine(GT5Reimagined.ID, "miniature_jamd_portal").setBaseTexture(new Texture("jamd","block/mine_portal_block")).setOverlayTextures(Textures.MINI_NETHER_PORTAL).setBlock((machine, tier) -> new BlockMachine(machine, tier, BlockBehaviour.Properties.of().strength(1.0f, 10.0f).sound(SoundType.STONE).requiresCorrectToolForDrops().noOcclusion())).setTile(BlockEntityMiniJAMDPortal::new);
         }
 
-        GTAPI.registerJEICategoryWorkstation(RecipeMaps.PULVERIZER, STEAM_MACERATOR, BRONZE);
-        GTAPI.registerJEICategoryWorkstation(RecipeMaps.PULVERIZER, STEAM_MACERATOR, STEEL);
         STEAM_ALLOY_SMELTER.setMap(RecipeMaps.ALLOY_SMELTER);
         STEAM_COMPRESSOR.setMap(RecipeMaps.COMPRESSOR);
         STEAM_EXTRACTOR.setMap(RecipeMaps.EXTRACTOR);
