@@ -18,6 +18,7 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityMagicEnergyConverter;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamMacerator;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniEndPortal;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniJAMDPortal;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniNetherPortal;
@@ -150,7 +151,7 @@ public class GT5RMachines {
     public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GT5Reimagined.ID, "steam_extractor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
     public static SteamMachine STEAM_FORGE_HAMMER = new SteamMachine(GT5Reimagined.ID, "steam_forge_hammer").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
     public static SteamMachine STEAM_FURNACE = new SteamMachine(GT5Reimagined.ID, "steam_furnace").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setBaseTexture(Textures.BRICKED_HANDLER).setSound(GT5RSounds.FURNACE,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
-    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5Reimagined.ID, "steam_macerator").setTiers(BRONZE, STEEL).setMap(RecipeMaps.MACERATOR).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
+    public static SteamMachine STEAM_MACERATOR = new SteamMachine(GT5Reimagined.ID, "steam_macerator").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setTile(BlockEntitySteamMacerator::new).setOutputCover(GTCoreCovers.COVER_STEAM_VENT).setSound(GT5RSounds.MACERATOR,  0.6f);
     public static SteamMachine STEAM_CUTTER = new SteamMachine(GT5Reimagined.ID, "steam_cutter").setEuMultiplier(1).setDurationMultiplier(2).setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
     public static SteamMachine STEAM_SIFTER = new SteamMachine(GT5Reimagined.ID, "steam_sifter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
     /**
@@ -457,6 +458,7 @@ public class GT5RMachines {
         STEAM_EXTRACTOR.setMap(RecipeMaps.EXTRACTOR);
         STEAM_FORGE_HAMMER.setMap(RecipeMaps.FORGE_HAMMER);
         STEAM_FURNACE.setMap(RecipeMaps.ELECTRIC_FURNACE);
+        STEAM_MACERATOR.setMap(RecipeMaps.PULVERIZER);
         STEAM_CUTTER.setMap(RecipeMaps.CUTTER);
         STEAM_SIFTER.setMap(RecipeMaps.SIFTER);
     }
