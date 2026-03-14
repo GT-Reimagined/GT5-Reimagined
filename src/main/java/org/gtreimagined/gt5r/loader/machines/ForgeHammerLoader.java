@@ -70,7 +70,8 @@ public class ForgeHammerLoader {
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.COBBLESTONE, 1)).io(new ItemStack(Items.GRAVEL)).add("gravel",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.STONE, 1)).io(new ItemStack(Items.COBBLESTONE)).add("cobblestone",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GRAVEL, 1)).io(new ItemStack(Items.SAND)).add("sand",10, 16);
-        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS, 1)).io(DUST.get(Glass)).add("glass_dust",10, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS_PANES, 1)).io(DUST.get(Glass)).add("glass_dust_from_panes",2, 16);
+        FORGE_HAMMER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS, 1)).io(DUST.get(Glass, 9)).add("glass_dust",10, 16);
         //Wrought Iron and Annealed Copper 2 to 1 (pre Arc Furnace)
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.BRICK, 1)).io(SMALL_DUST.get(Brick, 2)).add("brick_dust_small",10, 16);
         FORGE_HAMMER.RB().ii(RecipeIngredient.of(Items.BRICKS, 1)).io(DUST.get(Brick, 2)).add("brick_dust",40, 16);
