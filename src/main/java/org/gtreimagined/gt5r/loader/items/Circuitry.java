@@ -65,7 +65,7 @@ public class Circuitry {
         provider.addItemRecipe(output, "basic_circuit", BasicCircuit,
                 ImmutableMap.<Character, Object>builder()
                         .put('V', GT5RItems.VacuumTube).put('B', GT5RItems.CircuitBoardCoated)
-                        .put('W', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.TINY))
+                        .put('W', GTCoreCables.WIRE_RED_ALLOY.getBlockItem(PipeSize.VTINY))
                         .put('R', GT5RItems.Resistor).put('P', ITEM_CASING.get(Steel))
                         .build(),
                 "RPR", "VBV", "WWW");
