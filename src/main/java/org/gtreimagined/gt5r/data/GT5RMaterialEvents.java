@@ -550,8 +550,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Tar).asFluid();
         event.setMaterial(Materials.ThoriumSalt).asFluid(0, 600).flags(MOLTEN);
         event.setMaterial(Materials.TitaniumTetrachloride).asFluid().flags(ACID);
-        event.setMaterial(Materials.UUAmplifier).asFluid();
-        event.setMaterial(Materials.UUMatter).asFluid();
         //Nuclear
         /**
          ***  Gases/Plasmas
