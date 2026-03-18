@@ -13,14 +13,14 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class SecondaryMultiFluidHandler<T extends BlockEntityMultiMachine<T>> extends MultiMachineFluidHandler<T> {
-    protected final EnumMap<FluidDirection, FluidTanks> secondaryTanks = new EnumMap<>(FluidDirection.class);
+    protected final EnumMap<FluidTankType, FluidTanks> secondaryTanks = new EnumMap<>(FluidTankType.class);
     public SecondaryMultiFluidHandler(T tile) {
         super(tile);
     }
 
     protected void cacheSecondaryInputs() {
         List<MachineFluidHandler<?>> inputs = tile.getComponentsByHandlerId(secondaryInputComponentString()).stream().map(IComponentHandler::getFluidHandler).map(Optional::get).sorted(this::compareSecondaryInputHatches).collect(Collectors.toUnmodifiableList());//this::allocateExtraSize);
-        secondaryTanks.put(FluidDirection.INPUT, new FluidTanks(inputs.stream().filter(t -> t.getInputTanks() != null).flatMap(t -> Arrays.stream(t.getInputTanks().getBackingTanks())).collect(Collectors.toList())));
+        secondaryTanks.put(FluidTankType.INPUT, new FluidTanks(inputs.stream().filter(t -> t.getInputTanks() != null).flatMap(t -> Arrays.stream(t.getInputTanks().getBackingTanks())).collect(Collectors.toList())));
     }
 
     protected int compareSecondaryInputHatches(MachineFluidHandler<?> a, MachineFluidHandler<?> b) {
@@ -37,7 +37,7 @@ public class SecondaryMultiFluidHandler<T extends BlockEntityMultiMachine<T>> ex
 
     protected void cacheSecondaryOutputs() {
         List<MachineFluidHandler<?>> outputs = tile.getComponentsByHandlerId(secondaryOutputComponentString()).stream().map(IComponentHandler::getFluidHandler).map(Optional::get).sorted(this::compareSecondaryOutputHatches).collect(Collectors.toUnmodifiableList());//this::allocateExtraSize);
-        secondaryTanks.put(FluidDirection.OUTPUT, new FluidTanks(outputs.stream().filter(t -> t.getOutputTanks() != null).flatMap(t -> Arrays.stream(t.getOutputTanks().getBackingTanks())).collect(Collectors.toList())));
+        secondaryTanks.put(FluidTankType.OUTPUT, new FluidTanks(outputs.stream().filter(t -> t.getOutputTanks() != null).flatMap(t -> Arrays.stream(t.getOutputTanks().getBackingTanks())).collect(Collectors.toList())));
     }
 
     protected int compareSecondaryOutputHatches(MachineFluidHandler<?> a, MachineFluidHandler<?> b) {
@@ -56,10 +56,10 @@ public class SecondaryMultiFluidHandler<T extends BlockEntityMultiMachine<T>> ex
     }
 
     public FluidTanks getSecondaryInputTanks(){
-        return secondaryTanks.get(FluidDirection.INPUT);
+        return secondaryTanks.get(FluidTankType.INPUT);
     }
 
     public FluidTanks getSecondaryOutputTanks(){
-        return secondaryTanks.get(FluidDirection.OUTPUT);
+        return secondaryTanks.get(FluidTankType.OUTPUT);
     }
 }

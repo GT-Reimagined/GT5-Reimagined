@@ -2,7 +2,6 @@ package org.gtreimagined.gt5r.blockentity.single;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Level.ExplosionInteraction;
 import net.minecraft.world.level.block.state.BlockState;
@@ -151,12 +150,12 @@ public class BlockEntitySmallHeatExchanger extends BlockEntityMachine<BlockEntit
     public static class SmallHeatExchangerFluidHandler extends MachineFluidHandler<BlockEntitySmallHeatExchanger> {
         public SmallHeatExchangerFluidHandler(BlockEntitySmallHeatExchanger tile) {
             super(tile);
-            tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
+            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
                 b.tank(this::acceptsRecipe, 1000);
                 b.tank(this::acceptWater, 4000);
                 return b;
             }));
-            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
+            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
                 b.tank(f -> !f.getFluid().is(GTCoreTags.STEAM), 1000);
                 b.tank(f -> f.getFluid().is(GTCoreTags.STEAM), 16000);
                 return b;

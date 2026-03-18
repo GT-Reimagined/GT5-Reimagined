@@ -8,7 +8,7 @@ import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.cover.CoverOutput;
 import org.gtreimagined.gtlib.gui.BarDir;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
-import org.gtreimagined.gtlib.gui.GuiData;
+import org.gtreimagined.gtlib.gui.GuiProperties;
 import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
@@ -25,7 +25,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.gui.widgets.AutocrafterProgressWidget;
-import org.gtreimagined.gt5r.gui.widgets.CoalBoilerFuelWidget;
 import org.gtreimagined.gt5r.gui.widgets.CoalBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
 import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
@@ -39,46 +38,46 @@ import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 public class Guis {
 
     // TODO move these to the API somehow
-    public static GuiData MULTI_DISPLAY = new GuiData(GT5Reimagined.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties MULTI_DISPLAY = new GuiProperties(GT5Reimagined.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
             .add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34)
             .add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
 
-    public static GuiData ALLOY_SMELTER_DISPLAY = new GuiData(GT5Reimagined.ID, "alloy_smelter").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties ALLOY_SMELTER_DISPLAY = new GuiProperties(GT5Reimagined.ID, "alloy_smelter").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
             .add(IT_OUT, 107, 25));
 
-    public static GuiData SIMPLE_DISPLAY = new GuiData(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties SIMPLE_DISPLAY = new GuiProperties(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 53, 25).add(IT_OUT, 107, 25));
-    public static GuiData BEDROCK_DRILL_DISPLAY = new GuiData(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties BEDROCK_DRILL_DISPLAY = new GuiProperties(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 53, 25).add(FL_IN, 53, 63)
             .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
             .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
             .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
             .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61));
 
-    public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GT5Reimagined.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties MULTI_DISPLAY_FLUID = new GuiProperties(GT5Reimagined.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7)
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
 
-    public static GuiData MULTI_DISPLAY_DISTILLATION = new GuiData(GT5Reimagined.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties MULTI_DISPLAY_DISTILLATION = new GuiProperties(GT5Reimagined.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 53, 43)
             .add(IT_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7));
-    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GT5Reimagined.ID, "multi_display")
+    public static GuiProperties MULTI_DISPLAY_COMPACT = new GuiProperties(GT5Reimagined.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
-    public static GuiData BASIC_TANK = new GuiData(GT5Reimagined.ID, "basic_tank").setBackgroundTexture("basic_tank")
+    public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank").setBackgroundTexture("basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5Reimagined.ID, "blank")));
 
-    public static GuiData MULTIBLOCK = new GuiData(GT5Reimagined.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
-    public static GuiData ORE_BYPRODUCTS = new GuiData(GT5Reimagined.ID, "ore_byproducts") {
+    public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts") {
         @Override
         public ResourceLocation getTexture(Tier tier, String type) {
             return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
@@ -327,88 +326,88 @@ public class Guis {
     }
 
     public static void backgroundTextures(){
-        MACERATOR.getGuiData().setBackgroundTexture("machine_macerator");
-        ROCK_BREAKER.getGuiData().setBackgroundTexture("machine_macerator");
+        MACERATOR.getGuiProperties().setBackgroundTexture("machine_macerator");
+        ROCK_BREAKER.getGuiProperties().setBackgroundTexture("machine_macerator");
         //FORGE_HAMMER.getGui().setBackgroundTexture("machine_forge_hammer");
-        AUTOCRAFTER.getGuiData().setBackgroundTexture("centrifuge");
-        CENTRIFUGE.getGuiData().setBackgroundTexture("centrifuge");
-        ELECTROLYZER.getGuiData().setBackgroundTexture("centrifuge");
-        COKE_OVEN.getGuiData().setBackgroundTexture("coke_oven");
-        PRIMITIVE_BLAST_FURNACE.getGuiData().setBackgroundTexture("primitive_blast_furnace");
-        SUPER_BUFFER.getGuiData().setBackgroundTexture("super_buffer");
-        CHEST_BUFFER.getGuiData().setBackgroundTexture("chest_buffer");
-        COKE_OVEN.getGuiData().setBackgroundTexture("coke_oven");
-        STEAM_TURBINE.getGuiData().setBackgroundTexture("basic_tank");
-        GAS_TURBINE.getGuiData().setBackgroundTexture("basic_tank");
-        COMBUSTION_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
-        SEMIFLUID_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
-        MAGIC_ENERGY_CONVERTER.getGuiData().setBackgroundTexture("basic_tank");
-        QUANTUM_TANK.getGuiData().setBackgroundTexture("basic_tank");
-        ELECTRIC_ITEM_FILTER.getGuiData().setBackgroundTexture("electric_item_filter");
-        ELECTRIC_TYPE_FILTER.getGuiData().setBackgroundTexture("electric_type_filter");
-        ASSEMBLY_LINE.getGuiData().setBackgroundTexture("multiblock");
-        AUTOCRAFTER_ASSEMBLY_LINE.getGuiData().setBackgroundTexture("multiblock");
-        BEDROCK_DRILL.getGuiData().setBackgroundTexture("multiblock");
-        BLAST_FURNACE.getGuiData().setBackgroundTexture("multiblock");
-        IMPLOSION_COMPRESSOR.getGuiData().setBackgroundTexture("multiblock");
-        TREE_GROWTH_SIMULATOR.getGuiData().setBackgroundTexture("multiblock");
-        VACUUM_FREEZER.getGuiData().setBackgroundTexture("multiblock");
-        MULTI_SMELTER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_AUTOCLAVE.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_BOILER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_BATHING_VAT.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_CENTRIFUGE.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_CHEMICAL_REACTOR.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_ELECTROLYZER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_PULVERIZER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_ORE_WASHER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_SIFTER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_TURBINE.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_HEAT_EXCHANGER.getGuiData().setBackgroundTexture("multiblock");
-        OIL_DRILLING_RIG.getGuiData().setBackgroundTexture("multiblock");
-        ORE_MINING_RIG.getGuiData().setBackgroundTexture("multiblock");
-        PROCESSING_ARRAY.getGuiData().setBackgroundTexture("multiblock");
-        PYROLYSE_OVEN.getGuiData().setBackgroundTexture("multiblock");
-        COMBUSTION_ENGINE.getGuiData().setBackgroundTexture("multiblock");
-        DISTLLATION_TOWER.getGuiData().setBackgroundTexture("multiblock");
-        CRYO_DISTLLATION_TOWER.getGuiData().setBackgroundTexture("multiblock");
-        CRACKING_UNIT.getGuiData().setBackgroundTexture("multiblock");
+        AUTOCRAFTER.getGuiProperties().setBackgroundTexture("centrifuge");
+        CENTRIFUGE.getGuiProperties().setBackgroundTexture("centrifuge");
+        ELECTROLYZER.getGuiProperties().setBackgroundTexture("centrifuge");
+        COKE_OVEN.getGuiProperties().setBackgroundTexture("coke_oven");
+        PRIMITIVE_BLAST_FURNACE.getGuiProperties().setBackgroundTexture("primitive_blast_furnace");
+        SUPER_BUFFER.getGuiProperties().setBackgroundTexture("super_buffer");
+        CHEST_BUFFER.getGuiProperties().setBackgroundTexture("chest_buffer");
+        COKE_OVEN.getGuiProperties().setBackgroundTexture("coke_oven");
+        STEAM_TURBINE.getGuiProperties().setBackgroundTexture("basic_tank");
+        GAS_TURBINE.getGuiProperties().setBackgroundTexture("basic_tank");
+        COMBUSTION_GENERATOR.getGuiProperties().setBackgroundTexture("basic_tank");
+        SEMIFLUID_GENERATOR.getGuiProperties().setBackgroundTexture("basic_tank");
+        MAGIC_ENERGY_CONVERTER.getGuiProperties().setBackgroundTexture("basic_tank");
+        QUANTUM_TANK.getGuiProperties().setBackgroundTexture("basic_tank");
+        ELECTRIC_ITEM_FILTER.getGuiProperties().setBackgroundTexture("electric_item_filter");
+        ELECTRIC_TYPE_FILTER.getGuiProperties().setBackgroundTexture("electric_type_filter");
+        ASSEMBLY_LINE.getGuiProperties().setBackgroundTexture("multiblock");
+        AUTOCRAFTER_ASSEMBLY_LINE.getGuiProperties().setBackgroundTexture("multiblock");
+        BEDROCK_DRILL.getGuiProperties().setBackgroundTexture("multiblock");
+        BLAST_FURNACE.getGuiProperties().setBackgroundTexture("multiblock");
+        IMPLOSION_COMPRESSOR.getGuiProperties().setBackgroundTexture("multiblock");
+        TREE_GROWTH_SIMULATOR.getGuiProperties().setBackgroundTexture("multiblock");
+        VACUUM_FREEZER.getGuiProperties().setBackgroundTexture("multiblock");
+        MULTI_SMELTER.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_AUTOCLAVE.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_BOILER.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_BATHING_VAT.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_CENTRIFUGE.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_CHEMICAL_REACTOR.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_ELECTROLYZER.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_PULVERIZER.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_ORE_WASHER.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_SIFTER.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_TURBINE.getGuiProperties().setBackgroundTexture("multiblock");
+        LARGE_HEAT_EXCHANGER.getGuiProperties().setBackgroundTexture("multiblock");
+        OIL_DRILLING_RIG.getGuiProperties().setBackgroundTexture("multiblock");
+        ORE_MINING_RIG.getGuiProperties().setBackgroundTexture("multiblock");
+        PROCESSING_ARRAY.getGuiProperties().setBackgroundTexture("multiblock");
+        PYROLYSE_OVEN.getGuiProperties().setBackgroundTexture("multiblock");
+        COMBUSTION_ENGINE.getGuiProperties().setBackgroundTexture("multiblock");
+        DISTLLATION_TOWER.getGuiProperties().setBackgroundTexture("multiblock");
+        CRYO_DISTLLATION_TOWER.getGuiProperties().setBackgroundTexture("multiblock");
+        CRACKING_UNIT.getGuiProperties().setBackgroundTexture("multiblock");
         FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
-        FUSION_REACTOR.getGuiData().setBackgroundTexture("fusion_control_computer");
+        FUSION_REACTOR.getGuiProperties().setBackgroundTexture("fusion_control_computer");
     }
 
     public static void machineData(){
-        ASSEMBLER.getGuiData().getMachineData().setProgressLocation("assembler");
-        CANNER.getGuiData().getMachineData().setProgressLocation("canner");
-        CIRCUIT_ASSEMBLER.getGuiData().getMachineData().setProgressLocation("assembler");
-        COMPRESSOR.getGuiData().getMachineData().setProgressLocation("compressor");
-        CUTTER.getGuiData().getMachineData().setProgressLocation("cutter");
-        EXTRACTOR.getGuiData().getMachineData().setProgressLocation("extractor");
-        EXTRUDER.getGuiData().getMachineData().setProgressLocation("extruder");
-        LATHE.getGuiData().getMachineData().setProgressLocation("lathe");
-        MACERATOR.getGuiData().getMachineData().setProgressLocation("macerator");
-        ROCK_BREAKER.getGuiData().getMachineData().setProgressLocation("macerator");
-        WIRE_MILL.getGuiData().getMachineData().setProgressLocation("wiremill");
-        CENTRIFUGE.getGuiData().getMachineData().setProgressLocation("extractor");
-        ELECTROLYZER.getGuiData().getMachineData().setProgressLocation("extractor");
-        ORE_WASHER.getGuiData().getMachineData().setProgressLocation("ore_washer");
-        CHEMICAL_REACTOR.getGuiData().getMachineData().setProgressLocation("chemical_reactor");
-        FLUID_CANNER.getGuiData().getMachineData().setProgressLocation("canner");
-        FERMENTER.getGuiData().getMachineData().setProgressLocation("chemical_reactor");
-        FLUID_PRESS.getGuiData().getMachineData().setProgressLocation("extractor");
-        SMELTER.getGuiData().getMachineData().setProgressLocation("smelter");
-        DISTILLERY.getGuiData().getMachineData().setProgressLocation("chemical_reactor");
-        BATH.getGuiData().getMachineData().setProgressLocation("ore_washer");
-        POLARIZER.getGuiData().getMachineData().setProgressLocation("electromagnetic_separator");
-        MIXER.getGuiData().getMachineData().setProgressLocation("mixer");
-        FORMING_PRESS.getGuiData().getMachineData().setProgressLocation("compressor");
-        SIFTER.getGuiData().getMachineData().setProgressLocation("sifter");
-        ELECTROMAGNETIC_SEPARATOR.getGuiData().getMachineData().setProgressLocation("electromagnetic_separator");
-        COKE_OVEN.getGuiData().getMachineData().setProgressLocation("coke_oven");
-        PRIMITIVE_BLAST_FURNACE.getGuiData().getMachineData().setProgressLocation("coke_oven");
-        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiData().getMachineData().setMachineStatePos(84, 46).setProgressLocation("forge_hammer");
-        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiData().getMachineData().setMachineStatePos(80, 50);
-        FUSION_REACTOR.getGuiData().setEnablePlayerSlots(false)
+        ASSEMBLER.getGuiProperties().getMachineData().setProgressLocation("assembler");
+        CANNER.getGuiProperties().getMachineData().setProgressLocation("canner");
+        CIRCUIT_ASSEMBLER.getGuiProperties().getMachineData().setProgressLocation("assembler");
+        COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation("compressor");
+        CUTTER.getGuiProperties().getMachineData().setProgressLocation("cutter");
+        EXTRACTOR.getGuiProperties().getMachineData().setProgressLocation("extractor");
+        EXTRUDER.getGuiProperties().getMachineData().setProgressLocation("extruder");
+        LATHE.getGuiProperties().getMachineData().setProgressLocation("lathe");
+        MACERATOR.getGuiProperties().getMachineData().setProgressLocation("macerator");
+        ROCK_BREAKER.getGuiProperties().getMachineData().setProgressLocation("macerator");
+        WIRE_MILL.getGuiProperties().getMachineData().setProgressLocation("wiremill");
+        CENTRIFUGE.getGuiProperties().getMachineData().setProgressLocation("extractor");
+        ELECTROLYZER.getGuiProperties().getMachineData().setProgressLocation("extractor");
+        ORE_WASHER.getGuiProperties().getMachineData().setProgressLocation("ore_washer");
+        CHEMICAL_REACTOR.getGuiProperties().getMachineData().setProgressLocation("chemical_reactor");
+        FLUID_CANNER.getGuiProperties().getMachineData().setProgressLocation("canner");
+        FERMENTER.getGuiProperties().getMachineData().setProgressLocation("chemical_reactor");
+        FLUID_PRESS.getGuiProperties().getMachineData().setProgressLocation("extractor");
+        SMELTER.getGuiProperties().getMachineData().setProgressLocation("smelter");
+        DISTILLERY.getGuiProperties().getMachineData().setProgressLocation("chemical_reactor");
+        BATH.getGuiProperties().getMachineData().setProgressLocation("ore_washer");
+        POLARIZER.getGuiProperties().getMachineData().setProgressLocation("electromagnetic_separator");
+        MIXER.getGuiProperties().getMachineData().setProgressLocation("mixer");
+        FORMING_PRESS.getGuiProperties().getMachineData().setProgressLocation("compressor");
+        SIFTER.getGuiProperties().getMachineData().setProgressLocation("sifter");
+        ELECTROMAGNETIC_SEPARATOR.getGuiProperties().getMachineData().setProgressLocation("electromagnetic_separator");
+        COKE_OVEN.getGuiProperties().getMachineData().setProgressLocation("coke_oven");
+        PRIMITIVE_BLAST_FURNACE.getGuiProperties().getMachineData().setProgressLocation("coke_oven");
+        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiProperties().getMachineData().setMachineStatePos(84, 46).setProgressLocation("forge_hammer");
+        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiProperties().getMachineData().setMachineStatePos(80, 50);
+        FUSION_REACTOR.getGuiProperties().setEnablePlayerSlots(false)
                 .getMachineData().setProgressLocation("fusion_reactor").setProgressPos(163, 4).setProgressSize(149, 16);
     }
 
@@ -432,7 +431,7 @@ public class Guis {
         SOLAR_BOILER.addGuiCallback(t -> {
             t.addWidget(SolarBoilerWidget.build().setSize(70, 25, 62, 54));
         });
-        ADJUSTABLE_TRANSFORMER.getGuiData().setBackgroundTexture(new ResourceLocation(Ref.ID, "creative_generator"));
+        ADJUSTABLE_TRANSFORMER.getGuiProperties().setBackgroundTexture(new ResourceLocation(Ref.ID, "creative_generator"));
         // if (side.isClient()) {
         ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
             t.addButton(10, 18, ButtonOverlay.APAD_LEFT, false)
