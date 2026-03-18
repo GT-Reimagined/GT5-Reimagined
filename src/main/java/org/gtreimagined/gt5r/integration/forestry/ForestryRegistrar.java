@@ -9,7 +9,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
+import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
@@ -289,7 +291,7 @@ public class ForestryRegistrar extends GTMod {
                 rb.fo(materials[0].getByProducts().get(0).getLiquid(144));
             }
             rb.add(id, 96, 24);
-            AUTOCLAVE.RB().ii(Ingredient.of(Utils.ca(16, stack))).fi(UUMatter.getLiquid((int)Math.max(1, ((materials[0].getMass()+9)/10)))).io(crushed.get(materials[0])).add(id, materials[0].getMass() * 128, 384);
+            AUTOCLAVE.RB().ii(Ingredient.of(Utils.ca(16, stack))).fi(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)Math.max(1, ((materials[0].getMass()+9)/10)))).io(crushed.get(materials[0])).add(id, materials[0].getMass() * 128, 384);
         } else {
             CENTRIFUGE.RB().ii(Ingredient.of(stack)).io(TINY_DUST.get(materials[0]), getFRItem("beeswax")).outputChances(chance * 100, 3000).add(id, 128, 5);
         }
