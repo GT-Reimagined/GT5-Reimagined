@@ -75,11 +75,11 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         if (GTAPI.isModLoaded("ad_astra")){
             tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED_ORE.get(Diamond), 1));
         }
-        tables.put(Blocks.GLASS, b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 9));
-        tables.put(Blocks.GLASS_PANE, b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+        tables.put(Blocks.GLASS, b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+        tables.put(Blocks.GLASS_PANE, b -> createSilkDropWithHammer(b, Items.AIR, TINY_DUST.get(Glass), 1));
         for (DyeColor color : DyeColor.values()) {
-            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass")), b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 9));
-            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass_pane")), b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass")), b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass_pane")), b -> createSilkDropWithHammer(b, Items.AIR, TINY_DUST.get(Glass), 1));
         }
     }
 }

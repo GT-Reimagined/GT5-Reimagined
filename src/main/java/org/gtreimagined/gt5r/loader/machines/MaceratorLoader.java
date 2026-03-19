@@ -173,8 +173,8 @@ public class MaceratorLoader {
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BLAZE_ROD)).io(new ItemStack(Items.BLAZE_POWDER, 5)).add("blaze_powder", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BONE)).io(new ItemStack(Items.BONE_MEAL, 5)).add("bone_meal", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.QUARTZ_BLOCK)).io(DUST.get(Quartz, 4)).add("quartz_dust_from_block", Quartz.getMass(), 2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS)).io(DUST.get(Glass, 9)).add("glass_dust", 100, 2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS_PANES)).io(DUST.get(Glass)).add("glass_dust_from_panes", 20, 2);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS)).io(DUST.get(Glass)).add("glass_dust", 100, 2);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS_PANES)).io(TINY_DUST.get(Glass)).add("glass_dust_from_panes", 20, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(ItemTags.WOOL)).io(new ItemStack(Items.STRING, 4)).add("wool_to_string",400,2);
         PULVERIZER.RB().ii(GTCoreItems.CarbonMesh).io(DUST.get(Carbon, 16)).add("carbon_mesh_to_dust", 400, 2);
     }
