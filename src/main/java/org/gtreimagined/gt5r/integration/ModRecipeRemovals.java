@@ -30,7 +30,8 @@ public class ModRecipeRemovals {
             Material[] plates = new Material[]{Iron, Gold, Copper, Aluminium, Nickel, Silver, Lead, Cupronickel, Electrum, Steel, Uranium};
             for (Material plate : plates){
                 String plateId = plate == Aluminium ? "aluminum" : plate.getId();
-                provider.removeRecipe(new ResourceLocation("immersiveengineering", "crafting/plate_" + plateId + "hammering"));
+                provider.removeRecipe(new ResourceLocation("immersiveengineering", "crafting/plate_" + plateId + "_hammering"));
+                provider.removeRecipe(new ResourceLocation("immersiveengineering", "crafting/stick_" + plateId));
             }
         }
     }
