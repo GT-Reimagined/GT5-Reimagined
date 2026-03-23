@@ -1345,18 +1345,6 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.BRITTLEG.add(Coal, Charcoal, Materials.Lignite, Materials.PetroleumCoke, Materials.CoalCoke, Materials.LigniteCoke);
         GT5RMaterialTags.CALCITE2X.add(Materials.Pyrite, Materials.YellowLimonite);
         GT5RMaterialTags.CALCITE3X.add(Iron, Materials.BrownLimonite);
-        GT5RMaterialTags.CENT5.add(/*Chrysolite*/ Flint, /*Niter*/ Materials.Glass, /*Perlite*/ Materials.WroughtIron, Materials.DarkAsh, Materials.AnnealedCopper,
-                Materials.Cinnabar, DamascusSteel);
-        GT5RMaterialTags.CENT10.add(Materials.Magnalium, Materials.VanadiumMagnetite, Materials.BrownLimonite, Materials.YellowLimonite, Materials.BlackGranite, Materials.Cupronickel, Materials.NiobiumTitanium, Materials.BorosilicateGlass,
-                Materials.GalliumArsenide, Materials.Marble, Materials.Limestone, Materials.Invar, Materials.TinAlloy, Materials.TungstenCarbide, TitaniumGold, TritaniumAlloy, Trinitanium, EnderEye, Materials.Powellite, Materials.VanadiumGallium, Blaze,
-                Materials.TungstenSteel, Materials.Brass, Materials.Nichrome, Materials.Electrum, Materials.Bronze, Materials.Stibnite, Materials.Wulfenite, Materials.RedAlloy, Materials.SterlingSilver, Materials.RoseGold, Materials.BatteryAlloy, Materials.SolderingAlloy, Materials.TricalciumPhosphate);
-        GT5RMaterialTags.CENT15.add(Materials.Kanthal, Materials.IndiumGalliumPhosphide, Materials.BlackSteel, Materials.RedGarnet, Materials.YellowGarnet, Materials.BismuthBronze, Materials.BlackBronze, Materials.VanadiumSteel, Materials.CdInAGAlloy, Materials.CobaltBrass,
-                Materials.Pitchblende, Redstone, Materials.HSSS);
-        GT5RMaterialTags.CENT20.add(Lapis, Materials.Tetrahedrite, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.Sheldonite, Materials.HSSG, Materials.Komatiite);
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT5.all().toArray(new Material[0]));
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT10.all().toArray(new Material[0]));
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT15.all().toArray(new Material[0]));
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT20.all().toArray(new Material[0]));
         GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 64);
         FURNACE_FUELS.add(Materials.CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, DUST, 3200);

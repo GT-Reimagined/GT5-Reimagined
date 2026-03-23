@@ -1,5 +1,8 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gt5r.data.GT5RMaterialTags;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
@@ -14,6 +17,11 @@ import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtcore.data.GTCoreTags;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient.of;
@@ -34,7 +42,9 @@ public class CentrifugeLoader {
             if (!aOreByProduct.has(DUST)) return;
             CENTRIFUGE.RB().ii(of(PURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
         });
-        CENT.all().forEach(t -> {
+        Map<Material, Integer> centMap = new HashMap<>();
+        initCentLists(centMap);
+        centMap.forEach((t, euPerTick) -> {
             if (!t.has(DUST) && !t.has(LIQUID) && !t.has(GAS)) return;
             FluidStack[] fluids = t.getProcessInto().stream().filter(mat -> ((mat.m.has(GAS) || mat.m.has(LIQUID)) && !mat.m.has(DUST))).map(mat -> mat.m.has(GAS) ? mat.m.getGas(mat.s*1000) : mat.m.getLiquid(mat.s*1000)).toArray(FluidStack[]::new);
             if (fluids.length > 6) return;
@@ -50,7 +60,6 @@ public class CentrifugeLoader {
             } else {
                 b.fi(t.has(LIQUID) ? t.getLiquid(inputAmount * 1000) : t.getGas(inputAmount * 1000));
             }
-            int euPerTick = t.has(CENT5) ? 5 : t.has(CENT10) ? 10 : t.has(CENT15) ? 15 : t.has(CENT20) ? 20 : 16;
             b.io(items).fo(fluids).add("dust_" + t.getId(),t.getMass()*4, euPerTick);
         });
         //some stone dust recipe from gtnh without metal mixture
@@ -157,5 +166,23 @@ public class CentrifugeLoader {
     private static void addMethaneRecipe(Item input, int methane, int ticks, ItemStack extra){
         CENTRIFUGE.RB().ii(of(input, 1)).io(extra).fo(Methane.getGas(methane)).add(RegistryUtils.getIdFromItem(input).getPath() + "_into_methane", ticks, 5);
     }
+
+    private static void initCentLists(Map<Material, Integer> map){
+        List<Material> cent5 = new ArrayList<>(List.of(/*Chrysolite*/ Flint, /*Niter*/ Materials.Glass, /*Perlite*/ Materials.WroughtIron, Materials.DarkAsh, Materials.AnnealedCopper,
+                Materials.Cinnabar, DamascusSteel));
+        List<Material> cent10 = new ArrayList<>(List.of(Materials.Magnalium, Materials.VanadiumMagnetite, Materials.BrownLimonite, Materials.YellowLimonite, Materials.BlackGranite, Materials.Cupronickel, Materials.NiobiumTitanium, Materials.BorosilicateGlass,
+                Materials.GalliumArsenide, Materials.Marble, Materials.Limestone, Materials.Invar, Materials.TinAlloy, Materials.TungstenCarbide, TitaniumGold, TritaniumAlloy, Trinitanium, EnderEye, Materials.Powellite, Materials.VanadiumGallium, Blaze,
+                Materials.TungstenSteel, Materials.Brass, Materials.Nichrome, Materials.Electrum, Materials.Bronze, Materials.Wulfenite, Materials.RedAlloy, Materials.SterlingSilver, Materials.RoseGold, Materials.BatteryAlloy, Materials.SolderingAlloy, Materials.TricalciumPhosphate));
+        List<Material> cent15 = new ArrayList<>(List.of(Materials.Kanthal, Materials.IndiumGalliumPhosphide, Materials.BlackSteel, Materials.RedGarnet, Materials.YellowGarnet, Materials.BismuthBronze, Materials.BlackBronze, Materials.VanadiumSteel, Materials.CdInAGAlloy, Materials.CobaltBrass,
+                Materials.Pitchblende, Redstone, Materials.HSSS));
+        List<Material> cent20 = new ArrayList<>(List.of(Lapis, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.Sheldonite, Materials.HSSG, Materials.Komatiite));
+        if (!GT5RConfig.FORCE_ROASTER.get()){
+            cent20.add(Tetrahedrite);
+            cent10.add(Stibnite);
+        }
+        cent5.forEach(m -> map.put(m, 5));
+        cent10.forEach(m -> map.put(m, 10));
+        cent15.forEach(m -> map.put(m, 15));
+        cent20.forEach(m -> map.put(m, 20));    }
 }
 

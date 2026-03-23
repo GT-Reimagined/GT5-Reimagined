@@ -119,8 +119,6 @@ public class ElectrolyzerLoader {
         if (!GT5RConfig.FORCE_ROASTER.get()){
             elec60.addAll(List.of(Pyrite, Pentlandite, Sphalerite, Molybdenite));
             elec90.addAll(List.of(Cobaltite, Galena, Chalcopyrite));
-            //Stibnite
-            //Tetrahedrite
         }
         if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             elec60.add(Alumina);
