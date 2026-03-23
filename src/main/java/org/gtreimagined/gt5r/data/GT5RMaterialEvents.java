@@ -782,7 +782,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Rutile).mats(of(Materials.Cobalt, 1, Materials.Arsenic, 1, Materials.Sulfur, 1));
         event.setMaterial(Materials.Magnesite).mats(of(Materials.Magnesium, 1, Materials.Carbon, 1, Materials.Oxygen, 3)).elecTicks(80);
         event.setMaterial(Materials.Magnetite).mats(of(Iron, 3, Materials.Oxygen, 4)).elecTicks(210);
-        event.setMaterial(Materials.Malachite).mats(of(Copper, 2, Materials.Carbon, 1, Materials.Hydrogen, 2, Materials.Oxygen, 5)).elecTicks(200);
+        event.setMaterial(Materials.Malachite).mats(of(Copper, 2, Materials.Hydrogen, 2, CarbonDioxide, 3, Materials.Oxygen, 3)).elecTicks(200);
         event.setMaterial(Materials.Molybdenite).mats(of(Materials.Molybdenum, 1, Materials.Sulfur, 2)).elecTicks(144);
         event.setMaterial(Materials.Pentlandite).mats(of(Materials.Nickel, 9, Materials.Sulfur, 8)).elecTicks(748);
         event.setMaterial(Materials.Phosphate).mats(of(Materials.Phosphor, 1, Materials.Oxygen, 4)).elecTicks(360);
