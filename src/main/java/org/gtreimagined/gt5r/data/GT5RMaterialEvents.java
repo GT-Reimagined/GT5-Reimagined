@@ -298,7 +298,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Chromite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Cobaltite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Sheldonite).asOre().harvestLevel(2);
-        event.setMaterial(Materials.Galena).asOre().harvestLevel(3);
+        event.setMaterial(Materials.Galena).asOre().harvestLevel(2);
         event.setMaterial(Materials.Garnierite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Glauconite).asOre().harvestLevel(2); // TODO: Ore Gen;
         event.setMaterial(Materials.Graphite).asDust(ROD).asOre().harvestLevel(2);
