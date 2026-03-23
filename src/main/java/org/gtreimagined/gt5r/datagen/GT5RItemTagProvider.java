@@ -14,7 +14,9 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
@@ -75,5 +77,15 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(ForgeTags.DYES_GREEN).addTag(DUST.getMaterialTag(Malachite));
         this.tag(ForgeTags.DYES_WHITE).add(Items.BONE_MEAL);
         this.tag(STONE_ROCKS).remove(ROCK.get(RedGranite), ROCK.get(BlackGranite));
+        Aluminium.getTypes().forEach(t -> {
+            if (t instanceof MaterialTypeItem<?> item){
+                this.tag(TagUtils.getForgelikeItemTag(item.getMaterialTag(Aluminium).location().getPath().replace("aluminium", "aluminum"))).add(item.get(Aluminium));
+            }
+        });
+        Cupronickel.getTypes().forEach(t -> {
+            if (t instanceof MaterialTypeItem<?> item){
+                this.tag(TagUtils.getForgelikeItemTag(item.getMaterialTag(Cupronickel).location().getPath().replace("cupronickel", "constantan"))).add(item.get(Cupronickel));
+            }
+        });
     }
 }
