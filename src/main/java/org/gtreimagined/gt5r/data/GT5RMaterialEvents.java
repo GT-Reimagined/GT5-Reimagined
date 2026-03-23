@@ -1399,30 +1399,6 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.CRACK.add(Materials.RefineryGas, Materials.Naphtha, Materials.Ethane, Materials.Ethylene, Materials.Propane, Materials.Propene, Materials.Butane, Materials.Butene, Materials.Butadiene);
         GT5RMaterialTags.CRYSTALLIZE.add(Lapis, Materials.Lazurite, Materials.Sodalite, Materials.MilkyQuartz, Quartz, Materials.CertusQuartz, Materials.Fluix, Materials.Jade, Materials.Amber, Materials.Apatite, Flint, EnderEye, EnderPearl);
         GT5RMaterialTags.NON_GEMS.add(Coal, Charcoal, Materials.Lignite, Materials.CoalCoke, Materials.LigniteCoke, Materials.PetroleumCoke);
-        GT5RMaterialTags.ELEC30.add(Charcoal, Materials.Opal, Coal, Materials.CoalCoke, Materials.Lignite, Materials.SteelMagnetic, Materials.IronMagnetic, Materials.Quicklime, Materials.Quartzite,
-                Materials.SiliconDioxide, Materials.Wollastonite, Materials.CobaltOxide, Materials.Garnierite, Materials.CupricOxide, Materials.Sylvite, /*Zincite,*/Materials.Pyrolusite, /*ChromiumDioxide,*/
-                Materials.Phosphate, /*NiobiumNitride,*/ Materials.GreenSapphire, Materials.Sapphire, Materials.NeodymiumMagnetic, Materials.Cassiterite,
-                Materials.PhosphorousPentoxide, Materials.Hematite, Materials.Massicot, Materials.ArsenicTrioxide, Sugar, Materials.Magnetite, Materials.AntimonyTrioxide,
-                Materials.Salt, Materials.SodiumBisulfate, Materials.PotassiumBisulfate, Materials.HydrochloricAcid, Materials.SaltWater, Materials.HydrochloricAcid, Diamond,
-                Water, Materials.DistilledWater, Materials.HeavyWater, Materials.SemiheavyWater, Materials.TritiatedWater, Materials.MilkyQuartz, Materials.FerricChloride, Materials.Sperrylite, Materials.LithiumChloride);
-        GT5RMaterialTags.ELEC60.add(Materials.CalciumChloride, Materials.SodiumHydroxide, Materials.Propene, Materials.Ethylene, Materials.Butene, Materials.Benzene, Materials.Styrene, Materials.Ethane, Materials.Ammonia, Materials.SodiumSulfide, Materials.Methane,
-                Materials.Magnesite, Materials.HydrofluoricAcid, Materials.HydrogenFluoride, Materials.Sphalerite, /*NitroCarbon,*/ Materials.SodaAsh, Materials.Calcite, Materials.Saltpeter, Materials.Monazite,
-                /*Wollastonite,*/ Materials.NitrogenMonoxide, Materials.Butane, Materials.CarbonMonoxide, Materials.Pyrite, Materials.RedGranite, Materials.Ferrosilite, Materials.Butadiene, Materials.Amethyst,
-                Materials.Molybdenite, Materials.Ruby, /*Kyanite,*/ Materials.NitrogenDioxide, Materials.DinitrogenTetroxide, Materials.Propane, Materials.Barite, Materials.Isoprene,
-                Materials.Chromite, EnderPearl, Materials.SiliconDioxide, Materials.Apatite, Materials.SulfurTrioxide, /*Pyrochlore, */ Materials.Toluene, Materials.Phosphate,
-                Materials.Tantalite, Materials.PhosphorousPentoxide, Materials.Osmiridium, Materials.Pentlandite, Materials.Steel, Materials.Graphite, Materials.MagnesiumChloride, IodineSalt);
-        GT5RMaterialTags.ELEC90.add(Materials.Polydimethylsiloxane, Materials.AceticAcid, Materials.Olivine, Materials.Ethanol, Materials.Methanol, Materials.VinylAcetate, /*Gypsum,*/ Materials.Cobaltite,
-                /*Dymethylamine,*/ Materials.Chalcopyrite, /*Mirabilite,*/ Materials.Spodumene, /*Dolomite,*/ Materials.HypochlorousAcid, Materials.Chloramine, Materials.Bastnasite,
-                Materials.Chloromethane, Materials.Malachite, /*Borax, */ /*Kaolinite,*/ Materials.Obsidian, Materials.NitricAcid, Materials.VinylChloride, Materials.Acetone, /*Asbestos,*/ Materials.PotassiumFeldspar,
-                Materials.MethylAcetate, Materials.Sodalite, Materials.AllylChloride, Materials.Phenol, Materials.Glycerol, Materials.Talc, Materials.Soapstone, Materials.PhosphoricAcid,
-                Materials.Chlorobenzene, Materials.SulfuricAcid, Materials.Pyrope, Materials.SodiumPersulfate, Materials.Chloroform, Materials.Grossular, Materials.Spessartine, Adamantine, Materials.Almandine, Materials.Uvarovite, Materials.Andradite,
-                Emerald, Materials.Galena, Materials.Zircon);
-        GT5RMaterialTags.ELEC120.add(Materials.Clay, /*Trona,*/ Materials.BlueTopaz, Materials.Topaz, /*Pollucite,*/ Materials.CarbonDioxide, Materials.SulfurDioxide, Materials.Epichlorohydrin, Materials.Lepidolite, /*FullersEarth, Alunite,*/ Materials.Glauconite,
-                /*Mica,*/ Materials.Lazurite, Materials.Tanzanite, Materials.Biotite, Materials.StainlessSteel, Materials.Ultimet, Materials.CalciumAcetateSolution, Materials.Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ Materials.GlycerylTrinitrate);
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC30.all().toArray(new Material[0]));
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC60.all().toArray(new Material[0]));
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC90.all().toArray(new Material[0]));
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC120.all().toArray(new Material[0]));
         GT5RMaterialTags.ELEC_CIRCUIT.add(Water, Materials.DistilledWater, Materials.SodiumBisulfate);
         GT5RMaterialTags.ELECSEPG.add(Materials.VanadiumMagnetite, Materials.Magnetite);
         GT5RMaterialTags.ELECSEPI.add(Materials.YellowLimonite, Materials.BrownLimonite, Materials.Tin, Materials.Ilmenite, Materials.Hematite, Materials.Pyrite, Materials.Glauconite, Materials.Nickel, Materials.Chromite, Materials.Pentlandite, Materials.Manganese);

@@ -17,6 +17,7 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue GT5U_OIL;
     public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;
     public static ConfigEntry.BoolValue HARD_CARBON;
+    public static ConfigEntry.BoolValue FORCE_ROASTER;
     public static ConfigEntry.BoolValue MORE_LOSSY_FORGE_HAMMER;
     public static ConfigEntry.BoolValue NO_NATIVE_IRON;
     public static ConfigEntry.BoolValue GT6_ORE_GEN;
@@ -57,6 +58,7 @@ public class GT5RConfig {
         HARD_CARBON = general.addBool("hard_carbon", false, "Makes carbon fibre require the hard recipe from gt5u. - Default: false");
         MORE_LOSSY_FORGE_HAMMER = general.addBool("more_lossy_forge_hammer", true, "Makes forge hammer makes plates in a ratio of 2:1 instead of 3:2 ingots to plates. Default- true");
         COMPLICATED_CHEMICAL_PROCESSING = general.addBool("complicated_chemical_processing", false, "Enables complicated chemical recipes");
+        FORCE_ROASTER = general.addBool("force_roaster", false, "Requires sulfides to be processed in the roaster.");
         ADD_LOOT = general.addBool("add_loot", true, "Enables chest loot for GT5R. - Default: true");
         ConfigSection worldgen = config.add("worldgen");
         NO_NATIVE_IRON = worldgen.addBool("no_native_iron", false, "Replaces all spawns of native iron with hematite. This config will be true if gt6_ore_gen is true. - Default: false");
