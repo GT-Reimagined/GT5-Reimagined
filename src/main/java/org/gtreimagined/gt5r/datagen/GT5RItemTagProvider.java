@@ -1,7 +1,9 @@
 package org.gtreimagined.gt5r.datagen;
 
+import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -12,6 +14,7 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
 
 import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
@@ -27,6 +30,8 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
     @Override
     protected void processTags(String domain) {
         super.processTags(domain);
+        this.tag(ItemTags.STONE_TOOL_MATERIALS).remove(((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble").asItem());
+        this.tag(ItemTags.STONE_TOOL_MATERIALS).remove(((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble").asItem());
         //this.tag(GT5RTags.CIRCUITS_EXTREME).add(GT5RData.CircuitDataStorage);
         this.tag(ROD.getMaterialTag(Wood)).addTag(Tags.Items.RODS_WOODEN);
         this.tag(GT5RTags.RESISTORS).add(GT5RItems.Resistor, GT5RItems.SMDResistor);

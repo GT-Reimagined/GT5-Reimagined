@@ -16,6 +16,7 @@ import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gtcore.GTCore;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreCables;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -26,6 +27,7 @@ import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemCover;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.recipe.ingredient.PropertyIngredient;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -242,6 +244,16 @@ public class Parts {
       provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_shovel", "tools", SHOVEL.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "R", "S");
       provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_hoe", "tools", HOE.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "RR", " S");
       provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_sword", "tools", SWORD.getToolItem(BlackGranite), ImmutableMap.of('R', ROCK.getMaterialTag(BlackGranite), 'S', Items.STICK), "R", "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_pickaxe_cobble", "tools", PICKAXE.getToolItem(RedGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble"), 'S', Items.STICK), "RRR", " S ");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_axe_cobble", "tools", AXE.getToolItem(RedGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble"), 'S', Items.STICK), "RR", "RS");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_shovel_cobble", "tools", SHOVEL.getToolItem(RedGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble"), 'S', Items.STICK), "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_hoe_cobble", "tools", HOE.getToolItem(RedGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble"), 'S', Items.STICK), "RR", " S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "red_granite_sword_cobble", "tools", SWORD.getToolItem(RedGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble"), 'S', Items.STICK), "R", "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_pickaxe_cobble", "tools", PICKAXE.getToolItem(BlackGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble"), 'S', Items.STICK), "RRR", " S ");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_axe_cobble", "tools", AXE.getToolItem(BlackGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble"), 'S', Items.STICK), "RR", "RS");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_shovel_cobble", "tools", SHOVEL.getToolItem(BlackGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble"), 'S', Items.STICK), "R", "S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_hoe_cobble", "tools", HOE.getToolItem(BlackGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble"), 'S', Items.STICK), "RR", " S");
+      provider.addItemRecipe(consumer, GT5Reimagined.ID, "black_granite_sword_cobble", "tools", SWORD.getToolItem(BlackGranite), ImmutableMap.of('R', ((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble"), 'S', Items.STICK), "R", "R", "S");
   }
 
   private static void moldRecipe(Consumer<FinishedRecipe> output, GTRecipeProvider provider, Item mold, String... shapes){
