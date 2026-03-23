@@ -25,12 +25,12 @@ public class MortarLoader {
         });
         BEARING_ROCK.all().forEach(m -> {
             if (m.has(DUST)){
-                MORTAR.RB().ii(BEARING_ROCK.getMaterialIngredient(m, 1)).io(SMALL_DUST.get(m)).add(m.getId() + "_small_dust");
+                MORTAR.RB().ii(BEARING_ROCK.getMaterialIngredient(m, 1)).io(SMALL_DUST.get(m)).add(m.getId() + "_small_dust_from_bearing_rock");
             }
         });
         ROCK.all().forEach(m -> {
             if (m.has(DUST)){
-                MORTAR.RB().ii(ROCK.getMaterialIngredient(m, 1)).io(SMALL_DUST.get(m)).add(m.getId() + "_small_dust");
+                MORTAR.RB().ii(ROCK.getMaterialIngredient(m, 1)).io(SMALL_DUST.get(m)).add(m.getId() + "_small_dust_from_rock");
             }
         });
     }
