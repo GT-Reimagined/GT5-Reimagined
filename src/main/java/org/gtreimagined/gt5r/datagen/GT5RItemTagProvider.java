@@ -14,6 +14,8 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.material.MaterialTypeBlock;
+import org.gtreimagined.gtlib.material.MaterialTypeBlock.IBlockGetter;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.ore.CobbleStoneType;
 import org.gtreimagined.gtlib.util.TagUtils;
@@ -78,13 +80,19 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(ForgeTags.DYES_WHITE).add(Items.BONE_MEAL);
         this.tag(STONE_ROCKS).remove(ROCK.get(RedGranite), ROCK.get(BlackGranite));
         Aluminium.getTypes().forEach(t -> {
+            var tagBuilder = this.tag(TagUtils.getForgelikeItemTag(t.getMaterialTag(Aluminium).location().getPath().replace("aluminium", "aluminum")));
             if (t instanceof MaterialTypeItem<?> item){
-                this.tag(TagUtils.getForgelikeItemTag(item.getMaterialTag(Aluminium).location().getPath().replace("aluminium", "aluminum"))).add(item.get(Aluminium));
+                tagBuilder.add(item.get(Aluminium));
+            } else if (t instanceof MaterialTypeBlock<?> block && block.get() instanceof MaterialTypeBlock.IBlockGetter getter){
+                tagBuilder.add(getter.get(Aluminium).asItem());
             }
         });
         Cupronickel.getTypes().forEach(t -> {
+            var tagBuilder = this.tag(TagUtils.getForgelikeItemTag(t.getMaterialTag(Cupronickel).location().getPath().replace("cupronickel", "constantan")));
             if (t instanceof MaterialTypeItem<?> item){
-                this.tag(TagUtils.getForgelikeItemTag(item.getMaterialTag(Cupronickel).location().getPath().replace("cupronickel", "constantan"))).add(item.get(Cupronickel));
+                tagBuilder.add(item.get(Cupronickel));
+            } else if (t instanceof MaterialTypeBlock<?> block && block.get() instanceof MaterialTypeBlock.IBlockGetter getter){
+                tagBuilder.add(getter.get(Cupronickel).asItem());
             }
         });
     }
