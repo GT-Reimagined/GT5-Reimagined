@@ -152,8 +152,8 @@ public class WorldGenLoader {
         event.smallOre(new SmallOreBuilder(id("silver_nether_end")).withMaterial(Silver).withAmountPerChunk(8).atHeight(20, 40).inDimensions(NETHER, END).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("nickel_nether_end")).withMaterial(Nickel).withAmountPerChunk(8).atHeight(20, 40).inDimensions(NETHER, END).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("lapis")).withMaterial(Lapis).withAmountPerChunk(4).atHeight(-34, 16).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(moon).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("diamond")).withMaterial(Diamond).withAmountPerChunk(3).atHeight(-59, -52).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(moon).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("diamond_nether")).withMaterial(Diamond).withAmountPerChunk(3).atHeight(5, 10).inDimensions(NETHER).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("diamond")).withMaterial(Diamond).withAmountPerChunk(6).atHeight(-59, -52).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(moon).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("diamond_nether")).withMaterial(Diamond).withAmountPerChunk(6).atHeight(5, 10).inDimensions(NETHER).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("emerald")).withMaterial(Emerald).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("ruby")).withMaterial(Ruby).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("sapphire")).withMaterial(Sapphire).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
@@ -169,7 +169,7 @@ public class WorldGenLoader {
         //event.smallOre(new SmallOreBuilder().withMaterial(FoolsRuby).withAmountPerChunk(1).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("red_garnet")).withMaterial(RedGarnet).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("yellow_garnet")).withMaterial(YellowGarnet).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("redstone")).withMaterial(Redstone).withAmountPerChunk(8).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(mars).inDimensions(moon).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("redstone")).withMaterial(Redstone).withAmountPerChunk(16).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(mars).inDimensions(moon).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("redstone_nether")).withMaterial(Redstone).withAmountPerChunk(8).atHeight(5, 20).inDimension(NETHER).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("chromite")).withMaterial(Chromite).withAmountPerChunk(8).atHeight(20, 50).inDimensions(END).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("platinum")).withMaterial(Platinum).withAmountPerChunk(8).atHeight(20, 40).inDimensions(END).inDimensions(mars).buildMaterial());
@@ -177,7 +177,7 @@ public class WorldGenLoader {
         event.smallOre(new SmallOreBuilder(id("quartz")).withMaterial(Quartz).withAmountPerChunk(64).atHeight(30, 120).inDimensions(NETHER).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("saltpeter")).withMaterial(Saltpeter).withAmountPerChunk(8).atHeight(10, 60).inDimensions(NETHER).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("sulfur")).withMaterial(Sulfur).withAmountPerChunk(32).atHeight(5, 60).inDimensions(NETHER).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("sulfur_overworld")).withMaterial(Sulfur).withAmountPerChunk(8).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("sulfur_overworld")).withMaterial(Sulfur).withAmountPerChunk(16).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).buildMaterial());
     }
 
     private static void initStoneVeins(GTWorldGenEvent ev) {
