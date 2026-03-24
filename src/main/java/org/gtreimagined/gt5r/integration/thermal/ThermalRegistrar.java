@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration;
+package org.gtreimagined.gt5r.integration.thermal;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.Holder;
@@ -14,7 +14,6 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.common.world.BiomeModifier.Phase;
-import org.gtreimagined.gtcore.data.GTCoreMaterials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
