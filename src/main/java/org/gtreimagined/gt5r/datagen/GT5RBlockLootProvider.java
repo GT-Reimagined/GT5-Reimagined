@@ -15,7 +15,7 @@ import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.block.BlockFakeCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
+import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
