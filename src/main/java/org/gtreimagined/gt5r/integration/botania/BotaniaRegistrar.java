@@ -10,6 +10,7 @@ import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.event.MaterialEvent;
+import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 
@@ -24,7 +25,7 @@ public class BotaniaRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Materials.Manasteel).asMetal(1811, GTMaterialTypes.PLATE)
+        event.setMaterial(Materials.Manasteel).asMetal(1811, GTMaterialTypes.PLATE, MaterialTags.MAGIC)
                 .tool(Iron).toolQuality(3).toolSpeed(12).toolDurability(300).toolEnchantments(ImmutableMap.of(Enchantments.MOB_LOOTING, 2, Enchantments.BLOCK_FORTUNE, 2)).handleMaterial(Livingwood).build()
                 .mats(ImmutableMap.of(Iron, 1, Magic, 1));
         ROD.replacement(Livingwood, () -> botItem("livingwood_twig"));
