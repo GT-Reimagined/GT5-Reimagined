@@ -133,6 +133,7 @@ public class Materials {
     public static Material Naquadria = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "naquadria", 0x1e1e1e, SHINY, Elements.Nq522));
     public static Material Neutronium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "neutronium", 0xfafafa, DULL, Elements.Nt));
     public static Material Adamantium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "adamantium", 0xffffff, SHINY, Elements.Ad));
+    public static Material Magic = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "magic", 0xff00ff, SHINY, Elements.Ma));
     /**
      *** Isotopes
      **/
@@ -217,6 +218,12 @@ public class Materials {
     public static Material Steeleaf = GTCoreMaterials.Steeleaf;
     public static Material Knightmetal = GTCoreMaterials.Knightmetal;
     public static Material FierySteel = GTCoreMaterials.FierySteel;
+
+    public static Material Livingwood = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "livingwood", 0x3c1e00, WOOD, "botania"));
+    public static Material Manasteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "manasteel", 0x6ec8fa, SHINY, "botania"));
+    public static Material Terrasteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "terrasteel", 0x6ec832, SHINY, "botania"));
+    public static Material Elementium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "elementium", 0xfa78fa, SHINY, "botania"));
+    public static Material GaiaSpirit = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "gaia_spirit", 0xfafafa, SHINY, "botania"));
 
     /**
      ** Dusts

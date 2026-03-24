@@ -15,6 +15,7 @@ import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
 import org.gtreimagined.gt5r.integration.CCTweakedRegistrar;
 import org.gtreimagined.gt5r.integration.ModRecipeRemovals;
+import org.gtreimagined.gt5r.integration.botania.BotaniaRegistrar;
 import org.gtreimagined.gt5r.integration.forestry.ForestryRegistrar;
 import org.gtreimagined.gt5r.integration.ie.IERegistrar;
 import org.gtreimagined.gt5r.integration.mekanism.MekanismRegistrar;
@@ -200,6 +201,7 @@ public class GT5Reimagined extends GTMod {
         new ThermalRegistrar();
         new MekanismRegistrar();
         new ForestryRegistrar();
+        new BotaniaRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
         GTLibDynamics.clientProvider(ID,
