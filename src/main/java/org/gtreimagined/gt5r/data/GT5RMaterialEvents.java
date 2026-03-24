@@ -138,7 +138,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Naquadah).asOre().asMetal(5400);
         event.setMaterial(Materials.EnrichedNaquadah).asMetal(4500, POSITIVE_CHANGING_RGB);
         event.setMaterial(Materials.Naquadria).asMetal(9000, POSITIVE_CHANGING_RGB);
-        event.setMaterial(Adamantium).asMetal(5225);
+        event.setMaterial(Adamantium).asMetal(5225, MAGIC);
         /**
          ***  Solids
          **/
@@ -195,7 +195,7 @@ public class GT5RMaterialEvents {
 
         event.setMaterial(Lumium).flags(PLATE);
         event.setMaterial(Signalum).flags(FINE_WIRE);
-        event.setMaterial(Enderium).asMetal(1071).forceBF(false);
+        event.setMaterial(Enderium).asMetal(1071, MAGIC).forceBF(false);
         /**
          **  Dusts
          **/
