@@ -26,13 +26,5 @@ public class ModRecipeRemovals {
             provider.removeRecipe(new ResourceLocation("thermal", "fire_charge/electrum_ingot_2"));
             provider.removeRecipe(new ResourceLocation("thermal", "fire_charge/invar_ingot_3"));
         }
-        if (GTAPI.isModLoaded("immersiveengineering")){
-            Material[] plates = new Material[]{Iron, Gold, Copper, Aluminium, Nickel, Silver, Lead, Cupronickel, Electrum, Steel, Uranium};
-            for (Material plate : plates){
-                String plateId = plate == Aluminium ? "aluminum" : plate.getId();
-                provider.removeRecipe(new ResourceLocation("immersiveengineering", "crafting/plate_" + plateId + "_hammering"));
-                provider.removeRecipe(new ResourceLocation("immersiveengineering", "crafting/stick_" + plateId));
-            }
-        }
     }
 }
