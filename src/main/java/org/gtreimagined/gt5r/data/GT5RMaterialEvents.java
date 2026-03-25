@@ -204,6 +204,7 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.Ash).asDust();
         event.setMaterial(Materials.AntimonyTrioxide).asDust();
+        event.setMaterial(Chad).asDust();
         event.setMaterial(Materials.Clay).asDust();
         event.setMaterial(Materials.CupricOxide).asDust();
         event.setMaterial(Materials.DarkAsh).asDust();

@@ -42,12 +42,17 @@ public class BathLoader {
                 .ii(RecipeIngredient.of(GTMaterialTypes.DUST.get(Wood),1))
                 .fi(Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
-                .add("paper",16);
+                .add("paper",100);
         BATH.RB()
                 .ii(RecipeIngredient.of(Items.SUGAR_CANE,1))
                 .fi(Water.getLiquid(125))
                 .io(new ItemStack(Items.PAPER))
-                .add("paper_1",16);
+                .add("paper_from_sugarcane",50);
+        BATH.RB()
+                .ii(DUST.getMaterialIngredient(Chad, 1))
+                .fi(Water.getLiquid(125))
+                .io(new ItemStack(Items.PAPER))
+                .add("paper_from_chad",50);
         BATH.RB()
                 .ii(RecipeIngredient.of(Items.NETHER_STAR,1))
                 .fi(Radon.getGas(1250))

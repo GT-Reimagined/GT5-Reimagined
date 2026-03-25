@@ -245,6 +245,7 @@ public class Materials {
     public static Material Calcite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "calcite", 0xfae6dc, DULL));
     public static Material CalciumChloride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "calcium_chloride", 0xebebfa, DULL));
     public static Material CalciumSulfate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "calcium_sulfate", 0xf0dcd2, DULL));
+    public static Material Chad = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "chad", 0xfafafa, NONE));
     public static Material Clay = GTCoreMaterials.Clay;
     public static Material CobaltOxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_oxide", 0x668000, DULL));
     public static Material Concrete = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "concrete", 0x646464, ROUGH));

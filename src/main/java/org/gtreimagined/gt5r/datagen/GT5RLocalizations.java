@@ -537,14 +537,17 @@ public class GT5RLocalizations {
         protected void overrides() {
             String[] fluids = new String[]{"hot_molten_lithium_chloride", "hot_molten_tin", "hot_molten_sodium"};
             for (String s : fluids) {
-                override("fluid_type.antimatter_shared.liquid_" + s, Utils.lowerUnderscoreToUpperSpaced(s));
-                override("item.antimatter_shared.liquid_" + s + "_bucket", Utils.lowerUnderscoreToUpperSpaced(s) + " Bucket");
+                override("fluid_type.gt.liquid_" + s, Utils.lowerUnderscoreToUpperSpaced(s));
+                override("item.gt.liquid_" + s + "_bucket", Utils.lowerUnderscoreToUpperSpaced(s) + " Bucket");
             }
-            override("fluid_type.antimatter_shared.liquid_nitrogen", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen"));
-            override("item.antimatter_shared.liquid_nitrogen_bucket", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen") + " Bucket");
-            override("fluid_type.antimatter_shared.concrete", "Wet Concrete");
-            override("item.antimatter_shared.concrete_bucket", "Wet Concrete Bucket");
+            override("fluid_type.gt.liquid_nitrogen", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen"));
+            override("item.gt.liquid_nitrogen_bucket", Utils.lowerUnderscoreToUpperSpaced("liquid_nitrogen") + " Bucket");
+            override("fluid_type.gt.concrete", "Wet Concrete");
+            override("item.gt.concrete_bucket", "Wet Concrete Bucket");
             override(Ref.ID, "jei.category.pulverizer", "Macerator/Pulverizer");
+            override(Ref.SHARED_ID, "item.gt.chad_dust", "Chad");
+            override(Ref.SHARED_ID, "item.gt.small_chad_dust", "Small Chad");
+            override(Ref.SHARED_ID, "item.gt.tiny_chad_dust", "Tiny Chad");
         }
     }
 
