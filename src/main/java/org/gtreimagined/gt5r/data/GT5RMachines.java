@@ -254,10 +254,10 @@ public class GT5RMachines {
     public static DrumMachine INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
     public static DrumMachine STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
     public static DrumMachine TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
-    public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof();
-    public static DrumMachine TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000);
-    public static DrumMachine TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000);
-    public static DrumMachine ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof();
+    public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof().magicProof();
+    public static DrumMachine TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000).magicProof();
+    public static DrumMachine TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000).magicProof();
+    public static DrumMachine ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof().magicProof();
 
     public static MultiblockTankMachine WOOD_TANK;
     public static MultiblockTankMachine[] STEEL_TANKS;
