@@ -604,8 +604,6 @@ public class Materials {
     public static Material Tar = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tar", 0x0a0a0a, NONE));
     public static Material ThoriumSalt = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "thorium_salt", 0x001e00, NONE));
     public static Material TitaniumTetrachloride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "titanium_tetrachloride", 0xd40d5c, NONE));
-    public static Material UUAmplifier = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "uu_amplifier", 0x600080, NONE));
-    public static Material UUMatter = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "uu_matter", 0x8000c4, NONE));
 
     /**
      ** Fuels
