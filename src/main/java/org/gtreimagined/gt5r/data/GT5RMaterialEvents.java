@@ -1346,7 +1346,10 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.BRITTLEG.add(Coal, Charcoal, Materials.Lignite, Materials.PetroleumCoke, Materials.CoalCoke, Materials.LigniteCoke);
         GT5RMaterialTags.CALCITE2X.add(Materials.Pyrite, Materials.YellowLimonite);
         GT5RMaterialTags.CALCITE3X.add(Iron, Materials.BrownLimonite);
-        GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 64);
+        GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 44);
+        RECIPE_MASS.add(Tin, 48);
+        RECIPE_MASS.add(Copper, 50);
+        RECIPE_MASS.add(Bronze, 52);
         FURNACE_FUELS.add(Materials.CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, BLOCK, 32000);
