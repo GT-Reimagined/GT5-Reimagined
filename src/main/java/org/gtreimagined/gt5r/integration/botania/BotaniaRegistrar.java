@@ -25,17 +25,35 @@ public class BotaniaRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Materials.Manasteel).asMetal(1811, GTMaterialTypes.PLATE, MaterialTags.MAGIC)
+        event.setMaterial(Materials.Manasteel).asMetal(1811, LONG_ROD, MaterialTags.MAGIC)
                 .tool(Iron).toolQuality(3).toolSpeed(12).toolDurability(300).toolEnchantments(ImmutableMap.of(Enchantments.MOB_LOOTING, 2, Enchantments.BLOCK_FORTUNE, 2)).handleMaterial(Livingwood).build()
-                .mats(ImmutableMap.of(Iron, 1, Magic, 1));
+                .mats(ImmutableMap.of(Steel, 1, Magic, 1));
+        event.setMaterial(Terrasteel).asMetal(2561, MaterialTags.MAGIC)
+                .tool().toolDamage(4).toolQuality(4).toolSpeed(16).toolDurability(2048).handleMaterial(Livingwood).build()
+                .mats(ImmutableMap.of(Manasteel, 1, Diamond, 1, EnderPearl, 1));
+        event.setMaterial(Elementium).asMetal(2811, MaterialTags.MAGIC)
+                .tool().toolDamage(3).toolQuality(3).toolSpeed(14).toolDurability(512).handleMaterial(Dreamwood).build();
+        event.setMaterial(GaiaSpirit).asMetal(3945, LONG_ROD, MaterialTags.MAGIC, MaterialTags.POSITIVE_CHANGING_RGB)
+                .tool().toolDamage(4).toolQuality(4).toolSpeed(20).toolDurability(2048).handleMaterial(Elementium).build();
         ROD.replacement(Livingwood, () -> botItem("livingwood_twig"));
+        ROD.replacement(Dreamwood, () -> botItem("dreamwood_twig"));
         INGOT.replacement(Materials.Manasteel, () -> botItem("manasteel_ingot"));
         NUGGET.replacement(Materials.Manasteel, () -> botItem("manasteel_nugget"));
+        INGOT.replacement(Terrasteel, () -> botItem("terrasteel_ingot"));
+        NUGGET.replacement(Terrasteel, () -> botItem("terrasteel_nugget"));
+        INGOT.replacement(Elementium, () -> botItem("elementium_ingot"));
+        NUGGET.replacement(Elementium, () -> botItem("elementium_nugget"));
+        INGOT.replacement(GaiaSpirit, () -> botItem("gaia_ingot"));
         GTTools.PICKAXE.addReplacement(Materials.Manasteel, () -> botItem("manasteel_pick"));
         GTTools.AXE.addReplacement(Materials.Manasteel, () -> botItem("manasteel_axe"));
         GTTools.SWORD.addReplacement(Materials.Manasteel, () -> botItem("manasteel_sword"));
         GTTools.SHOVEL.addReplacement(Materials.Manasteel, () -> botItem("manasteel_shovel"));
         GTTools.HOE.addReplacement(Materials.Manasteel, () -> botItem("manasteel_hoe"));
+        GTTools.PICKAXE.addReplacement(Elementium, () -> botItem("elementium_pick"));
+        GTTools.AXE.addReplacement(Elementium, () -> botItem("elementium_axe"));
+        GTTools.SWORD.addReplacement(Elementium, () -> botItem("elementium_sword"));
+        GTTools.SHOVEL.addReplacement(Elementium, () -> botItem("elementium_shovel"));
+        GTTools.HOE.addReplacement(Elementium, () -> botItem("elementium_hoe"));
     }
 
     @Override
