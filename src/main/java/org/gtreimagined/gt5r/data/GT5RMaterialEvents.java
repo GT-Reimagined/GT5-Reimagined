@@ -1211,8 +1211,9 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Netherite, 12);
         GTCoreBlocks.createHopper(Chromium, 14);
         GTCoreBlocks.createHopper(Platinum, 18);
-        //if space
-        //GTCoreBlocks.createHopper(SpaceModRegistrar.Desh, 18);
+        if (GTAPI.isModLoaded("ad_astra")){
+            GTCoreBlocks.createHopper(SpaceModRegistrar.Desh, 18);
+        }
         if (GTAPI.isModLoaded("botania")){
             GTCoreBlocks.createHopper(Terrasteel, 18);
         }
@@ -1224,10 +1225,10 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Palladium, 36);
         GTCoreBlocks.createHopper(Iridium, 36);
         GTCoreBlocks.createHopper(Osmium, 36);
-        //GTCoreBlocks.createHopper(TritaniumAlloy, 36);
         if (GTAPI.isModLoaded("botania")){
             GTCoreBlocks.createHopper(Elementium, 36);
         }
+        GTCoreBlocks.createHopper(TritaniumAlloy, 36);
         GTCoreBlocks.createHopper(Adamantium, 36);
     }
 
