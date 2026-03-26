@@ -4,11 +4,13 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
@@ -18,6 +20,11 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 
 public class BotaniaRegistrar extends GTMod {
+    public BotaniaRegistrar(){
+        if (isEnabled()){
+            FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(BotaniaRecipes::init));
+        }
+    }
     @Override
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
 
