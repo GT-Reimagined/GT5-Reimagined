@@ -49,7 +49,7 @@ public class BotaniaRegistrar extends GTMod {
         GTTools.SWORD.addReplacement(Materials.Manasteel, () -> botItem("manasteel_sword"));
         GTTools.SHOVEL.addReplacement(Materials.Manasteel, () -> botItem("manasteel_shovel"));
         GTTools.HOE.addReplacement(Materials.Manasteel, () -> botItem("manasteel_hoe"));
-        GTTools.PICKAXE.addReplacement(Elementium, () -> botItem("elementium_pick"));
+        GTTools.PICKAXE.addReplacement(Elementium, () -> botItem("elementium_pickaxe"));
         GTTools.AXE.addReplacement(Elementium, () -> botItem("elementium_axe"));
         GTTools.SWORD.addReplacement(Elementium, () -> botItem("elementium_sword"));
         GTTools.SHOVEL.addReplacement(Elementium, () -> botItem("elementium_shovel"));
