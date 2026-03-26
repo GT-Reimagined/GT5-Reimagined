@@ -1204,12 +1204,18 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Molybdenum, 8);
         GTCoreBlocks.createHopper(Electrum, 9);
         GTCoreBlocks.createHopper(StainlessSteel, 9);
+        if (GTAPI.isModLoaded("botania")){
+            GTCoreBlocks.createHopper(Manasteel, 9);
+        }
         GTCoreBlocks.createHopper(Titanium, 12);
         GTCoreBlocks.createHopper(Netherite, 12);
         GTCoreBlocks.createHopper(Chromium, 14);
         GTCoreBlocks.createHopper(Platinum, 18);
         //if space
         //GTCoreBlocks.createHopper(SpaceModRegistrar.Desh, 18);
+        if (GTAPI.isModLoaded("botania")){
+            GTCoreBlocks.createHopper(Terrasteel, 18);
+        }
         GTCoreBlocks.createHopper(TungstenSteel, 27);
         GTCoreBlocks.createHopper(TungstenCarbide, 27);
         //GTCoreBlocks.createHopper(DuraniumAlloy, 27);
@@ -1219,6 +1225,9 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Iridium, 36);
         GTCoreBlocks.createHopper(Osmium, 36);
         //GTCoreBlocks.createHopper(TritaniumAlloy, 36);
+        if (GTAPI.isModLoaded("botania")){
+            GTCoreBlocks.createHopper(Elementium, 36);
+        }
         GTCoreBlocks.createHopper(Adamantium, 36);
     }
 
