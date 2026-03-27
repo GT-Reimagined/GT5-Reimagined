@@ -292,7 +292,7 @@ public class ForestryRegistrar extends GTMod {
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_mellow")).io(getFRItem("honeydew"), Items.QUARTZ, getFRItem("beeswax")).outputChances(60.0, 30.0, 20.0).add("fr_mellow_comb", 128, 5);
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_koalin")).io(Items.CLAY_BALL, getFRItem("honey_drop")).outputChances(100.0, 90.0).add("fr_kaolin_comb", 128, 5);
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_vintage")).io(getFRItem("beeswax"), getFRItem("honeydew"), getFRItem("amber")).outputChances(100.0, 90.0, 50.0).add("fr_vintage_comb", 128, 5);
-        FLUID_PRESS.RB().ii(getFRItem("bee_comb_sponge")).fo(Honey.getLiquid(100)).add("sponge_comb", 400, 2);
+        FLUID_PRESS.RB().ii(getFRItem("bee_comb_sponge")).io(Items.SPONGE).fo(Honey.getLiquid(100)).outputChances(0.02).add("sponge_comb", 400, 2);
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_sculken")).io(getFRItem("beeswax"), getFRItem("experience_drop"), Items.SCULK).outputChances(100.0, 90.0, 20.0).add("fr_sculken_comb", 128, 5);
     }
 
