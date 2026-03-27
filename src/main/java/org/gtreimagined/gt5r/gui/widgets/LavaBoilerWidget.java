@@ -67,7 +67,7 @@ public class LavaBoilerWidget extends Widget {
             drawTexture(stack, gui.handler.getGuiTexture(), realX(), y, ((AbstractContainerScreenAccessor)gui.screen).getImageWidth() + 18, 54 - lvl, 10, lvl);
         }
         if (lava >= 1) {
-            float per = (float) lava * 16000;
+            float per = (float) lava / 16000;
             if (per > 1.0F) {
                 per = 1.0F;
             }
