@@ -92,7 +92,6 @@ public class ForestryRegistrar extends GTMod {
 
 
     public static void init() {
-
         ItemStack comb;
 
         //Organic Line
@@ -278,6 +277,10 @@ public class ForestryRegistrar extends GTMod {
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(EnderEye, 2), RecipeIngredient.of(Items.END_STONE, 5)).fi(Glass.getLiquid(L / 2 )).io(new ItemStack(getFRItem("electron_tube_ender"), 4)).add("electron_tube_ender", 64, 32);
         FLUID_PRESS.RB().ii(getFRItem("honey_drop")).io(getFRItem("propolis_normal")).outputChances(0.05).fo(Honey.getLiquid(100)).add("honey_drop", 400, 2);
         FLUID_PRESS.RB().ii(getFRItem("honeydew")).fo(Honey.getLiquid(100)).add("honeydew", 400, 2);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_honey")).io(getFRItem("beeswax"), getFRItem("honey_drop")).outputChances(100.0, 90.0).add("fr_honey_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_cocoa")).io(getFRItem("beeswax"), Items.COCOA_BEANS).outputChances(100.0, 50.0).add("fr_cocoa_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_simmering")).io(getFRItem("refractory_wax"), getFRItem("honey_drop")).outputChances(100.0, 70.0).add("fr_simmering_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_stringy")).io(getFRItem("propolis_normal"), getFRItem("honey_drop")).outputChances(100.0, 40.0).add("fr_stringy_comb", 128, 5);
     }
 
     public static void addProcessMain(String id, ItemStack stack, Material... materials) {
