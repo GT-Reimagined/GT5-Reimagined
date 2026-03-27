@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.integration.forestry;
 import forestry.api.genetics.IBreedingTracker;
 import forestry.api.genetics.IIndividual;
 import forestry.api.genetics.capability.IIndividualHandlerItem;
+import forestry.core.fluids.ForestryFluids;
 import forestry.core.utils.GeneticsUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -16,6 +17,7 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
@@ -47,6 +49,7 @@ public class ForestryRegistrar extends GTMod {
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
             GTCombs.init();
+            LIQUID.addReplacement(Honey, ForestryFluids.HONEY::getFluid);
         }
         if (event == RegistrationEvent.DATA_READY){
             BlockEntityScanner.addScannerFunction((specimen, data, player) -> {
