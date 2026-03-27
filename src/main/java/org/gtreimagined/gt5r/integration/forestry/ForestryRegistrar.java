@@ -281,6 +281,19 @@ public class ForestryRegistrar extends GTMod {
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_cocoa")).io(getFRItem("beeswax"), Items.COCOA_BEANS).outputChances(100.0, 50.0).add("fr_cocoa_comb", 128, 5);
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_simmering")).io(getFRItem("refractory_wax"), getFRItem("honey_drop")).outputChances(100.0, 70.0).add("fr_simmering_comb", 128, 5);
         CENTRIFUGE.RB().ii(getFRItem("bee_comb_stringy")).io(getFRItem("propolis_normal"), getFRItem("honey_drop")).outputChances(100.0, 40.0).add("fr_stringy_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_frozen")).io(getFRItem("beeswax"), getFRItem("honey_drop"), Items.SNOWBALL, getFRItem("pollen_cluster_crystalline")).outputChances(80.0, 70.0, 40.0, 20.0).add("fr_frozen_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_dripping")).io(getFRItem("honeydew"), getFRItem("honey_drop")).outputChances(100.0, 40.0).add("fr_dripping_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_silky")).io(getFRItem("honey_drop"), getFRItem("propolis_silky")).outputChances(100.0, 80.0).add("fr_silky_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_parched")).io(getFRItem("beeswax"), getFRItem("honey_drop")).outputChances(100.0, 90.0).add("fr_parched_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_mysterious")).io(getFRItem("propolis_pulsating"), getFRItem("honey_drop")).outputChances(100.0, 40.0).add("fr_mysterious_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_powdery")).io(Items.GUNPOWDER, getFRItem("honey_drop"), getFRItem("beeswax")).outputChances(90.0, 20.0, 20.0).add("fr_powdery_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_wheaten")).io(Items.WHEAT, getFRItem("honey_drop"), getFRItem("beeswax")).outputChances(80.0, 20.0, 20.0).add("fr_wheaten_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_mossy")).io(getFRItem("beeswax"), getFRItem("honey_drop")).outputChances(100.0, 90.0).add("fr_mossy_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_mellow")).io(getFRItem("honeydew"), Items.QUARTZ, getFRItem("beeswax")).outputChances(60.0, 30.0, 20.0).add("fr_mellow_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_koalin")).io(Items.CLAY_BALL, getFRItem("honey_drop")).outputChances(100.0, 90.0).add("fr_kaolin_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_vintage")).io(getFRItem("beeswax"), getFRItem("honeydew"), getFRItem("amber")).outputChances(100.0, 90.0, 50.0).add("fr_vintage_comb", 128, 5);
+        FLUID_PRESS.RB().ii(getFRItem("bee_comb_sponge")).fo(Honey.getLiquid(100)).add("sponge_comb", 400, 2);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_sculken")).io(getFRItem("beeswax"), getFRItem("experience_drop"), Items.SCULK).outputChances(100.0, 90.0, 20.0).add("fr_sculken_comb", 128, 5);
     }
 
     public static void addProcessMain(String id, ItemStack stack, Material... materials) {
