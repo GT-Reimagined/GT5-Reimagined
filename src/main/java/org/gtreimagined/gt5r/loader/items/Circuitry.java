@@ -428,6 +428,17 @@ public class Circuitry {
                             of(GT5RItems.Capacitor, 8),of(GTMaterialTypes.FINE_WIRE.get(YttriumBariumCuprate), 4))
                     .io(new ItemStack(GT5RItems.CircuitWetware,1))
                     .fi(material.getLiquid(base * 4)).add("wetware_circuit_using_" + material.getId(),20*20, 32768);
+            //Data Stick
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardPlastic), of(CIRCUITS_GOOD), of(NANDMemoryChip, 32),
+                            of(RandomAccessMemoryChip, 4), FINE_WIRE.getMaterialIngredient(RedAlloy, 8), PLATE.getMaterialIngredient(Plastic, 4))
+                    .io(DataStick)
+                    .fi(material.getLiquid(base * 8)).add("data_stick_using_" + material.getId(), 400, 90);
+            //Data Orb
+            CIRCUIT_ASSEMBLER.RB().ii(of(CircuitBoardEpoxy), of(CIRCUITS_ADVANCED), of(RandomAccessMemoryChip, 4),
+                            of(NorMemoryChip, 32), of(NANDMemoryChip, 64), FINE_WIRE.getMaterialIngredient(Platinum, 32))
+                    .io(DataOrb)
+                    .fi(material.getLiquid(base * 8)).add("data_orb_using_" + material.getId(), 400, 90);
+
         }
     }
 }
