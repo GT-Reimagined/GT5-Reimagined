@@ -68,8 +68,8 @@ public class BotaniaRegistrar extends GTMod {
         return GTAPI.isModLoaded(getId());
     }
 
-    private Item botItem(String id) {
-        return RegistryUtils.getItemFromID(getId(), id);
+    static Item botItem(String id) {
+        return RegistryUtils.getItemFromID("botania", id);
     }
 
     @Override
