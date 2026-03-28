@@ -26,6 +26,7 @@ public class BlastFurnaceLoader {
         /* PRIMITIVE */
         PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(WroughtIron,1)).io(INGOT.get(Steel, 1), SMALL_DUST.get(DarkAsh,8)).outputChances(1.0, 0.5).add("steel_ingot",3600);
         PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Iron,1)).io(INGOT.get(WroughtIron, 1)).add("wrought_iron_ingot_from_dust",1800);
+        PRIMITIVE_BLAST_FURNACE.RB().ii(DUST.getMaterialIngredient(Steel,1)).io(INGOT.get(Steel, 1)).add("steel_ingot_from_dust",7200);
         if (!GTAPI.isModLoaded("tfc")){
             PRIMITIVE_BLAST_FURNACE.RB().ii(INGOT.getMaterialIngredient(Iron,1)).io(INGOT.get(WroughtIron, 1)).add("wrought_iron_ingot",1800);
         }
