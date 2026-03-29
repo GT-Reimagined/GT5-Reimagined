@@ -154,7 +154,7 @@ jobs:
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(dev|sources|javadoc).jar
           name: 'GT5-Reimagined-${{ inputs.version }}-${{ env.MC_VERSION }}'
-          version: '${{ inputs.version }}-${{ env.MC_VERSION }}'
+          version: '${{ inputs.version }}'
           version-type: ${{ inputs.release-type }}
           changelog-file: ${{ env.CHANGELOG_LOCATION }}
           loaders: forge
@@ -172,7 +172,7 @@ jobs:
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(dev|sources).jar
           name: 'GT5-Reimagined-${{ inputs.version }}-${{ env.MC_VERSION }}'
-          version: '${{ inputs.version }}-${{ env.MC_VERSION }}'
+          version: '${{ inputs.version }}'
           version-type: ${{ inputs.release-type }}
           changelog-file: ${{ env.CHANGELOG_LOCATION }}
           loaders: forge
