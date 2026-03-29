@@ -1,8 +1,79 @@
-- **_Warning: the modid has been renamed from gregtech to gti, so some stuff in world may break. I managed to remap blocks and items, but machines will still lose stuff inside them and such. therefore I reccomend picking up all machines and pipes. Make sure to backup your worlds before loading this._**
-- Textures have changed to more match original gt5u, though the base textures are still colored
-- Bunch of recipes have been changed/added, not really sure what all has been done
-- changed 9x battery buffer to 8x
-- added 16x battery buffer
-- added more fluid slots to electrolyzer and centrifuge
-- See commit history on github for a more info on what changed
-- Note: on servers you have to run the server twice the very first time you add this mod, or drag out a jar from inside gti in the META-INF/jars folder
+- Decreased weight of gt6 style ore veins
+- Added config for hard circuits
+- Disabled ie ore gen
+- Added compat for bc oil in distillation tower recipes
+- Removed mortar tools
+- Added mortar block from gt6
+- Added bronze cauldron
+- Nerfed log to plank recipes for some modded planks
+- Lowered harvest level of tetrahedrite fromt tier 2 to tier 1
+- Fixed colors in wooden water bucket
+- Added red and black granite tools
+- Added recipes for glass dust and thermal's blaze-like mob dusts to mortar
+- Started work on guide book, only a couple pages right now
+- Renabled gt tools of vanilla materials
+- Nerfed durability of vanilla tools
+- Nerfed mending enchantment
+- Changed drain recipe to use wrench in middle
+- Added recipe for wrought iron to pbf
+- Fixed efficiency tooltip of steam turbines
+- Changed recipes of computercraft computers, turtles, and other computer related blocks
+- Added forestry electron tube recipes to assembler
+- Changed optional resource packs so they are actually built in instead of copying a file to the resourcepacks folder
+- Changed textures of computercraft blocks
+- Fixed large boiler being able to consume lava buckets
+- Fixed issues with solar boiler and solar panels when a pipe is placed on top
+- Made it possible to scan forestry bees, butteryflies, and saplings in the scanner. still need to add the fake recipes to jei for those though 
+- Added recipes to get honey out of forestry honey drops and honeydew in fluid press
+- Added GT Combs and GT Bees when forestry is loaded
+- Replaced zinc byproduct with gallium in sphalerite byproducts
+- Added some missing plate and foils that were causing broken recipes
+- Fixed missing recipes for vacuum tubes and resistors in assembler
+- Fixed missing recipe for smd diode
+- Fixed crafting recipe for resistors not giving enough
+- Fixed integrated logic circuit wafer trying to use jade as a lens
+- Removed the additional versions of circuits up to ev, it's just one item per tier now.
+- Hid circuit parts for easy circuit recipe when hard circuits is enabled
+- Added gallium as additional byproduct from processing bauxite
+- Added recipes to smelt purified ore and pure dusts in pbf
+- Fixed circuit recipe not using red alloy wire
+- Added glass pane to glass dust recipe in forge hammer and macerator
+- Made hammers give glass dust when breaking glass
+- Added cutter recipes for modded planks
+- Fixed steam macerator not showing any recipes when clicking the progress bar
+- Removed uu matter and uu amplifier
+- Fixed drums not saving fluid when picked up
+- Removed dumb ingot alloying recipes by forestry, railcraft, and thermal
+- Fixed signalum, lumium, and enderium missing rods
+- Added sticky resin to slimeball tag
+- Added sticky resin to slimeball conversion recipe for recipes that don't use the tag
+- Made fiery blood, fiery tears, and molten adamantium, ironwood, knightmetal, fiery steel, enderium, and manasteel magical fluids
+- Removed ie hammering recipes for plates
+- Removed ie rod recipes
+- Nerfed coke oven speed
+- Made galena tier 2 instead of tier 3
+- Made malachite output co2 instead of carbon and oxygen separately
+- Added option to force roaster for sulfides
+- Added aluminium items to aluminum tags, added cupronickel items to constantan tags
+- Removed ie block recipes - added them to stone cutter instead
+- Added GT tools for Manasteel, Terrasteel, Elementium, and Gaia Spirit
+- Made netherite, tungsten, tungstensteel, tungsten carbide, and adamantium  pipes and drums magic proof
+- Buffed small diamond, small redstone, small sulfur, and other small gem small ore rates
+- Added teslatite small ore gen
+- Added chad
+- Removed vanilla's 3 sugarcane to paper recipe - mortor your sugarcane instead
+- Hopefully improved processing times for lead, tin, copper, and bronze in cutter and such
+- Added hoppers and drums for botania materials
+- Added desh and tritanium alloy hoppers
+- Changed manasteel recipe to use steel instead of iron
+- Replaced gt honey with forestry honey when forestry is loaded
+- Added recipes for circuit assemblers
+- Added missing hard circuit recipes for data sticks and data orbs
+- Added centrifuging recipes for forestry combs
+- Fixed lava boiler displaying lava level as always full
+- Fixed lava boiler not displaying as active when active
+- Added recipe for botania mana gun using powder barrel
+
+### **Note: some of the compat changes I added may not have config options yet, but I plan to add options eventually, they're just not a priority.**
+
+Full changelog: [0.5.1...0.5.2](https://github.com/GT-Reimagined/GT5-Reimagined/compare/0.5.1...0.5.2)
