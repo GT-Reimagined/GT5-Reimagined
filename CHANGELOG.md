@@ -73,6 +73,8 @@
 - Fixed lava boiler displaying lava level as always full
 - Fixed lava boiler not displaying as active when active
 - Added recipe for botania mana gun using powder barrel
+- Added steel dust to steel ingot recipe to pbf
+- fixed park slots in bronze machines not being actual park slots
 
 ### **Note: some of the compat changes I added may not have config options yet, but I plan to add options eventually, they're just not a priority.**
 
