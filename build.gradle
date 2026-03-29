@@ -41,7 +41,10 @@ allprojects {
     }
 
     if (isCI) {
-        version = version + "-" + gitHash()
+        def isRELEASE = System.getenv("GITHUB_RELEASE")
+        if (!isRELEASE){
+            version = version + "-" + gitHash()
+        }
         println("In CI mode")
     }
 }
