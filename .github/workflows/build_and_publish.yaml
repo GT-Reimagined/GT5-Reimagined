@@ -96,7 +96,7 @@ jobs:
           commit_message: "Bump version to ${{ github.event.inputs.version }}"
           commit_options: "--no-verify"
           file_pattern: gradle.properties
-          tagging_message: "v${{ github.event.inputs.version }}"
+          tagging_message: "${{ github.event.inputs.version }}"
 
       - name: Check for publishing
         run: |
@@ -124,7 +124,7 @@ jobs:
         if: env.publish-gh == 'true'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v${{ inputs.version }}"
+          tag_name: "${{ inputs.version }}"
           token: ${{ secrets.PAT }}
           files: "build/libs/*.jar"
           body_path: CHANGELOG.md
