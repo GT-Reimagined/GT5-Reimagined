@@ -174,6 +174,7 @@ public class Materials {
     public static Material CobaltBrass = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_brass", 0xb4b4a0, METALLIC));
     public static Material Cupronickel = GTCoreMaterials.Cupronickel;
     public static Material DamascusSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "damascus_steel", 0x6e6e6e, METALLIC));
+    public static Material Efrine = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "efrine", 0x506B48, METALLIC));
     public static Material Electrum = GTCoreMaterials.Electrum;
     public static Material HSSE = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hsse", 0x336600, METALLIC)).setDisplayNameString("HSS-E");
     public static Material HSSG = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hssg", 0x999900, METALLIC)).setDisplayNameString("HSS-G");

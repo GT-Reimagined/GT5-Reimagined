@@ -157,6 +157,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
         event.setMaterial(DamascusSteel).asMetal(2000, 1500, PLATE).forceBF(false);
+        event.setMaterial(Efrine).asMetal(2246);
         event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.GalliumArsenide).asMetal(295, 1200, PLATE, ALLOY);
         event.setMaterial(Materials.HSSE).asMetal(5400, FRAME);
@@ -1048,6 +1049,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(DamascusSteel).tool().toolDamage(2).toolDurability(1280).toolSpeed(8).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 5)).build();
         //event.setMaterial(Duranium).addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1))
                 //.addTools(6.5F, 16.0F, 5120, 5);
+        event.setMaterial(Efrine).tool().toolDamage(3).toolQuality(3).toolSpeed(9).toolDurability(500).toolEnchantments(of(Enchantments.MOB_LOOTING, 2, Enchantments.BLOCK_FORTUNE, 2)).build();
         event.setMaterial(Materials.Electrum).tool().toolDamage(2).toolSpeed(12).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 3)).build();
         event.setMaterial(Materials.EnrichedNaquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
         event.setMaterial(Materials.HSSE).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
@@ -1207,6 +1209,7 @@ public class GT5RMaterialEvents {
         if (GTAPI.isModLoaded("botania")){
             GTCoreBlocks.createHopper(Manasteel, 9);
         }
+        GTCoreBlocks.createHopper(Efrine, 9);
         GTCoreBlocks.createHopper(Titanium, 12);
         GTCoreBlocks.createHopper(Netherite, 12);
         GTCoreBlocks.createHopper(Chromium, 14);
@@ -1237,6 +1240,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Alumina).addByProduct(Materials.Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
         event.setMaterial(Materials.Amethyst).addByProduct(Materials.Amethyst);
+        event.setMaterial(NetheriteScrap).addByProduct(NetheriteScrap, Efrine).bathMercury(Efrine);
         event.setMaterial(Materials.Monazite).addByProduct(Materials.Thorium, Materials.Neodymium, Materials.RareEarth);
         event.setMaterial(Materials.Apatite).addByProduct(Materials.TricalciumPhosphate, Materials.Fluorite);
         event.setMaterial(Materials.Andradite).addByProduct(Materials.YellowGarnet, Iron, Materials.Boron);
@@ -1314,7 +1318,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Pyrope).addByProduct(Materials.RedGarnet, Materials.Magnesium);
         event.setMaterial(Materials.Rutile).addByProduct(Materials.Hematite, Materials.Zircon);
         event.setMaterial(Materials.Zircon).addByProduct(Materials.Rutile, Materials.Hafnium, Materials.Uraninite);
-        event.setMaterial(Quartz).addByProduct(Netherrack);
+        event.setMaterial(Quartz).addByProduct(Netherrack).bathMercury(Efrine);
         event.setMaterial(Materials.MilkyQuartz).addByProduct(Materials.Barite);
         event.setMaterial(Materials.RedGarnet).addByProduct(Materials.Spessartine, Materials.Pyrope, Materials.Almandine);
         event.setMaterial(Redstone).addByProduct(Materials.Cinnabar, Materials.RareEarth, Glowstone);
