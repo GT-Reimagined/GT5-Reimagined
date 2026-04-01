@@ -32,7 +32,7 @@ public class BotaniaRegistrar extends GTMod {
 
     @Override
     public void onMaterialEvent(MaterialEvent event) {
-        event.setMaterial(Materials.Manasteel).asMetal(1811, LONG_ROD, MaterialTags.MAGIC)
+        event.setMaterial(Materials.Manasteel).asMetal(2311, LONG_ROD, MaterialTags.MAGIC)
                 .tool(Iron).toolQuality(3).toolSpeed(12).toolDurability(300).toolEnchantments(ImmutableMap.of(Enchantments.MOB_LOOTING, 2, Enchantments.BLOCK_FORTUNE, 2)).handleMaterial(Livingwood).build()
                 .mats(ImmutableMap.of(Steel, 1, Magic, 1));
         event.setMaterial(Terrasteel).asMetal(2561, MaterialTags.MAGIC)
