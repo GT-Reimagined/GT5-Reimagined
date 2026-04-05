@@ -1318,7 +1318,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Pyrope).addByProduct(Materials.RedGarnet, Materials.Magnesium);
         event.setMaterial(Materials.Rutile).addByProduct(Materials.Hematite, Materials.Zircon);
         event.setMaterial(Materials.Zircon).addByProduct(Materials.Rutile, Materials.Hafnium, Materials.Uraninite);
-        event.setMaterial(Quartz).addByProduct(Netherrack).bathMercury(Efrine);
+        event.setMaterial(Quartz).addByProduct(Efrine).bathMercury(Efrine);
         event.setMaterial(Materials.MilkyQuartz).addByProduct(Materials.Barite);
         event.setMaterial(Materials.RedGarnet).addByProduct(Materials.Spessartine, Materials.Pyrope, Materials.Almandine);
         event.setMaterial(Redstone).addByProduct(Materials.Cinnabar, Materials.RareEarth, Glowstone);
