@@ -237,11 +237,11 @@ public class Guis {
         SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
 
         STEAM_ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(COMPRESSOR).add(FL_IN, 53, 63);
-        STEAM_FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FURNACE).add(FL_IN, 53, 63);
-        STEAM_EXTRACTOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(EXTRACTOR).add(FL_IN, 53, 63);
-        STEAM_MACERATOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(MACERATOR).add(FL_IN, 53, 63);
-        STEAM_FORGE_HAMMER.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FORGE_HAMMER).add(FL_IN, 53, 63);
+        STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_EXTRACTOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_MACERATOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
         STEAM_CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(PARK, 80, 63).add(FL_IN, 35, 63);
         STEAM_SIFTER.add(IT_IN, 53, 25)
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
