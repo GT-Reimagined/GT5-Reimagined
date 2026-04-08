@@ -133,6 +133,8 @@ public class ChemicalReactorLoader {
         //SULFURIC_ACID FROM HYDROGEN SULFIDE
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(1000), HydrogenSulfide.getGas(1000)).fo(SulfuricAcid.getLiquid(1500)).add("sulfuric_acid_1",320, 30);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(1000), HydrogenSulfide.getGas(1000)).fo(SulfurDioxide.getGas(1000), Water.getLiquid(1000)).add("sulfur_dioxide_1", 40, 30);
+        //WATER AND SULFUR FROM HYDROGEN SULFIDE
+        CHEMICAL_REACTOR.RB().fi(HydrogenSulfide.getGas(2000), SulfurDioxide.getGas(1000)).fo(Water.getLiquid(2000)).io(DUST.get(Sulfur, 3)).add("sulfur_from_sulfur_dioxide", 160, 30);
         //GLUE
         CHEMICAL_REACTOR.RB().fi(Ethylene.getGas(1000), AceticAcid.getLiquid(2000), Methanol.getLiquid(1000)).fo(Glue.getLiquid(4000)).add("glue",240,30);
         //BIODIESEL FROM METHANOL
