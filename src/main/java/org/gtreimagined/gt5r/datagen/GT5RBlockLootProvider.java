@@ -65,6 +65,7 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED_ORE.get(Coal), 1));
         tables.put(GT5RBlocks.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
         tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDropWithHammer(b, RAW_ORE.get(NetheriteScrap), CRUSHED_ORE.get(NetheriteScrap), 1));
+        tables.put(Blocks.NETHER_QUARTZ_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Quartz), CRUSHED_ORE.get(Quartz), 1));
         tables.put(Blocks.ANDESITE, b -> createSingleItemTableWithSilkTouch(Blocks.ANDESITE, ((CobbleStoneType) VanillaStoneTypes.ANDESITE).getBlock("cobble")));
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType) VanillaStoneTypes.DIORITE).getBlock("cobble")));
         tables.put(Blocks.GRANITE, b -> createSingleItemTableWithSilkTouch(Blocks.GRANITE, ((CobbleStoneType) VanillaStoneTypes.GRANITE).getBlock("cobble")));
