@@ -76,17 +76,8 @@ public class Circuitry {
                         .put('c', FINE_WIRE.getMaterialTag(RedAlloy))
                         .put('D', GT5RItems.Diode).build(), "SCc", "CDC", "cCS");
 
-        var wire = TagUtils.getItemTag(new ResourceLocation(Ref.ID, SubTag.COPPER_WIRE.getId()+"_"+ PipeSize.VTINY.getId()));
         // MANUAL VAC TUBE CRAFTING
         provider.addItemRecipe(output, "vac_tube", GT5RItems.VacuumTube,
-                ImmutableMap.<Character, Object>builder()
-                        .put('G', GT5RItems.GlassTube)
-                        .put('P', Items.PAPER)
-                        .put('W', wire)
-                        .build(),
-                "PGP", "WWW");
-
-        provider.addItemRecipe(output, GT5Reimagined.ID, "vacuum_tube_1", "vac_tube", GT5RItems.VacuumTube,
                 ImmutableMap.<Character, Object>builder()
                         .put('G', GT5RItems.GlassTube)
                         .put('P', Items.PAPER)
@@ -322,7 +313,6 @@ public class Circuitry {
 
     private static void hardCircuitParts(){
         ASSEMBLER.RB().ii(of(GlassTube), FINE_WIRE.getMaterialIngredient(Copper, 2), of(TagUtils.getForgelikeItemTag("paper"), 2)).io(VacuumTube).add("vacuum_tube_fine_wire", 120, 8);
-        ASSEMBLER.RB().ii(of(GlassTube), of(GT5RBlocks.WIRE_COPPER.getBlockItem(PipeSize.VTINY), 2), of(TagUtils.getForgelikeItemTag("paper"), 2)).io(VacuumTube).add("vacuum_tube", 120, 8);
         ASSEMBLER.RB().ii(of(GT5RItems.SiliconChip, 1), FINE_WIRE.getMaterialIngredient(Tin, 6)).fi(Plastic.getLiquid(L)).io(new ItemStack(GT5RItems.Transistor,8)).add("transistor",80, 24);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Plastic, 1), FOIL.getMaterialIngredient(Aluminium, 2)).io(new ItemStack(GT5RItems.Capacitor, 2)).add("capacitor", 80, 96);
         ASSEMBLER.RB().ii(PLATE.getMaterialIngredient(Gallium, 1), FINE_WIRE.getMaterialIngredient(AnnealedCopper, 6)).fi(Plastic.getLiquid(L * 2)).io(new ItemStack(GT5RItems.SMDTransistor,32)).add("smd_transistor",80, 96);
