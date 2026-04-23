@@ -407,7 +407,7 @@ public class GT5RMachines {
      ** Hatches
      **/
     public static HatchMachine DYNAMO_HATCH = new HatchMachine(GT5Reimagined.ID, "dynamo_hatch", GT5RCovers.COVER_DYNAMO_COLORED, "dynamo").addFlags(EU).setOverlayTextures(Textures.HATCH_OVERLAY_HANDLER);
-    public static HatchMachine ENERGY_HATCH = new HatchMachine(GT5Reimagined.ID, "energy_hatch", GT5RCovers.COVER_ENERGY_COLORED, "energy").addFlags(EU).setOverlayTextures(Textures.HATCH_OVERLAY_HANDLER);
+    public static HatchMachine ENERGY_HATCH = new HatchMachine(GT5Reimagined.ID, "energy_hatch", GT5RCovers.COVER_ENERGY_COLORED, "energy").addFlags(EU).setAmps(2).setOverlayTextures(Textures.HATCH_OVERLAY_HANDLER);
     public static HatchMachine INPUT_HATCH = new HatchMachine(GT5Reimagined.ID, "input_hatch", COVERINPUT, "fluid_input").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).setTile(BlockEntityInputHatch::new);
     public static HatchMachine OUTPUT_HATCH = new HatchMachine(GT5Reimagined.ID, "output_hatch", COVEROUTPUT, "fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips);
     public static HatchMachine INPUT_BUS = new HatchMachine(GT5Reimagined.ID, "input_bus", COVERINPUT, "item_input").setTiers(ULV, LV, MV, HV, EV).addFlags(GUI, ITEM).addTooltipInfo(GT5RMachines::getItemHatchTooltips).setTile(BlockEntityInputBus::new);
