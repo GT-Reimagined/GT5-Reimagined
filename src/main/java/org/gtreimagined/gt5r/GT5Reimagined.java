@@ -200,7 +200,7 @@ public class GT5Reimagined extends GTMod {
         new IERegistrar();
         new ThermalRegistrar();
         new MekanismRegistrar();
-        new ForestryRegistrar();
+        if (GTAPI.isModLoaded(Ref.MOD_FR)) new ForestryRegistrar();
         new BotaniaRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
