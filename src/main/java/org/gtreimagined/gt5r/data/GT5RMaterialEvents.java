@@ -157,7 +157,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
         event.setMaterial(DamascusSteel).asMetal(2000, 1500, PLATE).forceBF(false);
-        event.setMaterial(Efrine).asMetal(2246);
+        event.setMaterial(Efrine).asMetal(2246, 1600);
         event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.GalliumArsenide).asMetal(295, 1200, PLATE, ALLOY);
         event.setMaterial(Materials.HSSE).asMetal(5400, FRAME);
