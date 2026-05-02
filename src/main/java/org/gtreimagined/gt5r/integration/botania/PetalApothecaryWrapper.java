@@ -56,6 +56,7 @@ public final class PetalApothecaryWrapper implements IFluidHandler {
     @Override
     public int fill(FluidStack fluidStack, FluidAction fluidAction) {
         this.state = level.getBlockState(pos);
+        if (fluidStack.getAmount() < 1000) return 0;
         if (state.getValue(PetalApothecaryBlock.FLUID) == State.EMPTY){
             if (fluidStack.getFluid() == Fluids.WATER){
                 if (fluidAction.execute()) this.level.setBlock(pos, state.setValue(PetalApothecaryBlock.FLUID, State.WATER), 3);
