@@ -1,10 +1,20 @@
 package org.gtreimagined.gt5r.integration.botania;
 
 import com.google.common.collect.ImmutableMap;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
@@ -14,6 +24,9 @@ import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import vazkii.botania.common.block.block_entity.PetalApothecaryBlockEntity;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
@@ -22,6 +35,7 @@ public class BotaniaRegistrar extends GTMod {
     public BotaniaRegistrar(){
         if (isEnabled()){
             FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(BotaniaRecipes::init));
+            MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, this::onAttachCaps);
         }
     }
     @Override
@@ -75,5 +89,19 @@ public class BotaniaRegistrar extends GTMod {
     @Override
     public String getId() {
         return "botania";
+    }
+
+    private void onAttachCaps(AttachCapabilitiesEvent<BlockEntity> event){
+        if (event.getObject() instanceof PetalApothecaryBlockEntity){
+            event.addCapability(new ResourceLocation(GT5Reimagined.ID, "petal_apothecary"), new ICapabilityProvider() {
+                @Override
+                public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction direction) {
+                    if (capability == ForgeCapabilities.FLUID_HANDLER){
+                        return LazyOptional.of(() -> new PetalApothecaryWrapper(event.getObject().getBlockState(), event.getObject().getLevel(), event.getObject().getBlockPos())).cast();
+                    }
+                    return LazyOptional.empty();
+                }
+            });
+        }
     }
 }
