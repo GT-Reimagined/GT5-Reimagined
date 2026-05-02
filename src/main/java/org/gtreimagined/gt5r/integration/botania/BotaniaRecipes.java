@@ -3,12 +3,13 @@ package org.gtreimagined.gt5r.integration.botania;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.common.Tags.Blocks;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
-import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.TagUtils;
-import vazkii.botania.common.item.BotaniaItems;
+import vazkii.botania.common.block.BotaniaBlocks;
+import vazkii.botania.common.crafting.StateIngredientHelper;
 
 import java.util.function.Consumer;
 
@@ -29,5 +30,7 @@ public class BotaniaRecipes {
                         'D', botItem("mana_diamond"),
                         'L', TagUtils.getItemTag(new ResourceLocation("botania", "livingwood_logs")),
                         'G', GT5RBlocks.POWDER_BARREL), "PRD", " LG", "  L");
+        output.accept(new PureDaisyRecipe(new ResourceLocation("botania", "livingrock"), StateIngredientHelper.of(Blocks.STONE), BotaniaBlocks.livingrock.defaultBlockState()));
+
     }
 }
