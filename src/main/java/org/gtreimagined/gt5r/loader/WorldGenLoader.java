@@ -270,7 +270,7 @@ public class WorldGenLoader {
             ev.stoneLayer(new StoneLayerBuilder(id("basalt_ores_2")).withStone(BASALT).withWeight(1).inDimensions(overworld).addOres(
                     new StoneLayerOre(Bastnasite, U24, 24, 32),
                     new StoneLayerOre(Monazite, U32, 24, 32),
-                    new StoneLayerOre(Manganese, U8, 16, 48)
+                    new StoneLayerOre(Pyrolusite, U8, 16, 48)
             ).buildVein());
             ev.stoneLayer(new StoneLayerBuilder(id("marble_ores")).withStone(MARBLE).withWeight(1).inDimensions(overworld).addOres(
                     new StoneLayerOre(Cassiterite, U16, 20, 120),
