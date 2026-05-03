@@ -1260,7 +1260,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Cassiterite).addByProduct(Materials.Tin);
         event.setMaterial(Materials.Chalcopyrite).addByProduct(Materials.Pyrite, Materials.Cobalt, Materials.Cadmium).bathMercury(Gold).bathPersulfate(Materials.Cobalt);
         event.setMaterial(Materials.Chromium).addByProduct(Iron, Materials.Magnesium);
-        event.setMaterial(Materials.Chromite).addByProduct(Iron, Materials.Magnesium);
+        event.setMaterial(Materials.Chromite).addByProduct(Iron, Materials.Magnesium).thermal(Chromium);
         event.setMaterial(Materials.Cinnabar).addByProduct(Redstone, Materials.Sulfur, Glowstone);
         event.setMaterial(Materials.Clay).addByProduct(Materials.Clay);
         event.setMaterial(Coal).addByProduct(Materials.Lignite, Materials.Thorium);
