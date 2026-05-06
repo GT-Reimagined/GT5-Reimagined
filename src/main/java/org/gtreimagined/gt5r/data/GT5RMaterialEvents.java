@@ -64,7 +64,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Titanium).asMetal(1941, PLATE, LONG_ROD, SCREW, BOLT, RING, GEAR, FRAME, SMALL_GEAR, ROTOR, SPRING).forceBF(true);
         event.setMaterial(Materials.Vanadium).asMetal(2183, HOT_INGOT);
         event.setMaterial(Materials.Chromium).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE).forceBF(false);
-        event.setMaterial(Materials.Manganese).asMetal(1519, FOIL).asOre();
+        event.setMaterial(Materials.Manganese).asMetal(1519, FOIL);
         //Iron, added by vanilla
         event.setMaterial(Materials.Cobalt).asMetal(1768, CRUSHED_ORE);
         event.setMaterial(Materials.Nickel).asMetal(1728, PLATE).asOre();
