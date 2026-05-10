@@ -19,7 +19,7 @@ public class PyrolysisOvenLoader {
         PYROLYSE_OVEN.RB().ii(DUST.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale", 200, 120);
         PYROLYSE_OVEN.RB().ii(RAW_ORE.getMaterialIngredient(Materials.OilShale, 16)).fo(Materials.Oil.getLiquid(400)).add("oilshale_raw", 200, 120);
         PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(1).get()).fi(Water.getLiquid(1000)).fo(Materials.Biomass.getLiquid(1500)).add("biomass", 100, 10);
-        PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(2).get()).fi(Water.getLiquid(1500)).fo(Materials.Biomass.getLiquid(1500)).add("fermented_biomass", 200, 10);
+        if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()) PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(GTCoreItems.Biochaff, 1), SELECTOR_TAG_INGREDIENTS.get(2).get()).fi(Water.getLiquid(1500)).fo(FermentedBiomass.getLiquid(1500)).add("fermented_biomass", 200, 10);
         PYROLYSE_OVEN.RB().ii(DUST.getMaterialIngredient(Sugar, 23), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(DUST.get(Charcoal, 12)).fo(Water.getLiquid(11000)).add("sugar_to_charcoal", 320, 64);
         PYROLYSE_OVEN.RB().ii(DUST.getMaterialIngredient(Sugar, 23), SELECTOR_TAG_INGREDIENTS.get(2).get()).fi(Nitrogen.getGas(500)).io(DUST.get(Charcoal, 12)).fo(Water.getLiquid(11000)).add("sugar_to_charcoal_2", 160, 96);
         PYROLYSE_OVEN.RB().ii(RecipeIngredient.of(ItemTags.LOGS, 16), SELECTOR_TAG_INGREDIENTS.get(5).get()).io(new ItemStack(Items.CHARCOAL, 20)).fo(WoodGas.getGas(1500)).add("wood_gas", 640, 64);
