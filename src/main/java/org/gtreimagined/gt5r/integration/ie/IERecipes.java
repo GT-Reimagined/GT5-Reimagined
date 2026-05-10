@@ -3,15 +3,22 @@ package org.gtreimagined.gt5r.integration.ie;
 import blusunrize.immersiveengineering.api.crafting.IngredientWithSize;
 import blusunrize.immersiveengineering.api.crafting.builders.AlloyRecipeBuilder;
 import blusunrize.immersiveengineering.api.crafting.builders.ArcFurnaceRecipeBuilder;
+import blusunrize.immersiveengineering.api.crafting.builders.BottlingMachineRecipeBuilder;
+import blusunrize.immersiveengineering.common.register.IEItems;
+import blusunrize.immersiveengineering.common.register.IEItems.Ingredients;
+import blusunrize.immersiveengineering.common.register.IEItems.Molds;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 
 import java.util.function.Consumer;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.INGOT;
+import static org.gtreimagined.gtlib.data.GTMaterialTypes.NUGGET;
 
 public class IERecipes {
 
@@ -63,5 +70,12 @@ public class IERecipes {
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iearcfurnace/alloy_black_bronze"));
         provider.removeRecipe(new ResourceLocation("immersiveengineering", "crusher/sandstone"));
         provider.removeRecipe(new ResourceLocation("immersiveengineering", "crusher/red_sandstone"));
+        BottlingMachineRecipeBuilder.builder(new ItemStack(Ingredients.EMPTY_SHELL, 2))
+                .setUseInputArray(2)
+                .addInput(Molds.MOLD_BULLET_CASING)
+                .addInput(new IngredientWithSize(NUGGET.getMaterialTag(Copper), 3))
+                .addFluidTag(Plastic.getFluidTag(), Ref.L)
+                .addResult(Molds.MOLD_BULLET_CASING)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iebottler/empty_shell"));
     }
 }
