@@ -61,5 +61,7 @@ public class IERecipes {
                 .addIngredient("input", new IngredientWithSize(INGOT.getMaterialTag(Copper), 3))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Electrum), 2))
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iearcfurnace/alloy_black_bronze"));
+        provider.removeRecipe(new ResourceLocation("immersiveengineering", "crusher/sandstone"));
+        provider.removeRecipe(new ResourceLocation("immersiveengineering", "crusher/red_sandstone"));
     }
 }
