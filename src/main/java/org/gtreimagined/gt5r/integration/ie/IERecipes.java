@@ -34,5 +34,32 @@ public class IERecipes {
                 .addIngredient("input", INGOT.getMaterialTag(Copper))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Gold), 4))
                 .build(consumer, new ResourceLocation("immersiveengineering", "arcfurnace/alloy_rose_gold"));
+        AlloyRecipeBuilder.builder(INGOT.get(SterlingSilver, 5))
+                .addInput(INGOT.getMaterialTag(Copper))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Silver), 4))
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iealloysmelter/sterling_silver"));
+        ArcFurnaceRecipeBuilder.builder(INGOT.get(SterlingSilver, 5))
+                .setEnergy(51200).setTime(100)
+                .addIngredient("input", INGOT.getMaterialTag(Copper))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Silver), 4))
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iearcfurnace/alloy_sterling_silver"));
+        AlloyRecipeBuilder.builder(INGOT.get(BismuthBronze, 5))
+                .addInput(INGOT.getMaterialTag(Bismuth))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Bronze), 4))
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iealloysmelter/bismuth_bronze"));
+        ArcFurnaceRecipeBuilder.builder(INGOT.get(BismuthBronze, 5))
+                .setEnergy(51200).setTime(100)
+                .addIngredient("input", INGOT.getMaterialTag(Bismuth))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Bronze), 4))
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iearcfurnace/alloy_bismuth_bronze"));
+        AlloyRecipeBuilder.builder(INGOT.get(BlackBronze, 5))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Copper), 3))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Electrum), 2))
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iealloysmelter/black_bronze"));
+        ArcFurnaceRecipeBuilder.builder(INGOT.get(BlackBronze, 5))
+                .setEnergy(51200).setTime(100)
+                .addIngredient("input", new IngredientWithSize(INGOT.getMaterialTag(Copper), 3))
+                .addInput(new IngredientWithSize(INGOT.getMaterialTag(Electrum), 2))
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iearcfurnace/alloy_black_bronze"));
     }
 }
