@@ -97,6 +97,7 @@ public class IERegistrar extends GTMod implements IGTWorldgenFunction {
             SingleItemRecipeBuilder.stonecutting(Ingredient.of(TagUtils.getForgelikeItemTag("storage_blocks/" + blockId)), RecipeCategory.BUILDING_BLOCKS, ib("storage_" + blockId))
                     .unlockedBy("has_block", provider.hasSafeItem(TagUtils.getForgelikeItemTag("storage_blocks/" + blockId))).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/ie_block_of_" + blockId));
         }
+        IERecipes.initRecipes(output, provider);
     }
 
 }
