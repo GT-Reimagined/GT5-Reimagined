@@ -14,8 +14,11 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
+import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 
 import java.util.function.Consumer;
 
@@ -98,5 +101,13 @@ public class IERecipes {
                 .addFluidTag(Plastic.getFluidTag(), Ref.L * 16)
                 .addResult(Molds.MOLD_PACKING_4)
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iebottler/duroplast_block"));
+    }
+
+    public static void initMachineRecipes(){
+        Material[] wireMats = new Material[]{Copper, Electrum, Aluminium, Steel, Lead};
+        for (Material mat: wireMats){
+            String outId = mat == Aluminium ? "aluminum" : mat.getId();
+            RecipeMaps.WIRE_MILL.RB().ii(FINE_WIRE.getMaterialIngredient(mat, 4)).io(RegistryUtils.getItemFromID("immersiveengineering", "wire_" + outId)).add("ie_wire_" + mat.getId(), 100, 4);
+        }
     }
 }

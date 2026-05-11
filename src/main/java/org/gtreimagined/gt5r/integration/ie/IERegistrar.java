@@ -17,14 +17,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.common.world.BiomeModifier.Phase;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.event.GTCraftingEvent;
+import org.gtreimagined.gtlib.event.GTLoaderEvent;
+import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
@@ -40,6 +44,7 @@ public class IERegistrar extends GTMod implements IGTWorldgenFunction {
     public IERegistrar(){
         if (isEnabled()){
             FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(this::init));
+            MinecraftForge.EVENT_BUS.addListener(this::initMachineRecipes);
         }
     }
 
@@ -48,6 +53,13 @@ public class IERegistrar extends GTMod implements IGTWorldgenFunction {
         if (event == RegistrationEvent.DATA_INIT){
             GTAPI.register(IGTWorldgenFunction.class, this);
         }
+    }
+
+    @Override
+    public void onMaterialEvent(MaterialEvent event) {
+        super.onMaterialEvent(event);
+        event.setMaterial(Aluminium).flags(GTMaterialTypes.FINE_WIRE);
+        event.setMaterial(Lead).flags(GTMaterialTypes.FINE_WIRE);
     }
 
     @Override
@@ -98,6 +110,10 @@ public class IERegistrar extends GTMod implements IGTWorldgenFunction {
                     .unlockedBy("has_block", provider.hasSafeItem(TagUtils.getForgelikeItemTag("storage_blocks/" + blockId))).save(output, new ResourceLocation(GT5Reimagined.ID, "stonecutting/ie_block_of_" + blockId));
         }
         IERecipes.initRecipes(output, provider);
+    }
+
+    public void initMachineRecipes(GTLoaderEvent event){
+        event.registrat.add(GT5Reimagined.ID, "ie_compat", IERecipes::initMachineRecipes);
     }
 
 }
