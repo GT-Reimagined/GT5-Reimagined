@@ -56,13 +56,6 @@ public class IERegistrar extends GTMod implements IGTWorldgenFunction {
     }
 
     @Override
-    public void onMaterialEvent(MaterialEvent event) {
-        super.onMaterialEvent(event);
-        event.setMaterial(Aluminium).flags(GTMaterialTypes.FINE_WIRE);
-        event.setMaterial(Lead).flags(GTMaterialTypes.FINE_WIRE);
-    }
-
-    @Override
     public boolean isEnabled() {
         return GTAPI.isModLoaded(getId());
     }

@@ -12,9 +12,13 @@ import blusunrize.immersiveengineering.common.register.IEItems.Molds;
 import blusunrize.immersiveengineering.common.register.IEItems.Tools;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.RecipeMaps;
+import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.material.Material;
@@ -107,7 +111,7 @@ public class IERecipes {
         Material[] wireMats = new Material[]{Copper, Electrum, Aluminium, Steel, Lead};
         for (Material mat: wireMats){
             String outId = mat == Aluminium ? "aluminum" : mat.getId();
-            RecipeMaps.WIRE_MILL.RB().ii(FINE_WIRE.getMaterialIngredient(mat, 4)).io(RegistryUtils.getItemFromID("immersiveengineering", "wire_" + outId)).add("ie_wire_" + mat.getId(), 100, 4);
+            RecipeMaps.BENDER.RB().ii(Ingredient.of(GTAPI.get(Item.class, "1x_" + mat.getId() + "_wire", Ref.SHARED_ID)), GTCoreItems.SELECTOR_TAG_INGREDIENTS.get(1).get()).io(RegistryUtils.getItemFromID("immersiveengineering", "wire_" + outId)).add("ie_wire_" + mat.getId(), 100, 4);
         }
     }
 }
