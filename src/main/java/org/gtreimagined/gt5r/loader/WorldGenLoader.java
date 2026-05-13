@@ -152,32 +152,33 @@ public class WorldGenLoader {
         event.smallOre(new SmallOreBuilder(id("silver_nether_end")).withMaterial(Silver).withAmountPerChunk(8).atHeight(20, 40).inDimensions(NETHER, END).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("nickel_nether_end")).withMaterial(Nickel).withAmountPerChunk(8).atHeight(20, 40).inDimensions(NETHER, END).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("lapis")).withMaterial(Lapis).withAmountPerChunk(4).atHeight(-34, 16).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(moon).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("diamond")).withMaterial(Diamond).withAmountPerChunk(3).atHeight(-59, -52).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(moon).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("diamond_nether")).withMaterial(Diamond).withAmountPerChunk(3).atHeight(5, 10).inDimensions(NETHER).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("emerald")).withMaterial(Emerald).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("ruby")).withMaterial(Ruby).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("sapphire")).withMaterial(Sapphire).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("green_sapphire")).withMaterial(GreenSapphire).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("olivine")).withMaterial(Olivine).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("topaz")).withMaterial(Topaz).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("tanzanite")).withMaterial(Tanzanite).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("amethyst")).withMaterial(Amethyst).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("opal")).withMaterial(Opal).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("jade")).withMaterial(Jade).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("blue_topaz")).withMaterial(BlueTopaz).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("amber")).withMaterial(Amber).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("diamond")).withMaterial(Diamond).withAmountPerChunk(4).atHeight(-59, -52).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(moon).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("diamond_nether")).withMaterial(Diamond).withAmountPerChunk(6).atHeight(5, 10).inDimensions(NETHER).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("emerald")).withMaterial(Emerald).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("ruby")).withMaterial(Ruby).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("sapphire")).withMaterial(Sapphire).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("green_sapphire")).withMaterial(GreenSapphire).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("olivine")).withMaterial(Olivine).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("topaz")).withMaterial(Topaz).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("tanzanite")).withMaterial(Tanzanite).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("amethyst")).withMaterial(Amethyst).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("opal")).withMaterial(Opal).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("jade")).withMaterial(Jade).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("blue_topaz")).withMaterial(BlueTopaz).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("amber")).withMaterial(Amber).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
         //event.smallOre(new SmallOreBuilder().withMaterial(FoolsRuby).withAmountPerChunk(1).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("red_garnet")).withMaterial(RedGarnet).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("yellow_garnet")).withMaterial(YellowGarnet).withAmountPerChunk(2).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("redstone")).withMaterial(Redstone).withAmountPerChunk(8).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(mars).inDimensions(moon).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("red_garnet")).withMaterial(RedGarnet).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("yellow_garnet")).withMaterial(YellowGarnet).withAmountPerChunk(4).inDimensions(OVERWORLD, JAMD_MINING, NETHER).inDimensions(mars).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("redstone")).withMaterial(Redstone).withAmountPerChunk(12).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(mars).inDimensions(moon).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("redstone_nether")).withMaterial(Redstone).withAmountPerChunk(8).atHeight(5, 20).inDimension(NETHER).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("teslatite")).withMaterial(Teslatite).withAmountPerChunk(6).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).inDimensions(mars).inDimensions(moon).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("chromite")).withMaterial(Chromite).withAmountPerChunk(8).atHeight(20, 50).inDimensions(END).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("platinum")).withMaterial(Platinum).withAmountPerChunk(8).atHeight(20, 40).inDimensions(END).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("iridium")).withMaterial(Iridium).withAmountPerChunk(8).atHeight(20, 40).inDimensions(END).inDimensions(mars).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("quartz")).withMaterial(Quartz).withAmountPerChunk(64).atHeight(30, 120).inDimensions(NETHER).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("saltpeter")).withMaterial(Saltpeter).withAmountPerChunk(8).atHeight(10, 60).inDimensions(NETHER).buildMaterial());
         event.smallOre(new SmallOreBuilder(id("sulfur")).withMaterial(Sulfur).withAmountPerChunk(32).atHeight(5, 60).inDimensions(NETHER).buildMaterial());
-        event.smallOre(new SmallOreBuilder(id("sulfur_overworld")).withMaterial(Sulfur).withAmountPerChunk(8).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).buildMaterial());
+        event.smallOre(new SmallOreBuilder(id("sulfur_overworld")).withMaterial(Sulfur).withAmountPerChunk(12).atHeight(-59, -34).inDimensions(OVERWORLD, JAMD_MINING).buildMaterial());
     }
 
     private static void initStoneVeins(GTWorldGenEvent ev) {
@@ -269,7 +270,7 @@ public class WorldGenLoader {
             ev.stoneLayer(new StoneLayerBuilder(id("basalt_ores_2")).withStone(BASALT).withWeight(1).inDimensions(overworld).addOres(
                     new StoneLayerOre(Bastnasite, U24, 24, 32),
                     new StoneLayerOre(Monazite, U32, 24, 32),
-                    new StoneLayerOre(Manganese, U8, 16, 48)
+                    new StoneLayerOre(Pyrolusite, U8, 16, 48)
             ).buildVein());
             ev.stoneLayer(new StoneLayerBuilder(id("marble_ores")).withStone(MARBLE).withWeight(1).inDimensions(overworld).addOres(
                     new StoneLayerOre(Cassiterite, U16, 20, 120),

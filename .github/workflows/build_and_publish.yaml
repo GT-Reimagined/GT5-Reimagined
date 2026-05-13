@@ -43,6 +43,7 @@ env:
   JAVA: 17 # TODO get from properties
   MODRINTH_ID: CLVc4X5w
   CURSEFORGE_ID: 912913
+  GITHUB_RELEASE: true
 
 jobs:
   build:
@@ -52,6 +53,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+          token: ${{ secrets.PAT }}
 
       - name: Read current mod version
         id: read_version
@@ -85,7 +87,7 @@ jobs:
 
       - name: Set version
         if: env.UPDATED == 'false' # only change new version if it's not already updated
-        run: sed -i -E "s/^[[:space:]]*mod_version[[:space:]]*=.*/mod_version = ${{ github.event.inputs.version }}/" gradle.properties
+        run: sed -i -E "s/^[[:space:]]*mod_version[[:space:]]*=.*/mod_version=${{ github.event.inputs.version }}/" gradle.properties
 
       - name: Commit and push gradle.properties
         if: env.UPDATED == 'false' # only push new version if it's not already updated
@@ -94,12 +96,12 @@ jobs:
           commit_message: "Bump version to ${{ github.event.inputs.version }}"
           commit_options: "--no-verify"
           file_pattern: gradle.properties
-          tagging_message: "v${{ github.event.inputs.version }}"
+          tagging_message: "${{ github.event.inputs.version }}"
 
       - name: Check for publishing
         run: |
-          if [ "$publish-gh" == "false" ] && [ "${{ inputs.publish-cf-mr }}" == "false" ] && [ "${{ inputs.publish-maven }}" == "false" ]; then
-            echo "Not publishing to Github, Curse, Modrinth or Maven."
+          if [ "$publish-gh" == "false" ] && [ "${{ inputs.publish-cf-mr }}" == "false" ]; then
+            echo "Not publishing to Github, Curse or Modrinth."
             exit 0
           fi
 
@@ -122,8 +124,8 @@ jobs:
         if: env.publish-gh == 'true'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: "v${{ inputs.version }}"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: "${{ inputs.version }}"
+          token: ${{ secrets.PAT }}
           files: "build/libs/*.jar"
           body_path: CHANGELOG.md
           #generate_release_notes: true
@@ -151,8 +153,8 @@ jobs:
           files: |
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(dev|sources|javadoc).jar
-          name: 'GT%-Reimagined-${{ inputs.version }}-${{ env.MC_VERSION }}'
-          version: '${{ inputs.version }}-${{ env.MC_VERSION }}'
+          name: 'GT5-Reimagined-${{ inputs.version }}-${{ env.MC_VERSION }}'
+          version: '${{ inputs.version }}'
           version-type: ${{ inputs.release-type }}
           changelog-file: ${{ env.CHANGELOG_LOCATION }}
           loaders: forge
@@ -170,7 +172,7 @@ jobs:
             build/libs/!(*-@(dev|sources|javadoc)).jar
             build/libs/*-@(dev|sources).jar
           name: 'GT5-Reimagined-${{ inputs.version }}-${{ env.MC_VERSION }}'
-          version: '${{ inputs.version }}-${{ env.MC_VERSION }}'
+          version: '${{ inputs.version }}'
           version-type: ${{ inputs.release-type }}
           changelog-file: ${{ env.CHANGELOG_LOCATION }}
           loaders: forge

@@ -114,15 +114,7 @@ public class TFCRegistrar extends GTMod {
                 GTAPI.register(StoneType.class, new StoneType(GT5Reimagined.ID, sand.name().toLowerCase() + "_raw_sandstone", material, new Texture(Ref.MOD_TFC, "block/sandstone/bottom/" + sand.name().toLowerCase()), SoundType.SAND, false).setStateSupplier(() -> RegistryUtils.getBlockFromId(Ref.MOD_TFC, "raw_sandstone/" + sand.name().toLowerCase()).defaultBlockState()));
                 return true;
             });
-            GTMaterialTypes.LIQUID.set((m, i) -> {
-                if (m == null || !GTMaterialTypes.LIQUID.allowGen(m)) return MaterialTypeFluid.getEmptyFluidAndLog(GTMaterialTypes.LIQUID, m);
-                if (m.getId().equals("water")) return new FluidStack(Fluids.WATER, i);
-                else if (m.getId().equals("lava")) return new FluidStack(Fluids.LAVA, i);
-                else if (m == SaltWater) return new FluidStack(TFCFluids.SALT_WATER.getSource(), i);
-                GTFluid fluid = GTAPI.get(GTFluid.class, GTMaterialTypes.LIQUID.getId() + "_" + m.getId());
-                if (fluid == null) throw new IllegalStateException("Tried to get null fluid");
-                return new FluidStack(fluid.getFluid(), i);
-            });
+            LIQUID.addReplacement(SaltWater, TFCFluids.SALT_WATER::getSource);
         }
         if (event == RegistrationEvent.DATA_READY) {
             TFCOreGen.init();

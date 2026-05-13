@@ -3,7 +3,7 @@ package org.gtreimagined.gt5r.data;
 import org.gtreimagined.gtlib.material.Element;
 
 public class Elements {
-    public static Element Ma = new Element(0, 0, 100, 1,1,"magic", "Ma",-1,null,null, null,  false);
+    public static Element Ma = new Element(0, 0, -1, 1,1,"magic", "Ma",-1,null,null, null,  false);
     public static Element Nt = new Element(0, 100000, 0, 1,1,"neutronium", "Nt",-1,null,null, null,  false);
     //SciFi elements
     public static Element Tn = new Element(125, 198, 0, 1, 1, "tritanium", "Tn",-1,null,null, null,  false);

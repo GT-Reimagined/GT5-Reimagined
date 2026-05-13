@@ -14,8 +14,10 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
 import org.gtreimagined.gt5r.integration.CCTweakedRegistrar;
+import org.gtreimagined.gt5r.integration.ModRecipeRemovals;
+import org.gtreimagined.gt5r.integration.botania.BotaniaRegistrar;
 import org.gtreimagined.gt5r.integration.forestry.ForestryRegistrar;
-import org.gtreimagined.gt5r.integration.IERegistrar;
+import org.gtreimagined.gt5r.integration.ie.IERegistrar;
 import org.gtreimagined.gt5r.integration.mekanism.MekanismRegistrar;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
@@ -87,9 +89,9 @@ import org.gtreimagined.gt5r.datagen.GT5RLocalizations;
 import org.gtreimagined.gt5r.datagen.GT5RTwilightStalctites;
 import org.gtreimagined.gt5r.datagen.ProgressionAdvancements;
 import org.gtreimagined.gt5r.events.forge.ForgeEvents;
-import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
+import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
-import org.gtreimagined.gt5r.integration.ThermalRegistrar;
+import org.gtreimagined.gt5r.integration.thermal.ThermalRegistrar;
 import org.gtreimagined.gt5r.integration.rei.REIRegistrar;
 import org.gtreimagined.gt5r.loader.LootLoader;
 import org.gtreimagined.gt5r.loader.WorldGenLoader;
@@ -198,7 +200,8 @@ public class GT5Reimagined extends GTMod {
         new IERegistrar();
         new ThermalRegistrar();
         new MekanismRegistrar();
-        new ForestryRegistrar();
+        if (GTAPI.isModLoaded(Ref.MOD_FR)) new ForestryRegistrar();
+        new BotaniaRegistrar();
         LOGGER.info("Loading GT5Reimagined");
         INSTANCE = this;
         GTLibDynamics.clientProvider(ID,
@@ -268,6 +271,7 @@ public class GT5Reimagined extends GTMod {
         event.addLoader(ElectricToolRecipes::loadRecipes);
         event.addLoader(MaterialCrafting::loadRecipes);
         event.addLoader(WoodCrafting::loadRecipes);
+        event.addLoader(ModRecipeRemovals::init);
         if (GTAPI.isModLoaded(Ref.MOD_AE)){
             event.addLoader(AppliedEnergisticsRegistrar::craftingRecipes);
         }

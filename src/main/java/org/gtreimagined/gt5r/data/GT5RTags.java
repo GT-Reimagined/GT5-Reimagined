@@ -17,14 +17,17 @@ public class GT5RTags {
     public static final TagKey<Item> DUST_SAPPHIRES = getTag("dusts/sapphires");
     public static final TagKey<Item> DUST_SANDS = getTag("dusts/sands");
     public static final TagKey<Item> DUST_SIO = getTag("dusts/silicon_dioxides");
-    public static TagKey<Item> RESISTORS = TagUtils.getItemTag(new ResourceLocation(GT5Reimagined.ID, "resistors"));
-    public static TagKey<Item> CAPACITORS = TagUtils.getItemTag(new ResourceLocation(GT5Reimagined.ID, "capacitors"));
-    public static TagKey<Item> TRANSISTORS = TagUtils.getItemTag(new ResourceLocation(GT5Reimagined.ID, "transistors"));
-    public static TagKey<Item> DIODES = TagUtils.getItemTag(new ResourceLocation(GT5Reimagined.ID, "diodes"));
+    public static TagKey<Item> RESISTORS = getGTTag("resistors");
+    public static TagKey<Item> CAPACITORS = getGTTag("capacitors");
+    public static TagKey<Item> TRANSISTORS = getGTTag("transistors");
+    public static TagKey<Item> DIODES = getGTTag("diodes");
     public static final TagKey<Block> ASPHALT = TagUtils.getBlockTag(new ResourceLocation(GT5Reimagined.ID, "asphalt"));
 
     public static final TagKey<Fluid> BLUE_DYE = TagUtils.getFluidTag(new ResourceLocation(GT5Reimagined.ID, "blue_dye"));
     public static TagKey<Item> getTag(String id){
         return TagUtils.getForgelikeItemTag(id);
+    }
+    public static TagKey<Item> getGTTag(String id){
+        return TagUtils.getItemTag(new ResourceLocation(GT5Reimagined.ID, id));
     }
 }

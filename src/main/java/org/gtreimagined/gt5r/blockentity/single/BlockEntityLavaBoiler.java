@@ -106,7 +106,6 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
 
         @Override
         public void onServerUpdate() {
-
             tick();
             if (tile.getLevel().getGameTime() % 10L == 0L) {
                 tile.fluidHandler.ifPresent(f -> {
@@ -131,8 +130,6 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
 
                 });
             }
-
-            super.onServerUpdate();
         }
 
         public void exportFluidFromMachineToSide(Direction side){

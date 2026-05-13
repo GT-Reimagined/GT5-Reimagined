@@ -15,7 +15,7 @@ import org.gtreimagined.gt5r.block.BlockColoredWall;
 import org.gtreimagined.gt5r.block.BlockFakeCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
-import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
+import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -65,6 +65,7 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         tables.put(Blocks.DEEPSLATE_COAL_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Coal), CRUSHED_ORE.get(Coal), 1));
         tables.put(GT5RBlocks.BRITTLE_CHARCOAL, b -> createSingleItemTable(Items.CHARCOAL, UniformGenerator.between(1.0f, 2.0f)));
         tables.put(Blocks.ANCIENT_DEBRIS, b -> createOreDropWithHammer(b, RAW_ORE.get(NetheriteScrap), CRUSHED_ORE.get(NetheriteScrap), 1));
+        tables.put(Blocks.NETHER_QUARTZ_ORE, b -> createOreDropWithHammer(b, RAW_ORE.get(Quartz), CRUSHED_ORE.get(Quartz), 1));
         tables.put(Blocks.ANDESITE, b -> createSingleItemTableWithSilkTouch(Blocks.ANDESITE, ((CobbleStoneType) VanillaStoneTypes.ANDESITE).getBlock("cobble")));
         tables.put(Blocks.DIORITE, b -> createSingleItemTableWithSilkTouch(Blocks.DIORITE, ((CobbleStoneType) VanillaStoneTypes.DIORITE).getBlock("cobble")));
         tables.put(Blocks.GRANITE, b -> createSingleItemTableWithSilkTouch(Blocks.GRANITE, ((CobbleStoneType) VanillaStoneTypes.GRANITE).getBlock("cobble")));
@@ -75,11 +76,11 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
         if (GTAPI.isModLoaded("ad_astra")){
             tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED_ORE.get(Diamond), 1));
         }
-        tables.put(Blocks.GLASS, b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 9));
-        tables.put(Blocks.GLASS_PANE, b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+        tables.put(Blocks.GLASS, b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+        tables.put(Blocks.GLASS_PANE, b -> createSilkDropWithHammer(b, Items.AIR, TINY_DUST.get(Glass), 1));
         for (DyeColor color : DyeColor.values()) {
-            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass")), b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 9));
-            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass_pane")), b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass")), b -> createSilkDropWithHammer(b, Items.AIR, DUST.get(Glass), 1));
+            tables.put(RegistryUtils.getBlockFromId(new ResourceLocation(color.getSerializedName() + "_stained_glass_pane")), b -> createSilkDropWithHammer(b, Items.AIR, TINY_DUST.get(Glass), 1));
         }
     }
 }

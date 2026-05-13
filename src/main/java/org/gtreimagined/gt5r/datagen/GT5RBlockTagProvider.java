@@ -20,7 +20,7 @@ import org.gtreimagined.gt5r.block.BlockFakeCasing;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RMachines;
 import org.gtreimagined.gt5r.data.GT5RTags;
-import org.gtreimagined.gt5r.integration.AppliedEnergisticsRegistrar;
+import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 
 import static org.gtreimagined.gt5r.data.Materials.Wood;
 

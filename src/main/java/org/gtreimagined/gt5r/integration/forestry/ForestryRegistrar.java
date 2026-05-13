@@ -3,17 +3,21 @@ package org.gtreimagined.gt5r.integration.forestry;
 import forestry.api.genetics.IBreedingTracker;
 import forestry.api.genetics.IIndividual;
 import forestry.api.genetics.capability.IIndividualHandlerItem;
+import forestry.core.fluids.ForestryFluids;
 import forestry.core.utils.GeneticsUtil;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
+import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
+import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
@@ -45,6 +49,7 @@ public class ForestryRegistrar extends GTMod {
     public void onRegistrationEvent(RegistrationEvent event, Dist side) {
         if (event == RegistrationEvent.DATA_INIT){
             GTCombs.init();
+            LIQUID.addReplacement(Honey, ForestryFluids.HONEY::getFluid);
         }
         if (event == RegistrationEvent.DATA_READY){
             BlockEntityScanner.addScannerFunction((specimen, data, player) -> {
@@ -87,7 +92,6 @@ public class ForestryRegistrar extends GTMod {
 
 
     public static void init() {
-
         ItemStack comb;
 
         //Organic Line
@@ -273,6 +277,23 @@ public class ForestryRegistrar extends GTMod {
         ASSEMBLER.RB().ii(DUST.getMaterialIngredient(EnderEye, 2), RecipeIngredient.of(Items.END_STONE, 5)).fi(Glass.getLiquid(L / 2 )).io(new ItemStack(getFRItem("electron_tube_ender"), 4)).add("electron_tube_ender", 64, 32);
         FLUID_PRESS.RB().ii(getFRItem("honey_drop")).io(getFRItem("propolis_normal")).outputChances(0.05).fo(Honey.getLiquid(100)).add("honey_drop", 400, 2);
         FLUID_PRESS.RB().ii(getFRItem("honeydew")).fo(Honey.getLiquid(100)).add("honeydew", 400, 2);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_honey")).io(getFRItem("beeswax"), getFRItem("honey_drop")).outputChances(1, 0.9).add("fr_honey_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_cocoa")).io(getFRItem("beeswax"), Items.COCOA_BEANS).outputChances(1, 0.5).add("fr_cocoa_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_simmering")).io(getFRItem("refractory_wax"), getFRItem("honey_drop")).outputChances(1, 0.7).add("fr_simmering_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_stringy")).io(getFRItem("propolis_normal"), getFRItem("honey_drop")).outputChances(1, 0.4).add("fr_stringy_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_frozen")).io(getFRItem("beeswax"), getFRItem("honey_drop"), Items.SNOWBALL, getFRItem("pollen_cluster_crystalline")).outputChances(0.8, 0.7, 0.4, 0.2).add("fr_frozen_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_dripping")).io(getFRItem("honeydew"), getFRItem("honey_drop")).outputChances(1, 0.4).add("fr_dripping_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_silky")).io(getFRItem("honey_drop"), getFRItem("propolis_silky")).outputChances(1, 0.8).add("fr_silky_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_parched")).io(getFRItem("beeswax"), getFRItem("honey_drop")).outputChances(1, 0.9).add("fr_parched_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_mysterious")).io(getFRItem("propolis_pulsating"), getFRItem("honey_drop")).outputChances(1, 0.4).add("fr_mysterious_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_powdery")).io(Items.GUNPOWDER, getFRItem("honey_drop"), getFRItem("beeswax")).outputChances(0.9, 0.2, 0.2).add("fr_powdery_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_wheaten")).io(Items.WHEAT, getFRItem("honey_drop"), getFRItem("beeswax")).outputChances(0.8, 0.2, 0.2).add("fr_wheaten_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_mossy")).io(getFRItem("beeswax"), getFRItem("honey_drop")).outputChances(1, 0.9).add("fr_mossy_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_mellow")).io(getFRItem("honeydew"), Items.QUARTZ, getFRItem("beeswax")).outputChances(0.6, 0.3, 0.2).add("fr_mellow_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_koalin")).io(Items.CLAY_BALL, getFRItem("honey_drop")).outputChances(1, 0.9).add("fr_kaolin_comb", 128, 5);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_vintage")).io(getFRItem("beeswax"), getFRItem("honeydew"), getFRItem("amber")).outputChances(1, 0.9, 0.5).add("fr_vintage_comb", 128, 5);
+        FLUID_PRESS.RB().ii(getFRItem("bee_comb_sponge")).io(Items.SPONGE).fo(Honey.getLiquid(100)).outputChances(0.02).add("sponge_comb", 400, 2);
+        CENTRIFUGE.RB().ii(getFRItem("bee_comb_sculken")).io(getFRItem("beeswax"), getFRItem("experience_drop"), Items.SCULK).outputChances(1, 0.9, 0.2).add("fr_sculken_comb", 128, 5);
     }
 
     public static void addProcessMain(String id, ItemStack stack, Material... materials) {
@@ -289,7 +310,7 @@ public class ForestryRegistrar extends GTMod {
                 rb.fo(materials[0].getByProducts().get(0).getLiquid(144));
             }
             rb.add(id, 96, 24);
-            AUTOCLAVE.RB().ii(Ingredient.of(Utils.ca(16, stack))).fi(UUMatter.getLiquid((int)Math.max(1, ((materials[0].getMass()+9)/10)))).io(crushed.get(materials[0])).add(id, materials[0].getMass() * 128, 384);
+            AUTOCLAVE.RB().ii(Ingredient.of(Utils.ca(16, stack))).fi(new FluidStack(GT5RFluids.CHARGED_MATTER.getFluid(), (int)Math.max(1, ((materials[0].getMass()+9)/10)))).io(crushed.get(materials[0])).add(id, materials[0].getMass() * 128, 384);
         } else {
             CENTRIFUGE.RB().ii(Ingredient.of(stack)).io(TINY_DUST.get(materials[0]), getFRItem("beeswax")).outputChances(chance * 100, 3000).add(id, 128, 5);
         }

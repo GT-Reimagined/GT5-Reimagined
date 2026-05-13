@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.loader.crafting;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -28,5 +29,6 @@ public class Miscellaneous {
         provider.addStackRecipe(output, GT5Reimagined.ID, "plantball_from_chorus_fruit", "misc", new ItemStack(Plantball, 2), of(
                 'S', Items.CHORUS_FRUIT
         ), "SSS", "S S", "SSS");
+        provider.shapeless(output, GT5Reimagined.ID, "slimebal_from_resin", "misc", new ItemStack(Items.SLIME_BALL), GTCoreItems.StickyResin);
     }
 }

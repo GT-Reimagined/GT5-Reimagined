@@ -133,6 +133,7 @@ public class Materials {
     public static Material Naquadria = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "naquadria", 0x1e1e1e, SHINY, Elements.Nq522));
     public static Material Neutronium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "neutronium", 0xfafafa, DULL, Elements.Nt));
     public static Material Adamantium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "adamantium", 0xffffff, SHINY, Elements.Ad));
+    public static Material Magic = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "magic", 0xff00ff, SHINY, Elements.Ma));
     /**
      *** Isotopes
      **/
@@ -173,6 +174,7 @@ public class Materials {
     public static Material CobaltBrass = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_brass", 0xb4b4a0, METALLIC));
     public static Material Cupronickel = GTCoreMaterials.Cupronickel;
     public static Material DamascusSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "damascus_steel", 0x6e6e6e, METALLIC));
+    public static Material Efrine = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "efrine", 0x506B48, METALLIC));
     public static Material Electrum = GTCoreMaterials.Electrum;
     public static Material HSSE = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hsse", 0x336600, METALLIC)).setDisplayNameString("HSS-E");
     public static Material HSSG = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "hssg", 0x999900, METALLIC)).setDisplayNameString("HSS-G");
@@ -218,6 +220,13 @@ public class Materials {
     public static Material Knightmetal = GTCoreMaterials.Knightmetal;
     public static Material FierySteel = GTCoreMaterials.FierySteel;
 
+    public static Material Livingwood = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "livingwood", 0x431306, WOOD, "botania"));
+    public static Material Dreamwood = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "dreamwood", 0x639db5, WOOD, "botania"));
+    public static Material Manasteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "manasteel", 0x6ec8fa, SHINY, "botania"));
+    public static Material Terrasteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "terrasteel", 0x6ec832, SHINY, "botania"));
+    public static Material Elementium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "elementium", 0xfa78fa, SHINY, "botania"));
+    public static Material GaiaSpirit = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "gaia_spirit", 0xfafafa, SHINY, "botania"));
+
     /**
      ** Dusts
      **/
@@ -238,6 +247,7 @@ public class Materials {
     public static Material Calcite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "calcite", 0xfae6dc, DULL));
     public static Material CalciumChloride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "calcium_chloride", 0xebebfa, DULL));
     public static Material CalciumSulfate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "calcium_sulfate", 0xf0dcd2, DULL));
+    public static Material Chad = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "chad", 0xfafafa, NONE));
     public static Material Clay = GTCoreMaterials.Clay;
     public static Material CobaltOxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cobalt_oxide", 0x668000, DULL));
     public static Material Concrete = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "concrete", 0x646464, ROUGH));
@@ -597,8 +607,6 @@ public class Materials {
     public static Material Tar = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "tar", 0x0a0a0a, NONE));
     public static Material ThoriumSalt = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "thorium_salt", 0x001e00, NONE));
     public static Material TitaniumTetrachloride = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "titanium_tetrachloride", 0xd40d5c, NONE));
-    public static Material UUAmplifier = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "uu_amplifier", 0x600080, NONE));
-    public static Material UUMatter = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "uu_matter", 0x8000c4, NONE));
 
     /**
      ** Fuels

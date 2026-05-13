@@ -1,13 +1,21 @@
 package org.gtreimagined.gt5r.events.forge;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.event.entity.player.PlayerXpEvent.PickupXp;
 import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.event.level.LevelEvent;
+import net.minecraftforge.registries.ForgeRegistries.Keys;
+import net.minecraftforge.registries.MissingMappingsEvent;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.GTRemapping;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -17,6 +25,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.gtreimagined.gt5r.blockentity.multi.MiningPipeStructureCache;
 import org.gtreimagined.gt5r.worldgen.PlayerPlacedBlockSavedData;
 import org.gtreimagined.gtcore.events.GTCommonEvents;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 
 import java.util.Map;
 import java.util.UUID;
@@ -101,5 +110,14 @@ public class ForgeEvents {
     @SubscribeEvent
     public static void onWorldUnload(LevelEvent.Unload event){
         MiningPipeStructureCache.onWorldUnload(event.getLevel());
+    }
+
+    @SubscribeEvent
+    public static void onMissingMappings(MissingMappingsEvent event){
+        for (MissingMappingsEvent.Mapping<Fluid> mapping : event.getMappings(Keys.FLUIDS, Ref.SHARED_ID)) {
+            if (GTAPI.isModLoaded(Ref.MOD_FR) && mapping.getKey().getPath().equals("liquid_honey")){
+                mapping.remap(RegistryUtils.getFluidFromID(new ResourceLocation(Ref.MOD_FR, "honey")));
+            }
+        }
     }
 }

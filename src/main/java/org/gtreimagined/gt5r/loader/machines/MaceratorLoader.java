@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -173,9 +174,15 @@ public class MaceratorLoader {
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BLAZE_ROD)).io(new ItemStack(Items.BLAZE_POWDER, 5)).add("blaze_powder", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.BONE)).io(new ItemStack(Items.BONE_MEAL, 5)).add("bone_meal", 400, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(Items.QUARTZ_BLOCK)).io(DUST.get(Quartz, 4)).add("quartz_dust_from_block", Quartz.getMass(), 2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS)).io(DUST.get(Glass, 9)).add("glass_dust", 100, 2);
-        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS_PANES)).io(DUST.get(Glass)).add("glass_dust_from_panes", 20, 2);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS)).io(DUST.get(Glass)).add("glass_dust", 100, 2);
+        PULVERIZER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS_PANES)).io(TINY_DUST.get(Glass)).add("glass_dust_from_panes", 20, 2);
         PULVERIZER.RB().ii(RecipeIngredient.of(ItemTags.WOOL)).io(new ItemStack(Items.STRING, 4)).add("wool_to_string",400,2);
         PULVERIZER.RB().ii(GTCoreItems.CarbonMesh).io(DUST.get(Carbon, 16)).add("carbon_mesh_to_dust", 400, 2);
+        PULVERIZER.RB().ii(Items.PAPER).io(DUST.get(Chad)).add("chad_from_paper", 98, 4);
+        PULVERIZER.RB().ii(GT5RItems.PrintedPages).io(DUST.get(Chad, 3)).add("chad_from_printed_pages", 294, 4);
+        PULVERIZER.RB().ii(Items.WRITTEN_BOOK).io(DUST.get(Chad, 3)).add("chad_from_written_book", 294, 4);
+        PULVERIZER.RB().ii(Items.BOOK).io(DUST.get(Chad, 3)).add("chad_from_book", 294, 4);
+        PULVERIZER.RB().ii(Items.WRITABLE_BOOK).io(DUST.get(Chad, 3)).add("chad_from_book_and_quill", 294, 4);
+        PULVERIZER.RB().ii(Items.BOOKSHELF).io(DUST.get(Chad, 9), DUST.get(Wood, 6)).add("bookshelf_to_chad", 936, 4);
     }
 }

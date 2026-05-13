@@ -64,7 +64,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Titanium).asMetal(1941, PLATE, LONG_ROD, SCREW, BOLT, RING, GEAR, FRAME, SMALL_GEAR, ROTOR, SPRING).forceBF(true);
         event.setMaterial(Materials.Vanadium).asMetal(2183, HOT_INGOT);
         event.setMaterial(Materials.Chromium).asMetal(2180, 1700, SCREW, BOLT, RING, PLATE).forceBF(false);
-        event.setMaterial(Materials.Manganese).asMetal(1519, FOIL).asOre();
+        event.setMaterial(Materials.Manganese).asMetal(1519, FOIL);
         //Iron, added by vanilla
         event.setMaterial(Materials.Cobalt).asMetal(1768, CRUSHED_ORE);
         event.setMaterial(Materials.Nickel).asMetal(1728, PLATE).asOre();
@@ -138,7 +138,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Naquadah).asOre().asMetal(5400);
         event.setMaterial(Materials.EnrichedNaquadah).asMetal(4500, POSITIVE_CHANGING_RGB);
         event.setMaterial(Materials.Naquadria).asMetal(9000, POSITIVE_CHANGING_RGB);
-        event.setMaterial(Adamantium).asMetal(5225);
+        event.setMaterial(Adamantium).asMetal(5225, MAGIC);
         /**
          ***  Solids
          **/
@@ -157,6 +157,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.CobaltBrass).asMetal(1500, GEAR, ALLOY);
         event.setMaterial(Materials.Cupronickel).asMetal(1728, PLATE, ALLOY);
         event.setMaterial(DamascusSteel).asMetal(2000, 1500, PLATE).forceBF(false);
+        event.setMaterial(Efrine).asMetal(2246, 1600).forceBF(false);
         event.setMaterial(Materials.Electrum).asMetal(1330, PLATE, FOIL, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.GalliumArsenide).asMetal(295, 1200, PLATE, ALLOY);
         event.setMaterial(Materials.HSSE).asMetal(5400, FRAME);
@@ -195,7 +196,7 @@ public class GT5RMaterialEvents {
 
         event.setMaterial(Lumium).flags(PLATE);
         event.setMaterial(Signalum).flags(FINE_WIRE);
-        event.setMaterial(Enderium).asMetal(1071).forceBF(false);
+        event.setMaterial(Enderium).asMetal(1071, MAGIC).forceBF(false);
         /**
          **  Dusts
          **/
@@ -204,6 +205,7 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.Ash).asDust();
         event.setMaterial(Materials.AntimonyTrioxide).asDust();
+        event.setMaterial(Chad).asDust();
         event.setMaterial(Materials.Clay).asDust();
         event.setMaterial(Materials.CupricOxide).asDust();
         event.setMaterial(Materials.DarkAsh).asDust();
@@ -298,7 +300,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Chromite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Cobaltite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Sheldonite).asOre().harvestLevel(2);
-        event.setMaterial(Materials.Galena).asOre().harvestLevel(3);
+        event.setMaterial(Materials.Galena).asOre().harvestLevel(2);
         event.setMaterial(Materials.Garnierite).asOre().harvestLevel(2);
         event.setMaterial(Materials.Glauconite).asOre().harvestLevel(2); // TODO: Ore Gen;
         event.setMaterial(Materials.Graphite).asDust(ROD).asOre().harvestLevel(2);
@@ -550,8 +552,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Tar).asFluid();
         event.setMaterial(Materials.ThoriumSalt).asFluid(0, 600).flags(MOLTEN);
         event.setMaterial(Materials.TitaniumTetrachloride).asFluid().flags(ACID);
-        event.setMaterial(Materials.UUAmplifier).asFluid();
-        event.setMaterial(Materials.UUMatter).asFluid();
         //Nuclear
         /**
          ***  Gases/Plasmas
@@ -784,7 +784,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Rutile).mats(of(Materials.Cobalt, 1, Materials.Arsenic, 1, Materials.Sulfur, 1));
         event.setMaterial(Materials.Magnesite).mats(of(Materials.Magnesium, 1, Materials.Carbon, 1, Materials.Oxygen, 3)).elecTicks(80);
         event.setMaterial(Materials.Magnetite).mats(of(Iron, 3, Materials.Oxygen, 4)).elecTicks(210);
-        event.setMaterial(Materials.Malachite).mats(of(Copper, 2, Materials.Carbon, 1, Materials.Hydrogen, 2, Materials.Oxygen, 5)).elecTicks(200);
+        event.setMaterial(Materials.Malachite).mats(of(Copper, 2, Materials.Hydrogen, 2, CarbonDioxide, 3, Materials.Oxygen, 3)).elecTicks(200);
         event.setMaterial(Materials.Molybdenite).mats(of(Materials.Molybdenum, 1, Materials.Sulfur, 2)).elecTicks(144);
         event.setMaterial(Materials.Pentlandite).mats(of(Materials.Nickel, 9, Materials.Sulfur, 8)).elecTicks(748);
         event.setMaterial(Materials.Phosphate).mats(of(Materials.Phosphor, 1, Materials.Oxygen, 4)).elecTicks(360);
@@ -1049,6 +1049,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(DamascusSteel).tool().toolDamage(2).toolDurability(1280).toolSpeed(8).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 5)).build();
         //event.setMaterial(Duranium).addHandleStat(620, -1.0F, of(Enchantments.SILK_TOUCH, 1))
                 //.addTools(6.5F, 16.0F, 5120, 5);
+        event.setMaterial(Efrine).tool().toolDamage(3).toolQuality(3).toolSpeed(9).toolDurability(500).toolEnchantments(of(Enchantments.MOB_LOOTING, 2, Enchantments.BLOCK_FORTUNE, 2)).build();
         event.setMaterial(Materials.Electrum).tool().toolDamage(2).toolSpeed(12).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 3)).build();
         event.setMaterial(Materials.EnrichedNaquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
         event.setMaterial(Materials.HSSE).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
@@ -1205,12 +1206,20 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Molybdenum, 8);
         GTCoreBlocks.createHopper(Electrum, 9);
         GTCoreBlocks.createHopper(StainlessSteel, 9);
+        if (GTAPI.isModLoaded("botania")){
+            GTCoreBlocks.createHopper(Manasteel, 9);
+        }
+        GTCoreBlocks.createHopper(Efrine, 9);
         GTCoreBlocks.createHopper(Titanium, 12);
         GTCoreBlocks.createHopper(Netherite, 12);
         GTCoreBlocks.createHopper(Chromium, 14);
         GTCoreBlocks.createHopper(Platinum, 18);
-        //if space
-        //GTCoreBlocks.createHopper(SpaceModRegistrar.Desh, 18);
+        if (GTAPI.isModLoaded("ad_astra")){
+            GTCoreBlocks.createHopper(SpaceModRegistrar.Desh, 18);
+        }
+        if (GTAPI.isModLoaded("botania")){
+            GTCoreBlocks.createHopper(Terrasteel, 18);
+        }
         GTCoreBlocks.createHopper(TungstenSteel, 27);
         GTCoreBlocks.createHopper(TungstenCarbide, 27);
         //GTCoreBlocks.createHopper(DuraniumAlloy, 27);
@@ -1219,7 +1228,10 @@ public class GT5RMaterialEvents {
         GTCoreBlocks.createHopper(Palladium, 36);
         GTCoreBlocks.createHopper(Iridium, 36);
         GTCoreBlocks.createHopper(Osmium, 36);
-        //GTCoreBlocks.createHopper(TritaniumAlloy, 36);
+        if (GTAPI.isModLoaded("botania")){
+            GTCoreBlocks.createHopper(Elementium, 36);
+        }
+        GTCoreBlocks.createHopper(TritaniumAlloy, 36);
         GTCoreBlocks.createHopper(Adamantium, 36);
     }
 
@@ -1228,6 +1240,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Alumina).addByProduct(Materials.Bauxite);
         //event.setMaterial(Amber).addByProduct(Amber); TODO: Add Amber
         event.setMaterial(Materials.Amethyst).addByProduct(Materials.Amethyst);
+        event.setMaterial(NetheriteScrap).addByProduct(NetheriteScrap, Efrine).bathMercury(Efrine);
         event.setMaterial(Materials.Monazite).addByProduct(Materials.Thorium, Materials.Neodymium, Materials.RareEarth);
         event.setMaterial(Materials.Apatite).addByProduct(Materials.TricalciumPhosphate, Materials.Fluorite);
         event.setMaterial(Materials.Andradite).addByProduct(Materials.YellowGarnet, Iron, Materials.Boron);
@@ -1247,7 +1260,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Cassiterite).addByProduct(Materials.Tin);
         event.setMaterial(Materials.Chalcopyrite).addByProduct(Materials.Pyrite, Materials.Cobalt, Materials.Cadmium).bathMercury(Gold).bathPersulfate(Materials.Cobalt);
         event.setMaterial(Materials.Chromium).addByProduct(Iron, Materials.Magnesium);
-        event.setMaterial(Materials.Chromite).addByProduct(Iron, Materials.Magnesium);
+        event.setMaterial(Materials.Chromite).addByProduct(Iron, Materials.Magnesium).thermal(Chromium);
         event.setMaterial(Materials.Cinnabar).addByProduct(Redstone, Materials.Sulfur, Glowstone);
         event.setMaterial(Materials.Clay).addByProduct(Materials.Clay);
         event.setMaterial(Coal).addByProduct(Materials.Lignite, Materials.Thorium);
@@ -1305,7 +1318,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Pyrope).addByProduct(Materials.RedGarnet, Materials.Magnesium);
         event.setMaterial(Materials.Rutile).addByProduct(Materials.Hematite, Materials.Zircon);
         event.setMaterial(Materials.Zircon).addByProduct(Materials.Rutile, Materials.Hafnium, Materials.Uraninite);
-        event.setMaterial(Quartz).addByProduct(Netherrack);
+        event.setMaterial(Quartz).addByProduct(Efrine).bathMercury(Efrine);
         event.setMaterial(Materials.MilkyQuartz).addByProduct(Materials.Barite);
         event.setMaterial(Materials.RedGarnet).addByProduct(Materials.Spessartine, Materials.Pyrope, Materials.Almandine);
         event.setMaterial(Redstone).addByProduct(Materials.Cinnabar, Materials.RareEarth, Glowstone);
@@ -1347,19 +1360,10 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.BRITTLEG.add(Coal, Charcoal, Materials.Lignite, Materials.PetroleumCoke, Materials.CoalCoke, Materials.LigniteCoke);
         GT5RMaterialTags.CALCITE2X.add(Materials.Pyrite, Materials.YellowLimonite);
         GT5RMaterialTags.CALCITE3X.add(Iron, Materials.BrownLimonite);
-        GT5RMaterialTags.CENT5.add(/*Chrysolite*/ Flint, /*Niter*/ Materials.Glass, /*Perlite*/ Materials.WroughtIron, Materials.DarkAsh, Materials.AnnealedCopper,
-                Materials.Cinnabar, DamascusSteel);
-        GT5RMaterialTags.CENT10.add(Materials.Magnalium, Materials.VanadiumMagnetite, Materials.BrownLimonite, Materials.YellowLimonite, Materials.BlackGranite, Materials.Cupronickel, Materials.NiobiumTitanium, Materials.BorosilicateGlass,
-                Materials.GalliumArsenide, Materials.Marble, Materials.Limestone, Materials.Invar, Materials.TinAlloy, Materials.TungstenCarbide, TitaniumGold, TritaniumAlloy, Trinitanium, EnderEye, Materials.Powellite, Materials.VanadiumGallium, Blaze,
-                Materials.TungstenSteel, Materials.Brass, Materials.Nichrome, Materials.Electrum, Materials.Bronze, Materials.Stibnite, Materials.Wulfenite, Materials.RedAlloy, Materials.SterlingSilver, Materials.RoseGold, Materials.BatteryAlloy, Materials.SolderingAlloy, Materials.TricalciumPhosphate);
-        GT5RMaterialTags.CENT15.add(Materials.Kanthal, Materials.IndiumGalliumPhosphide, Materials.BlackSteel, Materials.RedGarnet, Materials.YellowGarnet, Materials.BismuthBronze, Materials.BlackBronze, Materials.VanadiumSteel, Materials.CdInAGAlloy, Materials.CobaltBrass,
-                Materials.Pitchblende, Redstone, Materials.HSSS);
-        GT5RMaterialTags.CENT20.add(Lapis, Materials.Tetrahedrite, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.Sheldonite, Materials.HSSG, Materials.Komatiite);
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT5.all().toArray(new Material[0]));
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT10.all().toArray(new Material[0]));
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT15.all().toArray(new Material[0]));
-        GT5RMaterialTags.CENT.add(GT5RMaterialTags.CENT20.all().toArray(new Material[0]));
-        GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 64);
+        GT5RMaterialTags.RECIPE_MASS.add(Materials.Lead, 44);
+        RECIPE_MASS.add(Tin, 48);
+        RECIPE_MASS.add(Copper, 50);
+        RECIPE_MASS.add(Bronze, 52);
         FURNACE_FUELS.add(Materials.CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, BLOCK, 32000);
@@ -1401,30 +1405,6 @@ public class GT5RMaterialEvents {
         GT5RMaterialTags.CRACK.add(Materials.RefineryGas, Materials.Naphtha, Materials.Ethane, Materials.Ethylene, Materials.Propane, Materials.Propene, Materials.Butane, Materials.Butene, Materials.Butadiene);
         GT5RMaterialTags.CRYSTALLIZE.add(Lapis, Materials.Lazurite, Materials.Sodalite, Materials.MilkyQuartz, Quartz, Materials.CertusQuartz, Materials.Fluix, Materials.Jade, Materials.Amber, Materials.Apatite, Flint, EnderEye, EnderPearl);
         GT5RMaterialTags.NON_GEMS.add(Coal, Charcoal, Materials.Lignite, Materials.CoalCoke, Materials.LigniteCoke, Materials.PetroleumCoke);
-        GT5RMaterialTags.ELEC30.add(Charcoal, Materials.Opal, Coal, Materials.CoalCoke, Materials.Lignite, Materials.SteelMagnetic, Materials.IronMagnetic, Materials.Quicklime, Materials.Quartzite,
-                Materials.SiliconDioxide, Materials.Wollastonite, Materials.CobaltOxide, Materials.Garnierite, Materials.CupricOxide, Materials.Sylvite, /*Zincite,*/Materials.Pyrolusite, /*ChromiumDioxide,*/
-                Materials.Phosphate, /*NiobiumNitride,*/ Materials.GreenSapphire, Materials.Sapphire, Materials.NeodymiumMagnetic, Materials.Cassiterite,
-                Materials.PhosphorousPentoxide, Materials.Hematite, Materials.Massicot, Materials.ArsenicTrioxide, Sugar, Materials.Magnetite, Materials.AntimonyTrioxide,
-                Materials.Salt, Materials.SodiumBisulfate, Materials.PotassiumBisulfate, Materials.HydrochloricAcid, Materials.SaltWater, Materials.HydrochloricAcid, Diamond,
-                Water, Materials.DistilledWater, Materials.HeavyWater, Materials.SemiheavyWater, Materials.TritiatedWater, Materials.MilkyQuartz, Materials.FerricChloride, Materials.Sperrylite, Materials.LithiumChloride);
-        GT5RMaterialTags.ELEC60.add(Materials.CalciumChloride, Materials.SodiumHydroxide, Materials.Propene, Materials.Ethylene, Materials.Butene, Materials.Benzene, Materials.Styrene, Materials.Ethane, Materials.Ammonia, Materials.SodiumSulfide, Materials.Methane,
-                Materials.Magnesite, Materials.HydrofluoricAcid, Materials.HydrogenFluoride, Materials.Sphalerite, /*NitroCarbon,*/ Materials.SodaAsh, Materials.Calcite, Materials.Saltpeter, Materials.Monazite,
-                /*Wollastonite,*/ Materials.NitrogenMonoxide, Materials.Butane, Materials.CarbonMonoxide, Materials.Pyrite, Materials.RedGranite, Materials.Ferrosilite, Materials.Butadiene, Materials.Amethyst,
-                Materials.Molybdenite, Materials.Ruby, /*Kyanite,*/ Materials.NitrogenDioxide, Materials.DinitrogenTetroxide, Materials.Propane, Materials.Barite, Materials.Isoprene,
-                Materials.Chromite, EnderPearl, Materials.SiliconDioxide, Materials.Apatite, Materials.SulfurTrioxide, /*Pyrochlore, */ Materials.Toluene, Materials.Phosphate,
-                Materials.Tantalite, Materials.PhosphorousPentoxide, Materials.Osmiridium, Materials.Pentlandite, Materials.Steel, Materials.Graphite, Materials.MagnesiumChloride, IodineSalt);
-        GT5RMaterialTags.ELEC90.add(Materials.Polydimethylsiloxane, Materials.AceticAcid, Materials.Olivine, Materials.Ethanol, Materials.Methanol, Materials.VinylAcetate, /*Gypsum,*/ Materials.Cobaltite,
-                /*Dymethylamine,*/ Materials.Chalcopyrite, /*Mirabilite,*/ Materials.Spodumene, /*Dolomite,*/ Materials.HypochlorousAcid, Materials.Chloramine, Materials.Bastnasite,
-                Materials.Chloromethane, Materials.Malachite, /*Borax, */ /*Kaolinite,*/ Materials.Obsidian, Materials.NitricAcid, Materials.VinylChloride, Materials.Acetone, /*Asbestos,*/ Materials.PotassiumFeldspar,
-                Materials.MethylAcetate, Materials.Sodalite, Materials.AllylChloride, Materials.Phenol, Materials.Glycerol, Materials.Talc, Materials.Soapstone, Materials.PhosphoricAcid,
-                Materials.Chlorobenzene, Materials.SulfuricAcid, Materials.Pyrope, Materials.SodiumPersulfate, Materials.Chloroform, Materials.Grossular, Materials.Spessartine, Adamantine, Materials.Almandine, Materials.Uvarovite, Materials.Andradite,
-                Emerald, Materials.Galena, Materials.Zircon);
-        GT5RMaterialTags.ELEC120.add(Materials.Clay, /*Trona,*/ Materials.BlueTopaz, Materials.Topaz, /*Pollucite,*/ Materials.CarbonDioxide, Materials.SulfurDioxide, Materials.Epichlorohydrin, Materials.Lepidolite, /*FullersEarth, Alunite,*/ Materials.Glauconite,
-                /*Mica,*/ Materials.Lazurite, Materials.Tanzanite, Materials.Biotite, Materials.StainlessSteel, Materials.Ultimet, Materials.CalciumAcetateSolution, Materials.Dimethyldichlorosilane, /*Vermiculate, Zeolite,*/ Materials.GlycerylTrinitrate);
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC30.all().toArray(new Material[0]));
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC60.all().toArray(new Material[0]));
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC90.all().toArray(new Material[0]));
-        GT5RMaterialTags.ELEC.add(GT5RMaterialTags.ELEC120.all().toArray(new Material[0]));
         GT5RMaterialTags.ELEC_CIRCUIT.add(Water, Materials.DistilledWater, Materials.SodiumBisulfate);
         GT5RMaterialTags.ELECSEPG.add(Materials.VanadiumMagnetite, Materials.Magnetite);
         GT5RMaterialTags.ELECSEPI.add(Materials.YellowLimonite, Materials.BrownLimonite, Materials.Tin, Materials.Ilmenite, Materials.Hematite, Materials.Pyrite, Materials.Glauconite, Materials.Nickel, Materials.Chromite, Materials.Pentlandite, Materials.Manganese);

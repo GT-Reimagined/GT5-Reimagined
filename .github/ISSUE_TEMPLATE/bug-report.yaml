@@ -11,17 +11,6 @@ body:
       placeholder: Tell us what you see!
     validations:
       required: true
-  - type: dropdown
-    id: loaders
-    attributes:
-      label: What mod loaders are you seeing the problem on?
-      description: Please select all that apply.
-      multiple: true
-      options:
-        - Fabric
-        - Forge
-    validations:
-      required: true
   - type: textarea
     id: logs
     attributes:
@@ -54,7 +43,7 @@ body:
   - type: checkboxes
     id: updates
     attributes:
-      label: By submitting this issue, I have confirmed GregTech, Antimatter, and Tesseract are up to date.
+      label: By submitting this issue, I have confirmed GT5 Reimagined and GT Lib are up to date.
       options:
         - label: 'Yes'
           required: true

@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtcore.data.SlotTypes;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
@@ -30,6 +31,7 @@ import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
 import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
 
+import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
 import static org.gtreimagined.gtlib.gui.Widget.builder;
 import static org.gtreimagined.gtlib.machine.Tier.*;
@@ -176,7 +178,7 @@ public class Guis {
         PRINTER.add(SCANNER);
         DISTILLERY.add(FLUID_CANNER);
         BATH.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
-        AUTOCLAVE.add(IT_IN, 53, 25)
+        AUTOCLAVE.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34)
                 .add(ENERGY, 80, 63).add(FL_IN, 53, 63);
@@ -233,14 +235,17 @@ public class Guis {
         LAVA_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
         SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
 
-        STEAM_ALLOY_SMELTER.add(ALLOY_SMELTER).add(FL_IN, 53, 63);
-        STEAM_COMPRESSOR.add(COMPRESSOR).add(FL_IN, 53, 63);
-        STEAM_FURNACE.add(FURNACE).add(FL_IN, 53, 63);
-        STEAM_EXTRACTOR.add(EXTRACTOR).add(FL_IN, 53, 63);
-        STEAM_MACERATOR.add(MACERATOR).add(FL_IN, 53, 63);
-        STEAM_FORGE_HAMMER.add(FORGE_HAMMER).add(FL_IN, 53, 63);
-        STEAM_CUTTER.add(CUTTER).add(FL_IN, 35, 63);
-        STEAM_SIFTER.add(SIFTER).add(FL_IN, 53, 63);
+        STEAM_ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_EXTRACTOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_MACERATOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(PARK, 80, 63).add(FL_IN, 35, 63);
+        STEAM_SIFTER.add(IT_IN, 53, 25)
+                .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
+                .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
+                .add(PARK, 80, 63).add(FL_IN, 53, 63);
         STEAM_TURBINE.add(BASIC_TANK.getSlots());
         GAS_TURBINE.add(BASIC_TANK.getSlots());
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());

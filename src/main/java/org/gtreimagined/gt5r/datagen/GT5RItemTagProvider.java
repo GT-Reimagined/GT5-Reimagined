@@ -1,7 +1,9 @@
 package org.gtreimagined.gt5r.datagen;
 
+import net.minecraft.tags.ItemTags;
 import net.minecraftforge.common.Tags;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gtcore.data.GTCoreBlocks;
 import org.gtreimagined.gtcore.data.GTCoreTags;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
@@ -12,6 +14,11 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.material.MaterialTypeBlock;
+import org.gtreimagined.gtlib.material.MaterialTypeBlock.IBlockGetter;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.ore.CobbleStoneType;
+import org.gtreimagined.gtlib.util.TagUtils;
 
 import static org.gtreimagined.gt5r.data.GT5RItems.*;
 import static org.gtreimagined.gt5r.data.GT5RItems.DataOrb;
@@ -27,6 +34,8 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
     @Override
     protected void processTags(String domain) {
         super.processTags(domain);
+        this.tag(ItemTags.STONE_TOOL_MATERIALS).remove(((CobbleStoneType)GTCoreBlocks.RED_GRANITE).getBlock("cobble").asItem());
+        this.tag(ItemTags.STONE_TOOL_MATERIALS).remove(((CobbleStoneType)GTCoreBlocks.BLACK_GRANITE).getBlock("cobble").asItem());
         //this.tag(GT5RTags.CIRCUITS_EXTREME).add(GT5RData.CircuitDataStorage);
         this.tag(ROD.getMaterialTag(Wood)).addTag(Tags.Items.RODS_WOODEN);
         this.tag(GT5RTags.RESISTORS).add(GT5RItems.Resistor, GT5RItems.SMDResistor);
@@ -70,5 +79,21 @@ public class GT5RItemTagProvider extends GTItemTagProvider {
         this.tag(ForgeTags.DYES_GREEN).addTag(DUST.getMaterialTag(Malachite));
         this.tag(ForgeTags.DYES_WHITE).add(Items.BONE_MEAL);
         this.tag(STONE_ROCKS).remove(ROCK.get(RedGranite), ROCK.get(BlackGranite));
+        Aluminium.getTypes().forEach(t -> {
+            var tagBuilder = this.tag(TagUtils.getForgelikeItemTag(t.getMaterialTag(Aluminium).location().getPath().replace("aluminium", "aluminum")));
+            if (t instanceof MaterialTypeItem<?> item){
+                tagBuilder.add(item.get(Aluminium));
+            } else if (t instanceof MaterialTypeBlock<?> block && block.get() instanceof MaterialTypeBlock.IBlockGetter getter){
+                tagBuilder.add(getter.get(Aluminium).asItem());
+            }
+        });
+        Cupronickel.getTypes().forEach(t -> {
+            var tagBuilder = this.tag(TagUtils.getForgelikeItemTag(t.getMaterialTag(Cupronickel).location().getPath().replace("cupronickel", "constantan")));
+            if (t instanceof MaterialTypeItem<?> item){
+                tagBuilder.add(item.get(Cupronickel));
+            } else if (t instanceof MaterialTypeBlock<?> block && block.get() instanceof MaterialTypeBlock.IBlockGetter getter){
+                tagBuilder.add(getter.get(Cupronickel).asItem());
+            }
+        });
     }
 }

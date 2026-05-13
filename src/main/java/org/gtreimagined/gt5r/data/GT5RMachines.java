@@ -249,15 +249,17 @@ public class GT5RMachines {
     /**
      * Drums
      */
-    public static DrumMachine BRONZE_DRUM = GTCoreBlocks.createDrum(Materials.Bronze, 16000);
-    public static DrumMachine STEEL_DRUM = GTCoreBlocks.createDrum(Materials.Steel, 48000);
-    public static DrumMachine INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
-    public static DrumMachine STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
-    public static DrumMachine TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
-    public static DrumMachine NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof();
-    public static DrumMachine TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000);
-    public static DrumMachine TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000);
-    public static DrumMachine ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof();
+    public static DrumMachine BRONZE_DRUM = null;
+    public static DrumMachine INVAR_DRUM = null;
+    public static DrumMachine STEEL_DRUM = null;
+    public static DrumMachine STAINLESS_DRUM = null;
+    public static DrumMachine MANASTEEL_DRUM = null;
+    public static DrumMachine TITANIUM_DRUM = null;
+    public static DrumMachine NETHERRITE_DRUM = null;
+    public static DrumMachine TUNGSTENSTEEL_DRUM = null;
+    public static DrumMachine TUNGSTEN_DRUM = null;
+    public static DrumMachine GAIA_DRUM = null;
+    public static DrumMachine ADAMANTIUM = null;
 
     public static MultiblockTankMachine WOOD_TANK;
     public static MultiblockTankMachine[] STEEL_TANKS;
@@ -270,6 +272,17 @@ public class GT5RMachines {
     public static MultiblockTankMachine[] ADAMANTIUM_TANKS;
 
     public static void initTanks() {
+        BRONZE_DRUM = GTCoreBlocks.createDrum(Materials.Bronze, 16000);
+        INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
+        STEEL_DRUM = GTCoreBlocks.createDrum(Materials.Steel, 48000);
+        STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
+        if (GTAPI.isModLoaded("botania")) MANASTEEL_DRUM = GTCoreBlocks.createDrum(Materials.Manasteel, 64000).acidProof().magicProof();
+        TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
+        NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof().magicProof();
+        TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000).magicProof();
+        TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000).magicProof();
+        if (GTAPI.isModLoaded("botania")) GAIA_DRUM = GTCoreBlocks.createDrum(Materials.GaiaSpirit, 1024000).acidProof().magicProof();
+        ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof().magicProof();
         WOOD_TANK = new MultiblockTankMachine(GT5Reimagined.ID, Wood, true, 432000, () -> GT5RBlocks.WOOD_WALL).maxHeat(350);
         STEEL_TANKS = createTankMachine(Materials.Steel, 3);
         INVAR_TANKS = createTankMachine(Materials.Invar, 2);
@@ -394,7 +407,7 @@ public class GT5RMachines {
      ** Hatches
      **/
     public static HatchMachine DYNAMO_HATCH = new HatchMachine(GT5Reimagined.ID, "dynamo_hatch", GT5RCovers.COVER_DYNAMO_COLORED, "dynamo").addFlags(EU).setOverlayTextures(Textures.HATCH_OVERLAY_HANDLER);
-    public static HatchMachine ENERGY_HATCH = new HatchMachine(GT5Reimagined.ID, "energy_hatch", GT5RCovers.COVER_ENERGY_COLORED, "energy").addFlags(EU).setOverlayTextures(Textures.HATCH_OVERLAY_HANDLER);
+    public static HatchMachine ENERGY_HATCH = new HatchMachine(GT5Reimagined.ID, "energy_hatch", GT5RCovers.COVER_ENERGY_COLORED, "energy").addFlags(EU).setAmps(2).setOverlayTextures(Textures.HATCH_OVERLAY_HANDLER);
     public static HatchMachine INPUT_HATCH = new HatchMachine(GT5Reimagined.ID, "input_hatch", COVERINPUT, "fluid_input").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips).setTile(BlockEntityInputHatch::new);
     public static HatchMachine OUTPUT_HATCH = new HatchMachine(GT5Reimagined.ID, "output_hatch", COVEROUTPUT, "fluid_output").addFlags(GUI, FLUID, CELL).addTooltipInfo(GT5RMachines::getFluidHatchTooltips);
     public static HatchMachine INPUT_BUS = new HatchMachine(GT5Reimagined.ID, "input_bus", COVERINPUT, "item_input").setTiers(ULV, LV, MV, HV, EV).addFlags(GUI, ITEM).addTooltipInfo(GT5RMachines::getItemHatchTooltips).setTile(BlockEntityInputBus::new);

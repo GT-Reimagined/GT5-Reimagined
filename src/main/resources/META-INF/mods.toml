@@ -19,6 +19,10 @@ description='''A Reimagining of GregTech 5U for modern minecraft versions'''
     versionRange="${gtlib_version_range}"
     ordering="AFTER"
     side="BOTH"
+    [dependencies.gt5r.mc-publish]
+        ignore=false
+        modrinth="gt-lib"
+        curseforge="gt-lib"
 [[dependencies.gt5r]]
     modId="forge"
     mandatory=true
@@ -37,9 +41,25 @@ description='''A Reimagining of GregTech 5U for modern minecraft versions'''
     versionRange="[0.1.0+1.20.1,)"
     ordering="BEFORE"
     side="BOTH"
+    [dependencies.gt5r.mc-publish]
+        ignore=false
+        modrinth="mixinbooster"
+        curseforge="mixinbooster"
+[[dependencies.gt5r]]
+    modId="guideme"
+    mandatory=true
+    versionRange="${guideme_version_range}"
+    ordering="BEFORE"
+    side="BOTH"
+    [dependencies.gt5r.mc-publish]
+        ignore=false
+        modrinth="guideme"
+        curseforge="guideme"
 [[dependencies.gt5r]]
     modId="forestry"
     mandatory=false
     versionRange="${forestry_version_range}"
     ordering="AFTER"
     side="BOTH"
+    [dependencies.gt5r.mc-publish]
+        ignore=true

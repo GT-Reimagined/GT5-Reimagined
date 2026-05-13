@@ -469,6 +469,18 @@ public class MachineRecipes {
                             'L', cable,
                             'H', hull
                     ), "MLM", "CHC", "MLM"));
+            if (GT5RConfig.HARDER_CIRCUITS.get()){
+                TagKey<Item> tieredCircuit = TIER_CIRCUITS.apply(Tier.getTier(tier.getVoltage() * 4));
+                add(CIRCUIT_ASSEMBLER, tier, (m ,item) -> provider.addItemRecipe(output, "machines", item,
+                        ImmutableMap.of(
+                                'R', arm,
+                                'C', tieredCircuit,
+                                'E', emitter,
+                                'c', conveyor,
+                                'H', hull,
+                                'W', cable
+                        ), "RCE", "cHc", "WCW"));
+            }
 
 
 
