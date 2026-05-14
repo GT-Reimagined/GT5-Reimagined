@@ -7,6 +7,7 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RTags;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -73,7 +74,7 @@ public class ChemicalReactorLoader {
         //ISOPROPENE
         CHEMICAL_REACTOR.RB().fi(Propene.getGas(3000),Ethylene.getGas(2000)).fo(Isoprene.getLiquid(5000)).add("isopropene",120, 30);
         //ETHYLENE
-        CHEMICAL_REACTOR.RB().fi(SulfuricAcid.getLiquid(2000), Ethanol.getLiquid(3000)).io(SMALL_DUST.get(Sulfur, 6)).fo(Ethylene.getGas(2000), Water.getLiquid(1500)).add("ethylene_2",400, 120);
+        CHEMICAL_REACTOR.RB().fi(FluidIngredient.of(SulfuricAcid.getLiquid(2000)), Ethanol.getFluidIngredient(3000)).io(SMALL_DUST.get(Sulfur, 6)).fo(Ethylene.getGas(2000), Water.getLiquid(1500)).add("ethylene_2",400, 120);
         //SALTPETER
         CHEMICAL_REACTOR.RB().ii(of(DUST.getMaterialTag(Potassium),1)).fi(Nitrogen.getGas(1000), Oxygen.getGas(3000)).io(DUST.get(Saltpeter,5)).add("saltpeter",180,30);
         //NITROGEN DIOXIDE
