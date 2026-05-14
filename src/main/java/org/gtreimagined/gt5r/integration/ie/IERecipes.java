@@ -1,9 +1,13 @@
 package org.gtreimagined.gt5r.integration.ie;
 
+import blusunrize.immersiveengineering.api.EnumMetals;
+import blusunrize.immersiveengineering.api.IETags;
 import blusunrize.immersiveengineering.api.crafting.IngredientWithSize;
 import blusunrize.immersiveengineering.api.crafting.builders.AlloyRecipeBuilder;
 import blusunrize.immersiveengineering.api.crafting.builders.ArcFurnaceRecipeBuilder;
+import blusunrize.immersiveengineering.api.crafting.builders.BlastFurnaceRecipeBuilder;
 import blusunrize.immersiveengineering.api.crafting.builders.BottlingMachineRecipeBuilder;
+import blusunrize.immersiveengineering.api.crafting.builders.CrusherRecipeBuilder;
 import blusunrize.immersiveengineering.common.register.IEBlocks;
 import blusunrize.immersiveengineering.common.register.IEBlocks.StoneDecoration;
 import blusunrize.immersiveengineering.common.register.IEItems;
@@ -14,6 +18,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.RecipeMaps;
@@ -32,24 +37,25 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 public class IERecipes {
 
     public static void initRecipes(Consumer<FinishedRecipe> consumer, GTRecipeProvider provider){
+        String ie = "immersiveengineering";
         AlloyRecipeBuilder.builder(INGOT.get(Brass, 4))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Copper), 3))
                 .addInput(INGOT.getMaterialTag(Zinc))
-                .build(consumer, new ResourceLocation("immersiveengineering", "alloysmelter/brass"));
+                .build(consumer, new ResourceLocation(ie, "alloysmelter/brass"));
         ArcFurnaceRecipeBuilder.builder(INGOT.get(Brass, 4))
                 .setEnergy(51200).setTime(100)
                 .addIngredient("input", new IngredientWithSize(INGOT.getMaterialTag(Copper), 3))
                 .addInput(INGOT.getMaterialTag(Zinc))
-                .build(consumer, new ResourceLocation("immersiveengineering", "arcfurnace/alloy_brass"));
+                .build(consumer, new ResourceLocation(ie, "arcfurnace/alloy_brass"));
         AlloyRecipeBuilder.builder(INGOT.get(RoseGold, 5))
                 .addInput(INGOT.getMaterialTag(Copper))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Gold), 4))
-                .build(consumer, new ResourceLocation("immersiveengineering", "alloysmelter/rose_gold"));
+                .build(consumer, new ResourceLocation(ie, "alloysmelter/rose_gold"));
         ArcFurnaceRecipeBuilder.builder(INGOT.get(RoseGold, 5))
                 .setEnergy(51200).setTime(100)
                 .addIngredient("input", INGOT.getMaterialTag(Copper))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Gold), 4))
-                .build(consumer, new ResourceLocation("immersiveengineering", "arcfurnace/alloy_rose_gold"));
+                .build(consumer, new ResourceLocation(ie, "arcfurnace/alloy_rose_gold"));
         AlloyRecipeBuilder.builder(INGOT.get(SterlingSilver, 5))
                 .addInput(INGOT.getMaterialTag(Copper))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Silver), 4))
@@ -77,14 +83,18 @@ public class IERecipes {
                 .addIngredient("input", new IngredientWithSize(INGOT.getMaterialTag(Copper), 3))
                 .addInput(new IngredientWithSize(INGOT.getMaterialTag(Electrum), 2))
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iearcfurnace/alloy_black_bronze"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "crusher/sandstone"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "crusher/red_sandstone"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "bottling/grindingdisc"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "bottling/empty_shell"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "bottling/duroplast_block"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "bottling/duroplast_plate"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "refinery/resin"));
-        provider.removeRecipe(new ResourceLocation("immersiveengineering", "refinery/acetaldehyde"));
+        provider.removeRecipe(new ResourceLocation(ie, "crusher/sandstone"));
+        provider.removeRecipe(new ResourceLocation(ie, "crusher/red_sandstone"));
+        provider.removeRecipe(new ResourceLocation(ie, "bottling/grindingdisc"));
+        provider.removeRecipe(new ResourceLocation(ie, "bottling/empty_shell"));
+        provider.removeRecipe(new ResourceLocation(ie, "bottling/duroplast_block"));
+        provider.removeRecipe(new ResourceLocation(ie, "bottling/duroplast_plate"));
+        provider.removeRecipe(new ResourceLocation(ie, "refinery/resin"));
+        provider.removeRecipe(new ResourceLocation(ie, "refinery/acetaldehyde"));
+        provider.removeRecipe(new ResourceLocation(ie, "blastfurnace/steel"));
+        provider.removeRecipe(new ResourceLocation(ie, "blastfurnace/steel_block"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_steel_from_dust"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_steel_from_dust_from_blasting"));
         BottlingMachineRecipeBuilder.builder(new ItemStack(Ingredients.EMPTY_SHELL, 2))
                 .setUseInputArray(2)
                 .addInput(Molds.MOLD_BULLET_CASING)
@@ -105,6 +115,26 @@ public class IERecipes {
                 .addFluidTag(Plastic.getFluidTag(), Ref.L * 16)
                 .addResult(Molds.MOLD_PACKING_4)
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iebottler/duroplast_block"));
+        BlastFurnaceRecipeBuilder.builder(IETags.getTagsFor(EnumMetals.STEEL).ingot, 1)
+                .addInput(INGOT.getMaterialTag(WroughtIron))
+                .addSlag(IETags.slag, 1)
+                .setTime(2400)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "ieblastfurnace/steel"));
+
+        BlastFurnaceRecipeBuilder.builder(IETags.getItemTag(IETags.getTagsFor(EnumMetals.STEEL).storage), 1)
+                .addInput(BLOCK.getMaterialTag(WroughtIron))
+                .addSlag(IETags.slag, 9)
+                .setTime(9*2400)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID,"ieblastfurnace/steel_block"));
+        BlastFurnaceRecipeBuilder.builder(INGOT.getMaterialTag(WroughtIron), 1)
+                .addInput(INGOT.getMaterialTag(Iron))
+                .setTime(1800)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "ieblastfurnace/wrought_iron"));
+
+        BlastFurnaceRecipeBuilder.builder(INGOT.getMaterialTag(WroughtIron), 1)
+                .addInput(BLOCK.getMaterialTag(Iron))
+                .setTime(9*1800)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID,"ieblastfurnace/wrought_iron_block"));
     }
 
     public static void initMachineRecipes(){
