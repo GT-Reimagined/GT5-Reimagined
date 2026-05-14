@@ -135,6 +135,14 @@ public class IERecipes {
                 .addInput(BLOCK.getMaterialTag(Iron))
                 .setTime(9*1800)
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID,"ieblastfurnace/wrought_iron_block"));
+        CrusherRecipeBuilder.builder(new ItemStack(Items.SAND, 2))
+                .addInput(IETags.getItemTag(IETags.colorlessSandstoneBlocks))
+                .setEnergy(3200)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iecrusher/sandstone"));
+        CrusherRecipeBuilder.builder(new ItemStack(Items.RED_SAND, 2))
+                .addInput(IETags.getItemTag(IETags.redSandstoneBlocks))
+                .setEnergy(3200)
+                .build(consumer, new ResourceLocation(GT5Reimagined.ID, "iecrusher/red_sandstone"));
     }
 
     public static void initMachineRecipes(){
