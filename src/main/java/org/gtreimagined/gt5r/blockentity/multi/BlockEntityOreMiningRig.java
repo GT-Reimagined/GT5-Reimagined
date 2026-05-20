@@ -1,18 +1,17 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.LongSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
 import com.google.common.collect.ImmutableMap;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineEnergyHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.IGuiElement;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 import org.gtreimagined.gtlib.util.TagUtils;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -30,11 +29,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gt5r.worldgen.PlayerPlacedBlockSavedData;
+import org.gtreimagined.gtlib.util.Utils;
+import org.gtreimagined.gtlib.util.int2;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gt5r.blockentity.multi.BlockEntityDrillingRigBase.MineResult.*;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.MINING_PIPE;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.MINING_PIPE_THIN;
@@ -224,61 +224,43 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return OreInfoWidget.build().setPos(10, 10);
+    public int2 getPos() {
+        return new int2(10, 10);
+    }
+
+
+    @Override
+    public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
+        widget.drawText(context, widgetTheme, 0, 0, this.getDisplayName(), 0xFAFAFF);
+        RunningState state = widget.getSyncedValue("runningState", Integer.class).map(i -> RunningState.values()[i]).orElse(RunningState.OUT_OF_ENERGY);
+        if (getMachineState() != MachineState.ACTIVE) {
+            widget.drawText(context, widgetTheme, 0, 8, Utils.literal("Inactive."), 0xFAFAFF);
+            if (state == RunningState.FINISHED) {
+                widget.drawText(context, widgetTheme, 0, 16, Utils.literal("Finished mining to bedrock"), 0xFAFAFF);
+            }
+        } else {
+            BlockPos currentPos = widget.getSyncedValue("currentPos", Long.class).map(BlockPos::of).orElse(null);
+            if (currentPos != null && widget.getSyncedValue("foundBottom", Boolean.class).orElse(false)){
+                if (state == RunningState.MINING) {
+                    widget.drawText(context, widgetTheme, 0, 8, Utils.literal("Progress: " +
+                            widget.getSyncedValue("progress", Integer.class).orElse(0) + "/" +
+                            widget.getSyncedValue("maxProgress", Integer.class)), 0xFAFAFF);
+                    widget.drawText(context, widgetTheme, 0, 16, Utils.literal("Ores left at y-level " + currentPos.above().getY() + ": " +
+                            widget.getSyncedValue("oresLeft", Integer.class).orElse(0)), 0xFAFAFF);
+                }
+            }
+        }
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        OreInfoWidget oilInfoWidget = (OreInfoWidget) instance;
-        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
-        if (getMachineState() != MachineState.ACTIVE) {
-            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
-            if (oilInfoWidget.runningState == RunningState.FINISHED) {
-                graphics.drawString(renderer, "Finished mining to bedrock", left, top + 16, 0xFAFAFF);
-                return 24;
-            }
-            return 16;
-        } else if (instance.drawActiveInfo()) {
-            if (oilInfoWidget.foundBottom){
-                if (oilInfoWidget.runningState == RunningState.MINING) {
-                    graphics.drawString(renderer, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
-                    graphics.drawString(renderer, "Ores left at y-level " + oilInfoWidget.currentPos.above().getY() + ": " + oilInfoWidget.oresLeft, left, top + 16, 0xFAFAFF);
-                    return 24;
-                }
-
-            }
-        }
-        return 8;
-    }
-
-    public static class OreInfoWidget extends InfoRenderWidget.MultiRenderWidget {
-        BlockPos currentPos;
-        boolean stopped;
-        boolean foundBottom;
-        RunningState runningState;
-        int oresLeft;
-
-
-        protected OreInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            BlockEntityOreMiningRig m = (BlockEntityOreMiningRig) gui.handler;
-            gui.syncLong(() -> m.miningPos.asLong(), l -> currentPos = BlockPos.of(l), SERVER_TO_CLIENT);
-            gui.syncBoolean(() -> m.stopped, s -> stopped = s, SERVER_TO_CLIENT);
-            gui.syncBoolean(() -> m.foundBottom, b -> foundBottom = b, SERVER_TO_CLIENT);
-            gui.syncInt(() -> m.progress, i -> currentProgress = i, SERVER_TO_CLIENT);
-            gui.syncInt(() -> m.cycle, i -> maxProgress = i, SERVER_TO_CLIENT);
-            gui.syncInt(() -> m.runningState.ordinal(), i -> runningState = RunningState.values()[i], SERVER_TO_CLIENT);
-            gui.syncInt(() -> m.oresToMine.size(), i -> oresLeft = i, SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new OreInfoWidget(a, b, (IInfoRenderer) a.handler));
-        }
+    public void registerSyncHandlers(PanelSyncManager manager) {
+        manager.syncValue("currentPos", new LongSyncValue(() -> this.miningPos.asLong()));
+        manager.syncValue("stopped", new BooleanSyncValue(() -> this.stopped));
+        manager.syncValue("foundBottom", new BooleanSyncValue(() -> this.foundBottom));
+        manager.syncValue("progress", new IntSyncValue(() -> this.progress));
+        manager.syncValue("maxProgress", new IntSyncValue(() -> this.cycle));
+        manager.syncValue("runningState", new IntSyncValue(() -> this.runningState.ordinal()));
+        manager.syncValue("oresLeft", new IntSyncValue(() -> this.oresToMine.size()));
     }
 
     enum RunningState {
