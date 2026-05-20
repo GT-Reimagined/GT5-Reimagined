@@ -1,14 +1,16 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.gui.GuiInstance;
 import org.gtreimagined.gtlib.gui.ICanSyncData;
 import org.gtreimagined.gtlib.gui.IGuiElement;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
 import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.client.gui.Font;
@@ -16,8 +18,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
+import org.gtreimagined.gtlib.util.Utils;
 
-public class BlockEntityLargeAutoclave extends BlockEntityMultiMachine<BlockEntityLargeAutoclave> {
+public class BlockEntityLargeAutoclave extends BlockEntityParallelMultiblock<BlockEntityLargeAutoclave> {
 
     private BlockCoil.CoilData coilData;
 
@@ -50,37 +54,4 @@ public class BlockEntityLargeAutoclave extends BlockEntityMultiMachine<BlockEnti
 //        EUt = (-4 * (1 << tier - 1) * (1 << tier - 1) * level / discount);
 //        maxProgress = Math.max(1, 512 / (1 << tier - 1));
 //    }
-
-    @Override
-    public WidgetSupplier getInfoWidget() {
-        return MultiSmelterInfoWidget.build().setPos(10, 10);
-    }
-
-    @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        int superDraw = super.drawInfo(instance, graphics, renderer, left, top);
-        if (getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo()){
-            graphics.drawString(renderer, "Concurrent Recipes: " + ((MultiSmelterInfoWidget)instance).concurrentRecipes, left, top + 32, 0xFAFAFF);
-            return superDraw + 8;
-        }
-        return superDraw;
-    }
-
-    public static class MultiSmelterInfoWidget extends InfoRenderWidget.MultiRenderWidget{
-        int concurrentRecipes;
-        protected MultiSmelterInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityLargeAutoclave m = (BlockEntityLargeAutoclave) gui.handler;
-            gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new MultiSmelterInfoWidget(a, b, (IInfoRenderer) a.handler));
-        }
-    }
 }

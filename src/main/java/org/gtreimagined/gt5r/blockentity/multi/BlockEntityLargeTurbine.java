@@ -1,23 +1,22 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.DoubleSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.LongSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -27,7 +26,6 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.LONG_ROD;
-import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gtlib.machine.Tier.EV;
 import static org.gtreimagined.gtlib.machine.Tier.HV;
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
@@ -210,50 +208,20 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        int size = super.drawInfo(instance, graphics, renderer, left, top);
-        if (this.getMachineState() == MachineState.ACTIVE) {
-            LargeTurbineWidget wid = (LargeTurbineWidget) instance;
-            graphics.drawString(renderer, "Current: " + wid.currentConsumption + " mb/t", left, top + size, 0xFAFAFF);
-            graphics.drawString(renderer, "Optimal: " + wid.recommendedConsumption + " mb/t", left, top + size + 8, 0xFAFAFF);
-            graphics.drawString(renderer, "EU generation: " + wid.lastEU, left, top + size + 16, 0xFAFAFF);
-            return size + 24;
-        }
-        return size;
-    }
+    public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
+        widget.drawText(context, widgetTheme, 0, 0, Utils.literal("Current: " +
+                ((long)widget.getSyncedValue("currentConsumption", Double.class).orElse(0.0).doubleValue()) + " L/t"), 0xFAFAFF);
+        widget.drawText(context, widgetTheme, 0, 8, Utils.literal("Optimal: " +
+                widget.getSyncedValue("recommendedConsumption", Integer.class).orElse(0) + " L/t"), 0xFAFAFF);
+        widget.drawText(context, widgetTheme, 0, 16, Utils.literal("EU generation: " +
+                widget.getSyncedValue("lastEu", Long.class).orElse(0L)), 0xFAFAFF);
 
-
-    public static class LargeTurbineWidget extends InfoRenderWidget.MultiRenderWidget {
-
-        public long currentConsumption = 0;
-        public long lastEU = 0;
-        public long recommendedConsumption = 0;
-
-        protected LargeTurbineWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityLargeTurbine turbine = (BlockEntityLargeTurbine) gui.handler;
-            gui.syncLong(() -> (long) turbine.realOptFlow, i -> this.currentConsumption = i, SERVER_TO_CLIENT);
-            gui.syncLong(() -> (long) turbine.optFlow, i -> this.recommendedConsumption = i, SERVER_TO_CLIENT);
-            gui.syncLong(() -> turbine.lastEU, i -> this.lastEU = i, SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new LargeTurbineWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
-        }
-
-        @Override
-        public boolean drawActiveInfo() {
-            return false;
-        }
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return LargeTurbineWidget.build().setPos(10, 10);
+    public void registerSyncHandlers(PanelSyncManager manager) {
+        manager.syncValue("currentConsumption", new DoubleSyncValue(() -> this.realOptFlow));
+        manager.syncValue("recommendedConsumption", new IntSyncValue(() -> this.optFlow));
+        manager.syncValue("lastEu", new LongSyncValue(() -> this.lastEU));
     }
 }
