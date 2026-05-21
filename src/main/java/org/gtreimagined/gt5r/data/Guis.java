@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
+import brachy.modularui.widgets.slot.ModularSlot;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtcore.data.SlotTypes;
 import org.gtreimagined.gtlib.Ref;
@@ -7,10 +8,10 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.cover.CoverOutput;
-import org.gtreimagined.gtlib.gui.BarDir;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.GuiProperties;
 import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
+import org.gtreimagined.gtlib.gui.SlotData;
 import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
@@ -30,6 +31,8 @@ import org.gtreimagined.gt5r.gui.widgets.CoalBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
 import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
+import org.gtreimagined.gtlib.mui.BarDir;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 
 import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
@@ -74,10 +77,10 @@ public class Guis {
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7));
     public static GuiProperties MULTI_DISPLAY_COMPACT = new GuiProperties(GT5Reimagined.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
-    public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank").setBackgroundTexture("basic_tank")
-            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5Reimagined.ID, "blank")));
+    public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank")
+            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add("", new SlotData<>(FL_IN, 55, 43, GTGuiTextures.BLANK_SLOT, null)));
 
-    public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
     public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts") {
         @Override
@@ -87,26 +90,6 @@ public class Guis {
     }.setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16)
                     .add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
                     .add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34));
-
-    public static MenuHandlerMachine<BlockEntityCoalBoiler, ? extends ContainerMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine(
-            Ref.ID, "container_coal_boiler") {
-        @Override
-        public ContainerBasicMachine getMenu(IGuiHandler tile, Inventory playerInv, int windowId) {
-            return tile instanceof BlockEntityMachine
-                    ? new ContainerBasicMachine((BlockEntityMachine<?>) tile, playerInv, this, windowId)
-                    : null;
-        }
-
-        @Override
-        public String screenDomain() {
-            return GT5Reimagined.ID;
-        }
-
-        @Override
-        public String screenID() {
-            return "coal";
-        }
-    };
 
     public static void init(Dist side) {
         slots();
@@ -410,8 +393,8 @@ public class Guis {
         ELECTROMAGNETIC_SEPARATOR.getGuiProperties().getMachineData().setProgressLocation("electromagnetic_separator");
         COKE_OVEN.getGuiProperties().getMachineData().setProgressLocation("coke_oven");
         PRIMITIVE_BLAST_FURNACE.getGuiProperties().getMachineData().setProgressLocation("coke_oven");
-        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiProperties().getMachineData().setMachineStatePos(84, 46).setProgressLocation("forge_hammer");
-        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiProperties().getMachineData().setMachineStatePos(80, 50);
+        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.DOWN, false).getGuiProperties().getMachineData().setMachineStatePos(84, 46).setProgressLocation("forge_hammer");
+        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.DOWN, false).getGuiProperties().getMachineData().setMachineStatePos(80, 50);
         FUSION_REACTOR.getGuiProperties().setEnablePlayerSlots(false)
                 .getMachineData().setProgressLocation("fusion_reactor").setProgressPos(163, 4).setProgressSize(149, 16);
     }
