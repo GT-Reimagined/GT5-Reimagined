@@ -143,9 +143,4 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
         manager.syncValue("currentConsumption", new LongSyncValue(() -> this.lastConsumption));
         manager.syncValue("startup", new IntSyncValue(() -> this.startup));
     }
-
-    @Override
-    public int2 getPos() {
-        return new int2(10, 10);
-    }
 }

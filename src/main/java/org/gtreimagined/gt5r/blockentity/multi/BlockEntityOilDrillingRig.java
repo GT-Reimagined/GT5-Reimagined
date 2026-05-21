@@ -128,11 +128,6 @@ public class BlockEntityOilDrillingRig extends BlockEntityDrillingRigBase<BlockE
 
 
     @Override
-    public int2 getPos() {
-        return new int2(10, 10);
-    }
-
-    @Override
     public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
 
         widget.drawText(context, widgetTheme, 0, 0, this.getDisplayName(), 0xFAFAFF);

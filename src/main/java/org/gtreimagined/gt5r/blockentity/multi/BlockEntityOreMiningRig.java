@@ -223,11 +223,6 @@ public class BlockEntityOreMiningRig extends BlockEntityDrillingRigBase<BlockEnt
         }
     }
 
-    @Override
-    public int2 getPos() {
-        return new int2(10, 10);
-    }
-
 
     @Override
     public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
