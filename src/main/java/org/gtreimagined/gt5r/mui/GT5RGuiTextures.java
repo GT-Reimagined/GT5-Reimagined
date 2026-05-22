@@ -20,7 +20,7 @@ public class GT5RGuiTextures {
     private static final UITexture BENDER_PROGRESS = progressTexture("bender");
     private static final UITexture CANNER_PROGRESS = progressTexture("canner");
     private static final UITexture CHEMICAL_REACTOR_PROGRESS = progressTexture("chemical_reactor");
-    private static final UITexture COKE_OVEN_PROGRESS = progressTexture("coke_oven");
+    private static final UITexture COKE_OVEN_PROGRESS = progressTexture("coke_oven", null);
     private static final UITexture COMPRESSOR_PROGRESS = progressTexture("compressor");
     private static final UITexture CUTTER_PROGRESS = progressTexture("cutter");
     private static final UITexture ELECTROMAGNETIC_SEPARATOR_PROGRESS = progressTexture("electromagnetic_separator");
@@ -30,15 +30,35 @@ public class GT5RGuiTextures {
     private static final UITexture FUSION_REACTOR_PROGRESS = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/progress_bars/fusion_reactor.png").imageSize(149, 32).colorType(null).build();
     private static final UITexture LATHE_PROGRESS = progressTexture("lathe");
     private static final UITexture MACERATOR_PROGRESS = progressTexture("macerator");
-    private static final UITexture MIXER_PROGRESS = progressTexture("mixer");
-    private static final UITexture ORE_WASHER_PROGRESS = progressTexture("ore_washer");
-    private static final UITexture RECYCLER_PROGRESS = progressTexture("recycler");
+    private static final UITexture MIXER_PROGRESS = progressTexture("mixer", null);
+    private static final UITexture ORE_WASHER_PROGRESS = progressTexture("ore_washer", null);
+    private static final UITexture RECYCLER_PROGRESS = progressTexture("recycler", null);
     private static final UITexture SIFTER_PROGRESS = progressTexture("sifter");
-    private static final UITexture SMELTER_PROGRESS = progressTexture("smelter");
+    private static final UITexture SMELTER_PROGRESS = progressTexture("smelter", null);
     private static final UITexture WIREMILL_PROGRESS = progressTexture("wiremill");
 
+    private static final UITexture BRONZE_COMPRESSOR_PROGRESS = progressTexture("bronze_compressor", null);
+    private static final UITexture BRONZE_CUTTER_PROGRESS = progressTexture("bronze_cutter", null);
+    private static final UITexture BRONZE_DEFAULT_PROGRESS = progressTexture("bronze_default", null);
+    private static final UITexture BRONZE_EXTRACTOR_PROGRESS = progressTexture("bronze_extractor", null);
+    private static final UITexture BRONZE_FORGE_HAMMER_PROGRESS = progressTexture("bronze_forge_hammer", null);
+    private static final UITexture BRONZE_MACERATOR_PROGRESS = progressTexture("bronze_macerator", null);
+    private static final UITexture BRONZE_SIFTER_PROGRESS = progressTexture("bronze_sifter", null);
+
+    private static final UITexture STEEL_COMPRESSOR_PROGRESS = progressTexture("steel_compressor", null);
+    private static final UITexture STEEL_CUTTER_PROGRESS = progressTexture("steel_cutter", null);
+    private static final UITexture STEEL_DEFAULT_PROGRESS = progressTexture("steel_default", null);
+    private static final UITexture STEEL_EXTRACTOR_PROGRESS = progressTexture("steel_extractor", null);
+    private static final UITexture STEEL_FORGE_HAMMER_PROGRESS = progressTexture("steel_forge_hammer", null);
+    private static final UITexture STEEL_MACERATOR_PROGRESS = progressTexture("steel_macerator", null);
+    private static final UITexture STEEL_SIFTER_PROGRESS = progressTexture("steel_sifter", null);
+
     private static UITexture progressTexture(String name){
-        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/progress_bars/" + name + ".png").imageSize(20, 36).colorType(ColorType.DEFAULT).build();
+        return progressTexture(name, ColorType.DEFAULT);
+    }
+
+    private static UITexture progressTexture(String name, ColorType colorType){
+        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/progress_bars/" + name + ".png").imageSize(20, 36).colorType(colorType).build();
     }
 
 }
