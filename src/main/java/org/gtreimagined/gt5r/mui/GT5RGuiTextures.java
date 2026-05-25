@@ -5,9 +5,22 @@ import brachy.modularui.drawable.UITexture;
 import org.gtreimagined.gt5r.GT5Reimagined;
 
 public class GT5RGuiTextures {
-    public static final UITexture MULTIBLOCK_BACKGROUND = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/multiblock_background.png").imageSize(143, 75).build();
-    public static final UITexture TANK_BACKGROUND = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/basic_tank_background").imageSize(71, 45).build();
+    //WIDGETS
+    public static final UITexture TANK_BACKGROUND = widget("basic_tank_background",71, 45);
+    public static final UITexture BLUE_FILTER_ARROW = widget("blue_filter_arrow",null);
+    public static final UITexture BLUE_TYPE_FILTER_ARROW = widget("blue_type_filter_arrow", 41, 24, null);
+    public static final UITexture BUFFER_ARROW = widget("buffer_arrow", 87, 22, null);
+    public static final UITexture FORGE_HAMMER_OVERLAY = widget("forge_hammer_overlay", 20, 6);
+    public static final UITexture ITEM_FILTER_FAKE_SLOTS = widget("item_filter_fake_slots", ColorType.DEFAULT);
+    public static final UITexture MACERATOR_OVERLAY = widget("macerator_overlay", ColorType.DEFAULT);
+    public static final UITexture MULTIBLOCK_BACKGROUND = widget("multiblock_background.",143, 75);
+    public static final UITexture RED_FILTER_ARROW = widget("red_filter_arrow", 19, 24, null);
+    public static final UITexture SUPER_BUFFER_OVERLAY = widget("super_buffer_overlay", null);
+    public static final UITexture TYPE_FILTER_FAKE_SLOT = widget("type_filter_fake_slot", null);
+    public static final UITexture WHITE_FILTER_ARROW_BAR = widget("white_filter_arrow_bar", 9, 6, null);
+    public static final UITexture WHITE_TYPE_FILTER_ARROW_BAR = widget("white_type_filter_arrow_bar", 26, 6, null);
 
+    //SLOTS
     public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/battery.png").colorType(null).build();
     public static final UITexture BLUEPRINT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/blueprint.png").build();
     public static final UITexture CRAFTING_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/crafting.png").build();
@@ -59,6 +72,18 @@ public class GT5RGuiTextures {
 
     private static UITexture progressTexture(String name, ColorType colorType){
         return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/progress_bars/" + name + ".png").imageSize(20, 36).colorType(colorType).build();
+    }
+
+    private static UITexture widget(String name, ColorType colorType){
+        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").colorType(colorType).build();
+    }
+
+    private static UITexture widget(String name, int width, int height){
+        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").imageSize(width, height).build();
+    }
+
+    private static UITexture widget(String name, int width, int height, ColorType colorType){
+        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").imageSize(width, height).colorType(colorType).build();
     }
 
 }
