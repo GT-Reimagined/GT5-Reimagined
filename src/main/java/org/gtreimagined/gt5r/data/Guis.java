@@ -1,7 +1,11 @@
 package org.gtreimagined.gt5r.data;
 
+import brachy.modularui.drawable.UITexture;
+import brachy.modularui.widgets.ButtonWidget;
 import brachy.modularui.widgets.slot.ModularSlot;
+import net.minecraft.client.gui.screens.Screen;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtcore.data.SlotTypes;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
@@ -14,6 +18,7 @@ import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
 import org.gtreimagined.gtlib.gui.SlotData;
 import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
 import org.gtreimagined.gtlib.gui.container.ContainerMachine;
+import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
 import org.gtreimagined.gtlib.gui.widget.FuelWidget;
 import org.gtreimagined.gtlib.gui.widget.IOWidget;
@@ -33,6 +38,8 @@ import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
 import org.gtreimagined.gtlib.mui.BarDir;
 import org.gtreimagined.gtlib.mui.GTGuiTextures;
+import org.gtreimagined.gtlib.mui.IInfoRenderer;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 
 import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
@@ -165,11 +172,11 @@ public class Guis {
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34)
                 .add(ENERGY, 80, 63).add(FL_IN, 53, 63);
-        ResourceLocation craft = new ResourceLocation(GT5Reimagined.ID, "crafting");
+        UITexture craft = GT5RGuiTextures.CRAFTING_SLOT_OVERLAY;
         AUTOCRAFTER.add(IT_IN, 17, 7, craft).add(IT_IN, 35, 7).add(IT_IN, 53, 7, craft)
                 .add(IT_IN, 17, 25).add(IT_IN, 35, 25, craft).add(IT_IN, 53, 25)
                 .add(IT_IN, 17, 43, craft).add(IT_IN, 35, 43).add(IT_IN, 53, 43, craft)
-                .add(STORAGE, 53, 63, new ResourceLocation(GT5Reimagined.ID, "blueprint"))
+                .add(STORAGE, 53, 63, GT5RGuiTextures.BLUEPRINT_SLOT_OVERLAY)
                 .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
                 .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
@@ -199,10 +206,10 @@ public class Guis {
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
-        COKE_OVEN.add(IT_IN, 53, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(IT_OUT, 107, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(FL_OUT, 125, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_cell"));
-        ResourceLocation bat = new ResourceLocation(GT5Reimagined.ID, "battery");
+        COKE_OVEN.add(IT_IN, 53, 25, GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY)
+                .add(IT_OUT, 107, 25, GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY)
+                .add(FL_OUT, 125, 25, GT5RGuiTextures.PRIMITIVE_CELL_SLOT_OVERLAY);
+        UITexture bat = GT5RGuiTextures.BATTERY_SLOT_OVERLAY;
         BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27, bat).add(ENERGY, 89, 27, bat).add(ENERGY, 71, 45, bat).add(ENERGY, 89, 45, bat);
         BATTERY_BUFFER_ONE.add(ENERGY, 80, 40, bat);
         BATTERY_BUFFER_EIGHT
@@ -233,7 +240,7 @@ public class Guis {
         GAS_TURBINE.add(BASIC_TANK.getSlots());
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
-        MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5Reimagined.ID, "blank"));
+        MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53).add("", new SlotData<>(FL_IN, 55, 43, GTGuiTextures.BLANK_SLOT, null));
         NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43).add(FL_IN, 70, 61).add(FL_OUT, 88, 61);
 
         CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
@@ -241,12 +248,12 @@ public class Guis {
                 .add(IT_OUT, 62, 52).add(IT_OUT, 80, 52).add(IT_OUT, 98, 52);
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots());
-        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(IT_IN, 53, 34, new ResourceLocation(GT5Reimagined.ID, "primitive_fire"))
-                .add(IT_IN, 53, 52, new ResourceLocation(GT5Reimagined.ID, "primitive_fire"))
-                .add(IT_OUT, 107, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(IT_OUT, 125, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_dust"))
-                .add(IT_OUT, 143, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_dust"));
+        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY)
+                .add(IT_IN, 53, 34, GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY)
+                .add(IT_IN, 53, 52, GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY)
+                .add(IT_OUT, 107, 25, GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY)
+                .add(IT_OUT, 125, 25, GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY)
+                .add(IT_OUT, 143, 25, GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY);
 
         MUFFLER_HATCH.add(IT_IN, 79, 34);
 
@@ -277,9 +284,9 @@ public class Guis {
         SECONDARY_INPUT_HATCH.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         SECONDARY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         ELECTRIC_ITEM_FILTER
-                .add(DISPLAY_SETTABLE, 18, 6, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 35, 6, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 52, 6, new ResourceLocation(GT5Reimagined.ID, "blank"))
-                .add(DISPLAY_SETTABLE, 18, 23, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 52, 23, new ResourceLocation(GT5Reimagined.ID, "blank"))
-                .add(DISPLAY_SETTABLE, 18, 40, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 35, 40, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 52, 40, new ResourceLocation(GT5Reimagined.ID, "blank"))
+                .add("", new SlotData<>(DISPLAY_SETTABLE, 18, 6, GTGuiTextures.BLANK_SLOT, null)).add("", new SlotData<>(DISPLAY_SETTABLE, 35, 6, GTGuiTextures.BLANK_SLOT, null)).add("", new SlotData<>(DISPLAY_SETTABLE, 52, 6, GTGuiTextures.BLANK_SLOT, null))
+                .add("", new SlotData<>(DISPLAY_SETTABLE, 18, 23, GTGuiTextures.BLANK_SLOT, null)).add("", new SlotData<>(DISPLAY_SETTABLE, 35, 23, GTGuiTextures.BLANK_SLOT, null)).add("", new SlotData<>(DISPLAY_SETTABLE, 52, 23, GTGuiTextures.BLANK_SLOT, null))
+                .add("", new SlotData<>(DISPLAY_SETTABLE, 18, 40, GTGuiTextures.BLANK_SLOT, null)).add("", new SlotData<>(DISPLAY_SETTABLE, 35, 40, GTGuiTextures.BLANK_SLOT, null)).add("", new SlotData<>(DISPLAY_SETTABLE, 52, 40, GTGuiTextures.BLANK_SLOT, null))
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -288,7 +295,7 @@ public class Guis {
                 .add(STORAGE, 98 + 18 * 2, 41);
 
         ELECTRIC_TYPE_FILTER
-                .add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GT5Reimagined.ID, "blank"))
+                .add("", new SlotData<>(DISPLAY_SETTABLE, 35, 23, GTGuiTextures.BLANK_SLOT, null))
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -400,9 +407,9 @@ public class Guis {
     }
 
     public static void widgets(){
-        FORGE_HAMMER.addGuiCallback(t -> {
-            t.addWidget(IconWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
-        });
+        FORGE_HAMMER.getGuiFunctions().add(((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.FORGE_HAMMER_OVERLAY.asWidget().pos(78, 42).size(20, 6));
+        }));
         PRIMITIVE_BLAST_FURNACE.addGuiCallback(t -> {
             t.addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(79, 51, 18, 18));
         });
@@ -419,26 +426,37 @@ public class Guis {
         SOLAR_BOILER.addGuiCallback(t -> {
             t.addWidget(SolarBoilerWidget.build().setSize(70, 25, 62, 54));
         });
-        ADJUSTABLE_TRANSFORMER.getGuiProperties().setBackgroundTexture(new ResourceLocation(Ref.ID, "creative_generator"));
-        // if (side.isClient()) {
-        ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
-            t.addButton(10, 18, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 18, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(10, 33, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 33, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(10, 48, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 48, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(10, 63, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 63, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(137, 18, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 18, ButtonOverlay.APAD_RIGHT, false)
-                    .addButton(137, 33, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 33, ButtonOverlay.APAD_RIGHT, false)
-                    .addButton(137, 48, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 48, ButtonOverlay.APAD_RIGHT, false)
-                    .addButton(137, 63, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 63, ButtonOverlay.APAD_RIGHT, false);
-        });
+        ADJUSTABLE_TRANSFORMER.getGuiFunctions().add(((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GTGuiTextures.CREATIVE_GENERATOR_OVERLAY.asWidget().size(158, 61).pos(9, 17));
+            syncManager.registerSyncedAction("buttonEvent", packet -> {
+                machine.onGuiEvent(GuiEvents.EXTRA_BUTTON.factory().apply(GuiEvents.EXTRA_BUTTON, packet), syncManager.getPlayer());
+            });
+
+            for (int i = 0; i < 16; i++){
+                boolean leftSide = i < 8;
+                boolean leftOuter = i % 2 == 0;
+                UITexture texture = leftSide ? (leftOuter ? GTGuiTextures.APAD_LEFT : GTGuiTextures.PAD_LEFT) : (leftOuter ? GTGuiTextures.PAD_RIGHT : GTGuiTextures.APAD_RIGHT);
+                int x = leftSide ? (leftOuter ? 10 : 25) : (leftOuter ? 137 : 152);
+                int y = (i < 8 ? i : i - 8) / 2;
+                int finalI = i;
+                modularPanel.child(new ButtonWidget<>()
+                        .overlay(texture.getSubArea(0f, 0f, 1.0f, 0.5f))
+                        .hoverOverlay(texture.getSubArea(0f, 0.5f, 1f, 1f))
+                        .onMousePressed((context, mouseButton) -> {
+                            syncManager.callSyncedAction("buttonEvent", packet -> {
+                                packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, finalI});
+                            });
+                            return true;
+                        })
+                        .size(14).pos(x, 18 + (15 * y)));
+            }
+            if (machine instanceof IInfoRenderer renderer){
+                renderer.registerSyncHandlers(syncManager);
+                modularPanel.child(new GTInfoRenderWidget(renderer)
+                        .pos(renderer.getPos().x, renderer.getPos().y)
+                        .size(renderer.getSize().x, renderer.getSize().y));
+            }
+        }));
 
         AUTOCRAFTER.getCallbacks().remove(1);
         AUTOCRAFTER.addGuiCallback(t -> {
