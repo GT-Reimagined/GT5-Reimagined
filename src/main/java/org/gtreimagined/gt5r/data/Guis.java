@@ -410,6 +410,28 @@ public class Guis {
         FORGE_HAMMER.getGuiFunctions().add(((modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GT5RGuiTextures.FORGE_HAMMER_OVERLAY.asWidget().pos(78, 42).size(20, 6));
         }));
+        MACERATOR.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.MACERATOR_OVERLAY.asWidget().pos(98, 34).size(1, 1));
+        });
+        CHEST_BUFFER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.BUFFER_ARROW.asWidget().pos(62, 60).size(87, 22));
+        });
+        SUPER_BUFFER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.BUFFER_ARROW.asWidget().pos(62, 60).size(87, 22));
+            modularPanel.child(GT5RGuiTextures.SUPER_BUFFER_OVERLAY.asWidget().pos(61, 4).size(54, 54));
+        });
+        ELECTRIC_ITEM_FILTER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.WHITE_FILTER_ARROW_BAR.asWidget().pos(6, 28).size(9, 6));
+            modularPanel.child(GT5RGuiTextures.ITEM_FILTER_FAKE_SLOTS.asWidget().pos(16, 4).size(54, 54));
+            modularPanel.child(GT5RGuiTextures.BLUE_FILTER_ARROW.asWidget().pos(71, 19).size(24, 24));
+            modularPanel.child(GT5RGuiTextures.RED_FILTER_ARROW.asWidget().pos(152, 19).size(19, 24));
+        });
+        ELECTRIC_TYPE_FILTER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.WHITE_TYPE_FILTER_ARROW_BAR.asWidget().pos(6, 28).size(26, 6));
+            modularPanel.child(GT5RGuiTextures.TYPE_FILTER_FAKE_SLOT.asWidget().pos(33, 21).size(20, 20));
+            modularPanel.child(GT5RGuiTextures.BLUE_FILTER_ARROW.asWidget().pos(54, 19).size(41, 24));
+            modularPanel.child(GT5RGuiTextures.RED_FILTER_ARROW.asWidget().pos(152, 19).size(19, 24));
+        });
         PRIMITIVE_BLAST_FURNACE.addGuiCallback(t -> {
             t.addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(79, 51, 18, 18));
         });
