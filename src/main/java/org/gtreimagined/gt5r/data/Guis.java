@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.data;
 
 import brachy.modularui.drawable.UITexture;
+import brachy.modularui.drawable.progress.CompositeProgress;
 import brachy.modularui.drawable.progress.ProgressDrawable.Direction;
 import brachy.modularui.value.sync.BooleanSyncValue;
 import brachy.modularui.value.sync.DoubleSyncValue;
@@ -44,6 +45,7 @@ import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.gtreimagined.gtlib.mui.GTMuiUtils;
 import org.gtreimagined.gtlib.mui.IInfoRenderer;
 import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
+import org.gtreimagined.gtlib.mui.widgets.GTProgressWidget;
 import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gtlib.util.int2;
 
@@ -434,6 +436,7 @@ public class Guis {
                         .syncHandler("fuel").pos(79, 51).size(18, 18));
             }
         });
+        SOLID_FUEL_BOILER.getGuiProperties().getMachineData().setHasProgressWidget(false).setHasMachineStateWidget(false);
         SOLID_FUEL_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
             if (machine instanceof BlockEntityCoalBoiler fuelMachine){
                 Tier tier = machine.getMachineTier();
@@ -444,7 +447,7 @@ public class Guis {
                 syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
                 Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_FLAME_OFF : GT5RGuiTextures.STEEL_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
-                        .syncHandler("fuel").pos(79, 51).size(18, 18));
+                        .syncHandler("fuel").pos(115, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("steam") / 16000)
                         .tooltip(tooltip -> {
@@ -474,6 +477,7 @@ public class Guis {
             }
         });
 
+        LAVA_BOILER.getGuiProperties().getMachineData().setHasProgressWidget(false).setHasMachineStateWidget(false);
         LAVA_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
             if (machine instanceof BlockEntityLavaBoiler fuelMachine){
                 Tier tier = machine.getMachineTier();
@@ -521,7 +525,8 @@ public class Guis {
             }
         });
 
-        SOLID_FUEL_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+        SOLAR_BOILER.getGuiProperties().getMachineData().setHasProgressWidget(false).setHasMachineStateWidget(false);
+        SOLAR_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
             if (machine instanceof BlockEntitySolarBoiler fuelMachine){
                 Tier tier = machine.getMachineTier();
                 syncManager.syncValue("sunlit", new BooleanSyncValue(fuelMachine::isAllowedToWork));
@@ -563,6 +568,7 @@ public class Guis {
                         .pos(96, 25).size(10, 54));
             }
         });
+        ADJUSTABLE_TRANSFORMER.getGuiProperties().setHasGTIcon(false);
         ADJUSTABLE_TRANSFORMER.getGuiFunctions().add(((modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GTGuiTextures.CREATIVE_GENERATOR_OVERLAY.asWidget().size(158, 61).pos(9, 17));
             syncManager.registerSyncedAction("buttonEvent", packet -> {
@@ -595,14 +601,26 @@ public class Guis {
             }
         }));
 
-        //AUTOCRAFTER.getCallbacks().remove(1);
-        AUTOCRAFTER.addGuiCallback(t -> {
-            t.addWidget(AutocrafterProgressWidget.build())
-                    .addWidget(MachineStateWidget.build());
-            t.addWidget(IOWidget.build(9, 63).onlyIf(u -> u.handler instanceof BlockEntityMachine<?> machine &&
-                    machine.getOutputFacing() != null &&
-                    machine.coverHandler.map(c -> c.getOutputCover() instanceof CoverOutput).orElse(false) &&
-                    !(u.handler instanceof BlockEntityMultiMachine<?>)));
+        AUTOCRAFTER.getGuiProperties().getMachineData().setHasProgressWidget(false);
+        AUTOCRAFTER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            GuiProperties guiProperties = AUTOCRAFTER.getGuiProperties();
+            syncManager.syncValue("progress", new DoubleSyncValue(() -> machine.recipeHandler.map(r -> guiProperties.getMachineData().getProgressPercentFunction().apply(r.getCurrentProgress(), r.getMaxProgress())).orElse(0f)));
+            BarDir direction = guiProperties.getMachineData().getDir();
+            UITexture texture = guiProperties.getMachineData().getProgressTexture(machine.getMachineTier());
+            brachy.modularui.widgets.ProgressWidget progressWidget = new org.gtreimagined.gt5r.mui.widgets.AutocrafterProgressWidget(machine.getMachineType(), machine.getMachineTier())
+                    .tooltip(t -> t.addLine(Utils.translatable("gtlib.gui.show_recipes")))
+                    .syncHandler("progress")
+                    .pos(guiProperties.getMachineData().getProgressPos().x + 6, guiProperties.getMachineData().getProgressPos().y + 6);
+            modularPanel.child(progressWidget);
+            if (!direction.isCircular()) {
+                progressWidget.texture(texture, direction.toRegularDirection());
+            } else {
+                progressWidget.progress(CompositeProgress.circularLike4Slice(
+                        texture.getSubArea(0.0f, 0.0f, 1f, 0.5f),
+                        texture.getSubArea(0f, 0.5f,1f, 1f),
+                        direction.toCircularDirection()
+                ));
+            }
         });
         //ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
         //ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
