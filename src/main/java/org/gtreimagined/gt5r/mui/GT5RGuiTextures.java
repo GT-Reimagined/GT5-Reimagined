@@ -9,16 +9,29 @@ public class GT5RGuiTextures {
     public static final UITexture TANK_BACKGROUND = widget("basic_tank_background",71, 45);
     public static final UITexture BLUE_FILTER_ARROW = widget("blue_filter_arrow",null);
     public static final UITexture BLUE_TYPE_FILTER_ARROW = widget("blue_type_filter_arrow", 41, 24, null);
+    public static final UITexture BOILER_HEAT_BAR = widget("boiler_heat_bar", 10, 54, null);
+    public static final UITexture BOILER_LAVA_BAR = widget("boiler_lava_bar", 10, 54, null);
+    public static final UITexture BOILER_STEAM_BAR = widget("boiler_steam_bar", 10, 54, null);
+    public static final UITexture BOILER_WATER_BAR = widget("boiler_water_bar", 10, 54, null);
+    public static final UITexture BRONZE_BOILER_EMPTY_BAR = widget("bronze_boiler_empty_bar", 10, 54, null);
     public static final UITexture BUFFER_ARROW = widget("buffer_arrow", 87, 22, null);
     public static final UITexture FORGE_HAMMER_OVERLAY = widget("forge_hammer_overlay", 20, 6);
     public static final UITexture ITEM_FILTER_FAKE_SLOTS = widget("item_filter_fake_slots", ColorType.DEFAULT);
     public static final UITexture MACERATOR_OVERLAY = widget("macerator_overlay", ColorType.DEFAULT);
     public static final UITexture MULTIBLOCK_BACKGROUND = widget("multiblock_background.",143, 75);
     public static final UITexture RED_FILTER_ARROW = widget("red_filter_arrow", 19, 24, null);
+    public static final UITexture STEEL_BOILER_EMPTY_BAR = widget("steel_boiler_empty_bar", 10, 54);
+    public static final UITexture SOLAR_BOILER_ICON = widget("solar_boiler_icon", 12, 24);
     public static final UITexture SUPER_BUFFER_OVERLAY = widget("super_buffer_overlay", null);
     public static final UITexture TYPE_FILTER_FAKE_SLOT = widget("type_filter_fake_slot", null);
     public static final UITexture WHITE_FILTER_ARROW_BAR = widget("white_filter_arrow_bar", 9, 6, null);
     public static final UITexture WHITE_TYPE_FILTER_ARROW_BAR = widget("white_type_filter_arrow_bar", 26, 6, null);
+
+    //ICONS
+    public static final UITexture BRONZE_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_flame_off.png");
+    public static final UITexture FLAME_ON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/flame_on.png", null);
+    public static final UITexture PBF_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png");
+    public static final UITexture STEEL_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_flame_off.png");
 
     //SLOTS
     public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/battery.png").colorType(null).build();

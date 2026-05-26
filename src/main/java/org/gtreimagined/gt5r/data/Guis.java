@@ -1,13 +1,22 @@
 package org.gtreimagined.gt5r.data;
 
 import brachy.modularui.drawable.UITexture;
+import brachy.modularui.drawable.progress.ProgressDrawable.Direction;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.DoubleSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.widgets.ButtonWidget;
 import net.minecraft.client.gui.screens.Screen;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityLavaBoiler;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntitySolarBoiler;
 import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtcore.mui.GTCoreThemes;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.IFuelMachine;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
+import org.gtreimagined.gtlib.capability.machine.CookingRecipeHandler;
 import org.gtreimagined.gtlib.cover.CoverOutput;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.GuiProperties;
@@ -32,9 +41,13 @@ import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.machine.types.MultiMachine;
 import org.gtreimagined.gtlib.mui.BarDir;
 import org.gtreimagined.gtlib.mui.GTGuiTextures;
+import org.gtreimagined.gtlib.mui.GTMuiUtils;
 import org.gtreimagined.gtlib.mui.IInfoRenderer;
 import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
+import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gtlib.util.int2;
+
+import java.util.function.Function;
 
 import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
@@ -414,21 +427,141 @@ public class Guis {
     }
 
     public static void widgets(){
-        PRIMITIVE_BLAST_FURNACE.addGuiCallback(t -> {
-            t.addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(79, 51, 18, 18));
+        PRIMITIVE_BLAST_FURNACE.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof IFuelMachine fuelMachine){
+                syncManager.syncValue("fuel", new DoubleSyncValue(() -> (double) fuelMachine.getFuel() / fuelMachine.getMaxFuel()));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.PBF_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
+                        .syncHandler("fuel").pos(79, 51).size(18, 18));
+            }
         });
-        SOLID_FUEL_BOILER.addGuiCallback(t -> {
-            String tier = ((BlockEntityMachine<?>)t.handler).getMachineTier().getId();
-            t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
-                    .addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/" + tier + "_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(115, 43, 18, 18));
+        SOLID_FUEL_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof BlockEntityCoalBoiler fuelMachine){
+                Tier tier = machine.getMachineTier();
+                syncManager.syncValue("fuel", new DoubleSyncValue(() -> (double) fuelMachine.getFuel() / fuelMachine.getMaxFuel()));
+                syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
+                syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
+                syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_FLAME_OFF : GT5RGuiTextures.STEEL_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
+                        .syncHandler("fuel").pos(79, 51).size(18, 18));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("steam") / 16000)
+                        .tooltip(tooltip -> {
+                            int steam = intGetter.apply("steam");
+                            if (steam > 0){
+                                tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
+                            }
+                        })
+                        .pos(70, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("water") / 16000)
+                        .tooltip(tooltip -> {
+                            int water = intGetter.apply("water");
+                            if (water > 0){
+                                tooltip.addLine(Utils.literal("Water: " + water + " MB"));
+                            }
+                        })
+                        .pos(83, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
+                        .tooltip(tooltip -> {
+                            int heat = intGetter.apply("heat");
+                            int maxHeat = intGetter.apply("maxHeat");
+                            tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
+                        })
+                        .pos(96, 25).size(10, 54));
+            }
         });
 
-        LAVA_BOILER.addGuiCallback(t -> {
-            t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 62, 54));
+        LAVA_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof BlockEntityLavaBoiler fuelMachine){
+                Tier tier = machine.getMachineTier();
+                syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
+                syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
+                syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("lava", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(1).getAmount()).orElse(0)));
+                Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("steam") / 16000)
+                        .tooltip(tooltip -> {
+                            int steam = intGetter.apply("steam");
+                            if (steam > 0){
+                                tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
+                            }
+                        })
+                        .pos(70, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("water") / 16000)
+                        .tooltip(tooltip -> {
+                            int water = intGetter.apply("water");
+                            if (water > 0){
+                                tooltip.addLine(Utils.literal("Water: " + water + " MB"));
+                            }
+                        })
+                        .pos(83, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
+                        .tooltip(tooltip -> {
+                            int heat = intGetter.apply("heat");
+                            int maxHeat = intGetter.apply("maxHeat");
+                            tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
+                        })
+                        .pos(96, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_LAVA_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("lava") / 16000)
+                        .tooltip(tooltip -> {
+                            int lava = intGetter.apply("lava");
+                            if (lava > 0){
+                                tooltip.addLine(Utils.literal("Lava: " + lava + " MB"));
+                            }
+                        })
+                        .pos(122, 25).size(10, 54));
+            }
         });
 
-        SOLAR_BOILER.addGuiCallback(t -> {
-            t.addWidget(SolarBoilerWidget.build().setSize(70, 25, 62, 54));
+        SOLID_FUEL_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof BlockEntitySolarBoiler fuelMachine){
+                Tier tier = machine.getMachineTier();
+                syncManager.syncValue("sunlit", new BooleanSyncValue(fuelMachine::isAllowedToWork));
+                syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
+                syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
+                syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.SOLAR_BOILER_ICON, Direction.UP)
+                        .clientValue(() -> {
+                            boolean isSunlit = GTMuiUtils.getSyncedValue("sunlit", Boolean.class, syncManager.getModularSyncManager()).orElse(false);
+                            return isSunlit ? 1.0 : 0.0;
+                        }).pos(131, 45).size(12, 12));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("steam") / 16000)
+                        .tooltip(tooltip -> {
+                            int steam = intGetter.apply("steam");
+                            if (steam > 0){
+                                tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
+                            }
+                        })
+                        .pos(70, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("water") / 16000)
+                        .tooltip(tooltip -> {
+                            int water = intGetter.apply("water");
+                            if (water > 0){
+                                tooltip.addLine(Utils.literal("Water: " + water + " MB"));
+                            }
+                        })
+                        .pos(83, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
+                        .tooltip(tooltip -> {
+                            int heat = intGetter.apply("heat");
+                            int maxHeat = intGetter.apply("maxHeat");
+                            tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
+                        })
+                        .pos(96, 25).size(10, 54));
+            }
         });
         ADJUSTABLE_TRANSFORMER.getGuiFunctions().add(((modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GTGuiTextures.CREATIVE_GENERATOR_OVERLAY.asWidget().size(158, 61).pos(9, 17));
@@ -462,7 +595,7 @@ public class Guis {
             }
         }));
 
-        AUTOCRAFTER.getCallbacks().remove(1);
+        //AUTOCRAFTER.getCallbacks().remove(1);
         AUTOCRAFTER.addGuiCallback(t -> {
             t.addWidget(AutocrafterProgressWidget.build())
                     .addWidget(MachineStateWidget.build());
@@ -471,9 +604,9 @@ public class Guis {
                     machine.coverHandler.map(c -> c.getOutputCover() instanceof CoverOutput).orElse(false) &&
                     !(u.handler instanceof BlockEntityMultiMachine<?>)));
         });
-        ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
-        ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
-        CHEST_BUFFER.getCallbacks().remove(1);
+        //ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
+        //ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
+        //CHEST_BUFFER.getCallbacks().remove(1);
         FUSION_REACTOR.addGuiCallback(t -> {
             t.addButton(155, 23, ButtonOverlay.NO_OVERLAY, false).addButton(155, 41, ButtonOverlay.NO_OVERLAY, false).addButton(155, 59, ButtonOverlay.NO_OVERLAY, false).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
         });
