@@ -13,31 +13,21 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityLavaBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySolarBoiler;
 import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
+import org.gtreimagined.gtcore.machine.SteamMachine;
 import org.gtreimagined.gtcore.mui.GTCoreThemes;
-import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.blockentity.IFuelMachine;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
-import org.gtreimagined.gtlib.capability.machine.CookingRecipeHandler;
-import org.gtreimagined.gtlib.cover.CoverOutput;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.GuiProperties;
 import org.gtreimagined.gtlib.gui.SlotData;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
-import org.gtreimagined.gtlib.gui.widget.FuelWidget;
-import org.gtreimagined.gtlib.gui.widget.IOWidget;
-import org.gtreimagined.gtlib.gui.widget.MachineStateWidget;
 import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
 import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
 import org.gtreimagined.gtlib.machine.IPanelFunction;
 import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import org.gtreimagined.gt5r.gui.widgets.AutocrafterProgressWidget;
-import org.gtreimagined.gt5r.gui.widgets.CoalBoilerWidget;
 import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
-import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
-import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.machine.types.MultiMachine;
 import org.gtreimagined.gtlib.mui.BarDir;
@@ -45,7 +35,6 @@ import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.gtreimagined.gtlib.mui.GTMuiUtils;
 import org.gtreimagined.gtlib.mui.IInfoRenderer;
 import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
-import org.gtreimagined.gtlib.mui.widgets.GTProgressWidget;
 import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gtlib.util.int2;
 
@@ -334,6 +323,14 @@ public class Guis {
     }
 
     public static void backgroundWidgets(){
+        SteamMachine[] steamMachines = new SteamMachine[]{SOLID_FUEL_BOILER, LAVA_BOILER, SOLAR_BOILER, STEAM_ALLOY_SMELTER, STEAM_COMPRESSOR, STEAM_CUTTER,
+                STEAM_EXTRACTOR, STEAM_FORGE_HAMMER, STEAM_FURNACE, STEAM_MACERATOR, STEAM_SIFTER};
+        for (SteamMachine steamMachine : steamMachines){
+            steamMachine.getGuiProperties().setGTIcon(BRONZE, GT5RGuiTextures.BRONZE_GT_LOGO);
+            steamMachine.getGuiProperties().setGTIcon(STEEL, GT5RGuiTextures.STEEL_GT_LOGO);
+        }
+        COKE_OVEN.getGuiProperties().setGTIcon(GT5RGuiTextures.PRIMITIVE_GT_LOGO);
+        PRIMITIVE_BLAST_FURNACE.getGuiProperties().setGTIcon(GT5RGuiTextures.PRIMITIVE_GT_LOGO);
         addToBackgroundFunction(FORGE_HAMMER, (modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GT5RGuiTextures.FORGE_HAMMER_OVERLAY.asWidget().pos(78, 42).size(20, 6));
         });

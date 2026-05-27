@@ -34,6 +34,10 @@ public class GT5RGuiTextures {
     public static final UITexture STEEL_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_flame_off.png");
     public static final UITexture BRONZE_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_tank_icon.png");
     public static final UITexture STEEL_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_tank_icon.png");
+    public static final UITexture BRONZE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_gt_logo.png");
+    public static final UITexture STEEL_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_gt_logo.png");
+    public static final UITexture PRIMITIVE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/primitive_gt_logo.png");
+
 
     //SLOTS
     public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/battery.png").colorType(null).build();
