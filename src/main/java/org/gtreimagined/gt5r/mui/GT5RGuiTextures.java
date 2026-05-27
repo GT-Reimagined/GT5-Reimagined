@@ -32,6 +32,8 @@ public class GT5RGuiTextures {
     public static final UITexture FLAME_ON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/flame_on.png", null);
     public static final UITexture PBF_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png");
     public static final UITexture STEEL_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_flame_off.png");
+    public static final UITexture BRONZE_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_tank_icon.png");
+    public static final UITexture STEEL_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_tank_icon.png");
 
     //SLOTS
     public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/battery.png").colorType(null).build();
@@ -41,6 +43,14 @@ public class GT5RGuiTextures {
     public static final UITexture PRIMITIVE_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_dust.png").build();
     public static final UITexture PRIMITIVE_FIRE_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_fire.png").build();
     public static final UITexture PRIMITIVE_INGOT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_ingot.png").build();
+    public static final UITexture BRONZE_CELL_IN_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_cell_in.png").build();
+    public static final UITexture BRONZE_CELL_OUT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_cell_out.png").build();
+    public static final UITexture BRONZE_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_dust.png").build();
+    public static final UITexture BRONZE_COAL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_coal.png").build();
+    public static final UITexture STEEL_CELL_IN_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_cell_in.png").build();
+    public static final UITexture STEEL_CELL_OUT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_cell_out.png").build();
+    public static final UITexture STEEL_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_dust.png").build();
+    public static final UITexture STEEL_COAL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_coal.png").build();
     //PROGRESS BARS
     public static final UITexture ASSEMBLER_PROGRESS = progressTexture("assembler");
     public static final UITexture BENDER_PROGRESS = progressTexture("bender");

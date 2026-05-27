@@ -231,9 +231,12 @@ public class Guis {
                 .add(ENERGY,53,45, bat).add(ENERGY,71,45, bat).add(ENERGY,89,45, bat).add(ENERGY,107,45, bat)
                 .add(ENERGY,53,63, bat).add(ENERGY,71,63, bat).add(ENERGY,89,63, bat).add(ENERGY,107,63, bat);
 
-        SOLID_FUEL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
-        LAVA_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
-        SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
+        SOLID_FUEL_BOILER.add(BRONZE, CELL_IN, 44, 26, GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).add(BRONZE, CELL_OUT, 44, 62, GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY)
+                .add(BRONZE, IT_OUT, 116, 26, GT5RGuiTextures.BRONZE_DUST_SLOT_OVERLAY).add(BRONZE, IT_IN, 116, 62, GT5RGuiTextures.BRONZE_COAL_SLOT_OVERLAY);
+        SOLID_FUEL_BOILER.add(STEEL, CELL_IN, 44, 26, GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).add(STEEL, CELL_OUT, 44, 62, GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY)
+                .add(STEEL, IT_OUT, 116, 26, GT5RGuiTextures.STEEL_DUST_SLOT_OVERLAY).add(STEEL, IT_IN, 116, 62, GT5RGuiTextures.STEEL_COAL_SLOT_OVERLAY);
+        LAVA_BOILER.add(CELL_IN, 44, 26, GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).add(CELL_OUT, 44, 62, GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY);
+        SOLAR_BOILER.add(CELL_IN, 44, 26, GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).add(CELL_OUT, 44, 62, GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY);
 
         STEAM_ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
         STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
@@ -446,6 +449,7 @@ public class Guis {
                 syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
                 syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
                 Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child((tier == BRONZE ? GT5RGuiTextures.BRONZE_TANK_ICON : GT5RGuiTextures.STEEL_TANK_ICON).asWidget().pos(43, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_FLAME_OFF : GT5RGuiTextures.STEEL_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
                         .syncHandler("fuel").pos(115, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
