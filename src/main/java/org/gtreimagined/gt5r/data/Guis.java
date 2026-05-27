@@ -491,6 +491,7 @@ public class Guis {
                 syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
                 syncManager.syncValue("lava", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(1).getAmount()).orElse(0)));
                 Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(GT5RGuiTextures.STEEL_TANK_ICON.asWidget().pos(43, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("steam") / 16000)
                         .tooltip(tooltip -> {
@@ -539,6 +540,7 @@ public class Guis {
                 syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
                 syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
                 Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(GT5RGuiTextures.BRONZE_TANK_ICON.asWidget().pos(43, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.SOLAR_BOILER_ICON, Direction.UP)
                         .clientValue(() -> {
                             boolean isSunlit = GTMuiUtils.getSyncedValue("sunlit", Boolean.class, syncManager.getModularSyncManager()).orElse(false);
