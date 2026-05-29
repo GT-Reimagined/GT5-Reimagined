@@ -381,8 +381,6 @@ public class Guis {
                 modularPanel.child(GT5RGuiTextures.MULTIBLOCK_BACKGROUND.asWidget().pos(7, 4).size(143, 75));
             });
         }
-        FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
-        FUSION_REACTOR.getGuiProperties().setBackgroundTexture("fusion_control_computer");
     }
 
     private static void addToBackgroundFunction(Machine<?> machine, IPanelFunction newFunction){
