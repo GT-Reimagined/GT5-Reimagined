@@ -451,29 +451,29 @@ public class Guis {
                         .syncHandler("fuel").pos(115, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("steam") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int steam = intGetter.apply("steam");
                             if (steam > 0){
                                 tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(70, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("water") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int water = intGetter.apply("water");
                             if (water > 0){
                                 tooltip.addLine(Utils.literal("Water: " + water + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(83, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int heat = intGetter.apply("heat");
                             int maxHeat = intGetter.apply("maxHeat");
                             tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(96, 25).size(10, 54));
             }
         });
@@ -491,38 +491,38 @@ public class Guis {
                 modularPanel.child(GT5RGuiTextures.STEEL_TANK_ICON.asWidget().pos(43, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("steam") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int steam = intGetter.apply("steam");
                             if (steam > 0){
                                 tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(70, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("water") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int water = intGetter.apply("water");
                             if (water > 0){
                                 tooltip.addLine(Utils.literal("Water: " + water + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(83, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int heat = intGetter.apply("heat");
                             int maxHeat = intGetter.apply("maxHeat");
                             tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(96, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_LAVA_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("lava") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int lava = intGetter.apply("lava");
                             if (lava > 0){
                                 tooltip.addLine(Utils.literal("Lava: " + lava + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(122, 25).size(10, 54));
             }
         });
@@ -545,29 +545,29 @@ public class Guis {
                         }).pos(131, 45).size(12, 12));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("steam") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int steam = intGetter.apply("steam");
                             if (steam > 0){
                                 tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(70, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("water") / 16000)
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int water = intGetter.apply("water");
                             if (water > 0){
                                 tooltip.addLine(Utils.literal("Water: " + water + " MB"));
                             }
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(83, 25).size(10, 54));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
-                        .tooltip(tooltip -> {
+                        .tooltipDynamic(tooltip -> {
                             int heat = intGetter.apply("heat");
                             int maxHeat = intGetter.apply("maxHeat");
                             tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
-                        })
+                        }).tooltipAutoUpdate(true)
                         .pos(96, 25).size(10, 54));
             }
         });
