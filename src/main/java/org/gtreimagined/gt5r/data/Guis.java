@@ -439,6 +439,7 @@ public class Guis {
             if (machine instanceof BlockEntityCoalBoiler fuelMachine){
                 Tier tier = machine.getMachineTier();
                 syncManager.syncValue("fuel", new DoubleSyncValue(() -> (double) fuelMachine.getFuel() / fuelMachine.getMaxFuel()));
+                syncManager.syncValue("fuelInt", new IntSyncValue(fuelMachine::getFuel));
                 syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
                 syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
                 syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
@@ -446,7 +447,10 @@ public class Guis {
                 Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
                 modularPanel.child((tier == BRONZE ? GT5RGuiTextures.BRONZE_TANK_ICON : GT5RGuiTextures.STEEL_TANK_ICON).asWidget().pos(43, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_FLAME_OFF : GT5RGuiTextures.STEEL_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
-                        .syncHandler("fuel").pos(115, 43).size(18, 18));
+                        .syncHandler("fuel")
+                        .tooltip(t -> t.addLine(Utils.literal("Show Recipes")))
+                        .tooltipDynamic(t -> t.addLine(Utils.literal("Fuel: " + intGetter.apply("fuelInt")))).tooltipAutoUpdate(true)
+                        .pos(115, 43).size(18, 18));
                 modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
                         .clientValue(() -> (double)intGetter.apply("steam") / 16000)
                         .tooltipDynamic(tooltip -> {
