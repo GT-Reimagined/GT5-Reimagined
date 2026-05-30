@@ -1,5 +1,13 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
@@ -20,6 +28,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import org.gtreimagined.gt5r.data.GT5RCovers;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,10 +43,17 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
         super(source, tier, side, factory);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, h -> inverted, true, b -> "tooltip.gt5r.redstone_mode." + (b ? "inverted" : "normal"));
-        });
         this.gui.getSlots().add(SlotType.STORAGE, 88, 34);
+    }
+
+    @Override
+    public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("redstone_mode", new BooleanSyncValue(() -> this.inverted, b -> this.inverted = b).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(70, 34).size(16, 16).syncHandler("redstone_mode")
+                .stateOverlay(false, GTGuiTextures.TORCH_OFF)
+                .stateOverlay(true, GTGuiTextures.TORCH_ON)
+                .addTooltip(0, Text.lang("tooltip.gt5r.redstone_mode.normal"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.redstone_mode.inverted")));
     }
 
     @Override

@@ -1,5 +1,15 @@
 package org.gtreimagined.gt5r.cover.base;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.drawable.ItemDrawable;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.EnumSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
+import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
@@ -14,6 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import org.gtreimagined.gt5r.cover.ICoverRedstoneSensitive;
 import org.gtreimagined.gt5r.cover.ImportExportMode;
 import org.gtreimagined.gt5r.cover.RedstoneMode;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class CoverBasicTransport extends CoverBasicRedstone implements ICoverRedstoneSensitive {
@@ -26,14 +37,32 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
         this.exportMode = source.getTile() instanceof BlockEntityPipe<?> ? ImportExportMode.IMPORT : ImportExportMode.EXPORT;
         redstoneMode = RedstoneMode.NO_WORK;
         coverModeInt = exportMode.ordinal();
-        addButtons();
     }
 
-    protected void addButtons(){
-        addGuiCallback(t -> {
-            t.addCycleButton(70, 34, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), true, i -> "tooltip.gt5r.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
-            t.addCycleButton(88, 34, 16, 16, h -> ((CoverBasicTransport)h).exportMode.ordinal(), true, i -> "tooltip.gt5r.export_mode." + i, ButtonOverlay.EXPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT_EXPORT);
-        });
+    @Override
+    public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("redstone_mode", new EnumSyncValue<>(RedstoneMode.class, () -> this.redstoneMode, e -> this.redstoneMode = e).allowC2S());
+        panelSyncManager.syncValue("export_mode", new EnumSyncValue<>(ImportExportMode.class, () -> this.exportMode, e -> this.exportMode = e).allowC2S());
+        modularPanel.child(new CycleButtonWidget()
+                .pos(70, 34).size(16, 16)
+                .stateCount(3).syncHandler("redstone_mode")
+                .stateOverlay(RedstoneMode.NORMAL, GTGuiTextures.TORCH_OFF)
+                .stateOverlay(RedstoneMode.INVERTED, GTGuiTextures.TORCH_ON)
+                .stateOverlay(RedstoneMode.NO_WORK, new ItemDrawable(Items.REDSTONE))
+                .addTooltip(0, Text.lang("tooltip.gt5r.redstone_mode.0"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.redstone_mode.1"))
+                .addTooltip(2, Text.lang("tooltip.gt5r.redstone_mode.2")));
+        modularPanel.child(new CycleButtonWidget()
+                .pos(88, 34).size(16, 16)
+                .stateCount(4).syncHandler("export_mode")
+                .stateOverlay(ImportExportMode.EXPORT, GTGuiTextures.EXPORT)
+                .stateOverlay(ImportExportMode.IMPORT, GTGuiTextures.IMPORT)
+                .stateOverlay(ImportExportMode.EXPORT_IMPORT, GTGuiTextures.EXPORT_IMPORT)
+                .stateOverlay(ImportExportMode.IMPORT_EXPORT, GTGuiTextures.IMPORT_EXPORT)
+                .addTooltip(0, Text.lang("tooltip.gt5r.export_mode.0"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.export_mode.1"))
+                .addTooltip(2, Text.lang("tooltip.gt5r.export_mode.2"))
+                .addTooltip(3, Text.lang("tooltip.gt5r.export_mode.3")));
     }
 
     @Override
