@@ -4,12 +4,10 @@ import net.minecraft.nbt.CompoundTag;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
-import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
@@ -25,16 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
-import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
-import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.capability.ICoverHandler;
-import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
-import org.gtreimagined.gtlib.gui.event.GuiEvents;
-import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Predicate;
@@ -48,11 +36,11 @@ public class CoverItemRegulator extends CoverBasicTransport {
         addGuiCallback(t -> {
             t.addButton(52,53, ButtonOverlay.MINUS, true);
             t.addButton(106,53, ButtonOverlay.PLUS, true);
-            t.addWidget(SyncableTextWidget.build(i -> {
+            /*t.addWidget(SyncableTextWidget.build(i -> {
                 CoverItemRegulator itemRegulator = (CoverItemRegulator) i;
                 if (itemRegulator.slotLimit == 0) return "N/A";
                 return String.valueOf(itemRegulator.slotLimit);
-            }, 4210752, true).setSize(61, 58, 36, 18));
+            }, 4210752, true).setSize(61, 58, 36, 18));*/
         });
     }
 

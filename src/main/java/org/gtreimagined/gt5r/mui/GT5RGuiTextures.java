@@ -38,6 +38,19 @@ public class GT5RGuiTextures {
     public static final UITexture STEEL_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_gt_logo.png");
     public static final UITexture PRIMITIVE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/primitive_gt_logo.png");
 
+    //BUTTONS
+    public static final UITexture BLACKLIST_OFF = button("blacklist_off", 16, 16);
+    public static final UITexture BLACKLIST_ON = button("blacklist_on", 16, 16);
+    public static final UITexture ENERGY_OFF = button("energy_off", 16, 16);
+    public static final UITexture ENERGY_ON = button("energy_on", 16, 16);
+    public static final UITexture INVERT_REDSTONE_OFF = button("invert_redstone_off", 16, 16);
+    public static final UITexture INVERT_REDSTONE_ON = button("invert_redstone_on", 16, 16);
+    public static final UITexture NBT_OFF = button("nbt_off", 16, 16);
+    public static final UITexture NBT_ON = button("nbt_on", 16, 16);
+    public static final UITexture PULL_UP_OFF = button("pull_up_off", 16, 16);
+    public static final UITexture PULL_UP_ON = button("pull_up_on", 16, 16);
+    public static final UITexture REDSTONE_CONTROL_OFF = button("redstone_control_off", 16, 16);
+    public static final UITexture REDSTONE_CONTROL_ON = button("redstone_control_on", 16, 16);
 
     //SLOTS
     public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/battery.png").colorType(null).build();
@@ -111,6 +124,10 @@ public class GT5RGuiTextures {
 
     private static UITexture widget(String name, int width, int height, ColorType colorType){
         return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").imageSize(width, height).colorType(colorType).build();
+    }
+
+    private static UITexture button(String name, int width, int height){
+        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/button/" + name + ".png").imageSize(width, height).colorType(null).build();
     }
 
 }

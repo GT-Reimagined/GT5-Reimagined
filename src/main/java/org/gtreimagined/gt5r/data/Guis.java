@@ -21,7 +21,6 @@ import org.gtreimagined.gtlib.gui.GuiProperties;
 import org.gtreimagined.gtlib.gui.SlotData;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
-import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
 import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
 import org.gtreimagined.gtlib.machine.IPanelFunction;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -630,13 +629,10 @@ public class Guis {
         //ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
         //ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
         //CHEST_BUFFER.getCallbacks().remove(1);
-        FUSION_REACTOR.addGuiCallback(t -> {
+        /*FUSION_REACTOR.addGuiCallback(t -> {
             t.addButton(155, 23, ButtonOverlay.NO_OVERLAY, false).addButton(155, 41, ButtonOverlay.NO_OVERLAY, false).addButton(155, 59, ButtonOverlay.NO_OVERLAY, false).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
-        });
+        });*/
     }
 
-    public static WidgetSupplier makeProgress(){
-        return builder(ProgressWidget::new);
-    }
     // }
 }

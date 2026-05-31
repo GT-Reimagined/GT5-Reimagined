@@ -8,7 +8,6 @@ import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.Direction;
@@ -28,7 +27,6 @@ public class CoverRobotArm extends CoverBasicTransport {
         super(source, tier, side, factory);
     }
 
-    @Override
     protected void addButtons() {
         addGuiCallback(t -> {
             t.addCycleButton(70, 16, 16, 16, h -> ((CoverBasicRedstone)h).redstoneMode.ordinal(), true, i -> "tooltip.gt5r.redstone_mode." + i, ButtonOverlay.TORCH_OFF, ButtonOverlay.TORCH_ON, ButtonOverlay.REDSTONE);
@@ -36,11 +34,11 @@ public class CoverRobotArm extends CoverBasicTransport {
             t.addTextButton(70, 53, 36, 12, h -> ((CoverRobotArm)h).slot, i -> Utils.literal("Slot: ").append("" + i), 0, true);
             t.addButton(61,34, ButtonOverlay.MINUS, true);
             t.addButton(97,34, ButtonOverlay.PLUS, true);
-            t.addWidget(SyncableTextWidget.build(i -> {
+            /*t.addWidget(SyncableTextWidget.build(i -> {
                 CoverRobotArm robotArm = (CoverRobotArm) i;
                 if (robotArm.slotLimit == 0) return "N/A";
                 return String.valueOf(robotArm.slotLimit);
-            }, 4210752, true).setSize(78, 38, 18, 18));
+            }, 4210752, true).setSize(78, 38, 18, 18));*/
             //t.addWidget(TextBoxWidget.build((g, s) -> test = s, g -> test).setSize(25, 33, 36, 18));
         });
     }

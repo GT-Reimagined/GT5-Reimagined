@@ -19,7 +19,6 @@ import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.gui.widget.SyncableTextWidget;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.util.FluidUtils;
 import org.gtreimagined.gtlib.util.Utils;
@@ -42,11 +41,11 @@ public class CoverFluidRegulator extends CoverBasicTransport {
         addGuiCallback(t -> {
             t.addButton(52,53, ButtonOverlay.MINUS, true);
             t.addButton(106,53, ButtonOverlay.PLUS, true);
-            t.addWidget(SyncableTextWidget.build(i -> {
+            /*t.addWidget(SyncableTextWidget.build(i -> {
                 CoverFluidRegulator itemRegulator = (CoverFluidRegulator) i;
                 if (itemRegulator.fluidLimit == 0) return "N/A";
                 return String.valueOf(itemRegulator.fluidLimit);
-            }, 4210752, true).setSize(61, 58, 36, 18));
+            }, 4210752, true).setSize(61, 58, 36, 18));*/
         });
     }
 
