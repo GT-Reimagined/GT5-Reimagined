@@ -1,5 +1,14 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.ButtonWidget;
+import brachy.modularui.widgets.TextWidget;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
@@ -9,6 +18,8 @@ import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
+import org.gtreimagined.gtlib.mui.GTMuiUtils;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,15 +44,38 @@ public class CoverItemRegulator extends CoverBasicTransport {
     int slotLimit = 0;
     public CoverItemRegulator(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        addGuiCallback(t -> {
-            t.addButton(52,53, ButtonOverlay.MINUS, true);
-            t.addButton(106,53, ButtonOverlay.PLUS, true);
-            /*t.addWidget(SyncableTextWidget.build(i -> {
-                CoverItemRegulator itemRegulator = (CoverItemRegulator) i;
-                if (itemRegulator.slotLimit == 0) return "N/A";
-                return String.valueOf(itemRegulator.slotLimit);
-            }, 4210752, true).setSize(61, 58, 36, 18));*/
+    }
+
+    @Override
+    public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager syncManager, UISettings uiSettings) {
+        super.addWidgets(modularPanel, sidedPosGuiData, syncManager, uiSettings);
+        syncManager.registerSyncedAction("buttonEvent", packet -> {
+            this.onGuiEvent(GuiEvents.EXTRA_BUTTON.factory().apply(GuiEvents.EXTRA_BUTTON, packet), syncManager.getPlayer());
         });
+        syncManager.syncValue("slotLimit", new IntSyncValue(() -> this.slotLimit));
+        modularPanel.child(new ButtonWidget<>()
+                .overlay(GTGuiTextures.MINUS)
+                .onMousePressed((context, mouseButton) -> {
+                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                        packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 2});
+                    });
+                    return true;
+                })
+                .size(16).pos(52, 53));
+        modularPanel.child(new ButtonWidget<>()
+                .overlay(GTGuiTextures.PLUS)
+                .onMousePressed((context, mouseButton) -> {
+                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                        packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 3});
+                    });
+                    return true;
+                })
+                .size(16).pos(106, 53));
+        modularPanel.child(new TextWidget<>(() -> {
+            int fluidLimit = GTMuiUtils.getSyncedValue("slotLimit", Integer.class, syncManager.getModularSyncManager()).orElse(0);
+            if (fluidLimit == 0) return Text.str("N/A");
+            return Text.str(String.valueOf(fluidLimit)).color(4210752);
+        }).pos(69, 53).size(36, 18));
     }
 
     @Override

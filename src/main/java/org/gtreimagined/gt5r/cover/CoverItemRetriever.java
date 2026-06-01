@@ -1,5 +1,13 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -14,6 +22,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemHandlerHelper;
 import org.gtreimagined.gt5r.gui.ButtonOverlays;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
@@ -26,6 +35,7 @@ import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.gtreimagined.gtlib.util.CodeUtils;
 import org.gtreimagined.gtlib.util.Utils;
@@ -43,10 +53,22 @@ public class CoverItemRetriever extends BaseCover {
     public CoverItemRetriever(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
         this.getGuiProperties().getSlots().add(SlotType.DISPLAY_SETTABLE, 79, 53);
-        addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> !whitelist, true, b -> "tooltip.gt5r." + (b ? "blacklist" : "whitelist"));
-            t.addSwitchButton(88, 34, 16, 16, ButtonOverlays.NBT_OFF, ButtonOverlays.NBT_ON, h -> !ignoreNBT, true, b -> "tooltip.gt5r.nbt." + (b ? "on" : "off"));
-        });;
+    }
+
+    @Override
+    public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("whitelist", new BooleanSyncValue(() -> this.whitelist, b -> this.whitelist = b).allowC2S());
+        panelSyncManager.syncValue("nbt", new BooleanSyncValue(() -> this.ignoreNBT, b -> this.ignoreNBT = b).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(70, 34).size(16, 16).syncHandler("whitelist")
+                .stateOverlay(false, GTGuiTextures.BLACKLIST)
+                .stateOverlay(true, GTGuiTextures.WHITELIST)
+                .addTooltip(0, Text.lang("tooltip.gt5r.blacklist"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.whitelist")));
+        panel.child(new CycleButtonWidget().stateCount(2).pos(88, 34).size(16, 16).syncHandler("nbt")
+                .stateOverlay(false, GT5RGuiTextures.NBT_ON)
+                .stateOverlay(true, GT5RGuiTextures.NBT_OFF)
+                .addTooltip(0, Text.lang("tooltip.gt5r.nbt.on"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.nbt.off")));
     }
 
     @Override
