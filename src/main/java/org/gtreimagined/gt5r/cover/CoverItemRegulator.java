@@ -49,14 +49,11 @@ public class CoverItemRegulator extends CoverBasicTransport {
     @Override
     public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager syncManager, UISettings uiSettings) {
         super.addWidgets(modularPanel, sidedPosGuiData, syncManager, uiSettings);
-        syncManager.registerSyncedAction("buttonEvent", packet -> {
-            this.onGuiEvent(GuiEvents.EXTRA_BUTTON.factory().apply(GuiEvents.EXTRA_BUTTON, packet), syncManager.getPlayer());
-        });
         syncManager.syncValue("slotLimit", new IntSyncValue(() -> this.slotLimit));
         modularPanel.child(new ButtonWidget<>()
                 .overlay(GTGuiTextures.MINUS)
                 .onMousePressed((context, mouseButton) -> {
-                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                    syncManager.callSyncedAction("extra_button_event", packet -> {
                         packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 2});
                     });
                     return true;
@@ -65,7 +62,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
         modularPanel.child(new ButtonWidget<>()
                 .overlay(GTGuiTextures.PLUS)
                 .onMousePressed((context, mouseButton) -> {
-                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                    syncManager.callSyncedAction("extra_button_event", packet -> {
                         packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 3});
                     });
                     return true;

@@ -46,9 +46,6 @@ public class CoverRobotArm extends CoverBasicTransport {
     public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager syncManager, UISettings uiSettings) {
         syncManager.syncValue("redstone_mode", new EnumSyncValue<>(RedstoneMode.class, () -> this.redstoneMode, e -> this.redstoneMode = e).allowC2S());
         syncManager.syncValue("export_mode", new EnumSyncValue<>(ImportExportMode.class, () -> this.exportMode, e -> this.exportMode = e).allowC2S());
-        syncManager.registerSyncedAction("buttonEvent", packet -> {
-            this.onGuiEvent(GuiEvents.EXTRA_BUTTON.factory().apply(GuiEvents.EXTRA_BUTTON, packet), syncManager.getPlayer());
-        });
         syncManager.syncValue("slotLimit", new IntSyncValue(() -> this.slotLimit));
         syncManager.syncValue("slot", new IntSyncValue(() -> this.slot));
         modularPanel.child(new CycleButtonWidget()
@@ -77,7 +74,7 @@ public class CoverRobotArm extends CoverBasicTransport {
                     return Utils.literal("Slot: " + slot);
                 }))
                 .onMousePressed((context, mouseButton) -> {
-                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                    syncManager.callSyncedAction("extra_button_event", packet -> {
                         packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 2});
                     });
                     return true;
@@ -86,7 +83,7 @@ public class CoverRobotArm extends CoverBasicTransport {
         modularPanel.child(new ButtonWidget<>()
                 .overlay(GTGuiTextures.MINUS)
                 .onMousePressed((context, mouseButton) -> {
-                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                    syncManager.callSyncedAction("extra_button_event", packet -> {
                         packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 3});
                     });
                     return true;
@@ -95,7 +92,7 @@ public class CoverRobotArm extends CoverBasicTransport {
         modularPanel.child(new ButtonWidget<>()
                 .overlay(GTGuiTextures.PLUS)
                 .onMousePressed((context, mouseButton) -> {
-                    syncManager.callSyncedAction("buttonEvent", packet -> {
+                    syncManager.callSyncedAction("extra_button_event", packet -> {
                         packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 4});
                     });
                     return true;
