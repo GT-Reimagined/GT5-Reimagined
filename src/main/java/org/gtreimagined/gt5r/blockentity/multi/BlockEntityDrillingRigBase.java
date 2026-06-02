@@ -1,7 +1,14 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.gui.GuiInstance;
@@ -11,6 +18,7 @@ import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.gtreimagined.gtlib.util.Utils;
 import org.gtreimagined.gtlib.util.int3;
 import net.minecraft.core.BlockPos;
@@ -203,9 +211,11 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
     }
 
     @Override
-    public void addWidgets(GuiInstance instance, IGuiElement parent) {
-        super.addWidgets(instance, parent);
-        instance.addSwitchButton(152, 23, 18, 18, ButtonOverlays.PULL_UP_OFF, ButtonOverlays.PULL_UP_ON, h -> ((BlockEntityDrillingRigBase<?>)h).pullingUp, false);
+    public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("pulling_up", new BooleanSyncValue(() -> pullingUp, b -> pullingUp = b).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(152, 23).size(16).syncHandler("puling_up")
+                .stateOverlay(false, GT5RGuiTextures.PULL_UP_OFF)
+                .stateOverlay(true, GT5RGuiTextures.PULL_UP_ON));
     }
 
     @Override
