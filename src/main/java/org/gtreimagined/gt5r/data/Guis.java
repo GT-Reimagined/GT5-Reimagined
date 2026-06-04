@@ -26,7 +26,6 @@ import org.gtreimagined.gtlib.machine.IPanelFunction;
 import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.machine.types.MultiMachine;
 import org.gtreimagined.gtlib.mui.BarDir;
@@ -41,7 +40,6 @@ import java.util.function.Function;
 
 import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
-import static org.gtreimagined.gtlib.gui.Widget.builder;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
