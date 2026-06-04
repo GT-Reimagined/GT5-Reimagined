@@ -6,6 +6,7 @@ import brachy.modularui.screen.UISettings;
 import brachy.modularui.value.sync.BooleanSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
 import brachy.modularui.widgets.CycleButtonWidget;
+import brachy.modularui.widgets.ToggleButton;
 import it.unimi.dsi.fastutil.longs.LongArrayList;
 import it.unimi.dsi.fastutil.longs.LongList;
 import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
@@ -213,9 +214,8 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
     @Override
     public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
         panelSyncManager.syncValue("pulling_up", new BooleanSyncValue(() -> pullingUp, b -> pullingUp = b).allowC2S());
-        panel.child(new CycleButtonWidget().stateCount(2).pos(152, 23).size(16).syncHandler("puling_up")
-                .stateOverlay(false, GT5RGuiTextures.PULL_UP_OFF)
-                .stateOverlay(true, GT5RGuiTextures.PULL_UP_ON));
+        panel.child(new ToggleButton().pos(152, 23).size(18).syncHandler("pulling_up")
+                .overlay(GT5RGuiTextures.PULL_UP));
     }
 
     @Override
