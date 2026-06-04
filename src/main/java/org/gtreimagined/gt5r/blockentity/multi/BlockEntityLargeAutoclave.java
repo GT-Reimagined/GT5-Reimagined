@@ -1,25 +1,10 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import brachy.modularui.screen.viewport.ModularGuiContext;
-import brachy.modularui.theme.WidgetThemeEntry;
-import brachy.modularui.value.sync.IntSyncValue;
-import brachy.modularui.value.sync.PanelSyncManager;
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.ICanSyncData;
-import org.gtreimagined.gtlib.gui.IGuiElement;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.block.BlockCoil;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
-import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
-import org.gtreimagined.gtlib.util.Utils;
 
 public class BlockEntityLargeAutoclave extends BlockEntityParallelMultiblock<BlockEntityLargeAutoclave> {
 

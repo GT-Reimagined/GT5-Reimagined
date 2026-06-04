@@ -17,7 +17,6 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
@@ -30,7 +29,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import org.gtreimagined.gt5r.cover.base.CoverBasicRedstone;
 import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
 import org.jetbrains.annotations.Nullable;
 

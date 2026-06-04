@@ -14,7 +14,6 @@ import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.cover.BaseCover;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
