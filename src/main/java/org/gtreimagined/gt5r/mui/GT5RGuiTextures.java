@@ -28,15 +28,15 @@ public class GT5RGuiTextures {
     public static final UITexture WHITE_TYPE_FILTER_ARROW_BAR = widget("white_type_filter_arrow_bar", 26, 6, null);
 
     //ICONS
-    public static final UITexture BRONZE_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_flame_off.png");
-    public static final UITexture FLAME_ON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/flame_on.png", null);
-    public static final UITexture PBF_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png");
-    public static final UITexture STEEL_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_flame_off.png");
-    public static final UITexture BRONZE_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_tank_icon.png");
-    public static final UITexture STEEL_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_tank_icon.png");
-    public static final UITexture BRONZE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/bronze_gt_logo.png");
-    public static final UITexture STEEL_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/steel_gt_logo.png");
-    public static final UITexture PRIMITIVE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "textures/gui/icon/primitive_gt_logo.png");
+    public static final UITexture BRONZE_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/bronze_flame_off");
+    public static final UITexture FLAME_ON = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/flame_on", null);
+    public static final UITexture PBF_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/pbf_flame_off");
+    public static final UITexture STEEL_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/steel_flame_off");
+    public static final UITexture BRONZE_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/bronze_tank_icon");
+    public static final UITexture STEEL_TANK_ICON = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/steel_tank_icon");
+    public static final UITexture BRONZE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/bronze_gt_logo");
+    public static final UITexture STEEL_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/steel_gt_logo");
+    public static final UITexture PRIMITIVE_GT_LOGO = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/primitive_gt_logo");
 
     //BUTTONS
     public static final UITexture BLACKLIST_OFF = button("blacklist_off");
@@ -52,21 +52,21 @@ public class GT5RGuiTextures {
     public static final UITexture REDSTONE_CONTROL_ON = button("redstone_control_on");
 
     //SLOTS
-    public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/battery.png").colorType(null).build();
-    public static final UITexture BLUEPRINT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/blueprint.png").build();
-    public static final UITexture CRAFTING_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/crafting.png").build();
-    public static final UITexture PRIMITIVE_CELL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_cell.png").build();
-    public static final UITexture PRIMITIVE_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_dust.png").build();
-    public static final UITexture PRIMITIVE_FIRE_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_fire.png").build();
-    public static final UITexture PRIMITIVE_INGOT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/primitive_ingot.png").build();
-    public static final UITexture BRONZE_CELL_IN_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_cell_in.png").build();
-    public static final UITexture BRONZE_CELL_OUT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_cell_out.png").build();
-    public static final UITexture BRONZE_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_dust.png").build();
-    public static final UITexture BRONZE_COAL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/bronze_coal.png").build();
-    public static final UITexture STEEL_CELL_IN_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_cell_in.png").build();
-    public static final UITexture STEEL_CELL_OUT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_cell_out.png").build();
-    public static final UITexture STEEL_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_dust.png").build();
-    public static final UITexture STEEL_COAL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/slots/overlays/steel_coal.png").build();
+    public static final UITexture BATTERY_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/battery").colorType(null).build();
+    public static final UITexture BLUEPRINT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/blueprint").build();
+    public static final UITexture CRAFTING_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/crafting").build();
+    public static final UITexture PRIMITIVE_CELL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/primitive_cell").build();
+    public static final UITexture PRIMITIVE_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/primitive_dust").build();
+    public static final UITexture PRIMITIVE_FIRE_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/primitive_fire").build();
+    public static final UITexture PRIMITIVE_INGOT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/primitive_ingot").build();
+    public static final UITexture BRONZE_CELL_IN_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/bronze_cell_in").build();
+    public static final UITexture BRONZE_CELL_OUT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/bronze_cell_out").build();
+    public static final UITexture BRONZE_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/bronze_dust").build();
+    public static final UITexture BRONZE_COAL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/bronze_coal").build();
+    public static final UITexture STEEL_CELL_IN_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/steel_cell_in").build();
+    public static final UITexture STEEL_CELL_OUT_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/steel_cell_out").build();
+    public static final UITexture STEEL_DUST_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/steel_dust").build();
+    public static final UITexture STEEL_COAL_SLOT_OVERLAY = UITexture.builder().location(GT5Reimagined.ID, "gui/slots/overlays/steel_coal").build();
     //PROGRESS BARS
     public static final UITexture ASSEMBLER_PROGRESS = progressTexture("assembler");
     public static final UITexture BENDER_PROGRESS = progressTexture("bender");
@@ -79,7 +79,7 @@ public class GT5RGuiTextures {
     public static final UITexture EXTRACTOR_PROGRESS = progressTexture("extractor");
     public static final UITexture EXTRUDER_PROGRESS = progressTexture("extruder");
     public static final UITexture FORGE_HAMMER_PROGRESS = progressTexture("forge_hammer");
-    public static final UITexture FUSION_REACTOR_PROGRESS = UITexture.builder().location(GT5Reimagined.ID, "textures/gui/progress_bars/fusion_reactor.png").imageSize(149, 32).colorType(null).build();
+    public static final UITexture FUSION_REACTOR_PROGRESS = UITexture.builder().location(GT5Reimagined.ID, "gui/progress_bars/fusion_reactor").imageSize(149, 32).colorType(null).build();
     public static final UITexture LATHE_PROGRESS = progressTexture("lathe");
     public static final UITexture MACERATOR_PROGRESS = progressTexture("macerator");
     public static final UITexture MIXER_PROGRESS = progressTexture("mixer", null);
@@ -110,23 +110,23 @@ public class GT5RGuiTextures {
     }
 
     private static UITexture progressTexture(String name, ColorType colorType){
-        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/progress_bars/" + name + ".png").imageSize(20, 36).colorType(colorType).build();
+        return UITexture.builder().location(GT5Reimagined.ID, "gui/progress_bars/" + name).imageSize(20, 36).colorType(colorType).build();
     }
 
     private static UITexture widget(String name, ColorType colorType){
-        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").colorType(colorType).build();
+        return UITexture.builder().location(GT5Reimagined.ID, "gui/widgets/" + name).colorType(colorType).build();
     }
 
     private static UITexture widget(String name, int width, int height){
-        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").imageSize(width, height).build();
+        return UITexture.builder().location(GT5Reimagined.ID, "gui/widgets/" + name).imageSize(width, height).build();
     }
 
     private static UITexture widget(String name, int width, int height, ColorType colorType){
-        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/widgets/" + name + ".png").imageSize(width, height).colorType(colorType).build();
+        return UITexture.builder().location(GT5Reimagined.ID, "gui/widgets/" + name).imageSize(width, height).colorType(colorType).build();
     }
 
     private static UITexture button(String name){
-        return UITexture.builder().location(GT5Reimagined.ID, "textures/gui/button/" + name + ".png").fullImage().colorType(null).build();
+        return UITexture.builder().location(GT5Reimagined.ID, "gui/button/" + name).fullImage().colorType(null).build();
     }
 
 }
