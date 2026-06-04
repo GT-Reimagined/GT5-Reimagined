@@ -150,19 +150,19 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         panelSyncManager.syncValue("invert_redstone", new BooleanSyncValue(() -> invertRedstone, e -> invertRedstone = e).allowC2S());
         panelSyncManager.syncValue("blacklist", new BooleanSyncValue(() -> blacklist, e -> blacklist = e).allowC2S());
         panelSyncManager.syncValue("nbt", new BooleanSyncValue(() -> nbt, e -> nbt = e).allowC2S());
-        panel.child(new CycleButtonWidget().stateCount(2).pos(8, 63).size(18).syncHandler("emit_energy")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(7, 63).size(18).syncHandler("emit_energy")
                 .stateOverlay(false, GT5RGuiTextures.ENERGY_OFF)
                 .stateOverlay(true, GT5RGuiTextures.ENERGY_ON));
-        panel.child(new CycleButtonWidget().stateCount(2).pos(26, 63).size(18).syncHandler("output_redstone")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(25, 63).size(18).syncHandler("output_redstone")
                 .stateOverlay(false, GT5RGuiTextures.REDSTONE_CONTROL_OFF)
                 .stateOverlay(true, GT5RGuiTextures.REDSTONE_CONTROL_ON));
-        panel.child(new CycleButtonWidget().stateCount(2).pos(44, 63).size(18).syncHandler("invert_redstone")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(43, 63).size(18).syncHandler("invert_redstone")
                 .stateOverlay(false, GT5RGuiTextures.INVERT_REDSTONE_OFF)
                 .stateOverlay(true, GT5RGuiTextures.INVERT_REDSTONE_ON));
-        panel.child(new CycleButtonWidget().stateCount(2).pos(62, 63).size(18).syncHandler("blacklist")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(61, 63).size(18).syncHandler("blacklist")
                 .stateOverlay(false, GT5RGuiTextures.BLACKLIST_OFF)
                 .stateOverlay(true, GT5RGuiTextures.BLACKLIST_ON));
-        panel.child(new CycleButtonWidget().stateCount(2).pos(80, 63).size(18).syncHandler("nbt")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(79, 63).size(18).syncHandler("nbt")
                 .stateOverlay(false, GT5RGuiTextures.NBT_OFF)
                 .stateOverlay(true, GT5RGuiTextures.NBT_ON));
     }

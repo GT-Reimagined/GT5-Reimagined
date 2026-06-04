@@ -129,13 +129,13 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
         panelSyncManager.syncValue("emit_energy", new BooleanSyncValue(() -> emitEnergy, e -> emitEnergy = e).allowC2S());
         panelSyncManager.syncValue("output_redstone", new BooleanSyncValue(() -> outputRedstone, e -> outputRedstone = e).allowC2S());
         panelSyncManager.syncValue("invert_redstone", new BooleanSyncValue(() -> invertRedstone, e -> invertRedstone = e).allowC2S());
-        panel.child(new CycleButtonWidget().stateCount(2).pos(8, 63).size(18).syncHandler("emit_energy")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(7, 63).size(18).syncHandler("emit_energy")
                 .stateOverlay(false, GT5RGuiTextures.ENERGY_OFF)
                 .stateOverlay(true, GT5RGuiTextures.ENERGY_ON));
-        panel.child(new CycleButtonWidget().stateCount(2).pos(26, 63).size(18).syncHandler("output_redstone")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(25, 63).size(18).syncHandler("output_redstone")
                 .stateOverlay(false, GT5RGuiTextures.REDSTONE_CONTROL_OFF)
                 .stateOverlay(true, GT5RGuiTextures.REDSTONE_CONTROL_ON));
-        panel.child(new CycleButtonWidget().stateCount(2).pos(44, 63).size(18).syncHandler("invert_redstone")
+        panel.child(new CycleButtonWidget().stateCount(2).pos(43, 63).size(18).syncHandler("invert_redstone")
                 .stateOverlay(false, GT5RGuiTextures.INVERT_REDSTONE_OFF)
                 .stateOverlay(true, GT5RGuiTextures.INVERT_REDSTONE_ON));
     }
