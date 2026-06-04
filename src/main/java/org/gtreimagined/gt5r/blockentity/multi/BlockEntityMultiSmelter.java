@@ -82,6 +82,7 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
             superDraw += 8;
         }
         int add = getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo() ? 40 : 16;
+        if (widget.recipeMap == null) widget.recipeMap = "";
         RecipeMap<?> map = GTAPI.get(RecipeMap.class, new ResourceLocation(widget.recipeMap));
         if (map != null){
             graphics.drawString(renderer, Utils.literal("Recipe map: ").append(map.getDisplayName()).getString(), left, top + add, 0xFAFAFF);
