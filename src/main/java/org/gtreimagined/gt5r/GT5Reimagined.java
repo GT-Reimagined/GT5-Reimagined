@@ -19,6 +19,7 @@ import org.gtreimagined.gt5r.integration.botania.BotaniaRegistrar;
 import org.gtreimagined.gt5r.integration.forestry.ForestryRegistrar;
 import org.gtreimagined.gt5r.integration.ie.IERegistrar;
 import org.gtreimagined.gt5r.integration.mekanism.MekanismRegistrar;
+import org.gtreimagined.gt5r.integration.railcraft.RailcraftRegistrar;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gt5r.loader.machines.MortarLoader;
@@ -198,6 +199,7 @@ public class GT5Reimagined extends GTMod {
         new GT5RPostRegistrar();
         new TFCRegistrar();
         new IERegistrar();
+        new RailcraftRegistrar();
         new ThermalRegistrar();
         new MekanismRegistrar();
         if (GTAPI.isModLoaded(Ref.MOD_FR)) new ForestryRegistrar();
