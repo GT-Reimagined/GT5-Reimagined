@@ -418,6 +418,22 @@ public class Guis {
         STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.DOWN, false).getGuiProperties().getMachineData().setMachineStatePos(80, 50);
         FUSION_REACTOR.getGuiProperties().setEnablePlayerSlots(false)
                 .getMachineData().setProgressLocation(GT5RGuiTextures.FUSION_REACTOR_PROGRESS).setProgressPos(163, 4).setProgressSize(149, 16);
+        STEAM_ALLOY_SMELTER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_DEFAULT_PROGRESS);
+        STEAM_ALLOY_SMELTER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_DEFAULT_PROGRESS);
+        STEAM_COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_COMPRESSOR_PROGRESS);
+        STEAM_COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_COMPRESSOR_PROGRESS);
+        STEAM_EXTRACTOR.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_EXTRACTOR_PROGRESS);
+        STEAM_EXTRACTOR.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_EXTRACTOR_PROGRESS);
+        STEAM_FORGE_HAMMER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_FORGE_HAMMER_PROGRESS);
+        STEAM_FORGE_HAMMER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_FORGE_HAMMER_PROGRESS);
+        STEAM_FURNACE.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_DEFAULT_PROGRESS);
+        STEAM_FURNACE.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_DEFAULT_PROGRESS);
+        STEAM_MACERATOR.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_MACERATOR_PROGRESS);
+        STEAM_MACERATOR.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_MACERATOR_PROGRESS);
+        STEAM_CUTTER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_CUTTER_PROGRESS);
+        STEAM_CUTTER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_CUTTER_PROGRESS);
+        STEAM_SIFTER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_SIFTER_PROGRESS);
+        STEAM_SIFTER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_SIFTER_PROGRESS);
     }
 
     public static void widgets(){
