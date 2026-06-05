@@ -131,7 +131,7 @@ public class IERecipes {
                 .setTime(1800)
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID, "ieblastfurnace/wrought_iron"));
 
-        BlastFurnaceRecipeBuilder.builder(INGOT.getMaterialTag(WroughtIron), 1)
+        BlastFurnaceRecipeBuilder.builder(BLOCK.getMaterialTag(WroughtIron), 1)
                 .addInput(BLOCK.getMaterialTag(Iron))
                 .setTime(9*1800)
                 .build(consumer, new ResourceLocation(GT5Reimagined.ID,"ieblastfurnace/wrought_iron_block"));
