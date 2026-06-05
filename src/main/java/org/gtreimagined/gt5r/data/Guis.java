@@ -82,12 +82,7 @@ public class Guis {
 
     public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
-    public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts") {
-        @Override
-        public ResourceLocation getTexture(Tier tier, String type) {
-            return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
-        }
-    }.setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16)
+    public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts").setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16)
                     .add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
                     .add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34));
 
