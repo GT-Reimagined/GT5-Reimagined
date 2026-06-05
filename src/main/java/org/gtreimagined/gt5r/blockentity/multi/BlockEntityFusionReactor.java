@@ -157,11 +157,6 @@ public class BlockEntityFusionReactor extends BlockEntityMultiMachine<BlockEntit
     }
 
     @Override
-    public int guiHeight() {
-        return 182;
-    }
-
-    @Override
     public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
         //NOOP
     }
