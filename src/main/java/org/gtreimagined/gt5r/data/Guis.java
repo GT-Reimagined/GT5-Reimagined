@@ -331,6 +331,14 @@ public class Guis {
         addToBackgroundFunction(MACERATOR,(modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GT5RGuiTextures.MACERATOR_OVERLAY.asWidget().pos(98, 34).size(1, 1));
         });
+        addToBackgroundFunction(STEAM_FORGE_HAMMER, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child((machine.getMachineTier() == BRONZE ? GT5RGuiTextures.BRONZE_FORGE_HAMMER_OVERLAY : GT5RGuiTextures.STEEL_FORGE_HAMMER_OVERLAY)
+                    .asWidget().pos(78, 42).size(20, 6));
+        });
+        addToBackgroundFunction(STEAM_MACERATOR,(modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child((machine.getMachineTier() == BRONZE ? GT5RGuiTextures.BRONZE_MACERATOR_OVERLAY : GT5RGuiTextures.STEEL_MACERATOR_OVERLAY)
+                    .asWidget().pos(98, 34).size(1, 1));
+        });
         addToBackgroundFunction(ROCK_BREAKER,(modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GT5RGuiTextures.MACERATOR_OVERLAY.asWidget().pos(98, 34).size(1, 1));
         });
@@ -352,6 +360,12 @@ public class Guis {
             modularPanel.child(GT5RGuiTextures.TYPE_FILTER_FAKE_SLOT.asWidget().pos(33, 21).size(20, 20));
             modularPanel.child(GT5RGuiTextures.BLUE_TYPE_FILTER_ARROW.asWidget().pos(54, 19).size(41, 24));
             modularPanel.child(GT5RGuiTextures.RED_FILTER_ARROW.asWidget().pos(152, 19).size(19, 24));
+        });
+        addToBackgroundFunction(PRIMITIVE_BLAST_FURNACE, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.PBF_MULTIBLOCK_OVERLAY.asWidget().pos(11, 17).size(18, 50));
+        });
+        addToBackgroundFunction(COKE_OVEN, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.COKE_OVEN_MULTIBLOCK_OVERLAY.asWidget().pos(11, 14).size(18, 38));
         });
         AUTOCRAFTER.getGuiProperties().setGtIconPos(new int2(80, 64));
         CENTRIFUGE.getGuiProperties().setGtIconPos(new int2(80, 64));
