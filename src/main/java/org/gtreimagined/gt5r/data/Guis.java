@@ -350,7 +350,7 @@ public class Guis {
         addToBackgroundFunction(ELECTRIC_TYPE_FILTER, (modularPanel, machine, guiData, syncManager, settings) -> {
             modularPanel.child(GT5RGuiTextures.WHITE_TYPE_FILTER_ARROW_BAR.asWidget().pos(6, 28).size(26, 6));
             modularPanel.child(GT5RGuiTextures.TYPE_FILTER_FAKE_SLOT.asWidget().pos(33, 21).size(20, 20));
-            modularPanel.child(GT5RGuiTextures.BLUE_FILTER_ARROW.asWidget().pos(54, 19).size(41, 24));
+            modularPanel.child(GT5RGuiTextures.BLUE_TYPE_FILTER_ARROW.asWidget().pos(54, 19).size(41, 24));
             modularPanel.child(GT5RGuiTextures.RED_FILTER_ARROW.asWidget().pos(152, 19).size(19, 24));
         });
         AUTOCRAFTER.getGuiProperties().setGtIconPos(new int2(80, 64));
