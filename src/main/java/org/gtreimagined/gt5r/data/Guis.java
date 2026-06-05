@@ -387,6 +387,7 @@ public class Guis {
 
     public static void machineData(){
         ASSEMBLER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ASSEMBLER_PROGRESS);
+        BENDER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.BENDER_PROGRESS);
         CANNER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CANNER_PROGRESS);
         CIRCUIT_ASSEMBLER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ASSEMBLER_PROGRESS);
         COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COMPRESSOR_PROGRESS);
@@ -412,6 +413,7 @@ public class Guis {
         FORMING_PRESS.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COMPRESSOR_PROGRESS);
         SIFTER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.SIFTER_PROGRESS);
         ELECTROMAGNETIC_SEPARATOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ELECTROMAGNETIC_SEPARATOR_PROGRESS);
+        RECYCLER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.RECYCLER_PROGRESS);
         COKE_OVEN.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COKE_OVEN_PROGRESS);
         PRIMITIVE_BLAST_FURNACE.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COKE_OVEN_PROGRESS);
         FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.DOWN, false).getGuiProperties().getMachineData().setMachineStatePos(84, 46).setProgressLocation(GT5RGuiTextures.FORGE_HAMMER_PROGRESS);
