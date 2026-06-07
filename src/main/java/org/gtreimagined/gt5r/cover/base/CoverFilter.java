@@ -14,9 +14,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.BiConsumer;
 
 public class CoverFilter extends BaseCover {
-    protected boolean blacklist = false;
+    public boolean blacklist = false;
     protected boolean ignoreNBT = false;
-    protected byte filterMode = 0;
+    public byte filterMode = 0;
     public CoverFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
     }

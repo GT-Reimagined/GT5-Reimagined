@@ -16,6 +16,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
+import org.gtreimagined.gtlib.capability.FluidHandler.FluidTankType;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
@@ -54,7 +55,7 @@ public class CoverFluidFilter extends CoverFilter {
     @Override
     public void clearFilter(){
         super.clearFilter();
-        getInventory(SlotType.FL_PHANTOM).clearContent();
+        getFluidTanks().get(FluidTankType.PHANTOM).clearContent();
     }
 
     @Override
