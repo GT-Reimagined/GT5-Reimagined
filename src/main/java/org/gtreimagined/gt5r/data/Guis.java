@@ -23,7 +23,6 @@ import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
 import org.gtreimagined.gtlib.gui.slot.SlotEnergy;
 import org.gtreimagined.gtlib.machine.IPanelFunction;
 import org.gtreimagined.gtlib.machine.Tier;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.machine.types.MultiMachine;
@@ -82,6 +81,11 @@ public class Guis {
     public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53)
                     .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build()));
+    public static GuiProperties COKE_OVEN_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "coke_oven_recipe_gui")
+            .setSlots(ISlotProvider.DEFAULT().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25));
+    public static GuiProperties PBF_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "pbf_recipe_gui").setSlots(
+            ISlotProvider.DEFAULT().add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52)
+                    .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25));
 
     public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
@@ -174,8 +178,9 @@ public class Guis {
                 .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR);
-        MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 44, 63)
-                .add(FL_IN, 62, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
+        MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
+                .add(FL_IN, b -> b.x(44).y(63).jeiX(35).build()).add(FL_IN, b -> b.x(62).y(63).jeiX(53).build())
+                .add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
         LASER_ENGRAVER.add(ALLOY_SMELTER);
         FORMING_PRESS.add(IT_IN, 17, 25).add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         FORGE_HAMMER.add(FURNACE);
