@@ -1,11 +1,8 @@
 package org.gtreimagined.gt5r.data;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraftforge.server.ServerLifecycleHooks;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.integration.xei.renderer.IRecipeInfoRenderer;
 import org.gtreimagined.gtlib.integration.xei.renderer.InfoRenderers;
 import org.gtreimagined.gtlib.machine.BlockMachine;
@@ -449,6 +446,8 @@ public class RecipeMaps {
         PULVERIZER.addSubCategory("macerator_ore_processing", new SubCategory("jei.category.macerator_ore_processing", () -> GT5RMachines.MACERATOR.getItem(Tier.LV), r -> r.getTags().contains(GT5RRecipeTags.MACERATOR_ORE_PROCESING)));
         ARC_FURNACE.addSubCategory("arc_furnace_recycling", new SubCategory("jei.category.arc_furnace_recycling", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/arc_furnace_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
         ALLOY_SMELTER.addSubCategory("alloy_smelter_molds", new SubCategory("jei.category.alloy_smelter_molds", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/alloy_smelter_molding.png"), r -> r.getTags().contains(GT5RRecipeTags.ALLOY_SMELTER_MOLDING)));
+        COKE_OVEN.setGuiData(Guis.COKE_OVEN_RECIPE_GUI);
+        PRIMITIVE_BLAST_FURNACE.setGuiData(Guis.PBF_RECIPE_GUI);
         SOLID_FUEL_BOILERS.setGuiData(Guis.SIMPLE_DISPLAY);
         COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
         GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);

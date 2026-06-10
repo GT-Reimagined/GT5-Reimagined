@@ -1,5 +1,13 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -8,29 +16,46 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
+import org.gtreimagined.gtlib.capability.FluidHandler.FluidTankType;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CoverFluidFilter extends CoverFilter {
     public CoverFluidFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        getGui().getSlots().add(SlotType.FLUID_DISPLAY_SETTABLE, 79, 53);
-        addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST,h -> blacklist, true, b -> "tooltip.gt5r." + (b ? "blacklist" : "whitelist"));
-            t.addCycleButton(88, 34, 16, 15, h -> ((CoverFluidFilter)h).filterMode, true, i -> "tooltip.gt5r.filter_mode." + i, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT);
-        });
+        this.getGuiProperties().getSlots().add(SlotType.FL_PHANTOM, 79, 53);
     }
+
+    @Override
+    public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("blacklist", new BooleanSyncValue(() -> this.blacklist, b -> this.blacklist = b).allowC2S());
+        panelSyncManager.syncValue("filter_mode", new IntSyncValue(() -> this.filterMode, i -> this.filterMode = (byte) i).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(70, 34).size(16, 16).syncHandler("blacklist")
+                .stateOverlay(false, GTGuiTextures.WHITELIST)
+                .stateOverlay(true, GTGuiTextures.BLACKLIST)
+                .addTooltip(0, Text.lang("tooltip.gt5r.whitelist"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.blacklist")));
+        panel.child(new CycleButtonWidget().stateCount(3).pos(88, 34).size(16, 16).syncHandler("filter_mode")
+                .stateOverlay(0, GTGuiTextures.EXPORT_IMPORT)
+                .stateOverlay(1, GTGuiTextures.IMPORT)
+                .stateOverlay(2, GTGuiTextures.EXPORT)
+                .addTooltip(0, Text.lang("tooltip.gt5r.filter_mode.0"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.filter_mode.1"))
+                .addTooltip(2, Text.lang("tooltip.gt5r.filter_mode.2"))
+        );
+    }
+
     @Override
     public void clearFilter(){
         super.clearFilter();
-        getInventory(SlotType.FLUID_DISPLAY_SETTABLE).clearContent();
+        getFluidTanks().get(FluidTankType.PHANTOM).clearContent();
     }
 
     @Override
@@ -67,7 +92,7 @@ public class CoverFluidFilter extends CoverFilter {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof FluidStack fluidHolder) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
-            ItemStack filter = getInventory(SlotType.FLUID_DISPLAY_SETTABLE).getStackInSlot(0);
+            ItemStack filter = getInventory(SlotType.FL_PHANTOM).getStackInSlot(0);
             boolean empty = filter.isEmpty() || filter.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(f -> {
                 for (int i = 0; i < f.getTanks(); i++){
                     if (!f.getFluidInTank(i).isEmpty()){

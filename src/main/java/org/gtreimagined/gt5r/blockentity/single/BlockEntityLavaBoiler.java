@@ -185,12 +185,12 @@ public class BlockEntityLavaBoiler extends BlockEntityMachine<BlockEntityLavaBoi
     public static class LavaBoilerFluidHandler extends MachineFluidHandler<BlockEntityLavaBoiler> {
         public LavaBoilerFluidHandler(BlockEntityLavaBoiler tile) {
             super(tile);
-            tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
+            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
                 b.tank(p -> p.getFluid() == Fluids.WATER || p.getFluid() == DistilledWater.getLiquid(), 16000)
                         .tank(p -> p.getFluid() == Fluids.LAVA, 16000);
                 return b;
             }));
-            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
+            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
                 b.tank(16000);
                 return b;
             }));

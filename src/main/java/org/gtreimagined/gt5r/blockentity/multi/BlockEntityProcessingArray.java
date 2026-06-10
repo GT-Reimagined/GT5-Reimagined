@@ -1,23 +1,12 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineItemHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.ICanSyncData;
-import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.BlockMachine;
-import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.BasicMachine;
@@ -25,8 +14,6 @@ import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
 import org.gtreimagined.gtlib.recipe.map.RecipeMap;
-import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.BlockItem;
@@ -34,7 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 
-public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEntityProcessingArray> implements IFilterableHandler {
+public class BlockEntityProcessingArray extends BlockEntityParallelMultiblock<BlockEntityProcessingArray> implements IFilterableHandler {
 
     public BlockEntityProcessingArray(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -42,7 +29,7 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
             @Override
             protected TrackedItemHandler<BlockEntityProcessingArray> createTrackedHandler(SlotType<?> type, BlockEntityProcessingArray tile) {
                 if (type == SlotType.STORAGE){
-                    return new TrackedItemHandler<>(tile, type, 1, type.output, type.input, type.tester, 16);
+                    return new TrackedItemHandler<>(tile, type, 1, type.isOutput(), type.isInput(), type.getTester(), 16);
                 }
                 return super.createTrackedHandler(type, tile);
             }
@@ -144,21 +131,6 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return MultiSmelterInfoWidget.build().setPos(10, 10);
-    }
-
-    @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        int superDraw = super.drawInfo(instance, graphics, renderer, left, top);
-        if (getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo()){
-            graphics.drawString(renderer, "Concurrent Recipes: " + ((MultiSmelterInfoWidget)instance).concurrentRecipes, left, top + 32, 0xFAFAFF);
-            return superDraw + 8;
-        }
-        return superDraw;
-    }
-
-    @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
         if (slotType == SlotType.STORAGE){
             if (stack.getItem() instanceof BlockItem blockItem){
@@ -171,23 +143,5 @@ public class BlockEntityProcessingArray extends BlockEntityMultiMachine<BlockEnt
             return false;
         }
         return true;
-    }
-
-    public static class MultiSmelterInfoWidget extends InfoRenderWidget.MultiRenderWidget{
-        int concurrentRecipes;
-        protected MultiSmelterInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityProcessingArray m = (BlockEntityProcessingArray) gui.handler;
-            gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new MultiSmelterInfoWidget(a, b, (IInfoRenderer) a.handler));
-        }
     }
 }

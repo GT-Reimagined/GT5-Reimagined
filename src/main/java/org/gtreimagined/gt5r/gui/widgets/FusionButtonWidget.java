@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.gui.widgets;
+/*package org.gtreimagined.gt5r.gui.widgets;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
@@ -81,4 +81,4 @@ public class FusionButtonWidget extends Widget {
             drawTexture(matrixStack, top_bottom, realX() + 6, realY() + 6, 0, 0, 145, 145);
         }
     }
-}
+}*/
