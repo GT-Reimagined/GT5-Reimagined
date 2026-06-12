@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.integration.mekanism;
 
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -74,7 +75,8 @@ public class MekanismCraftingRecipes {
                     of('S', inputType.getMaterialTag(Materials.Steel), 'O', inputType.getMaterialTag(osmium), 'C', GTCoreTags.CIRCUITS_BASIC), "  O", "SCS", " S ");
         }
 
-
+        provider.removeRecipe(new ResourceLocation("mekanism", "processing/steel/ingot/from_dust_blasting"));
+        provider.removeRecipe(new ResourceLocation("mekanism", "processing/steel/ingot/from_dust_smelting"));
 
     }
 
