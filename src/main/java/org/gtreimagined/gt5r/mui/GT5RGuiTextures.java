@@ -24,7 +24,7 @@ public class GT5RGuiTextures {
     public static final UITexture FUSION_COMPUTER_TOP_BOTTOM_OVERLAY = widget("fusion_computer_top_bottom_overlay", null);
     public static final UITexture ITEM_FILTER_FAKE_SLOTS = widget("item_filter_fake_slots", ColorType.DEFAULT);
     public static final UITexture MACERATOR_OVERLAY = widget("macerator_overlay", ColorType.DEFAULT);
-    public static final UITexture MULTIBLOCK_BACKGROUND = widget("multiblock_background.",143, 75);
+    public static final UITexture MULTIBLOCK_BACKGROUND = widget("multiblock_background",143, 75);
     public static final UITexture PBF_MULTIBLOCK_OVERLAY = widget("pbf_multiblock_overlay", 18, 50, null);
     public static final UITexture RED_FILTER_ARROW = widget("red_filter_arrow", 19, 24, null);
     public static final UITexture STEEL_BOILER_EMPTY_BAR = widget("steel_boiler_empty_bar", 10, 54);
