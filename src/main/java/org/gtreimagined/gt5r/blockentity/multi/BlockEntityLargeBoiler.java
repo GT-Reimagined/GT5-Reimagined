@@ -19,6 +19,7 @@ import org.gtreimagined.gtcore.item.ItemSelectorTag;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
+import org.gtreimagined.gtlib.client.SoundHelper;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
@@ -193,6 +194,12 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
             return 8;
         }
         return 4;
+    }
+
+    protected void disableMachine() {
+        disabledState = getMachineState();
+        if (level != null && level.isClientSide) SoundHelper.clear(level, this.getBlockPos());
+        setMachineState(MachineState.DISABLED);
     }
 
     int runtimeBoost(int time) {
