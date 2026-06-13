@@ -92,29 +92,15 @@ public class CoverFluidFilter extends CoverFilter {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof FluidStack fluidHolder) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
-            ItemStack filter = getInventory(SlotType.FL_PHANTOM).getStackInSlot(0);
-            boolean empty = filter.isEmpty() || filter.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(f -> {
-                for (int i = 0; i < f.getTanks(); i++){
-                    if (!f.getFluidInTank(i).isEmpty()){
-                        return false;
-                    }
-                }
-                return true;
-            }).orElse(true);
+            FluidStack filter = getFluidTanks().get(FluidTankType.PHANTOM).getFluidInTank(0);
+
+            boolean empty = filter.isEmpty();
             if (empty) {
                 if (!blacklist) {
                     return true;
                 }
             }
-            boolean matches = filter.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM).map(f -> {
-                for (int i = 0; i < f.getTanks(); i++){
-                    boolean match = ignoreNBT ? fluidHolder.getFluid() == f.getFluidInTank(i).getFluid() : f.getFluidInTank(i).isFluidEqual(fluidHolder);
-                    if (match){
-                        return true;
-                    }
-                }
-                return false;
-            }).orElse(false);
+            boolean matches = ignoreNBT ? fluidHolder.getFluid() == filter.getFluid() : filter.isFluidEqual(fluidHolder);
             return blacklist == matches;
         }
         return false;
