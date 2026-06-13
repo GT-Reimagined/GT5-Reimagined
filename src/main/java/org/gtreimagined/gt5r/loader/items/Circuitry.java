@@ -150,11 +150,9 @@ public class Circuitry {
     }
 
     private static void silicon(){
-        //E_BLAST_FURNACE.RB().temperature(1784).ii(DUST.getMaterialIngredient(Silicon, 16), INT_CIRCUITS.get(16)).fi(Helium.getGas(1000)).io(GT5RItems.SiliconBoule).add("silicon_boule", 9000, 120);
-        addCuttingRecipe(Wafer, TINY_PLATE.get(Silicon), 2, 600, 48, 22, "silicon_tiny_plate");
-        //addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48, 22);
         if (GT5RConfig.HARDER_CIRCUITS.get()){
             addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 200, 64, 1);
+            addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48, 22);
             E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Glowstone, 1)).fi(Nitrogen.getGas(1000)).io(GT5RItems.GlowstoneDopedSiliconBoule).add("glowstone_doped_silicon_boule", 12000, 480);
             E_BLAST_FURNACE.RB().temperature(2484).ii(DUST.getMaterialIngredient(Silicon, 16), DUST.getMaterialIngredient(Naquadah, 1)).fi(Argon.getGas(1000)).io(GT5RItems.NaquadahDopedSiliconBoule).add("naquadah_doped_silicon_boule", 15000, 1920);
             addCuttingRecipe(GT5RItems.GlowstoneDopedSiliconBoule, GT5RItems.GlowstoneDopedWafer, 32, 800, 64, 20);
@@ -195,6 +193,7 @@ public class Circuitry {
 
         } else {
             addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 1600, 384, 1);
+            addCuttingRecipe(Wafer, TINY_PLATE.get(Silicon), 2, 600, 48, 22, "silicon_tiny_plate");
         }
     }
 
