@@ -4,10 +4,10 @@ navigation:
   position: 11
 ---
 
-# GT5r Tools
+# GT5R Tools
 
-A list GT5r tools used in crafting or configuring other GT5r macnines and blocks.
+A list of GT5R tools used in crafting or configuring other GT5R machines and blocks.
 
-## List of GT5r Tools
+## List of GT5R Tools
 
 <CategoryIndex category="tools" />

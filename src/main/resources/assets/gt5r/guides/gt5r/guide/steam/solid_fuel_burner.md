@@ -12,7 +12,7 @@ item_ids:
 
 # Solid Fuel Burner Bronze/Steel
 
-<BlockImage id="solid_fuel_boiler_bronze" scate="2.0" />
+<BlockImage id="solid_fuel_boiler_bronze" scale="2.0" />
   
 ## Description.
 These boilers will convert water into steam.  It burns solid fuel to generate the heat needed to convert the water into steam.  
@@ -20,8 +20,10 @@ The machine will slowly deplete the heat once the fuel has finished burning.  Th
 The Solid Fuel Boiler (Steel) will generate ?? steam/t.
   
 ## Useage
-Fill the boiler with water by using a bucket, [wooden bucket](../items/wooden_bucket.md), or any fluid pipes.  Add solid fuel like wood, coal, charcoal, or coke.  
-The steam will exit the left, right, back or top if an adjorning steam machine or non wood fluid pipes. 
+You can fill the boiler with water by using a bucket, [wooden bucket](../items/wooden_bucket.md), or you can use any fluid pipes to pipe water directly to the 
+boiler.  You can add solid fuel like wood, coal, charcoal, or coke and the boiler will ignite. You can connect stream machine directly to the boiler or 
+you can use non-wood fluid pipes to connect the boiler to multiple machines.  You can also connect multiple boilers together so you can run more machines at
+the same time. 
   
 ## Recipe Solid Fuel Boiler (Bronze)
   

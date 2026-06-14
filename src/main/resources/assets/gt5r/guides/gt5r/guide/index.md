@@ -9,7 +9,7 @@ item_ids:
 
 ## What is GT5 Reimagined?
   
-To explain that, first lets go over the histroy of GregTech 5(GT5 for short). Back in 2014 or 2015 GregoriusT (Greg) created GT5, 
+To explain that, first lets go over the history of GregTech 5(GT5 for short). Back in 2014 or 2015 GregoriusT (Greg) created GT5, 
 and people liked it. But Greg was not satisfied with GT5, so he abandoned it and started making GregTech 6 instead. 
 After Greg abandoned it, someone else named BloodAsp(aka Bloody) came along and decided to Continue GT5 as GT5 Unofficial. 
 He first started by making GT5.08, Which mainly just tried to flesh out the missing endgame from GT5 with some 
@@ -29,9 +29,9 @@ be some of the dumb BS from GT509.
   
 GT5 Reimagined was enhanced by bringing over some enhancements from GregTech 6.  The rock layers and ore generation was brought over 
 to diversify the mining from the one ore vein per 3x3 chunk area having the ores on a fixed grid.  The rock and ore rocks on the 
-surface is also availalbe to help users find specific ores. The advanced pipe and wire interface was also added making it easier to 
+surface is also available to help users find specific ores. The advanced pipe and wire interface was also added making it easier to 
 connect your pipes and wires.  The GT6 tanks and barrels were also added along with some useful machines and items.  The GT5 
-progression was kept so you will move into a steam age before a machine age.  Therefore the crucibles, and rotational, keneti,
+progression was kept so you will move into a steam age before a machine age.  Therefore the crucibles, and rotational, kinetic,
 or magnetic energy systems are not in GT5r.
   
 ---

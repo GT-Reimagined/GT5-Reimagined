@@ -6,7 +6,7 @@ navigation:
 
 # Bronze Age Steam Machines
 
-The Bronze Steam Age machines are marchines that you finally are able to start basic processing and your first machines for making plates and other useful materials.
+The Bronze Steam Age machines are machines that use steam to enhance your ore processing abilities or make it easier and more efficient for making plates and other useful materials.
 
 ## Steam machines
 

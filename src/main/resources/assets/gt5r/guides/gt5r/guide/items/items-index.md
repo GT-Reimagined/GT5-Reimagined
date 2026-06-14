@@ -4,9 +4,9 @@ navigation:
   position: 10
 ---
 
-# GT5r Items
+# GT5R Items
 
-A list GT5 items.  These items have specific uses but are not used directly in crafting or to configure machines and other GT5r blocks.
+A list GT5R items.  These items have specific uses but are not used directly in crafting or used to configure machines and other GT5r blocks.
 
 ## List of GT5r Items
 

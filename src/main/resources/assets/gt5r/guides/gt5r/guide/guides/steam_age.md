@@ -9,7 +9,8 @@ categories:
 # Bronze Steam Age
 
 ## Steam Machines
-Now that you have a Solid Fuel Boiler (Bronze), you can start adding machines to advance your factory.  
+Now that you have a Solid Fuel Boiler (Bronze), you can start adding machines to advance your factory into the steam 
+age and work toward electricity.  
   
 ---
   
