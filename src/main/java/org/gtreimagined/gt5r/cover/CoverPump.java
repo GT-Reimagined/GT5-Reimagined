@@ -1,13 +1,30 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.IPanelHandler;
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.drawable.ItemDrawable;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.RichTooltip;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.FluidSlotSyncHandler;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.ButtonWidget;
+import brachy.modularui.widgets.CycleButtonWidget;
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.IGuiHandler;
+import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
+import org.gtreimagined.gtlib.mui.drawable.GTDrawableStack;
+import org.gtreimagined.gtlib.mui.widgets.GTFluidSlot;
 import org.gtreimagined.gtlib.util.FluidUtils;
 import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
@@ -41,9 +58,53 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         Objects.requireNonNull(tier);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotType.STORAGE, 79, 53);
+        this.gui.getSlots().add(SlotType.STORAGE, 88, 53);
     }
 
+    @Override
+    public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        super.addWidgets(modularPanel, sidedPosGuiData, panelSyncManager, uiSettings);
+        IPanelHandler panelSyncHandler = panelSyncManager.syncedPanel("other_panel", true, this::openSecondWindow);
+        modularPanel.child(new ButtonWidget<>().overlay(new ItemDrawable(GT5RCovers.COVER_FLUID_FILTER.getItem()))
+                .pos(70, 53).size(16)
+                .onMousePressed((context, mouseButton) -> {
+                    if (this.getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
+                    panelSyncHandler.openPanel();
+                    return true;
+                })
+                .tooltip(new RichTooltip().addLine("Open Filter Gui"))
+        );
+    }
+
+    public ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler) {
+        ModularPanel<?> panel = new ModularPanel<>("filter_window")
+                .disablePanelsBelow(false)
+                .closeOnOutOfBoundsClick(false)
+                .draggable(true)
+                .size(54, 54);
+
+        panelSyncManager.syncValue("blacklist", new BooleanSyncValue(() -> filter.blacklist, b -> filter.blacklist = b).allowC2S());
+        panelSyncManager.syncValue("filter_mode", new IntSyncValue(() -> filter.filterMode, i -> filter.filterMode = (byte) i).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(9, 9).size(16, 16).syncHandler("blacklist")
+                .stateOverlay(false, GTGuiTextures.WHITELIST)
+                .stateOverlay(true, GTGuiTextures.BLACKLIST)
+                .addTooltip(0, Text.lang("tooltip.gt5r.whitelist"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.blacklist")));
+        panel.child(new CycleButtonWidget().stateCount(3).pos(27, 9).size(16, 16).syncHandler("filter_mode")
+                .stateOverlay(0, GTGuiTextures.EXPORT_IMPORT)
+                .stateOverlay(1, GTGuiTextures.IMPORT)
+                .stateOverlay(2, GTGuiTextures.EXPORT)
+                .addTooltip(0, Text.lang("tooltip.gt5r.filter_mode.0"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.filter_mode.1"))
+                .addTooltip(2, Text.lang("tooltip.gt5r.filter_mode.2"))
+        );
+        FluidTanks tanks = SlotType.FL_PHANTOM.getFluidHandlerSupplier().apply(filter);
+        GTFluidSlot fluidSlot = new GTFluidSlot();
+        fluidSlot.pos(18, 27).alwaysShowFull(true)
+                .syncHandler(new FluidSlotSyncHandler(tanks.getTank(0)).phantom(true));
+        panel.child(fluidSlot);
+        return panel;
+    }
     @Override
     public ResourceLocation getModel(String type, Direction dir) {
         if (type.equals("pipe")) return PIPE_COVER_MODEL;

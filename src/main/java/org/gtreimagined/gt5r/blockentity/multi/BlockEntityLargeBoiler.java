@@ -1,8 +1,9 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.GuiGraphics;
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -12,28 +13,24 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
-import org.gtreimagined.gt5r.blockentity.multi.BlockEntityCombustionEngine.CombustionEngineWidget;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtcore.item.ItemSelectorTag;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.IGuiElement;
+import org.gtreimagined.gtlib.client.SoundHelper;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 import org.gtreimagined.gtlib.texture.Texture;
+import org.gtreimagined.gtlib.util.Utils;
 
 import static org.gtreimagined.gt5r.data.Materials.DistilledWater;
 import static org.gtreimagined.gt5r.data.Materials.Steam;
-import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 
 public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityLargeBoiler> {
@@ -199,6 +196,12 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
         return 4;
     }
 
+    protected void disableMachine() {
+        disabledState = getMachineState();
+        if (level != null && level.isClientSide) SoundHelper.clear(level, this.getBlockPos());
+        setMachineState(MachineState.DISABLED);
+    }
+
     int runtimeBoost(int time) {
         if (tier == LV) return time * 2;
         int dividend = tier == MV ? 150 : tier == HV ? 130 : 120;
@@ -241,50 +244,27 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
-        if (!(instance instanceof LargeBoilerInforWidget w)) return 8;
+    public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
+        widget.drawText(context, widgetTheme, 0, 0, this.getDisplayName(), 0xFAFAFF);
         if (getMachineState() != MachineState.ACTIVE) {
-            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
-            return 16;
-        } else if (instance.drawActiveInfo()) {
-            int tGeneratedSteam = (int) (instance.euT * 2L * w.efficiency / 10000L);
-            graphics.drawString(renderer, "Progress: " + instance.currentProgress + "/" + instance.maxProgress, left, top + 8, 0xFAFAFF);
-            graphics.drawString(renderer, "Overclock: " + instance.overclock, left, top + 16, 0xFAFAFF);
-            graphics.drawString(renderer, "Steam/t: " + tGeneratedSteam, left, top + 24, 0xFAFAFF);
-            return 32;
+            widget.drawText(context, widgetTheme, 0, 8, Utils.literal("Inactive."), 0xFAFAFF);
+        } else {
+            int tGeneratedSteam = (int) (widget.getSyncedValue("eut", Integer.class).orElse(0) * 2L * widget.getSyncedValue("efficiency", Integer.class).orElse(0) / 10000L);
+            widget.drawText(context, widgetTheme, 0, 8, Utils.literal("Progress: " +
+                    widget.getSyncedValue("progress", Integer.class).orElse(0) + "/" +
+                    widget.getSyncedValue("maxProgress", Integer.class).orElse(0)), 0xFAFAFF);
+            //widget.drawText(context, widgetTheme, 0, 16, Utils.literal("Overclock: " +
+            //        widget.getSyncedValue("overclock", Integer.class).orElse(0)), 0xFAFAFF);
+            widget.drawText(context, widgetTheme, 0, 24, Utils.literal("Steam/t: " +tGeneratedSteam), 0xFAFAFF);
         }
-        return 8;
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return LargeBoilerInforWidget.build().setPos(10, 10);
+    public void registerSyncHandlers(PanelSyncManager manager) {
+        manager.syncValue("progress", new IntSyncValue(() -> recipeHandler.map(MachineRecipeHandler::getCurrentProgress).orElse(0)));
+        manager.syncValue("maxProgress", new IntSyncValue(() -> recipeHandler.map(MachineRecipeHandler::getMaxProgress).orElse(0)));
+        manager.syncValue("overclock", new IntSyncValue(() -> recipeHandler.map(MachineRecipeHandler::getOverclock).orElse(0)));
+        manager.syncValue("eut", new IntSyncValue(() -> this.euPerTick));
+        manager.syncValue("efficiency", new IntSyncValue(() -> this.efficiency));
     }
-
-    private static class LargeBoilerInforWidget extends InfoRenderWidget.MultiRenderWidget{
-        int efficiency;
-
-        protected LargeBoilerInforWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityMultiMachine<?> m = (BlockEntityMultiMachine<?>) gui.handler;
-            gui.syncInt(() -> m.recipeHandler.map(MachineRecipeHandler::getCurrentProgress).orElse(0), i -> this.currentProgress = i, SERVER_TO_CLIENT);
-            gui.syncInt(() -> m.recipeHandler.map(MachineRecipeHandler::getMaxProgress).orElse(0), i -> this.maxProgress = i, SERVER_TO_CLIENT);
-            gui.syncInt(() -> m.recipeHandler.map(MachineRecipeHandler::getOverclock).orElse(0), i -> this.overclock = i, SERVER_TO_CLIENT);
-            if (m instanceof BlockEntityLargeBoiler b){
-                gui.syncInt(() -> b.euPerTick, i -> this.euT = i, SERVER_TO_CLIENT);
-                gui.syncInt(() -> b.efficiency, i -> this.efficiency = i, SERVER_TO_CLIENT);
-            }
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new LargeBoilerInforWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
-        }
-    }
-
 }

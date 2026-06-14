@@ -1,27 +1,23 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineFluidHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.ICanSyncData;
-import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
@@ -244,32 +240,16 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        int size = super.drawInfo(instance, graphics, renderer, left, top);
-        graphics.drawString(renderer, "Heat: " + ((HeatInfoWidget)instance).heat, left, top + size, 0xFAFAFF);
-        return size + 8;
+    public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
+        super.drawInfo(widget, context, widgetTheme);
+        int y = getMachineState() == MachineState.ACTIVE ? 32 : 16;
+        widget.drawText(context, widgetTheme, 0, y, Utils.literal("Heat: " +
+                widget.getSyncedValue("heat", Integer.class).orElse(0)), 0xFAFAFF);
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return HeatInfoWidget.build().setPos(10, 10);
-    }
-
-    public static class HeatInfoWidget extends InfoRenderWidget.MultiRenderWidget {
-
-        public int heat;
-        protected HeatInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new HeatInfoWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
-        }
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityMultiMachine<?> m = (BlockEntityLargeHeatExchanger) gui.handler;
-            gui.syncInt(() -> m.heatHandler.map(DefaultHeatHandler::getHeat).orElse(0), a -> this.heat = a, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-        }
+    public void registerSyncHandlers(PanelSyncManager manager) {
+        super.registerSyncHandlers(manager);
+        manager.syncValue("heat", new IntSyncValue(() -> this.heatHandler.map(DefaultHeatHandler::getHeat).orElse(0)));
     }
 }

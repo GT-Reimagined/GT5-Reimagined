@@ -1,10 +1,18 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
@@ -15,19 +23,39 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.items.ItemHandlerHelper;
 import org.gtreimagined.gt5r.cover.base.CoverFilter;
-import org.gtreimagined.gt5r.gui.ButtonOverlays;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CoverItemFilter extends CoverFilter {
     public CoverItemFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        getGui().getSlots().add(SlotType.DISPLAY_SETTABLE, 88, 53);
-        addGuiCallback(t -> {
-            t.addSwitchButton(70, 34, 16, 16, ButtonOverlay.WHITELIST, ButtonOverlay.BLACKLIST, h -> blacklist, true, b -> "tooltip.gt5r." + (b ? "blacklist" : "whitelist"));
-            t.addSwitchButton(88, 34, 16, 16, ButtonOverlays.NBT_OFF, ButtonOverlays.NBT_ON, h -> !ignoreNBT, true, b -> "tooltip.gt5r.nbt." + (b ? "on" : "off"));
-            t.addCycleButton(106, 34, 16, 15, h -> ((CoverItemFilter)h).filterMode, true, i -> "tooltip.gt5r.filter_mode." + i, ButtonOverlay.EXPORT_IMPORT, ButtonOverlay.IMPORT, ButtonOverlay.EXPORT);
-        });;
+        this.getGuiProperties().getSlots().add(SlotType.DISPLAY_SETTABLE, 88, 53);
+    }
+
+    @Override
+    public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("blacklist", new BooleanSyncValue(() -> this.blacklist, b -> this.blacklist = b).allowC2S());
+        panelSyncManager.syncValue("nbt", new BooleanSyncValue(() -> this.ignoreNBT, b -> this.ignoreNBT = b).allowC2S());
+        panelSyncManager.syncValue("filter_mode", new IntSyncValue(() -> this.filterMode, i -> this.filterMode = (byte) i).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(70, 34).size(16, 16).syncHandler("blacklist")
+                .stateOverlay(false, GTGuiTextures.WHITELIST)
+                .stateOverlay(true, GTGuiTextures.BLACKLIST)
+                .addTooltip(0, Text.lang("tooltip.gt5r.whitelist"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.blacklist")));
+        panel.child(new CycleButtonWidget().stateCount(2).pos(88, 34).size(16, 16).syncHandler("nbt")
+                .stateOverlay(false, GT5RGuiTextures.NBT_ON)
+                .stateOverlay(true, GT5RGuiTextures.NBT_OFF)
+                .addTooltip(0, Text.lang("tooltip.gt5r.nbt.on"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.nbt.off")));
+        panel.child(new CycleButtonWidget().stateCount(3).pos(106, 34).size(16, 16).syncHandler("filter_mode")
+                .stateOverlay(0, GTGuiTextures.EXPORT_IMPORT)
+                .stateOverlay(1, GTGuiTextures.IMPORT)
+                .stateOverlay(2, GTGuiTextures.EXPORT)
+                .addTooltip(0, Text.lang("tooltip.gt5r.filter_mode.0"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.filter_mode.1"))
+                .addTooltip(2, Text.lang("tooltip.gt5r.filter_mode.2"))
+        );
     }
 
     @Override

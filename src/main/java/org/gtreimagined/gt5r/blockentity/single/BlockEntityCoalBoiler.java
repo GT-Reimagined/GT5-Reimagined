@@ -267,11 +267,11 @@ public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoi
 
         public CoalBoilerFluidHandler(BlockEntityCoalBoiler tile) {
             super(tile);
-            tanks.put(FluidDirection.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
+            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
                 b.tank(16000);
                 return b;
             }));
-            tanks.put(FluidDirection.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
+            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
                 b.tank(16000);
                 return b;
             }));

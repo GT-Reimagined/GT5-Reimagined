@@ -62,7 +62,7 @@ public class BlockEntityHull extends BlockEntityMachine<BlockEntityHull> {
     }
 
     @Override
-    public boolean canPlayerOpenGui(Player playerEntity) {
-        return super.canPlayerOpenGui(playerEntity) && playerEntity.isCreative();
+    public boolean canPlayerOpenGui(Player playerEntity, Direction side) {
+        return super.canPlayerOpenGui(playerEntity, side) && playerEntity.isCreative();
     }
 }

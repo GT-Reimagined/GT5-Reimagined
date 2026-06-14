@@ -1,5 +1,11 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
+import brachy.modularui.factory.SidedPosGuiData;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -9,10 +15,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import org.gtreimagined.gt5r.gui.ButtonOverlays;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.SlotType;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
@@ -118,10 +122,18 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
     }
 
     @Override
-    public void addWidgets(GuiInstance instance, IGuiElement parent) {
-        super.addWidgets(instance, parent);
-        instance.addSwitchButton(8, 63, 16, 16, ButtonOverlays.ENERGY_OFF, ButtonOverlays.ENERGY_ON, h -> ((BlockEntityBuffer)h).emitEnergy, true);
-        instance.addSwitchButton(26, 63, 16, 16, ButtonOverlays.REDSTONE_CONTROL_OFF, ButtonOverlays.REDSTONE_CONTROL_ON, h -> ((BlockEntityBuffer)h).outputRedstone, true);
-        instance.addSwitchButton(44, 63, 16, 16, ButtonOverlays.INVERT_REDSTONE_OFF, ButtonOverlays.INVERT_REDSTONE_ON, h -> ((BlockEntityBuffer)h).invertRedstone, true);
+    public void addWidgets(ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        panelSyncManager.syncValue("emit_energy", new BooleanSyncValue(() -> emitEnergy, e -> emitEnergy = e).allowC2S());
+        panelSyncManager.syncValue("output_redstone", new BooleanSyncValue(() -> outputRedstone, e -> outputRedstone = e).allowC2S());
+        panelSyncManager.syncValue("invert_redstone", new BooleanSyncValue(() -> invertRedstone, e -> invertRedstone = e).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(7, 63).size(18).syncHandler("emit_energy")
+                .stateOverlay(false, GT5RGuiTextures.ENERGY_OFF)
+                .stateOverlay(true, GT5RGuiTextures.ENERGY_ON));
+        panel.child(new CycleButtonWidget().stateCount(2).pos(25, 63).size(18).syncHandler("output_redstone")
+                .stateOverlay(false, GT5RGuiTextures.REDSTONE_CONTROL_OFF)
+                .stateOverlay(true, GT5RGuiTextures.REDSTONE_CONTROL_ON));
+        panel.child(new CycleButtonWidget().stateCount(2).pos(43, 63).size(18).syncHandler("invert_redstone")
+                .stateOverlay(false, GT5RGuiTextures.INVERT_REDSTONE_OFF)
+                .stateOverlay(true, GT5RGuiTextures.INVERT_REDSTONE_ON));
     }
 }

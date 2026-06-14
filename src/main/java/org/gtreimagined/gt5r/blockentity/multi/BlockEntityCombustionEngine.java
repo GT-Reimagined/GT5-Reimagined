@@ -1,28 +1,27 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.LongSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.IGuiElement;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
+import org.gtreimagined.gtlib.util.Utils;
+import org.gtreimagined.gtlib.util.int2;
 
 import java.util.Collections;
 import java.util.List;
 
-import static org.gtreimagined.gtlib.gui.ICanSyncData.SyncDirection.SERVER_TO_CLIENT;
 import static org.gtreimagined.gt5r.data.Materials.Lubricant;
 import static org.gtreimagined.gt5r.data.Materials.Oxygen;
 
@@ -124,48 +123,24 @@ public class BlockEntityCombustionEngine extends BlockEntityMultiMachine<BlockEn
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        CombustionEngineWidget widget = (CombustionEngineWidget) instance;
-        graphics.drawString(renderer, this.getDisplayName().getString(), left, top, 0xFAFAFF);
+    public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
+        widget.drawText(context, widgetTheme, 0, 0, this.getDisplayName(), 0xFAFAFF);
         if (getMachineState() != MachineState.ACTIVE) {
-            graphics.drawString(renderer, "Inactive.", left, top + 8, 0xFAFAFF);
-            return 16;
-        } else if (instance.drawActiveInfo()) {
-            graphics.drawString(renderer, "EU/t: " + widget.lastEU, left, top + 8, 0xFAFAFF);
-            graphics.drawString(renderer, "Startup progress: " + (((float)widget.startup / 100) * 100) + "%", left, top + 16, 0xFAFAFF);
-            graphics.drawString(renderer, "Current: " + widget.currentConsumption + " mb/t", left, top + 24, 0xFAFAFF);
-            return 32;
+            widget.drawText(context, widgetTheme, 0, 8, Utils.literal("Inactive."), 0xFAFAFF);
+        } else {
+            widget.drawText(context, widgetTheme, 0, 8, Utils.literal("EU/t: " +
+                    widget.getSyncedValue("lastEu", Long.class).orElse(0L)), 0xFAFAFF);
+            int startup = widget.getSyncedValue("startup", Integer.class).orElse(0);
+            widget.drawText(context, widgetTheme, 0, 16, Utils.literal("Startup progress: " +(((float)startup / 100) * 100) + "%"), 0xFAFAFF);
+            widget.drawText(context, widgetTheme, 0, 24, Utils.literal("Current: " +
+                    widget.getSyncedValue("currentConsumption", Long.class) + " L/t"), 0xFAFAFF);
         }
-        return 8;
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return CombustionEngineWidget.build().setPos(10,10);
-    }
-
-    public static class CombustionEngineWidget extends InfoRenderWidget.MultiRenderWidget {
-
-        public long currentConsumption = 0;
-        public long lastEU = 0;
-        public int startup = 0;
-
-        protected CombustionEngineWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityCombustionEngine turbine = (BlockEntityCombustionEngine) gui.handler;
-            gui.syncLong(() -> turbine.lastEu, i -> this.lastEU = i, SERVER_TO_CLIENT);
-            gui.syncInt(() -> turbine.startup, i -> this.startup = i, SERVER_TO_CLIENT);
-            gui.syncLong(() -> turbine.lastConsumption, i -> currentConsumption = i, SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new CombustionEngineWidget(a, b, (IInfoRenderer<MultiRenderWidget>) a.handler));
-        }
-
+    public void registerSyncHandlers(PanelSyncManager manager) {
+        manager.syncValue("lastEu", new LongSyncValue(() -> this.lastEu));
+        manager.syncValue("currentConsumption", new LongSyncValue(() -> this.lastConsumption));
+        manager.syncValue("startup", new IntSyncValue(() -> this.startup));
     }
 }
