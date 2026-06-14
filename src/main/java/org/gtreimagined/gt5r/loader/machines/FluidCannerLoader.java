@@ -58,8 +58,8 @@ public class FluidCannerLoader {
                 if (!emptyCell.getFilter().test(new FluidStack(fluid, 1))) return;
                 int size = emptyCell.getCapacity();
                 ItemStack filled = emptyCell.fill(fluid, size);
-                FLUID_CANNER.RB().ii(RecipeIngredient.of(filled)).fo(new FluidStack(fluid, size)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_" + RegistryUtils.getIdFromFluid(fluid).getPath(),20, 8);
-                FLUID_CANNER.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(new FluidStack(fluid, size)).io(filled).add(RegistryUtils.getIdFromFluid(fluid).getPath() + "_" + emptyCell.getId(),20, 8);
+                FLUID_CANNER.RB().ii(RecipeIngredient.of(filled)).fo(new FluidStack(fluid, size)).io(emptyCell.getDefaultInstance()).add(emptyCell.getId() + "_from_"  + fluidId.toString().replace(":", "_"),20, 8);
+                FLUID_CANNER.RB().ii(RecipeIngredient.of(emptyCell, 1)).fi(new FluidStack(fluid, size)).io(filled).add(fluidId.toString().replace(":", "_") + "_" + emptyCell.getId(),20, 8);
             });
         });
         if (GTAPI.isModLoaded(Ref.MOD_TWILIGHT)){

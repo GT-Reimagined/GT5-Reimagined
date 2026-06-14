@@ -1,26 +1,21 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
+import brachy.modularui.screen.viewport.ModularGuiContext;
+import brachy.modularui.theme.WidgetThemeEntry;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.value.sync.StringSyncValue;
 import lombok.Getter;
 import lombok.Setter;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtlib.GTAPI;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.ICanSyncData;
-import org.gtreimagined.gtlib.gui.IGuiElement;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
 import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
 import org.gtreimagined.gtlib.recipe.map.RecipeMap;
 import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -32,7 +27,7 @@ import org.gtreimagined.gtcore.item.ItemSelectorTag;
 
 import java.util.List;
 
-public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntityMultiSmelter> {
+public class BlockEntityMultiSmelter extends BlockEntityParallelMultiblock<BlockEntityMultiSmelter> {
     @Getter
     @Setter
     private BlockCoil.CoilData coilData;
@@ -69,26 +64,19 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
     }
 
     @Override
-    public WidgetSupplier getInfoWidget() {
-        return MultiSmelterInfoWidget.build().setPos(10, 10);
+    public void drawInfo(GTInfoRenderWidget widget, ModularGuiContext context, WidgetThemeEntry<?> widgetTheme) {
+        super.drawInfo(widget, context, widgetTheme);
+        int add = getMachineState() == MachineState.ACTIVE ? 40 : 16;
+        RecipeMap<?> map = GTAPI.get(RecipeMap.class, new ResourceLocation(widget.getSyncedValue("recipeMap", String.class).orElse("")));
+        if (map != null){
+            widget.drawText(context, widgetTheme, 0, add, Utils.literal("Recipe map: ").append(map.getDisplayName()), 0xFAFAFF);
+        }
     }
 
     @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        int superDraw = super.drawInfo(instance, graphics, renderer, left, top);
-        if (!(instance instanceof MultiSmelterInfoWidget widget)) return superDraw;
-        if (getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo()){
-            graphics.drawString(renderer, "Concurrent Recipes: " + widget.concurrentRecipes, left, top + 32, 0xFAFAFF);
-            superDraw += 8;
-        }
-        int add = getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo() ? 40 : 16;
-        RecipeMap<?> map = GTAPI.get(RecipeMap.class, new ResourceLocation(widget.recipeMap));
-        if (map != null){
-            graphics.drawString(renderer, Utils.literal("Recipe map: ").append(map.getDisplayName()).getString(), left, top + add, 0xFAFAFF);
-            superDraw += 8;
-        }
-
-        return superDraw;
+    public void registerSyncHandlers(PanelSyncManager manager) {
+        super.registerSyncHandlers(manager);
+        manager.syncValue("recipeMap", new StringSyncValue(() -> this.recipeMap.getLoc().toString()));
     }
 
     @Override
@@ -107,25 +95,5 @@ public class BlockEntityMultiSmelter extends BlockEntityMultiMachine<BlockEntity
     @Override
     public List<String> getInfo(boolean simple) {
         return super.getInfo(simple);
-    }
-
-    public static class MultiSmelterInfoWidget extends InfoRenderWidget.MultiRenderWidget{
-        int concurrentRecipes;
-        String recipeMap;
-        protected MultiSmelterInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityMultiSmelter m = (BlockEntityMultiSmelter) gui.handler;
-            gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-            gui.syncString(() -> m.recipeMap.getLoc().toString(), i -> recipeMap = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new MultiSmelterInfoWidget(a, b, (IInfoRenderer) a.handler));
-        }
     }
 }

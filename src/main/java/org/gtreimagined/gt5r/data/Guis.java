@@ -1,117 +1,101 @@
 package org.gtreimagined.gt5r.data;
 
+import brachy.modularui.drawable.UITexture;
+import brachy.modularui.drawable.progress.CompositeProgress;
+import brachy.modularui.drawable.progress.ProgressDrawable.Direction;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.DoubleSyncValue;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.widgets.ButtonWidget;
+import net.minecraft.client.gui.screens.Screen;
+import org.apache.commons.lang3.function.TriFunction;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gtcore.data.SlotTypes;
-import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
-import org.gtreimagined.gtlib.capability.IGuiHandler;
-import org.gtreimagined.gtlib.cover.CoverOutput;
-import org.gtreimagined.gtlib.gui.BarDir;
-import org.gtreimagined.gtlib.gui.ButtonOverlay;
-import org.gtreimagined.gtlib.gui.GuiData;
-import org.gtreimagined.gtlib.gui.MenuHandlerMachine;
-import org.gtreimagined.gtlib.gui.container.ContainerBasicMachine;
-import org.gtreimagined.gtlib.gui.container.ContainerMachine;
-import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
-import org.gtreimagined.gtlib.gui.widget.FuelWidget;
-import org.gtreimagined.gtlib.gui.widget.IOWidget;
-import org.gtreimagined.gtlib.gui.widget.IconWidget;
-import org.gtreimagined.gtlib.gui.widget.MachineStateWidget;
-import org.gtreimagined.gtlib.gui.widget.ProgressWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.machine.Tier;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Inventory;
-import net.minecraftforge.api.distmarker.Dist;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
-import org.gtreimagined.gt5r.gui.widgets.AutocrafterProgressWidget;
-import org.gtreimagined.gt5r.gui.widgets.CoalBoilerFuelWidget;
-import org.gtreimagined.gt5r.gui.widgets.CoalBoilerWidget;
-import org.gtreimagined.gt5r.gui.widgets.FusionButtonWidget;
-import org.gtreimagined.gt5r.gui.widgets.LavaBoilerWidget;
-import org.gtreimagined.gt5r.gui.widgets.SolarBoilerWidget;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityLavaBoiler;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntitySolarBoiler;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
+import org.gtreimagined.gtcore.machine.SteamMachine;
+import org.gtreimagined.gtcore.mui.GTCoreThemes;
+import org.gtreimagined.gtlib.blockentity.IFuelMachine;
+import org.gtreimagined.gtlib.gui.GuiProperties;
+import org.gtreimagined.gtlib.gui.SlotData;
+import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
+import org.gtreimagined.gtlib.gui.slot.SlotEnergy;
+import org.gtreimagined.gtlib.machine.IPanelFunction;
+import org.gtreimagined.gtlib.machine.Tier;
+import net.minecraftforge.api.distmarker.Dist;
+import org.gtreimagined.gtlib.machine.types.Machine;
+import org.gtreimagined.gtlib.machine.types.MultiMachine;
+import org.gtreimagined.gtlib.mui.BarDir;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
+import org.gtreimagined.gtlib.mui.GTMuiUtils;
+import org.gtreimagined.gtlib.mui.IInfoRenderer;
+import org.gtreimagined.gtlib.mui.widgets.GTInfoRenderWidget;
+import org.gtreimagined.gtlib.util.Utils;
+import org.gtreimagined.gtlib.util.int2;
+
+import java.util.function.Function;
 
 import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
 import static org.gtreimagined.gtlib.gui.SlotType.*;
-import static org.gtreimagined.gtlib.gui.Widget.builder;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
 public class Guis {
 
     // TODO move these to the API somehow
-    public static GuiData MULTI_DISPLAY = new GuiData(GT5Reimagined.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties MULTI_DISPLAY = new GuiProperties(GT5Reimagined.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
             .add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34)
             .add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
 
-    public static GuiData ALLOY_SMELTER_DISPLAY = new GuiData(GT5Reimagined.ID, "alloy_smelter").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties ALLOY_SMELTER_DISPLAY = new GuiProperties(GT5Reimagined.ID, "alloy_smelter").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
             .add(IT_OUT, 107, 25));
 
-    public static GuiData SIMPLE_DISPLAY = new GuiData(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties SIMPLE_DISPLAY = new GuiProperties(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 53, 25).add(IT_OUT, 107, 25));
-    public static GuiData BEDROCK_DRILL_DISPLAY = new GuiData(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties BEDROCK_DRILL_DISPLAY = new GuiProperties(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
             .add(IT_IN, 53, 25).add(FL_IN, 53, 63)
             .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
             .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
             .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
             .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61));
 
-    public static GuiData MULTI_DISPLAY_FLUID = new GuiData(GT5Reimagined.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties MULTI_DISPLAY_FLUID = new GuiProperties(GT5Reimagined.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7)
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
 
-    public static GuiData MULTI_DISPLAY_DISTILLATION = new GuiData(GT5Reimagined.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
+    public static GuiProperties MULTI_DISPLAY_DISTILLATION = new GuiProperties(GT5Reimagined.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
             .add(FL_IN, 53, 43)
             .add(IT_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
             .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
             .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
             .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7));
-    public static GuiData MULTI_DISPLAY_COMPACT = new GuiData(GT5Reimagined.ID, "multi_display")
+    public static GuiProperties MULTI_DISPLAY_COMPACT = new GuiProperties(GT5Reimagined.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
-    public static GuiData BASIC_TANK = new GuiData(GT5Reimagined.ID, "basic_tank").setBackgroundTexture("basic_tank")
-            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5Reimagined.ID, "blank")));
+    public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank")
+            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53)
+                    .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build()));
+    public static GuiProperties COKE_OVEN_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "coke_oven_recipe_gui")
+            .setSlots(ISlotProvider.DEFAULT().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25));
+    public static GuiProperties PBF_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "pbf_recipe_gui").setSlots(
+            ISlotProvider.DEFAULT().add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52)
+                    .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25));
 
-    public static GuiData MULTIBLOCK = new GuiData(GT5Reimagined.ID, "multiblock").setBackgroundTexture("multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
 
-    public static GuiData ORE_BYPRODUCTS = new GuiData(GT5Reimagined.ID, "ore_byproducts") {
-        @Override
-        public ResourceLocation getTexture(Tier tier, String type) {
-            return new ResourceLocation(loc.getNamespace(), "textures/gui/" + loc.getPath() + ".png");
-        }
-    }.setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16)
+    public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts").setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16)
                     .add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
-                    .add(IT_OUT, 142, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34));
-
-    public static MenuHandlerMachine<BlockEntityCoalBoiler, ? extends ContainerMachine> COAL_BOILER_MENU_HANDLER = new MenuHandlerMachine(
-            Ref.ID, "container_coal_boiler") {
-        @Override
-        public ContainerBasicMachine getMenu(IGuiHandler tile, Inventory playerInv, int windowId) {
-            return tile instanceof BlockEntityMachine
-                    ? new ContainerBasicMachine((BlockEntityMachine<?>) tile, playerInv, this, windowId)
-                    : null;
-        }
-
-        @Override
-        public String screenDomain() {
-            return GT5Reimagined.ID;
-        }
-
-        @Override
-        public String screenID() {
-            return "coal";
-        }
-    };
+                    .add(IT_OUT, 143, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34));
 
     public static void init(Dist side) {
         slots();
-        backgroundTextures();
+        backgroundWidgets();
         machineData();
         widgets();
     }
@@ -183,19 +167,20 @@ public class Guis {
                 .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34)
                 .add(ENERGY, 80, 63).add(FL_IN, 53, 63);
-        ResourceLocation craft = new ResourceLocation(GT5Reimagined.ID, "crafting");
-        AUTOCRAFTER.add(IT_IN, 17, 7, craft).add(IT_IN, 35, 7).add(IT_IN, 53, 7, craft)
-                .add(IT_IN, 17, 25).add(IT_IN, 35, 25, craft).add(IT_IN, 53, 25)
-                .add(IT_IN, 17, 43, craft).add(IT_IN, 35, 43).add(IT_IN, 53, 43, craft)
-                .add(STORAGE, 53, 63, new ResourceLocation(GT5Reimagined.ID, "blueprint"))
+        UITexture craft = GT5RGuiTextures.CRAFTING_SLOT_OVERLAY;
+        AUTOCRAFTER.add(IT_IN, b -> b.x(17).y(7).overlayTexture(craft).build()).add(IT_IN, 35, 7).add(IT_IN, b -> b.x(53).y(7).overlayTexture(craft).build())
+                .add(IT_IN, 17, 25).add(IT_IN, b -> b.x(35).y(25).overlayTexture(craft).build()).add(IT_IN, 53, 25)
+                .add(IT_IN, b -> b.x(17).y(43).overlayTexture(craft).build()).add(IT_IN, 35, 43).add(IT_IN, b -> b.x(53).y(43).overlayTexture(craft).build())
+                .add(STORAGE, b -> b.x(53).y(63).overlayTexture(GT5RGuiTextures.BLUEPRINT_SLOT_OVERLAY).build())
                 .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
                 .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
                 .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR);
-        MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(FL_IN, 44, 63)
-                .add(FL_IN, 62, 63).add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
+        MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
+                .add(FL_IN, b -> b.x(44).y(63).jeiX(35).build()).add(FL_IN, b -> b.x(62).y(63).jeiX(53).build())
+                .add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
         LASER_ENGRAVER.add(ALLOY_SMELTER);
         FORMING_PRESS.add(IT_IN, 17, 25).add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         FORGE_HAMMER.add(FURNACE);
@@ -217,24 +202,35 @@ public class Guis {
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
-        COKE_OVEN.add(IT_IN, 53, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(IT_OUT, 107, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(FL_OUT, 125, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_cell"));
-        ResourceLocation bat = new ResourceLocation(GT5Reimagined.ID, "battery");
-        BATTERY_BUFFER_FOUR.add(ENERGY, 71, 27, bat).add(ENERGY, 89, 27, bat).add(ENERGY, 71, 45, bat).add(ENERGY, 89, 45, bat);
-        BATTERY_BUFFER_ONE.add(ENERGY, 80, 40, bat);
+        COKE_OVEN.add(IT_IN, b -> b.x(53).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(FL_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_CELL_SLOT_OVERLAY).build());
+        UITexture bat = GT5RGuiTextures.BATTERY_SLOT_OVERLAY;
+        TriFunction<Integer, Integer, SlotData.SlotDataBuilder<SlotEnergy>, SlotData<SlotEnergy>> batFunction = (x, y, b) -> b.x(x).y(y).overlayTexture(bat).build();
+        BATTERY_BUFFER_FOUR.add(ENERGY, b -> batFunction.apply(71, 27, b)).add(ENERGY, b -> batFunction.apply(89, 27, b))
+                .add(ENERGY, b -> batFunction.apply(71, 45, b)).add(ENERGY, b -> batFunction.apply(89, 45, b));
+        BATTERY_BUFFER_ONE.add(ENERGY, b -> batFunction.apply(80, 40, b));
         BATTERY_BUFFER_EIGHT
-                .add(ENERGY,53,27, bat).add(ENERGY,71,27, bat).add(ENERGY,89,27, bat).add(ENERGY,107,27, bat)
-                .add(ENERGY,53,45, bat).add(ENERGY,71,45, bat).add(ENERGY,89,45, bat).add(ENERGY,107,45, bat);
+                .add(ENERGY, b -> batFunction.apply(53,27, b)).add(ENERGY, b -> batFunction.apply(71,27, b)).add(ENERGY, b -> batFunction.apply(89,27, b)).add(ENERGY, b -> batFunction.apply(107,27, b))
+                .add(ENERGY, b -> batFunction.apply(53,45, b)).add(ENERGY, b -> batFunction.apply(71,45, b)).add(ENERGY, b -> batFunction.apply(89,45, b)).add(ENERGY, b -> batFunction.apply(107,45, b));
         BATTERY_BUFFER_SIXTEEN
-                .add(ENERGY,53,9, bat).add(ENERGY,71,9, bat).add(ENERGY,89,9, bat).add(ENERGY,107,9, bat)
-                .add(ENERGY,53,27, bat).add(ENERGY,71,27, bat).add(ENERGY,89,27, bat).add(ENERGY,107,27, bat)
-                .add(ENERGY,53,45, bat).add(ENERGY,71,45, bat).add(ENERGY,89,45, bat).add(ENERGY,107,45, bat)
-                .add(ENERGY,53,63, bat).add(ENERGY,71,63, bat).add(ENERGY,89,63, bat).add(ENERGY,107,63, bat);
+                .add(ENERGY, b -> batFunction.apply(53,9, b)).add(ENERGY, b -> batFunction.apply(71,9, b)).add(ENERGY, b -> batFunction.apply(89,9, b)).add(ENERGY, b -> batFunction.apply(107,9, b))
+                .add(ENERGY, b -> batFunction.apply(53,27, b)).add(ENERGY, b -> batFunction.apply(71,27, b)).add(ENERGY, b -> batFunction.apply(89,27, b)).add(ENERGY, b -> batFunction.apply(107,27, b))
+                .add(ENERGY, b -> batFunction.apply(53,45, b)).add(ENERGY, b -> batFunction.apply(71,45, b)).add(ENERGY, b -> batFunction.apply(89,45, b)).add(ENERGY, b -> batFunction.apply(107,45, b))
+                .add(ENERGY, b -> batFunction.apply(53,63, b)).add(ENERGY, b -> batFunction.apply(71,63, b)).add(ENERGY, b -> batFunction.apply(89,63, b)).add(ENERGY, b -> batFunction.apply(107,63, b));
 
-        SOLID_FUEL_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62).add(IT_OUT, 116, 26).add(IT_IN, 116, 62);
-        LAVA_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
-        SOLAR_BOILER.add(CELL_IN, 44, 26).add(CELL_OUT, 44, 62);
+        SOLID_FUEL_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
+                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build())
+                .add(BRONZE, IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.BRONZE_DUST_SLOT_OVERLAY).build())
+                .add(BRONZE, IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.BRONZE_COAL_SLOT_OVERLAY).build());
+        SOLID_FUEL_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
+                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build())
+                .add(STEEL, IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.STEEL_DUST_SLOT_OVERLAY).build())
+                .add(STEEL, IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.STEEL_COAL_SLOT_OVERLAY).build());
+        LAVA_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
+                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build());
+        SOLAR_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
+                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build());
 
         STEAM_ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
         STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
@@ -251,7 +247,8 @@ public class Guis {
         GAS_TURBINE.add(BASIC_TANK.getSlots());
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
-        MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53).add(FL_IN, 55, 43, new ResourceLocation(GT5Reimagined.ID, "blank"));
+        MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53)
+                .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build());
         NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43).add(FL_IN, 70, 61).add(FL_OUT, 88, 61);
 
         CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
@@ -259,12 +256,12 @@ public class Guis {
                 .add(IT_OUT, 62, 52).add(IT_OUT, 80, 52).add(IT_OUT, 98, 52);
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots());
-        PRIMITIVE_BLAST_FURNACE.add(IT_IN, 53, 16, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(IT_IN, 53, 34, new ResourceLocation(GT5Reimagined.ID, "primitive_fire"))
-                .add(IT_IN, 53, 52, new ResourceLocation(GT5Reimagined.ID, "primitive_fire"))
-                .add(IT_OUT, 107, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_ingot"))
-                .add(IT_OUT, 125, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_dust"))
-                .add(IT_OUT, 143, 25, new ResourceLocation(GT5Reimagined.ID, "primitive_dust"));
+        PRIMITIVE_BLAST_FURNACE.add(IT_IN, b -> b.x(53).y(16).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(IT_IN, b -> b.x(53).y(34).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
+                .add(IT_IN, b -> b.x(53).y(52).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
+                .add(IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(IT_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build())
+                .add(IT_OUT, b -> b.x(143).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build());
 
         MUFFLER_HATCH.add(IT_IN, 79, 34);
 
@@ -294,10 +291,11 @@ public class Guis {
         HIGH_CAPACITY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         SECONDARY_INPUT_HATCH.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         SECONDARY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
+        UITexture blank = GTGuiTextures.BLANK_SLOT;
         ELECTRIC_ITEM_FILTER
-                .add(DISPLAY_SETTABLE, 18, 6, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 35, 6, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 52, 6, new ResourceLocation(GT5Reimagined.ID, "blank"))
-                .add(DISPLAY_SETTABLE, 18, 23, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 52, 23, new ResourceLocation(GT5Reimagined.ID, "blank"))
-                .add(DISPLAY_SETTABLE, 18, 40, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 35, 40, new ResourceLocation(GT5Reimagined.ID, "blank")).add(DISPLAY_SETTABLE, 52, 40, new ResourceLocation(GT5Reimagined.ID, "blank"))
+                .add(DISPLAY_SETTABLE, b -> b.x(18).y(6).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(6).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(6).baseTexture(blank).build())
+                .add(DISPLAY_SETTABLE, b -> b.x(18).y(23).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(23).baseTexture(blank).build())
+                .add(DISPLAY_SETTABLE, b -> b.x(18).y(40).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(40).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(40).baseTexture(blank).build())
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -306,7 +304,7 @@ public class Guis {
                 .add(STORAGE, 98 + 18 * 2, 41);
 
         ELECTRIC_TYPE_FILTER
-                .add(DISPLAY_SETTABLE, 35, 23, new ResourceLocation(GT5Reimagined.ID, "blank"))
+                .add(DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build())
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -331,152 +329,346 @@ public class Guis {
         CRACKING_UNIT.add(MULTIBLOCK.getSlots());
     }
 
-    public static void backgroundTextures(){
-        MACERATOR.getGuiData().setBackgroundTexture("machine_macerator");
-        ROCK_BREAKER.getGuiData().setBackgroundTexture("machine_macerator");
-        //FORGE_HAMMER.getGui().setBackgroundTexture("machine_forge_hammer");
-        AUTOCRAFTER.getGuiData().setBackgroundTexture("centrifuge");
-        CENTRIFUGE.getGuiData().setBackgroundTexture("centrifuge");
-        ELECTROLYZER.getGuiData().setBackgroundTexture("centrifuge");
-        COKE_OVEN.getGuiData().setBackgroundTexture("coke_oven");
-        PRIMITIVE_BLAST_FURNACE.getGuiData().setBackgroundTexture("primitive_blast_furnace");
-        SUPER_BUFFER.getGuiData().setBackgroundTexture("super_buffer");
-        CHEST_BUFFER.getGuiData().setBackgroundTexture("chest_buffer");
-        COKE_OVEN.getGuiData().setBackgroundTexture("coke_oven");
-        STEAM_TURBINE.getGuiData().setBackgroundTexture("basic_tank");
-        GAS_TURBINE.getGuiData().setBackgroundTexture("basic_tank");
-        COMBUSTION_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
-        SEMIFLUID_GENERATOR.getGuiData().setBackgroundTexture("basic_tank");
-        MAGIC_ENERGY_CONVERTER.getGuiData().setBackgroundTexture("basic_tank");
-        QUANTUM_TANK.getGuiData().setBackgroundTexture("basic_tank");
-        ELECTRIC_ITEM_FILTER.getGuiData().setBackgroundTexture("electric_item_filter");
-        ELECTRIC_TYPE_FILTER.getGuiData().setBackgroundTexture("electric_type_filter");
-        ASSEMBLY_LINE.getGuiData().setBackgroundTexture("multiblock");
-        AUTOCRAFTER_ASSEMBLY_LINE.getGuiData().setBackgroundTexture("multiblock");
-        BEDROCK_DRILL.getGuiData().setBackgroundTexture("multiblock");
-        BLAST_FURNACE.getGuiData().setBackgroundTexture("multiblock");
-        IMPLOSION_COMPRESSOR.getGuiData().setBackgroundTexture("multiblock");
-        TREE_GROWTH_SIMULATOR.getGuiData().setBackgroundTexture("multiblock");
-        VACUUM_FREEZER.getGuiData().setBackgroundTexture("multiblock");
-        MULTI_SMELTER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_AUTOCLAVE.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_BOILER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_BATHING_VAT.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_CENTRIFUGE.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_CHEMICAL_REACTOR.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_ELECTROLYZER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_PULVERIZER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_ORE_WASHER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_SIFTER.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_TURBINE.getGuiData().setBackgroundTexture("multiblock");
-        LARGE_HEAT_EXCHANGER.getGuiData().setBackgroundTexture("multiblock");
-        OIL_DRILLING_RIG.getGuiData().setBackgroundTexture("multiblock");
-        ORE_MINING_RIG.getGuiData().setBackgroundTexture("multiblock");
-        PROCESSING_ARRAY.getGuiData().setBackgroundTexture("multiblock");
-        PYROLYSE_OVEN.getGuiData().setBackgroundTexture("multiblock");
-        COMBUSTION_ENGINE.getGuiData().setBackgroundTexture("multiblock");
-        DISTLLATION_TOWER.getGuiData().setBackgroundTexture("multiblock");
-        CRYO_DISTLLATION_TOWER.getGuiData().setBackgroundTexture("multiblock");
-        CRACKING_UNIT.getGuiData().setBackgroundTexture("multiblock");
-        FUSION_REACTOR.setGUI(MenuHandlers.FUSION_MENU_HANDLER);
-        FUSION_REACTOR.getGuiData().setBackgroundTexture("fusion_control_computer");
+    public static void backgroundWidgets(){
+        SteamMachine[] steamMachines = new SteamMachine[]{SOLID_FUEL_BOILER, LAVA_BOILER, SOLAR_BOILER, STEAM_ALLOY_SMELTER, STEAM_COMPRESSOR, STEAM_CUTTER,
+                STEAM_EXTRACTOR, STEAM_FORGE_HAMMER, STEAM_FURNACE, STEAM_MACERATOR, STEAM_SIFTER};
+        for (SteamMachine steamMachine : steamMachines){
+            steamMachine.getGuiProperties().setGTIcon(BRONZE, GT5RGuiTextures.BRONZE_GT_LOGO);
+            steamMachine.getGuiProperties().setGTIcon(STEEL, GT5RGuiTextures.STEEL_GT_LOGO);
+        }
+        COKE_OVEN.getGuiProperties().setGTIcon(GT5RGuiTextures.PRIMITIVE_GT_LOGO);
+        PRIMITIVE_BLAST_FURNACE.getGuiProperties().setGTIcon(GT5RGuiTextures.PRIMITIVE_GT_LOGO);
+        addToBackgroundFunction(FORGE_HAMMER, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.FORGE_HAMMER_OVERLAY.asWidget().pos(78, 42).size(20, 6));
+        });
+        addToBackgroundFunction(MACERATOR,(modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.MACERATOR_OVERLAY.asWidget().pos(98, 34).size(1, 1));
+        });
+        addToBackgroundFunction(STEAM_FORGE_HAMMER, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child((machine.getMachineTier() == BRONZE ? GT5RGuiTextures.BRONZE_FORGE_HAMMER_OVERLAY : GT5RGuiTextures.STEEL_FORGE_HAMMER_OVERLAY)
+                    .asWidget().pos(78, 42).size(20, 6));
+        });
+        addToBackgroundFunction(STEAM_MACERATOR,(modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child((machine.getMachineTier() == BRONZE ? GT5RGuiTextures.BRONZE_MACERATOR_OVERLAY : GT5RGuiTextures.STEEL_MACERATOR_OVERLAY)
+                    .asWidget().pos(98, 34).size(1, 1));
+        });
+        addToBackgroundFunction(ROCK_BREAKER,(modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.MACERATOR_OVERLAY.asWidget().pos(98, 34).size(1, 1));
+        });
+        addToBackgroundFunction(CHEST_BUFFER,(modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.BUFFER_ARROW.asWidget().pos(62, 60).size(87, 22));
+        });
+        addToBackgroundFunction(SUPER_BUFFER, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.BUFFER_ARROW.asWidget().pos(62, 60).size(87, 22));
+            modularPanel.child(GT5RGuiTextures.SUPER_BUFFER_OVERLAY.asWidget().pos(61, 4).size(54, 54));
+        });
+        addToBackgroundFunction(ELECTRIC_ITEM_FILTER, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.WHITE_FILTER_ARROW_BAR.asWidget().pos(6, 28).size(9, 6));
+            modularPanel.child(GT5RGuiTextures.ITEM_FILTER_FAKE_SLOTS.asWidget().pos(16, 4).size(54, 54));
+            modularPanel.child(GT5RGuiTextures.BLUE_FILTER_ARROW.asWidget().pos(71, 19).size(24, 24));
+            modularPanel.child(GT5RGuiTextures.RED_FILTER_ARROW.asWidget().pos(152, 19).size(19, 24));
+        });
+        addToBackgroundFunction(ELECTRIC_TYPE_FILTER, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.WHITE_TYPE_FILTER_ARROW_BAR.asWidget().pos(6, 28).size(26, 6));
+            modularPanel.child(GT5RGuiTextures.TYPE_FILTER_FAKE_SLOT.asWidget().pos(33, 21).size(20, 20));
+            modularPanel.child(GT5RGuiTextures.BLUE_TYPE_FILTER_ARROW.asWidget().pos(54, 19).size(41, 24));
+            modularPanel.child(GT5RGuiTextures.RED_FILTER_ARROW.asWidget().pos(152, 19).size(19, 24));
+        });
+        addToBackgroundFunction(PRIMITIVE_BLAST_FURNACE, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.PBF_MULTIBLOCK_OVERLAY.asWidget().pos(11, 17).size(18, 50));
+        });
+        addToBackgroundFunction(COKE_OVEN, (modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GT5RGuiTextures.COKE_OVEN_MULTIBLOCK_OVERLAY.asWidget().pos(11, 14).size(18, 38));
+        });
+        AUTOCRAFTER.getGuiProperties().setGtIconPos(new int2(80, 64));
+        CENTRIFUGE.getGuiProperties().setGtIconPos(new int2(80, 64));
+        ELECTROLYZER.getGuiProperties().setGtIconPos(new int2(80, 64));
+        COKE_OVEN.getGuiProperties().setTheme(GTCoreThemes.PRIMITIVE_THEME_ID);
+        PRIMITIVE_BLAST_FURNACE.getGuiProperties().setTheme(GTCoreThemes.PRIMITIVE_THEME_ID);
+        Machine<?>[] tanks = new Machine<?>[]{STEAM_TURBINE, GAS_TURBINE, COMBUSTION_GENERATOR, SEMIFLUID_GENERATOR, MAGIC_ENERGY_CONVERTER, QUANTUM_TANK};
+        for (Machine<?> tank : tanks){
+            addToBackgroundFunction(tank, (modularPanel, machine, guiData, syncManager, settings) -> {
+                modularPanel.child(GT5RGuiTextures.TANK_BACKGROUND.asWidget().pos(53, 16).size(71, 45));
+            });
+        }
+        MultiMachine[] machineWithConsole = new MultiMachine[]{
+                ASSEMBLY_LINE, AUTOCRAFTER_ASSEMBLY_LINE, BEDROCK_DRILL, BLAST_FURNACE, IMPLOSION_COMPRESSOR, TREE_GROWTH_SIMULATOR, VACUUM_FREEZER,
+                MULTI_SMELTER, LARGE_AUTOCLAVE, LARGE_BOILER, LARGE_BATHING_VAT, LARGE_CENTRIFUGE, LARGE_CHEMICAL_REACTOR, LARGE_ELECTROLYZER,
+                LARGE_PULVERIZER, LARGE_ORE_WASHER, LARGE_SIFTER, LARGE_TURBINE, LARGE_HEAT_EXCHANGER, OIL_DRILLING_RIG, ORE_MINING_RIG,
+                PROCESSING_ARRAY, PYROLYSE_OVEN, COMBUSTION_ENGINE, DISTLLATION_TOWER, CRYO_DISTLLATION_TOWER, CRACKING_UNIT
+        };
+        for (MultiMachine multiMachine : machineWithConsole){
+            addToBackgroundFunction(multiMachine, (modularPanel, machine, guiData, syncManager, settings) -> {
+                modularPanel.child(GT5RGuiTextures.MULTIBLOCK_BACKGROUND.asWidget().pos(7, 4).size(143, 75));
+            });
+        }
+    }
+
+    private static void addToBackgroundFunction(Machine<?> machine, IPanelFunction newFunction){
+        IPanelFunction oldFunction = machine.getBackgroundFunction();
+        machine.setBackgroundFunction((modularPanel, machine1, guiData, syncManager, settings) -> {
+            oldFunction.modifyPanel(modularPanel, machine1, guiData, syncManager, settings);
+            newFunction.modifyPanel(modularPanel, machine1, guiData, syncManager, settings);
+        });
     }
 
     public static void machineData(){
-        ASSEMBLER.getGuiData().getMachineData().setProgressLocation("assembler");
-        CANNER.getGuiData().getMachineData().setProgressLocation("canner");
-        CIRCUIT_ASSEMBLER.getGuiData().getMachineData().setProgressLocation("assembler");
-        COMPRESSOR.getGuiData().getMachineData().setProgressLocation("compressor");
-        CUTTER.getGuiData().getMachineData().setProgressLocation("cutter");
-        EXTRACTOR.getGuiData().getMachineData().setProgressLocation("extractor");
-        EXTRUDER.getGuiData().getMachineData().setProgressLocation("extruder");
-        LATHE.getGuiData().getMachineData().setProgressLocation("lathe");
-        MACERATOR.getGuiData().getMachineData().setProgressLocation("macerator");
-        ROCK_BREAKER.getGuiData().getMachineData().setProgressLocation("macerator");
-        WIRE_MILL.getGuiData().getMachineData().setProgressLocation("wiremill");
-        CENTRIFUGE.getGuiData().getMachineData().setProgressLocation("extractor");
-        ELECTROLYZER.getGuiData().getMachineData().setProgressLocation("extractor");
-        ORE_WASHER.getGuiData().getMachineData().setProgressLocation("ore_washer");
-        CHEMICAL_REACTOR.getGuiData().getMachineData().setProgressLocation("chemical_reactor");
-        FLUID_CANNER.getGuiData().getMachineData().setProgressLocation("canner");
-        FERMENTER.getGuiData().getMachineData().setProgressLocation("chemical_reactor");
-        FLUID_PRESS.getGuiData().getMachineData().setProgressLocation("extractor");
-        SMELTER.getGuiData().getMachineData().setProgressLocation("smelter");
-        DISTILLERY.getGuiData().getMachineData().setProgressLocation("chemical_reactor");
-        BATH.getGuiData().getMachineData().setProgressLocation("ore_washer");
-        POLARIZER.getGuiData().getMachineData().setProgressLocation("electromagnetic_separator");
-        MIXER.getGuiData().getMachineData().setProgressLocation("mixer");
-        FORMING_PRESS.getGuiData().getMachineData().setProgressLocation("compressor");
-        SIFTER.getGuiData().getMachineData().setProgressLocation("sifter");
-        ELECTROMAGNETIC_SEPARATOR.getGuiData().getMachineData().setProgressLocation("electromagnetic_separator");
-        COKE_OVEN.getGuiData().getMachineData().setProgressLocation("coke_oven");
-        PRIMITIVE_BLAST_FURNACE.getGuiData().getMachineData().setProgressLocation("coke_oven");
-        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiData().getMachineData().setMachineStatePos(84, 46).setProgressLocation("forge_hammer");
-        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.BOTTOM, false).getGuiData().getMachineData().setMachineStatePos(80, 50);
-        FUSION_REACTOR.getGuiData().setEnablePlayerSlots(false)
-                .getMachineData().setProgressLocation("fusion_reactor").setProgressPos(163, 4).setProgressSize(149, 16);
+        ASSEMBLER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ASSEMBLER_PROGRESS);
+        BENDER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.BENDER_PROGRESS);
+        CANNER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CANNER_PROGRESS);
+        CIRCUIT_ASSEMBLER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ASSEMBLER_PROGRESS);
+        COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COMPRESSOR_PROGRESS);
+        CUTTER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CUTTER_PROGRESS);
+        EXTRACTOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.EXTRACTOR_PROGRESS);
+        EXTRUDER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.EXTRUDER_PROGRESS);
+        LATHE.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.LATHE_PROGRESS);
+        MACERATOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.MACERATOR_PROGRESS);
+        ROCK_BREAKER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.MACERATOR_PROGRESS);
+        WIRE_MILL.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.WIREMILL_PROGRESS);
+        CENTRIFUGE.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.EXTRACTOR_PROGRESS);
+        ELECTROLYZER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.EXTRACTOR_PROGRESS);
+        ORE_WASHER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ORE_WASHER_PROGRESS).setDir(BarDir.CW);
+        CHEMICAL_REACTOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CHEMICAL_REACTOR_PROGRESS);
+        FLUID_CANNER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CANNER_PROGRESS);
+        FERMENTER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CHEMICAL_REACTOR_PROGRESS);
+        FLUID_PRESS.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.EXTRACTOR_PROGRESS);
+        SMELTER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.SMELTER_PROGRESS);
+        DISTILLERY.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.CHEMICAL_REACTOR_PROGRESS);
+        BATH.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ORE_WASHER_PROGRESS).setDir(BarDir.CW);
+        POLARIZER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ELECTROMAGNETIC_SEPARATOR_PROGRESS);
+        MIXER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.MIXER_PROGRESS).setDir(BarDir.CW);
+        FORMING_PRESS.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COMPRESSOR_PROGRESS);
+        SIFTER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.SIFTER_PROGRESS);
+        ELECTROMAGNETIC_SEPARATOR.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.ELECTROMAGNETIC_SEPARATOR_PROGRESS);
+        RECYCLER.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.RECYCLER_PROGRESS);
+        COKE_OVEN.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COKE_OVEN_PROGRESS);
+        PRIMITIVE_BLAST_FURNACE.getGuiProperties().getMachineData().setProgressLocation(GT5RGuiTextures.COKE_OVEN_PROGRESS);
+        FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.DOWN, false).getGuiProperties().getMachineData().setMachineStatePos(84, 46).setProgressLocation(GT5RGuiTextures.FORGE_HAMMER_PROGRESS);
+        STEAM_FORGE_HAMMER.setGuiProgressBarForJEI(BarDir.DOWN, false).getGuiProperties().getMachineData().setMachineStatePos(80, 50);
+        FUSION_REACTOR.getGuiProperties().setEnablePlayerSlots(false)
+                .getMachineData().setProgressLocation(GT5RGuiTextures.FUSION_REACTOR_PROGRESS).setProgressPos(163, 4).setProgressSize(149, 16);
+        STEAM_ALLOY_SMELTER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_DEFAULT_PROGRESS);
+        STEAM_ALLOY_SMELTER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_DEFAULT_PROGRESS);
+        STEAM_COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_COMPRESSOR_PROGRESS);
+        STEAM_COMPRESSOR.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_COMPRESSOR_PROGRESS);
+        STEAM_EXTRACTOR.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_EXTRACTOR_PROGRESS);
+        STEAM_EXTRACTOR.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_EXTRACTOR_PROGRESS);
+        STEAM_FORGE_HAMMER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_FORGE_HAMMER_PROGRESS);
+        STEAM_FORGE_HAMMER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_FORGE_HAMMER_PROGRESS);
+        STEAM_FURNACE.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_DEFAULT_PROGRESS);
+        STEAM_FURNACE.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_DEFAULT_PROGRESS);
+        STEAM_MACERATOR.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_MACERATOR_PROGRESS);
+        STEAM_MACERATOR.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_MACERATOR_PROGRESS);
+        STEAM_CUTTER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_CUTTER_PROGRESS);
+        STEAM_CUTTER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_CUTTER_PROGRESS);
+        STEAM_SIFTER.getGuiProperties().getMachineData().setProgressLocation(BRONZE, GT5RGuiTextures.BRONZE_SIFTER_PROGRESS);
+        STEAM_SIFTER.getGuiProperties().getMachineData().setProgressLocation(STEEL, GT5RGuiTextures.STEEL_SIFTER_PROGRESS);
     }
 
     public static void widgets(){
-        FORGE_HAMMER.addGuiCallback(t -> {
-            t.addWidget(IconWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/button/forge_hammer_overlay.png"), 78, 42, 20, 6));
+        PRIMITIVE_BLAST_FURNACE.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof IFuelMachine fuelMachine){
+                syncManager.syncValue("fuel", new DoubleSyncValue(() -> (double) fuelMachine.getFuel() / fuelMachine.getMaxFuel()));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.PBF_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
+                        .syncHandler("fuel").pos(79, 51).size(18, 18));
+            }
         });
-        PRIMITIVE_BLAST_FURNACE.addGuiCallback(t -> {
-            t.addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/pbf_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(79, 51, 18, 18));
-        });
-        SOLID_FUEL_BOILER.addGuiCallback(t -> {
-            String tier = ((BlockEntityMachine<?>)t.handler).getMachineTier().getId();
-            t.addWidget(CoalBoilerWidget.build().setSize(70, 25, 36, 54))
-                    .addWidget(FuelWidget.build(new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/" + tier + "_flame_off.png"), new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/flame_on.png")).setSize(115, 43, 18, 18));
+        SOLID_FUEL_BOILER.getGuiProperties().getMachineData().setHasProgressWidget(false).setHasMachineStateWidget(false);
+        SOLID_FUEL_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof BlockEntityCoalBoiler fuelMachine){
+                Tier tier = machine.getMachineTier();
+                syncManager.syncValue("fuel", new DoubleSyncValue(() -> (double) fuelMachine.getFuel() / fuelMachine.getMaxFuel()));
+                syncManager.syncValue("fuelInt", new IntSyncValue(fuelMachine::getFuel));
+                syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
+                syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
+                syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child((tier == BRONZE ? GT5RGuiTextures.BRONZE_TANK_ICON : GT5RGuiTextures.STEEL_TANK_ICON).asWidget().pos(43, 43).size(18, 18));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_FLAME_OFF : GT5RGuiTextures.STEEL_FLAME_OFF, GT5RGuiTextures.FLAME_ON, Direction.UP)
+                        .syncHandler("fuel")
+                        .tooltip(t -> t.addLine(Utils.literal("Show Recipes")))
+                        .tooltipDynamic(t -> t.addLine(Utils.literal("Fuel: " + intGetter.apply("fuelInt")))).tooltipAutoUpdate(true)
+                        .pos(115, 43).size(18, 18));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("steam") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int steam = intGetter.apply("steam");
+                            if (steam > 0){
+                                tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(70, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("water") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int water = intGetter.apply("water");
+                            if (water > 0){
+                                tooltip.addLine(Utils.literal("Water: " + water + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(83, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
+                        .tooltipDynamic(tooltip -> {
+                            int heat = intGetter.apply("heat");
+                            int maxHeat = intGetter.apply("maxHeat");
+                            tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
+                        }).tooltipAutoUpdate(true)
+                        .pos(96, 25).size(10, 54));
+            }
         });
 
-        LAVA_BOILER.addGuiCallback(t -> {
-            t.addWidget(LavaBoilerWidget.build().setSize(70, 25, 62, 54));
+        LAVA_BOILER.getGuiProperties().getMachineData().setHasProgressWidget(false).setHasMachineStateWidget(false);
+        LAVA_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof BlockEntityLavaBoiler fuelMachine){
+                Tier tier = machine.getMachineTier();
+                syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
+                syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
+                syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("lava", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(1).getAmount()).orElse(0)));
+                Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(GT5RGuiTextures.STEEL_TANK_ICON.asWidget().pos(43, 43).size(18, 18));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("steam") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int steam = intGetter.apply("steam");
+                            if (steam > 0){
+                                tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(70, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("water") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int water = intGetter.apply("water");
+                            if (water > 0){
+                                tooltip.addLine(Utils.literal("Water: " + water + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(83, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
+                        .tooltipDynamic(tooltip -> {
+                            int heat = intGetter.apply("heat");
+                            int maxHeat = intGetter.apply("maxHeat");
+                            tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
+                        }).tooltipAutoUpdate(true)
+                        .pos(96, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_LAVA_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("lava") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int lava = intGetter.apply("lava");
+                            if (lava > 0){
+                                tooltip.addLine(Utils.literal("Lava: " + lava + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(122, 25).size(10, 54));
+            }
         });
 
-        SOLAR_BOILER.addGuiCallback(t -> {
-            t.addWidget(SolarBoilerWidget.build().setSize(70, 25, 62, 54));
+        SOLAR_BOILER.getGuiProperties().getMachineData().setHasProgressWidget(false).setHasMachineStateWidget(false);
+        SOLAR_BOILER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            if (machine instanceof BlockEntitySolarBoiler fuelMachine){
+                Tier tier = machine.getMachineTier();
+                syncManager.syncValue("sunlit", new BooleanSyncValue(fuelMachine::isAllowedToWork));
+                syncManager.syncValue("heat", new IntSyncValue(fuelMachine::getHeat));
+                syncManager.syncValue("maxHeat", new IntSyncValue(fuelMachine::getMaxHeat));
+                syncManager.syncValue("steam", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getOutputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                syncManager.syncValue("water", new IntSyncValue(() -> machine.fluidHandler.map(f -> f.getInputTanks().getFluidInTank(0).getAmount()).orElse(0)));
+                Function<String, Integer> intGetter = s -> GTMuiUtils.getSyncedValue(s, Integer.class, syncManager.getModularSyncManager()).orElse(0);
+                modularPanel.child(GT5RGuiTextures.BRONZE_TANK_ICON.asWidget().pos(43, 43).size(18, 18));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(GT5RGuiTextures.SOLAR_BOILER_ICON, Direction.UP)
+                        .clientValue(() -> {
+                            boolean isSunlit = GTMuiUtils.getSyncedValue("sunlit", Boolean.class, syncManager.getModularSyncManager()).orElse(false);
+                            return isSunlit ? 1.0 : 0.0;
+                        }).pos(131, 45).size(12, 12));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_STEAM_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("steam") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int steam = intGetter.apply("steam");
+                            if (steam > 0){
+                                tooltip.addLine(Utils.literal("Steam: " + steam + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(70, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_WATER_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("water") / 16000)
+                        .tooltipDynamic(tooltip -> {
+                            int water = intGetter.apply("water");
+                            if (water > 0){
+                                tooltip.addLine(Utils.literal("Water: " + water + " MB"));
+                            }
+                        }).tooltipAutoUpdate(true)
+                        .pos(83, 25).size(10, 54));
+                modularPanel.child(new brachy.modularui.widgets.ProgressWidget().texture(tier == BRONZE ? GT5RGuiTextures.BRONZE_BOILER_EMPTY_BAR : GT5RGuiTextures.STEEL_BOILER_EMPTY_BAR, GT5RGuiTextures.BOILER_HEAT_BAR, Direction.UP)
+                        .clientValue(() -> (double)intGetter.apply("heat") / intGetter.apply("maxHeat"))
+                        .tooltipDynamic(tooltip -> {
+                            int heat = intGetter.apply("heat");
+                            int maxHeat = intGetter.apply("maxHeat");
+                            tooltip.addLine(Utils.literal("Heat: " + heat + "C° out of " + maxHeat));
+                        }).tooltipAutoUpdate(true)
+                        .pos(96, 25).size(10, 54));
+            }
         });
-        ADJUSTABLE_TRANSFORMER.getGuiData().setBackgroundTexture(new ResourceLocation(Ref.ID, "creative_generator"));
-        // if (side.isClient()) {
-        ADJUSTABLE_TRANSFORMER.addGuiCallback(t -> {
-            t.addButton(10, 18, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 18, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(10, 33, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 33, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(10, 48, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 48, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(10, 63, ButtonOverlay.APAD_LEFT, false)
-                    .addButton(25, 63, ButtonOverlay.PAD_LEFT, false)
-                    .addButton(137, 18, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 18, ButtonOverlay.APAD_RIGHT, false)
-                    .addButton(137, 33, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 33, ButtonOverlay.APAD_RIGHT, false)
-                    .addButton(137, 48, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 48, ButtonOverlay.APAD_RIGHT, false)
-                    .addButton(137, 63, ButtonOverlay.PAD_RIGHT, false)
-                    .addButton(152, 63, ButtonOverlay.APAD_RIGHT, false);
-        });
+        ADJUSTABLE_TRANSFORMER.getGuiProperties().setHasGTIcon(false);
+        ADJUSTABLE_TRANSFORMER.getGuiFunctions().add(((modularPanel, machine, guiData, syncManager, settings) -> {
+            modularPanel.child(GTGuiTextures.CREATIVE_GENERATOR_OVERLAY.asWidget().size(158, 61).pos(9, 17));
+            for (int i = 0; i < 16; i++){
+                boolean leftSide = i < 8;
+                boolean leftOuter = i % 2 == 0;
+                UITexture texture = leftSide ? (leftOuter ? GTGuiTextures.APAD_LEFT : GTGuiTextures.PAD_LEFT) : (leftOuter ? GTGuiTextures.PAD_RIGHT : GTGuiTextures.APAD_RIGHT);
+                int x = leftSide ? (leftOuter ? 10 : 25) : (leftOuter ? 137 : 152);
+                int y = (i < 8 ? i : i - 8) / 2;
+                int finalI = i;
+                modularPanel.child(new ButtonWidget<>()
+                        .overlay(texture.getSubArea(0f, 0f, 1.0f, 0.5f))
+                        .hoverOverlay(texture.getSubArea(0f, 0.5f, 1f, 1f))
+                        .onMousePressed((context, mouseButton) -> {
+                            syncManager.callSyncedAction("extra_button_event", packet -> {
+                                packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, finalI});
+                            });
+                            return true;
+                        })
+                        .size(14).pos(x, 18 + (15 * y)));
+            }
+            if (machine instanceof IInfoRenderer renderer){
+                renderer.registerSyncHandlers(syncManager);
+                modularPanel.child(new GTInfoRenderWidget(renderer)
+                        .pos(renderer.getPos().x, renderer.getPos().y)
+                        .size(renderer.getSize().x, renderer.getSize().y));
+            }
+        }));
 
-        AUTOCRAFTER.getCallbacks().remove(1);
-        AUTOCRAFTER.addGuiCallback(t -> {
-            t.addWidget(AutocrafterProgressWidget.build())
-                    .addWidget(MachineStateWidget.build());
-            t.addWidget(IOWidget.build(9, 63).onlyIf(u -> u.handler instanceof BlockEntityMachine<?> machine &&
-                    machine.getOutputFacing() != null &&
-                    machine.coverHandler.map(c -> c.getOutputCover() instanceof CoverOutput).orElse(false) &&
-                    !(u.handler instanceof BlockEntityMultiMachine<?>)));
+        AUTOCRAFTER.getGuiProperties().getMachineData().setHasProgressWidget(false);
+        AUTOCRAFTER.getGuiFunctions().add((modularPanel, machine, guiData, syncManager, settings) -> {
+            GuiProperties guiProperties = AUTOCRAFTER.getGuiProperties();
+            syncManager.syncValue("progress", new DoubleSyncValue(() -> machine.recipeHandler.map(r -> guiProperties.getMachineData().getProgressPercentFunction().apply(r.getCurrentProgress(), r.getMaxProgress())).orElse(0f)));
+            BarDir direction = guiProperties.getMachineData().getDir();
+            UITexture texture = guiProperties.getMachineData().getProgressTexture(machine.getMachineTier());
+            brachy.modularui.widgets.ProgressWidget progressWidget = new org.gtreimagined.gt5r.mui.widgets.AutocrafterProgressWidget(machine.getMachineType(), machine.getMachineTier())
+                    .tooltip(t -> t.addLine(Utils.translatable("gtlib.gui.show_recipes")))
+                    .syncHandler("progress")
+                    .pos(guiProperties.getMachineData().getProgressPos().x + 6, guiProperties.getMachineData().getProgressPos().y + 6);
+            modularPanel.child(progressWidget);
+            if (!direction.isCircular()) {
+                progressWidget.texture(texture, direction.toRegularDirection());
+            } else {
+                progressWidget.progress(CompositeProgress.circularLike4Slice(
+                        texture.getSubArea(0.0f, 0.0f, 1f, 0.5f),
+                        texture.getSubArea(0f, 0.5f,1f, 1f),
+                        direction.toCircularDirection()
+                ));
+            }
         });
-        ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
-        ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
-        CHEST_BUFFER.getCallbacks().remove(1);
-        FUSION_REACTOR.addGuiCallback(t -> {
+        //ELECTRIC_ITEM_FILTER.getCallbacks().remove(1);
+        //ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
+        //CHEST_BUFFER.getCallbacks().remove(1);
+        /*FUSION_REACTOR.addGuiCallback(t -> {
             t.addButton(155, 23, ButtonOverlay.NO_OVERLAY, false).addButton(155, 41, ButtonOverlay.NO_OVERLAY, false).addButton(155, 59, ButtonOverlay.NO_OVERLAY, false).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
-        });
+        });*/
     }
 
-    public static WidgetSupplier makeProgress(){
-        return builder(ProgressWidget::new);
-    }
     // }
 }

@@ -1519,8 +1519,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Diamond).asGem(true).mats(of(Materials.Carbon, 64), 1).elecTicks(768).harvestLevel(3);
         event.setMaterial(Emerald).asGem(true).mats(of(Materials.Alumina, 5, Materials.Beryllium, 3, Materials.SiliconDioxide, 18, Materials.Oxygen, 3)).elecTicks(540);
                 //.tool().toolDamage(3).toolSpeed(9).toolDurability(590).toolQuality(3).toolEnchantments(of(Data.IMPLOSION, 5)).build();
-        event.setMaterial(EnderEye).asGemBasic(false, LONG_ROD, PLATE).mats(of(EnderPearl, 1, Blaze, 1));
-        event.setMaterial(EnderPearl).mats(of(Materials.Beryllium, 1, Materials.Potassium, 4, Materials.Nitrogen, 5, Materials.Chlorine, 6)).elecTicks(220);
+        event.setMaterial(EnderEye).asGemBasic(true, LONG_ROD).mats(of(EnderPearl, 1, Blaze, 1));
+        event.setMaterial(EnderPearl).asGemBasic(true).mats(of(Materials.Beryllium, 1, Materials.Potassium, 4, Materials.Nitrogen, 5, Materials.Chlorine, 6)).elecTicks(220);
         event.setMaterial(Gold).flags(FOIL, LONG_ROD, FINE_WIRE);
         event.setMaterial(Iron).flags(RING, LONG_ROD, FRAME, SMALL_GEAR);
         event.setMaterial(Wood).flags(FRAME);

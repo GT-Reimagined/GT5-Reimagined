@@ -1,23 +1,12 @@
 package org.gtreimagined.gt5r.blockentity.multi;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import net.minecraft.client.gui.GuiGraphics;
-import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
-import org.gtreimagined.gtlib.gui.GuiInstance;
-import org.gtreimagined.gtlib.gui.ICanSyncData;
-import org.gtreimagined.gtlib.gui.IGuiElement;
-import org.gtreimagined.gtlib.gui.widget.InfoRenderWidget;
-import org.gtreimagined.gtlib.gui.widget.WidgetSupplier;
-import org.gtreimagined.gtlib.integration.xei.renderer.IInfoRenderer;
-import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.types.Machine;
-import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 
-public class BlockEntityLargeOreWasher extends BlockEntityMultiMachine<BlockEntityLargeOreWasher> {
+public class BlockEntityLargeOreWasher extends BlockEntityParallelMultiblock<BlockEntityLargeOreWasher> {
 
     public BlockEntityLargeOreWasher(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -40,36 +29,4 @@ public class BlockEntityLargeOreWasher extends BlockEntityMultiMachine<BlockEnti
 //        maxProgress = Math.max(1, 512 / (1 << tier - 1));
 //    }
 
-    @Override
-    public WidgetSupplier getInfoWidget() {
-        return MultiSmelterInfoWidget.build().setPos(10, 10);
-    }
-
-    @Override
-    public int drawInfo(InfoRenderWidget.MultiRenderWidget instance, GuiGraphics graphics, Font renderer, int left, int top) {
-        int superDraw = super.drawInfo(instance, graphics, renderer, left, top);
-        if (getMachineState() == MachineState.ACTIVE && instance.drawActiveInfo()){
-            graphics.drawString(renderer, "Concurrent Recipes: " + ((MultiSmelterInfoWidget)instance).concurrentRecipes, left, top + 32, 0xFAFAFF);
-            return superDraw + 8;
-        }
-        return superDraw;
-    }
-
-    public static class MultiSmelterInfoWidget extends InfoRenderWidget.MultiRenderWidget{
-        int concurrentRecipes;
-        protected MultiSmelterInfoWidget(GuiInstance gui, IGuiElement parent, IInfoRenderer<MultiRenderWidget> renderer) {
-            super(gui, parent, renderer);
-        }
-
-        @Override
-        public void init() {
-            super.init();
-            BlockEntityLargeOreWasher m = (BlockEntityLargeOreWasher) gui.handler;
-            gui.syncInt(() -> m.recipeHandler.map(r -> ((ParallelRecipeHandler<?>)r).concurrentRecipes).orElse(0), i -> concurrentRecipes = i, ICanSyncData.SyncDirection.SERVER_TO_CLIENT);
-        }
-
-        public static WidgetSupplier build() {
-            return builder((a, b) -> new MultiSmelterInfoWidget(a, b, (IInfoRenderer) a.handler));
-        }
-    }
 }
