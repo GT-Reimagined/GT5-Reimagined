@@ -6,6 +6,7 @@ import org.gtreimagined.gtlib.material.tags.DoubleMaterialTag;
 import org.gtreimagined.gtlib.material.tags.ListMaterialTag;
 import org.gtreimagined.gtlib.material.tags.NumberMaterialTag;
 import org.gtreimagined.gt5r.material.FluidProduct;
+import org.gtreimagined.gtlib.material.tags.TypeMaterialTag;
 
 public class GT5RMaterialTags {
     public static final MaterialTag ELEC = GTAPI.register(MaterialTag.class, new MaterialTag("elec", true)); //Add Electrolyzer Recipes - SHOULD NOT SHARE MATS WITH CENT
@@ -49,4 +50,7 @@ public class GT5RMaterialTags {
     public static final DoubleMaterialTag THERMAL_CENTRIFUGE_EXPLICIT = new DoubleMaterialTag("thermal_centrifuge_explicit");
     public static final ListMaterialTag<FluidProduct> DISTILL_INTO = new ListMaterialTag<>("distill_into");
     public static final NumberMaterialTag DISTILLATION_FLUID_INPUT_AMOUNT = new NumberMaterialTag("distillation_fluid_input_amount");
+    public static final TypeMaterialTag<TurbineRotorData> TURBINE_DATA = new TypeMaterialTag<>("turbine_data");
+
+    public record TurbineRotorData(float efficiency, float speed, int durability){}
 }
