@@ -1,13 +1,13 @@
 ---
 navigation:
   title: Items
-  position: 50
+  position: 10
 ---
 
-# Items
+# GT5R Items
 
-A list of stuff in the mod for other pages to link to, and a description of their function.
+A list GT5R items.  These items have specific uses but are not used directly in crafting or used to configure machines and other GT5r blocks.
 
-## Tools
+## List of GT5r Items
 
-<CategoryIndex category="tools" />
+<CategoryIndex category="items" />
