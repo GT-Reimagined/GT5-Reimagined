@@ -6,6 +6,7 @@ import brachy.modularui.value.sync.DoubleSyncValue;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.value.sync.LongSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
+import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
@@ -23,7 +24,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
-import org.gtreimagined.gt5r.items.ItemTurbineRotor;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.LONG_ROD;
 import static org.gtreimagined.gtlib.machine.Tier.EV;
@@ -122,8 +122,8 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                                 ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
                                 ItemStack compare = stack.copy();
                                 if(stack.getItem() instanceof ItemTurbineRotor rotor && stack.hurt(1, getLevel().random, null)){
-                                    var materialType = rotor.getGTToolType().getMaterialTypeItem();
-                                    var material = rotor.getPrimaryMaterial(compare);
+                                    var materialType = rotor.getBrokenRotor();
+                                    var material = rotor.getMaterial();
                                     ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : LONG_ROD.get(rotor.getRodMaterial(), 1);
                                     i.getHandler(SlotType.STORAGE).setStackInSlot(0, broken);
                                 }
