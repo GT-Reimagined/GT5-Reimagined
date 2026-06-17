@@ -11,8 +11,11 @@ import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
+import org.gtreimagined.gtlib.material.MaterialType;
+import org.gtreimagined.gtlib.material.MaterialTypeItem;
 import org.gtreimagined.gtlib.material.SubTag;
 
 import java.util.List;
@@ -32,6 +35,7 @@ public class GT5RMaterialEvents {
         flags(event);
         processInto(event);
         nuclearIsotopes(event);
+        turbineRotors(event);
         toolsAndArmor(event);
         workbenches(event);
     }
@@ -1002,6 +1006,38 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.HydroCrackedButane).mats(of(Materials.Butane,1, Materials.Hydrogen,2));
         event.setMaterial(Materials.HydroCrackedNaphtha).mats(of(Materials.Naphtha,1, Materials.Hydrogen,2));
         event.setMaterial(Materials.HydroCrackedRefineryGas).mats(of(Materials.RefineryGas,1, Materials.Hydrogen,2));
+    }
+
+    private static void turbineRotors(MaterialEvent<?> event){
+        addTurbine(event, Iron, 70, 6, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Manganese, 70, 7, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Nickel, 70, 6, 64, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, BismuthBronze, 70, 8, 512, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, BlackBronze, 70, 12, 512, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, BlackSteel, 70, 6.5f, 768, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, BlueSteel, 70, 7f, 896, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Bronze, 70, 6f, 448, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, CobaltBrass, 70, 8f, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, DamascusSteel, 70, 8f, 1280, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, HSSE, 90, 10f, 5120, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, HSSG, 80, 10f, 4000, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, HSSS, 90, 14f, 3000, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Invar, 70, 6f, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Kanthal, 70, 6f, 64, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Nichrome, 70, 6f, 64, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, RedSteel, 70, 7.5f, 1024, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Steel, 70, 6f, 512, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, StainlessSteel, 70, 7f, 480, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Trinitanium, 90, 16f, 5120, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, TritaniumAlloy, 100, 12f, 2560, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, VanadiumSteel, 80, 7f, 512, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, WroughtIron, 70, 6f, 384, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+
+    }
+
+    private static void addTurbine(MaterialEvent<?> event, Material material, float efficiency, float speed, int durability, MaterialTypeItem<?> rotor){
+        event.setMaterial(material).flags(rotor);
+        TURBINE_DATA.add(material, new TurbineRotorData(efficiency, speed, durability));
     }
 
     private static void toolsAndArmor(GT5RMaterialEvent event){

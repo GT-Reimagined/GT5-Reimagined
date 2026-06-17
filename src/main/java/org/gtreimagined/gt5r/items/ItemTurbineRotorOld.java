@@ -29,9 +29,6 @@ public class ItemTurbineRotorOld extends MaterialTool {
     }
 
     public int speedMultiplier(){
-        if (type == ToolTypes.TURBINE_ROTOR) return 2;
-        if (type == ToolTypes.LARGE_TURBINE_ROTOR) return 3;
-        if (type == ToolTypes.HUGE_TURBINE_ROTOR) return 4;
         return 1;
     }
 
@@ -40,9 +37,6 @@ public class ItemTurbineRotorOld extends MaterialTool {
     }
 
     public Material getRodMaterial(){
-        if (type == ToolTypes.TURBINE_ROTOR) return Materials.Titanium;
-        if (type == ToolTypes.LARGE_TURBINE_ROTOR) return Materials.TungstenSteel;
-        if (type == ToolTypes.HUGE_TURBINE_ROTOR) return Materials.Adamantium;
         return Materials.Magnalium;
     }
 

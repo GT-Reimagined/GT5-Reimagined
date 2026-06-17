@@ -19,6 +19,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RMachines;
+import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
@@ -288,22 +289,22 @@ public class AssemblerLoader {
     }
 
     private static void turbines(){
-        MaterialTags.TOOLS.getAll().forEach((m,t) -> {
-            if (t.toolTypes().contains(ToolTypes.SMALL_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), LONG_ROD.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 2), GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor_from_broken", 160, 16);
+        GT5RMaterialTags.TURBINE_DATA.getAll().forEach((m, t) -> {
+            if (m.has(GT5RMaterialTypes.SMALL_TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), LONG_ROD.getMaterialIngredient(Magnalium, 1)).io(GT5RMaterialTypes.SMALL_TURBINE_ROTOR.get(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 2), GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.SMALL_TURBINE_ROTOR.get(m)).add(m.getId() + "_small_turbine_rotor_from_broken", 160, 16);
             }
-            if (t.toolTypes().contains(ToolTypes.TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), LONG_ROD.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 480, 64);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), GT5RMaterialTypes.BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor_from_broken", 240, 64);
+            if (m.has(GT5RMaterialTypes.TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), LONG_ROD.getMaterialIngredient(Titanium, 1)).io(GT5RMaterialTypes.TURBINE_ROTOR.get(m)).add(m.getId() + "_turbine_rotor", 480, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), GT5RMaterialTypes.BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.TURBINE_ROTOR.get(m)).add(m.getId() + "_turbine_rotor_from_broken", 240, 64);
             }
-            if (t.toolTypes().contains(ToolTypes.LARGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), LONG_ROD.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 640, 64);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
+            if (m.has(GT5RMaterialTypes.LARGE_TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), LONG_ROD.getMaterialIngredient(TungstenSteel, 1)).io(GT5RMaterialTypes.LARGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_large_turbine_rotor", 640, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.LARGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
             }
-            if (t.toolTypes().contains(ToolTypes.HUGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), LONG_ROD.getMaterialIngredient(Adamantium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
+            if (m.has(GT5RMaterialTypes.HUGE_TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), LONG_ROD.getMaterialIngredient(Adamantium, 1)).io(GT5RMaterialTypes.HUGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.HUGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
             }
         });
     }
