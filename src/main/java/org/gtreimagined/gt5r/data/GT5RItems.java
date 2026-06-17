@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import net.minecraft.world.level.material.Fluids;
 import org.gtreimagined.gt5r.items.ItemDopedBoule;
+import org.gtreimagined.gt5r.items.ItemDopedWafer;
 import org.gtreimagined.gt5r.items.ItemGuide;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
 import org.gtreimagined.gtlib.item.ItemBasic;
@@ -147,6 +148,8 @@ public class GT5RItems {
     public static ItemBasic<?> NaquadahDopedSiliconBoule = new ItemBasic<>(GT5Reimagined.ID, "naquadah_doped_monocrystalline_silicon_boule", "silicon/");
     public static ItemBasic<?> Wafer = new ItemBasic<>(GT5Reimagined.ID, "wafer", "silicon/");
     public static ItemBasic<?> SiliconChip = new ItemBasic<>(GT5Reimagined.ID, "silicon_chip", "silicon/");
+    public static ItemBasic<?> PhosphorusDopedWafer = new ItemDopedWafer(Materials.Phosphor);
+    public static ItemBasic<?> IndiumDopedWafer = new ItemDopedWafer(Materials.Indium);
     public static ItemBasic<?> GlowstoneDopedWafer = new ItemBasic<>(GT5Reimagined.ID, "glowstone_doped_wafer", "silicon/");
     public static ItemBasic<?> NaquadahDopedWafer = new ItemBasic<>(GT5Reimagined.ID, "naquadah_doped_wafer", "silicon/");
     public static ItemBasic<?> ASoCWafer = new ItemBasic<>(GT5Reimagined.ID, "asoc_wafer", "silicon/");
