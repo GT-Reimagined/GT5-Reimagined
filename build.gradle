@@ -151,6 +151,7 @@ dependencies {
     modRuntimeOnly("curse.maven:farmers-delight-398521:${project.farmers_delight_version}")
     modRuntimeOnly("curse.maven:sophisticated-backpacks-422301:${project.sophisticated_backpack_version}")
     modRuntimeOnly("curse.maven:sophisticated-core-618298:${project.sophisticated_core_version}")
+    modRuntimeOnly("curse.maven:mouse-tweaks-60089:5338457")
     switch (project.runtime_itemviewer) {
         case "emi":
             modLocalRuntime("dev.emi:emi-forge:${emi_version}")
