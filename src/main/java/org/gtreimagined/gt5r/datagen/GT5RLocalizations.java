@@ -548,6 +548,9 @@ public class GT5RLocalizations {
             override(Ref.SHARED_ID, "item.gt.chad_dust", "Chad");
             override(Ref.SHARED_ID, "item.gt.small_chad_dust", "Small Chad");
             override(Ref.SHARED_ID, "item.gt.tiny_chad_dust", "Tiny Chad");
+            override(Ref.SHARED_ID, "item.gt.hematite_dust", "Iron Oxide(III) Dust");
+            override(Ref.SHARED_ID, "item.gt.small_hematite_dust", "Small Iron Oxide(III) Dust");
+            override(Ref.SHARED_ID, "item.gt.tiny_hematite_dust", "Tiny Iron Oxide(III) Dust");
         }
     }
 
