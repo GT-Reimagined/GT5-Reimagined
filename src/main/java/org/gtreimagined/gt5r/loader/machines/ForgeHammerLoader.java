@@ -25,7 +25,7 @@ public class ForgeHammerLoader {
     public static void init() {
         ORE.all().forEach(m -> {
             RecipeIngredient ore = ORE.getMaterialIngredient(m, 1);
-            Material macerateInto = MACERATE_INTO.getMapping(m);
+            Material macerateInto = m == Iron && GT5RConfig.NO_NATIVE_IRON.get() ? Hematite : MACERATE_INTO.getMapping(m);
             ItemStack crushedStack = macerateInto.has(CRUSHED_ORE) ? CRUSHED_ORE.get(macerateInto,1) : DUST.get(macerateInto, 1);
             FORGE_HAMMER.RB().ii(ore).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_ore",16, 10);
             if (m.has(RAW_ORE)){

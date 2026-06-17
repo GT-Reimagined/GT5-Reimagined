@@ -9,6 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.Tags;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.Materials;
@@ -43,12 +44,13 @@ public class MaceratorLoader {
         ORE.all().forEach(m -> {
             GTAPI.all(StoneType.class).stream().filter(StoneType::doesGenerateOre).filter(s -> s != VanillaStoneTypes.BEDROCK).forEach(s -> {
                 Material sm = s.getMaterial();
-                if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED_ORE)) return;
+                Material out = GT5RConfig.NO_NATIVE_IRON.get() && m == Iron ? Hematite : MACERATE_INTO.getMapping(m);
+                if (!out.has(GTMaterialTypes.DUST) && !out.has(GTMaterialTypes.CRUSHED_ORE)) return;
                 ItemStack stoneDust = sm.has(GTMaterialTypes.DUST) ? GTMaterialTypes.DUST.get(sm, 1) : ItemStack.EMPTY;
                 TagKey<Item> oreTag = ORE.getMaterialTag(m, s);
                 RecipeIngredient ore = RecipeIngredient.of(oreTag,1);
-                ItemStack crushedStack = (m.has(CRUSHED_ORE) ? GTMaterialTypes.CRUSHED_ORE : DUST).get(m, ORE_MULTI.getInt(m));
-                Material oreByProduct1 = m.getByProducts().size() > 0 ? m.getByProducts().get(0) : MACERATE_INTO.getMapping(m);
+                ItemStack crushedStack = (out.has(CRUSHED_ORE) ? GTMaterialTypes.CRUSHED_ORE : DUST).get(out, ORE_MULTI.getInt(m));
+                Material oreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : out;
                 RecipeMap<?> rm = s.isSandLike() ? SIFTER : PULVERIZER;
                 List<ItemStack> stacks = new ArrayList<>();
                 stacks.add(Utils.ca((ORE_MULTI.getInt(m)) * (rm == SIFTER ? 1 : 2), crushedStack));
@@ -106,9 +108,10 @@ public class MaceratorLoader {
             }
         });
         RAW_ORE.all().forEach(m -> {
-            if (!m.has(GTMaterialTypes.DUST) && !m.has(GTMaterialTypes.CRUSHED_ORE)) return;
-            Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(m);
-            ItemStack crushedStack = (m.has(CRUSHED_ORE) ? GTMaterialTypes.CRUSHED_ORE : DUST).get(m, ORE_MULTI.getInt(m));
+            Material out = GT5RConfig.NO_NATIVE_IRON.get() && m == Iron ? Hematite : MACERATE_INTO.getMapping(m);
+            if (!out.has(GTMaterialTypes.DUST) && !out.has(GTMaterialTypes.CRUSHED_ORE)) return;
+            Material aOreByProduct1 = !m.getByProducts().isEmpty() ? m.getByProducts().get(0) : out;
+            ItemStack crushedStack = (out.has(CRUSHED_ORE) ? GTMaterialTypes.CRUSHED_ORE : DUST).get(out, ORE_MULTI.getInt(m));
             PULVERIZER.RB().ii(RecipeIngredient.of(GTMaterialTypes.RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca((MaterialTags.ORE_MULTI.getInt(m)) * 2, crushedStack), GTMaterialTypes.DUST.get(aOreByProduct1, 1)).outputChances(1.0, 0.1 * MaterialTags.BY_PRODUCT_MULTI.getInt(m)).tags(GT5RRecipeTags.MACERATOR_ORE_PROCESING).add("raw_" + m.getId(),400, 2);
         });
         EXQUISITE_GEM.all().forEach(m -> {
