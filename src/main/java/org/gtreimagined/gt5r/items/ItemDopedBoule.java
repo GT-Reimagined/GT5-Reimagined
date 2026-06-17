@@ -11,10 +11,10 @@ import org.gtreimagined.gtlib.registration.IColorHandler;
 import org.gtreimagined.gtlib.texture.Texture;
 import org.jetbrains.annotations.Nullable;
 
-public class ItemDopedWafer extends ItemBasic<ItemDopedWafer> implements IColorHandler {
+public class ItemDopedBoule extends ItemBasic<ItemDopedBoule> implements IColorHandler {
     private final Material dopedMaterial;
-    public ItemDopedWafer(String domain, String id, Material dopedMaterial) {
-        super(domain, id);
+    public ItemDopedBoule(Material dopedMaterial) {
+        super(GT5Reimagined.ID, dopedMaterial.getId() + "_doped_silicon_boule");
         this.dopedMaterial = dopedMaterial;
     }
 

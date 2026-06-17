@@ -1,9 +1,9 @@
 package org.gtreimagined.gt5r.data;
 
 import net.minecraft.world.level.material.Fluids;
+import org.gtreimagined.gt5r.items.ItemDopedBoule;
 import org.gtreimagined.gt5r.items.ItemGuide;
 import org.gtreimagined.gt5r.items.ItemWoodenBucket;
-import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.item.ItemBattery;
 import org.gtreimagined.gtlib.item.ItemFluidCell;
@@ -141,6 +141,8 @@ public class GT5RItems {
     public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GT5Reimagined.ID, "wetware_circuit", "circuits/").tip("You feel like it's watching you");
     public static ItemBasic<?> SmallCoil = new ItemBasic<>(GT5Reimagined.ID, "small_coil").tip("A part for circuits");
     public static ItemBasic<?> PetriDish = new ItemBasic<>(GT5Reimagined.ID, "petri_dish");
+    public static ItemBasic<?> PhosphorusDopedSiliconBoule = new ItemDopedBoule(Materials.Phosphor);
+    public static ItemBasic<?> IndiumDopedSiliconBoule = new ItemDopedBoule(Materials.Indium);
     public static ItemBasic<?> GlowstoneDopedSiliconBoule = new ItemBasic<>(GT5Reimagined.ID, "glowstone_doped_monocrystalline_silicon_boule", "silicon/");
     public static ItemBasic<?> NaquadahDopedSiliconBoule = new ItemBasic<>(GT5Reimagined.ID, "naquadah_doped_monocrystalline_silicon_boule", "silicon/");
     public static ItemBasic<?> Wafer = new ItemBasic<>(GT5Reimagined.ID, "wafer", "silicon/");
