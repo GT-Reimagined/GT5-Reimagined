@@ -1009,9 +1009,8 @@ public class GT5RMaterialEvents {
     }
 
     private static void turbineRotors(MaterialEvent<?> event){
-        addTurbine(event, Iron, 70, 6, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, Manganese, 70, 7, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
-        addTurbine(event, Nickel, 70, 6, 64, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
+        addTurbine(event, Nickel, 70, 6, 192, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, BismuthBronze, 70, 8, 512, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, BlackBronze, 70, 12, 512, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, BlackSteel, 70, 6.5f, 768, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
@@ -1019,9 +1018,6 @@ public class GT5RMaterialEvents {
         addTurbine(event, Bronze, 70, 6f, 448, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, CobaltBrass, 70, 8f, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, DamascusSteel, 70, 8f, 1280, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
-        addTurbine(event, HSSE, 90, 10f, 5120, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
-        addTurbine(event, HSSG, 80, 10f, 4000, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
-        addTurbine(event, HSSS, 90, 14f, 3000, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, Invar, 70, 6f, 256, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, Kanthal, 70, 6f, 64, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
         addTurbine(event, Nichrome, 70, 6f, 64, GT5RMaterialTypes.HUGE_TURBINE_ROTOR);
