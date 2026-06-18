@@ -10,6 +10,7 @@ import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags.TurbineRotorData;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gt5r.data.Materials;
+import org.gtreimagined.gtlib.item.ICustomDurability;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialItem;
 import org.gtreimagined.gtlib.material.MaterialType;
@@ -19,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ItemTurbineRotor extends MaterialItem {
+public class ItemTurbineRotor extends MaterialItem implements ICustomDurability {
     @Getter
     final float efficiency;
     final float speed;
@@ -63,6 +64,7 @@ public class ItemTurbineRotor extends MaterialItem {
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level world, List<Component> tooltip, TooltipFlag flag) {
         super.appendHoverText(stack, world, tooltip, flag);
+        tooltip.add(Utils.translatable("gtlib.tooltip.durability", Utils.literal((stack.getMaxDamage() - stack.getDamageValue()) + "/" + stack.getMaxDamage()).withStyle(ChatFormatting.GREEN)));
         tooltip.add(Utils.translatable("gt5r.rotor.tooltip.efficiency", Utils.literal("" + getEfficiency()).withStyle(ChatFormatting.BLUE)));
         tooltip.add(Utils.translatable("gt5r.rotor.tooltip.steam_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 1000)).withStyle(ChatFormatting.LIGHT_PURPLE)));
         tooltip.add(Utils.translatable("gt5r.rotor.tooltip.gas_flow", Utils.literal("" + Math.max(Float.MIN_NORMAL, getSpeed() * 50)).withStyle(ChatFormatting.LIGHT_PURPLE)));
