@@ -344,9 +344,9 @@ public class WorldGenLoader {
             ev.addCollisionBothSides(BLACK_GRANITE.getState(), RED_GRANITE.getState(),
                     new StoneLayerOre(Zircon, U24, 0, 32));
             ev.addCollisionBothSides(LIMESTONE.getState(), QUARTZITE.getState(),
-                    new StoneLayerOre(Lepidolite, U32, -48, -16),
-                    new StoneLayerOre(Spodumene, U32, -32, 0),
-                    new StoneLayerOre(Tantalite, U32, -56, -8));
+                    new StoneLayerOre(Lepidolite, U32, 16, 48),
+                    new StoneLayerOre(Spodumene, U32, 32, 64),
+                    new StoneLayerOre(Tantalite, U32, 8, 56));
 
 
         }
