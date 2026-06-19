@@ -13,6 +13,7 @@ import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
+import org.gtreimagined.gt5r.integration.BluepowerRegistrar;
 import org.gtreimagined.gt5r.integration.CCTweakedRegistrar;
 import org.gtreimagined.gt5r.integration.ModRecipeRemovals;
 import org.gtreimagined.gt5r.integration.botania.BotaniaRegistrar;
@@ -202,6 +203,7 @@ public class GT5Reimagined extends GTMod {
         new IERegistrar();
         new RailcraftRegistrar();
         new ThermalRegistrar();
+        new BluepowerRegistrar();
         new MekanismRegistrar();
         if (GTAPI.isModLoaded(Ref.MOD_FR)) new ForestryRegistrar();
         new BotaniaRegistrar();
