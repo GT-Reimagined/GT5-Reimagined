@@ -155,6 +155,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.BlackBronze).asMetal(1343, FRAME, ALLOY);
         event.setMaterial(Materials.BlackSteel).asMetal(1758, 1200, FRAME, PLATE).forceBF(false);
         event.setMaterial(Materials.BlueSteel).asMetal(1811, 1400, FRAME).forceBF(false);
+        event.setMaterial(BlueAlloy).asMetal(1400, PLATE, ALLOY);
         event.setMaterial(Materials.Brass).asMetal(1170, FRAME, ROD, PLATE, SMALL_GEAR, ALLOY);
         event.setMaterial(Materials.Bronze).asMetal(1223, GEAR, FRAME, ROTOR, ALLOY);
         event.setMaterial(Materials.CdInAGAlloy).asMetal(752, ROD, ALLOY);
@@ -178,7 +179,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NickelZincFerrite).asMetal(1500);
         event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD, FINE_WIRE);
         event.setMaterial(Materials.Osmiridium).asMetal(3333, 2500, FRAME);
-        event.setMaterial(Materials.RedAlloy).asMetal(295, PLATE, FOIL, ROD, FINE_WIRE, ALLOY);
+        event.setMaterial(PurpleAlloy).asMetal(1400, ALLOY);
+        event.setMaterial(Materials.RedAlloy).asMetal(1400, PLATE, FOIL, ROD, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.RedSteel).asMetal(1811, 1300).forceBF(false);
         event.setMaterial(Materials.RoseGold).asMetal(1600, FINE_WIRE, ALLOY);
         event.setMaterial(Materials.SolderingAlloy).asMetal(400, PLATE, ROD, ALLOY);
@@ -644,6 +646,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.BlackBronze).mats(of(Gold, 1, Silver, 1, Copper, 3));
         event.setMaterial(Materials.BlackSteel).mats(of(Materials.Nickel, 1, Materials.BlackBronze, 1, Materials.Steel, 3));
         event.setMaterial(Materials.BlueSteel).mats(of(SterlingSilver, 1, BismuthBronze, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
+        event.setMaterial(BlueAlloy).mats(of(Silver, 1, Teslatite, 4));
         copperAmount = GTAPI.isModLoaded("tfc") ? 9 : 3;
         event.setMaterial(Materials.Brass).mats(of(Materials.Zinc, 1, Copper, copperAmount));
         event.setMaterial(Materials.Bronze).mats(of(Materials.Tin, 1, Copper, copperAmount));
@@ -665,6 +668,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NickelZincFerrite).mats(of(Materials.Nickel, 1, Materials.Zinc, 1, Iron, 4, Materials.Oxygen, 8));
         event.setMaterial(Materials.NiobiumTitanium).mats(of(Materials.Nickel, 4, Materials.Chromium, 1));
         event.setMaterial(Materials.Osmiridium).mats(of(Materials.Iridium, 3, Materials.Osmium, 1)).elecTicks(608);
+        event.setMaterial(PurpleAlloy).mats(of(BlueAlloy, 1, RedAlloy, 1));
         event.setMaterial(Materials.RedAlloy).mats(of(Copper, 1, Redstone, 4));
         event.setMaterial(Materials.RedSteel).mats(of(RoseGold, 1, Brass, 1, Materials.Steel, 2, Materials.BlackSteel, 4));
         event.setMaterial(Materials.RoseGold).mats(of(Copper, 1, Gold, 4));

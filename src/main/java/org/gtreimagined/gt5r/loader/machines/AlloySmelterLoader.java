@@ -35,6 +35,8 @@ public class AlloySmelterLoader {
         addAlloyRecipes(ImmutableMap.of(Cadmium, 1, Indium, 1, Silver, 1), CdInAGAlloy);
         addAlloyRecipes(ImmutableMap.of(Iron, 2, Nickel, 1), Invar);
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Redstone, 4), RedAlloy, 1);
+        addAlloyRecipes(ImmutableMap.of(Silver, 1, Teslatite, 4), BlueAlloy, 1);
+        addAlloyRecipes(ImmutableMap.of(RedAlloy, 1, BlueAlloy, 1), PurpleAlloy, 1);
         addAlloyRecipes(ImmutableMap.of(Indium, 1, Gallium, 1, Phosphor, 1), IndiumGalliumPhosphide);
         addAlloyRecipes(ImmutableMap.of(Lead, 4, Antimony, 1), BatteryAlloy);
         addAlloyRecipes(ImmutableMap.of(Copper, 1, Nickel, 1), Cupronickel);
