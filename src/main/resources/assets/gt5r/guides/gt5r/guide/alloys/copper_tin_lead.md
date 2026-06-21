@@ -4,7 +4,7 @@ navigation:
   title: Copper/Tin/Lead/Zinc
   icon: gt:impure_copper_dust
 categories:
-- items
+- alloys
 item_ids:
 - minecraft:ingots/copper
 - gt:impure_copper_dust
@@ -45,6 +45,8 @@ item_ids:
 <ItemImage id="gt:purified_lead_ore" scale="4" />
 </Row>
 
+---
+
 ## Description
 You can find copper, tin, lead, and zinc small ores in sand and gravel on the surface.  They also can be found in ore veins.  The small ores 
 will give you impure dusts and/or crushed ores.  These impure dusts and crushed ores are the only ones that you can cook in a vanilla Minecraft furnace. 
@@ -59,7 +61,7 @@ in a crafting table to get an ingot.  The purified ores will give 11 nuggets in 
   
 ---
   
-## Copper Recipes
+## Copper Furnace Recipes
 
 <Row>
 <Recipe id="gtlib:copper_impure_dust_to_ingot" />
@@ -68,7 +70,7 @@ in a crafting table to get an ingot.  The purified ores will give 11 nuggets in 
 <Recipe id="gtlib:copper_purified_ore_to_nugget" />
 </Row>
   
-## Tin Recipes
+## Tin Furnace Recipes
 
 <Row>
 <Recipe id="gtlib:tin_impure_dust_to_ingot" />
@@ -77,7 +79,7 @@ in a crafting table to get an ingot.  The purified ores will give 11 nuggets in 
 <Recipe id="gtlib:tin_purified_ore_to_nugget" />
 </Row>
   
-## Lead Recipes
+## Lead Furnace Recipes
 
 <Row>
 <Recipe id="gtlib:lead_impure_dust_to_ingot" />
@@ -86,7 +88,7 @@ in a crafting table to get an ingot.  The purified ores will give 11 nuggets in 
 <Recipe id="gtlib:lead_purified_ore_to_nugget" />
 </Row>
   
-## Zinc Recipes
+## Zinc Furnace Recipes
 
 <Row>
 <Recipe id="gtlib:zinc_impure_dust_to_ingot" />
