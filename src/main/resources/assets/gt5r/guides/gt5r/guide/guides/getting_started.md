@@ -12,8 +12,8 @@ categories:
 Just like any first day in minecraft, you will need some basic stuff to start crafting and to find a safe place to spend your first night.
 You will notice that you will see a bunch of stones on the ground.  You can pick the rocks without any ores and use them to make your
 first basic tools.  If you don't feel like punching trees to get some wood logs, you can make a stone axe with 3 stones of the same 
-type and a stick. You can get sticks from punching leaves.  The stone tools have very low durability but will get you going until you
-can make flint tools or get your first ores.  While getting started, you can start marking the ore veins at the location you see ore rocks
+type and a stick. You can get sticks from punching leaves.  The [stone tools](../tools/stone_tools.md) have very low durability but will get you going until you
+can make [Flint Tools](../tools/flint_tools.md) or get your first ores.  While getting started, you can start marking the ore veins at the location you see ore rocks
 on the surface.  The rocks will indicate that an ore block is somewhere below that surface rock.  You can make a knife as your first weapon 
 by combining flint and a stick in the user crafting grid.  This weapon will also have a chance to ignite a mob on fire when attacking them.  
 Finally find a safe place to spend the night.
