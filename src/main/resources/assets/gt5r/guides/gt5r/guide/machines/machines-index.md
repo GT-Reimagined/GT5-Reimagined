@@ -6,7 +6,7 @@ navigation:
 
 # Electric Machines
 
-A list of the GT5r Electrric Machines.
+A list of the GT5R Electric Machines.
 
 ## Electric Machines
 

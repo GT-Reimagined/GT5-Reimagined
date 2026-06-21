@@ -5,7 +5,7 @@ navigation:
 item_ids:
 - gt5r:guide
 ---
-# Introduction to GT5r
+# Introduction to GT5R
 
 ## What is GT5 Reimagined?
   
@@ -25,7 +25,7 @@ be some of the dumb BS from GT509.
   
 ---
   
-## GT6 Quality of Life Additions to GT5r
+## GT6 Quality of Life Additions to GT5R
   
 GT5 Reimagined was enhanced by bringing over some enhancements from GregTech 6.  The rock layers and ore generation was brought over 
 to diversify the mining from the one ore vein per 3x3 chunk area having the ores on a fixed grid.  The rock and ore rocks on the 

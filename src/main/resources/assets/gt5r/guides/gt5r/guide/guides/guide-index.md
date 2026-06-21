@@ -4,7 +4,7 @@ navigation:
   position: 1
 ---
 
-# GT5r Player Guides
+# GT5R Player Guides
 
 A list GT5R guides to get you started in GT5 Reimagined.
 
