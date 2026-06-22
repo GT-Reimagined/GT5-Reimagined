@@ -141,6 +141,8 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.small_heat_exchanger.heat_rate", "Rate of heating: %s HU/tick");
             add("tooltip.gt5r.small_heat_exchanger.efficiency", "Efficiency: %s");
             add("tooltip.gt5r.boiler", "Generates Steam from water.");
+            add("tooltip.gt5r.solid_fuel_boiler.bronze", "Produces 120L of Steam per second");
+            add("tooltip.gt5r.solid_fuel_boiler.steel", "Produces 300L of Steam per second");
             add("tooltip.macerator.0", "Crushes Raw ores down to crushed ore and byproducts. Macerator gives no byproducts, Pulverizer gives byproducts");
             add("tooltip.gt5r.input_hatch", "Fluid Input for Multiblocks");
             add("tooltip.gt5r.output_hatch", "Fluid Output for Multiblocks");
