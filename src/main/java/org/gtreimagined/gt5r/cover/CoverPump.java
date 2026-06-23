@@ -126,9 +126,8 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPre() {
         //Pump acts on each tick.
-        if (handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() == null) return;
         BlockPos from = handler.getTile().getBlockPos();
         BlockPos to = handler.getTile().getBlockPos().relative(side);

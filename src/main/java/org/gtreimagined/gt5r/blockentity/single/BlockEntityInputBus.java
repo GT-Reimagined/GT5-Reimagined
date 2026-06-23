@@ -30,7 +30,7 @@ public class BlockEntityInputBus extends BlockEntityHatch<BlockEntityInputBus> {
             protected TrackedItemHandler<BlockEntityInputBus> createTrackedHandler(SlotType<?> type, BlockEntityInputBus tile) {
                 if (type == SlotType.IT_IN){
                     int count = tile.getMachineType().getCount(tile.getMachineTier(), type);
-                    return new TrackedItemHandler<>(tile, type, count, type.isOutput(), type.isInput(), type.getTester()){
+                    return new TrackedItemHandler<>(tile, type, count, type.allowExternalOutput(), type.allowExternalInput(), type.getTester()){
                         @Override
                         public boolean hasSlotDiversity() {
                             return diversityFiltering;

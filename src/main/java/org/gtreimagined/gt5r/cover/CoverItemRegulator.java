@@ -133,8 +133,8 @@ public class CoverItemRegulator extends CoverBasicTransport {
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel().isClientSide || !(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
+    public void onTickPre() {
+        if (!(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.

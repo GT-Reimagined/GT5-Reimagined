@@ -34,12 +34,11 @@ public class CoverAirVent extends BaseCover {
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPre() {
         BlockEntity tile = handler.getTile();
         if (tile == null) {
             return;
         }
-        if (tile.getLevel().isClientSide) return;
         Level level = tile.getLevel();
         Optional<IFluidHandler> cap = Optional.empty();
         if (tile instanceof BlockEntityFluidPipe<?> pipe){

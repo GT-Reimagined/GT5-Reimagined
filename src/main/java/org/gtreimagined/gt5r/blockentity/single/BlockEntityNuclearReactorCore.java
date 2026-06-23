@@ -75,7 +75,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
             @Override
             protected TrackedItemHandler<BlockEntityNuclearReactorCore> createTrackedHandler(SlotType<?> type, BlockEntityNuclearReactorCore tile) {
                 if (type == SlotType.STORAGE){
-                    return new TrackedItemHandler<>(tile, type, 4, type.isOutput(), type.isInput(), type.getTester(), 1){
+                    return new TrackedItemHandler<>(tile, type, 4, type.allowExternalOutput(), type.allowExternalInput(), type.getTester(), 1){
                         @Override
                         public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
                             if (getStackInSlot(slot).getItem() instanceof IItemReactorRod reactorRod && reactorRod.isReactorRod(getStackInSlot(slot))){

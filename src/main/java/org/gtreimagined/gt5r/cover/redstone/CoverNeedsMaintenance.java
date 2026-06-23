@@ -32,7 +32,7 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPost() {
         if (this.handler.getTile() instanceof BlockEntityLargeTurbine turbine){
             turbine.itemHandler.ifPresent(i -> {
                 ItemStack rotor = i.getHandler(SlotType.STORAGE).getStackInSlot(0);

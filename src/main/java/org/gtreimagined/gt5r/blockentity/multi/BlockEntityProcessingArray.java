@@ -29,7 +29,7 @@ public class BlockEntityProcessingArray extends BlockEntityParallelMultiblock<Bl
             @Override
             protected TrackedItemHandler<BlockEntityProcessingArray> createTrackedHandler(SlotType<?> type, BlockEntityProcessingArray tile) {
                 if (type == SlotType.STORAGE){
-                    return new TrackedItemHandler<>(tile, type, 1, type.isOutput(), type.isInput(), type.getTester(), 16);
+                    return new TrackedItemHandler<>(tile, type, 1, type.allowExternalOutput(), false, type.getTester(), 16);
                 }
                 return super.createTrackedHandler(type, tile);
             }

@@ -34,7 +34,7 @@ public class CoverReactorOutputSecondary extends BaseCover {
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPost() {
         if (handler.getTile() instanceof BlockEntityNuclearReactorCore core){
             if (core.fluidHandler.isPresent()){
                 MachineFluidHandler<?> fluidHandler = core.fluidHandler.get();

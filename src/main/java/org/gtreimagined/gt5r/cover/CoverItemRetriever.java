@@ -114,8 +114,8 @@ public class CoverItemRetriever extends BaseCover {
     }
 
     @Override
-    public void onUpdate() {
-        if (!source().getTile().getLevel().isClientSide() && source().getTile() instanceof BlockEntityItemPipe<?> pipe){
+    public void onTickPre() {
+        if (source().getTile() instanceof BlockEntityItemPipe<?> pipe){
             if (pipe.getLevel().getGameTime() % 20 == 15 && pipe.pipeCapacityCheck()){
                 ArrayList<BlockEntityItemPipe<?>> tUsedPipes = new ArrayList<>();
                 Set<BlockEntityItemPipe<?>> pipes = CodeUtils.sortByValuesAcending(BlockEntityItemPipe.scanPipes(pipe, new HashMap<>(), 0, true, false)).keySet();

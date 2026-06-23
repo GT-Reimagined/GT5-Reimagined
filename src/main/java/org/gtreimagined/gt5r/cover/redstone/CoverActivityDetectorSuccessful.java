@@ -35,7 +35,7 @@ public class CoverActivityDetectorSuccessful extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPost() {
         if (this.redstoneNextTick) {
             this.redstoneNextTick = false;
             setOutputRedstone(15);

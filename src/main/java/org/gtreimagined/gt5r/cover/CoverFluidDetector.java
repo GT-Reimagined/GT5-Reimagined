@@ -38,8 +38,8 @@ public class CoverFluidDetector extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
+    public void onTickPost() {
+        if (handler.getTile().getLevel() == null) return;
         IFluidHandler fluidContainer = handler.getTile().getCapability(ForgeCapabilities.FLUID_HANDLER, side).map(f -> f).orElse(null);
         if (fluidContainer != null){
             int scale = IntStream.range(0, fluidContainer.getTanks()).map(fluidContainer::getTankCapacity).sum() / 15;

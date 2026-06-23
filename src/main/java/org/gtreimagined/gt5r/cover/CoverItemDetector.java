@@ -77,8 +77,8 @@ public class CoverItemDetector extends BaseCover implements IFilterableHandler {
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
+    public void onTickPost() {
+        if (handler.getTile().getLevel() == null) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.itemHandler.side(side).isPresent()){
             IItemHandler itemContainer = machine.itemHandler.side(side).resolve().get();
             int oldRedstone = outputRedstone;

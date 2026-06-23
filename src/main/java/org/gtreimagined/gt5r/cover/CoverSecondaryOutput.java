@@ -28,7 +28,7 @@ public class CoverSecondaryOutput extends BaseCover {
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPost() {
         if (handler.getTile() instanceof BlockEntitySmallHeatExchanger heatExchanger){
             if (heatExchanger.fluidHandler.isPresent()){
                 MachineFluidHandler<?> fluidHandler = heatExchanger.fluidHandler.get();
