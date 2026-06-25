@@ -1482,6 +1482,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.TricalciumPhosphate).setOreMulti(3).setSmeltingMulti(3);
         event.setMaterial(Quartz).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Redstone).setOreMulti(5).setSmeltingMulti(5);
+        event.setMaterial(Teslatite).setOreMulti(5).setSmeltingMulti(5);
         event.setMaterial(Materials.Sylvite).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Materials.Salt).setOreMulti(2).setSmeltingMulti(2);
         event.setMaterial(Materials.Saltpeter).setOreMulti(4).setSmeltingMulti(4);
