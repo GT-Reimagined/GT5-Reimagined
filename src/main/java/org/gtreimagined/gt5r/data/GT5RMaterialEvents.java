@@ -11,6 +11,7 @@ import org.gtreimagined.gtlib.Data;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -1377,6 +1378,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Sulfur).addByProduct(Materials.Sulfur);
         event.setMaterial(Materials.Tantalite).addByProduct(Materials.Manganese, Materials.Niobium, Materials.Tantalum);
         event.setMaterial(Materials.Tanzanite).addByProduct(Materials.Opal);
+        event.setMaterial(Teslatite).addByProduct(Iron, Redstone, Glowstone);
         event.setMaterial(Materials.Tetrahedrite).addByProduct(Materials.Antimony, Materials.Zinc).bathPersulfate(Materials.Tetrahedrite);
         event.setMaterial(Materials.Thorium).addByProduct(Materials.Lead, Materials.Thorium, Materials.Indium);
         event.setMaterial(Materials.Tin).addByProduct(Iron, Materials.Zinc).bathPersulfate(Materials.Zinc);
