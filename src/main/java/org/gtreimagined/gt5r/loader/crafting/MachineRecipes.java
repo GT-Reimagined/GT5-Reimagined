@@ -602,56 +602,15 @@ public class MachineRecipes {
                             .put('R', DUST.getMaterialTag(Redstone))
                             .build(), " RR", "CH ", " RR"));
         });
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.ULV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(ULV))
-                        .put('C', GT5RBlocks.CABLE_SOLDERING_ALLOY.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_TIN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.LV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(LV))
-                        .put('C', GT5RBlocks.CABLE_TIN.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_COPPER.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(MV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(MV))
-                        .put('C', GT5RBlocks.CABLE_COPPER.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_GOLD.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.HV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(HV))
-                        .put('C', GT5RBlocks.CABLE_GOLD.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.EV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(EV))
-                        .put('C', GT5RBlocks.CABLE_ALUMINIUM.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.IV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(IV))
-                        .put('C', GT5RBlocks.CABLE_TUNGSTEN.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(Tier.LUV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(LUV))
-                        .put('C', GT5RBlocks.CABLE_VANADIUM_GALLIUM.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");
-        provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(ZPM),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(ZPM))
-                        .put('C', GT5RBlocks.CABLE_NAQUADAH.getBlockItem(PipeSize.VTINY))
-                        .put('W', GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL)).build(), " CC", "WH ", " CC");
-       /*provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(UV),
-                ImmutableMap.<Character, Object>builder()
-                        .put('H', HULL.getItem(UV))
-                        .put('C', GT5RBlocks.WIRE_NAQUADAH_ALLOY.getBlockItem(PipeSize.SMALL))
-                        .put('W', GT5RBlocks.WIRE_SUPERCONDUCTOR.getBlockItem(PipeSize.VTINY)).build(), " CC", "WH ", " CC");*/
+        for (Tier tier : TRANSFORMER.getTiers()){
+            if (tier == UV) break;
+            Tier upscaled = Tier.getTier(tier.getVoltage() * 4);
+            provider.addItemRecipe(output, "machines", TRANSFORMER.getItem(tier),
+                    ImmutableMap.of(
+                            'H', HULL.getItem(tier),
+                            'C', CABLE_GETTER.apply(PipeSize.VTINY, tier, false),
+                            'W', CABLE_GETTER.apply(PipeSize.VTINY, upscaled, false)), " CC", "WH ", " CC");
+        }
     }
 
     private static void addUtilityBlockRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
