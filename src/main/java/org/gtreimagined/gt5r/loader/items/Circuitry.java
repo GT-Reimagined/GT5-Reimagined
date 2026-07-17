@@ -97,7 +97,7 @@ public class Circuitry {
                 ImmutableMap.<Character, Object>builder()
                         .put('B', ForgeTags.DYES_BLACK)
                         .put('T', FINE_WIRE.getMaterialTag(Tin))
-                        .put('W', GT5RItems.Wafer)
+                        .put('W', SiliconChip)
                         .put('G', Tags.Items.GLASS_PANES).build(), "BG ", "TWT", "BG ");
         provider.addStackRecipe(output, GT5Reimagined.ID, "diode_2", "diodes", new ItemStack(GT5RItems.Diode),
                 ImmutableMap.<Character, Object>builder()
