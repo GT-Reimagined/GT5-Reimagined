@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.loader.machines;
 
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.material.Material;
@@ -17,8 +18,10 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 public class CrystallizationChamberLoader {
     public static void init(){
         addRecipe(Silicon);
-        addDopedRecipe(Phosphor, GT5RItems.PhosphorusDopedSiliconBoule);
-        addDopedRecipe(Indium, GT5RItems.IndiumDopedSiliconBoule);
+        if (GT5RConfig.HARDER_CIRCUITS.get()){
+            addDopedRecipe(Phosphor, GT5RItems.PhosphorusDopedSiliconBoule);
+            addDopedRecipe(Indium, GT5RItems.IndiumDopedSiliconBoule);
+        }
         addSapphireRecipe(Chromium, Ruby);
         addSapphireRecipe(Iron, Sapphire);
         addSapphireRecipe(Magnesium, GreenSapphire);
