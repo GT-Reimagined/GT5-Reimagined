@@ -1,5 +1,8 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtlib.material.Material;
 
 import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.BOULE;
@@ -13,6 +16,8 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 public class CrystallizationChamberLoader {
     public static void init(){
         addRecipe(Silicon);
+        addDopedRecipe(Phosphor, GT5RItems.PhosphorusDopedSiliconBoule);
+        addDopedRecipe(Indium, GT5RItems.IndiumDopedSiliconBoule);
         addSapphireRecipe(Chromium, Ruby);
         addSapphireRecipe(Iron, Sapphire);
         addSapphireRecipe(Magnesium, GreenSapphire);
@@ -95,5 +100,61 @@ public class CrystallizationChamberLoader {
         CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(material, 1))
                 .fi(material.getLiquid(L * 35), Xenon.getGas(9000))
                 .io(BOULE.get(material, 9)).add(material.getId() + "_boule_with_xenon", 135 * 60 * 20, 16, 0, 4);
+    }
+
+    private static void addDopedRecipe(Material dopingMaterial, Item boule){
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid((L * 3) + (L9 * 8)), Krypton.getGas(1000))
+                .fi(dopingMaterial.getLiquid(1))
+                .io(boule).add(dopingMaterial.getId() + "_doped_boule_with_krypton_tiny", 15 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid((L * 3) + (L9 * 8)), Helium.getGas(1000))
+                .fi(dopingMaterial.getLiquid(1))
+                .io(boule).add(dopingMaterial.getId() + "_doped_boule_with_helium_tiny", 15 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid((L * 3) + (L9 * 8)), Argon.getGas(1000))
+                .fi(dopingMaterial.getLiquid(1))
+                .io(boule).add(dopingMaterial.getId() + "_doped_boule_with_argon_tiny", 15 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid((L * 3) + (L9 * 8)), Neon.getGas(1000))
+                .fi(dopingMaterial.getLiquid(1))
+                .io(boule).add(dopingMaterial.getId() + "_doped_boule_with_neon_tiny", 15 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid((L * 3) + (L9 * 8)), Radon.getGas(1000))
+                .fi(dopingMaterial.getLiquid(1))
+                .io(boule).add(dopingMaterial.getId() + "_doped_boule_with_radon_tiny", 15 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(TINY_DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid((L * 3) + (L9 * 8)), Xenon.getGas(1000))
+                .fi(dopingMaterial.getLiquid(1))
+                .io(boule).add(dopingMaterial.getId() + "_doped_boule_with_xenon_tiny", 15 * 60 * 20, 16, 0, 4);
+
+        CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid(L * 35), Krypton.getGas(9000))
+                .fi(dopingMaterial.getLiquid(9))
+                .io(new ItemStack(boule, 9)).add(dopingMaterial.getId() + "_doped_boule_with_krypton", 135 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid(L * 35), Helium.getGas(9000))
+                .fi(dopingMaterial.getLiquid(9))
+                .io(new ItemStack(boule, 9)).add(dopingMaterial.getId() + "_doped_boule_with_helium", 135 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid(L * 35), Argon.getGas(9000))
+                .fi(dopingMaterial.getLiquid(9))
+                .io(new ItemStack(boule, 9))
+                .add(dopingMaterial.getId() + "_doped_boule_with_argon", 135 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid(L * 35), Neon.getGas(9000))
+                .fi(dopingMaterial.getLiquid(9))
+                .io(new ItemStack(boule, 9))
+                .add(dopingMaterial.getId() + "_doped_boule_with_neon", 135 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid(L * 35), Radon.getGas(9000))
+                .fi(dopingMaterial.getLiquid(9))
+                .io(new ItemStack(boule, 9))
+                .add(dopingMaterial.getId() + "_doped_boule_with_radon", 135 * 60 * 20, 16, 0, 4);
+        CRYSTALLIZATION_CHAMBER.RB().ii(DUST.getMaterialIngredient(Silicon, 1))
+                .fi(Silicon.getLiquid(L * 35), Xenon.getGas(9000))
+                .fi(dopingMaterial.getLiquid(9))
+                .io(new ItemStack(boule, 9))
+                .add(dopingMaterial.getId() + "_doped_boule_with_xenon", 135 * 60 * 20, 16, 0, 4);
     }
 }
