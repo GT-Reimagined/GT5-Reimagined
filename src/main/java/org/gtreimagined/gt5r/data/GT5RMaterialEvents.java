@@ -59,7 +59,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Magnesium).asMetal(1383);
         event.setMaterial(Materials.Aluminium).asMetal(933, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, SMALL_GEAR, FOIL, HAS_CUSTOM_SMELTING);
         event.setMaterial(Materials.Silicon).asMetal(1687, TINY_PLATE, GT5RMaterialTypes.BOULE);
-        event.setMaterial(Materials.Phosphor).asDust(933);
+        event.setMaterial(Materials.Phosphor).asDust(933, MOLTEN).asFluid();
         event.setMaterial(Materials.Sulfur).asDust(388, MOLTEN).asOre().harvestLevel(2).asFluid();
         event.setMaterial(Materials.Chlorine).asGas().fluidDensity(3);
         event.setMaterial(Materials.Argon).asGas();
