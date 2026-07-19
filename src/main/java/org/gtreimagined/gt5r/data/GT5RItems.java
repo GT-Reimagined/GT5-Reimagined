@@ -144,14 +144,10 @@ public class GT5RItems {
     public static ItemBasic<?> PetriDish = new ItemBasic<>(GT5Reimagined.ID, "petri_dish");
     public static ItemBasic<?> PhosphorusDopedSiliconBoule = new ItemDopedBoule(Materials.Phosphor);
     public static ItemBasic<?> IndiumDopedSiliconBoule = new ItemDopedBoule(Materials.Indium);
-    public static ItemBasic<?> GlowstoneDopedSiliconBoule = new ItemBasic<>(GT5Reimagined.ID, "glowstone_doped_monocrystalline_silicon_boule", "silicon/");
-    public static ItemBasic<?> NaquadahDopedSiliconBoule = new ItemBasic<>(GT5Reimagined.ID, "naquadah_doped_monocrystalline_silicon_boule", "silicon/");
     public static ItemBasic<?> Wafer = new ItemBasic<>(GT5Reimagined.ID, "wafer", "silicon/");
     public static ItemBasic<?> SiliconChip = new ItemBasic<>(GT5Reimagined.ID, "silicon_chip", "silicon/");
     public static ItemBasic<?> PhosphorusDopedWafer = new ItemDopedWafer(Materials.Phosphor);
     public static ItemBasic<?> IndiumDopedWafer = new ItemDopedWafer(Materials.Indium);
-    public static ItemBasic<?> GlowstoneDopedWafer = new ItemBasic<>(GT5Reimagined.ID, "glowstone_doped_wafer", "silicon/");
-    public static ItemBasic<?> NaquadahDopedWafer = new ItemBasic<>(GT5Reimagined.ID, "naquadah_doped_wafer", "silicon/");
     public static ItemBasic<?> ASoCWafer = new ItemBasic<>(GT5Reimagined.ID, "asoc_wafer", "silicon/");
     public static ItemBasic<?> ASoC = new ItemBasic<>(GT5Reimagined.ID, "asoc", "silicon/");
     public static ItemBasic<?> CentralProcessingUnitWafer = new ItemBasic<>(GT5Reimagined.ID, "central_processing_unit_wafer", "silicon/");

@@ -444,7 +444,7 @@ public class GT5Reimagined extends GTMod {
                                 GT5RItems.SmallCoil, GT5RItems.PetriDish));
                         l.addAll(Arrays.asList(GT5RItems.CircuitWetware,
                                 GT5RItems.Mainframe, GT5RItems.QuantumProcessorAssembly, GT5RItems.CrystalProcessor));
-                        l.addAll(Arrays.asList(GT5RItems.GlowstoneDopedSiliconBoule, GT5RItems.NaquadahDopedSiliconBoule, GT5RItems.GlowstoneDopedWafer, GT5RItems.NaquadahDopedWafer,
+                        l.addAll(Arrays.asList(GT5RItems.PhosphorusDopedSiliconBoule, GT5RItems.IndiumDopedSiliconBoule, GT5RItems.PhosphorusDopedWafer, GT5RItems.IndiumDopedWafer,
                                 GT5RItems.ASoCWafer, GT5RItems.ASoC, GT5RItems.CentralProcessingUnitWafer, GT5RItems.CentralProcessingUnit, GT5RItems.HPICWafer, GT5RItems.HighPowerIC,
                                 GT5RItems.IntegratedLogicCircuitWafer, GT5RItems.IntegratedLogicCircuit, GT5RItems.NANDMemoryChipWafer, GT5RItems.NANDMemoryChip,
                                 GT5RItems.NanoCpuWafer, GT5RItems.NanoCpu, GT5RItems.NorMemoryChipWafer, GT5RItems.NorMemoryChip, GT5RItems.PICWafer, GT5RItems.PowerIC,
