@@ -153,8 +153,8 @@ public class Circuitry {
         if (GT5RConfig.HARDER_CIRCUITS.get()){
             addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 200, 64, 1);
             addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48, 22);
-            addCuttingRecipe(PhosphorusDopedSiliconBoule, PhosphorusDopedWafer, 32, 800, 64, 20);
-            addCuttingRecipe(IndiumDopedSiliconBoule, IndiumDopedWafer, 64, 1600, 64, 240);
+            addCuttingRecipe(PhosphorusDopedSiliconBoule, PhosphorusDopedWafer, 16, 800, 64, 20);
+            addCuttingRecipe(IndiumDopedSiliconBoule, IndiumDopedWafer, 16, 1600, 64, 240);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.ASoCWafer, 1, 200, 1920, Amber, Topaz);
             addCuttingRecipe(GT5RItems.ASoCWafer, GT5RItems.ASoC, 8, 600, 48, 22);
             addLensRecipe(GT5RItems.Wafer, GT5RItems.CentralProcessingUnitWafer, 1, 900, 120, Diamond, Glass);
