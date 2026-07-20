@@ -21,11 +21,6 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST;
 public class DistillationTowerLoader {
 
     public static void init() {
-        /*if (GT5RConfig.GT5U_OIL.get()){
-            init5U();
-        } else {
-            initBasic();
-        }*/
         if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
             initComplicated();
         }
@@ -101,28 +96,29 @@ public class DistillationTowerLoader {
     }
 
     private static void initBasic(){
+        boolean s = GT5RConfig.SULFURIC_OIL_OUTPUTS.get();
         addDistillationDistillingRecipe(OilLight, 25, 64, 64,
-                new FluidProduct(FuelOil,15),
-                new FluidProduct(Diesel,10),
-                new FluidProduct(Naphtha, 10),
-                new FluidProduct(Kerosene, 10),
-                new FluidProduct(RefineryGas, 25),
+                new FluidProduct(s ? SulfuricFuelOil : FuelOil,15),
+                new FluidProduct(s ? SulfuricDiesel : Diesel,10),
+                new FluidProduct(s ? SulfuricNaphtha : Naphtha, 10),
+                new FluidProduct(s ? SulfuricKerosene : Kerosene, 10),
+                new FluidProduct(s ? SulfuricGas : RefineryGas, 25),
                 new FluidProduct(Lubricant, 15),
                 new FluidProduct(Tar, 15));
         addDistillationDistillingRecipe(FluidIngredient.of(TagUtils.getForgelikeFluidTag("oil"), 25), "oil", 64, 64,
-                new FluidProduct(FuelOil,25),
-                new FluidProduct(Diesel,15),
-                new FluidProduct(Naphtha, 15),
-                new FluidProduct(Kerosene, 15),
-                new FluidProduct(RefineryGas, 15),
+                new FluidProduct(s ? SulfuricFuelOil : FuelOil,25),
+                new FluidProduct(s ? SulfuricDiesel : Diesel,15),
+                new FluidProduct(s ? SulfuricNaphtha : Naphtha, 15),
+                new FluidProduct(s ? SulfuricKerosene : Kerosene, 15),
+                new FluidProduct(s ? SulfuricGas : RefineryGas, 15),
                 new FluidProduct(Lubricant, 25),
                 new FluidProduct(Tar, 15));
         addDistillationDistillingRecipe(FluidIngredient.of(TagUtils.getForgelikeFluidTag("heavy_oil"), 25), "heavy_oil", 64, 64,
-                new FluidProduct(FuelOil,30),
-                new FluidProduct(Diesel,20),
-                new FluidProduct(Naphtha, 20),
-                new FluidProduct(Kerosene, 20),
-                new FluidProduct(RefineryGas, 10),
+                new FluidProduct(s ? SulfuricFuelOil : FuelOil,30),
+                new FluidProduct(s ? SulfuricDiesel : Diesel,20),
+                new FluidProduct(s ? SulfuricNaphtha : Naphtha, 20),
+                new FluidProduct(s ? SulfuricKerosene : Kerosene, 20),
+                new FluidProduct(s ? SulfuricGas : RefineryGas, 10),
                 new FluidProduct(Lubricant, 40),
                 new FluidProduct(Tar, 15));
     }

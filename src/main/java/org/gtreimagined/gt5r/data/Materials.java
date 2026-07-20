@@ -626,6 +626,12 @@ public class Materials {
     public static Material SeedOil = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "seed_oil", 0xc4ff00, NONE));
     public static Material Glycerol = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "glycerol", 0x87de87, NONE));
     public static Material GlycerylTrinitrate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "glyceryl_trinitrate", 0x87de87, NONE)).setDisplayNameString("Nitroglycerin (Glyceryl Trinitrate)");
+    /**
+     *  Sulfuric Fuels
+     */
+    public static Material SulfuricDiesel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sulfuric_diesel", 0xffff00, NONE));
+    public static Material SulfuricKerosene = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sulfuric_kerosene", 0x0000FF, NONE));
+    public static Material SulfuricFuelOil = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sulfuric_fuel", 0xffff00, NONE)).setDisplayNameString("Sulfuric Fuel Oil");
 
     /**
      *** Gases/Plasmas

@@ -616,6 +616,10 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.FuelOil).asFluid(448);
         event.setMaterial(Materials.Gasoline).asFluid(384);
         event.setMaterial(Materials.Kerosene).asFluid(384);
+
+        event.setMaterial(SulfuricFuelOil).asFluid();
+        event.setMaterial(SulfuricDiesel).asFluid();
+        event.setMaterial(SulfuricKerosene).asFluid();
         /**
          ** Cracked Stuff
          */

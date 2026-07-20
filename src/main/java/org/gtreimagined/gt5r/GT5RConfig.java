@@ -14,7 +14,7 @@ public class GT5RConfig {
     public static ConfigEntry.BoolValue HARDER_CIRCUITS;
     public static boolean HARD_SETTINGS = false;
     public static ConfigEntry.BoolValue HARDER_ALUMINIUM_PROCESSING;
-    public static ConfigEntry.BoolValue GT5U_OIL;
+    public static ConfigEntry.BoolValue SULFURIC_OIL_OUTPUTS;
     public static ConfigEntry.BoolValue COMPLICATED_CHEMICAL_PROCESSING;
     public static ConfigEntry.BoolValue HARD_CARBON;
     public static ConfigEntry.BoolValue FORCE_ROASTER;
@@ -51,7 +51,7 @@ public class GT5RConfig {
         ConfigSection general = config.add("general");
         /*MORE_COMPLICATED_CHEMICAL_RECIPES = section.addBool("more_complicated_chemical_recipes", false, "Enables more complicated chemical recipes. - Default: false");*/
         HARDER_CIRCUITS = general.addBool("harder_circuits", false, "Enables more complicated circuit recipes added in versions of gt5u after 509.25 - Default: false");
-        GT5U_OIL = general.addBool("gt5u_oil", false, "Enables gt5u oil processing, if false gt6 oil processing is used instead. - Default: false");
+        SULFURIC_OIL_OUTPUTS = general.addBool("sulfuric_oil_outputs", false, "Enables oil distillation outputing sulfurized fuels instead of pure fuels. - Default: false");
         HARDER_ALUMINIUM_PROCESSING = general.addBool("harder_aluminium_processing", true, "Enables gt6's alumina processing, if disabled alumina reverts back to just being in the blast furnace - Default: true");
 
         ASPHALT_MULTIPLIER = general.addDouble("asphalt_multiplier", 1.1, "Default speed multiplier applied by concrete.");
