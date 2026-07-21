@@ -24,7 +24,19 @@ public class ChemicalReactorLoader {
         if (GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
             addComplicated();
         }
+        if (GT5RConfig.SULFURIC_OIL_OUTPUTS.get()){
+            addDesulfurization();
+        }
         nuclearProcessing();
+    }
+
+    private static void addDesulfurization(){
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(RefineryGas.getGas(2000), HydrogenSulfide.getGas(125)).add("refinery_gas",20, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(RefineryGas.getGas(1000), HydrogenSulfide.getGas(125)).add("refinery_gas_1",20, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(Naphtha.getLiquid(3000), HydrogenSulfide.getGas(250)).add("naphtha",40, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricFuelOil.getLiquid(3000)).fo(FuelOil.getLiquid(3000), HydrogenSulfide.getGas(250)).add("fuel_oil",40, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricDiesel.getLiquid(3000)).fo(Diesel.getLiquid(3000), HydrogenSulfide.getGas(250)).add("diesel",40, 30);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricKerosene.getLiquid(3000)).fo(Kerosene.getLiquid(3000), HydrogenSulfide.getGas(250)).add("kerosene",40, 30);
     }
 
     private static void addShared(){
@@ -213,10 +225,6 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(HydrochloricAcid.getLiquid(4000), Methanol.getLiquid(12000)).ii(DUST.getMaterialIngredient(Silicon, 1)).io(DUST.get(Polydimethylsiloxane, 10)).fo(DilutedHydrochloricAcid.getLiquid(4000)).add("polydimethylsiloxane_2", 480, 96, -1);
         //NITROGEN MONOXIDE
         CHEMICAL_REACTOR.RB().fi(Ammonia.getGas(8000), Oxygen.getGas(5000)).fo(NitrogenMonoxide.getGas(4000), Water.getLiquid(9000)).add("nitrogen_monoxide", 160, 30, -1);
-        //DESULFURIZATION
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), NaturalGas.getGas(2000)).fo(RefineryGas.getGas(2000), HydrogenSulfide.getGas(125)).add("refinery_gas",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(125), SulfuricGas.getGas(1000)).fo(RefineryGas.getGas(1000), HydrogenSulfide.getGas(125)).add("refinery_gas_1",20, 30);
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(250), SulfuricNaphtha.getLiquid(3000)).fo(Naphtha.getLiquid(3000), HydrogenSulfide.getGas(250)).add("naphtha",40, 30);
     }
 
     private static void addPolymerRecipe(Material in, Material out){
