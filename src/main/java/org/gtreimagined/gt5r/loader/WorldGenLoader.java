@@ -27,6 +27,7 @@ import org.gtreimagined.gtlib.worldgen.vein.VeinBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static net.minecraft.world.level.Level.END;
 import static net.minecraft.world.level.Level.NETHER;
@@ -325,28 +326,28 @@ public class WorldGenLoader {
                 ).buildVein());
             }
 
-            ev.addCollisionBothSides(ORE_STONE.get().get(Coal).asState(), SLATE.getState(),
+            ev.addCollisionBothSides(id("coal_over_slate"), id("slate_over_coal"), ORE_STONE.get().get(Coal).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(ORE_STONE.get().get(Lignite).asState(), SLATE.getState(),
+            ev.addCollisionBothSides(id("lignite_over_slate"), id("slate_over_lignite"), ORE_STONE.get().get(Lignite).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(ORE_STONE.get().get(OilShale).asState(), SLATE.getState(),
+            ev.addCollisionBothSides(id("coal_over_oil_shale"), id("slate_over_oil_shale"), ORE_STONE.get().get(OilShale).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(BLACK_GRANITE.getState(), MARBLE.getState(),
+            ev.addCollisionBothSides(id("black_granite_over_marble"), id("marble_over_black_granite"), BLACK_GRANITE.getState(), MARBLE.getState(),
                     new StoneLayerOre(Lapis, U8, 0, 48),
                     new StoneLayerOre(Sodalite, U16, 0, 48),
                     new StoneLayerOre(Lazurite, U16, 0, 48),
                     new StoneLayerOre(Pyrite, U16, 0, 48));
-            ev.addCollisionTopBottom(BLACK_GRANITE.getState(), BASALT.getState(),
+            ev.addCollisionTopBottom(id("black_granite_over_basalt"), BLACK_GRANITE.getState(), BASALT.getState(),
                     new StoneLayerOre(Diamond, U64, -64, -32),
                     new StoneLayerOre(Graphite, U8, -64, -32));
-            ev.addCollisionBothSides(BLACK_GRANITE.getState(), GRANITE.getState(),
+            ev.addCollisionBothSides(id("black_granite_over_granite"), id("granite_over_black_granite"), BLACK_GRANITE.getState(), GRANITE.getState(),
                     new StoneLayerOre(Zircon, U24, 0, 32));
-            ev.addCollisionBothSides(BLACK_GRANITE.getState(), RED_GRANITE.getState(),
+            ev.addCollisionBothSides(id("black_granite_over_red_granite"), id("red_granite_over_black_granite"), BLACK_GRANITE.getState(), RED_GRANITE.getState(),
                     new StoneLayerOre(Zircon, U24, 0, 32));
-            ev.addCollisionBothSides(LIMESTONE.getState(), QUARTZITE.getState(),
+            ev.addCollisionBothSides(id("limestone_over_quartzite"), id("quartzite_over_limestone"), LIMESTONE.getState(), QUARTZITE.getState(),
                     new StoneLayerOre(Lepidolite, U32, 16, 48),
                     new StoneLayerOre(Spodumene, U32, 32, 64),
                     new StoneLayerOre(Tantalite, U32, 8, 56));
@@ -360,7 +361,7 @@ public class WorldGenLoader {
         ev.stoneLayer(new StoneLayerBuilder(id("bauxite")).withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("oil_shale")).withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).inDimensions(overworld).buildVein());
 
-        ev.addCollisionBothSides(BASALT.getState(), LIMESTONE.getState(),
+        ev.addCollisionBothSides(id("basalt_over_limestone"), id("limestone_over_basalt"), BASALT.getState(), LIMESTONE.getState(),
                 new StoneLayerOre(Ilmenite, U8, -64, 0),
                 new StoneLayerOre(Rutile, U12, -64, 0)
         );
