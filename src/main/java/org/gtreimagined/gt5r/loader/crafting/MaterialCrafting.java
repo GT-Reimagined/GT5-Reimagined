@@ -5,6 +5,7 @@ import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
@@ -47,6 +48,9 @@ public class MaterialCrafting {
         addShapelessDustRecipe(output, provider, GalliumArsenide, ImmutableMap.of(Gallium, 1, Arsenic, 1));
         addShapelessDustRecipe(output, provider, IndiumGalliumPhosphide, ImmutableMap.of(Indium, 1, Gallium, 1, Phosphorus, 1));
         addShapelessDustRecipe(output, provider, Signalum, ImmutableMap.of(RedAlloy, 5, Silver, 2, Copper, 1));
+        if (GT5RConfig.HARDER_CIRCUITS.get()){
+            addShapelessDustRecipe(output, provider, NickelZincFerrite, ImmutableMap.of(Nickel, 1, Zinc, 1, Iron, 4));
+        }
         /*if (!GTAPI.isModLoaded("tfc")) {
             provider.shapeless(output, GT5Reimagined.ID, "", "dusts", GTMaterialTypes.SMALL_DUST.get(Clay, 2), MORTAR.getTag(), Items.CLAY_BALL);
         }*/
