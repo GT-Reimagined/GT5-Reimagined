@@ -1,10 +1,13 @@
 package org.gtreimagined.gt5r.integration.forestry;
 
 import forestry.api.plugin.IApicultureRegistration;
+import forestry.api.plugin.IFarmingRegistration;
 import forestry.api.plugin.IForestryPlugin;
 import forestry.api.plugin.IGeneticRegistration;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.GT5RItems;
+import org.gtreimagined.gtcore.data.GTCoreItems;
 
 public class ForestryPlugin implements IForestryPlugin {
     @Override
@@ -20,5 +23,10 @@ public class ForestryPlugin implements IForestryPlugin {
     @Override
     public void registerApiculture(IApicultureRegistration apiculture) {
         GTBees.defineBees(apiculture);
+    }
+
+    @Override
+    public void registerFarming(IFarmingRegistration farming) {
+        farming.registerFertilizer(GTCoreItems.Fertilizer, 500);
     }
 }
