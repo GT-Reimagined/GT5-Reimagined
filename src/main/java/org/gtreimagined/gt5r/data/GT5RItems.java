@@ -142,11 +142,11 @@ public class GT5RItems {
     public static ItemBasic<?> CircuitWetware = new ItemBasic<>(GT5Reimagined.ID, "wetware_circuit", "circuits/").tip("You feel like it's watching you");
     public static ItemBasic<?> SmallCoil = new ItemBasic<>(GT5Reimagined.ID, "small_coil").tip("A part for circuits");
     public static ItemBasic<?> PetriDish = new ItemBasic<>(GT5Reimagined.ID, "petri_dish");
-    public static ItemBasic<?> PhosphorusDopedSiliconBoule = new ItemDopedBoule(Materials.Phosphor);
+    public static ItemBasic<?> PhosphorusDopedSiliconBoule = new ItemDopedBoule(Materials.Phosphorus);
     public static ItemBasic<?> IndiumDopedSiliconBoule = new ItemDopedBoule(Materials.Indium);
     public static ItemBasic<?> Wafer = new ItemBasic<>(GT5Reimagined.ID, "wafer", "silicon/");
     public static ItemBasic<?> SiliconChip = new ItemBasic<>(GT5Reimagined.ID, "silicon_chip", "silicon/");
-    public static ItemBasic<?> PhosphorusDopedWafer = new ItemDopedWafer(Materials.Phosphor);
+    public static ItemBasic<?> PhosphorusDopedWafer = new ItemDopedWafer(Materials.Phosphorus);
     public static ItemBasic<?> IndiumDopedWafer = new ItemDopedWafer(Materials.Indium);
     public static ItemBasic<?> ASoCWafer = new ItemBasic<>(GT5Reimagined.ID, "asoc_wafer", "silicon/");
     public static ItemBasic<?> ASoC = new ItemBasic<>(GT5Reimagined.ID, "asoc", "silicon/");

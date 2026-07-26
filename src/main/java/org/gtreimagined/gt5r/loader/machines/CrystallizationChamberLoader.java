@@ -19,7 +19,7 @@ public class CrystallizationChamberLoader {
     public static void init(){
         addRecipe(Silicon);
         if (GT5RConfig.HARDER_CIRCUITS.get()){
-            addDopedRecipe(Phosphor, GT5RItems.PhosphorusDopedSiliconBoule);
+            addDopedRecipe(Phosphorus, GT5RItems.PhosphorusDopedSiliconBoule);
             addDopedRecipe(Indium, GT5RItems.IndiumDopedSiliconBoule);
         }
         addSapphireRecipe(Chromium, Ruby);

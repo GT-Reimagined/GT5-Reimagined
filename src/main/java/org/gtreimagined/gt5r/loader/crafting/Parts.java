@@ -8,7 +8,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
@@ -100,7 +99,7 @@ public class Parts {
 
       provider.addItemRecipe(output, "mining_pipes", GT5RBlocks.MINING_PIPE_THIN,
               of('H', HAMMER.getTag(), 'P', GT5RBlocks.FLUID_PIPE_STEEL.getBlockItem(PipeSize.SMALL), 'F', FILE.getTag()), "HPF");
-      provider.addStackRecipe(output, GT5Reimagined.ID, "", "matches", new ItemStack(Match, 4), of('P', DUST.getMaterialTag(Phosphor), 'S', ROD.getMaterialTag(Wood)), "P", "S");
+      provider.addStackRecipe(output, GT5Reimagined.ID, "", "matches", new ItemStack(Match, 4), of('P', DUST.getMaterialTag(Phosphorus), 'S', ROD.getMaterialTag(Wood)), "P", "S");
       provider.shapeless(output, GT5Reimagined.ID, "tape_from_empty", "tapes", new ItemStack(Tape), TapeEmpty, TapeEmpty, TapeEmpty, TapeEmpty);
       provider.shapeless(output, GT5Reimagined.ID, "duct_tape_from_empty", "tapes", new ItemStack(DuctTape), DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty, DuctTapeEmpty);
       provider.shapeless(output, GT5Reimagined.ID, "fal_duct_tape_from_empty", "tapes", new ItemStack(FALDuctTape), FALDuctTapeEmpty, FALDuctTapeEmpty, FALDuctTapeEmpty, FALDuctTapeEmpty);

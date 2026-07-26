@@ -17,7 +17,6 @@ import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.Ref;
-import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
@@ -115,7 +114,7 @@ public class ForestryRegistrar extends GTMod {
         addProcess("stone_comb_to_talc", comb, Talc);
         addProcess("stone_comb_to_apatite", comb, Apatite);
         addProcess("stone_comb_to_phosphate", comb, Phosphate);
-        addProcess("stone_comb_to_phosphor", comb, Phosphor);
+        addProcess("stone_comb_to_phosphor", comb, Phosphorus);
         comb = new ItemStack(GTCombs.CERTUS_COMB);
         Material quartz = GTAPI.isModLoaded(Ref.MOD_AE) ? CertusQuartz : Quartz;
         addProcessMain("certus_comb", comb, quartz);

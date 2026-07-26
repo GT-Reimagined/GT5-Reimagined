@@ -33,6 +33,11 @@ public class GT5RRemapping {
             String newID = type.getIdGetter().apply(Materials.Pyrolusite);
             GTRemapping.remap(Ref.SHARED_ID, oldID, newID);
         }
+        GTRemapping.remap(Ref.SHARED_ID, "phospor_dust", "phosphorus_dust");
+        GTRemapping.remap(Ref.SHARED_ID, "tiny_phospor_dust", "tiny_phosphorus_dust");
+        GTRemapping.remap(Ref.SHARED_ID, "small_phospor_dust", "small_phosphorus_dust");
+        GTRemapping.remap(GT5Reimagined.ID, "phospor_doped_silicon_boule", "phosphorus_doped_silicon_boule");
+        GTRemapping.remap(GT5Reimagined.ID, "phospor_doped_wafer", "phosphorus_doped_silicon_wafer");
     }
 
     private static void remap(String oldId, String newId){
