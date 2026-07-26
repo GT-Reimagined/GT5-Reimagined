@@ -14,10 +14,12 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
+import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -142,6 +144,9 @@ public class RecyclingLoader {
                 float amount = ct == 1 ? 0.5f : ct == 2 ? 1 : ct == 4 ? 2 : ct == 8 ? 4 : ct == 12 ? 6 : 8;
                 addRecyclingRecipe(cableItem, of(c.getMaterial(), amount, Rubber, multiplier));
             });
+        });
+        GTAPI.all(ItemBasic.class, GTCore.ID).stream().filter(i -> i.getId().contains("mold") || i.getId().contains("shape")).forEach(i -> {
+            addRecyclingRecipe(i, of(Steel, 4f));
         });
         addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f));
         addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f));
