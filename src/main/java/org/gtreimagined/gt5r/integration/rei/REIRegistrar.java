@@ -5,7 +5,7 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
-import org.gtreimagined.gtlib.integration.rei.REIUtils;
+import org.gtreimagined.gtlib.integration.recipeviewer.rei.REIUtils;
 import org.gtreimagined.gtlib.machine.Tier;
 import net.minecraft.world.item.ItemStack;
 import org.gtreimagined.gt5r.data.GT5RMachines;

@@ -42,7 +42,7 @@ import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.event.GTWorldGenEvent;
-import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
+import org.gtreimagined.gtlib.integration.recipeviewer.GTLibRecipeViewerPlugin;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
 import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
@@ -432,7 +432,7 @@ public class GT5Reimagined extends GTMod {
                 LootLoader.init();
                 BlockEntityScanner.initDefaultScannerFunctions();
                 BookRegistration.registerBookTexture(GT5RItems.PrintedPages, new ResourceLocation(GTCore.ID, "block/books/folder_red_back"), new ResourceLocation(GTCore.ID, "block/books/folder_red_side"));
-                GTLibXEIPlugin.addItemsToHide(l -> {
+                GTLibRecipeViewerPlugin.addItemsToHide(l -> {
                     IGTTool screwdriver_mv = GTAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
                     IGTTool screwdriver_hv = GTAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
@@ -465,7 +465,7 @@ public class GT5Reimagined extends GTMod {
                         l.addAll(GT5RMachines.FERMENTER.getTiers().stream().map(GT5RMachines.FERMENTER::getBlockState).toList());
                     }
                 });
-                GTLibXEIPlugin.addFluidsToHide(l -> {
+                GTLibRecipeViewerPlugin.addFluidsToHide(l -> {
                     if (!GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
                         l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                         l.addAll(Arrays.asList(Materials.Chlorobenzene.getLiquid(), Materials.Acetone.getLiquid(), Materials.CalciumAcetateSolution.getLiquid(), Materials.FermentedBiomass.getLiquid(),

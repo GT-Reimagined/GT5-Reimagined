@@ -34,7 +34,7 @@ public class Materials {
     public static Material Magnesium = GTCoreMaterials.Magnesium;
     public static Material Aluminium = GTCoreMaterials.Aluminium;
     public static Material Silicon = GTCoreMaterials.Silicon;
-    public static Material Phosphor = GTCoreMaterials.Phosphor;
+    public static Material Phosphor = GTCoreMaterials.Phosphorus;
     public static Material Sulfur = GTCoreMaterials.Sulfur;
     public static Material Chlorine = GTCoreMaterials.Chlorine;
     public static Material Argon = GTCoreMaterials.Argon;

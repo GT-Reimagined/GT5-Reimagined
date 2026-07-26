@@ -22,7 +22,6 @@ import org.apache.commons.lang3.tuple.Triple;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct;
 import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
-import org.gtreimagined.gtlib.integration.jei.GTLibJEIPlugin;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.List;

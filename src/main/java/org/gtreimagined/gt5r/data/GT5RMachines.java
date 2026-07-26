@@ -105,7 +105,7 @@ import org.gtreimagined.gtlib.blockentity.single.BlockEntityBatteryBuffer;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityDigitalTransformer;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityTransformer;
 import org.gtreimagined.gtlib.cover.ICover;
-import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
+import org.gtreimagined.gtlib.integration.recipeviewer.GTLibRecipeViewerPlugin;
 import org.gtreimagined.gtlib.machine.BlockMachine;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -459,7 +459,7 @@ public class GT5RMachines {
 
     public static void init() {
         GTAPI.registerJEICategoryWorkstation(RecipeMaps.ALLOY_SMELTER, MULTI_SMELTER, HV);
-        GTLibXEIPlugin.addWorkstations(new ResourceLocation("crafting"), l -> {
+        GTLibRecipeViewerPlugin.addWorkstations(new ResourceLocation("crafting"), l -> {
             l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList());
             l.add(AUTOCRAFTER_ASSEMBLY_LINE.getItem(HV));
         });
