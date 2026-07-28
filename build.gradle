@@ -154,7 +154,7 @@ dependencies {
     modRuntimeOnly("curse.maven:mouse-tweaks-60089:5338457")
     switch (project.runtime_itemviewer) {
         case "emi":
-            modLocalRuntime("dev.emi:emi-forge:${emi_version}")
+            modLocalRuntime("dev.emi:emi-forge:${emi_version}+${project.minecraft_version}")
             break
         case "rei":
             modLocalRuntime("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
