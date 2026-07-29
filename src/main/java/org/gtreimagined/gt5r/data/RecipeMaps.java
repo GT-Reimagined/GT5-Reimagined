@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.integration.recipeviewer.renderer.IRecipeInfoRenderer;
 import org.gtreimagined.gtlib.integration.recipeviewer.renderer.InfoRenderers;
@@ -27,8 +28,11 @@ import org.gtreimagined.gt5r.machine.recipe.FusionRecipe;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeBuilder;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
 import org.gtreimagined.gtcore.data.RecipeBuilders;
+import org.gtreimagined.gtlib.util.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
@@ -213,46 +217,40 @@ public class RecipeMaps {
         };
     }
 
-    public static final IRecipeInfoRenderer BLASTING_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font font, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String temperature = "Temperature: " + recipe.getSpecialValue() + " K";
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, font, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, font, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, font, 5 + stringWidth(euT, font), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, temperature, font, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, total, font, 5, 30, guiOffsetX, guiOffsetY);
+    public static final IRecipeInfoRenderer BLASTING_RENDERER = r -> {
+        if (r.getDuration() == 0 && r.getPower() == 0) return List.of();
+        List<Component> list = new ArrayList<>();
+        Component additional;
+        if (r.getDuration() < 1200) {
+            additional = Component.empty();
+        } else if (r.getDuration() < 36000) {
+            additional = Utils.translatable("recipe_info.gtlib.duration.seconds", (r.getDuration() / 20.0f));
+        } else {
+            additional = Utils.translatable("recipe_info.gtlib.duration.minutes", (r.getDuration() / 1200.0f));
         }
-
-        @Override
-        public int getRows() {
-            return 4;
-        }
+        list.add(Utils.translatable("recipe_info.gtlib.duration", r.getDuration(), additional));
+        Tier tier = Tier.getTier((r.getPower() / r.getAmps()));
+        list.add(Utils.translatable("recipe_info.gtlib.eut", r.getPower(), Utils.translatable("recipe_info.gtlib.eut.tier", tier.getId().toUpperCase(Locale.ROOT)).withStyle(tier.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gtlib.amps", r.getAmps()));
+        list.add(Utils.translatable("recipe_info.gt5r.temperature", r.getSpecialValue()));
+        list.add(Utils.translatable("recipe_info.gtlib.total_eu", r.getDuration() * r.getPower() * r.getAmps()));
+        return list;
     };
 
-    public static final IRecipeInfoRenderer LARGE_BOILER_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String duration = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String extraBurntime = "Extra saved Burntime: " + recipe.getPower();
-            String heatIncreaseMultiplier = "Heat increase multiplier: " + (Math.max(recipe.getSpecialValue(), 1));
-            renderString(graphics, duration, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, extraBurntime, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, heatIncreaseMultiplier, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
+    public static final IRecipeInfoRenderer LARGE_BOILER_RENDERER = r -> {
+        List<Component> list = new ArrayList<>();
+        Component additional;
+        if (r.getDuration() < 1200) {
+            additional = Component.empty();
+        } else if (r.getDuration() < 36000) {
+            additional = Utils.translatable("recipe_info.gtlib.duration.seconds", (r.getDuration() / 20.0f));
+        } else {
+            additional = Utils.translatable("recipe_info.gtlib.duration.minutes", (r.getDuration() / 1200.0f));
         }
-
-        @Override
-        public int getRows() {
-            return 3;
-        }
+        list.add(Utils.translatable("recipe_info.gtlib.duration", r.getDuration(), additional));
+        list.add(Utils.translatable("recipe_info.gt5r.extra_burntime", r.getPower()));
+        list.add(Utils.translatable("recipe_info.gt5r.heat_multiplier", Math.max(r.getSpecialValue(), 1)));
+        return list;
     };
 
     public static final IRecipeInfoRenderer HEAT_EXCHANGER_RENDERER = new IRecipeInfoRenderer() {

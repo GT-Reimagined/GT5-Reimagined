@@ -160,6 +160,9 @@ public class GT5RLocalizations {
             add("emi.category.gt.macerator_ore_processing", "Macerator Ore Processing");
             add("emi.category.gt.arc_furnace_recycling", "Arc Furnace Recycling");
             add("emi.category.gt.alloy_smelter_molds", "Alloy Smelter Molds");
+            add("recipe_info.gt5r.temperature", "Temperature: %s K");
+            add("recipe_info.gt5r.extra_burntime", "Extra Saved burntime: %s");
+            add("recipe_info.gt5r.heat_multiplier", "Heat Increase Multiplier: %s");
             add("block.gt5r.lava", "Lava");
             GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
             add(GT5RBlocks.BRONZE_CAULDRON, "Bronze Cauldron");
