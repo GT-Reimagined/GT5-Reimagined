@@ -230,7 +230,7 @@ public class RecipeMaps {
         }
         list.add(Utils.translatable("recipe_info.gtlib.duration", r.getDuration(), additional));
         Tier tier = Tier.getTier((r.getPower() / r.getAmps()));
-        list.add(Utils.translatable("recipe_info.gtlib.eut", r.getPower(), Utils.translatable("recipe_info.gtlib.eut.tier", tier.getId().toUpperCase(Locale.ROOT)).withStyle(tier.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gtlib.eut", r.getPower(), Utils.translatable("recipe_info.gtlib.eut.tier", tier.getId().toUpperCase(Locale.ROOT)).withStyle(Tier.EV.getRarityFormatting())));
         list.add(Utils.translatable("recipe_info.gtlib.amps", r.getAmps()));
         list.add(Utils.translatable("recipe_info.gt5r.temperature", r.getSpecialValue()));
         list.add(Utils.translatable("recipe_info.gtlib.total_eu", r.getDuration() * r.getPower() * r.getAmps()));
@@ -253,89 +253,80 @@ public class RecipeMaps {
         return list;
     };
 
-    public static final IRecipeInfoRenderer HEAT_EXCHANGER_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String duration = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String extraBurntime = "HU/t: " + recipe.getPower();
-            String heatIncreaseMultiplier = "Total HU: " + (recipe.getPower() * recipe.getDuration());
-            String heatExchanger = recipe.getTags().contains(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY) ? "Large Heat Exchanger only" : recipe.getTags().contains(GT5RRecipeTags.SMALL_HEAT_EXCHANGED_ONLY) ? "Small Heat Exchanger only" : "";
-            renderString(graphics, duration, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, extraBurntime, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, heatIncreaseMultiplier, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, heatExchanger, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
+    public static final IRecipeInfoRenderer HEAT_EXCHANGER_RENDERER = r -> {
+        List<Component> list = new ArrayList<>();
+        Component additional;
+        if (r.getDuration() < 1200) {
+            additional = Component.empty();
+        } else if (r.getDuration() < 36000) {
+            additional = Utils.translatable("recipe_info.gtlib.duration.seconds", (r.getDuration() / 20.0f));
+        } else {
+            additional = Utils.translatable("recipe_info.gtlib.duration.minutes", (r.getDuration() / 1200.0f));
         }
+        list.add(Utils.translatable("recipe_info.gtlib.duration", r.getDuration(), additional));
+        list.add(Utils.translatable("recipe_info.gt5r.hut", r.getPower()));
+        list.add(Utils.translatable("recipe_info.gt5r.total_hu", r.getPower() * r.getDuration()));
 
-        @Override
-        public int getRows() {
-            return 4;
+        var tags = r.getTags();
+        if (tags.contains(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY) || tags.contains(GT5RRecipeTags.SMALL_HEAT_EXCHANGED_ONLY)){
+            list.add(Utils.translatable("recipe_info.gt5r." + (tags.contains(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY) ? "large" : "small") + "_heat_exchanger_only"));
         }
+        return list;
     };
 
-    public static final IRecipeInfoRenderer FUSION_RENDERER = new IRecipeInfoRenderer() {
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (!(recipe instanceof FusionRecipe fusionRecipe)) return;
-            if (recipe.getDuration() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String huT = "Creates " + fusionRecipe.getHuOutput() + " HU/t";
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String start = "Start: " + recipe.getSpecialValue() + " EU";
-            Tier tier = Tier.getTier(recipe.getPower() / recipe.getAmps());
-            Tier outputTier = Tier.getTier(fusionRecipe.getHuOutput());
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            String formattedText1 = " (" + outputTier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, huT, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText1, fontRenderer, 5 + stringWidth(huT, fontRenderer), 20, Tier.ULV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY, false);
-            renderString(graphics, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            renderString(graphics, start, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+    public static final IRecipeInfoRenderer FUSION_RENDERER = r -> {
+        List<Component> list = new ArrayList<>();
+        if (!(r instanceof FusionRecipe fr)) return list;
+        if (r.getDuration() == 0) return list;
+        Component additional;
+        if (r.getDuration() < 1200) {
+            additional = Component.empty();
+        } else if (r.getDuration() < 36000) {
+            additional = Utils.translatable("recipe_info.gtlib.duration.seconds", (r.getDuration() / 20.0f));
+        } else {
+            additional = Utils.translatable("recipe_info.gtlib.duration.minutes", (r.getDuration() / 1200.0f));
         }
-
-        @Override
-        public int getRows() {
-            return 5;
-        }
+        list.add(Utils.translatable("recipe_info.gtlib.duration", r.getDuration(), additional));
+        Tier tier = Tier.getTier((r.getPower() / r.getAmps()));
+        Tier outputTier = Tier.getTier(fr.getHuOutput());
+        list.add(Utils.translatable("recipe_info.gtlib.eut", r.getPower(), Utils.translatable("recipe_info.gtlib.eut.tier", tier.getId().toUpperCase(Locale.ROOT)).withStyle(Tier.EV.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gt5r.fusion_hut", fr.getHuOutput(), Utils.translatable("recipe_info.gtlib.eut.tier", outputTier.getId().toUpperCase(Locale.ROOT)).withStyle(Tier.ULV.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gtlib.total_eu", r.getDuration() * r.getPower() * r.getAmps()));
+        list.add(Utils.translatable("recipe_info.gt5r.start_eu", r.getSpecialValue()));
+        return list;
     };
 
-    public static final IRecipeInfoRenderer CHEM_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : null;
-            boolean toLarge = false;
-            for (FluidIngredient outputFluid : recipe.getInputFluids()) {
-                if (outputFluid.getAmount() > 32000){
-                    toLarge = true;
-                    break;
-                }
-            }
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, total, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            if (complicated != null){
-                renderString(graphics, complicated, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            }
-            if (toLarge){
-                renderString(graphics, "Large chem reactor only", fontRenderer, 5, complicated != null ? 40 : 30, guiOffsetX, guiOffsetY);
-            }
+    public static final IRecipeInfoRenderer CHEM_RENDERER = r -> {
+        if (r.getDuration() == 0 && r.getPower() == 0) return List.of();
+        List<Component> list = new ArrayList<>();
+        Component additional;
+        if (r.getDuration() < 1200) {
+            additional = Component.empty();
+        } else if (r.getDuration() < 36000) {
+            additional = Utils.translatable("recipe_info.gtlib.duration.seconds", (r.getDuration() / 20.0f));
+        } else {
+            additional = Utils.translatable("recipe_info.gtlib.duration.minutes", (r.getDuration() / 1200.0f));
         }
+        list.add(Utils.translatable("recipe_info.gtlib.duration", r.getDuration(), additional));
+        Tier tier = Tier.getTier((r.getPower() / r.getAmps()));
+        list.add(Utils.translatable("recipe_info.gtlib.eut", r.getPower(), Utils.translatable("recipe_info.gtlib.eut.tier", tier.getId().toUpperCase(Locale.ROOT)).withStyle(Tier.EV.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gtlib.amps", r.getAmps()));
+        list.add(Utils.translatable("recipe_info.gtlib.total_eu", r.getDuration() * r.getPower() * r.getAmps()));
 
-        @Override
-        public int getRows() {
-            return 5;
+        boolean toLarge = false;
+        for (FluidIngredient outputFluid : r.getInputFluids()) {
+            if (outputFluid.getAmount() > 32000){
+                toLarge = true;
+                break;
+            }
         }
+        if (r.getTags().contains(GT5RRecipeTags.COMPLICATED_RECIPE)){
+             list.add(Utils.translatable("recipe_info.gt5r.complicated_recipe"));
+        }
+        if (toLarge){
+            list.add(Utils.translatable("recipe_info.gt5r.large_chem_reactor"));
+        }
+        return list;
     };
 
     public static final IRecipeInfoRenderer MACERATOR_RENDERER = new IRecipeInfoRenderer() {

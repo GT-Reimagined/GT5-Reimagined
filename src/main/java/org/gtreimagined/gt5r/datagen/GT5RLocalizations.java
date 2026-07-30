@@ -163,6 +163,14 @@ public class GT5RLocalizations {
             add("recipe_info.gt5r.temperature", "Temperature: %s K");
             add("recipe_info.gt5r.extra_burntime", "Extra Saved burntime: %s");
             add("recipe_info.gt5r.heat_multiplier", "Heat Increase Multiplier: %s");
+            add("recipe_info.gt5r.hut", "HU/t: %s");
+            add("recipe_info.gt5r.total_hu", "Total HU: %s");
+            add("recipe_info.gt5r.large_heat_exchanger_only", "Large Heat Exchanger Only");
+            add("recipe_info.gt5r.small_heat_exchanger_only", "Small Heat Exchanger Only");
+            add("recipe_info.gt5r.start_eu", "Start: %s EU");
+            add("recipe_info.gt5r.fusion_hut", "Creates %s HU/t%s");
+            add("recipe_info.gt5r.complicated_recipe", "Complicated Recipe");
+            add("recipe_info.gt5r.large_chem_reactor", "Large Chem Reactor Only");
             add("block.gt5r.lava", "Lava");
             GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
             add(GT5RBlocks.BRONZE_CAULDRON, "Bronze Cauldron");
