@@ -171,6 +171,12 @@ public class GT5RLocalizations {
             add("recipe_info.gt5r.fusion_hut", "Creates %s HU/t%s");
             add("recipe_info.gt5r.complicated_recipe", "Complicated Recipe");
             add("recipe_info.gt5r.large_chem_reactor", "Large Chem Reactor Only");
+            add("recipe_info.gt5r.steam_per_tick", "Steam: %s mb/t");
+            add("recipe_info.gt5r.steam_duration", "Steam Duration %s ticks%s");
+            add("recipe_info.gt5r.not_steam_runnable", "Not runnable in Steam Machines");
+            add("recipe_info.gt5r.pulverizer_only", "Byproducts in pulverizer only");
+            add("recipe_info.gt5r.multismelter_only", "Multismelter only");
+            add("recipe_info.gt5r.fuel_value", "Fuel Value: %s EU");
             add("block.gt5r.lava", "Lava");
             GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
             add(GT5RBlocks.BRONZE_CAULDRON, "Bronze Cauldron");
