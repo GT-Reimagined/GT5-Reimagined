@@ -347,7 +347,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("microprocessor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.SOC, 4), FINE_WIRE.getMaterialIngredient(Copper, 2))
                     .io(new ItemStack(BasicCircuit, 4))
-                    .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 60);
+                    .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 600);
             //Good
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPhenolic, 1), of(GT5RTags.RESISTORS, 4),of(BasicCircuit, 3),
                             FINE_WIRE.getMaterialIngredient(Electrum, 8))
@@ -360,7 +360,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.SOC, 1), FINE_WIRE.getMaterialIngredient(RedAlloy, 2))
                     .io(new ItemStack(GoodCircuit, 1))
-                    .fi(material.getLiquid(base * 4)).add("integrated_processor_soc_using_" + material.getId(), 200, 60);
+                    .fi(material.getLiquid(base * 4)).add("integrated_processor_soc_using_" + material.getId(), 200, 2400);
             //Advanced
             CIRCUIT_ASSEMBLER.RB().ii(of(GoodCircuit, 2), of(GT5RItems.IntegratedLogicCircuit, 3),of(GT5RItems.RandomAccessMemoryChip, 1),
                             of(GT5RTags.TRANSISTORS, 4), FINE_WIRE.getMaterialIngredient(Electrum, 16))
@@ -369,7 +369,7 @@ public class Circuitry {
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GoodCircuit, 2), of(GT5RItems.SmallCoil, 4),
                     of(GT5RTags.CAPACITORS, 4), of(GT5RItems.RandomAccessMemoryChip, 4), FINE_WIRE.getMaterialIngredient(RedAlloy, 12))
                     .io(AdvancedCircuit)
-                    .fi(material.getLiquid(base * 4)).add("processor_assembly_using_" + material.getId(), 200, 600);
+                    .fi(material.getLiquid(base * 4)).add("processor_assembly_using_" + material.getId(), 200, 90);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.NanoCpu, 1),
                             of(GT5RTags.RESISTORS, 2), of(GT5RTags.CAPACITORS, 2),
                             of(GT5RTags.TRANSISTORS, 2), FINE_WIRE.getMaterialIngredient(Electrum, 2))
@@ -377,7 +377,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("nano_processor_using_" + material.getId(), 200, 600);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.ASoC, 1), FINE_WIRE.getMaterialIngredient(Electrum, 2))
                     .io(new ItemStack(AdvancedCircuit))
-                    .fi(material.getLiquid(base * 4)).add("nano_processor_asoc_using_" + material.getId(), 300, 8192);
+                    .fi(material.getLiquid(base * 4)).add("nano_processor_asoc_using_" + material.getId(), 300, 9600);
 
             //Complex
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic, 2), of(AdvancedCircuit, 3), of(GT5RTags.DIODES, 4),
@@ -394,7 +394,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 8)).add("quantum_processor_using_" + material.getId(), 200, 2400);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.ASoC, 1), FINE_WIRE.getMaterialIngredient(Platinum, 2))
                     .io(new ItemStack(ComplexCircuit))
-                    .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 8192);
+                    .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 38400);
             //Energy Flow
             ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardMultiFiber, 1), of(GT5RItems.Resistor, 8),of(GT5RItems.Transistor, 8),
                             of(GT5RItems.Capacitor, 8),of(GTMaterialTypes.FINE_WIRE.get(NiobiumTitanium), 4))
