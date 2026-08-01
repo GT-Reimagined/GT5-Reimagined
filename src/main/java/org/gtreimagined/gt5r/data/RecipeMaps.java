@@ -129,6 +129,8 @@ public class RecipeMaps {
             new RecipeMap<>(GT5Reimagined.ID, "implosion_compressor", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> LARGE_BOILERS =
             new RecipeMap<>(GT5Reimagined.ID, "large_boilers", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+    public static RecipeMap<RecipeBuilder> LASER_CUTTER =
+            new RecipeMap<>(GT5Reimagined.ID, "laser_cutter", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> LASER_ENGRAVER =
             new RecipeMap<>(GT5Reimagined.ID, "laser_engraver", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> LATHE =
