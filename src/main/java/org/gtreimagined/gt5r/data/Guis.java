@@ -158,7 +158,7 @@ public class Guis {
         ROCK_BREAKER.add(COMPRESSOR);
         FERMENTER.add(FLUID_CANNER);
         FLUID_PRESS.add(COMPRESSOR).add(FL_OUT, 107, 63);
-        SMELTER.add(IT_IN, 53, 25).add(ENERGY, 80, 63).add(FL_OUT, 107, 63);
+        SMELTER.add(IT_IN, 53, 25).add(ENERGY, 80, 63).add(FL_OUT, 107, 25);
         FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
         FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
         SCANNER.add(FLUID_SOLIDIFIER).add(IT_IN, 125, 63);
