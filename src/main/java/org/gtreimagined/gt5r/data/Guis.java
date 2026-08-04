@@ -183,6 +183,7 @@ public class Guis {
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
                 .add(FL_IN, b -> b.x(44).y(63).jeiX(35).build()).add(FL_IN, b -> b.x(62).y(63).jeiX(53).build())
                 .add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
+        LASER_CUTTER.add(COMPRESSOR);
         LASER_ENGRAVER.add(ALLOY_SMELTER);
         FORMING_PRESS.add(IT_IN, 17, 25).add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
         FORGE_HAMMER.add(FURNACE);
