@@ -325,6 +325,15 @@ public class MachineRecipes {
                             .put('L', cable)
                             .put('H', hull)
                             .put('D', diamond).build(), "LCL", "MHD", "CLP"));
+            add(LASER_CUTTER, tier, (m, item) -> provider.addItemRecipe(output, "machines", item,
+                    ImmutableMap.<Character, Object>builder()
+                            .put('M', LENS.getMaterialTag(Diamond))
+                            .put('C', circuit)
+                            .put('L', cable)
+                            .put('H', hull)
+                            .put('D', emitter)
+                            .put('V', sensor)
+                            .put('G', glass).build(), "LCG", "VHD", "CLM"));
             add(LASER_ENGRAVER, tier, (m,item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('P', piston)

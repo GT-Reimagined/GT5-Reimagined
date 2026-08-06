@@ -18,7 +18,7 @@ import java.util.List;
 @Getter
 public class FusionRecipe extends Recipe {
     int huOutput;
-    public FusionRecipe(@NotNull List<Ingredient> stacksInput, ItemStack[] stacksOutput, @NotNull List<FluidIngredient> fluidsInput, FluidStack[] fluidsOutput, int duration, long power, int special, int amps) {
+    public FusionRecipe(@NotNull List<Ingredient> stacksInput, List<ItemStack> stacksOutput, @NotNull List<FluidIngredient> fluidsInput, List<FluidStack> fluidsOutput, int duration, long power, int special, int amps) {
         super(stacksInput, stacksOutput, fluidsInput, fluidsOutput, duration, power, special, amps);
     }
 

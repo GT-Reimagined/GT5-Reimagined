@@ -151,47 +151,47 @@ public class Circuitry {
 
     private static void silicon(){
         if (GT5RConfig.HARDER_CIRCUITS.get()){
-            addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 200, 64, 1);
-            addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48, 22);
-            addCuttingRecipe(PhosphorusDopedSiliconBoule, PhosphorusDopedWafer, 16, 800, 64, 20);
-            addCuttingRecipe(IndiumDopedSiliconBoule, IndiumDopedWafer, 16, 1600, 64, 240);
+            addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 200, 64);
+            addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48);
+            addCuttingRecipe(PhosphorusDopedSiliconBoule, PhosphorusDopedWafer, 16, 800, 64);
+            addCuttingRecipe(IndiumDopedSiliconBoule, IndiumDopedWafer, 16, 1600, 64);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.ASoCWafer, 1, 200, 1920, Amber, Topaz);
-            addCuttingRecipe(GT5RItems.ASoCWafer, GT5RItems.ASoC, 8, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.ASoCWafer, GT5RItems.ASoC, 8, 600, 48);
             addLensRecipe(GT5RItems.Wafer, GT5RItems.CentralProcessingUnitWafer, 1, 900, 120, Diamond, Glass);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.CentralProcessingUnitWafer, 4, 500, 480, Diamond, Glass);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.CentralProcessingUnitWafer, 8, 200, 1920, Diamond, Glass);
-            addCuttingRecipe(GT5RItems.CentralProcessingUnitWafer, GT5RItems.CentralProcessingUnit, 8, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.CentralProcessingUnitWafer, GT5RItems.CentralProcessingUnit, 8, 600, 48);
             CHEMICAL_REACTOR.RB().ii(of(GT5RItems.PICWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 2)).fi(RedAlloy.getLiquid(L * 2)).io(GT5RItems.HPICWafer).add("hpic_wafer", 1200, 1920);
-            addCuttingRecipe(GT5RItems.HPICWafer, GT5RItems.HighPowerIC, 2, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.HPICWafer, GT5RItems.HighPowerIC, 2, 600, 48);
             addLensRecipe(GT5RItems.Wafer, GT5RItems.IntegratedLogicCircuitWafer, 1, 900, 120, Ruby, RedGarnet);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.IntegratedLogicCircuitWafer, 4, 500, 480, Ruby, RedGarnet);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.IntegratedLogicCircuitWafer, 8, 200, 1920, Ruby, RedGarnet);
-            addCuttingRecipe(GT5RItems.IntegratedLogicCircuitWafer, GT5RItems.IntegratedLogicCircuit, 8, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.IntegratedLogicCircuitWafer, GT5RItems.IntegratedLogicCircuit, 8, 600, 48);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.NANDMemoryChipWafer, 1, 500, 480, EnderPearl);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.NANDMemoryChipWafer, 4, 200, 1920, EnderPearl);
-            addCuttingRecipe(GT5RItems.NANDMemoryChipWafer, GT5RItems.NANDMemoryChip, 32, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.NANDMemoryChipWafer, GT5RItems.NANDMemoryChip, 32, 600, 48);
             CHEMICAL_REACTOR.RB().ii(of(GT5RItems.CentralProcessingUnitWafer), of(CarbonFibre, 16)).fi(Glowstone.getLiquid(L * 4)).io(GT5RItems.NanoCpuWafer).add("nano_cpu_wafer", 400, 1920);
-            addCuttingRecipe(GT5RItems.NanoCpuWafer, GT5RItems.NanoCpu, 7, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.NanoCpuWafer, GT5RItems.NanoCpu, 7, 600, 48);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.NorMemoryChipWafer, 1, 500, 480, EnderEye);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.NorMemoryChipWafer, 4, 200, 1920, EnderEye);
-            addCuttingRecipe(GT5RItems.NorMemoryChipWafer, GT5RItems.NorMemoryChip, 16, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.NorMemoryChipWafer, GT5RItems.NorMemoryChip, 16, 600, 48);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.PICWafer, 1, 500, 480, Opal, Sapphire, BlueTopaz);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.PICWafer, 4, 200, 1920, Opal, Sapphire, BlueTopaz);
-            addCuttingRecipe(GT5RItems.PICWafer, GT5RItems.PowerIC, 4, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.PICWafer, GT5RItems.PowerIC, 4, 600, 48);
             CHEMICAL_REACTOR.RB().ii(of(GT5RItems.NanoCpuWafer), of(GT5RItems.QuantumEye, 2)).fi(GalliumArsenide.getLiquid(L * 2)).io(GT5RItems.QBitWafer).add("qbit_wafer", 400, 1920);
             CHEMICAL_REACTOR.RB().ii(of(GT5RItems.NanoCpuWafer), DUST.getMaterialIngredient(IndiumGalliumPhosphide, 1)).fi(Radon.getGas(50)).io(GT5RItems.QBitWafer).add("qbit_wafer_2", 600, 1920);
-            addCuttingRecipe(GT5RItems.QBitWafer, GT5RItems.QBitProcessingUnit, 5, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.QBitWafer, GT5RItems.QBitProcessingUnit, 5, 600, 48);
             addLensRecipe(GT5RItems.Wafer, GT5RItems.RandomAccessMemoryChipWafer, 1, 900, 120, GreenSapphire);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.RandomAccessMemoryChipWafer, 4, 500, 480, GreenSapphire);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.RandomAccessMemoryChipWafer, 8, 200, 1920, GreenSapphire);
-            addCuttingRecipe(GT5RItems.RandomAccessMemoryChipWafer, GT5RItems.RandomAccessMemoryChip, 32, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.RandomAccessMemoryChipWafer, GT5RItems.RandomAccessMemoryChip, 32, 600, 48);
             addLensRecipe(GT5RItems.PhosphorusDopedWafer, GT5RItems.SOCWafer, 1, 500, 480, YellowGarnet);
             addLensRecipe(GT5RItems.IndiumDopedWafer, GT5RItems.SOCWafer, 4, 200, 1920, YellowGarnet);
-            addCuttingRecipe(GT5RItems.SOCWafer, GT5RItems.SOC, 10, 600, 48, 22);
+            addCuttingRecipe(GT5RItems.SOCWafer, GT5RItems.SOC, 10, 600, 48);
 
         } else {
-            addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 1600, 384, 1);
-            addCuttingRecipe(Wafer, TINY_PLATE.get(Silicon), 2, 600, 48, 22, "silicon_tiny_plate");
+            addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 1600, 384);
+            addCuttingRecipe(Wafer, TINY_PLATE.get(Silicon), 2, 600, 48, "silicon_tiny_plate");
         }
     }
 
@@ -202,28 +202,13 @@ public class Circuitry {
         }
     }
 
-    private static void addCuttingRecipe(Item input, ItemBasic<?> output, int amount, int ticks, int power, int liquidMultiplier){
-        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(new FluidStack(Fluids.WATER, 5 * liquidMultiplier))
-                .io(new ItemStack(output, amount)).add(output.getId() + "_with_water", ticks, power);
-        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(DistilledWater.getLiquid(3 * liquidMultiplier))
-                .io(new ItemStack(output, amount)).add(output.getId() + "_with_distilled_water", ticks, power);
-        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(Lubricant.getLiquid(liquidMultiplier))
-                .io(new ItemStack(output, amount)).add(output.getId() + "_with_lubricant", ticks / 2, power);
+    private static void addCuttingRecipe(Item input, ItemBasic<?> output, int amount, int ticks, int power){
+        addCuttingRecipe(input, output, amount, ticks, power, output.getId());
     }
 
-    private static void addCuttingRecipe(Item input, Item output, int amount, int ticks, int power, int liquidMultiplier, String id){
-        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(new FluidStack(Fluids.WATER, 5 * liquidMultiplier))
-                .io(new ItemStack(output, amount)).add(id + "_with_water", ticks, power);
-        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(DistilledWater.getLiquid(3 * liquidMultiplier))
-                .io(new ItemStack(output, amount)).add(id + "_with_distilled_water", ticks, power);
-        CUTTER.RB().ii(RecipeIngredient.of(input, 1))
-                .fi(Lubricant.getLiquid(liquidMultiplier))
-                .io(new ItemStack(output, amount)).add(id + "_with_lubricant", ticks / 2, power);
+    private static void addCuttingRecipe(Item input, Item output, int amount, int ticks, int power, String id){
+        LASER_CUTTER.RB().ii(RecipeIngredient.of(input, 1)).io(new ItemStack(output, amount))
+                .add(id, ticks, power);
     }
 
     private static void circuitParts(){
@@ -347,7 +332,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("microprocessor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.SOC, 4), FINE_WIRE.getMaterialIngredient(Copper, 2))
                     .io(new ItemStack(BasicCircuit, 4))
-                    .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 60);
+                    .fi(material.getLiquid(base * 4)).add("microprocessor_soc_using_" + material.getId(), 200, 600);
             //Good
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPhenolic, 1), of(GT5RTags.RESISTORS, 4),of(BasicCircuit, 3),
                             FINE_WIRE.getMaterialIngredient(Electrum, 8))
@@ -360,7 +345,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("integrated_processor_using_" + material.getId(), 200, 60);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.SOC, 1), FINE_WIRE.getMaterialIngredient(RedAlloy, 2))
                     .io(new ItemStack(GoodCircuit, 1))
-                    .fi(material.getLiquid(base * 4)).add("integrated_processor_soc_using_" + material.getId(), 200, 60);
+                    .fi(material.getLiquid(base * 4)).add("integrated_processor_soc_using_" + material.getId(), 200, 2400);
             //Advanced
             CIRCUIT_ASSEMBLER.RB().ii(of(GoodCircuit, 2), of(GT5RItems.IntegratedLogicCircuit, 3),of(GT5RItems.RandomAccessMemoryChip, 1),
                             of(GT5RTags.TRANSISTORS, 4), FINE_WIRE.getMaterialIngredient(Electrum, 16))
@@ -369,7 +354,7 @@ public class Circuitry {
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GoodCircuit, 2), of(GT5RItems.SmallCoil, 4),
                     of(GT5RTags.CAPACITORS, 4), of(GT5RItems.RandomAccessMemoryChip, 4), FINE_WIRE.getMaterialIngredient(RedAlloy, 12))
                     .io(AdvancedCircuit)
-                    .fi(material.getLiquid(base * 4)).add("processor_assembly_using_" + material.getId(), 200, 600);
+                    .fi(material.getLiquid(base * 4)).add("processor_assembly_using_" + material.getId(), 200, 90);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.NanoCpu, 1),
                             of(GT5RTags.RESISTORS, 2), of(GT5RTags.CAPACITORS, 2),
                             of(GT5RTags.TRANSISTORS, 2), FINE_WIRE.getMaterialIngredient(Electrum, 2))
@@ -377,7 +362,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 4)).add("nano_processor_using_" + material.getId(), 200, 600);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic), of(GT5RItems.ASoC, 1), FINE_WIRE.getMaterialIngredient(Electrum, 2))
                     .io(new ItemStack(AdvancedCircuit))
-                    .fi(material.getLiquid(base * 4)).add("nano_processor_asoc_using_" + material.getId(), 300, 8192);
+                    .fi(material.getLiquid(base * 4)).add("nano_processor_asoc_using_" + material.getId(), 300, 9600);
 
             //Complex
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardPlastic, 2), of(AdvancedCircuit, 3), of(GT5RTags.DIODES, 4),
@@ -394,7 +379,7 @@ public class Circuitry {
                     .fi(material.getLiquid(base * 8)).add("quantum_processor_using_" + material.getId(), 200, 2400);
             CIRCUIT_ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.ASoC, 1), FINE_WIRE.getMaterialIngredient(Platinum, 2))
                     .io(new ItemStack(ComplexCircuit))
-                    .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 8192);
+                    .fi(material.getLiquid(base * 4)).add("quantum_processor_asoc_using_" + material.getId(), 50, 38400);
             //Energy Flow
             ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardMultiFiber, 1), of(GT5RItems.Resistor, 8),of(GT5RItems.Transistor, 8),
                             of(GT5RItems.Capacitor, 8),of(GTMaterialTypes.FINE_WIRE.get(NiobiumTitanium), 4))

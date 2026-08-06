@@ -200,6 +200,7 @@ public class GT5RMachines {
     public static BasicMachine FORGE_HAMMER = new BasicMachine(GT5Reimagined.ID, "forge_hammer").setMap(RecipeMaps.FORGE_HAMMER).addFlags(GUI, ITEM).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
     public static BasicMachine FORMING_PRESS = new BasicMachine(GT5Reimagined.ID, "forming_press").setMap(RecipeMaps.FORMING_PRESS).addFlags(GUI, ITEM);
     public static BasicMachine FURNACE = new BasicMachine(GT5Reimagined.ID, "furnace").setMap(RecipeMaps.ELECTRIC_FURNACE).addFlags(GUI, ITEM).setSound(GT5RSounds.FURNACE,  0.6f);
+    public static BasicMachine LASER_CUTTER = new BasicMachine(GT5Reimagined.ID, "laser_cutter").setMap(RecipeMaps.LASER_CUTTER).addFlags(GUI, ITEM);
     public static BasicMachine LASER_ENGRAVER = new BasicMachine(GT5Reimagined.ID, "laser_engraver").setMap(RecipeMaps.LASER_ENGRAVER).addFlags(GUI, ITEM).setSound(GT5RSounds.MAGNETIZER,  0.6f);
     public static BasicMachine LATHE = new BasicMachine(GT5Reimagined.ID, "lathe").setMap(RecipeMaps.LATHE).addFlags(GUI, ITEM);
     public static BasicMachine MACERATOR = new BasicMachine(GT5Reimagined.ID, "macerator").setTiers(LV, MV, HV, EV).setMap(RecipeMaps.PULVERIZER).setTile(BlockEntityMacerator::new).addTooltipInfo("tooltip.macerator.0").setTierSpecificLang().setCustomModel().addFlags(GUI, ITEM).setSound(GT5RSounds.MACERATOR,  0.6f);

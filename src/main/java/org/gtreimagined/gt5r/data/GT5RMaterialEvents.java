@@ -175,7 +175,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.NeodymiumMagnetic).asMetal(1297, LONG_ROD);
         event.setMaterial(Materials.NaquadahAlloy).asMetal(7200);
         event.setMaterial(Materials.Nichrome).asMetal(2700);
-        event.setMaterial(Materials.NickelZincFerrite).asMetal(1500);
+        event.setMaterial(Materials.NickelZincFerrite).asMetal(1500, SCREW);
         event.setMaterial(Materials.NiobiumTitanium).asMetal(4500, PLATE, FOIL, ROD, FINE_WIRE);
         event.setMaterial(Materials.Osmiridium).asMetal(3333, 2500, FRAME);
         event.setMaterial(PurpleAlloy).asMetal(1400, ALLOY);
@@ -1100,7 +1100,6 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Kanthal).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).build();
         event.setMaterial(Materials.NaquadahAlloy).tool().toolDamage(4.5f).toolSpeed(8).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.Nichrome).tool().toolDamage(2).toolSpeed(6).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.BANE_OF_ARTHROPODS, 2)).build();
-        event.setMaterial(Materials.NickelZincFerrite).tool().toolDamage(0).toolSpeed(3).toolDurability(32).toolQuality(1).build();
         event.setMaterial(Materials.Osmiridium).tool().toolDamage(4).toolSpeed(11).toolDurability(3840).toolQuality(4).build();
         event.setMaterial(Materials.RedSteel).tool().toolDamage(2).toolSpeed(7.5f).toolDurability(1024).toolQuality(2).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build()
                 .addArmor(new int[]{2, 7, 6, 2}, 1.0F, 0.0F, 42, of(Enchantments.ALL_DAMAGE_PROTECTION, 3));
