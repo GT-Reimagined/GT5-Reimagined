@@ -4,22 +4,18 @@ import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityGenerator;
 import org.gtreimagined.gtlib.capability.item.ITrackedHandler;
-import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.item.ItemFluidCell;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
-import org.gtreimagined.gtlib.util.Utils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 
 import java.util.Map;
 
@@ -64,8 +60,8 @@ public class BlockEntityMagicEnergyConverter extends BlockEntityGenerator<BlockE
 
             @Override
             public ITrackedHandler getHandler(SlotType<?> type) {
-                if (type == SlotType.CELL_IN) type = SlotType.IT_IN;
-                if (type == SlotType.CELL_OUT) type = SlotType.IT_OUT;
+                if (type == SlotTypes.CELL_IN) type = SlotTypes.IT_IN;
+                if (type == SlotTypes.CELL_OUT) type = SlotTypes.IT_OUT;
                 return super.getHandler(type);
             }
         });

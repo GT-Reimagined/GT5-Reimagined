@@ -4,7 +4,6 @@ import lombok.Setter;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityUniversalExtender;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.blockentity.IPostTickTile;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
@@ -13,6 +12,7 @@ import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -74,7 +74,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
         this.itemHandler.set(() -> new MachineItemHandler<>(this){
             @Override
             protected TrackedItemHandler<BlockEntityNuclearReactorCore> createTrackedHandler(SlotType<?> type, BlockEntityNuclearReactorCore tile) {
-                if (type == SlotType.STORAGE){
+                if (type == SlotTypes.STORAGE){
                     return new TrackedItemHandler<>(tile, type, 4, type.allowExternalOutput(), type.allowExternalInput(), type.getTester(), 1){
                         @Override
                         public @NotNull ItemStack extractItem(int slot, int amount, boolean simulate) {
@@ -92,11 +92,11 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
     }
 
     public ItemStack getRod(int slot){
-        return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(slot)).orElse(ItemStack.EMPTY);
+        return itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(slot)).orElse(ItemStack.EMPTY);
     }
 
     public void setRod(int slot, ItemStack stack){
-        itemHandler.ifPresent(i -> i.getHandler(SlotType.STORAGE).setStackInSlot(slot, stack));
+        itemHandler.ifPresent(i -> i.getHandler(SlotTypes.STORAGE).setStackInSlot(slot, stack));
     }
 
     @Override
@@ -397,7 +397,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
                         }
                     }
                 }
-                if (isExploding && !itemHandler.get().getHandler(SlotType.STORAGE).isEmpty()){
+                if (isExploding && !itemHandler.get().getHandler(SlotTypes.STORAGE).isEmpty()){
                     level.playSound(null, pos, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 1.0f, 1.0f);
                     tCalc *= 2;
                     setRod(0, ItemStack.EMPTY);
@@ -417,7 +417,7 @@ public class BlockEntityNuclearReactorCore extends BlockEntityMachine<BlockEntit
 
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
-        if (event == SlotType.STORAGE){
+        if (event == SlotTypes.STORAGE){
             sidedSync(true);
         }
         super.onMachineEvent(event, data);

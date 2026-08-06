@@ -6,6 +6,7 @@ import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineItemHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.BlockMachine;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
@@ -28,7 +29,7 @@ public class BlockEntityProcessingArray extends BlockEntityParallelMultiblock<Bl
         this.itemHandler.set(() -> new MultiMachineItemHandler<>(this){
             @Override
             protected TrackedItemHandler<BlockEntityProcessingArray> createTrackedHandler(SlotType<?> type, BlockEntityProcessingArray tile) {
-                if (type == SlotType.STORAGE){
+                if (type == SlotTypes.STORAGE){
                     return new TrackedItemHandler<>(tile, type, 1, type.allowExternalOutput(), false, type.getTester(), 16);
                 }
                 return super.createTrackedHandler(type, tile);
@@ -42,15 +43,15 @@ public class BlockEntityProcessingArray extends BlockEntityParallelMultiblock<Bl
 
             @Override
             protected int maxSimultaneousRecipes(){
-                return itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0).getCount()).orElse(0);
+                return itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0).getCount()).orElse(0);
             }
 
             @Override
             public void onMachineEvent(IMachineEvent event, Object... data) {
-                if (event == SlotType.STORAGE){
+                if (event == SlotTypes.STORAGE){
                     IRecipeMap oldRecipeMap = recipeMap;
                     this.tier = null;
-                    ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+                    ItemStack stack = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                     if (stack.getItem() instanceof BlockItem blockItem){
                         if (blockItem.getBlock() instanceof BlockMachine machine && machine.getType() instanceof BasicMachine){
                             if (machine.getType().getRecipeMap(machine.getTier()) != null){
@@ -68,7 +69,7 @@ public class BlockEntityProcessingArray extends BlockEntityParallelMultiblock<Bl
 
             @Override
             public void init() {
-                ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+                ItemStack stack = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                 if (stack.getItem() instanceof BlockItem blockItem){
                     if (blockItem.getBlock() instanceof BlockMachine machine && machine.getType() instanceof BasicMachine){
                         if (machine.getType().getRecipeMap(machine.getTier()) != null){
@@ -132,7 +133,7 @@ public class BlockEntityProcessingArray extends BlockEntityParallelMultiblock<Bl
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE){
+        if (slotType == SlotTypes.STORAGE){
             if (stack.getItem() instanceof BlockItem blockItem){
                 if (blockItem.getBlock() instanceof BlockMachine machine && machine.getType() instanceof BasicMachine){
                     if (machine.getType().getRecipeMap(machine.getTier()) != null){

@@ -20,7 +20,7 @@ import org.gtreimagined.gtlib.block.BlockBasic;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.client.SoundHelper;
-import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
@@ -71,7 +71,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
             public void checkRecipe() {
                 super.checkRecipe();
                 itemHandler.ifPresent(i -> {
-                    ItemStack circuit = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
+                    ItemStack circuit = i.getHandler(SlotTypes.STORAGE).getStackInSlot(0);
                     if (circuit.getItem() instanceof ItemSelectorTag intCircuit){
                         if (intCircuit.circuitId > 0 && intCircuit.circuitId <= 24){
                             integratedCircuitConfig = intCircuit.circuitId;
@@ -139,7 +139,7 @@ public class BlockEntityLargeBoiler extends BlockEntityMultiMachine<BlockEntityL
             @Override
             public void onMachineEvent(IMachineEvent event, Object... data) {
                 super.onMachineEvent(event, data);
-                if (event == SlotType.STORAGE){
+                if (event == SlotTypes.STORAGE){
                     checkRecipe();
                 }
             }

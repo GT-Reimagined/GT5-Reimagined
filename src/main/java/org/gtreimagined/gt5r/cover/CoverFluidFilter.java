@@ -11,15 +11,13 @@ import brachy.modularui.widgets.CycleButtonWidget;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.cover.base.CoverFilter;
 import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.capability.FluidHandler.FluidTankType;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -30,7 +28,7 @@ import org.jetbrains.annotations.Nullable;
 public class CoverFluidFilter extends CoverFilter {
     public CoverFluidFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.getGuiProperties().getSlots().add(SlotType.FL_PHANTOM, 79, 53);
+        this.getGuiProperties().getSlots().add(SlotTypes.FL_PHANTOM, 79, 53);
     }
 
     @Override

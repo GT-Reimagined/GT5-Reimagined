@@ -17,7 +17,7 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -135,16 +135,16 @@ public class CoverRobotArm extends CoverBasicTransport {
                         }
                         stack.setCount(toInsert.getCount() - inserted.getCount());
                     }
-                } else if (itemHandler.getHandler(SlotType.STORAGE).getSlots() > 0){
-                    ItemStack inserted = itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, toInsert, true);
+                } else if (itemHandler.getHandler(SlotTypes.STORAGE).getSlots() > 0){
+                    ItemStack inserted = itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, true);
                     if (inserted.isEmpty()){
                         if (!simulate) {
-                            itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, toInsert, false);
+                            itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, false);
                         }
                         stack.setCount(0);
                     } else if (inserted.getCount() < toInsert.getCount()) {
                         if (!simulate) {
-                            itemHandler.getHandler(SlotType.STORAGE).insertItem(slot, toInsert, false);
+                            itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, false);
                         }
                         stack.setCount(toInsert.getCount() - inserted.getCount());
                     }
@@ -184,9 +184,9 @@ public class CoverRobotArm extends CoverBasicTransport {
                             if (h.getInputCount() > 0){
                                 slot++;
                                 if (slot >= h.getInputCount()) slot = 0;
-                            } else if (h.getHandler(SlotType.STORAGE).getSlots() > 0){
+                            } else if (h.getHandler(SlotTypes.STORAGE).getSlots() > 0){
                                 slot++;
-                                if (slot >= h.getHandler(SlotType.STORAGE).getSlots()) slot = 0;
+                                if (slot >= h.getHandler(SlotTypes.STORAGE).getSlots()) slot = 0;
                             }else {
                                 slot = 0;
                             }

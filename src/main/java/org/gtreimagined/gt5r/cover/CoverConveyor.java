@@ -22,6 +22,7 @@ import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -52,7 +53,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         this.filter = new CoverItemFilter(source, null, side, GT5RCovers.COVER_ITEM_FILTER);
         filter.onCreate();
         Objects.requireNonNull(tier);
-        this.gui.getSlots().add(SlotType.STORAGE, 79, 53);
+        this.gui.getSlots().add(SlotTypes.STORAGE, 79, 53);
         //addGuiCallback(t -> t.addButton(106, 53, ButtonOverlay.ARROW_LEFT, true));
     }
 
@@ -60,7 +61,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof ItemStack stack){
-            if (getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
+            if (getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
@@ -132,8 +133,8 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
 
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
+        if (tile == this && event == SlotTypes.STORAGE){
+            ItemStack slotStack = getInventory(SlotTypes.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -158,7 +159,7 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotType.STORAGE, 0);
+        onMachineEvent(this, SlotTypes.STORAGE, 0);
     }
 
     @Override

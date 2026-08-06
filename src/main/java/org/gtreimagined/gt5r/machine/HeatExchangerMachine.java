@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.machine;
 
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.BasicMachine;
 import org.gtreimagined.gtlib.texture.Texture;
@@ -10,7 +11,6 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static org.gtreimagined.gtlib.gui.SlotType.*;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
 
@@ -44,8 +44,8 @@ public class HeatExchangerMachine extends BasicMachine {
             tooltip.add(Utils.translatable("tooltip.gt5r.small_heat_exchanger.heat_rate", rate));
             tooltip.add(Utils.translatable("tooltip.gt5r.small_heat_exchanger.efficiency", ((double)efficiency / 100.0) + "%"));
         });
-        add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_IN, 44, 63).add(FL_IN, 62, 63)
-                .add(FL_OUT,107,63).add(FL_OUT,125,63);
+        add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.FL_IN, 44, 63).add(SlotTypes.FL_IN, 62, 63)
+                .add(SlotTypes.FL_OUT,107,63).add(SlotTypes.FL_OUT,125,63);
     }
 
     public HeatExchangerMachine setEfficiency(int efficiency) {

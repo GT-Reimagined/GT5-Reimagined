@@ -20,10 +20,10 @@ import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.mui.GTGuiTextures;
-import org.gtreimagined.gtlib.mui.drawable.GTDrawableStack;
 import org.gtreimagined.gtlib.mui.widgets.GTFluidSlot;
 import org.gtreimagined.gtlib.util.FluidUtils;
 import org.gtreimagined.gtlib.util.Utils;
@@ -58,7 +58,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         Objects.requireNonNull(tier);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotType.STORAGE, 88, 53);
+        this.gui.getSlots().add(SlotTypes.STORAGE, 88, 53);
     }
 
     @Override
@@ -68,7 +68,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         modularPanel.child(new ButtonWidget<>().overlay(new ItemDrawable(GT5RCovers.COVER_FLUID_FILTER.getItem()))
                 .pos(70, 53).size(16)
                 .onMousePressed((context, mouseButton) -> {
-                    if (this.getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
+                    if (this.getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty()) return false;
                     panelSyncHandler.openPanel();
                     return true;
                 })
@@ -98,7 +98,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
                 .addTooltip(1, Text.lang("tooltip.gt5r.filter_mode.1"))
                 .addTooltip(2, Text.lang("tooltip.gt5r.filter_mode.2"))
         );
-        FluidTanks tanks = SlotType.FL_PHANTOM.getFluidHandlerSupplier().apply(filter);
+        FluidTanks tanks = SlotTypes.FL_PHANTOM.getFluidHandlerSupplier().apply(filter);
         GTFluidSlot fluidSlot = new GTFluidSlot();
         fluidSlot.pos(18, 27).alwaysShowFull(true)
                 .syncHandler(new FluidSlotSyncHandler(tanks.getTank(0)).phantom(true));
@@ -114,7 +114,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof FluidStack stack){
-            if (getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
+            if (getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
@@ -158,8 +158,8 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
 
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
+        if (tile == this && event == SlotTypes.STORAGE){
+            ItemStack slotStack = getInventory(SlotTypes.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -172,7 +172,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotType.STORAGE, 0);
+        onMachineEvent(this, SlotTypes.STORAGE, 0);
     }
 
     @Override

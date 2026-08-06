@@ -19,6 +19,7 @@ import org.gtreimagined.gtcore.mui.GTCoreThemes;
 import org.gtreimagined.gtlib.blockentity.IFuelMachine;
 import org.gtreimagined.gtlib.gui.GuiProperties;
 import org.gtreimagined.gtlib.gui.SlotData;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
 import org.gtreimagined.gtlib.gui.slot.SlotEnergy;
 import org.gtreimagined.gtlib.machine.IPanelFunction;
@@ -37,7 +38,6 @@ import org.gtreimagined.gtlib.util.int2;
 import java.util.function.Function;
 
 import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
-import static org.gtreimagined.gtlib.gui.SlotType.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
@@ -45,53 +45,53 @@ public class Guis {
 
     // TODO move these to the API somehow
     public static GuiProperties MULTI_DISPLAY = new GuiProperties(GT5Reimagined.ID, "multi_display").setSlots(ISlotProvider.DEFAULT()
-            .add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
-            .add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16).add(IT_OUT, 107, 34)
-            .add(IT_OUT, 125, 34).add(IT_OUT, 143, 34).add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
-            .add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(FL_OUT, 143, 63));
+            .add(SlotTypes.IT_IN, 17, 16).add(SlotTypes.IT_IN, 35, 16).add(SlotTypes.IT_IN, 53, 16).add(SlotTypes.IT_IN, 17, 34).add(SlotTypes.IT_IN, 35, 34)
+            .add(SlotTypes.IT_IN, 53, 34).add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16).add(SlotTypes.IT_OUT, 143, 16).add(SlotTypes.IT_OUT, 107, 34)
+            .add(SlotTypes.IT_OUT, 125, 34).add(SlotTypes.IT_OUT, 143, 34).add(SlotTypes.FL_IN, 17, 63).add(SlotTypes.FL_IN, 35, 63).add(SlotTypes.FL_IN, 53, 63)
+            .add(SlotTypes.FL_OUT, 107, 63).add(SlotTypes.FL_OUT, 125, 63).add(SlotTypes.FL_OUT, 143, 63));
 
     public static GuiProperties ALLOY_SMELTER_DISPLAY = new GuiProperties(GT5Reimagined.ID, "alloy_smelter").setSlots(ISlotProvider.DEFAULT()
-            .add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
-            .add(IT_OUT, 107, 25));
+            .add(SlotTypes.IT_IN, 35, 16).add(SlotTypes.IT_IN, 53, 16).add(SlotTypes.IT_IN, 35, 34).add(SlotTypes.IT_IN, 53, 34)
+            .add(SlotTypes.IT_OUT, 107, 25));
 
     public static GuiProperties SIMPLE_DISPLAY = new GuiProperties(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
-            .add(IT_IN, 53, 25).add(IT_OUT, 107, 25));
+            .add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25));
     public static GuiProperties BEDROCK_DRILL_DISPLAY = new GuiProperties(GT5Reimagined.ID, "simple_display").setSlots(ISlotProvider.DEFAULT()
-            .add(IT_IN, 53, 25).add(FL_IN, 53, 63)
-            .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
-            .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
-            .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
-            .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61));
+            .add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.FL_IN, 53, 63)
+            .add(SlotTypes.IT_OUT, 107, 7).add(SlotTypes.IT_OUT, 125, 7).add(SlotTypes.IT_OUT, 143, 7)
+            .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25)
+            .add(SlotTypes.IT_OUT, 107, 43).add(SlotTypes.IT_OUT, 125, 43).add(SlotTypes.IT_OUT, 143, 43)
+            .add(SlotTypes.IT_OUT, 107, 61).add(SlotTypes.IT_OUT, 125, 61).add(SlotTypes.IT_OUT, 143, 61));
 
     public static GuiProperties MULTI_DISPLAY_FLUID = new GuiProperties(GT5Reimagined.ID, "multi_display_fluid").setSlots(ISlotProvider.DEFAULT()
-            .add(FL_IN, 17, 63).add(FL_IN, 35, 63).add(FL_IN, 53, 63)
-            .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7)
-            .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
-            .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
-            .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61));
+            .add(SlotTypes.FL_IN, 17, 63).add(SlotTypes.FL_IN, 35, 63).add(SlotTypes.FL_IN, 53, 63)
+            .add(SlotTypes.FL_OUT, 107, 7).add(SlotTypes.FL_OUT, 125, 7).add(SlotTypes.FL_OUT, 143, 7)
+            .add(SlotTypes.FL_OUT, 107, 25).add(SlotTypes.FL_OUT, 125, 25).add(SlotTypes.FL_OUT, 143, 25)
+            .add(SlotTypes.FL_OUT, 107, 43).add(SlotTypes.FL_OUT, 125, 43).add(SlotTypes.FL_OUT, 143, 43)
+            .add(SlotTypes.FL_OUT, 107, 61).add(SlotTypes.FL_OUT, 125, 61).add(SlotTypes.FL_OUT, 143, 61));
 
     public static GuiProperties MULTI_DISPLAY_DISTILLATION = new GuiProperties(GT5Reimagined.ID, "multi_display_distillation").setSlots(ISlotProvider.DEFAULT()
-            .add(FL_IN, 53, 43)
-            .add(IT_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
-            .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
-            .add(FL_OUT, 107, 25).add(FL_OUT, 125, 25).add(FL_OUT, 143, 25)
-            .add(FL_OUT, 107, 7).add(FL_OUT, 125, 7).add(FL_OUT, 143, 7));
+            .add(SlotTypes.FL_IN, 53, 43)
+            .add(SlotTypes.IT_OUT, 107, 61).add(SlotTypes.FL_OUT, 125, 61).add(SlotTypes.FL_OUT, 143, 61)
+            .add(SlotTypes.FL_OUT, 107, 43).add(SlotTypes.FL_OUT, 125, 43).add(SlotTypes.FL_OUT, 143, 43)
+            .add(SlotTypes.FL_OUT, 107, 25).add(SlotTypes.FL_OUT, 125, 25).add(SlotTypes.FL_OUT, 143, 25)
+            .add(SlotTypes.FL_OUT, 107, 7).add(SlotTypes.FL_OUT, 125, 7).add(SlotTypes.FL_OUT, 143, 7));
     public static GuiProperties MULTI_DISPLAY_COMPACT = new GuiProperties(GT5Reimagined.ID, "multi_display")
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
     public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank")
-            .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53)
-                    .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build()));
+            .setSlots(ISlotProvider.DEFAULT().add(SlotTypes.CELL_IN, 8, 17).add(SlotTypes.CELL_OUT, 8, 53)
+                    .add(SlotTypes.FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build()));
     public static GuiProperties COKE_OVEN_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "coke_oven_recipe_gui")
-            .setSlots(ISlotProvider.DEFAULT().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25));
+            .setSlots(ISlotProvider.DEFAULT().add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.FL_OUT, 125, 25));
     public static GuiProperties PBF_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "pbf_recipe_gui").setSlots(
-            ISlotProvider.DEFAULT().add(IT_IN, 53, 16).add(IT_IN, 53, 34).add(IT_IN, 53, 52)
-                    .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25));
+            ISlotProvider.DEFAULT().add(SlotTypes.IT_IN, 53, 16).add(SlotTypes.IT_IN, 53, 34).add(SlotTypes.IT_IN, 53, 52)
+                    .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25));
 
-    public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(STORAGE, 152, 5));
+    public static GuiProperties MULTIBLOCK = new GuiProperties(GT5Reimagined.ID, "multiblock").setSlots(ISlotProvider.DEFAULT().add(SlotTypes.STORAGE, 152, 5));
 
-    public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts").setSlots(ISlotProvider.DEFAULT().add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16)
-                    .add(IT_IN, 17, 34).add(IT_IN, 35, 34).add(IT_IN, 53, 34).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
-                    .add(IT_OUT, 143, 16).add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34));
+    public static GuiProperties ORE_BYPRODUCTS = new GuiProperties(GT5Reimagined.ID, "ore_byproducts").setSlots(ISlotProvider.DEFAULT().add(SlotTypes.IT_IN, 17, 16).add(SlotTypes.IT_IN, 35, 16).add(SlotTypes.IT_IN, 53, 16)
+                    .add(SlotTypes.IT_IN, 17, 34).add(SlotTypes.IT_IN, 35, 34).add(SlotTypes.IT_IN, 53, 34).add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16)
+                    .add(SlotTypes.IT_OUT, 143, 16).add(SlotTypes.IT_OUT, 107, 34).add(SlotTypes.IT_OUT, 125, 34).add(SlotTypes.IT_OUT, 143, 34));
 
     public static void init(Dist side) {
         slots();
@@ -101,219 +101,219 @@ public class Guis {
     }
 
     public static void slots(){
-        HULL.add(STORAGE, 80, 40).add(FL_IN, 80, 63);
-        ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
-        ARC_FURNACE.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
-                .add(IT_OUT, 125, 34).add(IT_OUT, 107, 34).add(ENERGY, 80, 63);
-        ASSEMBLER.add(IT_IN, 17, 16).add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 17, 34).add(IT_IN, 35, 34)
-                .add(IT_IN, 53, 34).add(IT_OUT, 107, 25)
-                .add(FL_IN, 53, 63)
-                .add(ENERGY, 80, 63);
+        HULL.add(SlotTypes.STORAGE, 80, 40).add(SlotTypes.FL_IN, 80, 63);
+        ALLOY_SMELTER.add(SlotTypes.IT_IN, 35, 25).add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.ENERGY, 80, 63);
+        ARC_FURNACE.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16)
+                .add(SlotTypes.IT_OUT, 125, 34).add(SlotTypes.IT_OUT, 107, 34).add(SlotTypes.ENERGY, 80, 63);
+        ASSEMBLER.add(SlotTypes.IT_IN, 17, 16).add(SlotTypes.IT_IN, 35, 16).add(SlotTypes.IT_IN, 53, 16).add(SlotTypes.IT_IN, 17, 34).add(SlotTypes.IT_IN, 35, 34)
+                .add(SlotTypes.IT_IN, 53, 34).add(SlotTypes.IT_OUT, 107, 25)
+                .add(SlotTypes.FL_IN, 53, 63)
+                .add(SlotTypes.ENERGY, 80, 63);
         BENDER.add(ALLOY_SMELTER);
-        CANNER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
+        CANNER.add(SlotTypes.IT_IN, 35, 25).add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.ENERGY, 80, 63);
         CIRCUIT_ASSEMBLER.add(ASSEMBLER);
-        COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
-        CRYSTALLIZATION_CHAMBER.add(IT_IN, 35, 16).add(IT_IN, 53, 16)
-                .add(FL_IN, 17, 34).add(FL_IN, 35, 34).add(FL_IN, 53, 34)
-                .add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
-        CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
-        FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
+        COMPRESSOR.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.ENERGY, 80, 63);
+        CRYSTALLIZATION_CHAMBER.add(SlotTypes.IT_IN, 35, 16).add(SlotTypes.IT_IN, 53, 16)
+                .add(SlotTypes.FL_IN, 17, 34).add(SlotTypes.FL_IN, 35, 34).add(SlotTypes.FL_IN, 53, 34)
+                .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.ENERGY, 80, 63);
+        CUTTER.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.ENERGY, 80, 63);
+        FURNACE.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.ENERGY, 80, 63);
         EXTRACTOR.add(COMPRESSOR);
         EXTRUDER.add(ALLOY_SMELTER);
-        LATHE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(ENERGY, 80, 63);
+        LATHE.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.ENERGY, 80, 63);
         MACERATOR.add(COMPRESSOR);
-        MACERATOR.add(HV, IT_IN, 53, 25).add(HV, IT_OUT, 107, 16).add(HV, IT_OUT, 125, 16).add(HV, IT_OUT, 107, 34)
-                .add(HV, IT_OUT, 125, 34).add(HV, ENERGY, 80, 63);
-        MACERATOR.add(EV, IT_IN, 53, 25).add(EV, IT_OUT, 107, 16).add(EV, IT_OUT, 125, 16).add(EV, IT_OUT, 107, 34)
-                .add(EV, IT_OUT, 125, 34).add(EV, ENERGY, 80, 63);
-        ROASTER.add(IT_IN, 53, 25).add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 107, 34)
-                .add(IT_OUT, 125, 34).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        RECYCLER.add(COMPRESSOR).add(FL_IN, 53, 63);
+        MACERATOR.add(HV, SlotTypes.IT_IN, 53, 25).add(HV, SlotTypes.IT_OUT, 107, 16).add(HV, SlotTypes.IT_OUT, 125, 16).add(HV, SlotTypes.IT_OUT, 107, 34)
+                .add(HV, SlotTypes.IT_OUT, 125, 34).add(HV, SlotTypes.ENERGY, 80, 63);
+        MACERATOR.add(EV, SlotTypes.IT_IN, 53, 25).add(EV, SlotTypes.IT_OUT, 107, 16).add(EV, SlotTypes.IT_OUT, 125, 16).add(EV, SlotTypes.IT_OUT, 107, 34)
+                .add(EV, SlotTypes.IT_OUT, 125, 34).add(EV, SlotTypes.ENERGY, 80, 63);
+        ROASTER.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16).add(SlotTypes.IT_OUT, 107, 34)
+                .add(SlotTypes.IT_OUT, 125, 34).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.FL_OUT, 107, 63);
+        RECYCLER.add(COMPRESSOR).add(SlotTypes.FL_IN, 53, 63);
         WIRE_MILL.add(COMPRESSOR);
-        CENTRIFUGE.add(IT_IN, 35, 25)
-                .add(FL_IN, 53, 25)
-                .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
-                .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
-                .add(FL_OUT, 107, 43).add(FL_OUT, 125, 43).add(FL_OUT, 143, 43)
-                .add(FL_OUT, 107, 61).add(FL_OUT, 125, 61).add(FL_OUT, 143, 61)
-                .add(ENERGY, 17, 25);
+        CENTRIFUGE.add(SlotTypes.IT_IN, 35, 25)
+                .add(SlotTypes.FL_IN, 53, 25)
+                .add(SlotTypes.IT_OUT, 107, 7).add(SlotTypes.IT_OUT, 125, 7).add(SlotTypes.IT_OUT, 143, 7)
+                .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25)
+                .add(SlotTypes.FL_OUT, 107, 43).add(SlotTypes.FL_OUT, 125, 43).add(SlotTypes.FL_OUT, 143, 43)
+                .add(SlotTypes.FL_OUT, 107, 61).add(SlotTypes.FL_OUT, 125, 61).add(SlotTypes.FL_OUT, 143, 61)
+                .add(SlotTypes.ENERGY, 17, 25);
         ELECTRIC_OVEN.add(FURNACE);
-        ELECTROLYZER.add(CENTRIFUGE).add(IT_IN, 35, 43).add(FL_IN,53, 43);
-        THERMAL_CENTRIFUGE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(ENERGY,
+        ELECTROLYZER.add(CENTRIFUGE).add(SlotTypes.IT_IN, 35, 43).add(SlotTypes.FL_IN,53, 43);
+        THERMAL_CENTRIFUGE.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25).add(SlotTypes.ENERGY,
                 80, 63);
-        ORE_WASHER.add(THERMAL_CENTRIFUGE).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        CHEMICAL_REACTOR.add(IT_IN, 26, 16).add(IT_IN, 44, 16)
-                .add(FL_IN, 17, 34).add(FL_IN, 35, 34).add(FL_IN, 53, 34)
-                .add(IT_OUT, 116, 16).add(IT_OUT, 134, 16)
-                .add(FL_OUT, 107, 34).add(FL_OUT, 125, 34).add(FL_OUT, 143, 34)
-                .add(ENERGY, 80, 63);
-        FLUID_CANNER.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        DISASSEMBLER.add(IT_IN, 53, 25)
-                .add(IT_OUT, 107, 7).add(IT_OUT, 107 + 18, 7).add(IT_OUT, 107 + 18 * 2, 7)
-                .add(IT_OUT, 107, 25).add(IT_OUT, 107 + 18, 25).add(IT_OUT, 107 + 18 * 2, 25)
-                .add(IT_OUT, 107, 43).add(IT_OUT, 107 + 18, 43).add(IT_OUT, 107 + 18 * 2, 43)
-                .add(ENERGY, 80, 63);
-        MASS_FABRICATOR.add(COMPRESSOR).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
-        REPLICATOR.add(COMPRESSOR).add(FL_IN, 44, 63).add(FL_IN, 62, 63).add(FL_OUT, 107, 63);
+        ORE_WASHER.add(THERMAL_CENTRIFUGE).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.FL_OUT, 107, 63);
+        CHEMICAL_REACTOR.add(SlotTypes.IT_IN, 26, 16).add(SlotTypes.IT_IN, 44, 16)
+                .add(SlotTypes.FL_IN, 17, 34).add(SlotTypes.FL_IN, 35, 34).add(SlotTypes.FL_IN, 53, 34)
+                .add(SlotTypes.IT_OUT, 116, 16).add(SlotTypes.IT_OUT, 134, 16)
+                .add(SlotTypes.FL_OUT, 107, 34).add(SlotTypes.FL_OUT, 125, 34).add(SlotTypes.FL_OUT, 143, 34)
+                .add(SlotTypes.ENERGY, 80, 63);
+        FLUID_CANNER.add(COMPRESSOR).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.FL_OUT, 107, 63);
+        DISASSEMBLER.add(SlotTypes.IT_IN, 53, 25)
+                .add(SlotTypes.IT_OUT, 107, 7).add(SlotTypes.IT_OUT, 107 + 18, 7).add(SlotTypes.IT_OUT, 107 + 18 * 2, 7)
+                .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 107 + 18, 25).add(SlotTypes.IT_OUT, 107 + 18 * 2, 25)
+                .add(SlotTypes.IT_OUT, 107, 43).add(SlotTypes.IT_OUT, 107 + 18, 43).add(SlotTypes.IT_OUT, 107 + 18 * 2, 43)
+                .add(SlotTypes.ENERGY, 80, 63);
+        MASS_FABRICATOR.add(COMPRESSOR).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.FL_OUT, 107, 63).add(SlotTypes.FL_OUT, 125, 63);
+        REPLICATOR.add(COMPRESSOR).add(SlotTypes.FL_IN, 44, 63).add(SlotTypes.FL_IN, 62, 63).add(SlotTypes.FL_OUT, 107, 63);
         ROCK_BREAKER.add(COMPRESSOR);
         FERMENTER.add(FLUID_CANNER);
-        FLUID_PRESS.add(COMPRESSOR).add(FL_OUT, 107, 63);
-        SMELTER.add(IT_IN, 53, 25).add(ENERGY, 80, 63).add(FL_OUT, 107, 25);
-        FLUID_HEATER.add(ENERGY, 80, 63).add(FL_IN, 53, 63).add(FL_OUT, 107, 63);
-        FLUID_SOLIDIFIER.add(COMPRESSOR).add(FL_IN, 53, 63);
-        SCANNER.add(FLUID_SOLIDIFIER).add(IT_IN, 125, 63);
+        FLUID_PRESS.add(COMPRESSOR).add(SlotTypes.FL_OUT, 107, 63);
+        SMELTER.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.ENERGY, 80, 63).add(SlotTypes.FL_OUT, 107, 25);
+        FLUID_HEATER.add(SlotTypes.ENERGY, 80, 63).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.FL_OUT, 107, 63);
+        FLUID_SOLIDIFIER.add(COMPRESSOR).add(SlotTypes.FL_IN, 53, 63);
+        SCANNER.add(FLUID_SOLIDIFIER).add(SlotTypes.IT_IN, 125, 63);
         PRINTER.add(SCANNER);
         DISTILLERY.add(FLUID_CANNER);
-        BATH.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25).add(FL_IN, 53, 63).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63);
-        AUTOCLAVE.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
-                .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16)
-                .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34)
-                .add(ENERGY, 80, 63).add(FL_IN, 53, 63);
+        BATH.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.FL_OUT, 107, 63).add(SlotTypes.FL_OUT, 125, 63);
+        AUTOCLAVE.add(SlotTypes.IT_IN, 35, 25).add(SlotTypes.IT_IN, 53, 25)
+                .add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16)
+                .add(SlotTypes.IT_OUT, 107, 34).add(SlotTypes.IT_OUT, 125, 34)
+                .add(SlotTypes.ENERGY, 80, 63).add(SlotTypes.FL_IN, 53, 63);
         UITexture craft = GT5RGuiTextures.CRAFTING_SLOT_OVERLAY;
-        AUTOCRAFTER.add(IT_IN, b -> b.x(17).y(7).overlayTexture(craft).build()).add(IT_IN, 35, 7).add(IT_IN, b -> b.x(53).y(7).overlayTexture(craft).build())
-                .add(IT_IN, 17, 25).add(IT_IN, b -> b.x(35).y(25).overlayTexture(craft).build()).add(IT_IN, 53, 25)
-                .add(IT_IN, b -> b.x(17).y(43).overlayTexture(craft).build()).add(IT_IN, 35, 43).add(IT_IN, b -> b.x(53).y(43).overlayTexture(craft).build())
-                .add(STORAGE, b -> b.x(53).y(63).overlayTexture(GT5RGuiTextures.BLUEPRINT_SLOT_OVERLAY).build())
-                .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
-                .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
-                .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
-                .add(IT_OUT, 107, 61).add(IT_OUT, 125, 61).add(IT_OUT, 143, 61);
+        AUTOCRAFTER.add(SlotTypes.IT_IN, b -> b.x(17).y(7).overlayTexture(craft).build()).add(SlotTypes.IT_IN, 35, 7).add(SlotTypes.IT_IN, b -> b.x(53).y(7).overlayTexture(craft).build())
+                .add(SlotTypes.IT_IN, 17, 25).add(SlotTypes.IT_IN, b -> b.x(35).y(25).overlayTexture(craft).build()).add(SlotTypes.IT_IN, 53, 25)
+                .add(SlotTypes.IT_IN, b -> b.x(17).y(43).overlayTexture(craft).build()).add(SlotTypes.IT_IN, 35, 43).add(SlotTypes.IT_IN, b -> b.x(53).y(43).overlayTexture(craft).build())
+                .add(SlotTypes.STORAGE, b -> b.x(53).y(63).overlayTexture(GT5RGuiTextures.BLUEPRINT_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_OUT, 107, 7).add(SlotTypes.IT_OUT, 125, 7).add(SlotTypes.IT_OUT, 143, 7)
+                .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25)
+                .add(SlotTypes.IT_OUT, 107, 43).add(SlotTypes.IT_OUT, 125, 43).add(SlotTypes.IT_OUT, 143, 43)
+                .add(SlotTypes.IT_OUT, 107, 61).add(SlotTypes.IT_OUT, 125, 61).add(SlotTypes.IT_OUT, 143, 61);
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR);
-        MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
-                .add(FL_IN, b -> b.x(44).y(63).jeiX(35).build()).add(FL_IN, b -> b.x(62).y(63).jeiX(53).build())
-                .add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
+        MIXER.add(SlotTypes.IT_IN, 35, 16).add(SlotTypes.IT_IN, 53, 16).add(SlotTypes.IT_IN, 35, 34).add(SlotTypes.IT_IN, 53, 34)
+                .add(SlotTypes.FL_IN, b -> b.x(44).y(63).jeiX(35).build()).add(SlotTypes.FL_IN, b -> b.x(62).y(63).jeiX(53).build())
+                .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.FL_OUT, 107, 63).add(SlotTypes.FL_OUT, 125, 63).add(SlotTypes.ENERGY, 80, 63);
         LASER_CUTTER.add(COMPRESSOR);
         LASER_ENGRAVER.add(ALLOY_SMELTER);
-        FORMING_PRESS.add(IT_IN, 17, 25).add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(ENERGY, 80, 63);
+        FORMING_PRESS.add(SlotTypes.IT_IN, 17, 25).add(SlotTypes.IT_IN, 35, 25).add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.ENERGY, 80, 63);
         FORGE_HAMMER.add(FURNACE);
         UNPACKAGER.add(ALLOY_SMELTER);
         for (int y = 0; y < 3; y++){
             for (int x = 0; x < 9; x++){
-                CHEST_BUFFER.add(STORAGE, 8 + (x * 18), 5 + (y * 18));
+                CHEST_BUFFER.add(SlotTypes.STORAGE, 8 + (x * 18), 5 + (y * 18));
             }
         }
-        SIFTER.add(IT_IN, 53, 25)
-                .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
-                .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
-                .add(ENERGY, 80, 63);
+        SIFTER.add(SlotTypes.IT_IN, 53, 25)
+                .add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16).add(SlotTypes.IT_OUT, 143, 16)
+                .add(SlotTypes.IT_OUT, 107, 34).add(SlotTypes.IT_OUT, 125, 34).add(SlotTypes.IT_OUT, 143, 34)
+                .add(SlotTypes.ENERGY, 80, 63);
         ELECTROMAGNETIC_SEPARATOR.add(SIFTER);
-        DEHYDRATOR.add(IT_IN, 35, 25).add(IT_IN, 53, 25)
-                .add(FL_IN,35,43).add(FL_IN,53,43)
-                .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
-                .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
-                .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
-                .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
-                .add(ENERGY,80,63);
-        COKE_OVEN.add(IT_IN, b -> b.x(53).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(FL_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_CELL_SLOT_OVERLAY).build());
+        DEHYDRATOR.add(SlotTypes.IT_IN, 35, 25).add(SlotTypes.IT_IN, 53, 25)
+                .add(SlotTypes.FL_IN,35,43).add(SlotTypes.FL_IN,53,43)
+                .add(SlotTypes.IT_OUT, 107, 7).add(SlotTypes.IT_OUT, 125, 7).add(SlotTypes.IT_OUT, 143, 7)
+                .add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(SlotTypes.IT_OUT, 143, 25)
+                .add(SlotTypes.IT_OUT, 107, 43).add(SlotTypes.IT_OUT, 125, 43).add(SlotTypes.IT_OUT, 143, 43)
+                .add(SlotTypes.FL_OUT,107,63).add(SlotTypes.FL_OUT,125,63).add(SlotTypes.FL_OUT,143,63)
+                .add(SlotTypes.ENERGY,80,63);
+        COKE_OVEN.add(SlotTypes.IT_IN, b -> b.x(53).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(SlotTypes.FL_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_CELL_SLOT_OVERLAY).build());
         UITexture bat = GT5RGuiTextures.BATTERY_SLOT_OVERLAY;
         TriFunction<Integer, Integer, SlotData.SlotDataBuilder<SlotEnergy>, SlotData<SlotEnergy>> batFunction = (x, y, b) -> b.x(x).y(y).overlayTexture(bat).build();
-        BATTERY_BUFFER_FOUR.add(ENERGY, b -> batFunction.apply(71, 27, b)).add(ENERGY, b -> batFunction.apply(89, 27, b))
-                .add(ENERGY, b -> batFunction.apply(71, 45, b)).add(ENERGY, b -> batFunction.apply(89, 45, b));
-        BATTERY_BUFFER_ONE.add(ENERGY, b -> batFunction.apply(80, 40, b));
+        BATTERY_BUFFER_FOUR.add(SlotTypes.ENERGY, b -> batFunction.apply(71, 27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89, 27, b))
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(71, 45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89, 45, b));
+        BATTERY_BUFFER_ONE.add(SlotTypes.ENERGY, b -> batFunction.apply(80, 40, b));
         BATTERY_BUFFER_EIGHT
-                .add(ENERGY, b -> batFunction.apply(53,27, b)).add(ENERGY, b -> batFunction.apply(71,27, b)).add(ENERGY, b -> batFunction.apply(89,27, b)).add(ENERGY, b -> batFunction.apply(107,27, b))
-                .add(ENERGY, b -> batFunction.apply(53,45, b)).add(ENERGY, b -> batFunction.apply(71,45, b)).add(ENERGY, b -> batFunction.apply(89,45, b)).add(ENERGY, b -> batFunction.apply(107,45, b));
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(53,27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(71,27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89,27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(107,27, b))
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(53,45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(71,45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89,45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(107,45, b));
         BATTERY_BUFFER_SIXTEEN
-                .add(ENERGY, b -> batFunction.apply(53,9, b)).add(ENERGY, b -> batFunction.apply(71,9, b)).add(ENERGY, b -> batFunction.apply(89,9, b)).add(ENERGY, b -> batFunction.apply(107,9, b))
-                .add(ENERGY, b -> batFunction.apply(53,27, b)).add(ENERGY, b -> batFunction.apply(71,27, b)).add(ENERGY, b -> batFunction.apply(89,27, b)).add(ENERGY, b -> batFunction.apply(107,27, b))
-                .add(ENERGY, b -> batFunction.apply(53,45, b)).add(ENERGY, b -> batFunction.apply(71,45, b)).add(ENERGY, b -> batFunction.apply(89,45, b)).add(ENERGY, b -> batFunction.apply(107,45, b))
-                .add(ENERGY, b -> batFunction.apply(53,63, b)).add(ENERGY, b -> batFunction.apply(71,63, b)).add(ENERGY, b -> batFunction.apply(89,63, b)).add(ENERGY, b -> batFunction.apply(107,63, b));
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(53,9, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(71,9, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89,9, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(107,9, b))
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(53,27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(71,27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89,27, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(107,27, b))
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(53,45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(71,45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89,45, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(107,45, b))
+                .add(SlotTypes.ENERGY, b -> batFunction.apply(53,63, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(71,63, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(89,63, b)).add(SlotTypes.ENERGY, b -> batFunction.apply(107,63, b));
 
-        SOLID_FUEL_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
-                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build())
-                .add(BRONZE, IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.BRONZE_DUST_SLOT_OVERLAY).build())
-                .add(BRONZE, IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.BRONZE_COAL_SLOT_OVERLAY).build());
-        SOLID_FUEL_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
-                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build())
-                .add(STEEL, IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.STEEL_DUST_SLOT_OVERLAY).build())
-                .add(STEEL, IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.STEEL_COAL_SLOT_OVERLAY).build());
-        LAVA_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
-                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build());
-        SOLAR_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
-                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build());
+        SOLID_FUEL_BOILER.add(BRONZE, SlotTypes.CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
+                .add(BRONZE, SlotTypes.CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build())
+                .add(BRONZE, SlotTypes.IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.BRONZE_DUST_SLOT_OVERLAY).build())
+                .add(BRONZE, SlotTypes.IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.BRONZE_COAL_SLOT_OVERLAY).build());
+        SOLID_FUEL_BOILER.add(STEEL, SlotTypes.CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
+                .add(STEEL, SlotTypes.CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build())
+                .add(STEEL, SlotTypes.IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.STEEL_DUST_SLOT_OVERLAY).build())
+                .add(STEEL, SlotTypes.IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.STEEL_COAL_SLOT_OVERLAY).build());
+        LAVA_BOILER.add(STEEL, SlotTypes.CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
+                .add(STEEL, SlotTypes.CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build());
+        SOLAR_BOILER.add(BRONZE, SlotTypes.CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
+                .add(BRONZE, SlotTypes.CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build());
 
-        STEAM_ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_FURNACE.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_EXTRACTOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_MACERATOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_FORGE_HAMMER.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
-        STEAM_CUTTER.add(IT_IN, 53, 25).add(FL_IN, 53, 63).add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(PARK, 80, 63).add(FL_IN, 35, 63);
-        STEAM_SIFTER.add(IT_IN, 53, 25)
-                .add(IT_OUT, 107, 16).add(IT_OUT, 125, 16).add(IT_OUT, 143, 16)
-                .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34).add(IT_OUT, 143, 34)
-                .add(PARK, 80, 63).add(FL_IN, 53, 63);
+        STEAM_ALLOY_SMELTER.add(SlotTypes.IT_IN, 35, 25).add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
+        STEAM_COMPRESSOR.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
+        STEAM_FURNACE.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
+        STEAM_EXTRACTOR.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
+        STEAM_MACERATOR.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
+        STEAM_FORGE_HAMMER.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.IT_OUT, 107, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
+        STEAM_CUTTER.add(SlotTypes.IT_IN, 53, 25).add(SlotTypes.FL_IN, 53, 63).add(SlotTypes.IT_OUT, 107, 25).add(SlotTypes.IT_OUT, 125, 25).add(PARK, 80, 63).add(SlotTypes.FL_IN, 35, 63);
+        STEAM_SIFTER.add(SlotTypes.IT_IN, 53, 25)
+                .add(SlotTypes.IT_OUT, 107, 16).add(SlotTypes.IT_OUT, 125, 16).add(SlotTypes.IT_OUT, 143, 16)
+                .add(SlotTypes.IT_OUT, 107, 34).add(SlotTypes.IT_OUT, 125, 34).add(SlotTypes.IT_OUT, 143, 34)
+                .add(PARK, 80, 63).add(SlotTypes.FL_IN, 53, 63);
         STEAM_TURBINE.add(BASIC_TANK.getSlots());
         GAS_TURBINE.add(BASIC_TANK.getSlots());
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
-        MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53)
-                .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build());
-        NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43).add(FL_IN, 70, 61).add(FL_OUT, 88, 61);
+        MAGIC_ENERGY_CONVERTER.add(SlotTypes.IT_IN, 8, 17).add(SlotTypes.IT_OUT, 8, 53)
+                .add(SlotTypes.FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build());
+        NUCLEAR_REACTOR_CORE.add(SlotTypes.STORAGE, 70, 25).add(SlotTypes.STORAGE, 70, 43).add(SlotTypes.STORAGE, 88, 25).add(SlotTypes.STORAGE, 88, 43).add(SlotTypes.FL_IN, 70, 61).add(SlotTypes.FL_OUT, 88, 61);
 
-        CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
-                .add(IT_OUT, 62, 34).add(IT_OUT, 80, 34).add(IT_OUT, 98, 34)
-                .add(IT_OUT, 62, 52).add(IT_OUT, 80, 52).add(IT_OUT, 98, 52);
+        CROP_HARVESTER.add(SlotTypes.IT_OUT, 62, 16).add(SlotTypes.IT_OUT, 80, 16).add(SlotTypes.IT_OUT, 98, 16)
+                .add(SlotTypes.IT_OUT, 62, 34).add(SlotTypes.IT_OUT, 80, 34).add(SlotTypes.IT_OUT, 98, 34)
+                .add(SlotTypes.IT_OUT, 62, 52).add(SlotTypes.IT_OUT, 80, 52).add(SlotTypes.IT_OUT, 98, 52);
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots());
-        PRIMITIVE_BLAST_FURNACE.add(IT_IN, b -> b.x(53).y(16).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(IT_IN, b -> b.x(53).y(34).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
-                .add(IT_IN, b -> b.x(53).y(52).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(143).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build());
+        PRIMITIVE_BLAST_FURNACE.add(SlotTypes.IT_IN, b -> b.x(53).y(16).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_IN, b -> b.x(53).y(34).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_IN, b -> b.x(53).y(52).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build())
+                .add(SlotTypes.IT_OUT, b -> b.x(143).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build());
 
-        MUFFLER_HATCH.add(IT_IN, 79, 34);
+        MUFFLER_HATCH.add(SlotTypes.IT_IN, 79, 34);
 
-        INPUT_BUS.add(ULV, IT_IN, 79, 34);
-        INPUT_BUS.add(LV, IT_IN, 70, 25).add(LV, IT_IN, 88, 25).add(LV, IT_IN, 70, 43).add(LV, IT_IN, 88, 43);
-        INPUT_BUS.add(MV, IT_IN, 61, 16).add(MV, IT_IN, 79, 16).add(MV, IT_IN, 97, 16).add(MV, IT_IN, 61, 34)
-                .add(MV, IT_IN, 79, 34).add(MV, IT_IN, 97, 34).add(MV, IT_IN, 61, 52).add(MV, IT_IN, 79, 52)
-                .add(MV, IT_IN, 97, 52);
-        INPUT_BUS.add(HV, IT_IN, 52, 7).add(HV, IT_IN, 70, 7).add(HV, IT_IN, 88, 7).add(HV, IT_IN, 106, 7)
-                .add(HV, IT_IN, 52, 25).add(HV, IT_IN, 70, 25).add(HV, IT_IN, 88, 25).add(HV, IT_IN, 106, 25)
-                .add(HV, IT_IN, 52, 43).add(HV, IT_IN, 70, 43).add(HV, IT_IN, 88, 43).add(HV, IT_IN, 106, 43)
-                .add(HV, IT_IN, 52, 61).add(HV, IT_IN, 70, 61).add(HV, IT_IN, 88, 61).add(HV, IT_IN, 106, 61);
+        INPUT_BUS.add(ULV, SlotTypes.IT_IN, 79, 34);
+        INPUT_BUS.add(LV, SlotTypes.IT_IN, 70, 25).add(LV, SlotTypes.IT_IN, 88, 25).add(LV, SlotTypes.IT_IN, 70, 43).add(LV, SlotTypes.IT_IN, 88, 43);
+        INPUT_BUS.add(MV, SlotTypes.IT_IN, 61, 16).add(MV, SlotTypes.IT_IN, 79, 16).add(MV, SlotTypes.IT_IN, 97, 16).add(MV, SlotTypes.IT_IN, 61, 34)
+                .add(MV, SlotTypes.IT_IN, 79, 34).add(MV, SlotTypes.IT_IN, 97, 34).add(MV, SlotTypes.IT_IN, 61, 52).add(MV, SlotTypes.IT_IN, 79, 52)
+                .add(MV, SlotTypes.IT_IN, 97, 52);
+        INPUT_BUS.add(HV, SlotTypes.IT_IN, 52, 7).add(HV, SlotTypes.IT_IN, 70, 7).add(HV, SlotTypes.IT_IN, 88, 7).add(HV, SlotTypes.IT_IN, 106, 7)
+                .add(HV, SlotTypes.IT_IN, 52, 25).add(HV, SlotTypes.IT_IN, 70, 25).add(HV, SlotTypes.IT_IN, 88, 25).add(HV, SlotTypes.IT_IN, 106, 25)
+                .add(HV, SlotTypes.IT_IN, 52, 43).add(HV, SlotTypes.IT_IN, 70, 43).add(HV, SlotTypes.IT_IN, 88, 43).add(HV, SlotTypes.IT_IN, 106, 43)
+                .add(HV, SlotTypes.IT_IN, 52, 61).add(HV, SlotTypes.IT_IN, 70, 61).add(HV, SlotTypes.IT_IN, 88, 61).add(HV, SlotTypes.IT_IN, 106, 61);
         INPUT_BUS.add(EV, INPUT_BUS, HV);
-        OUTPUT_BUS.add(ULV, IT_OUT, 79, 34);
-        OUTPUT_BUS.add(LV, IT_OUT, 70, 25).add(LV, IT_OUT, 88, 25).add(LV, IT_OUT, 70, 43).add(LV, IT_OUT, 88, 43);
-        OUTPUT_BUS.add(MV, IT_OUT, 61, 16).add(MV, IT_OUT, 79, 16).add(MV, IT_OUT, 97, 16).add(MV, IT_OUT, 61, 34)
-                .add(MV, IT_OUT, 79, 34).add(MV, IT_OUT, 97, 34).add(MV, IT_OUT, 61, 52).add(MV, IT_OUT, 79, 52)
-                .add(MV, IT_OUT, 97, 52);
-        OUTPUT_BUS.add(HV, IT_OUT, 52, 7).add(HV, IT_OUT, 70, 7).add(HV, IT_OUT, 88, 7).add(HV, IT_OUT, 106, 7)
-                .add(HV, IT_OUT, 52, 25).add(HV, IT_OUT, 70, 25).add(HV, IT_OUT, 88, 25).add(HV, IT_OUT, 106, 25)
-                .add(HV, IT_OUT, 52, 43).add(HV, IT_OUT, 70, 43).add(HV, IT_OUT, 88, 43).add(HV, IT_OUT, 106, 43)
-                .add(HV, IT_OUT, 52, 61).add(HV, IT_OUT, 70, 61).add(HV, IT_OUT, 88, 61).add(HV, IT_OUT, 106, 61);
+        OUTPUT_BUS.add(ULV, SlotTypes.IT_OUT, 79, 34);
+        OUTPUT_BUS.add(LV, SlotTypes.IT_OUT, 70, 25).add(LV, SlotTypes.IT_OUT, 88, 25).add(LV, SlotTypes.IT_OUT, 70, 43).add(LV, SlotTypes.IT_OUT, 88, 43);
+        OUTPUT_BUS.add(MV, SlotTypes.IT_OUT, 61, 16).add(MV, SlotTypes.IT_OUT, 79, 16).add(MV, SlotTypes.IT_OUT, 97, 16).add(MV, SlotTypes.IT_OUT, 61, 34)
+                .add(MV, SlotTypes.IT_OUT, 79, 34).add(MV, SlotTypes.IT_OUT, 97, 34).add(MV, SlotTypes.IT_OUT, 61, 52).add(MV, SlotTypes.IT_OUT, 79, 52)
+                .add(MV, SlotTypes.IT_OUT, 97, 52);
+        OUTPUT_BUS.add(HV, SlotTypes.IT_OUT, 52, 7).add(HV, SlotTypes.IT_OUT, 70, 7).add(HV, SlotTypes.IT_OUT, 88, 7).add(HV, SlotTypes.IT_OUT, 106, 7)
+                .add(HV, SlotTypes.IT_OUT, 52, 25).add(HV, SlotTypes.IT_OUT, 70, 25).add(HV, SlotTypes.IT_OUT, 88, 25).add(HV, SlotTypes.IT_OUT, 106, 25)
+                .add(HV, SlotTypes.IT_OUT, 52, 43).add(HV, SlotTypes.IT_OUT, 70, 43).add(HV, SlotTypes.IT_OUT, 88, 43).add(HV, SlotTypes.IT_OUT, 106, 43)
+                .add(HV, SlotTypes.IT_OUT, 52, 61).add(HV, SlotTypes.IT_OUT, 70, 61).add(HV, SlotTypes.IT_OUT, 88, 61).add(HV, SlotTypes.IT_OUT, 106, 61);
         OUTPUT_BUS.add(EV, OUTPUT_BUS, HV);
-        INPUT_HATCH.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
-        OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
-        HIGH_CAPACITY_INPUT_HATCH.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
-        HIGH_CAPACITY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
-        SECONDARY_INPUT_HATCH.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
-        SECONDARY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
+        INPUT_HATCH.add(SlotTypes.FL_IN, 79, 34).add(SlotTypes.CELL_IN, 9, 22).add(SlotTypes.CELL_OUT, 9, 58);
+        OUTPUT_HATCH.add(SlotTypes.FL_OUT, 79, 34).add(SlotTypes.CELL_IN, 9, 22).add(SlotTypes.CELL_OUT, 9, 58);
+        HIGH_CAPACITY_INPUT_HATCH.add(SlotTypes.FL_IN, 79, 34).add(SlotTypes.CELL_IN, 9, 22).add(SlotTypes.CELL_OUT, 9, 58);
+        HIGH_CAPACITY_OUTPUT_HATCH.add(SlotTypes.FL_OUT, 79, 34).add(SlotTypes.CELL_IN, 9, 22).add(SlotTypes.CELL_OUT, 9, 58);
+        SECONDARY_INPUT_HATCH.add(SlotTypes.FL_IN, 79, 34).add(SlotTypes.CELL_IN, 9, 22).add(SlotTypes.CELL_OUT, 9, 58);
+        SECONDARY_OUTPUT_HATCH.add(SlotTypes.FL_OUT, 79, 34).add(SlotTypes.CELL_IN, 9, 22).add(SlotTypes.CELL_OUT, 9, 58);
         UITexture blank = GTGuiTextures.BLANK_SLOT;
         ELECTRIC_ITEM_FILTER
-                .add(DISPLAY_SETTABLE, b -> b.x(18).y(6).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(6).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(6).baseTexture(blank).build())
-                .add(DISPLAY_SETTABLE, b -> b.x(18).y(23).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(23).baseTexture(blank).build())
-                .add(DISPLAY_SETTABLE, b -> b.x(18).y(40).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(40).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(40).baseTexture(blank).build())
-                .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
-                .add(STORAGE, 98 + 18 * 2, 5)
-                .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
-                .add(STORAGE, 98 + 18 * 2, 23)
-                .add(STORAGE, 98, 41).add(STORAGE, 98 + 18, 41)
-                .add(STORAGE, 98 + 18 * 2, 41);
+                .add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(18).y(6).baseTexture(blank).build()).add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(35).y(6).baseTexture(blank).build()).add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(52).y(6).baseTexture(blank).build())
+                .add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(18).y(23).baseTexture(blank).build()).add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build()).add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(52).y(23).baseTexture(blank).build())
+                .add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(18).y(40).baseTexture(blank).build()).add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(35).y(40).baseTexture(blank).build()).add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(52).y(40).baseTexture(blank).build())
+                .add(SlotTypes.STORAGE, 98, 5).add(SlotTypes.STORAGE, 98 + 18, 5)
+                .add(SlotTypes.STORAGE, 98 + 18 * 2, 5)
+                .add(SlotTypes.STORAGE, 98, 23).add(SlotTypes.STORAGE, 98 + 18, 23)
+                .add(SlotTypes.STORAGE, 98 + 18 * 2, 23)
+                .add(SlotTypes.STORAGE, 98, 41).add(SlotTypes.STORAGE, 98 + 18, 41)
+                .add(SlotTypes.STORAGE, 98 + 18 * 2, 41);
 
         ELECTRIC_TYPE_FILTER
-                .add(DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build())
-                .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
-                .add(STORAGE, 98 + 18 * 2, 5)
-                .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
-                .add(STORAGE, 98 + 18 * 2, 23)
-                .add(STORAGE, 98, 41).add(STORAGE, 98 + 18, 41)
-                .add(STORAGE, 98 + 18 * 2, 41);
+                .add(SlotTypes.DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build())
+                .add(SlotTypes.STORAGE, 98, 5).add(SlotTypes.STORAGE, 98 + 18, 5)
+                .add(SlotTypes.STORAGE, 98 + 18 * 2, 5)
+                .add(SlotTypes.STORAGE, 98, 23).add(SlotTypes.STORAGE, 98 + 18, 23)
+                .add(SlotTypes.STORAGE, 98 + 18 * 2, 23)
+                .add(SlotTypes.STORAGE, 98, 41).add(SlotTypes.STORAGE, 98 + 18, 41)
+                .add(SlotTypes.STORAGE, 98 + 18 * 2, 41);
         AUTOCRAFTER_ASSEMBLY_LINE.add(MULTIBLOCK.getSlots());
         BLAST_FURNACE.add(MULTIBLOCK.getSlots());
         IMPLOSION_COMPRESSOR.add(MULTIBLOCK.getSlots());

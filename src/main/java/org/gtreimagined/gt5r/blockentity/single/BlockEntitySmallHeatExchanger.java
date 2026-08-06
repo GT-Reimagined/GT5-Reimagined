@@ -16,7 +16,7 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
-import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.map.IRecipeMap;
@@ -150,12 +150,12 @@ public class BlockEntitySmallHeatExchanger extends BlockEntityMachine<BlockEntit
     public static class SmallHeatExchangerFluidHandler extends MachineFluidHandler<BlockEntitySmallHeatExchanger> {
         public SmallHeatExchangerFluidHandler(BlockEntitySmallHeatExchanger tile) {
             super(tile);
-            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
+            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotTypes.FL_IN, b -> {
                 b.tank(this::acceptsRecipe, 1000);
                 b.tank(this::acceptWater, 4000);
                 return b;
             }));
-            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
+            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotTypes.FL_OUT, b -> {
                 b.tank(f -> !f.getFluid().is(GTCoreTags.STEAM), 1000);
                 b.tank(f -> f.getFluid().is(GTCoreTags.STEAM), 16000);
                 return b;
