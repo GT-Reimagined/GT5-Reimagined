@@ -522,8 +522,8 @@ public class RecipeMaps {
         public IRecipe add(String domain, String id) {
             IRecipe recipe = super.add(domain, id);
             var  recipeBuilder = MACERATOR.RB().hide().ii(recipe.getInputItems());
-            if (recipe.hasOutputItems() && recipe.getOutputItems().length > 0) {
-                recipeBuilder.io(recipe.getOutputItems(false)[0]);
+            if (recipe.hasOutputItems() && !recipe.getOutputItems().isEmpty()) {
+                recipeBuilder.io(recipe.getOutputItems(false).get(0));
             }
             if (recipe.hasOutputChances() && recipe.getOutputChances().length > 0) {
                 recipeBuilder.outputChances(recipe.getOutputChances()[0]);

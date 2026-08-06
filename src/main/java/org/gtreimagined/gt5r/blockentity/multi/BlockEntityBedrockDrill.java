@@ -81,11 +81,11 @@ public class BlockEntityBedrockDrill extends BlockEntityMultiMachine<BlockEntity
             }
         }
         if (recipe == null || oreChance <= 0) return false;
-        ItemStack[] outputs = recipe.getOutputItems(false);
+        List<ItemStack> outputs = recipe.getOutputItems(false);
         if (recipe.getOutputChances() == null) return false;
-        mainOutput = outputs[0];
-        for (int i = 1; i < outputs.length - 2; i++) {
-            ItemStack output = outputs[i];
+        mainOutput = outputs.get(0);
+        for (int i = 1; i < outputs.size() - 2; i++) {
+            ItemStack output = outputs.get(i);
             byProducts.add(Pair.of(output, recipe.getOutputChances()[i]));
         }
         return super.onStructureFormed();

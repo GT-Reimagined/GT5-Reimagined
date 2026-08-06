@@ -84,7 +84,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
             @Override
             public boolean canOutput() {
-                return !tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids() || tile.fluidHandler.map(t -> t.getOutputTanks() != null && t.getOutputTanks().getTanks() > 1 && t.getOutputTanks().getTank(0).fill(Utils.ca(activeRecipe.getOutputFluids()[0].getAmount() * concurrentRecipes, activeRecipe.getOutputFluids()[0]), FluidAction.SIMULATE) == activeRecipe.getOutputFluids()[0].getAmount() * concurrentRecipes).orElse(false);
+                return !tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids() || tile.fluidHandler.map(t -> t.getOutputTanks() != null && t.getOutputTanks().getTanks() > 1 && t.getOutputTanks().getTank(0).fill(Utils.ca(activeRecipe.getOutputFluids().get(0).getAmount() * concurrentRecipes, activeRecipe.getOutputFluids().get(0)), FluidAction.SIMULATE) == activeRecipe.getOutputFluids().get(0).getAmount() * concurrentRecipes).orElse(false);
             }
 
             @Override
@@ -97,7 +97,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (activeRecipe.hasOutputItems()) {
                         tile.itemHandler.ifPresent(h -> {
                             //Roll the chances here. If they don't fit add flat (no chances).
-                            ItemStack[] out = activeRecipe.getOutputItems(true);
+                            List<ItemStack> out = activeRecipe.getOutputItems(true);
                             if (h.canOutputsFit(out)) {
                                 h.addOutputs(out);
                             } else {
@@ -108,7 +108,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (activeRecipe.hasOutputFluids()) {
                         tile.fluidHandler.ifPresent(h -> {
                             if (h.getOutputTanks() == null) return;
-                            h.getOutputTanks().getTank(0).fill(activeRecipe.getOutputFluids()[0].copy(), FluidAction.EXECUTE);
+                            h.getOutputTanks().getTank(0).fill(activeRecipe.getOutputFluids().get(0).copy(), FluidAction.EXECUTE);
                         });
                     }
                     heatHandler.ifPresent(h -> h.insert((int) activeRecipe.getPower(), false));

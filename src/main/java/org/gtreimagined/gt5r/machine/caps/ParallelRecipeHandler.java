@@ -116,7 +116,7 @@ public class ParallelRecipeHandler<T extends BlockEntityMachine<T>> extends Mach
         AtomicBoolean successful = new AtomicBoolean(false);
         tile.itemHandler.ifPresent(h -> {
             //Roll the chances here. If they don't fit add flat (no chances).
-            ItemStack[] out = activeRecipe.getOutputItems(true);
+            List<ItemStack> out = activeRecipe.getOutputItems(true);
             if (h.canOutputsFit(out)) {
                 h.addOutputs(out);
                 successful.set(true);

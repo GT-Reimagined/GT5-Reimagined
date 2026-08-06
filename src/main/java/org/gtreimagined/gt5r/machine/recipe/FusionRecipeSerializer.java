@@ -31,7 +31,7 @@ public class FusionRecipeSerializer extends GTRecipeSerializer<FusionRecipe> {
     }
 
     @Override
-    public FusionRecipe createRecipe(@NotNull List<Ingredient> stacksInput, ItemStack[] stacksOutput, @NotNull List<FluidIngredient> fluidsInput, FluidStack[] fluidsOutput, int duration, long power, int special, int amps) {
+    public FusionRecipe createRecipe(@NotNull List<Ingredient> stacksInput, List<ItemStack> stacksOutput, @NotNull List<FluidIngredient> fluidsInput, List<FluidStack> fluidsOutput, int duration, long power, int special, int amps) {
         return new FusionRecipe(stacksInput, stacksOutput, fluidsInput, fluidsOutput, duration, power, special, amps);
     }
 
