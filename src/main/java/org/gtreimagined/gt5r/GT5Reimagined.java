@@ -426,7 +426,9 @@ public class GT5Reimagined extends GTMod {
                     return null;
                 });
                 Structures.init();
-                StructureInfo.init();
+                if (side.isClient()) {
+                    StructureInfo.init();
+                }
                 GT5RTwilightStalctites.init();
                 GT5RRemapping.init();
                 LootLoader.init();
