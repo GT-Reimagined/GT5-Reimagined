@@ -8,7 +8,7 @@ import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.world.item.ItemStack;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct;
+import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import net.minecraft.world.item.crafting.Ingredient;

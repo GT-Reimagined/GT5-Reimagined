@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.integration.jei;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -20,8 +19,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.apache.commons.lang3.tuple.Triple;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct.BathingMode;
+import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct;
+import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct.BathingMode;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.List;

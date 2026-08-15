@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.xei;
+package org.gtreimagined.gt5r.integration.recipeviewer;
 
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -189,17 +189,17 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
         return new SlotResult(x, y, List.of(outputType.get(material, amount)), false, chance);
     }
 
-    public record SlotResult(int x, int y, List<ItemStack> stacks, List<FluidStack> fluidStacks, boolean input, int chance){
+    public record SlotResult(int x, int y, List<ItemStack> stacks, List<FluidStack> fluidStacks, boolean input, int chance, boolean item){
         public SlotResult(int x, int y, List<ItemStack> stacks, boolean input){
-            this(x, y, stacks, List.of(), input, -1);
+            this(x, y, stacks, List.of(), input, -1, true);
         }
 
         public SlotResult(int x, int y, List<ItemStack> stacks, boolean input, int chance){
-            this(x, y, stacks, List.of(), input, chance);
+            this(x, y, stacks, List.of(), input, chance, true);
         }
 
         public SlotResult(int x, int y, boolean input, List<FluidStack> fluidStacks){
-            this(x, y, List.of(), fluidStacks, input, -1);
+            this(x, y, List.of(), fluidStacks, input, -1, false);
         }
     }
 

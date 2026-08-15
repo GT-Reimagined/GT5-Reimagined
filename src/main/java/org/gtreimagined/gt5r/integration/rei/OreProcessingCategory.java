@@ -1,7 +1,5 @@
 package org.gtreimagined.gt5r.integration.rei;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
@@ -16,12 +14,11 @@ import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gt5r.integration.xei.OreByProduct;
+import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.ArrayList;
