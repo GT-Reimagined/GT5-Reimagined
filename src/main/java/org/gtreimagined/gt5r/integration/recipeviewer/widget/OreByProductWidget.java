@@ -10,6 +10,9 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct;
+import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct.BathingMode;
+import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
+import org.gtreimagined.gtlib.integration.recipeviewer.widgets.ChanceOverlay;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.Collections;
@@ -18,6 +21,12 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 
 public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
     public OreByProductWidget(OreByProduct byProduct){
+        this.size(186, 166);
+        this.child(GT5RGuiTextures.BASE_BYPRODUCTS.asWidget());
+        if (byProduct.bathingMode() != BathingMode.NONE) this.child(GT5RGuiTextures.MERCURY_BYPRODUCTS.asWidget());
+        if (byProduct.hasSiftingRecipe()) this.child(GT5RGuiTextures.SIFT_BYPRODUCTS.asWidget());
+        if (byProduct.hasSepRecipes()) this.child(GT5RGuiTextures.SEP_BYPRODUCTS.asWidget());
+        if (byProduct.hasFurnaceSmeltingRecipe()) this.child(GT5RGuiTextures.FURNACE_BYPRODUCTS.asWidget());
         ParentWidget<?> inputWidget = new ParentWidget<>();
         ParentWidget<?> outputWidget = new ParentWidget<>();
         this.child(inputWidget);
@@ -27,7 +36,7 @@ public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
                 .value(ItemTagList.of(ORE.getMaterialTag(byProduct.material()), 1, null)));
         byProduct.getSlots().forEach(r -> {
 
-            RecipeViewerSlotWidget<?, ?> widget = null;
+            RecipeViewerSlotWidget<?, ?> widget;
             if (r.item()){
                 widget = RecipeViewerSlotWidget.create(ItemStack.class).value(ItemStackList.of(r.stacks()));
             } else {
@@ -39,7 +48,10 @@ public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
                 widget.tooltipBuilder(t -> {
                     t.addLine(Utils.literal("Output Chance: " + ((float)r.chance() / 100) + "%").withStyle(ChatFormatting.WHITE));
                 });
+                widget.overlay(new ChanceOverlay(Utils.literal("Output Chance: " + ((float)r.chance() / 100) + "%").withStyle(ChatFormatting.YELLOW)));
             }
+            if (r.input()) inputWidget.child(widget);
+            else outputWidget.child(widget);
         });
     }
 }

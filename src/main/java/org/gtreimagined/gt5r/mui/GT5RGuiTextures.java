@@ -35,6 +35,16 @@ public class GT5RGuiTextures {
     public static final UITexture TYPE_FILTER_FAKE_SLOT = widget("type_filter_fake_slot", null);
     public static final UITexture WHITE_FILTER_ARROW_BAR = widget("white_filter_arrow_bar", 9, 6, null);
     public static final UITexture WHITE_TYPE_FILTER_ARROW_BAR = widget("white_type_filter_arrow_bar", 26, 6, null);
+    //BYPRODUCTS TREE OVERLAYS
+    public static final UITexture BASE_BYPRODUCTS = byproduct("base");
+    public static final UITexture FURNACE_BYPRODUCTS = byproduct("smelt");
+    public static final UITexture MERCURY_BYPRODUCTS = byproduct("chem");
+    public static final UITexture PERSULFATE_BYPRODUCTS = byproduct("new/persulfate");
+    public static final UITexture PGS_BYPRODUCTS = byproduct("new/pgs");
+    public static final UITexture SEP_BYPRODUCTS = byproduct("sep");
+    public static final UITexture SIFT_BYPRODUCTS = byproduct("sift");
+    public static final UITexture VITRIOL_BYPRODUCTS = byproduct("new/vitriol");
+
 
     //ICONS
     public static final UITexture BRONZE_FLAME_OFF = UITexture.fullImage(GT5Reimagined.ID, "gui/icon/bronze_flame_off");
@@ -136,6 +146,10 @@ public class GT5RGuiTextures {
 
     private static UITexture button(String name){
         return UITexture.builder().location(GT5Reimagined.ID, "gui/button/" + name).fullImage().colorType(null).build();
+    }
+
+    private static UITexture byproduct(String name){
+        return UITexture.builder().location(GT5Reimagined.ID, "gui/ore_byproducts/" + name).imageSize(186, 166).colorType(null).build();
     }
 
 }
