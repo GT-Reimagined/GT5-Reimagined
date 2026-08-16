@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.jei;
+package org.gtreimagined.gt5r.integration.recipeviewer.jei;
 
 import brachy.modularui.integration.jei.recipe.ModularUIJeiCategory;
 import mezz.jei.api.constants.VanillaTypes;
@@ -13,11 +13,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct;
-import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct.BathingMode;
 import org.gtreimagined.gt5r.integration.recipeviewer.widget.OreByProductWidget;
 
 import java.util.List;
-import java.util.Locale;
 
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 

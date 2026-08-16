@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.jei;
+package org.gtreimagined.gt5r.integration.recipeviewer.jei;
 
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
