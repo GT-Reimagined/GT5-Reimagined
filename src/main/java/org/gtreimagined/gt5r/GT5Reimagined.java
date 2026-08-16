@@ -95,7 +95,6 @@ import org.gtreimagined.gt5r.events.forge.ForgeEvents;
 import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.integration.thermal.ThermalRegistrar;
-import org.gtreimagined.gt5r.integration.rei.REIRegistrar;
 import org.gtreimagined.gt5r.loader.LootLoader;
 import org.gtreimagined.gt5r.loader.WorldGenLoader;
 import org.gtreimagined.gt5r.loader.crafting.BlockParts;

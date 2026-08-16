@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.rei;
+package org.gtreimagined.gt5r.integration.recipeviewer.rei;
 
 import me.shedaniel.rei.api.common.entry.EntryStack;
 import me.shedaniel.rei.api.common.entry.type.VanillaEntryTypes;

@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.rei;
+package org.gtreimagined.gt5r.integration.recipeviewer.rei;
 
 import lombok.Getter;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;

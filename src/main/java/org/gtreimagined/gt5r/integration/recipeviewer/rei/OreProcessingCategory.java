@@ -1,4 +1,4 @@
-package org.gtreimagined.gt5r.integration.rei;
+package org.gtreimagined.gt5r.integration.recipeviewer.rei;
 
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
