@@ -24,7 +24,7 @@ public class OreProcessingCategory extends ModularUIJeiCategory<OreByProduct> {
     public static final RecipeType<OreByProduct> ORE_BYPRODUCTS = new RecipeType<>(new ResourceLocation(GT5Reimagined.ID, "ore_byproducts_tree"), OreByProduct.class);
 
     public OreProcessingCategory() {
-        super(OreByProductWidget::new, oreByProduct -> new ResourceLocation(GT5Reimagined.ID, "ore_byproduct/" + oreByProduct.material().getId() + (oreByProduct.bathingMode() == BathingMode.NONE ? "" : "_" + oreByProduct.bathingMode().name().toLowerCase(Locale.ROOT))));
+        super(OreByProductWidget::new, OreByProductWidget::id);
     }
 
     @Override
