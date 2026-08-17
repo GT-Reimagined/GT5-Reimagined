@@ -392,9 +392,6 @@ public class GT5Reimagined extends GTMod {
                     }
                 };
                 GTAPI.register(IGTWorldgenFunction.class, "removed_ores", ID, function);
-                if (GTAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
-                    //REIRegistrar.init();
-                }
                 PlayerTickCallback.PLAYER_TICK_CALLBACKS.add((end, logicalServer, player) -> {
                     if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
                         BlockState state = player.level().getBlockState(player.getOnPos());

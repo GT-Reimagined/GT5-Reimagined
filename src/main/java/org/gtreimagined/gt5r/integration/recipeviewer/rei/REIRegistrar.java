@@ -26,14 +26,6 @@ public class REIRegistrar {
             r.addWorkstations(cat.getCategoryIdentifier(), EntryStack.of(VanillaEntryTypes.ITEM,  new ItemStack(GT5RMachines.SIFTER.getItem(Tier.LV))));
         });
         REIUtils.addExtraDisplay(r -> {
-            GTMaterialTypes.ORE.all().forEach(m -> {
-                if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
-                    if (m.has(GT5RMaterialTags.BATH_MERCURY)) r.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.MERCURY)));
-                    if (m.has(GT5RMaterialTags.BATH_PERSULFATE)) r.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.PERSULFATE)));
-                } else {
-                    r.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.NONE)));
-                }
-            });
         });
     }
 }
