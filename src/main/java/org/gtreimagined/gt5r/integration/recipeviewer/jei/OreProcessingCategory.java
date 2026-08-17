@@ -34,7 +34,7 @@ public class OreProcessingCategory extends ModularUIJeiCategory<OreByProduct> {
 
     @Override
     public int getMaxHeight() {
-        return 166;
+        return 256;
     }
 
     @Override
