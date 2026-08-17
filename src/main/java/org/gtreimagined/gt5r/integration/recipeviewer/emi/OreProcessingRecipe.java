@@ -51,6 +51,7 @@ public class OreProcessingRecipe extends ModularUIEmiRecipe {
         });
         this.inputs = inputBuilder.build();
         this.outputs = outputBuilder.build();
+        calculateSize();
     }
 
     @Override

@@ -26,7 +26,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 
 public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
     public OreByProductWidget(OreByProduct byProduct){
-        this.size(186, 166);
+        this.size(186, 256);
         this.child(GT5RGuiTextures.BASE_BYPRODUCTS.asWidget().size(186, 166));
         if (byProduct.bathingMode() != BathingMode.NONE) this.child(GT5RGuiTextures.MERCURY_BYPRODUCTS.asWidget().size(186, 166));
         if (byProduct.hasSiftingRecipe()) this.child(GT5RGuiTextures.SIFT_BYPRODUCTS.asWidget().size(186, 166));
