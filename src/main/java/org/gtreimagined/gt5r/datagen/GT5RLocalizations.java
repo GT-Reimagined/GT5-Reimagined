@@ -151,15 +151,7 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.secondary_input_hatch", "Coolant Input for Fusion");
             add("tooltip.gt5r.secondary_output_hatch", "Coolant Output for Fusion");
             add("text.gt5r.prospected_book", "Prospection Data From:\nX: %s Z: %s Dim: %s\nProduces %sL %s");
-            add("jei.category.macerator_recycling", "Macerator Recycling");
-            add("jei.category.macerator_ore_processing", "Macerator Ore Processing");
-            add("jei.category.arc_furnace_recycling", "Arc Furnace Recycling");
-            add("jei.category.alloy_smelter_molds", "Alloy Smelter Molds");
-            add("jei.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
-            add("emi.category.gt.macerator_recycling", "Macerator Recycling");
-            add("emi.category.gt.macerator_ore_processing", "Macerator Ore Processing");
-            add("emi.category.gt.arc_furnace_recycling", "Arc Furnace Recycling");
-            add("emi.category.gt.alloy_smelter_molds", "Alloy Smelter Molds");
+            add("gui.recipeviewer.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
             add("recipe_info.gt5r.temperature", "Temperature: %s K");
             add("recipe_info.gt5r.extra_burntime", "Extra Saved burntime: %s");
             add("recipe_info.gt5r.heat_multiplier", "Heat Increase Multiplier: %s");
