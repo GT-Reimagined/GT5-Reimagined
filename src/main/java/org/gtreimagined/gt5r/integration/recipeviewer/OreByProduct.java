@@ -92,54 +92,54 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
 
     public List<SlotResult> getMainSlots(){
         List<SlotResult> slots = new ArrayList<>(List.of(
-                mch(1, 23, MACERATOR),
-                createOutput(1, 45, CRUSHED_ORE, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
-                createOutput(1, 63, DUST, getByproduct(0), 1, 1000),
-                mch(22, 69, MACERATOR),
-                createOutput(22, 90, IMPURE_DUST, getMacerateInto(), 1),
-                createOutput(22, 108, DUST, getByproduct(0), 1, 1000),
-                mch(26, 23, ORE_WASHER),
-                new SlotResult(47, 23, true, List.of(Materials.Water.getLiquid(1000))),
-                createOutput(69, 23, PURIFIED_ORE, getMacerateInto(), 1),
-                createOutput(87, 23, TINY_DUST, getByproduct(0), 1),
-                mch(117, 45, MACERATOR),
-                createOutput(145, 45, PURE_DUST, getMacerateInto(), 1),
-                createOutput(163, 45, DUST, getByproduct(1), 1, 1000),
-                mch(123, 69, THERMAL_CENTRIFUGE),
-                createOutput(123, 90, REFINED_ORE, getMacerateInto(), 1),
-                createOutput(123, 108, TINY_DUST, getThermalByproduct(), 1),
-                mch(145, 69, CENTRIFUGE),
-                createOutput(145, 90, DUST, getMacerateInto(), 1),
-                createOutput(145, 108, TINY_DUST, getByproduct(1), 1),
-                mch(47, 78, CENTRIFUGE),
-                createOutput(47, 99, DUST, getMacerateInto(), 1),
-                createOutput(47, 117, TINY_DUST, getByproduct(0), 1),
-                mch(69, 78, MACERATOR),
-                createOutput(69, 99, DUST, getMacerateInto(), 1),
-                createOutput(69, 117, DUST, getByproduct(2), 1, 1000),
-                createOutput(1, 103, CRUSHED_ORE, getMacerateInto(), 1),
-                new SlotResult(1, 122, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
-                createOutput(1, 143, PURIFIED_ORE, getMacerateInto(), 1),
-                createOutput(22, 143, IMPURE_DUST, getMacerateInto(), 1),
-                new SlotResult(40, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
-                createOutput(62, 143, DUST, getMacerateInto(), 1),
-                createOutput(83, 143, PURE_DUST, getMacerateInto(), 1),
-                new SlotResult(101, 143, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
-                createOutput(123, 143, DUST, getMacerateInto(), 1)
+                mch(3, 25, MACERATOR),
+                createOutput(3, 47, CRUSHED_ORE, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
+                createOutput(3, 65, DUST, getByproduct(0), 1, 1000),
+                mch(24, 71, MACERATOR),
+                createOutput(24, 92, IMPURE_DUST, getMacerateInto(), 1),
+                createOutput(24, 110, DUST, getByproduct(0), 1, 1000),
+                mch(28, 25, ORE_WASHER),
+                new SlotResult(49, 25, true, List.of(Materials.Water.getLiquid(1000))),
+                createOutput(71, 25, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(89, 25, TINY_DUST, getByproduct(0), 1),
+                mch(119, 47, MACERATOR),
+                createOutput(147, 47, PURE_DUST, getMacerateInto(), 1),
+                createOutput(165, 47, DUST, getByproduct(1), 1, 1000),
+                mch(125, 71, THERMAL_CENTRIFUGE),
+                createOutput(125, 92, REFINED_ORE, getMacerateInto(), 1),
+                createOutput(125, 110, TINY_DUST, getThermalByproduct(), 1),
+                mch(147, 71, CENTRIFUGE),
+                createOutput(147, 92, DUST, getMacerateInto(), 1),
+                createOutput(147, 110, TINY_DUST, getByproduct(1), 1),
+                mch(49, 80, CENTRIFUGE),
+                createOutput(49, 101, DUST, getMacerateInto(), 1),
+                createOutput(49, 119, TINY_DUST, getByproduct(0), 1),
+                mch(71, 80, MACERATOR),
+                createOutput(71, 101, DUST, getMacerateInto(), 1),
+                createOutput(71, 119, DUST, getByproduct(2), 1, 1000),
+                createOutput(3, 105, CRUSHED_ORE, getMacerateInto(), 1),
+                new SlotResult(3, 124, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
+                createOutput(3, 145, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(24, 145, IMPURE_DUST, getMacerateInto(), 1),
+                new SlotResult(42, 145, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
+                createOutput(64, 145, DUST, getMacerateInto(), 1),
+                createOutput(85, 145, PURE_DUST, getMacerateInto(), 1),
+                new SlotResult(103, 145, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
+                createOutput(125, 145, DUST, getMacerateInto(), 1)
         ));
         if (material.getByProducts().size() > 3){
-            slots.add(createOutput(87, 99, DUST, getByproduct(3), 1, 1000));
+            slots.add(createOutput(89, 101, DUST, getByproduct(3), 1, 1000));
         }
         if (material.getByProducts().size() > 4){
-            slots.add(createOutput(87, 117, DUST, getByproduct(4), 1, 1000));
+            slots.add(createOutput(89, 119, DUST, getByproduct(4), 1, 1000));
         }
         return slots;
     }
 
     private List<SlotResult> getSmeltSlots(){
         return List.of(
-                new SlotResult(26, 1, List.of(new ItemStack(Items.FURNACE), new ItemStack(Items.BLAST_FURNACE)), true),
-                createOutput(47, 1, MaterialTags.SMELT_INTO.get(material).has(GEM) ? GEM : INGOT, MaterialTags.SMELT_INTO.get(material), SMELTING_MULTI.getInt(material))
+                new SlotResult(28, 3, List.of(new ItemStack(Items.FURNACE), new ItemStack(Items.BLAST_FURNACE)), true),
+                createOutput(49, 3, MaterialTags.SMELT_INTO.get(material).has(GEM) ? GEM : INGOT, MaterialTags.SMELT_INTO.get(material), SMELTING_MULTI.getInt(material))
         );
     }
 
@@ -147,33 +147,33 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
         Material bathOutput = bathingMode == BathingMode.MERCURY ? GT5RMaterialTags.BATH_MERCURY.getMapping(material) : GT5RMaterialTags.BATH_PERSULFATE.getMapping(material);
         Material fluidOutput = bathingMode == BathingMode.MERCURY ? Materials.Mercury : Materials.SodiumPersulfateSolution;
         return List.of(
-                mch(26, 45, BATH),
-                new SlotResult(47, 45, true, List.of(fluidOutput.getLiquid(1000))),
-                createOutput(87, 45, DUST, bathOutput, 1, 7000),
-                createOutput(69, 45, PURIFIED_ORE, getMacerateInto(), 1)
+                mch(28, 47, BATH),
+                new SlotResult(49, 47, true, List.of(fluidOutput.getLiquid(1000))),
+                createOutput(89, 47, DUST, bathOutput, 1, 7000),
+                createOutput(71, 47, PURIFIED_ORE, getMacerateInto(), 1)
         );
     }
 
     private List<SlotResult> getSiftSlots(){
         boolean e = material.has(EXQUISITE_GEM);
         return List.of(
-                mch(107, 22, SIFTER),
-                createOutput(127, 1, e ? EXQUISITE_GEM : GEM, getMacerateInto(), 1, e ? 300 : 100),
-                createOutput(145, 1, e ? FLAWLESS_GEM : GEM, getMacerateInto(), 1, e ? 1200 : 400),
-                createOutput(163, 1, GEM, getMacerateInto(), 1, e ? 4500 : 1500),
-                createOutput(127, 19, e ? FLAWED_GEM : GEM, getMacerateInto(), 1, e ? 1400 : 2000),
-                createOutput(145, 19, e ? CHIPPED_GEM : GEM, getMacerateInto(), 1, e ? 2800 : 4000),
-                createOutput(163, 19, DUST, getMacerateInto(), 1, e ? 3500 : 5000)
+                mch(109, 22, SIFTER),
+                createOutput(129, 3, e ? EXQUISITE_GEM : GEM, getMacerateInto(), 1, e ? 300 : 100),
+                createOutput(147, 3, e ? FLAWLESS_GEM : GEM, getMacerateInto(), 1, e ? 1200 : 400),
+                createOutput(165, 3, GEM, getMacerateInto(), 1, e ? 4500 : 1500),
+                createOutput(129, 21, e ? FLAWED_GEM : GEM, getMacerateInto(), 1, e ? 1400 : 2000),
+                createOutput(147, 21, e ? CHIPPED_GEM : GEM, getMacerateInto(), 1, e ? 2800 : 4000),
+                createOutput(165, 21, DUST, getMacerateInto(), 1, e ? 3500 : 5000)
         );
     }
 
     private List<SlotResult> getSepSlots(){
         Material byProduct = material.has(GT5RMaterialTags.ELECSEPI) ? Materials.Iron : material.has(GT5RMaterialTags.ELECSEPG) ? Materials.Gold : Materials.Neodymium;
         return List.of(
-                mch(163, 69, ELECTROMAGNETIC_SEPARATOR),
-                createOutput(163, 90, DUST, getMacerateInto(), 1),
-                createOutput(163, 108, SMALL_DUST, byProduct, 2, 4000),
-                createOutput(163, 126, NUGGET, byProduct, 1, 2000)
+                mch(165, 71, ELECTROMAGNETIC_SEPARATOR),
+                createOutput(165, 92, DUST, getMacerateInto(), 1),
+                createOutput(165, 110, SMALL_DUST, byProduct, 2, 4000),
+                createOutput(165, 128, NUGGET, byProduct, 1, 2000)
         );
     }
 

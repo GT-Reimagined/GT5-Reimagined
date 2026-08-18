@@ -17,6 +17,7 @@ import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct;
 import org.gtreimagined.gt5r.integration.recipeviewer.OreByProduct.BathingMode;
 import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.integration.recipeviewer.widgets.ChanceOverlay;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
 import org.gtreimagined.gtlib.util.Utils;
 
 import java.util.Collections;
@@ -44,12 +45,13 @@ public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
             RecipeViewerSlotWidget<?, ?> widget;
             if (r.item()){
                 widget = RecipeViewerSlotWidget.create(ItemStack.class).value(ItemStackList.of(r.stacks()));
+                if (r.input()) widget.background(IDrawable.NONE);
             } else {
                 widget = RecipeViewerSlotWidget.create(FluidStack.class).value(FluidStackList.of(r.fluidStacks()));
+                widget.overlay(r.input() ? GTGuiTextures.FLUID_IN_SLOT_OVERLAY : GTGuiTextures.FLUID_OUT_SLOT_OVERLAY);
             }
             widget.recipeSlotRole(r.input() ? RecipeSlotRole.INPUT : RecipeSlotRole.OUTPUT);
-            if (r.input()) widget.background(IDrawable.NONE);
-            widget.pos(r.x() + 2, r.y() + 2);
+            widget.pos(r.x(), r.y());
             if (r.chance() > 0){
                 widget.tooltipBuilder(t -> {
                     t.addLine(Utils.literal("Output Chance: " + ((float)r.chance() / 100) + "%").withStyle(ChatFormatting.WHITE));
