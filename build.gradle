@@ -112,6 +112,7 @@ dependencies {
     implementation("org.jetbrains:annotations:26.0.1")
     modCompileOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
+    modCompileOnly("dev.emi:emi-forge:${project.emi_version}+${project.minecraft_version}")
     modCompileOnly("me.shedaniel.cloth:cloth-config-forge:${project.cloth_config_version}")
     modImplementation("com.blamejared.crafttweaker:CraftTweaker-forge-${project.minecraft_version}:${project.crafttweaker_version}")
     modImplementation("dev.trinsdar:arrp-forge:${project.arrp_version}")
