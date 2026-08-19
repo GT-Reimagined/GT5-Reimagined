@@ -28,11 +28,12 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.ORE;
 public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
     public OreByProductWidget(OreByProduct byProduct){
         this.size(186, 256);
-        this.child(GT5RGuiTextures.BASE_BYPRODUCTS.asWidget().size(186, 166));
-        if (byProduct.bathingMode() != BathingMode.NONE) this.child(GT5RGuiTextures.MERCURY_BYPRODUCTS.asWidget().size(186, 166));
-        if (byProduct.hasSiftingRecipe()) this.child(GT5RGuiTextures.SIFT_BYPRODUCTS.asWidget().size(186, 166));
-        if (byProduct.hasSepRecipes()) this.child(GT5RGuiTextures.SEP_BYPRODUCTS.asWidget().size(186, 166));
-        if (byProduct.hasFurnaceSmeltingRecipe()) this.child(GT5RGuiTextures.FURNACE_BYPRODUCTS.asWidget().size(186, 166));
+        this.child(GT5RGuiTextures.BASE_BYPRODUCTS.asWidget().size(186, 256));
+        if (byProduct.hasMercuryRecipes()) this.child(GT5RGuiTextures.MERCURY_BYPRODUCTS.asWidget().size(186, 256));
+        if (byProduct.hasPersulfateRecipes()) this.child(GT5RGuiTextures.PERSULFATE_BYPRODUCTS.asWidget().size(186, 256));
+        //if (byProduct.hasSiftingRecipe()) this.child(GT5RGuiTextures.SIFT_BYPRODUCTS.asWidget().size(186, 166));
+        //if (byProduct.hasSepRecipes()) this.child(GT5RGuiTextures.SEP_BYPRODUCTS.asWidget().size(186, 166));
+        if (byProduct.hasFurnaceSmeltingRecipe()) this.child(GT5RGuiTextures.FURNACE_BYPRODUCTS.asWidget().size(186, 256));
         ParentWidget<?> inputWidget = new ParentWidget<>();
         ParentWidget<?> outputWidget = new ParentWidget<>();
         this.child(inputWidget);
@@ -65,6 +66,6 @@ public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
 
     public static ResourceLocation id(OreByProduct oreByProduct){
         String slash = Mods.EMI.isLoaded() ? "/" : "";
-        return new ResourceLocation(GT5Reimagined.ID, slash + "ore_byproduct/" + oreByProduct.material().getId() + (oreByProduct.bathingMode() == BathingMode.NONE ? "" : "_" + oreByProduct.bathingMode().name().toLowerCase(Locale.ROOT)));
+        return new ResourceLocation(GT5Reimagined.ID, slash + "ore_byproduct/" + oreByProduct.material().getId());
     }
 }

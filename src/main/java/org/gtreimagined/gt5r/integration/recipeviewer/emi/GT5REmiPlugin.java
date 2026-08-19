@@ -30,12 +30,7 @@ public class GT5REmiPlugin implements EmiPlugin {
         emiRegistry.addWorkstation(OreProcessingRecipe.CATEGORY, EmiStack.of(GT5RMachines.SIFTER.getItem(LV)));
         GTMaterialTypes.ORE.all().forEach(m -> {
             if (!m.has(GTMaterialTypes.CRUSHED_ORE)) return;
-            if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
-                if (m.has(GT5RMaterialTags.BATH_MERCURY)) emiRegistry.addRecipe(new OreProcessingRecipe(new OreByProduct(m, BathingMode.MERCURY)));
-                if (m.has(GT5RMaterialTags.BATH_PERSULFATE)) emiRegistry.addRecipe(new OreProcessingRecipe(new OreByProduct(m, BathingMode.PERSULFATE)));
-            } else {
-                emiRegistry.addRecipe(new OreProcessingRecipe(new OreByProduct(m, BathingMode.NONE)));
-            }
+            emiRegistry.addRecipe(new OreProcessingRecipe(new OreByProduct(m)));
         });
     }
 }

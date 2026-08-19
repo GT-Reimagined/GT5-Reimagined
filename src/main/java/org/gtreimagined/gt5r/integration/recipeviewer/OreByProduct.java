@@ -19,7 +19,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.machine.Tier.LV;
 import static org.gtreimagined.gtlib.material.MaterialTags.SMELTING_MULTI;
 
-public record OreByProduct(Material material, BathingMode bathingMode) {
+public record OreByProduct(Material material) {
     public Material getMacerateInto(){
         return MaterialTags.MACERATE_INTO.getMapping(material);
     }
@@ -47,61 +47,43 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
         return !material.has(GT5RMaterialTags.NEEDS_BLAST_FURNACE) && (MaterialTags.SMELT_INTO.getMapping(material).has(INGOT) || MaterialTags.SMELT_INTO.getMapping(material).has(GEM));
     }
 
+    public boolean hasMercuryRecipes(){
+        return material.has(GT5RMaterialTags.BATH_MERCURY);
+    }
+
+    public boolean hasPersulfateRecipes(){
+        return material.has(GT5RMaterialTags.BATH_PERSULFATE);
+    }
+
     public List<SlotResult> getSlots(){
         List<SlotResult> slots = new ArrayList<>(getMainSlots());
         if (hasFurnaceSmeltingRecipe()) slots.addAll(getSmeltSlots());
-        if (bathingMode != BathingMode.NONE) slots.addAll(getBathSlots());
-        if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
-        if (hasSepRecipes()) slots.addAll(getSepSlots());
+        if (hasMercuryRecipes()) slots.addAll(getBathSlots(true));
+        if (hasPersulfateRecipes()) slots.addAll(getBathSlots(false));
+        //if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
+        //if (hasSepRecipes()) slots.addAll(getSepSlots());
         return slots;
-    }
-
-    public List<Triple<Integer, Integer, Integer>> getChanceOverlays(){
-        List<Triple<Integer, Integer, Integer>> overlays = new ArrayList<>(List.of(
-                Triple.of(1, 63, 1000),
-                Triple.of(22, 108, 1000),
-                Triple.of(163, 45, 1000),
-                Triple.of(69, 117, 1000)
-        ));
-        if (material.getByProducts().size() > 3){
-            overlays.add(Triple.of(87, 99, 1000));
-        }
-        if (material.getByProducts().size() > 4){
-            overlays.add(Triple.of(87, 117, 1000));
-        }
-        if (bathingMode != BathingMode.NONE) {
-            overlays.add(Triple.of(87, 45, 7000));
-        }
-        if (hasSiftingRecipe()){
-            boolean e = material.has(EXQUISITE_GEM);
-            overlays.addAll(List.of(
-                    Triple.of(127, 1, e ? 300 : 100),
-                    Triple.of(145, 1, e ? 1200 : 400),
-                    Triple.of(163, 1, e ? 4500 : 1500),
-                    Triple.of(127, 19, e ? 1400 : 2000),
-                    Triple.of(145, 19, e ? 2800 : 4000),
-                    Triple.of(163, 19, e ? 3500 : 5000)
-            ));
-        }
-        if (hasSepRecipes()){
-            overlays.add(Triple.of(163, 108, 4000));
-            overlays.add(Triple.of(163, 126, 2000));
-        }
-        return overlays;
     }
 
     public List<SlotResult> getMainSlots(){
         List<SlotResult> slots = new ArrayList<>(List.of(
-                mch(3, 25, MACERATOR),
-                createOutput(3, 47, CRUSHED_ORE, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
-                createOutput(3, 65, DUST, getByproduct(0), 1, 1000),
+                mch(3, 22, MACERATOR),
+                createOutput(3, 45, CRUSHED_ORE, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
+                createOutput(3, 63, DUST, getByproduct(0), 1, 1000),
+                mch(22, 23, FORGE_HAMMER),
+                createOutput(43, 23, CRUSHED_ORE, getMacerateInto(), 2 * MaterialTags.ORE_MULTI.get(material)),
+                new SlotResult(25, 45, List.of(new ItemStack(Items.CAULDRON)), true),
+                createOutput(49, 45, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(67, 45, TINY_DUST, getByproduct(0), 1, 5000),
+
+                mch(25, 67, ORE_WASHER),
+                new SlotResult(45, 67, true, List.of(Materials.Water.getLiquid(1000))),
+                createOutput(67, 67, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(85, 67, TINY_DUST, getByproduct(0), 1)
+/*
                 mch(24, 71, MACERATOR),
                 createOutput(24, 92, IMPURE_DUST, getMacerateInto(), 1),
                 createOutput(24, 110, DUST, getByproduct(0), 1, 1000),
-                mch(28, 25, ORE_WASHER),
-                new SlotResult(49, 25, true, List.of(Materials.Water.getLiquid(1000))),
-                createOutput(71, 25, PURIFIED_ORE, getMacerateInto(), 1),
-                createOutput(89, 25, TINY_DUST, getByproduct(0), 1),
                 mch(119, 47, MACERATOR),
                 createOutput(147, 47, PURE_DUST, getMacerateInto(), 1),
                 createOutput(165, 47, DUST, getByproduct(1), 1, 1000),
@@ -126,31 +108,34 @@ public record OreByProduct(Material material, BathingMode bathingMode) {
                 createOutput(85, 145, PURE_DUST, getMacerateInto(), 1),
                 new SlotResult(103, 145, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
                 createOutput(125, 145, DUST, getMacerateInto(), 1)
+*/
         ));
         if (material.getByProducts().size() > 3){
-            slots.add(createOutput(89, 101, DUST, getByproduct(3), 1, 1000));
+            //slots.add(createOutput(89, 101, DUST, getByproduct(3), 1, 1000));
         }
         if (material.getByProducts().size() > 4){
-            slots.add(createOutput(89, 119, DUST, getByproduct(4), 1, 1000));
+            //slots.add(createOutput(89, 119, DUST, getByproduct(4), 1, 1000));
         }
         return slots;
     }
 
     private List<SlotResult> getSmeltSlots(){
         return List.of(
-                new SlotResult(28, 3, List.of(new ItemStack(Items.FURNACE), new ItemStack(Items.BLAST_FURNACE)), true),
-                createOutput(49, 3, MaterialTags.SMELT_INTO.get(material).has(GEM) ? GEM : INGOT, MaterialTags.SMELT_INTO.get(material), SMELTING_MULTI.getInt(material))
+                new SlotResult(22, 3, List.of(new ItemStack(Items.FURNACE), new ItemStack(Items.BLAST_FURNACE)), true),
+                createOutput(43, 3, MaterialTags.SMELT_INTO.get(material).has(GEM) ? GEM : INGOT, MaterialTags.SMELT_INTO.get(material), SMELTING_MULTI.getInt(material))
         );
     }
 
-    private List<SlotResult> getBathSlots(){
-        Material bathOutput = bathingMode == BathingMode.MERCURY ? GT5RMaterialTags.BATH_MERCURY.getMapping(material) : GT5RMaterialTags.BATH_PERSULFATE.getMapping(material);
-        Material fluidOutput = bathingMode == BathingMode.MERCURY ? Materials.Mercury : Materials.SodiumPersulfateSolution;
+    private List<SlotResult> getBathSlots(boolean mercury){
+
+        Material bathOutput = mercury ? GT5RMaterialTags.BATH_MERCURY.getMapping(material) : GT5RMaterialTags.BATH_PERSULFATE.getMapping(material);
+        Material fluidOutput = mercury ? Materials.Mercury : Materials.SodiumPersulfateSolution;
+        int y = mercury ? 89 : 111;
         return List.of(
-                mch(28, 47, BATH),
-                new SlotResult(49, 47, true, List.of(fluidOutput.getLiquid(1000))),
-                createOutput(89, 47, DUST, bathOutput, 1, 7000),
-                createOutput(71, 47, PURIFIED_ORE, getMacerateInto(), 1)
+                mch(25, y, BATH),
+                new SlotResult(45, y, true, List.of(fluidOutput.getLiquid(1000))),
+                createOutput(67, y, DUST, bathOutput, 1, 7000),
+                createOutput(85, y, PURIFIED_ORE, getMacerateInto(), 1)
         );
     }
 

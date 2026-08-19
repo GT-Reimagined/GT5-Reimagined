@@ -33,12 +33,7 @@ public class GT5RREIPlugin implements REIClientPlugin {
     @Override
     public void registerDisplays(DisplayRegistry registry) {
         GTMaterialTypes.ORE.all().forEach(m -> {
-            if (m.has(GT5RMaterialTags.BATH_PERSULFATE) || m.has(GT5RMaterialTags.BATH_MERCURY)){
-                if (m.has(GT5RMaterialTags.BATH_MERCURY)) registry.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.MERCURY)));
-                if (m.has(GT5RMaterialTags.BATH_PERSULFATE)) registry.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.PERSULFATE)));
-            } else {
-                registry.add(new OreProcessingDisplay(new OreByProduct(m, BathingMode.NONE)));
-            }
+            registry.add(new OreProcessingDisplay(new OreByProduct(m)));
         });
 
     }

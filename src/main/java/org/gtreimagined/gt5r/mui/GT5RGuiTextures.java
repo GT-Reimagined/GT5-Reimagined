@@ -36,13 +36,13 @@ public class GT5RGuiTextures {
     public static final UITexture WHITE_FILTER_ARROW_BAR = widget("white_filter_arrow_bar", 9, 6, null);
     public static final UITexture WHITE_TYPE_FILTER_ARROW_BAR = widget("white_type_filter_arrow_bar", 26, 6, null);
     //BYPRODUCTS TREE OVERLAYS
-    public static final UITexture BASE_BYPRODUCTS = byproduct("base");
-    public static final UITexture FURNACE_BYPRODUCTS = byproduct("smelt");
-    public static final UITexture MERCURY_BYPRODUCTS = byproduct("chem");
+    public static final UITexture BASE_BYPRODUCTS = byproduct("new/base");
+    public static final UITexture FURNACE_BYPRODUCTS = byproduct("new/furnace");
+    public static final UITexture MERCURY_BYPRODUCTS = byproduct("new/mecury");
     public static final UITexture PERSULFATE_BYPRODUCTS = byproduct("new/persulfate");
     public static final UITexture PGS_BYPRODUCTS = byproduct("new/pgs");
-    public static final UITexture SEP_BYPRODUCTS = byproduct("sep");
-    public static final UITexture SIFT_BYPRODUCTS = byproduct("sift");
+    public static final UITexture SEP_BYPRODUCTS = byproduct("new/sep");
+    public static final UITexture SIFT_BYPRODUCTS = byproduct("new/sift");
     public static final UITexture VITRIOL_BYPRODUCTS = byproduct("new/vitriol");
 
 
