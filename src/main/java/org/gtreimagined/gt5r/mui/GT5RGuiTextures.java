@@ -38,7 +38,7 @@ public class GT5RGuiTextures {
     //BYPRODUCTS TREE OVERLAYS
     public static final UITexture BASE_BYPRODUCTS = byproduct("new/base");
     public static final UITexture FURNACE_BYPRODUCTS = byproduct("new/furnace");
-    public static final UITexture MERCURY_BYPRODUCTS = byproduct("new/mecury");
+    public static final UITexture MERCURY_BYPRODUCTS = byproduct("new/mercury");
     public static final UITexture PERSULFATE_BYPRODUCTS = byproduct("new/persulfate");
     public static final UITexture PGS_BYPRODUCTS = byproduct("new/pgs");
     public static final UITexture SEP_BYPRODUCTS = byproduct("new/sep");
