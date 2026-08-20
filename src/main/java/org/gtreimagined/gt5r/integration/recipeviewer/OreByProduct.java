@@ -134,8 +134,8 @@ public record OreByProduct(Material material) {
         return List.of(
                 mch(25, y, BATH),
                 new SlotResult(45, y, true, List.of(fluidOutput.getLiquid(1000))),
-                createOutput(67, y, DUST, bathOutput, 1, 7000),
-                createOutput(85, y, PURIFIED_ORE, getMacerateInto(), 1)
+                createOutput(67, y, PURIFIED_ORE, getMacerateInto(), 1),
+                createOutput(85, y, DUST, bathOutput, 1, 7000)
         );
     }
 
