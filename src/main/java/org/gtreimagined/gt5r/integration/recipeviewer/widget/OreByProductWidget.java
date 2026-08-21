@@ -32,7 +32,7 @@ public class OreByProductWidget extends ParentWidget<OreByProductWidget> {
         if (byProduct.hasMercuryRecipes()) this.child(GT5RGuiTextures.MERCURY_BYPRODUCTS.asWidget().size(186, 256));
         if (byProduct.hasPersulfateRecipes()) this.child(GT5RGuiTextures.PERSULFATE_BYPRODUCTS.asWidget().size(186, 256));
         //if (byProduct.hasSiftingRecipe()) this.child(GT5RGuiTextures.SIFT_BYPRODUCTS.asWidget().size(186, 166));
-        //if (byProduct.hasSepRecipes()) this.child(GT5RGuiTextures.SEP_BYPRODUCTS.asWidget().size(186, 166));
+        if (byProduct.hasSepRecipes()) this.child(GT5RGuiTextures.SEP_BYPRODUCTS.asWidget().size(186, 256));
         if (byProduct.hasFurnaceSmeltingRecipe()) this.child(GT5RGuiTextures.FURNACE_BYPRODUCTS.asWidget().size(186, 256));
         ParentWidget<?> inputWidget = new ParentWidget<>();
         ParentWidget<?> outputWidget = new ParentWidget<>();

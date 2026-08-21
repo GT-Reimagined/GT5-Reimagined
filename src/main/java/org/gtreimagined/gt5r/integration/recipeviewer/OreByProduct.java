@@ -61,7 +61,7 @@ public record OreByProduct(Material material) {
         if (hasMercuryRecipes()) slots.addAll(getBathSlots(true));
         if (hasPersulfateRecipes()) slots.addAll(getBathSlots(false));
         //if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
-        //if (hasSepRecipes()) slots.addAll(getSepSlots());
+        if (hasSepRecipes()) slots.addAll(getSepSlots());
         return slots;
     }
 
@@ -150,10 +150,10 @@ public record OreByProduct(Material material) {
     private List<SlotResult> getSepSlots(){
         Material byProduct = material.has(GT5RMaterialTags.ELECSEPI) ? Materials.Iron : material.has(GT5RMaterialTags.ELECSEPG) ? Materials.Gold : Materials.Neodymium;
         return List.of(
-                mch(165, 71, ELECTROMAGNETIC_SEPARATOR),
-                createOutput(165, 92, DUST, getMacerateInto(), 1),
-                createOutput(165, 110, SMALL_DUST, byProduct, 2, 4000),
-                createOutput(165, 128, NUGGET, byProduct, 1, 2000)
+                mch(120, 99, ELECTROMAGNETIC_SEPARATOR),
+                createOutput(120, 120, DUST, getMacerateInto(), 1),
+                createOutput(120, 138, SMALL_DUST, byProduct, 2, 4000),
+                createOutput(120, 156, NUGGET, byProduct, 1, 2000)
         );
     }
 
