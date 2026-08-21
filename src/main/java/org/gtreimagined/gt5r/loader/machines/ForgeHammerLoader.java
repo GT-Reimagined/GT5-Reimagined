@@ -32,7 +32,7 @@ public class ForgeHammerLoader {
                 FORGE_HAMMER.RB().ii(RecipeIngredient.of(RAW_ORE.getMaterialTag(m), 1)).io(Utils.ca(ORE_MULTI.getInt(m), crushedStack)).add(m.getId() + "_raw_ore",16, 10);
             }
             if (MACERATE_INTO.getMapping(m).has(CRUSHED_ORE)){
-                FORGE_HAMMER.RB().ii(CRUSHED_ORE.getMaterialIngredient(macerateInto, 1)).io(IMPURE_DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
+                FORGE_HAMMER.RB().ii(CRUSHED_ORE.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(IMPURE_DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_crushed_ore",16, 10);
                 FORGE_HAMMER.RB().ii(PURIFIED_ORE.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(PURE_DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_purified_ore",16, 10);
                 if (m.has(REFINED_ORE)) {
                     FORGE_HAMMER.RB().ii(REFINED_ORE.getMaterialIngredient(MACERATE_INTO.getMapping(m), 1)).io(DUST.get(MACERATE_INTO.getMapping(m), 1)).add(m.getId() + "_refined_ore",16, 10);
