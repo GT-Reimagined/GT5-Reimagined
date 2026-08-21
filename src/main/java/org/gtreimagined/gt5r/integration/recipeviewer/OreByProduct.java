@@ -87,40 +87,23 @@ public record OreByProduct(Material material) {
                 new SlotResult(25, 45, List.of(new ItemStack(Items.CAULDRON)), true),
                 createOutput(49, 45, PURIFIED_ORE, getMacerateInto(), 1),
                 createOutput(67, 45, TINY_DUST, getByproduct(0), 1, 5000),
-
                 mch(25, 67, ORE_WASHER),
                 new SlotResult(45, 67, true, List.of(Materials.Water.getLiquid(1000))),
                 createOutput(67, 67, PURIFIED_ORE, getMacerateInto(), 1),
-                createOutput(85, 67, TINY_DUST, getByproduct(0), 1)
-/*
-                mch(24, 71, MACERATOR),
-                createOutput(24, 92, IMPURE_DUST, getMacerateInto(), 1),
-                createOutput(24, 110, DUST, getByproduct(0), 1, 1000),
-                mch(119, 47, MACERATOR),
-                createOutput(147, 47, PURE_DUST, getMacerateInto(), 1),
-                createOutput(165, 47, DUST, getByproduct(1), 1, 1000),
-                mch(125, 71, THERMAL_CENTRIFUGE),
-                createOutput(125, 92, REFINED_ORE, getMacerateInto(), 1),
-                createOutput(125, 110, TINY_DUST, getThermalByproduct(), 1),
-                mch(147, 71, CENTRIFUGE),
-                createOutput(147, 92, DUST, getMacerateInto(), 1),
-                createOutput(147, 110, TINY_DUST, getByproduct(1), 1),
-                mch(49, 80, CENTRIFUGE),
-                createOutput(49, 101, DUST, getMacerateInto(), 1),
-                createOutput(49, 119, TINY_DUST, getByproduct(0), 1),
-                mch(71, 80, MACERATOR),
-                createOutput(71, 101, DUST, getMacerateInto(), 1),
-                createOutput(71, 119, DUST, getByproduct(2), 1, 1000),
-                createOutput(3, 105, CRUSHED_ORE, getMacerateInto(), 1),
-                new SlotResult(3, 124, List.of(new ItemStack(Items.CAULDRON), new ItemStack(ORE_WASHER.getItem(LV))), true),
-                createOutput(3, 145, PURIFIED_ORE, getMacerateInto(), 1),
-                createOutput(24, 145, IMPURE_DUST, getMacerateInto(), 1),
-                new SlotResult(42, 145, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
-                createOutput(64, 145, DUST, getMacerateInto(), 1),
-                createOutput(85, 145, PURE_DUST, getMacerateInto(), 1),
-                new SlotResult(103, 145, List.of(new ItemStack(Items.CAULDRON), new ItemStack(CENTRIFUGE.getItem(LV))), true),
-                createOutput(125, 145, DUST, getMacerateInto(), 1)
-*/
+                createOutput(85, 67, TINY_DUST, getByproduct(0), 1),
+
+                mch(117, 56, MACERATOR),
+                createOutput(138, 56, PURE_DUST, getMacerateInto(), 1),
+                createOutput(156, 56, DUST, getByproduct(0), 1, 1000),
+                mch(117, 78, FORGE_HAMMER),
+                createOutput(138, 78, PURE_DUST, getMacerateInto(), 1),
+
+                new SlotResult(138, 99, List.of(new ItemStack(Items.CAULDRON)), true),
+                createOutput(138, 120, DUST, getMacerateInto(), 1),
+                createOutput(138, 138, TINY_DUST, getByproduct(1), 1, 5000),
+                mch(156, 99, CENTRIFUGE),
+                createOutput(156, 120, DUST, getMacerateInto(), 1),
+                createOutput(156, 138, TINY_DUST, getByproduct(1), 1)
         ));
         if (material.getByProducts().size() > 3){
             //slots.add(createOutput(89, 101, DUST, getByproduct(3), 1, 1000));
