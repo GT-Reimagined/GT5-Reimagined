@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.machine.Tier.LV;
 import static org.gtreimagined.gtlib.material.MaterialTags.SMELTING_MULTI;
@@ -55,6 +56,14 @@ public record OreByProduct(Material material) {
         return material.has(GT5RMaterialTags.BATH_PERSULFATE);
     }
 
+    public boolean hasVitriol(){
+        return material.has(GT5RMaterialTags.VITRIOL);
+    }
+
+    public boolean hasPGS(){
+        return material.has(GT5RMaterialTags.PLATINUM_GROUP_SLUDGE);
+    }
+
     public List<SlotResult> getSlots(){
         List<SlotResult> slots = new ArrayList<>(getMainSlots());
         if (hasFurnaceSmeltingRecipe()) slots.addAll(getSmeltSlots());
@@ -62,6 +71,8 @@ public record OreByProduct(Material material) {
         if (hasPersulfateRecipes()) slots.addAll(getBathSlots(false));
         if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
         if (hasSepRecipes()) slots.addAll(getSepSlots());
+        if (hasVitriol()) slots.addAll(getVitriolSlots());
+        if (hasPGS()) slots.addAll(getPGSSlots());
         return slots;
     }
 
@@ -162,6 +173,27 @@ public record OreByProduct(Material material) {
                 createOutput(120, 120, DUST, getMacerateInto(), 1),
                 createOutput(120, 138, SMALL_DUST, byProduct, 2, 4000),
                 createOutput(120, 156, NUGGET, byProduct, 1, 2000)
+        );
+    }
+
+    private List<SlotResult> getVitriolSlots(){
+        Material vitriol = GT5RMaterialTags.VITRIOL.getMapping(material);
+        return List.of(
+                mch(86, 156, BATH),
+                new SlotResult(65, 156, true, List.of(SulfuricAcid.getLiquid(vitriol == VitriolOfClay ? 10500 : 3500))),
+                createOutput(43, 156, REFINED_ORE, getMacerateInto(), 1),
+                createOutput(25, 156, SMALL_DUST, getMacerateInto(), 2),
+                new SlotResult(7, 156, false, List.of(vitriol.getLiquid(vitriol == VitriolOfClay ? 8500 : 3000)))
+        );
+    }
+
+    private List<SlotResult> getPGSSlots(){
+        return List.of(
+                mch(86, 178, BATH),
+                new SlotResult(65, 178, true, List.of(AquaRegia.getLiquid(9750))),
+                createOutput(43, 178, REFINED_ORE, getMacerateInto(), 1),
+                createOutput(25, 178, TINY_DUST, PlatinumGroupSludge, 1),
+                new SlotResult(7, 178, false, List.of(ChloroplatinicAcid.getLiquid(4500)))
         );
     }
 
