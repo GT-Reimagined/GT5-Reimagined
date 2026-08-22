@@ -103,13 +103,21 @@ public record OreByProduct(Material material) {
                 createOutput(138, 138, TINY_DUST, getByproduct(1), 1, 5000),
                 mch(156, 99, CENTRIFUGE),
                 createOutput(156, 120, DUST, getMacerateInto(), 1),
-                createOutput(156, 138, TINY_DUST, getByproduct(1), 1)
+                createOutput(156, 138, TINY_DUST, getByproduct(1), 1),
+                mch(84, 134, THERMAL_CENTRIFUGE),
+                createOutput(63, 134, REFINED_ORE, getMacerateInto(), 1),
+                createOutput(45, 134, TINY_DUST, getThermalByproduct(), 1),
+                mch(72, 203, FORGE_HAMMER),
+                createOutput(72, 224, DUST, getMacerateInto(), 1),
+                mch(9, 212, MACERATOR),
+                createOutput(30, 203, DUST, getMacerateInto(), 1),
+                createOutput(48, 203, DUST, getByproduct(2), 1, 1000)
         ));
         if (material.getByProducts().size() > 3){
-            //slots.add(createOutput(89, 101, DUST, getByproduct(3), 1, 1000));
+            slots.add(createOutput(30, 221, DUST, getByproduct(3), 1, 1000));
         }
         if (material.getByProducts().size() > 4){
-            //slots.add(createOutput(89, 119, DUST, getByproduct(4), 1, 1000));
+            slots.add(createOutput(48, 221, DUST, getByproduct(4), 1, 1000));
         }
         return slots;
     }
