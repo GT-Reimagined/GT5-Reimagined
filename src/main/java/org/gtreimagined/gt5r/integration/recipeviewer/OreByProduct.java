@@ -60,7 +60,7 @@ public record OreByProduct(Material material) {
         if (hasFurnaceSmeltingRecipe()) slots.addAll(getSmeltSlots());
         if (hasMercuryRecipes()) slots.addAll(getBathSlots(true));
         if (hasPersulfateRecipes()) slots.addAll(getBathSlots(false));
-        //if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
+        if (hasSiftingRecipe()) slots.addAll(getSiftSlots());
         if (hasSepRecipes()) slots.addAll(getSepSlots());
         return slots;
     }
@@ -145,13 +145,13 @@ public record OreByProduct(Material material) {
     private List<SlotResult> getSiftSlots(){
         boolean e = material.has(EXQUISITE_GEM);
         return List.of(
-                mch(109, 22, SIFTER),
-                createOutput(129, 3, e ? EXQUISITE_GEM : GEM, getMacerateInto(), 1, e ? 300 : 100),
-                createOutput(147, 3, e ? FLAWLESS_GEM : GEM, getMacerateInto(), 1, e ? 1200 : 400),
-                createOutput(165, 3, GEM, getMacerateInto(), 1, e ? 4500 : 1500),
-                createOutput(129, 21, e ? FLAWED_GEM : GEM, getMacerateInto(), 1, e ? 1400 : 2000),
-                createOutput(147, 21, e ? CHIPPED_GEM : GEM, getMacerateInto(), 1, e ? 2800 : 4000),
-                createOutput(165, 21, DUST, getMacerateInto(), 1, e ? 3500 : 5000)
+                mch(108, 185, SIFTER),
+                createOutput(129, 176, e ? EXQUISITE_GEM : GEM, getMacerateInto(), 1, e ? 300 : 100),
+                createOutput(147, 176, e ? FLAWLESS_GEM : GEM, getMacerateInto(), 1, e ? 1200 : 400),
+                createOutput(165, 176, GEM, getMacerateInto(), 1, e ? 4500 : 1500),
+                createOutput(129, 194, e ? FLAWED_GEM : GEM, getMacerateInto(), e ? 2 : 1, e ? 1400 : 2000),
+                createOutput(147, 194, e ? CHIPPED_GEM : GEM, getMacerateInto(), e ? 4 : 1, e ? 2800 : 4000),
+                createOutput(165, 194, DUST, getMacerateInto(), 1, e ? 3500 : 5000)
         );
     }
 
