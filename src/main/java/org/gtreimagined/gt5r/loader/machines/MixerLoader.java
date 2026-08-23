@@ -1,14 +1,17 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.GT5RConfig;
+import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockAsphalt;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
@@ -60,7 +63,6 @@ public class MixerLoader {
         addDust(Cupronickel, 8, 10*20);
         addDust(EnderEye, 8, 5*20);
         recipes();
-        addAsphaltRecipe(Stone, GT5RBlocks.GRAY_ASPHALT);
         addAsphaltRecipe(Andesite, GT5RBlocks.LIGHT_GRAY_ASPHALT);
         addAsphaltRecipe(Basalt, GT5RBlocks.BLACK_ASPHALT);
         addAsphaltRecipe(BlueSchist, GT5RBlocks.LIGHT_BLUE_ASPHALT);
@@ -89,7 +91,10 @@ public class MixerLoader {
             Material dyeMaterial = Material.get("water_mixed_" + dyeName);
             MIXER.RB().ii(of(dye.getTag())).fi(Water.getLiquid(L)).fo(dyeMaterial.getLiquid(L + (L / 2))).add("water_mixed_" + dyeName, 16, 4);
             MIXER.RB().ii(of(dye.getTag())).fi(DistilledWater.getLiquid(L)).fo(dyeMaterial.getLiquid(L + (L / 2))).add("water_mixed_" + dyeName + "_distilled_water", 16, 4);
-            MIXER.RB().fi(Material.get("chemical_" + dyeName).getLiquid(L), Concrete.getLiquid(L)).fo(Material.get(dye.getName() + "_concrete").getLiquid(L)).add(dye.getName() + "_concrete", 16, 4);
+            Material chemDye = Material.get("chemical_" + dyeName);
+            MIXER.RB().fi(chemDye.getLiquid(L), Concrete.getLiquid(L)).fo(Material.get(dye.getName() + "_concrete").getLiquid(L)).add(dye.getName() + "_concrete", 16, 4);
+            Item asphalt = GTAPI.get(Item.class, dye.getName() + "_asphalt", GT5Reimagined.ID);
+            MIXER.RB().ii(DUST.getMaterialIngredient(Stone, 1)).fi(Bitumen.getLiquid(L), chemDye.getLiquid(L)).io(asphalt).add( dye.getName() + "_asphalt_from_" + chemDye.getId(), 16, 16);
         }
     }
 
