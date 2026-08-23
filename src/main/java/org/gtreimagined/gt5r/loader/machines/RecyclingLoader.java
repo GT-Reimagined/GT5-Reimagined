@@ -17,6 +17,7 @@ import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.machine.DrumMachine;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.item.ItemBasic;
@@ -147,6 +148,9 @@ public class RecyclingLoader {
         });
         GTAPI.all(ItemBasic.class, GTCore.ID).stream().filter(i -> i.getId().contains("mold") || i.getId().contains("shape")).forEach(i -> {
             addRecyclingRecipe(i, of(Steel, 4f));
+        });
+        GTAPI.all(DrumMachine.class).forEach(d -> {
+            addRecyclingRecipe(d.getItem(NONE), of(d.getMaterial(), 6f));
         });
         addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f));
         addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f));
