@@ -121,6 +121,7 @@ public class ElectrolyzerLoader {
             elec90.addAll(List.of(Cobaltite, Galena, Chalcopyrite));
         }
         if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+            elec90.add(Bauxite);
             elec60.add(Alumina);
         }
         elec30.forEach(m -> elecMap.put(m, 30));
