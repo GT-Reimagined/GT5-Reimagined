@@ -20,6 +20,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 import org.gtreimagined.gtcore.data.GTCoreItems;
@@ -95,6 +96,17 @@ public class IERecipes {
         provider.removeRecipe(new ResourceLocation(ie, "blastfurnace/steel_block"));
         provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_steel_from_dust"));
         provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_steel_from_dust_from_blasting"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum2"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum3"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum_from_dust"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum_from_blasting"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum2_from_blasting"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum3_from_blasting"));
+        provider.removeRecipe(new ResourceLocation(ie, "smelting/ingot_aluminum_from_dust_from_blasting"));
+        provider.removeRecipe(new ResourceLocation(ie, "crusher/ore_aluminum"));
+        provider.removeRecipe(new ResourceLocation(ie, "crusher/raw_ore_aluminum"));
+        provider.removeRecipe(new ResourceLocation(ie, "crusher/raw_block_aluminum"));
         BottlingMachineRecipeBuilder.builder(new ItemStack(Ingredients.EMPTY_SHELL, 2))
                 .setUseInputArray(2)
                 .addInput(Molds.MOLD_BULLET_CASING)
