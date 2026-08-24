@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.integration.recipeviewer.renderer.IRecipeInfoRenderer;
 import org.gtreimagined.gtlib.integration.recipeviewer.renderer.InfoRenderers;
@@ -27,8 +28,11 @@ import org.gtreimagined.gt5r.machine.recipe.FusionRecipe;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeBuilder;
 import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
 import org.gtreimagined.gtcore.data.RecipeBuilders;
+import org.gtreimagined.gtlib.util.Utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.function.BiFunction;
 
@@ -215,263 +219,127 @@ public class RecipeMaps {
         };
     }
 
-    public static final IRecipeInfoRenderer BLASTING_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font font, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String temperature = "Temperature: " + recipe.getSpecialValue() + " K";
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, font, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, font, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, font, 5 + stringWidth(euT, font), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, temperature, font, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, total, font, 5, 30, guiOffsetX, guiOffsetY);
-        }
-
-        @Override
-        public int getRows() {
-            return 4;
-        }
-    };
-
-    public static final IRecipeInfoRenderer LARGE_BOILER_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String duration = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String extraBurntime = "Extra saved Burntime: " + recipe.getPower();
-            String heatIncreaseMultiplier = "Heat increase multiplier: " + (Math.max(recipe.getSpecialValue(), 1));
-            renderString(graphics, duration, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, extraBurntime, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, heatIncreaseMultiplier, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-        }
-
-        @Override
-        public int getRows() {
-            return 3;
-        }
-    };
-
-    public static final IRecipeInfoRenderer HEAT_EXCHANGER_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String duration = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String extraBurntime = "HU/t: " + recipe.getPower();
-            String heatIncreaseMultiplier = "Total HU: " + (recipe.getPower() * recipe.getDuration());
-            String heatExchanger = recipe.getTags().contains(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY) ? "Large Heat Exchanger only" : recipe.getTags().contains(GT5RRecipeTags.SMALL_HEAT_EXCHANGED_ONLY) ? "Small Heat Exchanger only" : "";
-            renderString(graphics, duration, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, extraBurntime, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, heatIncreaseMultiplier, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, heatExchanger, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-        }
-
-        @Override
-        public int getRows() {
-            return 4;
-        }
-    };
-
-    public static final IRecipeInfoRenderer FUSION_RENDERER = new IRecipeInfoRenderer() {
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (!(recipe instanceof FusionRecipe fusionRecipe)) return;
-            if (recipe.getDuration() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String huT = "Creates " + fusionRecipe.getHuOutput() + " HU/t";
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String start = "Start: " + recipe.getSpecialValue() + " EU";
-            Tier tier = Tier.getTier(recipe.getPower() / recipe.getAmps());
-            Tier outputTier = Tier.getTier(fusionRecipe.getHuOutput());
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            String formattedText1 = " (" + outputTier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, huT, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText1, fontRenderer, 5 + stringWidth(huT, fontRenderer), 20, Tier.ULV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY, false);
-            renderString(graphics, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            renderString(graphics, start, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
-        }
-
-        @Override
-        public int getRows() {
-            return 5;
-        }
-    };
-
-    public static final IRecipeInfoRenderer CHEM_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            String complicated = recipe.getSpecialValue() == -1 ? "Complicated Recipe" : null;
-            boolean toLarge = false;
-            for (FluidIngredient outputFluid : recipe.getInputFluids()) {
-                if (outputFluid.getAmount() > 32000){
-                    toLarge = true;
-                    break;
+    public static final IRecipeInfoRenderer STEAM_RENDERER = r -> {
+        var list = InfoRenderers.DEFAULT_RENDERER.getLines(r);
+        if (!list.isEmpty()){
+            long steamDuration = r.getDuration() * (r.getMapLoc().getPath().equals("plate_cutter") ? 4L : 2L);
+            long steamPower = r.getMapLoc().getPath().equals("cutter") ? r.getPower() : r.getPower() * 2L;
+            if (steamPower <= Tier.LV.getVoltage()){
+                list.add(Utils.translatable("recipe_info.gt5r.steam_per_tick", steamPower));
+                Component additional;
+                if (steamDuration < 1200) {
+                    additional = Component.empty();
+                } else if (steamDuration < 36000) {
+                    additional = Utils.translatable("recipe_info.gtlib.duration.seconds", (steamDuration / 20.0f));
+                } else {
+                    additional = Utils.translatable("recipe_info.gtlib.duration.minutes", (steamDuration / 1200.0f));
                 }
-            }
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, total, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            if (complicated != null){
-                renderString(graphics, complicated, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            }
-            if (toLarge){
-                renderString(graphics, "Large chem reactor only", fontRenderer, 5, complicated != null ? 40 : 30, guiOffsetX, guiOffsetY);
-            }
-        }
-
-        @Override
-        public int getRows() {
-            return 5;
-        }
-    };
-
-    public static final IRecipeInfoRenderer MACERATOR_RENDERER = new IRecipeInfoRenderer() {
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String amps = "Amps: " + recipe.getAmps();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            long steamDuration = recipe.getDuration() * 2L;
-            long steamPower = recipe.getPower() * 2L;
-            String steamT = "Steam: " + steamPower + " mb/t";
-            String steamAdditional = steamDuration < 1200 ? "" : steamDuration < 36000 ? " (" + (steamDuration / 20.0f) + " secs)" : " (" + (steamDuration / 1200.0f) + " mins)";
-            String steamLength = "Steam Duration: " + steamDuration + " ticks" + steamAdditional;
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, amps, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            if (steamPower <= Tier.LV.getVoltage()){
-                renderString(graphics, steamT, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
-                renderString(graphics, steamLength, fontRenderer, 5, 50, guiOffsetX, guiOffsetY);
+                list.add(Utils.translatable("recipe_info.gt5r.steam_duration", steamDuration, additional));
             } else {
-                renderString(graphics, "Not runnable in Steam machines", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
+                list.add(Utils.translatable("recipe_info.gt5r.not_steam_runnable"));
             }
-            renderString(graphics, "Byproducts in pulverizer only", fontRenderer, 5, steamPower <= Tier.LV.getVoltage() ? 60 : 50, guiOffsetX, guiOffsetY);
-        }
 
-        @Override
-        public int getRows() {
-            return 7;
         }
+        return list;
+    };
+    public static final IRecipeInfoRenderer BLASTING_RENDERER = r -> {
+        List<Component> list = InfoRenderers.DEFAULT_RENDERER.getLines(r);
+        if (list.isEmpty()) return list;
+        list.add(3, Utils.translatable("recipe_info.gt5r.temperature", r.getSpecialValue()));
+        return list;
     };
 
-    public static final IRecipeInfoRenderer ALLOY_SMELTER_RENDERER = new IRecipeInfoRenderer() {
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String amps = "Amps: " + recipe.getAmps();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            long steamDuration = recipe.getDuration() * 2L;
-            long steamPower = recipe.getPower() * 2L;
-            String steamT = "Steam: " + steamPower + " mb/t";
-            String steamAdditional = steamDuration < 1200 ? "" : steamDuration < 36000 ? " (" + (steamDuration / 20.0f) + " secs)" : " (" + (steamDuration / 1200.0f) + " mins)";
-            String steamLength = "Steam Duration: " + steamDuration + " ticks" + steamAdditional;
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, amps, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            if (recipe.getInputItems().size() > 2){
-                renderString(graphics, "Multi Smelter only", fontRenderer, 5, 40, 0xFF0000, guiOffsetX, guiOffsetY, false);
-            } else if (steamPower <= Tier.LV.getVoltage()){
-                renderString(graphics, steamT, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
-                renderString(graphics, steamLength, fontRenderer, 5, 50, guiOffsetX, guiOffsetY);
-            } else {
-                renderString(graphics, "Not runnable in Steam machines", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
-            }
-        }
-
-        @Override
-        public int getRows() {
-            return 6;
-        }
+    public static final IRecipeInfoRenderer LARGE_BOILER_RENDERER = r -> {
+        List<Component> list = InfoRenderers.BASIC_RENDERER.getLines(r);
+        if (list.isEmpty()) return list;
+        list.add(Utils.translatable("recipe_info.gt5r.extra_burntime", r.getPower()));
+        list.add(Utils.translatable("recipe_info.gt5r.heat_multiplier", Math.max(r.getSpecialValue(), 1)));
+        return list;
     };
 
-    public static final IRecipeInfoRenderer STEAM_RENDERER = new IRecipeInfoRenderer() {
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (recipe.getDuration() == 0 && recipe.getPower() == 0) return;
-            String additional = recipe.getDuration() < 1200 ? "" : recipe.getDuration() < 36000 ? " (" + (recipe.getDuration() / 20.0f) + " secs)" : " (" + (recipe.getDuration() / 1200.0f) + " mins)";
-            String power = "Duration: " + recipe.getDuration() + " ticks" + additional;
-            String euT = "EU/t: " + recipe.getPower();
-            String amps = "Amps: " + recipe.getAmps();
-            String total = "Total: " + recipe.getPower() * recipe.getDuration() + " EU";
-            long steamDuration = recipe.getDuration() * (recipe.getMapLoc().getPath().equals("plate_cutter") ? 4L : 2L);
-            long steamPower = recipe.getMapLoc().getPath().equals("cutter") ? recipe.getPower() : recipe.getPower() * 2L;
-            String steamT = "Steam: " + steamPower + " mb/t";
-            String steamAdditional = steamDuration < 1200 ? "" : steamDuration < 36000 ? " (" + (steamDuration / 20.0f) + " secs)" : " (" + (steamDuration / 1200.0f) + " mins)";
-            String steamLength = "Steam Duration: " + steamDuration + " ticks" + steamAdditional;
-            Tier tier = Tier.getTier((recipe.getPower() / recipe.getAmps()));
-            String formattedText = " (" + tier.getId().toUpperCase() + ")";
-            renderString(graphics, power, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-            renderString(graphics, euT, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            renderString(graphics, formattedText, fontRenderer, 5 + stringWidth(euT, fontRenderer), 10, Tier.EV.getRarityFormatting().getColor(), guiOffsetX, guiOffsetY);
-            renderString(graphics, amps, fontRenderer, 5, 20, guiOffsetX, guiOffsetY);
-            renderString(graphics, total, fontRenderer, 5, 30, guiOffsetX, guiOffsetY);
-            if (steamPower <= Tier.LV.getVoltage()){
-                renderString(graphics, steamT, fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
-                renderString(graphics, steamLength, fontRenderer, 5, 50, guiOffsetX, guiOffsetY);
-            } else {
-                renderString(graphics, "Not runnable in Steam machines", fontRenderer, 5, 40, guiOffsetX, guiOffsetY);
-            }
-        }
+    public static final IRecipeInfoRenderer HEAT_EXCHANGER_RENDERER = r -> {
+        List<Component> list = InfoRenderers.BASIC_RENDERER.getLines(r);
+        if (list.isEmpty()) return list;
+        list.add(Utils.translatable("recipe_info.gt5r.hut", r.getPower()));
+        list.add(Utils.translatable("recipe_info.gt5r.total_hu", r.getPower() * r.getDuration()));
 
-        @Override
-        public int getRows() {
-            return 6;
+        var tags = r.getTags();
+        if (tags.contains(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY) || tags.contains(GT5RRecipeTags.SMALL_HEAT_EXCHANGED_ONLY)){
+            list.add(Utils.translatable("recipe_info.gt5r." + (tags.contains(GT5RRecipeTags.LARGE_HEAT_EXCHANGED_ONLY) ? "large" : "small") + "_heat_exchanger_only"));
         }
+        return list;
     };
 
-    public static final IRecipeInfoRenderer MAGIC_FUEL_RENDERER = new IRecipeInfoRenderer() {
-        @Override
-        public void render(GuiGraphics graphics, IRecipe recipe, Font fontRenderer, int guiOffsetX, int guiOffsetY) {
-            if (recipe.hasInputFluids()){
-                String fuelPerMb = "EU/L: " + ((double) recipe.getPower() / (double) Objects.requireNonNull(recipe.getInputFluids()).get(0).getAmount());
-                String fuelPerB = "Fluid Amount / tick: " + Objects.requireNonNull(recipe.getInputFluids()).get(0).getAmount();
-                renderString(graphics, fuelPerMb, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
-                renderString(graphics, fuelPerB, fontRenderer, 5, 10, guiOffsetX, guiOffsetY);
-            } else if (recipe.hasInputItems()){
-                String fuelValue = "Fuel Value: " + recipe.getTotalPower() + " EU";
-                renderString(graphics, fuelValue, fontRenderer, 5, 0, guiOffsetX, guiOffsetY);
+    public static final IRecipeInfoRenderer FUSION_RENDERER = r -> {
+        if (!(r instanceof FusionRecipe fr)) return List.of();
+        List<Component> list = InfoRenderers.BASIC_RENDERER.getLines(r);
+        if (list.isEmpty()) return list;
+        Tier tier = Tier.getTier((r.getPower() / r.getAmps()));
+        Tier outputTier = Tier.getTier(fr.getHuOutput());
+        list.add(Utils.translatable("recipe_info.gtlib.eut", r.getPower(), Utils.translatable("recipe_info.gtlib.eut.tier", tier.getId().toUpperCase(Locale.ROOT)).withStyle(Tier.EV.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gt5r.fusion_hut", fr.getHuOutput(), Utils.translatable("recipe_info.gtlib.eut.tier", outputTier.getId().toUpperCase(Locale.ROOT)).withStyle(Tier.ULV.getRarityFormatting())));
+        list.add(Utils.translatable("recipe_info.gtlib.total_eu", r.getDuration() * r.getPower() * r.getAmps()));
+        list.add(Utils.translatable("recipe_info.gt5r.start_eu", r.getSpecialValue()));
+        return list;
+    };
+
+    public static final IRecipeInfoRenderer CHEM_RENDERER = r -> {
+        List<Component> list = InfoRenderers.DEFAULT_RENDERER.getLines(r);
+        if (list.isEmpty()) return list;
+        boolean toLarge = false;
+        for (FluidIngredient outputFluid : r.getInputFluids()) {
+            if (outputFluid.getAmount() > 32000){
+                toLarge = true;
+                break;
             }
         }
-
-        @Override
-        public int getRows() {
-            return 2;
+        if (r.getTags().contains(GT5RRecipeTags.COMPLICATED_RECIPE)){
+             list.add(Utils.translatable("recipe_info.gt5r.complicated_recipe"));
         }
+        if (toLarge){
+            list.add(Utils.translatable("recipe_info.gt5r.large_chem_reactor"));
+        }
+        return list;
+    };
+
+    public static final IRecipeInfoRenderer MACERATOR_RENDERER = r -> {
+        List<Component> list = STEAM_RENDERER.getLines(r);
+        if (!list.isEmpty()){
+            list.add(Utils.translatable("recipe_info.gt5r.pulverizer_only"));
+        }
+        return list;
+    };
+
+    public static final IRecipeInfoRenderer ALLOY_SMELTER_RENDERER = r -> {
+        var list = STEAM_RENDERER.getLines(r);
+        if (!list.isEmpty()){
+            long steamPower = r.getPower() * 2L;
+            if (r.getInputItems().size() > 2){
+                list.remove(list.size() - 1);
+                if (steamPower <= Tier.LV.getVoltage()){
+                    list.remove(list.size() - 1);
+                }
+                list.add(Utils.translatable("recipe_info.gt5r.multismelter_only"));
+            }
+        }
+        return list;
+    };
+
+
+    public static final IRecipeInfoRenderer MAGIC_FUEL_RENDERER = r -> {
+        if (r.hasInputFluids()){
+            return InfoRenderers.FUEL_RENDERER.getLines(r);
+        } else if (r.hasInputItems()){
+            return List.of(Utils.translatable("recipe_info.gt5r.fuel_value", r.getTotalPower()));
+        }
+        return List.of();
     };
 
     static {
-        PULVERIZER.addSubCategory("macerator_recycling", new SubCategory("jei.category.macerator_recycling", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/macerator_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
-        PULVERIZER.addSubCategory("macerator_ore_processing", new SubCategory("jei.category.macerator_ore_processing", () -> GT5RMachines.MACERATOR.getItem(Tier.LV), r -> r.getTags().contains(GT5RRecipeTags.MACERATOR_ORE_PROCESING)));
-        ARC_FURNACE.addSubCategory("arc_furnace_recycling", new SubCategory("jei.category.arc_furnace_recycling", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/arc_furnace_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
-        ALLOY_SMELTER.addSubCategory("alloy_smelter_molds", new SubCategory("jei.category.alloy_smelter_molds", () -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/alloy_smelter_molding.png"), r -> r.getTags().contains(GT5RRecipeTags.ALLOY_SMELTER_MOLDING)));
+        PULVERIZER.addSubCategory("macerator_recycling", new SubCategory(() -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/macerator_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
+        PULVERIZER.addSubCategory("macerator_ore_processing", new SubCategory(() -> GT5RMachines.MACERATOR.getItem(Tier.LV), r -> r.getTags().contains(GT5RRecipeTags.MACERATOR_ORE_PROCESING)));
+        ARC_FURNACE.addSubCategory("arc_furnace_recycling", new SubCategory(() -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/arc_furnace_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
+        ALLOY_SMELTER.addSubCategory("alloy_smelter_molds", new SubCategory(() -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/alloy_smelter_molding.png"), r -> r.getTags().contains(GT5RRecipeTags.ALLOY_SMELTER_MOLDING)));
         COKE_OVEN.setGuiData(Guis.COKE_OVEN_RECIPE_GUI);
         PRIMITIVE_BLAST_FURNACE.setGuiData(Guis.PBF_RECIPE_GUI);
         SOLID_FUEL_BOILERS.setGuiData(Guis.SIMPLE_DISPLAY);

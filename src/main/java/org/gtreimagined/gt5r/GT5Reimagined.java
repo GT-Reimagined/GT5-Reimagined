@@ -95,7 +95,6 @@ import org.gtreimagined.gt5r.events.forge.ForgeEvents;
 import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.integration.thermal.ThermalRegistrar;
-import org.gtreimagined.gt5r.integration.rei.REIRegistrar;
 import org.gtreimagined.gt5r.loader.LootLoader;
 import org.gtreimagined.gt5r.loader.WorldGenLoader;
 import org.gtreimagined.gt5r.loader.crafting.BlockParts;
@@ -393,9 +392,6 @@ public class GT5Reimagined extends GTMod {
                     }
                 };
                 GTAPI.register(IGTWorldgenFunction.class, "removed_ores", ID, function);
-                if (GTAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
-                    REIRegistrar.init();
-                }
                 PlayerTickCallback.PLAYER_TICK_CALLBACKS.add((end, logicalServer, player) -> {
                     if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
                         BlockState state = player.level().getBlockState(player.getOnPos());
@@ -426,7 +422,9 @@ public class GT5Reimagined extends GTMod {
                     return null;
                 });
                 Structures.init();
-                StructureInfo.init();
+                if (side.isClient()) {
+                    StructureInfo.init();
+                }
                 GT5RTwilightStalctites.init();
                 GT5RRemapping.init();
                 LootLoader.init();

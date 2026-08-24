@@ -653,7 +653,7 @@ public class Guis {
             brachy.modularui.widgets.ProgressWidget progressWidget = new org.gtreimagined.gt5r.mui.widgets.AutocrafterProgressWidget(machine.getMachineType(), machine.getMachineTier())
                     .tooltip(t -> t.addLine(Utils.translatable("gtlib.gui.show_recipes")))
                     .syncHandler("progress")
-                    .pos(guiProperties.getMachineData().getProgressPos().x + 6, guiProperties.getMachineData().getProgressPos().y + 6);
+                    .pos(guiProperties.getMachineData().getProgressPos().x, guiProperties.getMachineData().getProgressPos().y);
             modularPanel.child(progressWidget);
             if (!direction.isCircular()) {
                 progressWidget.texture(texture, direction.toRegularDirection());
