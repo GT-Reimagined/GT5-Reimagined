@@ -4,9 +4,13 @@ plugins {
     id "maven-publish"
     id "idea"
     id "io.freefair.lombok" version "8.10.2" apply false
+    id "org.jetbrains.kotlin.jvm" version "${kotlin_version}" apply false
+    id "org.jetbrains.kotlin.plugin.lombok" version "${kotlin_version}" apply false
     id "net.neoforged.moddev.legacyforge" version "${mdg_version}" apply false
 }
 apply plugin: "net.neoforged.moddev.legacyforge"
+apply plugin: "org.jetbrains.kotlin.jvm"
+apply plugin: "org.jetbrains.kotlin.plugin.lombok"
 
 //Print out JVM information so that we know what version is running. Extreamly useful for people to know when helping you.
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
@@ -109,6 +113,7 @@ dependencies {
     //annotationProcessor 'org.spongepowered:mixin:0.8.5-SNAPSHOT:processor'
     annotationProcessor 'net.fabricmc:sponge-mixin:0.11.4+mixin.0.8.5'
     implementation("org.sinytra.mixinbooster:mixin-booster:${mixinbooster_version}+${minecraft_version}")
+    implementation "thedarkcolour:kotlinforforge:${project.kff_version}"
     implementation("org.jetbrains:annotations:26.0.1")
     modCompileOnly("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
     modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${project.rei_version}")
@@ -182,6 +187,10 @@ dependencies {
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:additions")// Mekanism: Additions
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:generators")// Mekanism: Generators
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:tools")// Mekanism: Tools
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "17"
 }
 
 jar{
