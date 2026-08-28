@@ -7,6 +7,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.gtreimagined.gt5r.machine.caps.ParallelRecipeHandler;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityBasicMultiMachine;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,7 +46,7 @@ public class BlockEntityCokeOven extends BlockEntityBasicMultiMachine<BlockEntit
                 BlockEntity blockEntity = level.getBlockEntity(pos1);
                 if (blockEntity != null){
                     blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, Direction.UP).ifPresent(itemHandler1 ->
-                            itemHandler.ifPresent(i -> Utils.transferItems(i.getHandler(SlotType.IT_OUT), itemHandler1, false)));
+                            itemHandler.ifPresent(i -> Utils.transferItems(i.getHandler(SlotTypes.IT_OUT), itemHandler1, false)));
                     blockEntity.getCapability(ForgeCapabilities.FLUID_HANDLER, Direction.UP).ifPresent(fluidHandler1 ->
                             fluidHandler.ifPresent(f -> Utils.transferFluids(f.getOutputTanks(), fluidHandler1)));
                 }

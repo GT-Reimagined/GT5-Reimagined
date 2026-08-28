@@ -14,6 +14,7 @@ import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.cover.BaseCover;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -41,7 +42,7 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
         super(source, tier, side, factory);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotType.STORAGE, 88, 34);
+        this.gui.getSlots().add(SlotTypes.STORAGE, 88, 34);
     }
 
     @Override
@@ -83,12 +84,12 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
             int oldRedstone = outputRedstone;
             int scale = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {
                 FluidStack fluidHolder = fluidContainer.getFluidInTank(tankSlot);
-                if (!getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
+                if (!getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
                 return fluidContainer.getTankCapacity(tankSlot);
             }).sum() / 15;
             int totalFluid = IntStream.range(0, fluidContainer.getTanks()).map(tankSlot -> {
                 FluidStack fluidHolder = fluidContainer.getFluidInTank(tankSlot);
-                if (!getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
+                if (!getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty() && filter.onTransfer(fluidHolder, true, true)) return 0;
                 return fluidHolder.getAmount();
             }).sum();
             if (scale > 0){
@@ -136,8 +137,8 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
     }
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
+        if (tile == this && event == SlotTypes.STORAGE){
+            ItemStack slotStack = getInventory(SlotTypes.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -150,7 +151,7 @@ public class CoverAdvancedFluidDetector extends BaseCover implements IFilterable
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotType.STORAGE, 0);
+        onMachineEvent(this, SlotTypes.STORAGE, 0);
     }
 
     @Override

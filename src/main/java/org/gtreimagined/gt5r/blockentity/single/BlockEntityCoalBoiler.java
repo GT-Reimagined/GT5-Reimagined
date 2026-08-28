@@ -6,6 +6,7 @@ import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.util.FluidUtils;
@@ -267,11 +268,11 @@ public class BlockEntityCoalBoiler extends BlockEntityMachine<BlockEntityCoalBoi
 
         public CoalBoilerFluidHandler(BlockEntityCoalBoiler tile) {
             super(tile);
-            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotType.FL_IN, b -> {
+            tanks.put(FluidTankType.INPUT, FluidTanks.create(tile, SlotTypes.FL_IN, b -> {
                 b.tank(16000);
                 return b;
             }));
-            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotType.FL_OUT, b -> {
+            tanks.put(FluidTankType.OUTPUT, FluidTanks.create(tile, SlotTypes.FL_OUT, b -> {
                 b.tank(16000);
                 return b;
             }));

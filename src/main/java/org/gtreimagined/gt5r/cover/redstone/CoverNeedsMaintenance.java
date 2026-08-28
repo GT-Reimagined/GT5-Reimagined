@@ -13,6 +13,7 @@ import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
@@ -35,7 +36,7 @@ public class CoverNeedsMaintenance extends CoverBasicRedstoneOutput {
     public void onTickPost() {
         if (this.handler.getTile() instanceof BlockEntityLargeTurbine turbine){
             turbine.itemHandler.ifPresent(i -> {
-                ItemStack rotor = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
+                ItemStack rotor = i.getHandler(SlotTypes.STORAGE).getStackInSlot(0);
                 if (rotor.getItem() instanceof ItemTurbineRotor rotor1){
                     if (!mode.scaled){
                         setOutputRedstone(mode.inverted ? 15 : 0);

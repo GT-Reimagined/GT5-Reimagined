@@ -5,6 +5,7 @@ import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
@@ -99,8 +100,8 @@ public class BlockEntityLimitedOutput<T extends BlockEntityLimitedOutput<T>> ext
 
         public LimitedOutputItemHandler(T tile) {
             super(tile);
-            int count = tile.getMachineType() == GT5RMachines.SUPER_BUFFER ? 256 : tile.getMachineType().getCount(tile.getMachineTier(), SlotType.STORAGE);
-            this.inventories.put(SlotType.STORAGE, new TrackedItemHandler<>(tile, SlotType.STORAGE, count, true, true, (t, s) -> true){
+            int count = tile.getMachineType() == GT5RMachines.SUPER_BUFFER ? 256 : tile.getMachineType().getCount(tile.getMachineTier(), SlotTypes.STORAGE);
+            this.inventories.put(SlotTypes.STORAGE, new TrackedItemHandler<>(tile, SlotTypes.STORAGE, count, true, true, (t, s) -> true){
                 @NotNull
                 @Override
                 public ItemStack extractItem(int slot, int amount, boolean simulate) {

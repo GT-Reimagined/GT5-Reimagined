@@ -7,6 +7,7 @@ import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.cover.ICover;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.types.HatchMachine;
 import org.gtreimagined.gtlib.tool.GTToolType;
 import org.gtreimagined.gtlib.util.Utils;
@@ -28,9 +29,9 @@ public class BlockEntityInputBus extends BlockEntityHatch<BlockEntityInputBus> {
         this.itemHandler.set(() -> new MachineItemHandler<>(this){
             @Override
             protected TrackedItemHandler<BlockEntityInputBus> createTrackedHandler(SlotType<?> type, BlockEntityInputBus tile) {
-                if (type == SlotType.IT_IN){
+                if (type == SlotTypes.IT_IN){
                     int count = tile.getMachineType().getCount(tile.getMachineTier(), type);
-                    return new TrackedItemHandler<>(tile, type, count, type.allowExternalOutput(), type.allowExternalInput(), type.getTester()){
+                    return new TrackedItemHandler<>(tile, type, count, type.allowExternalOutput(), type.allowExternalInput(), type.tester()){
                         @Override
                         public boolean hasSlotDiversity() {
                             return diversityFiltering;

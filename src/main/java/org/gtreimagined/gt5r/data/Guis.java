@@ -1,5 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
+import brachy.modularui.api.drawable.IDrawable;
 import brachy.modularui.drawable.UITexture;
 import brachy.modularui.drawable.progress.CompositeProgress;
 import brachy.modularui.drawable.progress.ProgressDrawable.Direction;
@@ -8,7 +9,7 @@ import brachy.modularui.value.sync.DoubleSyncValue;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.widgets.ButtonWidget;
 import net.minecraft.client.gui.screens.Screen;
-import org.apache.commons.lang3.function.TriFunction;
+import org.apache.logging.log4j.util.TriConsumer;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityCoalBoiler;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityLavaBoiler;
@@ -18,7 +19,7 @@ import org.gtreimagined.gtcore.machine.SteamMachine;
 import org.gtreimagined.gtcore.mui.GTCoreThemes;
 import org.gtreimagined.gtlib.blockentity.IFuelMachine;
 import org.gtreimagined.gtlib.gui.GuiProperties;
-import org.gtreimagined.gtlib.gui.SlotData;
+import org.gtreimagined.gtlib.gui.SlotData.SlotDataBuilder;
 import org.gtreimagined.gtlib.gui.slot.ISlotProvider;
 import org.gtreimagined.gtlib.gui.slot.SlotEnergy;
 import org.gtreimagined.gtlib.machine.IPanelFunction;
@@ -36,8 +37,8 @@ import org.gtreimagined.gtlib.util.int2;
 
 import java.util.function.Function;
 
-import static org.gtreimagined.gtcore.data.SlotTypes.PARK;
-import static org.gtreimagined.gtlib.gui.SlotType.*;
+import static org.gtreimagined.gtcore.data.GTCoreSlotTypes.PARK;
+import static org.gtreimagined.gtlib.gui.SlotTypes.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
 import static org.gtreimagined.gt5r.data.GT5RMachines.*;
 
@@ -80,7 +81,7 @@ public class Guis {
             .setSlots(ISlotProvider.DEFAULT().add(MULTI_DISPLAY.getSlots()));
     public static GuiProperties BASIC_TANK = new GuiProperties(GT5Reimagined.ID, "basic_tank")
             .setSlots(ISlotProvider.DEFAULT().add(CELL_IN, 8, 17).add(CELL_OUT, 8, 53)
-                    .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build()));
+                    .add(FL_IN, b -> b.x(55).y(43).background(IDrawable.EMPTY).overlay(IDrawable.EMPTY)));
     public static GuiProperties COKE_OVEN_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "coke_oven_recipe_gui")
             .setSlots(ISlotProvider.DEFAULT().add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(FL_OUT, 125, 25));
     public static GuiProperties PBF_RECIPE_GUI = new GuiProperties(GT5Reimagined.ID, "pbf_recipe_gui").setSlots(
@@ -170,10 +171,10 @@ public class Guis {
                 .add(IT_OUT, 107, 34).add(IT_OUT, 125, 34)
                 .add(ENERGY, 80, 63).add(FL_IN, 53, 63);
         UITexture craft = GT5RGuiTextures.CRAFTING_SLOT_OVERLAY;
-        AUTOCRAFTER.add(IT_IN, b -> b.x(17).y(7).overlayTexture(craft).build()).add(IT_IN, 35, 7).add(IT_IN, b -> b.x(53).y(7).overlayTexture(craft).build())
-                .add(IT_IN, 17, 25).add(IT_IN, b -> b.x(35).y(25).overlayTexture(craft).build()).add(IT_IN, 53, 25)
-                .add(IT_IN, b -> b.x(17).y(43).overlayTexture(craft).build()).add(IT_IN, 35, 43).add(IT_IN, b -> b.x(53).y(43).overlayTexture(craft).build())
-                .add(STORAGE, b -> b.x(53).y(63).overlayTexture(GT5RGuiTextures.BLUEPRINT_SLOT_OVERLAY).build())
+        AUTOCRAFTER.add(IT_IN, b -> b.x(17).y(7).overlay(craft)).add(IT_IN, 35, 7).add(IT_IN, b -> b.x(53).y(7).overlay(craft))
+                .add(IT_IN, 17, 25).add(IT_IN, b -> b.x(35).y(25).overlay(craft)).add(IT_IN, 53, 25)
+                .add(IT_IN, b -> b.x(17).y(43).overlay(craft)).add(IT_IN, 35, 43).add(IT_IN, b -> b.x(53).y(43).overlay(craft))
+                .add(STORAGE, b -> b.x(53).y(63).overlay(GT5RGuiTextures.BLUEPRINT_SLOT_OVERLAY))
                 .add(IT_OUT, 107, 7).add(IT_OUT, 125, 7).add(IT_OUT, 143, 7)
                 .add(IT_OUT, 107, 25).add(IT_OUT, 125, 25).add(IT_OUT, 143, 25)
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
@@ -181,7 +182,7 @@ public class Guis {
         PACKAGER.add(COMPRESSOR);
         POLARIZER.add(COMPRESSOR);
         MIXER.add(IT_IN, 35, 16).add(IT_IN, 53, 16).add(IT_IN, 35, 34).add(IT_IN, 53, 34)
-                .add(FL_IN, b -> b.x(44).y(63).jeiX(35).build()).add(FL_IN, b -> b.x(62).y(63).jeiX(53).build())
+                .add(FL_IN, b -> b.x(44).y(63).jeiX(35)).add(FL_IN, b -> b.x(62).y(63).jeiX(53))
                 .add(IT_OUT, 107, 25).add(FL_OUT, 107, 63).add(FL_OUT, 125, 63).add(ENERGY, 80, 63);
         LASER_CUTTER.add(COMPRESSOR);
         LASER_ENGRAVER.add(ALLOY_SMELTER);
@@ -205,35 +206,35 @@ public class Guis {
                 .add(IT_OUT, 107, 43).add(IT_OUT, 125, 43).add(IT_OUT, 143, 43)
                 .add(FL_OUT,107,63).add(FL_OUT,125,63).add(FL_OUT,143,63)
                 .add(ENERGY,80,63);
-        COKE_OVEN.add(IT_IN, b -> b.x(53).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(FL_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_CELL_SLOT_OVERLAY).build());
+        COKE_OVEN.add(IT_IN, b -> b.x(53).y(25).overlay(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY))
+                .add(IT_OUT, b -> b.x(107).y(25).overlay(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY))
+                .add(FL_OUT, b -> b.x(125).y(25).overlay(GT5RGuiTextures.PRIMITIVE_CELL_SLOT_OVERLAY));
         UITexture bat = GT5RGuiTextures.BATTERY_SLOT_OVERLAY;
-        TriFunction<Integer, Integer, SlotData.SlotDataBuilder<SlotEnergy>, SlotData<SlotEnergy>> batFunction = (x, y, b) -> b.x(x).y(y).overlayTexture(bat).build();
-        BATTERY_BUFFER_FOUR.add(ENERGY, b -> batFunction.apply(71, 27, b)).add(ENERGY, b -> batFunction.apply(89, 27, b))
-                .add(ENERGY, b -> batFunction.apply(71, 45, b)).add(ENERGY, b -> batFunction.apply(89, 45, b));
-        BATTERY_BUFFER_ONE.add(ENERGY, b -> batFunction.apply(80, 40, b));
+        TriConsumer<Integer, Integer, SlotDataBuilder<SlotEnergy>> batFunction = (x, y, b) -> b.x(x).y(y).overlay(bat);
+        BATTERY_BUFFER_FOUR.add(ENERGY, b -> batFunction.accept(71, 27, b)).add(ENERGY, b -> batFunction.accept(89, 27, b))
+                .add(ENERGY, b -> batFunction.accept(71, 45, b)).add(ENERGY, b -> batFunction.accept(89, 45, b));
+        BATTERY_BUFFER_ONE.add(ENERGY, b -> batFunction.accept(80, 40, b));
         BATTERY_BUFFER_EIGHT
-                .add(ENERGY, b -> batFunction.apply(53,27, b)).add(ENERGY, b -> batFunction.apply(71,27, b)).add(ENERGY, b -> batFunction.apply(89,27, b)).add(ENERGY, b -> batFunction.apply(107,27, b))
-                .add(ENERGY, b -> batFunction.apply(53,45, b)).add(ENERGY, b -> batFunction.apply(71,45, b)).add(ENERGY, b -> batFunction.apply(89,45, b)).add(ENERGY, b -> batFunction.apply(107,45, b));
+                .add(ENERGY, b -> batFunction.accept(53,27, b)).add(ENERGY, b -> batFunction.accept(71,27, b)).add(ENERGY, b -> batFunction.accept(89,27, b)).add(ENERGY, b -> batFunction.accept(107,27, b))
+                .add(ENERGY, b -> batFunction.accept(53,45, b)).add(ENERGY, b -> batFunction.accept(71,45, b)).add(ENERGY, b -> batFunction.accept(89,45, b)).add(ENERGY, b -> batFunction.accept(107,45, b));
         BATTERY_BUFFER_SIXTEEN
-                .add(ENERGY, b -> batFunction.apply(53,9, b)).add(ENERGY, b -> batFunction.apply(71,9, b)).add(ENERGY, b -> batFunction.apply(89,9, b)).add(ENERGY, b -> batFunction.apply(107,9, b))
-                .add(ENERGY, b -> batFunction.apply(53,27, b)).add(ENERGY, b -> batFunction.apply(71,27, b)).add(ENERGY, b -> batFunction.apply(89,27, b)).add(ENERGY, b -> batFunction.apply(107,27, b))
-                .add(ENERGY, b -> batFunction.apply(53,45, b)).add(ENERGY, b -> batFunction.apply(71,45, b)).add(ENERGY, b -> batFunction.apply(89,45, b)).add(ENERGY, b -> batFunction.apply(107,45, b))
-                .add(ENERGY, b -> batFunction.apply(53,63, b)).add(ENERGY, b -> batFunction.apply(71,63, b)).add(ENERGY, b -> batFunction.apply(89,63, b)).add(ENERGY, b -> batFunction.apply(107,63, b));
+                .add(ENERGY, b -> batFunction.accept(53,9, b)).add(ENERGY, b -> batFunction.accept(71,9, b)).add(ENERGY, b -> batFunction.accept(89,9, b)).add(ENERGY, b -> batFunction.accept(107,9, b))
+                .add(ENERGY, b -> batFunction.accept(53,27, b)).add(ENERGY, b -> batFunction.accept(71,27, b)).add(ENERGY, b -> batFunction.accept(89,27, b)).add(ENERGY, b -> batFunction.accept(107,27, b))
+                .add(ENERGY, b -> batFunction.accept(53,45, b)).add(ENERGY, b -> batFunction.accept(71,45, b)).add(ENERGY, b -> batFunction.accept(89,45, b)).add(ENERGY, b -> batFunction.accept(107,45, b))
+                .add(ENERGY, b -> batFunction.accept(53,63, b)).add(ENERGY, b -> batFunction.accept(71,63, b)).add(ENERGY, b -> batFunction.accept(89,63, b)).add(ENERGY, b -> batFunction.accept(107,63, b));
 
-        SOLID_FUEL_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
-                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build())
-                .add(BRONZE, IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.BRONZE_DUST_SLOT_OVERLAY).build())
-                .add(BRONZE, IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.BRONZE_COAL_SLOT_OVERLAY).build());
-        SOLID_FUEL_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
-                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build())
-                .add(STEEL, IT_OUT, b -> b.x(116).y(26).overlayTexture(GT5RGuiTextures.STEEL_DUST_SLOT_OVERLAY).build())
-                .add(STEEL, IT_IN, b -> b.x(116).y(62).overlayTexture(GT5RGuiTextures.STEEL_COAL_SLOT_OVERLAY).build());
-        LAVA_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY).build())
-                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY).build());
-        SOLAR_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlayTexture(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY).build())
-                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlayTexture(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY).build());
+        SOLID_FUEL_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlay(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY))
+                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlay(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY))
+                .add(BRONZE, IT_OUT, b -> b.x(116).y(26).overlay(GT5RGuiTextures.BRONZE_DUST_SLOT_OVERLAY))
+                .add(BRONZE, IT_IN, b -> b.x(116).y(62).overlay(GT5RGuiTextures.BRONZE_COAL_SLOT_OVERLAY));
+        SOLID_FUEL_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlay(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY))
+                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlay(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY))
+                .add(STEEL, IT_OUT, b -> b.x(116).y(26).overlay(GT5RGuiTextures.STEEL_DUST_SLOT_OVERLAY))
+                .add(STEEL, IT_IN, b -> b.x(116).y(62).overlay(GT5RGuiTextures.STEEL_COAL_SLOT_OVERLAY));
+        LAVA_BOILER.add(STEEL, CELL_IN, b -> b.x(44).y(26).overlay(GT5RGuiTextures.STEEL_CELL_IN_SLOT_OVERLAY))
+                .add(STEEL, CELL_OUT, b -> b.x(44).y(62).overlay(GT5RGuiTextures.STEEL_CELL_OUT_SLOT_OVERLAY));
+        SOLAR_BOILER.add(BRONZE, CELL_IN, b -> b.x(44).y(26).overlay(GT5RGuiTextures.BRONZE_CELL_IN_SLOT_OVERLAY))
+                .add(BRONZE, CELL_OUT, b -> b.x(44).y(62).overlay(GT5RGuiTextures.BRONZE_CELL_OUT_SLOT_OVERLAY));
 
         STEAM_ALLOY_SMELTER.add(IT_IN, 35, 25).add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
         STEAM_COMPRESSOR.add(IT_IN, 53, 25).add(IT_OUT, 107, 25).add(PARK, 80, 63).add(FL_IN, 53, 63);
@@ -251,7 +252,7 @@ public class Guis {
         COMBUSTION_GENERATOR.add(BASIC_TANK.getSlots());
         SEMIFLUID_GENERATOR.add(BASIC_TANK.getSlots());
         MAGIC_ENERGY_CONVERTER.add(IT_IN, 8, 17).add(IT_OUT, 8, 53)
-                .add(FL_IN, b -> b.x(55).y(43).baseTexture(GTGuiTextures.BLANK_SLOT).overlayTexture(null).build());
+                .add(FL_IN, b -> b.x(55).y(43).background(IDrawable.EMPTY).overlay(IDrawable.EMPTY));
         NUCLEAR_REACTOR_CORE.add(STORAGE, 70, 25).add(STORAGE, 70, 43).add(STORAGE, 88, 25).add(STORAGE, 88, 43).add(FL_IN, 70, 61).add(FL_OUT, 88, 61);
 
         CROP_HARVESTER.add(IT_OUT, 62, 16).add(IT_OUT, 80, 16).add(IT_OUT, 98, 16)
@@ -259,12 +260,12 @@ public class Guis {
                 .add(IT_OUT, 62, 52).add(IT_OUT, 80, 52).add(IT_OUT, 98, 52);
 
         QUANTUM_TANK.add(BASIC_TANK.getSlots());
-        PRIMITIVE_BLAST_FURNACE.add(IT_IN, b -> b.x(53).y(16).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(IT_IN, b -> b.x(53).y(34).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
-                .add(IT_IN, b -> b.x(53).y(52).overlayTexture(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(107).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(125).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build())
-                .add(IT_OUT, b -> b.x(143).y(25).overlayTexture(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY).build());
+        PRIMITIVE_BLAST_FURNACE.add(IT_IN, b -> b.x(53).y(16).overlay(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY))
+                .add(IT_IN, b -> b.x(53).y(34).overlay(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY))
+                .add(IT_IN, b -> b.x(53).y(52).overlay(GT5RGuiTextures.PRIMITIVE_FIRE_SLOT_OVERLAY))
+                .add(IT_OUT, b -> b.x(107).y(25).overlay(GT5RGuiTextures.PRIMITIVE_INGOT_SLOT_OVERLAY))
+                .add(IT_OUT, b -> b.x(125).y(25).overlay(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY))
+                .add(IT_OUT, b -> b.x(143).y(25).overlay(GT5RGuiTextures.PRIMITIVE_DUST_SLOT_OVERLAY));
 
         MUFFLER_HATCH.add(IT_IN, 79, 34);
 
@@ -294,11 +295,11 @@ public class Guis {
         HIGH_CAPACITY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         SECONDARY_INPUT_HATCH.add(FL_IN, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
         SECONDARY_OUTPUT_HATCH.add(FL_OUT, 79, 34).add(CELL_IN, 9, 22).add(CELL_OUT, 9, 58);
-        UITexture blank = GTGuiTextures.BLANK_SLOT;
+        IDrawable blank = IDrawable.EMPTY;
         ELECTRIC_ITEM_FILTER
-                .add(DISPLAY_SETTABLE, b -> b.x(18).y(6).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(6).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(6).baseTexture(blank).build())
-                .add(DISPLAY_SETTABLE, b -> b.x(18).y(23).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(23).baseTexture(blank).build())
-                .add(DISPLAY_SETTABLE, b -> b.x(18).y(40).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(35).y(40).baseTexture(blank).build()).add(DISPLAY_SETTABLE, b -> b.x(52).y(40).baseTexture(blank).build())
+                .add(DISPLAY_SETTABLE, b -> b.x(18).y(6).background(blank)).add(DISPLAY_SETTABLE, b -> b.x(35).y(6).background(blank)).add(DISPLAY_SETTABLE, b -> b.x(52).y(6).background(blank))
+                .add(DISPLAY_SETTABLE, b -> b.x(18).y(23).background(blank)).add(DISPLAY_SETTABLE, b -> b.x(35).y(23).background(blank)).add(DISPLAY_SETTABLE, b -> b.x(52).y(23).background(blank))
+                .add(DISPLAY_SETTABLE, b -> b.x(18).y(40).background(blank)).add(DISPLAY_SETTABLE, b -> b.x(35).y(40).background(blank)).add(DISPLAY_SETTABLE, b -> b.x(52).y(40).background(blank))
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -307,7 +308,7 @@ public class Guis {
                 .add(STORAGE, 98 + 18 * 2, 41);
 
         ELECTRIC_TYPE_FILTER
-                .add(DISPLAY_SETTABLE, b -> b.x(35).y(23).baseTexture(blank).build())
+                .add(DISPLAY_SETTABLE, b -> b.x(35).y(23).background(blank))
                 .add(STORAGE, 98, 5).add(STORAGE, 98 + 18, 5)
                 .add(STORAGE, 98 + 18 * 2, 5)
                 .add(STORAGE, 98, 23).add(STORAGE, 98 + 18, 23)
@@ -669,7 +670,7 @@ public class Guis {
         //ELECTRIC_TYPE_FILTER.getCallbacks().remove(1);
         //CHEST_BUFFER.getCallbacks().remove(1);
         /*FUSION_REACTOR.addGuiCallback(t -> {
-            t.addButton(155, 23, ButtonOverlay.NO_OVERLAY, false).addButton(155, 41, ButtonOverlay.NO_OVERLAY, false).addButton(155, 59, ButtonOverlay.NO_OVERLAY, false).addWidget(makeProgress()).addWidget(FusionButtonWidget.build());
+            t.addButton(155, 23, ButtonOverlay.NO_OVERLAY, false).addButton(155, 41, ButtonOverlay.NO_OVERLAY, false).addButton(155, 59, ButtonOverlay.NO_OVERLAY, false).addWidget(makeProgress()).addWidget(FusionButtonWidget);
         });*/
     }
 

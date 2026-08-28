@@ -29,6 +29,7 @@ import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.BaseCover;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -49,7 +50,7 @@ public class CoverItemRetriever extends BaseCover {
     protected boolean ignoreNBT = false;
     public CoverItemRetriever(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.getGuiProperties().getSlots().add(SlotType.DISPLAY_SETTABLE, 79, 53);
+        this.getGuiProperties().getSlots().add(SlotTypes.DISPLAY_SETTABLE, 79, 53);
     }
 
     @Override
@@ -162,7 +163,7 @@ public class CoverItemRetriever extends BaseCover {
                                 BlockEntity a = p.getCachedBlockEntity(dir);
                                 if (!(a instanceof BlockEntityItemPipe) && a != null){
                                     IItemHandler itemHandler = a.getCapability(ForgeCapabilities.ITEM_HANDLER, dir.getOpposite()).resolve().orElse(null);
-                                    if (itemHandler != null && Utils.transferItems(itemHandler, to, true, s -> itemMatches(s, getInventory(SlotType.DISPLAY_SETTABLE).getStackInSlot(0)))){
+                                    if (itemHandler != null && Utils.transferItems(itemHandler, to, true, s -> itemMatches(s, getInventory(SlotTypes.DISPLAY_SETTABLE).getStackInSlot(0)))){
                                         for (BlockEntityItemPipe<?> tUsedPipe : tUsedPipes){
                                             tUsedPipe.incrementTransferCounter(1);
                                         }

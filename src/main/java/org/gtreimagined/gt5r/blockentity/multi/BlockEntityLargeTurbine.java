@@ -12,6 +12,7 @@ import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -46,7 +47,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                 new MachineRecipeHandler<BlockEntityLargeTurbine>(this) {
                     @Override
                     protected boolean validateRecipe(IRecipe r) {
-                        boolean hasRotor = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0).getItem() instanceof ItemTurbineRotor).orElse(false);
+                        boolean hasRotor = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0).getItem() instanceof ItemTurbineRotor).orElse(false);
                         boolean inputFluids = r.hasInputFluids();
                         return hasRotor && inputFluids;
                     }
@@ -54,7 +55,7 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                     @Override
                     public void checkRecipe() {
                         super.checkRecipe();
-                        ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+                        ItemStack stack = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                         ItemTurbineRotor rotor = stack.getItem() instanceof ItemTurbineRotor rotor1 ? rotor1 : null;
                         if (rotor != null){
                             baseEfficiency = (int) (rotor.getEfficiency() * 100);
@@ -70,8 +71,8 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                     @Override
                     public void onMachineEvent(IMachineEvent event, Object... data) {
                         super.onMachineEvent(event, data);
-                        if (event == SlotType.STORAGE){
-                            ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+                        if (event == SlotTypes.STORAGE){
+                            ItemStack stack = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
                             ItemTurbineRotor rotor = stack.getItem() instanceof ItemTurbineRotor rotor1 ? rotor1 : null;
                             if (rotor == null) {
                                 resetRecipe();
@@ -119,13 +120,13 @@ public class BlockEntityLargeTurbine extends BlockEntityMultiMachine<BlockEntity
                         });
                         if (getLevel() != null && getLevel().getGameTime() % 1000 == 0 && getLevel().random.nextInt(2) == 0){
                             itemHandler.ifPresent(i -> {
-                                ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(0);
+                                ItemStack stack = i.getHandler(SlotTypes.STORAGE).getStackInSlot(0);
                                 ItemStack compare = stack.copy();
                                 if(stack.getItem() instanceof ItemTurbineRotor rotor && stack.hurt(1, getLevel().random, null)){
                                     var materialType = rotor.getBrokenRotor();
                                     var material = rotor.getMaterial();
                                     ItemStack broken = materialType != null && material.has(materialType) ? materialType.get(material, 1) : LONG_ROD.get(rotor.getRodMaterial(), 1);
-                                    i.getHandler(SlotType.STORAGE).setStackInSlot(0, broken);
+                                    i.getHandler(SlotTypes.STORAGE).setStackInSlot(0, broken);
                                 }
                             });
                         }

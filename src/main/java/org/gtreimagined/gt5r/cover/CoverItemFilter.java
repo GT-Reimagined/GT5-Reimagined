@@ -14,6 +14,7 @@ import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityItemPipe;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -30,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 public class CoverItemFilter extends CoverFilter {
     public CoverItemFilter(@NotNull ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
-        this.getGuiProperties().getSlots().add(SlotType.DISPLAY_SETTABLE, 88, 53);
+        this.getGuiProperties().getSlots().add(SlotTypes.DISPLAY_SETTABLE, 88, 53);
     }
 
     @Override
@@ -61,7 +62,7 @@ public class CoverItemFilter extends CoverFilter {
     @Override
     public void clearFilter(){
         super.clearFilter();
-        getInventory(SlotType.DISPLAY_SETTABLE).clearContent();
+        getInventory(SlotTypes.DISPLAY_SETTABLE).clearContent();
     }
 
     @Override
@@ -90,7 +91,7 @@ public class CoverItemFilter extends CoverFilter {
         super.onTransfer(object, inputSide, simulate);
         if (object instanceof ItemStack item) {
             if ((filterMode == 1 && !inputSide) || (filterMode == 2 && inputSide)) return false;
-            ItemStack filter = getInventory(SlotType.DISPLAY_SETTABLE).getStackInSlot(0);
+            ItemStack filter = getInventory(SlotTypes.DISPLAY_SETTABLE).getStackInSlot(0);
             boolean empty = filter.isEmpty();
             if (empty) {
                 if (!blacklist) {

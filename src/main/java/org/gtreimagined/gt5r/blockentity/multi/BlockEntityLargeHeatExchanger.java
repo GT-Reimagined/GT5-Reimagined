@@ -10,6 +10,7 @@ import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineFluidHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
@@ -151,7 +152,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     @Override
     public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
         super.onFirstTickServer(level, pos, state);
-        onMachineEvent(SlotType.STORAGE);
+        onMachineEvent(SlotTypes.STORAGE);
     }
 
     @Override
@@ -206,14 +207,14 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE) return stack.getItem() instanceof ItemSelectorTag;
+        if (slotType == SlotTypes.STORAGE) return stack.getItem() instanceof ItemSelectorTag;
         return true;
     }
 
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
-        if (event == SlotType.STORAGE){
-            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+        if (event == SlotTypes.STORAGE){
+            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
             if (circuit.getItem() instanceof ItemSelectorTag circuit1){
                 superheatedThreshold = 80000 - (circuit1.circuitId * 3000);
                 efficiency = 1000 - (circuit1.circuitId * 15);

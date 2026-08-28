@@ -29,6 +29,7 @@ import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
@@ -66,7 +67,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         if (stack.getItem() == GT5RItems.DataStick){
             if (stack.getTagElement("displaySlots") == null){
                 this.itemHandler.ifPresent(i -> {
-                    CompoundTag displaySlots = i.getHandler(SlotType.DISPLAY_SETTABLE).serializeNBT();
+                    CompoundTag displaySlots = i.getHandler(SlotTypes.DISPLAY_SETTABLE).serializeNBT();
                     displaySlots.putString("machineType", this.getMachineType().getLoc().toString());
                     stack.getOrCreateTag().put("displaySlots", displaySlots);
                 });
@@ -75,7 +76,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
             } else {
                 CompoundTag displaySlots = stack.getTagElement("displaySlots");
                 if (!displaySlots.isEmpty() && displaySlots.getString("machineType").equals(this.getMachineType().getLoc().toString())){
-                    this.itemHandler.ifPresent(i -> i.getHandler(SlotType.DISPLAY_SETTABLE).deserializeNBT(displaySlots));
+                    this.itemHandler.ifPresent(i -> i.getHandler(SlotTypes.DISPLAY_SETTABLE).deserializeNBT(displaySlots));
                     level.playSound(null, pos, SoundEvents.UI_BUTTON_CLICK.value(), SoundSource.BLOCKS, 10.f, 1.0f);
                     return InteractionResult.SUCCESS;
                 }
@@ -87,10 +88,10 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE){
+        if (slotType == SlotTypes.STORAGE){
             boolean hasItem = itemHandler.map(h -> {
                 List<Item> list = new ObjectArrayList<>();
-                IItemHandler outputs = h.getHandler(SlotType.DISPLAY_SETTABLE);
+                IItemHandler outputs = h.getHandler(SlotTypes.DISPLAY_SETTABLE);
                 for (int i = 0; i < outputs.getSlots(); i++) {
                     ItemStack slotStack = outputs.getStackInSlot(i);
                     if (!slotStack.isEmpty()) {
@@ -175,7 +176,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
         super.onMachineEvent(event, data);
-        if ((event == SlotType.IT_OUT || event == SlotType.IT_IN) && outputRedstone && !this.getLevel().isClientSide()){
+        if ((event == SlotTypes.IT_OUT || event == SlotTypes.IT_IN) && outputRedstone && !this.getLevel().isClientSide()){
          //   level.updateNeighborsAt(this.getBlockPos(), this.getBlockState().getBlock());
             level.markAndNotifyBlock(this.getBlockPos(), this.level.getChunkAt(this.getBlockPos()), this.getBlockState(), this.getBlockState(), 1, 512);
         }
@@ -188,7 +189,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
         adjTile.getCapability(ForgeCapabilities.ITEM_HANDLER, outputDir.getOpposite()).ifPresent(adjHandler -> {
-            booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotType.STORAGE), adjHandler,true)).orElse(false);
+            booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotTypes.STORAGE), adjHandler,true)).orElse(false);
         });
         return booleans[0];
     }
@@ -198,8 +199,8 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
         if (outputRedstone){
             int[] redstone = new int[1];
             redstone[0] = this.itemHandler.map(i -> {
-                for (int slot = 0; slot < i.getHandler(SlotType.STORAGE).getSlots(); slot++){
-                    ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(slot);
+                for (int slot = 0; slot < i.getHandler(SlotTypes.STORAGE).getSlots(); slot++){
+                    ItemStack stack = i.getHandler(SlotTypes.STORAGE).getStackInSlot(slot);
                     if (!stack.isEmpty()) return invertRedstone ? 0 : 15;
                 }
                 return invertRedstone ? 15 : 0;
@@ -217,7 +218,7 @@ public class BlockEntityItemFilter extends BlockEntityLimitedOutput<BlockEntityI
             CompoundTag tag1 = tag.getCompound(Ref.KEY_MACHINE_ITEMS);
             if (tag1.contains("filterable")){
                 CompoundTag filterable = tag1.getCompound("filterable");
-                tag1.put(SlotType.STORAGE.getId(), filterable);
+                tag1.put(SlotTypes.STORAGE.getId(), filterable);
             }
         }
         super.load(tag);
