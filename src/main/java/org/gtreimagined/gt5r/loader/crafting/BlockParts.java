@@ -153,7 +153,7 @@ public class BlockParts {
                 of('P', ROTOR.getMaterialTag(Titanium), 'W', WRENCH.getTag(), 'H', GTTools.HAMMER.getTag(), 'F', GT5RBlocks.TITANIUM_CASING, 'G', GT5RBlocks.FLUID_PIPE_TITANIUM.getBlockItem(PipeSize.NORMAL))
                 ,
                 "PHP", "GFG", "PWP");
-        if (GT5RConfig.HARD_SETTINGS){
+        if (GT5RConfig.HARD_SETTINGS.get()){
             provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ASSEMBLY_LINE_CASING,
                     of('S', PLATE.getMaterialTag(TungstenSteel), 'F', FRAME.getMaterialTag(TungstenSteel), 'R', GT5RCovers.COVER_ROBOT_ARM.getItem(IV), 'H', HAMMER.getTag(), 'W', WRENCH.getTag()), "SHS" ,"RFR", "SWS");
             provider.addItemRecipe(output, "gtblockparts", GT5RBlocks.ADVANCED_ASSEMBLER_CASING,

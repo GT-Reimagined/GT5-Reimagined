@@ -454,7 +454,7 @@ public class GT5Reimagined extends GTMod {
                                 GT5RItems.EmptyCircuitPlate, GT5RItems.CopperEtchedWiring, GT5RItems.CopperCircuitPlate, GT5RItems.GoldEtchedWiring,
                                 GT5RItems.GoldCircuitPlate, GT5RItems.PlatinumEtchedWiring, GT5RItems.PlatinumCircuitPlate));
                     }
-                    if (!GT5RConfig.HARD_SETTINGS){
+                    if (!GT5RConfig.HARD_SETTINGS.get()){
                         l.add(GT5RMachines.ASSEMBLY_LINE.getItem(IV));
                         l.add(GT5RBlocks.ADVANCED_ASSEMBLER_CASING);
                         l.add(GT5RBlocks.ASSEMBLY_LINE_CASING);

@@ -899,7 +899,7 @@ public class MachineRecipes {
     }
 
     private static void addMultiblockRecipes(Consumer<FinishedRecipe> output, GTRecipeProvider provider){
-        if (GT5RConfig.HARD_SETTINGS) {
+        if (GT5RConfig.HARD_SETTINGS.get()) {
             add(ASSEMBLY_LINE, IV, (m, item) -> provider.addItemRecipe(output, "machines", item,
                     ImmutableMap.<Character, Object>builder()
                             .put('A', GT5RBlocks.ADVANCED_ASSEMBLER_CASING)
