@@ -91,6 +91,11 @@ public class BotaniaRegistrar extends GTMod {
         return "botania";
     }
 
+    @Override
+    public int getPriority() {
+        return 700;
+    }
+
     private void onAttachCaps(AttachCapabilitiesEvent<BlockEntity> event){
         if (event.getObject() instanceof PetalApothecaryBlockEntity){
             event.addCapability(new ResourceLocation(GT5Reimagined.ID, "petal_apothecary"), new ICapabilityProvider() {
