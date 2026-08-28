@@ -124,8 +124,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static org.gtreimagined.gt5r.data.Materials.Netherite;
-import static org.gtreimagined.gt5r.data.Materials.Wood;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.Data.*;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
@@ -279,7 +278,7 @@ public class GT5RMachines {
         BRONZE_DRUM = GTCoreBlocks.createDrum(Materials.Bronze, 16000);
         INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
         STEEL_DRUM = GTCoreBlocks.createDrum(Materials.Steel, 48000);
-        STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
+        STAINLESS_DRUM = GTCoreBlocks.createDrum(StainlessSteel, 64000).acidProof();
         if (GTAPI.isModLoaded("botania")) MANASTEEL_DRUM = GTCoreBlocks.createDrum(Materials.Manasteel, 64000).acidProof().magicProof();
         TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
         NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof().magicProof();
@@ -290,7 +289,7 @@ public class GT5RMachines {
         WOOD_TANK = new MultiblockTankMachine(GT5Reimagined.ID, Wood, true, 432000, () -> GT5RBlocks.WOOD_WALL).maxHeat(350);
         STEEL_TANKS = createTankMachine(Materials.Steel, 3);
         INVAR_TANKS = createTankMachine(Materials.Invar, 2);
-        STAINLESS_STEEL_TANKS = createTankMachine(Materials.StainlessSteel, 4);
+        STAINLESS_STEEL_TANKS = createTankMachine(StainlessSteel, 4);
         TITANIUM_TANKS = createTankMachine(Materials.Titanium, 8);
         NETHERITE_TANKS = createTankMachine(Netherite, 8);
         TUNGSTENSTEEL_TANKS = createTankMachine(Materials.TungstenSteel, 16);
@@ -354,7 +353,7 @@ public class GT5RMachines {
     public static MultiMachine LARGE_HEAT_EXCHANGER = new MultiMachine(GT5Reimagined.ID, "large_heat_exchanger").setTiers(NONE).setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, FLUID, ITEM, HEAT).addStructureTooltip(8).setTile(BlockEntityLargeHeatExchanger::new).setCustomModel().setTextureBlock(GT5RBlocks.TITANIUM_CASING);
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GT5Reimagined.ID, "implosion_compressor").setTiers(HV).setMap(RecipeMaps.IMPLOSION_COMPRESSOR).addFlags(GUI, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityImplosionCompressor::new).setTextureBlock(GT5RBlocks.SOLID_STEEL_CASING);
     public static MultiMachine LARGE_AUTOCLAVE = new MultiMachine(GT5Reimagined.ID, "large_autoclave").setTiers(HV).setMap(RecipeMaps.AUTOCLAVE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityLargeAutoclave::new).setTextureBlock(GT5RBlocks.STAINLESS_STEEL_CASING);
-    public static MultiMachine LARGE_BATHING_VAT = new MultiMachine(GT5Reimagined.ID, "large_bathing_vat").setTiers(NONE).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).addStructureTooltip(8).setTile(BlockEntityLargeBath::new).setTextureBlock(GT5RBlocks.STAINLESS_STEEL_WALL).setBlockColorHandler((state, world, pos, machine, i) -> i == 0 ? Materials.StainlessSteel.getRGB() : -1).setItemColorHandler((stack, block, i) -> i == 0 ? Materials.StainlessSteel.getRGB() : -1);
+    public static MultiMachine LARGE_BATHING_VAT = new MultiMachine(GT5Reimagined.ID, "large_bathing_vat").setTiers(NONE).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).addStructureTooltip(8).setTile(BlockEntityLargeBath::new).setTextureBlock(GT5RBlocks.STAINLESS_STEEL_WALL).setBlockColorHandler((state, world, pos, machine, i) -> i == 0 ? StainlessSteel.getRGB() : -1).setItemColorHandler((stack, block, i) -> i == 0 ? StainlessSteel.getRGB() : -1);
     public static MultiMachine LARGE_BOILER = new MultiMachine(GT5Reimagined.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(RecipeMaps.LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).setCustomModel().setTierSpecificLang().addStructureTooltip(13, (machine, stack, world, flag, i) -> {
         if (i == 1){
             double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;
@@ -451,9 +450,14 @@ public class GT5RMachines {
                 new MultiblockTankMachine(GT5Reimagined.ID, material, true, 432 * multiplier * 1000, casing).gasProof(),
                 new MultiblockTankMachine(GT5Reimagined.ID, material, false, 2000 * multiplier * 1000, casing).gasProof()
         };
-        if (material == Materials.StainlessSteel || material == Netherite){
+        if (material == StainlessSteel || material == Netherite){
             multiblockTankMachines[0].acidProof();
             multiblockTankMachines[1].acidProof();
+        }
+        List<Material> magicMaterials = List.of(Manasteel, Netherite, TungstenSteel, Tungsten, GaiaSpirit, Adamantium);
+        if (magicMaterials.contains(material)){
+            multiblockTankMachines[0].magicProof();
+            multiblockTankMachines[1].magicProof();
         }
         return multiblockTankMachines;
     }
