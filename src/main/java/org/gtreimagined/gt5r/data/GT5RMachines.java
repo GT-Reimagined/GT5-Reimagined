@@ -283,7 +283,7 @@ public class GT5RMachines {
         TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
         NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof().magicProof();
         TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000).magicProof();
-        TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000).magicProof();
+        TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000).acidProof().magicProof();
         if (GTAPI.isModLoaded("botania")) GAIA_DRUM = GTCoreBlocks.createDrum(Materials.GaiaSpirit, 1024000).acidProof().magicProof();
         ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof().magicProof();
         WOOD_TANK = new MultiblockTankMachine(GT5Reimagined.ID, Wood, true, 432000, () -> GT5RBlocks.WOOD_WALL).maxHeat(350);
@@ -450,7 +450,7 @@ public class GT5RMachines {
                 new MultiblockTankMachine(GT5Reimagined.ID, material, true, 432 * multiplier * 1000, casing).gasProof(),
                 new MultiblockTankMachine(GT5Reimagined.ID, material, false, 2000 * multiplier * 1000, casing).gasProof()
         };
-        if (material == StainlessSteel || material == Netherite){
+        if (material == StainlessSteel || material == Netherite || material == Tungsten || material == Adamantium){
             multiblockTankMachines[0].acidProof();
             multiblockTankMachines[1].acidProof();
         }
