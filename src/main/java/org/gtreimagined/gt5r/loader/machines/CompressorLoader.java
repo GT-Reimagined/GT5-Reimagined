@@ -51,7 +51,7 @@ public class CompressorLoader {
         }
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).io(PLATE.get(Lapis)).add("lapis_plate", 300, 2);
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lazurite, 1)).io(PLATE.get(Lazurite)).add("lazurite", 300, 2);
-        COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4)).io(new ItemStack(Plantball)).add("plantball",300, 2);
+        COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4).setIgnoreNbt()).io(new ItemStack(Plantball)).add("plantball",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SMALL_FLOWERS, 8)).io(new ItemStack(Plantball)).add("plantball_1",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Tags.Items.CROPS, 8)).io(new ItemStack(Plantball)).add("plantball_2",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Tags.Items.SEEDS, 16)).io(new ItemStack(Plantball)).add("plantball_3",300, 2);
