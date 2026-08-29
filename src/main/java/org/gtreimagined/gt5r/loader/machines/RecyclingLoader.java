@@ -264,7 +264,7 @@ public class RecyclingLoader {
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
-        addRecyclingRecipe(RecipeIngredient.of(input), outputs, RegistryUtils.getIdFromItem(input.asItem()).getPath());
+        addRecyclingRecipe(RecipeIngredient.of(input, 1).setIgnoreNbt(), outputs, RegistryUtils.getIdFromItem(input.asItem()).getPath());
     }
 
     private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, String id){
