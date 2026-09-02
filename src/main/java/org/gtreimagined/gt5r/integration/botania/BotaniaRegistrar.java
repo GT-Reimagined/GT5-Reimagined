@@ -54,7 +54,7 @@ public class BotaniaRegistrar extends GTMod {
                 .mats(ImmutableMap.of(Manasteel, 1, Diamond, 1, EnderPearl, 1));
         event.setMaterial(Elementium).asMetal(2811, MaterialTags.MAGIC)
                 .tool().toolDamage(3).toolQuality(3).toolSpeed(14).toolDurability(512).handleMaterial(Dreamwood).build();
-        event.setMaterial(GaiaSpirit).asMetal(3945, LONG_ROD, MaterialTags.MAGIC, MaterialTags.POSITIVE_CHANGING_RGB)
+        event.setMaterial(GaiaSpirit).asMetal(3945, LONG_ROD, MaterialTags.MAGIC, MaterialTags.RAINBOW_RGB)
                 .tool().toolDamage(4).toolQuality(4).toolSpeed(20).toolDurability(2048).handleMaterial(Elementium).build();
         ROD.replacement(Livingwood, () -> botItem("livingwood_twig"));
         ROD.replacement(Dreamwood, () -> botItem("dreamwood_twig"));

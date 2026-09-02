@@ -10,7 +10,6 @@ import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
 import org.gtreimagined.gt5r.GT5Reimagined;
-import org.gtreimagined.gtcore.data.GTCoreFluids;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.fluid.GTClientFluidTypeExtension;
 import org.gtreimagined.gtlib.fluid.GTFluid;
@@ -25,7 +24,7 @@ public class GT5RFluids {
     }
 
     private static IClientFluidTypeExtensions prepareFluidExtension(String fluid){
-        return GTClientFluidTypeExtension.builder().stillTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).flowingTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).flowingTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).overlayTexture(GTFluid.OVERLAY_TEXTURE).build();
+        return GTClientFluidTypeExtension.create(b -> b.stillTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).flowingTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).flowingTexture(new ResourceLocation(GT5Reimagined.ID, "block/fluid/" + fluid)).overlayTexture(GTFluid.OVERLAY_TEXTURE));
     }
 
     private static BlockBehaviour.Properties prepareProperties() {
