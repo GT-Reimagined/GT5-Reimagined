@@ -351,6 +351,10 @@ public class WorldGenLoader {
                     new StoneLayerOre(Lepidolite, U32, 16, 48),
                     new StoneLayerOre(Spodumene, U32, 32, 64),
                     new StoneLayerOre(Tantalite, U32, 8, 56));
+            ev.addCollisionBothSides(id("marble_over_quartzite"), id("quartzite_over_marble"), MARBLE.getState(), QUARTZITE.getState(),
+                    new StoneLayerOre(Soapstone, U4, -54, -9),
+                    new StoneLayerOre(Talc, U4, -54, -9),
+                    new StoneLayerOre(Glauconite, U4, -54, -9));
 
 
         }
