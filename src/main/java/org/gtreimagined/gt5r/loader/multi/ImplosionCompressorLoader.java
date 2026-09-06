@@ -20,5 +20,6 @@ public class ImplosionCompressorLoader {
                 IMPLOSION_COMPRESSOR.RB().ii(DUST.getMaterialIngredient(m, 4), RecipeIngredient.of(Items.TNT, tnt * 2)).io(GEM.get(m, 3), TINY_DUST.get(DarkAsh, tnt * 2)).add(m.getId() + "_from_tnt", 20, 30);
             }
         });
+        IMPLOSION_COMPRESSOR.RB().ii(GTCoreItems.CoalChunk).ii(RecipeIngredient.of(Items.TNT, 2)).io(GEM.get(Diamond, 1), TINY_DUST.get(DarkAsh, 4)).add("industrial_diamond", 20, 30);
     }
 }
