@@ -8,6 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
@@ -67,7 +68,9 @@ public class Parts {
       provider.addItemRecipe(output, "gtparts", SELECTOR_TAG_ITEMS.get(0),
               of('G', SMALL_GEAR.getMaterialTag(TFCRegistrar.getIron()), 'R', ROD.getMaterialTag(TFCRegistrar.getIron()), 'W', WRENCH.getTag(), 'H', HAMMER.getTag()), "GHG", "RRR", "GWG");
 
-      provider.shapeless(output, GT5Reimagined.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
+      if (!GT5RConfig.HARD_CARBON.get()) {
+          provider.shapeless(output, GT5Reimagined.ID, "", "carbon", new ItemStack(CarbonMesh), CarbonFibre, CarbonFibre);
+      }
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalBall,
               of('F', Items.FLINT, 'C', DUST.getMaterialTag(Coal)), "CCC", "CFC", "CCC");
       provider.addItemRecipe(output, GT5Reimagined.ID, "", "carbon", CoalChunk,
