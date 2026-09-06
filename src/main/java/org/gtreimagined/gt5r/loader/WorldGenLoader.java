@@ -365,10 +365,14 @@ public class WorldGenLoader {
         ev.stoneLayer(new StoneLayerBuilder(id("bauxite")).withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("oil_shale")).withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).inDimensions(overworld).buildVein());
 
-        ev.addCollisionBothSides(id("basalt_over_limestone"), id("limestone_over_basalt"), BASALT.getState(), LIMESTONE.getState(),
+        List<StoneLayerOre> ores = new ArrayList<>(List.of(
                 new StoneLayerOre(Ilmenite, U8, -64, 0),
                 new StoneLayerOre(Rutile, U12, -64, 0)
-        );
+        ));
+        if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+            ores.add(new StoneLayerOre(Alumina, U12, -64, 0));
+        }
+        ev.addCollisionBothSides(id("basalt_over_limestone"), id("limestone_over_basalt"), BASALT.getState(), LIMESTONE.getState(), ores.toArray(StoneLayerOre[]::new));
 
     }
 
