@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "gtlib:item/material/none/huge_turbine_rotor"
+  }
+}
