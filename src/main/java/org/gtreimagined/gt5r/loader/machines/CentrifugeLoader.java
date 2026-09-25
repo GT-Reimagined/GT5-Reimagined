@@ -86,7 +86,6 @@ public class CentrifugeLoader {
         //Cake Centrifuging
         /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/
-        CENTRIFUGE.RB().ii(of(GTCoreTags.RUBBER_LOGS)).io(new ItemStack(GTCoreItems.StickyResin), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).outputChances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
 
         CENTRIFUGE.RB().ii(of(GTCoreItems.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball)).fo(Glue.getLiquid(100)).outputChances(1.0, 0.1).add("sticky_resin", 300, 5);
         CENTRIFUGE.RB().ii(HONEYCOMB).io(DUST.get(GTCoreMaterials.Beeswax)).fo(Honey.getLiquid(100)).add("honeycomb", 128, 5);
