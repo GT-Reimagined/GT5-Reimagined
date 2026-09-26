@@ -122,7 +122,7 @@ public class ElectrolyzerLoader {
         }
         if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             elec90.add(Bauxite);
-            elec30.add(Alumina);
+            elec60.add(Alumina);
         }
         elec30.forEach(m -> elecMap.put(m, 30));
         elec60.forEach(m -> elecMap.put(m, 60));

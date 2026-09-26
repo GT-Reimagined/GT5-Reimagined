@@ -771,7 +771,7 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Adamantine).mats(of(Adamantium, 3, Oxygen, 4)).elecTicks(2040);
         event.setMaterial(Materials.Almandine).mats(of(Materials.Alumina, 5, Iron, 3, Materials.SiliconDioxide, 9, Materials.Oxygen, 3)).elecTicks(480);
-        event.setMaterial(Materials.Alumina).mats(of(Materials.Aluminium, 2, Materials.Oxygen, 3)).elecTicks(1920);
+        event.setMaterial(Materials.Alumina).mats(of(Materials.Aluminium, 2, Materials.Oxygen, 3)).elecTicks(480);
         event.setMaterial(Materials.Andradite).mats(of(Materials.Calcium, 3, Iron, 2, Materials.Silicon, 3, Materials.Oxygen, 12)).elecTicks(480);
         event.setMaterial(Materials.Hematite).mats(of(Iron, 2, Materials.Oxygen, 3)).elecTicks(150);
         event.setMaterial(Materials.Bastnasite).mats(of(Materials.Cerium, 1, Materials.Carbon, 1, Materials.Fluorine, 1, Materials.Oxygen, 3)).elecTicks(192);
