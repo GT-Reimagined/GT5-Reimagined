@@ -1404,6 +1404,7 @@ public class GT5RMaterialEvents {
         RECIPE_MASS.add(Tin, 48);
         RECIPE_MASS.add(Copper, 50);
         RECIPE_MASS.add(Bronze, 52);
+        RECIPE_MASS.add(RedAlloy, 52);
         FURNACE_FUELS.add(Materials.CoalCoke, GEM, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, DUST, 3200);
         FURNACE_FUELS.add(Materials.CoalCoke, BLOCK, 32000);
