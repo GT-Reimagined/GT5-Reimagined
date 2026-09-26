@@ -107,6 +107,12 @@ public class IERecipes {
         provider.removeRecipe(new ResourceLocation(ie, "crusher/ore_aluminum"));
         provider.removeRecipe(new ResourceLocation(ie, "crusher/raw_ore_aluminum"));
         provider.removeRecipe(new ResourceLocation(ie, "crusher/raw_block_aluminum"));
+        String[] ores = new String[]{"osmium", "copper", "silver", "uranium", "aluminum", "platinum", "iron", "gold",
+            "zinc", "nickel", "lead", "tin"};
+        for (String ore: ores){
+            provider.removeRecipe(new ResourceLocation(ie, "crafting/hammercrushing_" + ore));
+            provider.removeRecipe(new ResourceLocation(ie, "crafting/raw_hammercrushing_" + ore));
+        }
         BottlingMachineRecipeBuilder.builder(new ItemStack(Ingredients.EMPTY_SHELL, 2))
                 .setUseInputArray(2)
                 .addInput(Molds.MOLD_BULLET_CASING)
