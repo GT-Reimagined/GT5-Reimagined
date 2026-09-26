@@ -161,7 +161,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Methanol.getLiquid(3000)).fo(AceticAcid.getLiquid(4000)).add("acetic_acid_1",150, 30);
         CHEMICAL_REACTOR.RB().fi(CarbonMonoxide.getGas(1000), Hydrogen.getGas(1000)).fo(AceticAcid.getLiquid(2000)).add("acetic_acid_2",80, 30);
         //METHANOL
-        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).fo(Methanol.getLiquid(2000),Water.getLiquid(1000)).add("methanol",200, 120);
+        CHEMICAL_REACTOR.RB().fi(Hydrogen.getGas(2000),CarbonDioxide.getGas(1000)).ii(DUST.getMaterialIngredient(Alumina, 1).setNoConsume()).fo(Methanol.getLiquid(2000),Water.getLiquid(1000)).add("methanol",200, 120);
         //STYRENE
         CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(2000),Ethylene.getGas(1000)).fo(Styrene.getLiquid(3000)).add("ethylene_to_styrene",120, 30);
         //RAW STYRENE-BUDADIENE RUBBER PULP
