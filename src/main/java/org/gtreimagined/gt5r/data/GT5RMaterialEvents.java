@@ -271,6 +271,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Quartzite).asDust(ROCK);
         event.setMaterial(Materials.Quicklime).asDust();
         event.setMaterial(Materials.ReactionCatalyst).asDust();
+        event.setMaterial(RubberWood).asDust(WOOD, RUBBERTOOLS);
         event.setMaterial(Materials.RedGranite).asDust(ROCK);
         event.setMaterial(Materials.SiliconDioxide).asDust();
         event.setMaterial(Materials.Shale).asDust(ROCK);

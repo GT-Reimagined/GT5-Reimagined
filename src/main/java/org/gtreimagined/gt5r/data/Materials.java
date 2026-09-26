@@ -283,6 +283,7 @@ public class Materials {
     public static Material RawRubber = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "raw_rubber", 0xccc789, DULL));
     public static Material RawStyreneButadieneRubber = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "raw_styrene_butadiene_rubber", 0x54403d, SHINY));
     public static Material ReactionCatalyst = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "reaction_catalyst", 0x43ab43, NONE));
+    public static Material RubberWood = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "rubber_wood", 0xb49600, WOOD));
     public static Material SiliconDioxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "silicon_dioxide", 0xc8c8c8, QUARTZ));
     public static Material SodaAsh = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "soda_ash", 0xdcdcff, DULL));
     public static Material SodiumAluminate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sodium_aluminate", 0xE6E6FA, NONE));
