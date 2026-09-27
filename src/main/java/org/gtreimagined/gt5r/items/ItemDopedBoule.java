@@ -26,7 +26,7 @@ public class ItemDopedBoule extends ItemBasic<ItemDopedBoule> implements IColorH
     @Override
     public Texture[] getTextures() {
         return new Texture[]{
-                new Texture(Ref.ID, "item/material/boule"),
+                new Texture(Ref.ID, "item/material/none/boule"),
                 new Texture(GT5Reimagined.ID, "item/basic/silicon/doped_boule_overlay")
         };
     }
