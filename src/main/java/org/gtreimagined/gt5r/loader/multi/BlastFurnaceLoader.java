@@ -63,14 +63,10 @@ public class BlastFurnaceLoader {
                 .io(INGOT.get(AnnealedCopper))
                 .add("annealed_copper_ingot", 25 * 20, 120);
         /* Steel */
-        E_BLAST_FURNACE.RB().temperature(1000).ii(INGOT.getMaterialIngredient(Iron, 1))
-                .fi(Oxygen.getGas(1000))
-                .io(INGOT.get(Steel), SMALL_DUST.get(DarkAsh))
-                .add("steel_ingot", 500, 120);
         E_BLAST_FURNACE.RB().temperature(1000).ii(INGOT.getMaterialIngredient(WroughtIron, 1))
                 .fi(Oxygen.getGas(1000))
                 .io(INGOT.get(Steel), SMALL_DUST.get(DarkAsh))
-                .add("steel_ingot_2", 100, 120);
+                .add("steel_ingot", 100, 120);
         if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
             /* Aluminium*/
             E_BLAST_FURNACE.RB().temperature(1200).ii(DUST.getMaterialIngredient(Ruby, 1))
