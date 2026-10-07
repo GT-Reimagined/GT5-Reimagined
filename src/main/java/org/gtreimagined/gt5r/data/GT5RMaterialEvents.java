@@ -485,7 +485,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Benzene).asFluid(288);
         event.setMaterial(Materials.BenzoylChloride).asFluid();
         event.setMaterial(Materials.Biomass).asFluid(8).flags(GT5RMaterialTags.SEMIFUELS);
-        event.setMaterial(Materials.BisphenolA).asFluid();
+        event.setMaterial(Materials.BisphenolA).asDust();
         event.setMaterial(Materials.Chloramine).asFluid();
         event.setMaterial(Materials.Chloroform).asFluid();
         event.setMaterial(Materials.Cumene).asFluid();

@@ -471,7 +471,7 @@ public class GT5Reimagined extends GTMod {
                                 Materials.Butanol.getLiquid(), Materials.Heptanol.getLiquid(), Materials.Ethenol.getLiquid(), Materials.Propenol.getLiquid(), Materials.Butenol.getLiquid(),
                                 Materials.Ethanediol.getLiquid(), Materials.Propanediol.getLiquid(), Materials.Butanediol.getLiquid(),
                                 Materials.AceticAcid.getLiquid(), Materials.AllylChloride.getLiquid(), Materials.Benzaldehyde.getLiquid(), Materials.BenzoylChloride.getLiquid(),
-                                Materials.BisphenolA.getLiquid(), Materials.Chloroform.getLiquid(), Materials.Cumene.getLiquid(), Materials.Dichloroethane.getLiquid(), Materials.Dimethyldichlorosilane.getLiquid(),
+                                Materials.Chloroform.getLiquid(), Materials.Cumene.getLiquid(), Materials.Dichloroethane.getLiquid(), Materials.Dimethyldichlorosilane.getLiquid(),
                                 Materials.MethylAcetate.getLiquid(), Materials.Phenol.getLiquid(), Materials.PolyvinylAcetate.getLiquid(), Materials.Styrene.getLiquid(),
                                 Materials.VinylAcetate.getLiquid(), Materials.HydrofluoricAcid.getLiquid(), Materials.HydrogenPeroxide.getLiquid(), Materials.HypochlorousAcid.getLiquid(),
                                 Materials.PeroxydisulfuricAcid.getLiquid(), Materials.PhosphoricAcid.getLiquid(), Materials.CharcoalByproducts.getGas(), Materials.Butene.getGas(),
