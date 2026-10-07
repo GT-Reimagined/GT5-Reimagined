@@ -241,9 +241,9 @@ public class Circuitry {
         BATH.RB().ii(of(AdvancedCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 2)).io(AdvancedCircuit).add("advanced_circuit", 64);
         BATH.RB().ii(of(ComplexCircuitBoard)).fi(SolderingAlloy.getLiquid(L / 2)).io(ComplexCircuit).add("complex_circuit", 64);
 
-        ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.EngravedCrystalChip)).fi(Tin.getLiquid(L)).io(new ItemStack(DataStorageCircuit)).add("data_storage_circuit_tin", 32, 64);
-        ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(DataStorageCircuit)).add("data_storage__circuit_soldering_alloy", 32, 64);
-        ASSEMBLER.RB().ii(of(GT5RItems.CircuitBoardEpoxy), of(GT5RItems.EngravedCrystalChip)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(DataStorageCircuit)).add("data_storage_circuit_lead", 32, 64);
+        ASSEMBLER.RB().ii(of(PlatinumCircuitPlate), of(GT5RItems.EngravedCrystalChip)).fi(Tin.getLiquid(L)).io(new ItemStack(DataStorageCircuit)).add("data_storage_circuit_tin", 32, 64);
+        ASSEMBLER.RB().ii(of(PlatinumCircuitPlate), of(GT5RItems.EngravedCrystalChip)).fi(SolderingAlloy.getLiquid(L / 2)).io(new ItemStack(DataStorageCircuit)).add("data_storage__circuit_soldering_alloy", 32, 64);
+        ASSEMBLER.RB().ii(of(PlatinumCircuitPlate), of(GT5RItems.EngravedCrystalChip)).fi(Lead.getLiquid(L * 2)).io(new ItemStack(DataStorageCircuit)).add("data_storage_circuit_lead", 32, 64);
         ASSEMBLER.RB().ii(of(ProcessorCircuitBoard), of(DataStorageCircuit, 3)).fi(Tin.getLiquid(L * 2)).io(new ItemStack(DataControlCircuit)).add("data_control_circuit_tin", 32, 256);
         ASSEMBLER.RB().ii(of(ProcessorCircuitBoard), of(DataStorageCircuit, 3)).fi(SolderingAlloy.getLiquid(L)).io(new ItemStack(DataControlCircuit)).add("data_control_circuit_soldering_alloy", 32, 256);
         ASSEMBLER.RB().ii(of(ProcessorCircuitBoard), of(DataStorageCircuit, 3)).fi(Lead.getLiquid(L * 4)).io(new ItemStack(DataControlCircuit)).add("data_control_circuit_lead", 32, 256);
@@ -256,7 +256,6 @@ public class Circuitry {
         ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(BasicCircuitParts, 2), of(AdvancedCircuitParts, 2)).fi(Lead.getLiquid(L * 2)).io(GT5RItems.DataStick).add("data_stick_lead", 120, 64);
         ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(BasicCircuitParts, 2), of(AdvancedCircuitParts, 2)).fi(Tin.getLiquid(L)).io(GT5RItems.DataStick).add("data_stick_tin", 120, 64);
         ASSEMBLER.RB().ii(of(CIRCUITS_ADVANCED), of(BasicCircuitParts, 2), of(AdvancedCircuitParts, 2)).fi(SolderingAlloy.getLiquid(L/2)).io(GT5RItems.DataStick).add("data_stick_soldering_alloy", 120, 64);
-        CHEMICAL_REACTOR.RB().ii(FOIL.getMaterialIngredient(Copper, 4)).fi(EpoxyResin.getLiquid(L)).io(GT5RItems.CircuitBoardEpoxy).add("epoxy_circuit_board", 500, 10);
     }
 
     private static void hardBoards() {

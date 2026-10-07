@@ -435,7 +435,7 @@ public class GT5Reimagined extends GTMod {
                     IGTTool screwdriver_hv = GTAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     if (!GT5RConfig.HARDER_CIRCUITS.get()){
-                        l.addAll(Arrays.asList(GT5RItems.CircuitBoardPhenolic, GT5RItems.CircuitBoardPlastic, GT5RItems.CircuitBoardFiber,
+                        l.addAll(Arrays.asList(GT5RItems.CircuitBoardPhenolic, GT5RItems.CircuitBoardPlastic, GT5RItems.CircuitBoardEpoxy, GT5RItems.CircuitBoardFiber,
                                 GT5RItems.CircuitBoardMultiFiber, GT5RItems.CircuitBoardWetware, PLATE.get(Materials.FiberReinforcedEpoxyResin),
                                 GT5RItems.GlassTube, GT5RItems.VacuumTube, GT5RItems.Transistor, GT5RItems.SMDTransistor, GT5RItems.Resistor,
                                 GT5RItems.SMDResistor, GT5RItems.Diode, GT5RItems.SMDDiode, GT5RItems.Capacitor, GT5RItems.SMDCapacitor,
