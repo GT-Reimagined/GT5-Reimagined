@@ -141,7 +141,14 @@ public class ChemicalReactorLoader {
     }
 
     private static void epoxyChain(){
-
+        //PHOSPHORIC ACID
+        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(9000)).ii(DUST.getMaterialIngredient(PhosphorousPentoxide, 7)).fo(PhosphoricAcid.getLiquid(16000)).add("phosphoric_acid", 120, 30);
+        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(4000), Oxygen.getGas(2500)).ii(DUST.getMaterialIngredient(TricalciumPhosphate, 1)).fo(PhosphoricAcid.getLiquid(8000)).add("phosphoric_acid_1", 320, 30);
+        //CHEMICAL_REACTING.RB().fi(Water.getLiquid(10000), SulfuricAcid.getLiquid(35000)).ii(DUST.getMaterialIngredient(Apatite, 21)).fo(PhosphoricAcid.getLiquid(24000), HydrochloricAcid.getLiquid(2000)).io(DUST.get(Gypsum, 40)).add("phosphoric_acid_2", 320, 30);
+        //CUMENE
+        CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(8000), Propene.getGas(6000), PhosphoricAcid.getLiquid(1000)).fo(Cumene.getLiquid(14000)).add("cumene", 360, 30);
+        //PHENOL & ACETONE
+        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(2000), Cumene.getLiquid(11000)).fo(Phenol.getLiquid(6000), Acetone.getLiquid(6000)).add("phenol", 160, 30);
         //HYPOCHLOROUS ACID
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Water.getLiquid(1000)).fo(HydrochloricAcid.getLiquid(1000), HypochlorousAcid.getLiquid(1000)).add("hypochlorous_acid", 60, 30, -1);
         //ALLYL CHLORIDE
@@ -197,14 +204,7 @@ public class ChemicalReactorLoader {
         CHEMICAL_REACTOR.RB().fi(Methane.getGas(6000), Chlorine.getGas(5000)).ii(SELECTOR_TAG_INGREDIENTS.get(13).get()).fo(HydrochloricAcid.getLiquid(6000), Chloroform.getLiquid(5000)).tags(COMPLICATED_RECIPE).add("hydrochloric_acid_1", 16, 30);
         //CHLOROBENZENE
         CHEMICAL_REACTOR.RB().fi(Chlorine.getGas(1000), Benzene.getLiquid(6000)).ii(SELECTOR_TAG_INGREDIENTS.get(4).get()).fo(Chlorobenzene.getLiquid(6000), HydrochloricAcid.getLiquid(1000)).tags(COMPLICATED_RECIPE).add("chlorobenzene", 120, 30);
-        //PHOSPHORIC ACID
-        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(9000)).ii(DUST.getMaterialIngredient(PhosphorousPentoxide, 7)).fo(PhosphoricAcid.getLiquid(16000)).tags(COMPLICATED_RECIPE).add("phosphoric_acid", 120, 30);
-        CHEMICAL_REACTOR.RB().fi(Water.getLiquid(4000), Oxygen.getGas(2500)).ii(DUST.getMaterialIngredient(TricalciumPhosphate, 1)).fo(PhosphoricAcid.getLiquid(8000)).tags(COMPLICATED_RECIPE).add("phosphoric_acid_1", 320, 30);
-        //CHEMICAL_REACTING.RB().fi(Water.getLiquid(10000), SulfuricAcid.getLiquid(35000)).ii(DUST.getMaterialIngredient(Apatite, 21)).fo(PhosphoricAcid.getLiquid(24000), HydrochloricAcid.getLiquid(2000)).io(DUST.get(Gypsum, 40)).add("phosphoric_acid_2", 320, 30);
-        //CUMENE
-        CHEMICAL_REACTOR.RB().fi(Benzene.getLiquid(8000), Propene.getGas(6000), PhosphoricAcid.getLiquid(1000)).fo(Cumene.getLiquid(14000)).tags(COMPLICATED_RECIPE).add("cumene", 360, 30);
         //PHENOL
-        CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(2000), Cumene.getLiquid(11000)).fo(Phenol.getLiquid(6000), Acetone.getLiquid(6000)).tags(COMPLICATED_RECIPE).add("phenol", 160, 30);
         CHEMICAL_REACTOR.RB().fi(Water.getLiquid(3000), Chlorine.getGas(2000), Benzene.getLiquid(12000)).fo(Phenol.getLiquid(13000), HydrochloricAcid.getLiquid(2000), DilutedHydrochloricAcid.getLiquid(2000)).tags(COMPLICATED_RECIPE).add("phenol_1", 560, 30);
         CHEMICAL_REACTOR.RB().fi(Chlorobenzene.getLiquid(12000), Water.getLiquid(3000)).fo(Phenol.getLiquid(13000), DilutedHydrochloricAcid.getLiquid(2000)).tags(COMPLICATED_RECIPE).add("phenol_2", 240, 30);
         CHEMICAL_REACTOR.RB().fi(Oxygen.getGas(2000), PhosphoricAcid.getLiquid(1000), Benzene.getLiquid(12000), Propene.getGas(9000)).fo(Phenol.getLiquid(13000), Acetone.getLiquid(10000)).tags(COMPLICATED_RECIPE).add("phenol_3", 480, 30);
