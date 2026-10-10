@@ -190,7 +190,7 @@ public class GT5RMachines {
     public static BasicMachine ELECTROLYZER = new BasicMachine(GT5Reimagined.ID, "electrolyzer").setMap(RecipeMaps.ELECTROLYZER).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.MAGNETIZER, 0.6f);
     public static BasicMachine ELECTROMAGNETIC_SEPARATOR = new BasicMachine(GT5Reimagined.ID, "electromagnetic_separator").setMap(RecipeMaps.ELECTROMAGNETIC_SEPARATOR).addFlags(GUI, ITEM);
     public static BasicMachine EXTRACTOR = new BasicMachine(GT5Reimagined.ID, "extractor").setMap(RecipeMaps.EXTRACTOR).addFlags(GUI, ITEM).setSound(GT5RSounds.EXTRACTOR,  0.6f);
-    public static BasicMachine EXTRUDER = new BasicMachine(GT5Reimagined.ID, "extruder").setMap(RecipeMaps.EXTRUDER).addFlags(GUI, ITEM).setCustomModel();
+    public static BasicMachine EXTRUDER = new BasicMachine(GT5Reimagined.ID, "extruder").setMap(RecipeMaps.EXTRUDER).addFlags(GUI, ITEM, FLUID).setCustomModel();
     public static BasicMachine FERMENTER = new BasicMachine(GT5Reimagined.ID, "fermenter").setMap(RecipeMaps.FERMENTER).addFlags(GUI, ITEM, FLUID).setCustomModel().setRendersContainedLiquids(true);
     public static BasicMachine FLUID_CANNER = new BasicMachine(GT5Reimagined.ID, "fluid_canner").setMap(RecipeMaps.FLUID_CANNER).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f);
     public static BasicMachine FLUID_PRESS = new BasicMachine(GT5Reimagined.ID, "fluid_press").setMap(RecipeMaps.FLUID_PRESS).addFlags(GUI, ITEM, FLUID);
