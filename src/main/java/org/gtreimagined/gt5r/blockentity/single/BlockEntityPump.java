@@ -40,7 +40,7 @@ public class BlockEntityPump extends BlockEntityMachine<BlockEntityPump> {
     public List<Fluid> mPumpedFluids = new ArrayList<>();
     public BlockEntityPump(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
-        this.fluidHandler.set(() -> new MachineFluidHandler<>(this, 8000 * (this.getMachineTier().getIntegerId()), 0, 1));
+        this.fluidHandler.set(() -> new MachineFluidHandler<>(this, 8000 * (this.getMachineTier().getIntegerId()), 0, 1, 0));
     }
 
     @Override
