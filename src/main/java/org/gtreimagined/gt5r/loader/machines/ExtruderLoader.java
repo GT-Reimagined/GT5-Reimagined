@@ -224,8 +224,9 @@ public class ExtruderLoader {
 
     private static void addPipeRecipe(Material material, int countIn, int countOut, PipeSize size, PipeType<?> pipe, int durationMultiplier){
         if (pipe.getSizes().contains(size)) {
+            ToLongFunction<Material> energyPerTick = m -> m.has(RUBBERTOOLS) ? 16 : 128;
             long duration = material.has(GT5RMaterialTags.RECIPE_MASS) ? GT5RMaterialTags.RECIPE_MASS.get(material) : Math.max(material.getMass(), 1);
-            EXTRUDER.RB().ii(INGOT.getMaterialIngredient(material, countIn), of(getPipeMold(size), 1).setNoConsume()).io(new ItemStack(pipe.getBlockItem(size), countOut)).add(size.getId() + "_" + pipe.getType() + "_" + material.getId(), duration * durationMultiplier, 30);
+            EXTRUDER.RB().ii(INGOT.getMaterialIngredient(material, countIn), of(getPipeMold(size), 1).setNoConsume()).io(new ItemStack(pipe.getBlockItem(size), countOut)).add(size.getId() + "_" + pipe.getType() + "_" + material.getId(), duration * durationMultiplier, energyPerTick.applyAsLong(material));
         }
     }
 
