@@ -21,6 +21,7 @@ import java.util.List;
 
 import static com.google.common.collect.ImmutableMap.of;
 import static org.gtreimagined.gt5r.data.GT5RMaterialTags.*;
+import static org.gtreimagined.gt5r.data.GT5RMaterialTypes.BOULE;
 import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gtlib.material.MaterialTags.*;
@@ -56,7 +57,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Sodium).asDust(370, MOLTEN).asFluid();
         event.setMaterial(Materials.Magnesium).asMetal(1383);
         event.setMaterial(Materials.Aluminium).asMetal(933, PLATE, ROD, SCREW, BOLT, RING, GEAR, FRAME, SMALL_GEAR, FOIL, HAS_CUSTOM_SMELTING);
-        event.setMaterial(Materials.Silicon).asMetal(1687, TINY_PLATE, GT5RMaterialTypes.BOULE);
+        event.setMaterial(Materials.Silicon).asDust(1687, TINY_PLATE, BOULE, METAL, MOLTEN).asFluid();
         event.setMaterial(Materials.Phosphorus).asDust(933, MOLTEN).asFluid();
         event.setMaterial(Materials.Sulfur).asDust(388, MOLTEN).asOre().harvestLevel(2).asFluid();
         event.setMaterial(Materials.Chlorine).asGas().fluidDensity(3);
@@ -359,10 +360,10 @@ public class GT5RMaterialEvents {
          **/
         event.setMaterial(Materials.Amber).asGem(false).asOre(3, 7, true);
         event.setMaterial(Materials.Amethyst).asGem(false).replaceItem(FLAWED_GEM, Items.AMETHYST_SHARD).asOre(3, 7, true);
-        event.setMaterial(Materials.Sapphire).asGem(true, GT5RMaterialTypes.BOULE).asOre(3, 7, true);
+        event.setMaterial(Materials.Sapphire).asGem(true, BOULE).asOre(3, 7, true);
         event.setMaterial(Materials.BlueTopaz).asGem(true).asOre(3, 7, true);
         event.setMaterial(Materials.Glass).asDust(PLATE, LENS, MOLTEN).asFluid(0, 1500);
-        event.setMaterial(Materials.GreenSapphire).asGem(true, GT5RMaterialTypes.BOULE).asOre(3, 7, true);
+        event.setMaterial(Materials.GreenSapphire).asGem(true, BOULE).asOre(3, 7, true);
         event.setMaterial(Materials.Jade).asGem(false).asOre(3, 7, true);
         event.setMaterial(Materials.Lazurite).asGemBasic(false, PLATE).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(Materials.LigniteCoke).asGemBasic(false);
@@ -372,7 +373,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.TricalciumPhosphate).asOre(3, 7, true).harvestLevel(2);
         event.setMaterial(Materials.MilkyQuartz).asGemBasic(false, BEARING_ROCK, LONG_ROD, QUARTZ_LIKE_BLOCKS).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(Materials.RedGarnet).asGem(true).asOre(3, 7, true);
-        event.setMaterial(Materials.Ruby).asGem(true, GT5RMaterialTypes.BOULE).asOre(3, 7, true);
+        event.setMaterial(Materials.Ruby).asGem(true, BOULE).asOre(3, 7, true);
         event.setMaterial(Materials.Sodalite).asGemBasic(false).asOre(2, 5, true).harvestLevel(1);
         event.setMaterial(Materials.Tanzanite).asGem(false).asOre(3, 7, true);
         event.setMaterial(Materials.Topaz).asGem(false).asOre(3, 7, true);
