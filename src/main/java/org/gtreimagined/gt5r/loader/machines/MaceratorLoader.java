@@ -187,5 +187,15 @@ public class MaceratorLoader {
         PULVERIZER.RB().ii(Items.BOOK).io(DUST.get(Chad, 3)).add("chad_from_book", 294, 4);
         PULVERIZER.RB().ii(Items.WRITABLE_BOOK).io(DUST.get(Chad, 3)).add("chad_from_book_and_quill", 294, 4);
         PULVERIZER.RB().ii(Items.BOOKSHELF).io(DUST.get(Chad, 9), DUST.get(Wood, 6)).add("bookshelf_to_chad", 936, 4);
+        String[] woods = {"twilight_oak", "canopy", "mangrove", "dark", "time", "transformation", "mining", "sorting",
+                "oak", "spruce", "birch", "jungle", "acacia", "dark_oak", "vangrove", "cherry"};
+        String twilight = "twilightforest";
+        if (GTAPI.isModLoaded(twilight)) {
+            for (String wood : woods){
+                PULVERIZER.RB().ii(RegistryUtils.getItemFromID(twilight, "hollow_" + wood + "_log")).io(DUST.get(Wood)).add("hollow_" + wood + "_log", 20, 2);
+            }
+            PULVERIZER.RB().ii(RegistryUtils.getItemFromID(twilight, "hollow_crimson_stem")).io(DUST.get(Wood)).add("hollow_crimson_stem", 20, 2);
+            PULVERIZER.RB().ii(RegistryUtils.getItemFromID(twilight, "hollow_warped_stem")).io(DUST.get(Wood)).add("hollow_warped_stem", 20, 2);
+        }
     }
 }
