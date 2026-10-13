@@ -150,8 +150,8 @@ public class Circuitry {
     }
 
     private static void silicon(){
+        addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 200, 64);
         if (GT5RConfig.HARDER_CIRCUITS.get()){
-            addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 200, 64);
             addCuttingRecipe(GT5RItems.Wafer, GT5RItems.SiliconChip, 8, 600, 48);
             addCuttingRecipe(PhosphorusDopedSiliconBoule, PhosphorusDopedWafer, 16, 800, 64);
             addCuttingRecipe(IndiumDopedSiliconBoule, IndiumDopedWafer, 16, 1600, 64);
@@ -190,7 +190,6 @@ public class Circuitry {
             addCuttingRecipe(GT5RItems.SOCWafer, GT5RItems.SOC, 10, 600, 48);
 
         } else {
-            addCuttingRecipe(BOULE.get(Silicon), GT5RItems.Wafer, 16, 1600, 384);
             addCuttingRecipe(Wafer, TINY_PLATE.get(Silicon), 2, 600, 48, "silicon_tiny_plate");
         }
     }
