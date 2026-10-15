@@ -165,10 +165,10 @@ public class RecyclingLoader {
             boolean charge = d.getId().contains("charging");
             Tier tier = charge ? HV : NONE;
             ImmutableMap.Builder<Material, Float> m = ImmutableMap.builder();
-            m.put(d.getMaterial(), 6f + (charge ? 1f : 0f));
+            m.put(d.getMaterial(), 6f + (charge ? 1f : 0f) + (d.getMaterial() == Gold ? 6f : 0f));
             m.put(Wood, 12f);
             if (charge){
-                m.put(Gold, 6f);
+                if (d.getMaterial() != Gold) m.put(Gold, 6f);
                 m.put(Rubber, 6f);
             }
             addRecyclingRecipe(d.getItem(tier), m.build());
