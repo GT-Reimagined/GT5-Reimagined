@@ -88,7 +88,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> DEHYDRATOR =
             new RecipeMap<>(GT5Reimagined.ID, "dehydrator", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> DISASSEMBLER =
-            new RecipeMap<>(GT5Reimagined.ID, "disassembler", new RecipeBuilder()).setProxy(DISSASSEMBLER_PROXY.apply(8, 200));
+            new RecipeMap<>(GT5Reimagined.ID, "disassembler", new RecipeBuilder()).proxy(DISSASSEMBLER_PROXY.apply(8, 200));
     public static RecipeMap<RecipeBuilder> DISTILLATION =
             new RecipeMap<>(GT5Reimagined.ID, "distillation", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> CRYO_DISTILLATION =
@@ -99,10 +99,10 @@ public class RecipeMaps {
             new RecipeMap<>(GT5Reimagined.ID, "electric_blast_furnace", new RecipeBuilders.BlastingBuilder()).setGuiData(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ELECTRIC_FURNACE =
             new RecipeMap<>(GT5Reimagined.ID, "electric_furnace", new RecipeBuilder())
-                    .setProxy(RecipeProxies.FURNACE_PROXY.apply(8, 80));
+                    .proxy(RecipeProxies.FURNACE_PROXY.apply(8, 80));
     public static RecipeMap<RecipeBuilder> ELECTRIC_OVEN =
             new RecipeMap<>(GT5Reimagined.ID, "electric_oven", new RecipeBuilder())
-                    .setProxy(RecipeProxies.SMOKING_PROXY.apply(8, 40));
+                    .proxy(RecipeProxies.SMOKING_PROXY.apply(8, 40));
     public static RecipeMap<RecipeBuilder> ELECTROLYZER =
             new RecipeMap<>(GT5Reimagined.ID, "electrolyzer", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> ELECTROMAGNETIC_SEPARATOR =
@@ -156,7 +156,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> POLARIZER =
             new RecipeMap<>(GT5Reimagined.ID, "polarizer", new RecipeBuilder());
     public static RecipeMap<PulverizerBuilder> PULVERIZER =
-            new RecipeMap<>(GT5Reimagined.ID, "pulverizer", new PulverizerBuilder()).setGuiTier(Tier.HV);
+            new RecipeMap<>(GT5Reimagined.ID, "pulverizer", new PulverizerBuilder()).guiTier(Tier.HV);
     public static RecipeMap<RecipeBuilder> FORMING_PRESS =
             new RecipeMap<>(GT5Reimagined.ID, "forming_press", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> PRINTING =
