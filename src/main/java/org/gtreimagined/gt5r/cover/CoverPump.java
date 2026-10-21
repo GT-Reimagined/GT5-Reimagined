@@ -8,11 +8,15 @@ import brachy.modularui.screen.ModularPanel;
 import brachy.modularui.screen.RichTooltip;
 import brachy.modularui.screen.UISettings;
 import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.DynamicSyncHandler;
 import brachy.modularui.value.sync.FluidSlotSyncHandler;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widget.EmptyWidget;
 import brachy.modularui.widgets.ButtonWidget;
 import brachy.modularui.widgets.CycleButtonWidget;
+import brachy.modularui.widgets.dynamic.DynamicWidget;
+import brachy.modularui.widgets.slot.ModularSlot;
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
@@ -59,22 +63,34 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         Objects.requireNonNull(tier);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotTypes.STORAGE, 88, 53);
+        this.gui.getSlots().add(SlotTypes.STORAGE, 79, 53);
     }
 
     @Override
     public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
         super.addWidgets(modularPanel, sidedPosGuiData, panelSyncManager, uiSettings);
+    }
+
+    @Override
+    public void onSlotAdd(ModularSlot slot, ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
         IPanelHandler panelSyncHandler = panelSyncManager.syncedPanel("other_panel", true, this::openSecondWindow);
-        modularPanel.child(new ButtonWidget<>().overlay(new ItemDrawable(GT5RCovers.COVER_FLUID_FILTER.getItem()))
-                .pos(70, 53).size(16)
-                .onMousePressed((context, mouseButton) -> {
-                    if (this.getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty()) return false;
-                    panelSyncHandler.openPanel();
-                    return true;
-                })
-                .tooltip(new RichTooltip().addLine("Open Filter Gui"))
-        );
+        DynamicSyncHandler dynamicHandler = new DynamicSyncHandler().widgetProvider((panelSyncManager1, friendlyByteBuf) -> {
+            ItemStack filter = friendlyByteBuf.readItem();
+            if (filter.isEmpty()) return new EmptyWidget();
+            return new ButtonWidget<>().overlay(new ItemDrawable(GT5RCovers.COVER_FLUID_FILTER.getItem()))
+                    .pos(97, 53).size(16)
+                    .onMousePressed((context, mouseButton) -> {
+                        panelSyncHandler.openPanel();
+                        return true;
+                    })
+                    .tooltip(new RichTooltip().addLine("Open Filter Gui"));
+        });
+        slot.changeListener(((oldItem, newItem, client, init) -> {
+            if (client && !ItemStack.isSameItemSameTags(oldItem, newItem)) {
+                dynamicHandler.notifyUpdate(packet -> packet.writeItemStack(newItem, false));
+            }
+        }));
+        panel.child(new DynamicWidget<>().syncHandler(dynamicHandler));
     }
 
     public ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler) {
