@@ -1,7 +1,6 @@
 package org.gtreimagined.gt5r.data;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
-import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.integration.recipeviewer.renderer.IRecipeInfoRenderer;
@@ -16,7 +15,6 @@ import org.gtreimagined.gtlib.recipe.map.Proxy;
 import org.gtreimagined.gtlib.recipe.map.RecipeBuilder;
 import org.gtreimagined.gtlib.recipe.map.RecipeMap;
 import org.gtreimagined.gtlib.recipe.map.SubCategory;
-import net.minecraft.client.gui.Font;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -30,10 +28,8 @@ import org.gtreimagined.gt5r.machine.recipe.FusionRecipeSerializer;
 import org.gtreimagined.gtcore.data.RecipeBuilders;
 import org.gtreimagined.gtlib.util.Utils;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.function.BiFunction;
 
 @SuppressWarnings("unchecked")
@@ -82,21 +78,21 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> CUTTER =
             new RecipeMap<>(GT5Reimagined.ID, "cutter", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> CRACKING =
-            new RecipeMap<>(GT5Reimagined.ID, "cracking", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "cracking", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ASSEMBLY_LINE =
-            new RecipeMap<>(GT5Reimagined.ID, "assembly_line", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY_FLUID);
+            new RecipeMap<>(GT5Reimagined.ID, "assembly_line", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> DEHYDRATOR =
             new RecipeMap<>(GT5Reimagined.ID, "dehydrator", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> DISASSEMBLER =
             new RecipeMap<>(GT5Reimagined.ID, "disassembler", new RecipeBuilder()).proxy(DISSASSEMBLER_PROXY.apply(8, 200));
     public static RecipeMap<RecipeBuilder> DISTILLATION =
-            new RecipeMap<>(GT5Reimagined.ID, "distillation", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY_FLUID);
+            new RecipeMap<>(GT5Reimagined.ID, "distillation", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> CRYO_DISTILLATION =
-            new RecipeMap<>(GT5Reimagined.ID, "cryo_distillation", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY_FLUID);
+            new RecipeMap<>(GT5Reimagined.ID, "cryo_distillation", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY_FLUID);
     public static RecipeMap<RecipeBuilder> DISTILLERY =
             new RecipeMap<>(GT5Reimagined.ID, "distillery", new RecipeBuilder());
     public static RecipeMap<RecipeBuilders.BlastingBuilder> E_BLAST_FURNACE =
-            new RecipeMap<>(GT5Reimagined.ID, "electric_blast_furnace", new RecipeBuilders.BlastingBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "electric_blast_furnace", new RecipeBuilders.BlastingBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ELECTRIC_FURNACE =
             new RecipeMap<>(GT5Reimagined.ID, "electric_furnace", new RecipeBuilder())
                     .proxy(RecipeProxies.FURNACE_PROXY.apply(8, 80));
@@ -122,17 +118,17 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> FLUID_SOLIDIFYER =
             new RecipeMap<>(GT5Reimagined.ID, "fluid_solidifyer", new RecipeBuilder());
     public static RecipeMap<FusionRecipeBuilder> FUSION =
-            new RecipeMap<>(GT5Reimagined.ID, "fusion", new FusionRecipeBuilder()).setRecipeSerializer(FusionRecipeSerializer.INSTANCE).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "fusion", new FusionRecipeBuilder()).setRecipeSerializer(FusionRecipeSerializer.INSTANCE).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> GAS_FUELS =
             new RecipeMap<>(GT5Reimagined.ID, "gas_fuels", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> FORGE_HAMMER =
             new RecipeMap<>(GT5Reimagined.ID, "forge_hammer", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> HEAT_EXCHANGER =
-            new RecipeMap<>(GT5Reimagined.ID, "heat_exchanger", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "heat_exchanger", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> IMPLOSION_COMPRESSOR =
-            new RecipeMap<>(GT5Reimagined.ID, "implosion_compressor", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "implosion_compressor", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> LARGE_BOILERS =
-            new RecipeMap<>(GT5Reimagined.ID, "large_boilers", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "large_boilers", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> LASER_CUTTER =
             new RecipeMap<>(GT5Reimagined.ID, "laser_cutter", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> LASER_ENGRAVER =
@@ -162,7 +158,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> PRINTING =
             new RecipeMap<>(GT5Reimagined.ID, "printing", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> PYROLYSE_OVEN =
-            new RecipeMap<>(GT5Reimagined.ID, "pyrolyse_oven", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "pyrolyse_oven", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
 
     public static RecipeMap<RecipeBuilder> ROASTER =
             new RecipeMap<>(GT5Reimagined.ID, "roaster", new RecipeBuilder());
@@ -190,7 +186,7 @@ public class RecipeMaps {
     public static RecipeMap<RecipeBuilder> UNPACKAGER =
             new RecipeMap<>(GT5Reimagined.ID, "unpackager", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> VACUUM_FREEZER =
-            new RecipeMap<>(GT5Reimagined.ID, "vacuum_freezer", new RecipeBuilder()).setGuiData(Guis.MULTI_DISPLAY);
+            new RecipeMap<>(GT5Reimagined.ID, "vacuum_freezer", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> WIRE_MILL =
             new RecipeMap<>(GT5Reimagined.ID, "wire_mill", new RecipeBuilder());
 
@@ -340,21 +336,21 @@ public class RecipeMaps {
         PULVERIZER.addSubCategory("macerator_ore_processing", new SubCategory(() -> GT5RMachines.MACERATOR.getItem(Tier.LV), r -> r.getTags().contains(GT5RRecipeTags.MACERATOR_ORE_PROCESING)));
         ARC_FURNACE.addSubCategory("arc_furnace_recycling", new SubCategory(() -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/arc_furnace_recycling.png"), r -> r.getTags().contains(GT5RRecipeTags.RECYCLING)));
         ALLOY_SMELTER.addSubCategory("alloy_smelter_molds", new SubCategory(() -> new ResourceLocation(GT5Reimagined.ID, "textures/gui/icon/alloy_smelter_molding.png"), r -> r.getTags().contains(GT5RRecipeTags.ALLOY_SMELTER_MOLDING)));
-        COKE_OVEN.setGuiData(Guis.COKE_OVEN_RECIPE_GUI);
-        PRIMITIVE_BLAST_FURNACE.setGuiData(Guis.PBF_RECIPE_GUI);
-        SOLID_FUEL_BOILERS.setGuiData(Guis.SIMPLE_DISPLAY);
-        COMBUSTION_FUELS.setGuiData(Guis.MULTI_DISPLAY);
-        GAS_FUELS.setGuiData(Guis.MULTI_DISPLAY);
-        SEMI_FUELS.setGuiData(Guis.MULTI_DISPLAY);
-        MAGIC_FUELS.setGuiData(Guis.MULTI_DISPLAY);
-        ORE_BYPRODUCTS.setGuiData(Guis.ORE_BYPRODUCTS);
-        STEAM_FUELS.setGuiData(Guis.MULTI_DISPLAY);
-        HP_STEAM_FUELS.setGuiData(Guis.MULTI_DISPLAY);
-        TREE_GROWTH_SIMULATOR.setGuiData(Guis.MULTI_DISPLAY);
-        DISTILLATION.setGuiData(Guis.MULTI_DISPLAY_DISTILLATION);
-        CRYO_DISTILLATION.setGuiData(Guis.MULTI_DISPLAY_DISTILLATION);
-        ALLOY_SMELTER.setGuiData(Guis.ALLOY_SMELTER_DISPLAY);
-        BEDROCK_DRILL.setGuiData(Guis.BEDROCK_DRILL_DISPLAY);
+        COKE_OVEN.guiProperties(Guis.COKE_OVEN_RECIPE_GUI);
+        PRIMITIVE_BLAST_FURNACE.guiProperties(Guis.PBF_RECIPE_GUI);
+        SOLID_FUEL_BOILERS.guiProperties(Guis.SIMPLE_DISPLAY);
+        COMBUSTION_FUELS.guiProperties(Guis.MULTI_DISPLAY);
+        GAS_FUELS.guiProperties(Guis.MULTI_DISPLAY);
+        SEMI_FUELS.guiProperties(Guis.MULTI_DISPLAY);
+        MAGIC_FUELS.guiProperties(Guis.MULTI_DISPLAY);
+        ORE_BYPRODUCTS.guiProperties(Guis.ORE_BYPRODUCTS);
+        STEAM_FUELS.guiProperties(Guis.MULTI_DISPLAY);
+        HP_STEAM_FUELS.guiProperties(Guis.MULTI_DISPLAY);
+        TREE_GROWTH_SIMULATOR.guiProperties(Guis.MULTI_DISPLAY);
+        DISTILLATION.guiProperties(Guis.MULTI_DISPLAY_DISTILLATION);
+        CRYO_DISTILLATION.guiProperties(Guis.MULTI_DISPLAY_DISTILLATION);
+        ALLOY_SMELTER.guiProperties(Guis.ALLOY_SMELTER_DISPLAY);
+        BEDROCK_DRILL.guiProperties(Guis.BEDROCK_DRILL_DISPLAY);
     }
 
     public static void clientMaps() {
