@@ -4,6 +4,7 @@ import brachy.modularui.api.drawable.Text;
 import brachy.modularui.factory.SidedPosGuiData;
 import brachy.modularui.screen.ModularPanel;
 import brachy.modularui.screen.UISettings;
+import brachy.modularui.utils.Alignment;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
 import brachy.modularui.widgets.ButtonWidget;
@@ -68,10 +69,10 @@ public class CoverItemRegulator extends CoverBasicTransport {
                 })
                 .size(16).pos(106, 53));
         modularPanel.child(new TextWidget<>(() -> {
-            int fluidLimit = GTMuiUtils.getSyncedValue("slotLimit", Integer.class, syncManager.getModularSyncManager()).orElse(0);
-            if (fluidLimit == 0) return Text.str("N/A");
-            return Text.str(String.valueOf(fluidLimit)).color(4210752);
-        }).pos(69, 53).size(36, 18));
+            int itemLimit = GTMuiUtils.getSyncedValue("slotLimit", Integer.class, syncManager.getModularSyncManager()).orElse(0);
+            if (itemLimit == 0) return Text.str("N/A");
+            return Text.str(String.valueOf(itemLimit)).color(4210752);
+        }).pos(69, 53).textAlign(Alignment.CENTER).size(36, 18));
     }
 
     @Override
@@ -86,16 +87,20 @@ public class CoverItemRegulator extends CoverBasicTransport {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
 
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
+            int shift = ev.data[0];
             int button = ev.data[1];
+            int amountToModify = shift == 1 ? 10 : 1;
             if (button == 2){
                 if (slotLimit > 0){
-                    slotLimit--;
+                    slotLimit -= amountToModify;
+                    if (slotLimit < 0) slotLimit = 0;
                     handler.getTile().setChanged();
                 }
             }
             if (button == 3){
                 if (slotLimit < 64){
-                    slotLimit++;
+                    slotLimit += amountToModify;
+                    if (slotLimit > 64) slotLimit = 64;
                     handler.getTile().setChanged();
                 }
             }
