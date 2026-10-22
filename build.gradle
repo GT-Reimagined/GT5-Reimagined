@@ -128,7 +128,9 @@ dependencies {
     modImplementation("dev.latvian.mods:kubejs-forge:${project.kubejs_version}")
     modImplementation("dev.latvian.mods:rhino-forge:${project.rhino_version}")
     modImplementation("dev.architectury:architectury-forge:${project.architectury_version}")
-    modImplementation("brachy.modularui:modularui-mc${project.minecraft_version}:${project.mui_version}")
+    modImplementation("brachy.modularui:modularui-mc${project.minecraft_version}:${project.mui_version}"){
+        changing = true
+    }
 
     //required gt5r deps
     modImplementation("org.gt-reimagined:gtcore:${rootProject.gt_core_version}-${rootProject.minecraft_version}")
@@ -187,6 +189,7 @@ dependencies {
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:additions")// Mekanism: Additions
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:generators")// Mekanism: Generators
     modRuntimeOnly("mekanism:Mekanism:${project.minecraft_version}-${project.mekanism_version}:tools")// Mekanism: Tools
+    modLocalRuntime("curse.maven:spark-361579:4738952")
 }
 
 compileKotlin {
