@@ -67,11 +67,6 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     }
 
     @Override
-    public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
-        super.addWidgets(modularPanel, sidedPosGuiData, panelSyncManager, uiSettings);
-    }
-
-    @Override
     public void onSlotAdd(ModularSlot slot, ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
         IPanelHandler panelSyncHandler = panelSyncManager.syncedPanel("other_panel", true, this::openSecondWindow);
         DynamicSyncHandler dynamicHandler = new DynamicSyncHandler().widgetProvider((panelSyncManager1, friendlyByteBuf) -> {
@@ -86,7 +81,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
                     .tooltip(new RichTooltip().addLine("Open Filter Gui"));
         });
         slot.changeListener(((oldItem, newItem, client, init) -> {
-            if (client && !ItemStack.isSameItemSameTags(oldItem, newItem)) {
+            if (client && (init || !ItemStack.isSameItemSameTags(oldItem, newItem))) {
                 dynamicHandler.notifyUpdate(packet -> packet.writeItemStack(newItem, false));
             }
         }));
