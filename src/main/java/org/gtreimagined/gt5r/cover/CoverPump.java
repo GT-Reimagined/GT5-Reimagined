@@ -77,7 +77,8 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         DynamicSyncHandler dynamicHandler = new DynamicSyncHandler().widgetProvider((panelSyncManager1, friendlyByteBuf) -> {
             ItemStack filter = friendlyByteBuf.readItem();
             if (filter.isEmpty()) return new EmptyWidget();
-            return new ButtonWidget<>().overlay(new ItemDrawable(GT5RCovers.COVER_FLUID_FILTER.getItem()))
+            return new ButtonWidget<>().child(Text.str("Filter Gui").asWidget().pos(2, 2))
+                    .sizeRel(1f)
                     .onMousePressed((context, mouseButton) -> {
                         panelSyncHandler.openPanel();
                         return true;
@@ -89,7 +90,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
                 dynamicHandler.notifyUpdate(packet -> packet.writeItemStack(newItem, false));
             }
         }));
-        panel.child(new DynamicWidget<>().syncHandler(dynamicHandler).pos(97, 53).size(16));
+        panel.child(new DynamicWidget<>().syncHandler(dynamicHandler).pos(97, 54).size(48, 14));
     }
 
     public ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler) {
