@@ -264,6 +264,7 @@ public class Materials {
     public static Material Fireclay = GTCoreMaterials.Fireclay;
     public static Material Fluorite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "fluorite", 0xFFB98C, NONE));
     public static Material GelledToluene = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "gelled_toluene", 0xeeeeee, NONE));
+    public static Material GraphiteOxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "graphite_oxide", 0x808080, DULL));
     public static Material Graphene = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "graphene", 0x808080, DULL));
     public static Material IndiumGalliumPhosphide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "indium_gallium_phosphide", 0x570b79, NONE));
     public static Material IridiumSodiumOxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "iridium_sodium_oxide", 0xffffff, NONE));

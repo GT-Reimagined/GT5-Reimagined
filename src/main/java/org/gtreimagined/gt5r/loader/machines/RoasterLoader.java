@@ -20,5 +20,6 @@ public class RoasterLoader {
         RecipeMaps.ROASTER.RB().fi(Air.getGas(8000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).fo(SulfurDioxide.getGas(3000)).add("sulfur_air", 512, 5, 0, 3);
         RecipeMaps.ROASTER.RB().fi(Oxygen.getGas(2000)).ii(DUST.getMaterialIngredient(Sulfur, 1)).fo(SulfurDioxide.getGas(3000)).add("sulfur", 512, 5, 0, 3);
         RecipeMaps.ROASTER.RB().ii(of(DUST.getMaterialTag(Calcite), 5)).fo(CarbonDioxide.getGas(3000)).io(DUST.get(Quicklime, 2)).add("quicklime",240, 30);
+        RecipeMaps.ROASTER.RB().ii(DUST.getMaterialIngredient(GraphiteOxide, 1)).io(TINY_DUST.get(Carbon, 8), TINY_DUST.get(Graphene, 1)).add("graphene", 512, 5, 0, 3);
     }
 }

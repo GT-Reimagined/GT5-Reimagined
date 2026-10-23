@@ -218,6 +218,7 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Dibenzene).asDust();
         event.setMaterial(Materials.DibenzoylPeroxide).asDust();
         event.setMaterial(Materials.GelledToluene).asDust();
+        event.setMaterial(GraphiteOxide).asDust();
         event.setMaterial(Materials.Graphene).asDust(PLATE, FINE_WIRE);
         event.setMaterial(Materials.Polydimethylsiloxane).asDust();
         event.setMaterial(Materials.RareEarth).asDust();
