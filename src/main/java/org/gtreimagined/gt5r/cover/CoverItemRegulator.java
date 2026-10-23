@@ -40,7 +40,7 @@ import java.util.function.Predicate;
 
 import static org.gtreimagined.gt5r.cover.CoverConveyor.speeds;
 
-public class CoverItemRegulator extends CoverBasicTransport {
+public class CoverItemRegulator extends CoverConveyor {
     int slotLimit = 0;
     public CoverItemRegulator(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
@@ -76,9 +76,13 @@ public class CoverItemRegulator extends CoverBasicTransport {
     }
 
     @Override
-    public ResourceLocation getModel(String type, Direction dir) {
-        if (type.equals("pipe")) return PIPE_COVER_MODEL;
-        return getBasicDepthModel();
+    protected int buttonY() {
+        return 16;
+    }
+
+    @Override
+    protected int filterY() {
+        return 34;
     }
 
     @Override
@@ -112,6 +116,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (transferring) return false;
+        if (super.onTransfer(object, inputSide, simulate)) return true;
         if (object instanceof ItemStack stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide) {
             if (machine.itemHandler.isPresent()){
                 if (stack.isEmpty()) return true;
@@ -183,14 +188,6 @@ public class CoverItemRegulator extends CoverBasicTransport {
             }
         }
         return ItemStack.EMPTY;
-    }
-
-    protected boolean canMove(Direction side){
-        if (redstoneMode != RedstoneMode.NO_WORK){
-            boolean powered = isPowered(side);
-            return (redstoneMode == RedstoneMode.INVERTED) != powered;
-        }
-        return true;
     }
 
     @Override

@@ -1,13 +1,21 @@
 package org.gtreimagined.gt5r.cover.base;
 
+import brachy.modularui.api.IPanelHandler;
 import brachy.modularui.api.drawable.Text;
 import brachy.modularui.drawable.ItemDrawable;
 import brachy.modularui.factory.SidedPosGuiData;
 import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.screen.RichTooltip;
 import brachy.modularui.screen.UISettings;
+import brachy.modularui.value.sync.DynamicSyncHandler;
 import brachy.modularui.value.sync.EnumSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widget.EmptyWidget;
+import brachy.modularui.widgets.ButtonWidget;
 import brachy.modularui.widgets.CycleButtonWidget;
+import brachy.modularui.widgets.dynamic.DynamicWidget;
+import brachy.modularui.widgets.slot.ModularSlot;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.blockentity.pipe.BlockEntityPipe;
@@ -42,7 +50,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
         panelSyncManager.syncValue("redstone_mode", new EnumSyncValue<>(RedstoneMode.class, () -> this.redstoneMode, e -> this.redstoneMode = e).allowC2S());
         panelSyncManager.syncValue("export_mode", new EnumSyncValue<>(ImportExportMode.class, () -> this.exportMode, e -> this.exportMode = e).allowC2S());
         modularPanel.child(new CycleButtonWidget()
-                .pos(70, 34).size(16, 16)
+                .pos(buttonX(), buttonY()).size(16, 16)
                 .stateCount(3).syncHandler("redstone_mode")
                 .stateOverlay(RedstoneMode.NORMAL, GTGuiTextures.TORCH_OFF)
                 .stateOverlay(RedstoneMode.INVERTED, GTGuiTextures.TORCH_ON)
@@ -51,7 +59,7 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
                 .addTooltip(1, Text.lang("tooltip.gt5r.redstone_mode.1"))
                 .addTooltip(2, Text.lang("tooltip.gt5r.redstone_mode.2")));
         modularPanel.child(new CycleButtonWidget()
-                .pos(88, 34).size(16, 16)
+                .pos(buttonX() + 18, buttonY()).size(16, 16)
                 .stateCount(4).syncHandler("export_mode")
                 .stateOverlay(ImportExportMode.EXPORT, GTGuiTextures.EXPORT)
                 .stateOverlay(ImportExportMode.IMPORT, GTGuiTextures.IMPORT)
@@ -62,6 +70,43 @@ public abstract class CoverBasicTransport extends CoverBasicRedstone implements 
                 .addTooltip(2, Text.lang("tooltip.gt5r.export_mode.2"))
                 .addTooltip(3, Text.lang("tooltip.gt5r.export_mode.3")));
     }
+
+    @Override
+    public void onSlotAdd(ModularSlot slot, ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
+        IPanelHandler panelSyncHandler = panelSyncManager.syncedPanel("other_panel", true, this::openSecondWindow);
+        DynamicSyncHandler dynamicHandler = new DynamicSyncHandler().widgetProvider((panelSyncManager1, friendlyByteBuf) -> {
+            ItemStack filter = friendlyByteBuf.readItem();
+            if (filter.isEmpty()) return new EmptyWidget();
+            return new ButtonWidget<>().overlay(Text.str("Filter Gui"))
+                    .sizeRel(1f)
+                    .onMousePressed((context, mouseButton) -> {
+                        panelSyncHandler.openPanel();
+                        return true;
+                    })
+                    .tooltip(new RichTooltip().addLine("Open Filter Gui"));
+        });
+        slot.changeListener(((oldItem, newItem, client, init) -> {
+            if (client && (init || !ItemStack.isSameItemSameTags(oldItem, newItem))) {
+                dynamicHandler.notifyUpdate(packet -> packet.writeItemStack(newItem, false));
+            }
+        }));
+        panel.child(new DynamicWidget<>().syncHandler(dynamicHandler).pos(filterX() + 18, filterY() + 1).size(48, 14));
+    }
+
+    protected int buttonY(){
+        return 34;
+    }
+
+    protected int buttonX(){
+        return 70;
+    }
+
+
+    protected abstract int filterY();
+
+    protected abstract int filterX();
+
+    protected abstract ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler);
 
     @Override
     public String getDomain() {

@@ -4,6 +4,7 @@ import brachy.modularui.api.drawable.Text;
 import brachy.modularui.factory.SidedPosGuiData;
 import brachy.modularui.screen.ModularPanel;
 import brachy.modularui.screen.UISettings;
+import brachy.modularui.utils.Alignment;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
 import brachy.modularui.widgets.ButtonWidget;
@@ -37,7 +38,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-public class CoverFluidRegulator extends CoverBasicTransport {
+public class CoverFluidRegulator extends CoverPump {
 
     public static String ID = "pump";
 
@@ -48,6 +49,17 @@ public class CoverFluidRegulator extends CoverBasicTransport {
         super(source, tier, side, factory);
         Objects.requireNonNull(tier);
         fluidLimit = CoverPump.speeds.get(tier);
+    }
+
+
+    @Override
+    protected int buttonY() {
+        return 16;
+    }
+
+    @Override
+    protected int filterY() {
+        return 34;
     }
 
     @Override
@@ -76,13 +88,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
             int fluidLimit = GTMuiUtils.getSyncedValue("fluidLimit", Integer.class, syncManager.getModularSyncManager()).orElse(0);
             if (fluidLimit == 0) return Text.str("N/A");
             return Text.str(String.valueOf(fluidLimit)).color(4210752);
-        }).pos(69, 53).size(36, 18));
-    }
-
-    @Override
-    public ResourceLocation getModel(String type, Direction dir) {
-        if (type.equals("pipe")) return PIPE_COVER_MODEL;
-        return getBasicDepthModel();
+        }).pos(69, 53).textAlign(Alignment.CENTER).size(36, 18));
     }
 
     boolean transferring = false;
@@ -91,6 +97,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (transferring) return false;
         if (fluidLimit <= 0) return false;
+        if (super.onTransfer(object, inputSide,simulate)) return true;
         if (object instanceof FluidStack stack) {
             if (exportMode.isExport() && !inputSide && handler.getTile() instanceof BlockEntityFluidPipe<?> fluidPipe) {
                 int unusedFluidLimit = fluidLimit - usedFluidLimitOut;
@@ -125,7 +132,7 @@ public class CoverFluidRegulator extends CoverBasicTransport {
                 return transfer;
             }
         }
-        return super.onTransfer(object, inputSide, simulate);
+        return false;
     }
 
     private boolean transferFluid(FluidStack stack, IFluidHandler destination, int usedFluidLimit, boolean simulate, Consumer<Integer> usedFluidLimitSetter) {
@@ -142,11 +149,6 @@ public class CoverFluidRegulator extends CoverBasicTransport {
             stack.setAmount(stack.getAmount() - inserted);
         }
         return true;
-    }
-
-    @Override
-    public <T> boolean blocksCapability(Class<T> cap, Direction side) {
-        return cap != IFluidHandler.class;
     }
 
     @Override
@@ -168,13 +170,6 @@ public class CoverFluidRegulator extends CoverBasicTransport {
         }
         usedFluidLimitIn = 0;
         usedFluidLimitOut = 0;
-    }
-    protected boolean canMove(Direction side){
-        if (redstoneMode != RedstoneMode.NO_WORK){
-            boolean powered = isPowered(side);
-            return (redstoneMode == RedstoneMode.INVERTED) != powered;
-        }
-        return true;
     }
 
     @Override

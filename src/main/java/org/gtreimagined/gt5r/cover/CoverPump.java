@@ -63,31 +63,20 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         Objects.requireNonNull(tier);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotTypes.STORAGE, 79, 53);
+        this.gui.getSlots().add(SlotTypes.STORAGE, filterX(), filterY());
     }
 
     @Override
-    public void onSlotAdd(ModularSlot slot, ModularPanel<?> panel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
-        IPanelHandler panelSyncHandler = panelSyncManager.syncedPanel("other_panel", true, this::openSecondWindow);
-        DynamicSyncHandler dynamicHandler = new DynamicSyncHandler().widgetProvider((panelSyncManager1, friendlyByteBuf) -> {
-            ItemStack filter = friendlyByteBuf.readItem();
-            if (filter.isEmpty()) return new EmptyWidget();
-            return new ButtonWidget<>().child(Text.str("Filter Gui").asWidget().pos(2, 2))
-                    .sizeRel(1f)
-                    .onMousePressed((context, mouseButton) -> {
-                        panelSyncHandler.openPanel();
-                        return true;
-                    })
-                    .tooltip(new RichTooltip().addLine("Open Filter Gui"));
-        });
-        slot.changeListener(((oldItem, newItem, client, init) -> {
-            if (client && (init || !ItemStack.isSameItemSameTags(oldItem, newItem))) {
-                dynamicHandler.notifyUpdate(packet -> packet.writeItemStack(newItem, false));
-            }
-        }));
-        panel.child(new DynamicWidget<>().syncHandler(dynamicHandler).pos(97, 54).size(48, 14));
+    protected int filterX() {
+        return 79;
     }
 
+    @Override
+    protected int filterY() {
+        return 53;
+    }
+
+    @Override
     public ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler) {
         ModularPanel<?> panel = new ModularPanel<>("filter_window")
                 .disablePanelsBelow(false)
