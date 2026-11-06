@@ -35,12 +35,12 @@ public class CentrifugeLoader {
         IMPURE_DUST.all().forEach(dust -> {
             Material aOreByProduct = !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);
             if (!aOreByProduct.has(DUST)) return;
-            CENTRIFUGE.RB().ii(of(IMPURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_impure_" + dust.getId(), 400, 2);
+            CENTRIFUGE.RB().ii(of(IMPURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_impure_" + dust.getId(), dust.getMass(), 2);
         });
         PURE_DUST.all().forEach(dust -> {
             Material aOreByProduct = dust.getByProducts().size() > 1 ? dust.getByProducts().get(1) : !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);
             if (!aOreByProduct.has(DUST)) return;
-            CENTRIFUGE.RB().ii(of(PURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
+            CENTRIFUGE.RB().ii(of(PURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_pure_" + dust.getId(), dust.getMass(), 2);
         });
         Map<Material, Integer> centMap = new HashMap<>();
         initCentLists(centMap);
