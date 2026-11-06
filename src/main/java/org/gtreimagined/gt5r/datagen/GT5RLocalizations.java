@@ -228,7 +228,7 @@ public class GT5RLocalizations {
             add("tooltip.cracking_unit.8", "Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings");
 
             add("tooltip.distillation_tower.0", "Controller Block for the Distillation Tower");
-            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xhx3(with h ranging from 3 to 12)");
+            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xhx3(Hollow), with h ranging from 3 to 12");
             add("tooltip.distillation_tower.2", "Controller (Front bottom)");
             add("tooltip.distillation_tower.3", "1x Input Hatch (Any bottom layer casing)");
             add("tooltip.distillation_tower.4", "2-11x Output Hatch (One per layer except bottom layer)");
@@ -237,7 +237,7 @@ public class GT5RLocalizations {
             add("tooltip.distillation_tower.7", "Clean Stainless Steel Casings for the rest (7 x h - 4 at least)");
 
             add("tooltip.cryo_distillation_tower.0", "Controller Block for the Cryo Distillation Tower");
-            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xhx3(with h ranging from 3 to 12)");
+            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xhx3(Hollow), with h ranging from 3 to 12");
             add("tooltip.cryo_distillation_tower.2", "Controller (Front bottom)");
             add("tooltip.cryo_distillation_tower.3", "1x Input Hatch (Any bottom layer casing)");
             add("tooltip.cryo_distillation_tower.4", "2-11x Output Hatch (One per layer except bottom layer)");
