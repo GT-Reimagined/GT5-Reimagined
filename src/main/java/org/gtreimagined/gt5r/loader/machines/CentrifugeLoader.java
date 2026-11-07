@@ -176,9 +176,9 @@ public class CentrifugeLoader {
                 Materials.TungstenSteel, Materials.Brass, Materials.Nichrome, Materials.Electrum, Materials.Bronze, Materials.Wulfenite, Materials.RedAlloy, Materials.SterlingSilver, Materials.RoseGold, Materials.BatteryAlloy, Materials.SolderingAlloy, Materials.TricalciumPhosphate));
         List<Material> cent15 = new ArrayList<>(List.of(Materials.Kanthal, Materials.IndiumGalliumPhosphide, Materials.BlackSteel, Materials.RedGarnet, Materials.YellowGarnet, Materials.BismuthBronze, Materials.BlackBronze, Materials.VanadiumSteel, Materials.CdInAGAlloy, Materials.CobaltBrass,
                 Materials.Pitchblende, Redstone, Materials.HSSS));
-        List<Material> cent20 = new ArrayList<>(List.of(Lapis, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.Sheldonite, Materials.HSSG, Materials.Komatiite));
+        List<Material> cent20 = new ArrayList<>(List.of(Lapis, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.HSSG, Materials.Komatiite));
         if (!GT5RConfig.FORCE_ROASTER.get()){
-            cent20.add(Tetrahedrite);
+            cent20.addAll(List.of(Tetrahedrite, Sheldonite));
             cent10.add(Stibnite);
         }
         cent5.forEach(m -> map.put(m, 5));
