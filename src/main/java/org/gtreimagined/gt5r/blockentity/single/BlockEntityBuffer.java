@@ -18,6 +18,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.capability.machine.MachineEnergyHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -47,8 +48,8 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
         if (outputRedstone){
             int[] redstone = new int[1];
             redstone[0] = this.itemHandler.map(i -> {
-                for (int slot = 0; slot < i.getHandler(SlotType.STORAGE).getSlots(); slot++){
-                    ItemStack stack = i.getHandler(SlotType.STORAGE).getStackInSlot(slot);
+                for (int slot = 0; slot < i.getHandler(SlotTypes.STORAGE).getSlots(); slot++){
+                    ItemStack stack = i.getHandler(SlotTypes.STORAGE).getStackInSlot(slot);
                     if (!stack.isEmpty()) return invertRedstone ? 0 : 15;
                 }
                 return invertRedstone ? 15 : 0;
@@ -66,7 +67,7 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
         if (getCover(this.getFacing().getOpposite()).isEmpty()){
             processItemOutput();
         }
-        this.itemHandler.ifPresent(h -> Utils.tryCondenseInventory(h.getHandler(SlotType.STORAGE)));
+        this.itemHandler.ifPresent(h -> Utils.tryCondenseInventory(h.getHandler(SlotTypes.STORAGE)));
     }
 
     protected boolean processItemOutput() {
@@ -76,7 +77,7 @@ public class BlockEntityBuffer extends BlockEntityLimitedOutput<BlockEntityBuffe
         boolean[] booleans = new boolean[1];
         booleans[0] = false;
         adjTile.getCapability(ForgeCapabilities.ITEM_HANDLER, outputDir.getOpposite()).ifPresent(adjHandler -> {
-            booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotType.STORAGE), adjHandler,true)).orElse(false);
+            booleans[0] = this.itemHandler.map(h -> transferItems(h.getHandler(SlotTypes.STORAGE), adjHandler,true)).orElse(false);
         });
         return booleans[0];
     }

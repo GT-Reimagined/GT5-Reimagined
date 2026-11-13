@@ -34,7 +34,7 @@ public class Materials {
     public static Material Magnesium = GTCoreMaterials.Magnesium;
     public static Material Aluminium = GTCoreMaterials.Aluminium;
     public static Material Silicon = GTCoreMaterials.Silicon;
-    public static Material Phosphor = GTCoreMaterials.Phosphor;
+    public static Material Phosphorus = GTCoreMaterials.Phosphorus;
     public static Material Sulfur = GTCoreMaterials.Sulfur;
     public static Material Chlorine = GTCoreMaterials.Chlorine;
     public static Material Argon = GTCoreMaterials.Argon;
@@ -166,7 +166,7 @@ public class Materials {
     public static Material BlackBronze = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_bronze", 0x77488d, DULL));
     public static Material BlackSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "black_steel", 0x646464, METALLIC));
     public static Material BlueSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "blue_steel", 0x3a4c9e, METALLIC));
-    public static Material BlueAlloy = GTCoreMaterials.BlueAlloy;
+    public static Material BlueAlloy = GTCoreMaterials.BlueAlloy.setMassMultiplierAndDivider(5, 4);
     public static Material Brass = GTCoreMaterials.Brass;
     public static Material Bronze = GTCoreMaterials.Bronze;
     public static Material CastIron = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "cast_iron", 0x281f1c, METALLIC));
@@ -190,7 +190,7 @@ public class Materials {
     public static Material NickelZincFerrite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "nickel_zinc_ferrite", 0x3c3c3c, ROUGH));
     public static Material NiobiumTitanium = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "niobium_titanium", 0x1d1d29, DULL));
     public static Material Osmiridium = GTCoreMaterials.Osmiridium;
-    public static Material PurpleAlloy = GTCoreMaterials.PurpleAlloy;
+    public static Material PurpleAlloy = GTCoreMaterials.PurpleAlloy.setMassMultiplierAndDivider(1, 2);
     public static Material RedAlloy = GTCoreMaterials.RedAlloy;
     public static Material RedSteel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "red_steel", 0x88281f, METALLIC));
     public static Material RoseGold = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "rose_gold", 0xb8792d, SHINY));
@@ -264,6 +264,7 @@ public class Materials {
     public static Material Fireclay = GTCoreMaterials.Fireclay;
     public static Material Fluorite = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "fluorite", 0xFFB98C, NONE));
     public static Material GelledToluene = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "gelled_toluene", 0xeeeeee, NONE));
+    public static Material GraphiteOxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "graphite_oxide", 0x808080, DULL));
     public static Material Graphene = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "graphene", 0x808080, DULL));
     public static Material IndiumGalliumPhosphide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "indium_gallium_phosphide", 0x570b79, NONE));
     public static Material IridiumSodiumOxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "iridium_sodium_oxide", 0xffffff, NONE));
@@ -283,6 +284,7 @@ public class Materials {
     public static Material RawRubber = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "raw_rubber", 0xccc789, DULL));
     public static Material RawStyreneButadieneRubber = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "raw_styrene_butadiene_rubber", 0x54403d, SHINY));
     public static Material ReactionCatalyst = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "reaction_catalyst", 0x43ab43, NONE));
+    public static Material RubberWood = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "rubber_wood", 0xb49600, WOOD));
     public static Material SiliconDioxide = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "silicon_dioxide", 0xc8c8c8, QUARTZ));
     public static Material SodaAsh = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "soda_ash", 0xdcdcff, DULL));
     public static Material SodiumAluminate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sodium_aluminate", 0xE6E6FA, NONE));
@@ -626,6 +628,12 @@ public class Materials {
     public static Material SeedOil = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "seed_oil", 0xc4ff00, NONE));
     public static Material Glycerol = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "glycerol", 0x87de87, NONE));
     public static Material GlycerylTrinitrate = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "glyceryl_trinitrate", 0x87de87, NONE)).setDisplayNameString("Nitroglycerin (Glyceryl Trinitrate)");
+    /**
+     *  Sulfuric Fuels
+     */
+    public static Material SulfuricDiesel = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sulfuric_diesel", 0xffff00, NONE));
+    public static Material SulfuricKerosene = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sulfuric_kerosene", 0x0000FF, NONE));
+    public static Material SulfuricFuelOil = GTAPI.register(Material.class, new Material(GT5Reimagined.ID, "sulfuric_fuel", 0xffff00, NONE)).setDisplayNameString("Sulfuric Fuel Oil");
 
     /**
      *** Gases/Plasmas

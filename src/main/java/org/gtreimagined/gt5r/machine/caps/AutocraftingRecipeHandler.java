@@ -19,6 +19,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import org.gtreimagined.gt5r.blockentity.IAutocrafter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +62,7 @@ public class AutocraftingRecipeHandler<T extends BlockEntityMachine<T> & IAutocr
             condensedMap.forEach((k, v) -> {
                 condensed.add(RecipeIngredient.of(k, v));
             });
-            recipe = new Recipe(condensed, new ItemStack[]{tile.getRecipe().getResultItem(tile.getLevel().registryAccess())}, List.of(), null, 1024, 16, 0, 1);
+            recipe = new Recipe(condensed, List.of(tile.getRecipe().getResultItem(tile.getLevel().registryAccess())), Collections.emptyList(), Collections.emptyList(), 1024, 16, 0, 1);
             recipe.setId(tile.getRecipe().getId());
             recipe.setMapId("");
             boolean valid = validateRecipe(recipe);

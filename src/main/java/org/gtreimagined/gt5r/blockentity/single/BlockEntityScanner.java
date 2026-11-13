@@ -10,6 +10,7 @@ import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.recipe.IRecipe;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -94,7 +95,7 @@ public class BlockEntityScanner extends BlockEntityMachine<BlockEntityScanner> i
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.IT_IN && slot == 1){
+        if (slotType == SlotTypes.IT_IN && slot == 1){
             return stack.getItem() == GT5RItems.DataStick || stack.getItem() == DataOrb;
         }
         return true;

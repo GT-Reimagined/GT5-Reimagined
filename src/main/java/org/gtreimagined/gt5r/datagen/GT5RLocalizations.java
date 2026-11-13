@@ -141,6 +141,8 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.small_heat_exchanger.heat_rate", "Rate of heating: %s HU/tick");
             add("tooltip.gt5r.small_heat_exchanger.efficiency", "Efficiency: %s");
             add("tooltip.gt5r.boiler", "Generates Steam from water.");
+            add("tooltip.gt5r.solid_fuel_boiler.bronze", "Produces 120L of Steam per second");
+            add("tooltip.gt5r.solid_fuel_boiler.steel", "Produces 300L of Steam per second");
             add("tooltip.macerator.0", "Crushes Raw ores down to crushed ore and byproducts. Macerator gives no byproducts, Pulverizer gives byproducts");
             add("tooltip.gt5r.input_hatch", "Fluid Input for Multiblocks");
             add("tooltip.gt5r.output_hatch", "Fluid Output for Multiblocks");
@@ -149,15 +151,24 @@ public class GT5RLocalizations {
             add("tooltip.gt5r.secondary_input_hatch", "Coolant Input for Fusion");
             add("tooltip.gt5r.secondary_output_hatch", "Coolant Output for Fusion");
             add("text.gt5r.prospected_book", "Prospection Data From:\nX: %s Z: %s Dim: %s\nProduces %sL %s");
-            add("jei.category.macerator_recycling", "Macerator Recycling");
-            add("jei.category.macerator_ore_processing", "Macerator Ore Processing");
-            add("jei.category.arc_furnace_recycling", "Arc Furnace Recycling");
-            add("jei.category.alloy_smelter_molds", "Alloy Smelter Molds");
-            add("jei.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
-            add("emi.category.gt.macerator_recycling", "Macerator Recycling");
-            add("emi.category.gt.macerator_ore_processing", "Macerator Ore Processing");
-            add("emi.category.gt.arc_furnace_recycling", "Arc Furnace Recycling");
-            add("emi.category.gt.alloy_smelter_molds", "Alloy Smelter Molds");
+            add("gui.recipeviewer.category.gt5r.ore_byproducts_tree", "Ore Byproducts Tree");
+            add("recipe_info.gt5r.temperature", "Temperature: %s K");
+            add("recipe_info.gt5r.extra_burntime", "Extra Saved burntime: %s");
+            add("recipe_info.gt5r.heat_multiplier", "Heat Increase Multiplier: %s");
+            add("recipe_info.gt5r.hut", "HU/t: %s");
+            add("recipe_info.gt5r.total_hu", "Total HU: %s");
+            add("recipe_info.gt5r.large_heat_exchanger_only", "Large Heat Exchanger Only");
+            add("recipe_info.gt5r.small_heat_exchanger_only", "Small Heat Exchanger Only");
+            add("recipe_info.gt5r.start_eu", "Start: %s EU");
+            add("recipe_info.gt5r.fusion_hut", "Creates %s HU/t%s");
+            add("recipe_info.gt5r.complicated_recipe", "Complicated Recipe");
+            add("recipe_info.gt5r.large_chem_reactor", "Large Chem Reactor Only");
+            add("recipe_info.gt5r.steam_per_tick", "Steam: %s mb/t");
+            add("recipe_info.gt5r.steam_duration", "Steam Duration %s ticks%s");
+            add("recipe_info.gt5r.not_steam_runnable", "Not runnable in Steam Machines");
+            add("recipe_info.gt5r.pulverizer_only", "Byproducts in pulverizer only");
+            add("recipe_info.gt5r.multismelter_only", "Multismelter only");
+            add("recipe_info.gt5r.fuel_value", "Fuel Value: %s EU");
             add("block.gt5r.lava", "Lava");
             GTAPI.all(ItemWoodenBucket.class).forEach(i -> add(i, Utils.lowerUnderscoreToUpperSpaced(i.getId())));
             add(GT5RBlocks.BRONZE_CAULDRON, "Bronze Cauldron");
@@ -217,7 +228,7 @@ public class GT5RLocalizations {
             add("tooltip.cracking_unit.8", "Optional 1x Item Hatch Input or 1x Item Hatch Output  on the middle Ring Casings");
 
             add("tooltip.distillation_tower.0", "Controller Block for the Distillation Tower");
-            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xhx3(with h ranging from 3 to 12)");
+            add("tooltip.distillation_tower.1", "Size(WxHxD): 3xhx3(Hollow), with h ranging from 3 to 12");
             add("tooltip.distillation_tower.2", "Controller (Front bottom)");
             add("tooltip.distillation_tower.3", "1x Input Hatch (Any bottom layer casing)");
             add("tooltip.distillation_tower.4", "2-11x Output Hatch (One per layer except bottom layer)");
@@ -226,7 +237,7 @@ public class GT5RLocalizations {
             add("tooltip.distillation_tower.7", "Clean Stainless Steel Casings for the rest (7 x h - 4 at least)");
 
             add("tooltip.cryo_distillation_tower.0", "Controller Block for the Cryo Distillation Tower");
-            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xhx3(with h ranging from 3 to 12)");
+            add("tooltip.cryo_distillation_tower.1", "Size(WxHxD): 3xhx3(Hollow), with h ranging from 3 to 12");
             add("tooltip.cryo_distillation_tower.2", "Controller (Front bottom)");
             add("tooltip.cryo_distillation_tower.3", "1x Input Hatch (Any bottom layer casing)");
             add("tooltip.cryo_distillation_tower.4", "2-11x Output Hatch (One per layer except bottom layer)");
@@ -548,6 +559,9 @@ public class GT5RLocalizations {
             override(Ref.SHARED_ID, "item.gt.chad_dust", "Chad");
             override(Ref.SHARED_ID, "item.gt.small_chad_dust", "Small Chad");
             override(Ref.SHARED_ID, "item.gt.tiny_chad_dust", "Tiny Chad");
+            override(Ref.SHARED_ID, "item.gt.hematite_dust", "Iron Oxide(III) Dust");
+            override(Ref.SHARED_ID, "item.gt.small_hematite_dust", "Small Iron Oxide(III) Dust");
+            override(Ref.SHARED_ID, "item.gt.tiny_hematite_dust", "Tiny Iron Oxide(III) Dust");
         }
     }
 

@@ -100,6 +100,7 @@ public class CutterLoader {
         if (GTAPI.isModLoaded("terrestria")){
             modWoods.put ("terrestria", List.of("cypress", "hemlock", "japanese_maple", "rainbow_eucalyptus", "redwood", "rubber", "sakura", "willow", "yucca_palm"));
         }
+        if (GTAPI.isModLoaded("twilightforest")) modWoods.put("twilightforest", List.of("twilight_oak", "canopy", "mangrove", "mining"));
         if (GTAPI.isModLoaded("undergarden")) modWoods.put("undergarden", List.of("smogstem", "wigglewood", "grongle"));
         if (GTAPI.isModLoaded("botania")) modWoods.put("botania", List.of("livingwood", "dreamwood"));
         if (GTAPI.isModLoaded("traverse")) modWoods.put("traverse", List.of("fir"));
@@ -127,6 +128,18 @@ public class CutterLoader {
                 addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(domain, wood + "_" + suffix)), RegistryUtils.getItemFromID(planks), 1, planks, 200, 8);
             }
         });
+
+        String[] logs = {"timewood", "darkwood", "sortwood", "transwood"};
+        String[] planks = {"time", "dark", "sorting", "transformation"};
+        String tf = "twilightforest";
+        if (GTAPI.isModLoaded(tf)){
+            for (int i = 0; i < logs.length; i++) {
+                ResourceLocation plank = new ResourceLocation(tf, planks[i] + "_planks");
+                addWoodRecipe(TagUtils.getItemTag(new ResourceLocation(tf, logs[i] + "_logs")), RegistryUtils.getItemFromID(plank), 1, plank, 200, 8);
+            }
+        }
+
+
     }
 
     private static void addCutterRecipe(TagKey<Item> input, ItemStack output, String id, int duration, int euPerTick){

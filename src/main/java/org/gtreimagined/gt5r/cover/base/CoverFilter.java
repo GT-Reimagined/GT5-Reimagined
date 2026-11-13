@@ -67,11 +67,6 @@ public class CoverFilter extends BaseCover {
     }
 
     @Override
-    public void onUpdate() {
-        super.onUpdate();
-    }
-
-    @Override
     public void setTextures(BiConsumer<String, Texture> texer) {
         if (factory.getTextures().size() == 2){
             texer.accept("overlay", factory.getTextures().get(blacklist ? 1 : 0));

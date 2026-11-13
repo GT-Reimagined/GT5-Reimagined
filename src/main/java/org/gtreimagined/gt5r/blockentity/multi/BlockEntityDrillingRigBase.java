@@ -12,6 +12,7 @@ import org.gtreimagined.gt5r.mui.GT5RGuiTextures;
 import org.gtreimagined.gtlib.blockentity.multi.BlockEntityMultiMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
 import org.gtreimagined.gtlib.machine.MachineState;
@@ -75,7 +76,7 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
             stopped = false;
         }
         if (!validStructure || stopped) return;
-        ItemStack stack = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+        ItemStack stack = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
         if ((stack.getItem() == GT5RBlocks.MINING_PIPE_THIN.asItem() || foundBottom || pullingUp) && energyHandler.map(e -> e.getEnergy() >= euPerTick).orElse(false)){
             if (pullingUp){
                 if (level.getGameTime() % 5 != 0) return;
@@ -85,8 +86,8 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
                     if (itemHandler.map(i -> i.canOutputsFit(new ItemStack[]{new ItemStack(MINING_PIPE_THIN)})).orElse(false)){
                         itemHandler.ifPresent(i -> i.addOutputs(new ItemStack(MINING_PIPE_THIN)));
                         success = true;
-                    } else if (itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0).getCount() + 1 < i.getHandler(SlotType.STORAGE).getSlotLimit(0)).orElse(false)){
-                        itemHandler.ifPresent(i -> i.getHandler(SlotType.STORAGE).insertItem(0, new ItemStack(MINING_PIPE_THIN), false));
+                    } else if (itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0).getCount() + 1 < i.getHandler(SlotTypes.STORAGE).getSlotLimit(0)).orElse(false)){
+                        itemHandler.ifPresent(i -> i.getHandler(SlotTypes.STORAGE).insertItem(0, new ItemStack(MINING_PIPE_THIN), false));
                         success = true;
                     }
                     if (success){
@@ -215,7 +216,7 @@ public abstract class BlockEntityDrillingRigBase<T extends BlockEntityDrillingRi
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        return slotType != SlotType.STORAGE || stack.getItem() == MINING_PIPE_THIN.asItem();
+        return slotType != SlotTypes.STORAGE || stack.getItem() == MINING_PIPE_THIN.asItem();
     }
 
     @Override

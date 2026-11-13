@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.blockentity.single;
 
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.core.BlockPos;
@@ -19,9 +20,9 @@ public class BlockEntityTypeFilter extends BlockEntityItemFilter {
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE){
+        if (slotType == SlotTypes.STORAGE){
             return itemHandler.map(i -> {
-                ItemStack tagStack = i.getHandler(SlotType.DISPLAY_SETTABLE).getStackInSlot(0);
+                ItemStack tagStack = i.getHandler(SlotTypes.DISPLAY_SETTABLE).getStackInSlot(0);
                 if (tagStack.isEmpty()) return false;
                 List<TagKey<Item>> tags = tagStack.getItem().builtInRegistryHolder().tags().toList();
                 String compare = tags.stream().filter(t -> t.location().toString().contains("/") && t.location().getNamespace().equals("forge")).findFirst().map(t -> t.location().toString()).orElse("");

@@ -8,11 +8,15 @@ import brachy.modularui.screen.ModularPanel;
 import brachy.modularui.screen.RichTooltip;
 import brachy.modularui.screen.UISettings;
 import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.DynamicSyncHandler;
 import brachy.modularui.value.sync.FluidSlotSyncHandler;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widget.EmptyWidget;
 import brachy.modularui.widgets.ButtonWidget;
 import brachy.modularui.widgets.CycleButtonWidget;
+import brachy.modularui.widgets.dynamic.DynamicWidget;
+import brachy.modularui.widgets.slot.ModularSlot;
 import com.google.common.collect.ImmutableMap;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
@@ -20,6 +24,7 @@ import org.gtreimagined.gtlib.capability.IGuiHandler;
 import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.cover.CoverFactory;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.mui.GTGuiTextures;
@@ -58,24 +63,20 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
         Objects.requireNonNull(tier);
         this.filter = new CoverFluidFilter(source, null, side, GT5RCovers.COVER_FLUID_FILTER);
         filter.onCreate();
-        this.gui.getSlots().add(SlotType.STORAGE, 88, 53);
+        this.gui.getSlots().add(SlotTypes.STORAGE, filterX(), filterY());
     }
 
     @Override
-    public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager panelSyncManager, UISettings uiSettings) {
-        super.addWidgets(modularPanel, sidedPosGuiData, panelSyncManager, uiSettings);
-        IPanelHandler panelSyncHandler = panelSyncManager.syncedPanel("other_panel", true, this::openSecondWindow);
-        modularPanel.child(new ButtonWidget<>().overlay(new ItemDrawable(GT5RCovers.COVER_FLUID_FILTER.getItem()))
-                .pos(70, 53).size(16)
-                .onMousePressed((context, mouseButton) -> {
-                    if (this.getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
-                    panelSyncHandler.openPanel();
-                    return true;
-                })
-                .tooltip(new RichTooltip().addLine("Open Filter Gui"))
-        );
+    protected int filterX() {
+        return 79;
     }
 
+    @Override
+    protected int filterY() {
+        return 53;
+    }
+
+    @Override
     public ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler) {
         ModularPanel<?> panel = new ModularPanel<>("filter_window")
                 .disablePanelsBelow(false)
@@ -98,7 +99,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
                 .addTooltip(1, Text.lang("tooltip.gt5r.filter_mode.1"))
                 .addTooltip(2, Text.lang("tooltip.gt5r.filter_mode.2"))
         );
-        FluidTanks tanks = SlotType.FL_PHANTOM.getFluidHandlerSupplier().apply(filter);
+        FluidTanks tanks = SlotTypes.FL_PHANTOM.fluidHandlerSupplier().apply(filter);
         GTFluidSlot fluidSlot = new GTFluidSlot();
         fluidSlot.pos(18, 27).alwaysShowFull(true)
                 .syncHandler(new FluidSlotSyncHandler(tanks.getTank(0)).phantom(true));
@@ -114,7 +115,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof FluidStack stack){
-            if (getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
+            if (getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
@@ -126,9 +127,8 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPre() {
         //Pump acts on each tick.
-        if (handler.getTile().getLevel().isClientSide) return;
         if (handler.getTile() == null) return;
         BlockPos from = handler.getTile().getBlockPos();
         BlockPos to = handler.getTile().getBlockPos().relative(side);
@@ -159,8 +159,8 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
 
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
+        if (tile == this && event == SlotTypes.STORAGE){
+            ItemStack slotStack = getInventory(SlotTypes.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -173,7 +173,7 @@ public class CoverPump extends CoverBasicTransport implements IFilterableHandler
     @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotType.STORAGE, 0);
+        onMachineEvent(this, SlotTypes.STORAGE, 0);
     }
 
     @Override

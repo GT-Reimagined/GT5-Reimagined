@@ -13,6 +13,7 @@ import net.minecraftforge.event.level.LevelEvent;
 import net.minecraftforge.registries.ForgeRegistries.Keys;
 import net.minecraftforge.registries.MissingMappingsEvent;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.data.Materials;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTRemapping;
 import org.gtreimagined.gtlib.Ref;
@@ -117,6 +118,9 @@ public class ForgeEvents {
         for (MissingMappingsEvent.Mapping<Fluid> mapping : event.getMappings(Keys.FLUIDS, Ref.SHARED_ID)) {
             if (GTAPI.isModLoaded(Ref.MOD_FR) && mapping.getKey().getPath().equals("liquid_honey")){
                 mapping.remap(RegistryUtils.getFluidFromID(new ResourceLocation(Ref.MOD_FR, "honey")));
+            }
+            if (mapping.getKey().getPath().equals("liquid_phosphor")){
+                mapping.remap(Materials.Phosphorus.getLiquid());
             }
         }
     }

@@ -4,6 +4,7 @@ import net.minecraft.world.level.material.MapColor;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gtlib.block.BlockFakeTile;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialColorChanger;
 import org.gtreimagined.gtlib.registration.IColorHandler;
 import org.gtreimagined.gtlib.texture.Texture;
 import net.minecraft.core.BlockPos;
@@ -41,11 +42,11 @@ public class BlockColoredWall  extends BlockFakeTile implements IColorHandler {
 
     @Override
     public int getBlockColor(BlockState state, @Nullable BlockGetter world, @Nullable BlockPos pos, int i) {
-        return i == 0 ? material.getRGB() : -1;
+        return i == 0 ? MaterialColorChanger.getMaterialRgb(material) : -1;
     }
 
     @Override
     public int getItemColor(ItemStack stack, @Nullable Block block, int i) {
-        return i == 0 ? material.getRGB() : -1;
+        return i == 0 ? MaterialColorChanger.getMaterialRgb(material) : -1;
     }
 }

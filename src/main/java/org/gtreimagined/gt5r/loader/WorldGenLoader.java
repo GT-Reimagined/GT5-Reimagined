@@ -27,6 +27,7 @@ import org.gtreimagined.gtlib.worldgen.vein.VeinBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 import static net.minecraft.world.level.Level.END;
 import static net.minecraft.world.level.Level.NETHER;
@@ -202,16 +203,19 @@ public class WorldGenLoader {
         ev.stoneLayer(new StoneLayerBuilder(id("tuff")).withStone(TUFF).withWeight(3).inDimensions(overworld).buildVein());
         if (GT5RConfig.GT6_ORE_GEN.get()){
             ev.stoneLayer(new StoneLayerBuilder(id("kimberlite_2")).withStone(KIMBERLITE).withWeight(1).inDimensions(overworld).buildVein());
-            /*ev.stoneLayer(new StoneLayerBuilder("deepslate_ores").withStone(STONE).withWeight(1).addOres(
-                    new StoneLayerOre(Emerald, U64, -32, 0).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
-                    new StoneLayerOre(Diamond, U64, -64, -52).addFilteredBiome(BiomeTags.IS_JUNGLE),
-                    new StoneLayerOre(Lapis, U12, -32, 0).addFilteredBiome(BiomeTags.IS_TAIGA).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES),
-                    new StoneLayerOre(Amber, U32, 16, 24).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN),
-                    new StoneLayerOre(Redstone, U16, 0, 20),
-                    new StoneLayerOre(Cinnabar, U64, 0, 20).addFilteredBiome(BiomeTags.IS_TAIGA).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS),
-                    new StoneLayerOre(Uraninite, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
-                    new StoneLayerOre(Thorium, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
-                    new StoneLayerOre(Scheelite, U64, 0, 12).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)).buildVein());*/
+            ev.stoneLayer(new StoneLayerBuilder(id("deepslate_ores")).withStone(DEEPSLATE).withWeight(1).maxY(0, SLATE.getState().getBlock()).addOres(
+                    //new StoneLayerOre(Emerald, U64, -32, 0).addFilteredBiome(BiomeTags.IS_MOUNTAIN),
+                    //new StoneLayerOre(Diamond, U64, -64, -52).addFilteredBiome(BiomeTags.IS_JUNGLE),
+                    //new StoneLayerOre(Lapis, U12, -32, 0).addFilteredBiome(BiomeTags.IS_TAIGA).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES),
+                    //new StoneLayerOre(Amber, U32, 16, 24).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN),
+                    new StoneLayerOre(Hematite, U16, -64, -32),
+                    new StoneLayerOre(Redstone, U16, -64, -44),
+                    new StoneLayerOre(Teslatite, U32, -64, -44)
+                    //new StoneLayerOre(Cinnabar, U64, 0, 20).addFilteredBiome(BiomeTags.IS_TAIGA).addFilteredBiome(Biomes.BADLANDS).addFilteredBiome(Biomes.ERODED_BADLANDS),
+                    //new StoneLayerOre(Uraninite, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
+                    //new StoneLayerOre(Thorium, U64, 0, 12).addFilteredBiome(BiomeTags.IS_JUNGLE),
+                    //new StoneLayerOre(Scheelite, U64, 0, 12).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)
+            ).buildVein());
             ev.stoneLayer(new StoneLayerBuilder(id("granite_ores")).withStone(GRANITE).withWeight(1).minY(0, RED_GRANITE.getState().getBlock()).inDimensions(overworld).addOres(
                     new StoneLayerOre(BlueTopaz, U64, -24, 0).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Topaz, U64, -8, 16).addFilteredBiome(Biomes.FROZEN_PEAKS).addFilteredBiome(Biomes.ICE_SPIKES)
@@ -322,27 +326,35 @@ public class WorldGenLoader {
                 ).buildVein());
             }
 
-            ev.addCollisionBothSides(ORE_STONE.get().get(Coal).asState(), SLATE.getState(),
+            ev.addCollisionBothSides(id("coal_over_slate"), id("slate_over_coal"), ORE_STONE.get().get(Coal).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(ORE_STONE.get().get(Lignite).asState(), SLATE.getState(),
+            ev.addCollisionBothSides(id("lignite_over_slate"), id("slate_over_lignite"), ORE_STONE.get().get(Lignite).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(ORE_STONE.get().get(OilShale).asState(), SLATE.getState(),
+            ev.addCollisionBothSides(id("coal_over_oil_shale"), id("slate_over_oil_shale"), ORE_STONE.get().get(OilShale).asState(), SLATE.getState(),
                     new StoneLayerOre(Amber, U4, 30, 70).addFilteredBiome(BiomeTags.IS_OCEAN).addFilteredBiome(BiomeTags.IS_DEEP_OCEAN).addFilteredBiome(BiomeTags.IS_BEACH),
                     new StoneLayerOre(Amber, U8, 30, 70).addFilteredBiome(BiomeTags.IS_RIVER));
-            ev.addCollisionBothSides(BLACK_GRANITE.getState(), MARBLE.getState(),
+            ev.addCollisionBothSides(id("black_granite_over_marble"), id("marble_over_black_granite"), BLACK_GRANITE.getState(), MARBLE.getState(),
                     new StoneLayerOre(Lapis, U8, 0, 48),
                     new StoneLayerOre(Sodalite, U16, 0, 48),
                     new StoneLayerOre(Lazurite, U16, 0, 48),
                     new StoneLayerOre(Pyrite, U16, 0, 48));
-            ev.addCollisionTopBottom(BLACK_GRANITE.getState(), BASALT.getState(),
+            ev.addCollisionTopBottom(id("black_granite_over_basalt"), BLACK_GRANITE.getState(), BASALT.getState(),
                     new StoneLayerOre(Diamond, U64, -64, -32),
                     new StoneLayerOre(Graphite, U8, -64, -32));
-            ev.addCollisionBothSides(BLACK_GRANITE.getState(), GRANITE.getState(),
+            ev.addCollisionBothSides(id("black_granite_over_granite"), id("granite_over_black_granite"), BLACK_GRANITE.getState(), GRANITE.getState(),
                     new StoneLayerOre(Zircon, U24, 0, 32));
-            ev.addCollisionBothSides(BLACK_GRANITE.getState(), RED_GRANITE.getState(),
+            ev.addCollisionBothSides(id("black_granite_over_red_granite"), id("red_granite_over_black_granite"), BLACK_GRANITE.getState(), RED_GRANITE.getState(),
                     new StoneLayerOre(Zircon, U24, 0, 32));
+            ev.addCollisionBothSides(id("limestone_over_quartzite"), id("quartzite_over_limestone"), LIMESTONE.getState(), QUARTZITE.getState(),
+                    new StoneLayerOre(Lepidolite, U32, 16, 48),
+                    new StoneLayerOre(Spodumene, U32, 32, 64),
+                    new StoneLayerOre(Tantalite, U32, 8, 56));
+            ev.addCollisionBothSides(id("marble_over_quartzite"), id("quartzite_over_marble"), MARBLE.getState(), QUARTZITE.getState(),
+                    new StoneLayerOre(Soapstone, U4, -54, -9),
+                    new StoneLayerOre(Talc, U4, -54, -9),
+                    new StoneLayerOre(Glauconite, U4, -54, -9));
 
 
         }
@@ -353,10 +365,14 @@ public class WorldGenLoader {
         ev.stoneLayer(new StoneLayerBuilder(id("bauxite")).withStone(ORE_STONE.get().get(Bauxite).asState()).withWeight(1).inDimensions(overworld).buildVein());
         ev.stoneLayer(new StoneLayerBuilder(id("oil_shale")).withStone(ORE_STONE.get().get(OilShale).asState()).withWeight(1).inDimensions(overworld).buildVein());
 
-        ev.addCollisionBothSides(BASALT.getState(), LIMESTONE.getState(),
+        List<StoneLayerOre> ores = new ArrayList<>(List.of(
                 new StoneLayerOre(Ilmenite, U8, -64, 0),
                 new StoneLayerOre(Rutile, U12, -64, 0)
-        );
+        ));
+        if (!GT5RConfig.HARDER_ALUMINIUM_PROCESSING.get()){
+            ores.add(new StoneLayerOre(Alumina, U12, -64, 0));
+        }
+        ev.addCollisionBothSides(id("basalt_over_limestone"), id("limestone_over_basalt"), BASALT.getState(), LIMESTONE.getState(), ores.toArray(StoneLayerOre[]::new));
 
     }
 

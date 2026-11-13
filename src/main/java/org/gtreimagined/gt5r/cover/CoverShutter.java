@@ -86,8 +86,8 @@ public class CoverShutter extends BaseCover implements ICoverRedstoneSensitive {
     }
 
     @Override
-    public void onUpdate() {
-        super.onUpdate();
+    public void onTickPost() {
+        super.onTickPost();
         if (checkConnection){
             isPowered = isPowered(this.side);
             checkConnection = false;

@@ -3,6 +3,7 @@ package org.gtreimagined.gt5r.blockentity.single;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import net.minecraft.core.BlockPos;
@@ -25,7 +26,7 @@ public class BlockEntityAutocrafter extends BlockEntityMachine<BlockEntityAutocr
     @Override
     public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
         super.onFirstTickServer(level, pos, state);
-        onMachineEvent(SlotType.STORAGE);
+        onMachineEvent(SlotTypes.STORAGE);
     }
 
     @Override
@@ -40,7 +41,7 @@ public class BlockEntityAutocrafter extends BlockEntityMachine<BlockEntityAutocr
 
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
-        if (event == SlotType.STORAGE){
+        if (event == SlotTypes.STORAGE){
             initRecipe(this);
         }
         super.onMachineEvent(event, data);
@@ -48,7 +49,7 @@ public class BlockEntityAutocrafter extends BlockEntityMachine<BlockEntityAutocr
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE) return stack.getItem() == GTCoreItems.Blueprint;
+        if (slotType == SlotTypes.STORAGE) return stack.getItem() == GTCoreItems.Blueprint;
         return stack.getItem() != GTCoreItems.Blueprint;
     }
 }

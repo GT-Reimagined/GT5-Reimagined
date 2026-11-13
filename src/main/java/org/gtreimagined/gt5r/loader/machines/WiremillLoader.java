@@ -1,6 +1,8 @@
 package org.gtreimagined.gt5r.loader.machines;
 
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.pipe.types.Wire;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
@@ -10,6 +12,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
 
+import static org.gtreimagined.gt5r.data.Materials.Graphite;
 import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 import static org.gtreimagined.gt5r.data.GT5RBlocks.FLUID_PIPE_STEEL;
 import static org.gtreimagined.gt5r.data.Materials.Carbon;
@@ -38,8 +41,7 @@ public class WiremillLoader {
             }
         });
         WIRE_MILL.RB().ii(FLUID_PIPE_STEEL.getBlockItem(PipeSize.TINY)).io(GT5RBlocks.MINING_PIPE_THIN.asItem()).add("mining_pipe", 200, 16);
-        //if (!GT5RConfig.HARD_CARBON.get()){
-            WIRE_MILL.RB().ii(DUST.getMaterialIngredient(Carbon, 8)).io(GTCoreItems.CarbonFibre).add("carbon_fibre", 400, 2);
-        //}
+        Material carbonInput = GT5RConfig.HARD_CARBON.get() ? Graphite : Carbon;
+        WIRE_MILL.RB().ii(DUST.getMaterialIngredient(carbonInput, 8)).io(GTCoreItems.CarbonFibre).add("carbon_fibre", 400, 2);
     }
 }

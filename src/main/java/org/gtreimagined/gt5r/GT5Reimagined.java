@@ -13,6 +13,7 @@ import net.minecraftforge.fml.DistExecutor;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityScanner;
 import org.gtreimagined.gt5r.data.GT5RFluids;
 import org.gtreimagined.gt5r.data.StructureInfo;
+import org.gtreimagined.gt5r.integration.BluepowerRegistrar;
 import org.gtreimagined.gt5r.integration.CCTweakedRegistrar;
 import org.gtreimagined.gt5r.integration.ModRecipeRemovals;
 import org.gtreimagined.gt5r.integration.botania.BotaniaRegistrar;
@@ -41,7 +42,7 @@ import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.event.GTWorldGenEvent;
-import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
+import org.gtreimagined.gtlib.integration.recipeviewer.GTLibRecipeViewerPlugin;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.mixin.LivingEntityAccessor;
 import org.gtreimagined.gtlib.recipe.loader.IRecipeRegistrate;
@@ -94,7 +95,6 @@ import org.gtreimagined.gt5r.events.forge.ForgeEvents;
 import org.gtreimagined.gt5r.integration.ae2.AppliedEnergisticsRegistrar;
 import org.gtreimagined.gt5r.integration.SpaceModRegistrar;
 import org.gtreimagined.gt5r.integration.thermal.ThermalRegistrar;
-import org.gtreimagined.gt5r.integration.rei.REIRegistrar;
 import org.gtreimagined.gt5r.loader.LootLoader;
 import org.gtreimagined.gt5r.loader.WorldGenLoader;
 import org.gtreimagined.gt5r.loader.crafting.BlockParts;
@@ -202,6 +202,7 @@ public class GT5Reimagined extends GTMod {
         new IERegistrar();
         new RailcraftRegistrar();
         new ThermalRegistrar();
+        new BluepowerRegistrar();
         new MekanismRegistrar();
         if (GTAPI.isModLoaded(Ref.MOD_FR)) new ForestryRegistrar();
         new BotaniaRegistrar();
@@ -391,9 +392,6 @@ public class GT5Reimagined extends GTMod {
                     }
                 };
                 GTAPI.register(IGTWorldgenFunction.class, "removed_ores", ID, function);
-                if (GTAPI.isModLoaded(Ref.MOD_REI) && side.isClient()){
-                    REIRegistrar.init();
-                }
                 PlayerTickCallback.PLAYER_TICK_CALLBACKS.add((end, logicalServer, player) -> {
                     if (!end && logicalServer && (((LivingEntityAccessor)player).getLastPos() == null || !((LivingEntityAccessor)player).getLastPos().equals(player.blockPosition()))){
                         BlockState state = player.level().getBlockState(player.getOnPos());
@@ -424,25 +422,27 @@ public class GT5Reimagined extends GTMod {
                     return null;
                 });
                 Structures.init();
-                StructureInfo.init();
+                if (side.isClient()) {
+                    StructureInfo.init();
+                }
                 GT5RTwilightStalctites.init();
                 GT5RRemapping.init();
                 LootLoader.init();
                 BlockEntityScanner.initDefaultScannerFunctions();
                 BookRegistration.registerBookTexture(GT5RItems.PrintedPages, new ResourceLocation(GTCore.ID, "block/books/folder_red_back"), new ResourceLocation(GTCore.ID, "block/books/folder_red_side"));
-                GTLibXEIPlugin.addItemsToHide(l -> {
+                GTLibRecipeViewerPlugin.addItemsToHide(l -> {
                     IGTTool screwdriver_mv = GTAPI.get(IGTTool.class, "electric_screwdriver_mv", GTCore.ID);
                     IGTTool screwdriver_hv = GTAPI.get(IGTTool.class, "electric_screwdriver_hv", GTCore.ID);
                     l.addAll(Arrays.asList(screwdriver_mv.getItem(), screwdriver_hv.getItem()));
                     if (!GT5RConfig.HARDER_CIRCUITS.get()){
-                        l.addAll(Arrays.asList(GT5RItems.CircuitBoardPhenolic, GT5RItems.CircuitBoardPlastic, GT5RItems.CircuitBoardFiber,
+                        l.addAll(Arrays.asList(GT5RItems.CircuitBoardPhenolic, GT5RItems.CircuitBoardPlastic, GT5RItems.CircuitBoardEpoxy, GT5RItems.CircuitBoardFiber,
                                 GT5RItems.CircuitBoardMultiFiber, GT5RItems.CircuitBoardWetware, PLATE.get(Materials.FiberReinforcedEpoxyResin),
                                 GT5RItems.GlassTube, GT5RItems.VacuumTube, GT5RItems.Transistor, GT5RItems.SMDTransistor, GT5RItems.Resistor,
                                 GT5RItems.SMDResistor, GT5RItems.Diode, GT5RItems.SMDDiode, GT5RItems.Capacitor, GT5RItems.SMDCapacitor,
                                 GT5RItems.SmallCoil, GT5RItems.PetriDish));
                         l.addAll(Arrays.asList(GT5RItems.CircuitWetware,
                                 GT5RItems.Mainframe, GT5RItems.QuantumProcessorAssembly, GT5RItems.CrystalProcessor));
-                        l.addAll(Arrays.asList(GT5RItems.GlowstoneDopedSiliconBoule, GT5RItems.NaquadahDopedSiliconBoule, GT5RItems.GlowstoneDopedWafer, GT5RItems.NaquadahDopedWafer,
+                        l.addAll(Arrays.asList(GT5RItems.PhosphorusDopedSiliconBoule, GT5RItems.IndiumDopedSiliconBoule, GT5RItems.PhosphorusDopedWafer, GT5RItems.IndiumDopedWafer,
                                 GT5RItems.ASoCWafer, GT5RItems.ASoC, GT5RItems.CentralProcessingUnitWafer, GT5RItems.CentralProcessingUnit, GT5RItems.HPICWafer, GT5RItems.HighPowerIC,
                                 GT5RItems.IntegratedLogicCircuitWafer, GT5RItems.IntegratedLogicCircuit, GT5RItems.NANDMemoryChipWafer, GT5RItems.NANDMemoryChip,
                                 GT5RItems.NanoCpuWafer, GT5RItems.NanoCpu, GT5RItems.NorMemoryChipWafer, GT5RItems.NorMemoryChip, GT5RItems.PICWafer, GT5RItems.PowerIC,
@@ -454,7 +454,7 @@ public class GT5Reimagined extends GTMod {
                                 GT5RItems.EmptyCircuitPlate, GT5RItems.CopperEtchedWiring, GT5RItems.CopperCircuitPlate, GT5RItems.GoldEtchedWiring,
                                 GT5RItems.GoldCircuitPlate, GT5RItems.PlatinumEtchedWiring, GT5RItems.PlatinumCircuitPlate));
                     }
-                    if (!GT5RConfig.HARD_SETTINGS){
+                    if (!GT5RConfig.HARD_SETTINGS.get()){
                         l.add(GT5RMachines.ASSEMBLY_LINE.getItem(IV));
                         l.add(GT5RBlocks.ADVANCED_ASSEMBLER_CASING);
                         l.add(GT5RBlocks.ASSEMBLY_LINE_CASING);
@@ -463,7 +463,7 @@ public class GT5Reimagined extends GTMod {
                         l.addAll(GT5RMachines.FERMENTER.getTiers().stream().map(GT5RMachines.FERMENTER::getBlockState).toList());
                     }
                 });
-                GTLibXEIPlugin.addFluidsToHide(l -> {
+                GTLibRecipeViewerPlugin.addFluidsToHide(l -> {
                     if (!GT5RConfig.COMPLICATED_CHEMICAL_PROCESSING.get()){
                         l.addAll(Arrays.asList(Materials.DinitrogenTetroxide.getGas(), Materials.Dimethylhydrazine.getLiquid(), Materials.Chloramine.getLiquid(), Materials.Dimethylamine.getGas()));
                         l.addAll(Arrays.asList(Materials.Chlorobenzene.getLiquid(), Materials.Acetone.getLiquid(), Materials.CalciumAcetateSolution.getLiquid(), Materials.FermentedBiomass.getLiquid(),
@@ -471,12 +471,16 @@ public class GT5Reimagined extends GTMod {
                                 Materials.Butanol.getLiquid(), Materials.Heptanol.getLiquid(), Materials.Ethenol.getLiquid(), Materials.Propenol.getLiquid(), Materials.Butenol.getLiquid(),
                                 Materials.Ethanediol.getLiquid(), Materials.Propanediol.getLiquid(), Materials.Butanediol.getLiquid(),
                                 Materials.AceticAcid.getLiquid(), Materials.AllylChloride.getLiquid(), Materials.Benzaldehyde.getLiquid(), Materials.BenzoylChloride.getLiquid(),
-                                Materials.BisphenolA.getLiquid(), Materials.Chloroform.getLiquid(), Materials.Cumene.getLiquid(), Materials.Dichloroethane.getLiquid(), Materials.Dimethyldichlorosilane.getLiquid(),
-                                Materials.MethylAcetate.getLiquid(), Materials.Phenol.getLiquid(), Materials.PolyvinylAcetate.getLiquid(), Materials.Styrene.getLiquid(), Materials.SulfuricNaphtha.getLiquid(),
+                                Materials.Chloroform.getLiquid(), Materials.Cumene.getLiquid(), Materials.Dichloroethane.getLiquid(), Materials.Dimethyldichlorosilane.getLiquid(),
+                                Materials.MethylAcetate.getLiquid(), Materials.Phenol.getLiquid(), Materials.PolyvinylAcetate.getLiquid(), Materials.Styrene.getLiquid(),
                                 Materials.VinylAcetate.getLiquid(), Materials.HydrofluoricAcid.getLiquid(), Materials.HydrogenPeroxide.getLiquid(), Materials.HypochlorousAcid.getLiquid(),
                                 Materials.PeroxydisulfuricAcid.getLiquid(), Materials.PhosphoricAcid.getLiquid(), Materials.CharcoalByproducts.getGas(), Materials.Butene.getGas(),
-                                Materials.Chloromethane.getGas(), Materials.SulfuricGas.getGas(), Materials.CalciumAcetateSolution.getLiquid(), Materials.Gasoline.getLiquid(),
+                                Materials.Chloromethane.getGas(), Materials.CalciumAcetateSolution.getLiquid(), Materials.Gasoline.getLiquid(),
                                 Materials.Ammonia.getGas(), Materials.HydrogenSulfide.getGas()));
+                    }
+                    if (!GT5RConfig.SULFURIC_OIL_OUTPUTS.get()){
+                        l.addAll(List.of(Materials.SulfuricGas.getGas(), Materials.SulfuricNaphtha.getLiquid(), Materials.SulfuricFuelOil.getLiquid(),
+                                Materials.SulfuricDiesel.getLiquid(), Materials.SulfuricKerosene.getLiquid()));
                     }
                 });
                 TerraformFuelRegistry.addFuel(GT5RBlocks.SOLID_SUPER_FUEL.asItem(), 100000);

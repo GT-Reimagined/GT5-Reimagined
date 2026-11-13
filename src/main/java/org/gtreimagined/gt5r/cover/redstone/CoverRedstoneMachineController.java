@@ -47,8 +47,8 @@ public class CoverRedstoneMachineController extends CoverBasicRedstoneInput {
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.isServerSide()){
+    public void onTickPost() {
+        if (handler.getTile() instanceof BlockEntityMachine<?> machine){
             if (machine.getMachineState() != MachineState.DISABLED){
                 if (!isPowered()){
                     machine.toggleMachine();

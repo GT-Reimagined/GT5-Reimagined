@@ -35,7 +35,7 @@ import org.gtreimagined.gtlib.event.GTLoaderEvent;
 import org.gtreimagined.gtlib.event.GTProvidersEvent;
 import org.gtreimagined.gtlib.event.MaterialEvent;
 import org.gtreimagined.gtlib.fluid.GTFluid;
-import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
+import org.gtreimagined.gtlib.integration.recipeviewer.GTLibRecipeViewerPlugin;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
 import org.gtreimagined.gtlib.material.MaterialTypeFluid;
@@ -167,8 +167,8 @@ public class TFCRegistrar extends GTMod {
                 return true;
             });
             BehaviourTorchPlacing.addTorch(TFCItems.TORCH.get(), TFCBlocks.TORCH.get(), TFCBlocks.WALL_TORCH.get());
-            GTLibXEIPlugin.addItemsToHide(DUST.get(Fireclay), GTCoreItems.CompressedFireClay, GTCoreItems.FireBrick);
-            GTLibXEIPlugin.addItemsToHide(l -> l.addAll(GTAPI.all(BlockMortar.class)));
+            GTLibRecipeViewerPlugin.addItemsToHide(DUST.get(Fireclay), GTCoreItems.CompressedFireClay, GTCoreItems.FireBrick);
+            GTLibRecipeViewerPlugin.addItemsToHide(l -> l.addAll(GTAPI.all(BlockMortar.class)));
             if (side == Dist.CLIENT){
                 TFCClientHandler.setup();
             }

@@ -18,8 +18,8 @@ public class SifterLoader {
             ItemStack dustPurified = DUST.get(m, 1);
             SIFTER.RB().ii(PURIFIED_ORE.getMaterialIngredient(m,1)).io(e ? EXQUISITE_GEM.get(m, 1) : gem,
                     e ? FLAWLESS_GEM.get(m, 1) : gem, gem,
-                    e ? FLAWED_GEM.get(m, 1) : gem,
-                    e ? CHIPPED_GEM.get(m, 1) : gem, dustPurified).outputChances(chances/*0.05, 0.125, 0.25, 0.5, 0.75, 1.0*/).add("crushed_" + m.getId(),800, 16);
+                    e ? FLAWED_GEM.get(m, 2) : gem,
+                    e ? CHIPPED_GEM.get(m, 4) : gem, dustPurified).outputChances(chances).add("crushed_" + m.getId(),800, 16);
         });
         SIFTER.RB().ii(RecipeIngredient.of(Tags.Items.GRAVEL, 1)).io(Items.FLINT).add("flint", 40 * 20, 16);
     }

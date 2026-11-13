@@ -219,6 +219,7 @@ public class GT5RBlocks {
     public static final Cable<?> CABLE_GOLD = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Gold, 2, Tier.HV).amps(3));
     public static final Cable<?> CABLE_ELECTRUM = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Electrum, 2, Tier.HV).amps(2));
     public static final Cable<?> CABLE_SILVER = GTAPI.register(Cable.class,new Cable<>(GT5Reimagined.ID, Silver, 1, Tier.HV).amps(1));
+    public static final Cable<?> CABLE_BLUE_ALLOY = GTAPI.register(Cable.class,new Cable<>(GT5Reimagined.ID, BlueAlloy, 1, Tier.HV).amps(2));
     public static final Cable<?> CABLE_NICHROME = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Nichrome, 4, Tier.EV).amps(3)); //E);
     public static final Cable<?> CABLE_STEEL = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Steel, 2, Tier.EV).amps(2));
     public static final Cable<?> CABLE_TITANIUM = GTAPI.register(Cable.class, new Cable<>(GT5Reimagined.ID, Materials.Titanium, 2, Tier.EV).amps(4));
@@ -249,6 +250,7 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_GOLD = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Gold, 4, Tier.HV).amps(3));
     public static final Wire<?> WIRE_ELECTRUM = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Electrum, 4, Tier.HV).amps(2));
     public static final Wire<?> WIRE_SILVER = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Silver, 2, Tier.HV).amps(1));
+    public static final Wire<?> WIRE_BLUE_ALLOY = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, BlueAlloy, 2, Tier.HV).amps(2));
     public static final Wire<?> WIRE_NICHROME = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Nichrome, 8, Tier.EV).amps(3)); //E);
     public static final Wire<?> WIRE_STEEL = GTAPI.register(Wire.class, new Wire<>(GT5Reimagined.ID, Materials.Steel, 4, Tier.EV).amps(2));
     public static final Wire<?> WIRE_TITANIUM = GTAPI.register(Wire.class,  new Wire<>(GT5Reimagined.ID, Materials.Titanium, 4, Tier.EV).amps(4));

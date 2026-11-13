@@ -9,6 +9,7 @@ import lombok.Setter;
 import net.minecraft.resources.ResourceLocation;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
@@ -60,7 +61,7 @@ public class BlockEntityMultiSmelter extends BlockEntityParallelMultiblock<Block
     @Override
     public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
         super.onFirstTickServer(level, pos, state);
-        onMachineEvent(SlotType.STORAGE);
+        onMachineEvent(SlotTypes.STORAGE);
     }
 
     @Override
@@ -81,8 +82,8 @@ public class BlockEntityMultiSmelter extends BlockEntityParallelMultiblock<Block
 
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
-        if (event == SlotType.STORAGE){
-            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+        if (event == SlotTypes.STORAGE){
+            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
             if (circuit.getItem() instanceof ItemSelectorTag tag && tag.circuitId == 1){
                 this.recipeMap = RecipeMaps.ALLOY_SMELTER;
             } else {

@@ -26,7 +26,7 @@ public class CoverRedstoneConductorEmit extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
+    public void onTickPost() {
         int newPower = 0;
         for (Direction direction : Direction.values()) {
             if (direction == this.side) continue;

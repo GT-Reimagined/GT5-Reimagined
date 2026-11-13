@@ -73,6 +73,10 @@ public class GT5RBlockLootProvider extends GTBlockLootProvider {
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
             tables.put(AppliedEnergisticsRegistrar.getAe2Block("deepslate_quartz_ore"), b -> createOreDrop(b, RAW_ORE.get(Materials.CertusQuartz)));
         }
+        if (GTAPI.isModLoaded("bluepower")){
+            tables.put(RegistryUtils.getBlockFromId("bluepower","teslatite_ore"), b -> createOreDrop(b, RAW_ORE.get(Teslatite)));
+            tables.put(RegistryUtils.getBlockFromId("bluepower", "teslatite_deepslate"), b -> createOreDrop(b, RAW_ORE.get(Teslatite)));
+        }
         if (GTAPI.isModLoaded("ad_astra")){
             tables.put(SpaceModRegistrar.getSpaceBlock("mars_diamond_ore"), b -> createOreDropWithHammer(b, RAW_ORE.get(Diamond), CRUSHED_ORE.get(Diamond), 1));
         }

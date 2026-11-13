@@ -7,6 +7,7 @@ import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineRecipeHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.material.Material;
@@ -130,7 +131,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
 
             @Override
             public void onMachineEvent(IMachineEvent event, Object... data) {
-                if (event == SlotType.IT_IN && data[0] instanceof Integer integer && integer == 1){
+                if (event == SlotTypes.IT_IN && data[0] instanceof Integer integer && integer == 1){
                     lastRecipe = null;
                 }
                 super.onMachineEvent(event, data);
@@ -162,7 +163,7 @@ public class BlockEntityPrinter extends BlockEntityMachine<BlockEntityPrinter> i
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.IT_IN){
+        if (slotType == SlotTypes.IT_IN){
             return (slot == 0) == (stack.getItem() != GT5RItems.DataStick);
         }
         return true;

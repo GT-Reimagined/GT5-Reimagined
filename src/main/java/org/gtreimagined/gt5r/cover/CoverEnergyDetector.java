@@ -33,8 +33,8 @@ public class CoverEnergyDetector extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
+    public void onTickPost() {
+        if (handler.getTile().getLevel() == null) return;
         if (handler.getTile() instanceof BlockEntityMachine<?> machine && machine.energyHandler.isPresent()){
             IEnergyHandler energyHandler = machine.energyHandler.get();
             long scale = energyHandler.getCapacity() / 15L;

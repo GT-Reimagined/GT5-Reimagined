@@ -10,7 +10,7 @@ import org.gtreimagined.gt5r.blockentity.single.BlockEntitySmallHeatExchanger;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.RecipeMaps;
 
-import static org.gtreimagined.gtlib.gui.SlotType.*;
+import static org.gtreimagined.gtlib.gui.SlotTypes.*;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.NONE;
 

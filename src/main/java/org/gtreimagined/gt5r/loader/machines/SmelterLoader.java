@@ -1,6 +1,8 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.Tags.Items;
 import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gtcore.data.GTCoreBlocks;
@@ -41,6 +43,8 @@ public class SmelterLoader {
         SMELTER.RB().ii(GTCoreBlocks.LIMESTONE.getState().getBlock()).fo(Calcite.getLiquid(L)).add("limestone_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(((CobbleStoneType)GTCoreBlocks.LIMESTONE).getBlock("cobble")).fo(Calcite.getLiquid(L)).add("limestone_cobble_to_calcite", Limestone.getMass(), 24);
         SMELTER.RB().ii(Blocks.CALCITE).fo(Calcite.getLiquid(L)).add("mc_calcite_to_calcite", Limestone.getMass(), 24);
+        SMELTER.RB().ii(RecipeIngredient.of(Items.SAND)).fo(Glass.getLiquid(144)).add("sand_to_molten_glass", 20, 24);
+        SMELTER.RB().ii(RecipeIngredient.of(Tags.Items.GLASS)).fo(Glass.getLiquid(144)).add("glassg_to_molten_glass", 20, 24);
     }
 
     private static void add(Material m, MaterialTypeItem<?> i, long materialAmount) {

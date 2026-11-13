@@ -4,6 +4,7 @@ import brachy.modularui.api.drawable.Text;
 import brachy.modularui.factory.SidedPosGuiData;
 import brachy.modularui.screen.ModularPanel;
 import brachy.modularui.screen.UISettings;
+import brachy.modularui.utils.Alignment;
 import brachy.modularui.value.sync.IntSyncValue;
 import brachy.modularui.value.sync.PanelSyncManager;
 import brachy.modularui.widgets.ButtonWidget;
@@ -39,7 +40,7 @@ import java.util.function.Predicate;
 
 import static org.gtreimagined.gt5r.cover.CoverConveyor.speeds;
 
-public class CoverItemRegulator extends CoverBasicTransport {
+public class CoverItemRegulator extends CoverConveyor {
     int slotLimit = 0;
     public CoverItemRegulator(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
         super(source, tier, side, factory);
@@ -68,16 +69,20 @@ public class CoverItemRegulator extends CoverBasicTransport {
                 })
                 .size(16).pos(106, 53));
         modularPanel.child(new TextWidget<>(() -> {
-            int fluidLimit = GTMuiUtils.getSyncedValue("slotLimit", Integer.class, syncManager.getModularSyncManager()).orElse(0);
-            if (fluidLimit == 0) return Text.str("N/A");
-            return Text.str(String.valueOf(fluidLimit)).color(4210752);
-        }).pos(69, 53).size(36, 18));
+            int itemLimit = GTMuiUtils.getSyncedValue("slotLimit", Integer.class, syncManager.getModularSyncManager()).orElse(0);
+            if (itemLimit == 0) return Text.str("N/A");
+            return Text.str(String.valueOf(itemLimit)).color(4210752);
+        }).pos(69, 53).textAlign(Alignment.CENTER).size(36, 18));
     }
 
     @Override
-    public ResourceLocation getModel(String type, Direction dir) {
-        if (type.equals("pipe")) return PIPE_COVER_MODEL;
-        return getBasicDepthModel();
+    protected int buttonY() {
+        return 16;
+    }
+
+    @Override
+    protected int filterY() {
+        return 34;
     }
 
     @Override
@@ -86,16 +91,20 @@ public class CoverItemRegulator extends CoverBasicTransport {
         if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
 
             GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
+            int shift = ev.data[0];
             int button = ev.data[1];
+            int amountToModify = shift == 1 ? 10 : 1;
             if (button == 2){
                 if (slotLimit > 0){
-                    slotLimit--;
+                    slotLimit -= amountToModify;
+                    if (slotLimit < 0) slotLimit = 0;
                     handler.getTile().setChanged();
                 }
             }
             if (button == 3){
                 if (slotLimit < 64){
-                    slotLimit++;
+                    slotLimit += amountToModify;
+                    if (slotLimit > 64) slotLimit = 64;
                     handler.getTile().setChanged();
                 }
             }
@@ -107,6 +116,7 @@ public class CoverItemRegulator extends CoverBasicTransport {
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (transferring) return false;
+        if (super.onTransfer(object, inputSide, simulate)) return true;
         if (object instanceof ItemStack stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide) {
             if (machine.itemHandler.isPresent()){
                 if (stack.isEmpty()) return true;
@@ -118,23 +128,18 @@ public class CoverItemRegulator extends CoverBasicTransport {
                     if (!simulate) {
                         machine.itemHandler.side(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
                     }
-                    stack.setCount(0);
-                } else if (inserted.getCount() < toInsert.getCount()) {
-                    if (!simulate) {
-                        machine.itemHandler.side(side).ifPresent(i -> Utils.insertItem(i, toInsert, false));
-                    }
-                    stack.setCount(stack.getCount() - inserted.getCount());
+                    stack.shrink(toInsert.getCount());
                 }
                 transferring = false;
-                return true;
+                return inserted.isEmpty();
             }
         }
         return false;
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel().isClientSide || !(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
+    public void onTickPre() {
+        if (!(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
@@ -183,14 +188,6 @@ public class CoverItemRegulator extends CoverBasicTransport {
             }
         }
         return ItemStack.EMPTY;
-    }
-
-    protected boolean canMove(Direction side){
-        if (redstoneMode != RedstoneMode.NO_WORK){
-            boolean powered = isPowered(side);
-            return (redstoneMode == RedstoneMode.INVERTED) != powered;
-        }
-        return true;
     }
 
     @Override

@@ -35,12 +35,12 @@ public class CentrifugeLoader {
         IMPURE_DUST.all().forEach(dust -> {
             Material aOreByProduct = !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);
             if (!aOreByProduct.has(DUST)) return;
-            CENTRIFUGE.RB().ii(of(IMPURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_impure_" + dust.getId(), 400, 2);
+            CENTRIFUGE.RB().ii(of(IMPURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_impure_" + dust.getId(), dust.getMass(), 2);
         });
         PURE_DUST.all().forEach(dust -> {
             Material aOreByProduct = dust.getByProducts().size() > 1 ? dust.getByProducts().get(1) : !dust.getByProducts().isEmpty() ? dust.getByProducts().get(0) : MaterialTags.MACERATE_INTO.getMapping(dust);
             if (!aOreByProduct.has(DUST)) return;
-            CENTRIFUGE.RB().ii(of(PURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_pure_" + dust.getId(),dust.getMass(), 2);
+            CENTRIFUGE.RB().ii(of(PURE_DUST.get(dust),1)).io(new ItemStack(DUST.get(dust), 1), TINY_DUST.get(aOreByProduct, 1)).add("dust_pure_" + dust.getId(), dust.getMass(), 2);
         });
         Map<Material, Integer> centMap = new HashMap<>();
         initCentLists(centMap);
@@ -86,7 +86,8 @@ public class CentrifugeLoader {
         //Cake Centrifuging
         /*CENTRIFUGING.RB().ii(of(DUST.get(ThoriumCake, 5))).io(DUST.get(ThoriumDioxide, 1), DUST.get(TrithoriumOctoxide, 4)).add("thorium_cake_centrifuging",400, 500);
         CENTRIFUGING.RB().ii(of(DUST.get(UraniumCake, 5))).io(DUST.get(UraniumDioxide, 1), DUST.get(TriuraniumOctoxide, 4)).add("uranium_cake_centrifuging",400, 500);*/
-        CENTRIFUGE.RB().ii(of(GTCoreTags.RUBBER_LOGS)).io(new ItemStack(GTCoreItems.StickyResin), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1), DUST.get(Wood, 1)).fo(Methane.getGas(60)).outputChances(0.5, 0.375, 0.25, 0.25).add("rubber_logs", 200, 20);
+        CENTRIFUGE.RB().ii(DUST.getMaterialIngredient(RubberWood, 8)).io(DUST.get(Wood, 2), DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball), DUST.get(Carbon, 1)).fo(Methane.getGas(60))
+                        .outputChances(1, 0.5, 0.375, 0.25).add("rubber_wood_pulp", 200, 20);
 
         CENTRIFUGE.RB().ii(of(GTCoreItems.StickyResin, 1)).io(DUST.get(RawRubber, 3), new ItemStack(GTCoreItems.Plantball)).fo(Glue.getLiquid(100)).outputChances(1.0, 0.1).add("sticky_resin", 300, 5);
         CENTRIFUGE.RB().ii(HONEYCOMB).io(DUST.get(GTCoreMaterials.Beeswax)).fo(Honey.getLiquid(100)).add("honeycomb", 128, 5);
@@ -175,9 +176,9 @@ public class CentrifugeLoader {
                 Materials.TungstenSteel, Materials.Brass, Materials.Nichrome, Materials.Electrum, Materials.Bronze, Materials.Wulfenite, Materials.RedAlloy, Materials.SterlingSilver, Materials.RoseGold, Materials.BatteryAlloy, Materials.SolderingAlloy, Materials.TricalciumPhosphate));
         List<Material> cent15 = new ArrayList<>(List.of(Materials.Kanthal, Materials.IndiumGalliumPhosphide, Materials.BlackSteel, Materials.RedGarnet, Materials.YellowGarnet, Materials.BismuthBronze, Materials.BlackBronze, Materials.VanadiumSteel, Materials.CdInAGAlloy, Materials.CobaltBrass,
                 Materials.Pitchblende, Redstone, Materials.HSSS));
-        List<Material> cent20 = new ArrayList<>(List.of(Lapis, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.Sheldonite, Materials.HSSG, Materials.Komatiite));
+        List<Material> cent20 = new ArrayList<>(List.of(Lapis, Materials.RedSteel, Materials.BlueSteel, Basalt, Materials.HSSE, Materials.HSSG, Materials.Komatiite));
         if (!GT5RConfig.FORCE_ROASTER.get()){
-            cent20.add(Tetrahedrite);
+            cent20.addAll(List.of(Tetrahedrite, Sheldonite));
             cent10.add(Stibnite);
         }
         cent5.forEach(m -> map.put(m, 5));

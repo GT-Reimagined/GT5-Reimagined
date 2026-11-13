@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ public interface IAutocrafter {
     void setRecipe(CraftingRecipe recipe);
 
     default void initRecipe(BlockEntityMachine<?> machine) {
-        ItemStack blueprint = machine.itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+        ItemStack blueprint = machine.itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
         if (blueprint.isEmpty() && getRecipe() != null){
             setRecipe(null);
         } else if (!blueprint.isEmpty()){

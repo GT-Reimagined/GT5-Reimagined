@@ -1,5 +1,15 @@
 package org.gtreimagined.gt5r.cover;
 
+import brachy.modularui.api.IPanelHandler;
+import brachy.modularui.api.drawable.Text;
+import brachy.modularui.screen.ModularPanel;
+import brachy.modularui.value.sync.BooleanSyncValue;
+import brachy.modularui.value.sync.FluidSlotSyncHandler;
+import brachy.modularui.value.sync.IntSyncValue;
+import brachy.modularui.value.sync.PanelSyncManager;
+import brachy.modularui.widgets.CycleButtonWidget;
+import brachy.modularui.widgets.slot.ItemSlot;
+import brachy.modularui.widgets.slot.ModularSlot;
 import com.google.common.collect.ImmutableMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,12 +30,19 @@ import org.gtreimagined.gtlib.blockentity.BlockEntityBase;
 import org.gtreimagined.gtlib.capability.ICoverHandler;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.IGuiHandler;
+import org.gtreimagined.gtlib.capability.fluid.FluidTanks;
 import org.gtreimagined.gtlib.cover.CoverFactory;
+import org.gtreimagined.gtlib.gui.SlotData;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.gui.event.GuiEvents;
 import org.gtreimagined.gtlib.gui.event.IGuiEvent;
+import org.gtreimagined.gtlib.gui.slot.AbstractSlot;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
+import org.gtreimagined.gtlib.mui.GTGuiTextures;
+import org.gtreimagined.gtlib.mui.drawable.GTDrawableStack;
+import org.gtreimagined.gtlib.mui.widgets.GTFluidSlot;
 import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,15 +69,55 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
         this.filter = new CoverItemFilter(source, null, side, GT5RCovers.COVER_ITEM_FILTER);
         filter.onCreate();
         Objects.requireNonNull(tier);
-        this.gui.getSlots().add(SlotType.STORAGE, 79, 53);
+        this.gui.getSlots().add(SlotTypes.STORAGE, filterX(), filterY());
         //addGuiCallback(t -> t.addButton(106, 53, ButtonOverlay.ARROW_LEFT, true));
     }
 
+    @Override
+    protected int filterX() {
+        return 79;
+    }
+
+    @Override
+    protected int filterY() {
+        return 53;
+    }
+
+    @Override
+    public ModularPanel<?> openSecondWindow(PanelSyncManager panelSyncManager, IPanelHandler syncHandler) {
+        ModularPanel<?> panel = new ModularPanel<>("filter_window")
+                .disablePanelsBelow(false)
+                .closeOnOutOfBoundsClick(false)
+                .draggable(true)
+                .size(54, 54);
+
+        panelSyncManager.syncValue("blacklist", new BooleanSyncValue(() -> filter.blacklist, b -> filter.blacklist = b).allowC2S());
+        panelSyncManager.syncValue("filter_mode", new IntSyncValue(() -> filter.filterMode, i -> filter.filterMode = (byte) i).allowC2S());
+        panel.child(new CycleButtonWidget().stateCount(2).pos(9, 9).size(16, 16).syncHandler("blacklist")
+                .stateOverlay(false, GTGuiTextures.WHITELIST)
+                .stateOverlay(true, GTGuiTextures.BLACKLIST)
+                .addTooltip(0, Text.lang("tooltip.gt5r.whitelist"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.blacklist")));
+        panel.child(new CycleButtonWidget().stateCount(3).pos(27, 9).size(16, 16).syncHandler("filter_mode")
+                .stateOverlay(0, GTGuiTextures.EXPORT_IMPORT)
+                .stateOverlay(1, GTGuiTextures.IMPORT)
+                .stateOverlay(2, GTGuiTextures.EXPORT)
+                .addTooltip(0, Text.lang("tooltip.gt5r.filter_mode.0"))
+                .addTooltip(1, Text.lang("tooltip.gt5r.filter_mode.1"))
+                .addTooltip(2, Text.lang("tooltip.gt5r.filter_mode.2"))
+        );
+        ModularSlot slot = new AbstractSlot<>(SlotTypes.DISPLAY_SETTABLE, filter, filter.getInventory(SlotTypes.DISPLAY_SETTABLE), 0);
+        ItemSlot itemSlot = ItemSlot.create(true);
+        itemSlot.pos(18, 27);
+        itemSlot.slot(slot);
+        panel.child(itemSlot);
+        return panel;
+    }
 
     @Override
     public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
         if (object instanceof ItemStack stack){
-            if (getInventory(SlotType.STORAGE).getStackInSlot(0).isEmpty()) return false;
+            if (getInventory(SlotTypes.STORAGE).getStackInSlot(0).isEmpty()) return false;
             return filter.onTransfer(stack, inputSide, simulate);
         }
         return super.onTransfer(object, inputSide, simulate);
@@ -80,8 +137,8 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel().isClientSide || !(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
+    public void onTickPre() {
+        if (!(handler.getTile() instanceof BlockEntityBase<?> base) || handler.getTile().getLevel().getGameTime() % (speeds.get(tier)) != 0)
             return;
         BlockState state = handler.getTile().getLevel().getBlockState(handler.getTile().getBlockPos().relative(side));
         //Drop into world.
@@ -132,8 +189,8 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
 
     @Override
     public void onMachineEvent(IGuiHandler tile, IMachineEvent event, int... data) {
-        if (tile == this && event == SlotType.STORAGE){
-            ItemStack slotStack = getInventory(SlotType.STORAGE).getStackInSlot(data[0]);
+        if (tile == this && event == SlotTypes.STORAGE){
+            ItemStack slotStack = getInventory(SlotTypes.STORAGE).getStackInSlot(data[0]);
             if (slotStack.isEmpty()){
                 filter.clearFilter();
             } else {
@@ -144,21 +201,9 @@ public class CoverConveyor extends CoverBasicTransport implements IFilterableHan
     }
 
     @Override
-    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
-        super.onGuiEvent(event, playerEntity);
-        if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
-
-            GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
-            if (ev.data[1] == 2){
-                filter.openGui(playerEntity, side);
-            }
-        }
-    }
-
-    @Override
     public void addInfoFromStack(ItemStack stack) {
         super.addInfoFromStack(stack);
-        onMachineEvent(this, SlotType.STORAGE, 0);
+        onMachineEvent(this, SlotTypes.STORAGE, 0);
     }
 
     @Override

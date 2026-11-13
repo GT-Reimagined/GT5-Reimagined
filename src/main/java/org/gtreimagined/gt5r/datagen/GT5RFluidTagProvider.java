@@ -1,14 +1,15 @@
 package org.gtreimagined.gt5r.datagen;
 
 import org.gtreimagined.gtlib.GTAPI;
+import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.datagen.providers.GTFluidTagProvider;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.TagUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.DyeColor;
 
-import static org.gtreimagined.gt5r.data.Materials.Oil;
-import static org.gtreimagined.gt5r.data.Materials.OilHeavy;
+import static org.gtreimagined.gt5r.data.Materials.*;
 
 public class GT5RFluidTagProvider extends GTFluidTagProvider {
     public GT5RFluidTagProvider(String providerDomain, String providerName, boolean replace) {
@@ -30,6 +31,9 @@ public class GT5RFluidTagProvider extends GTFluidTagProvider {
         if (GTAPI.isModLoaded("buildcraftenergy")){
             this.tag(TagUtils.getForgelikeFluidTag("oil")).add(new ResourceLocation("buildcraftenergy", "oil_heat_0")).add(new ResourceLocation("buildcraftenergy", "oil_heat_1")).add(new ResourceLocation("buildcraftenergy", "oil_heat_2"));
             this.tag(TagUtils.getForgelikeFluidTag("heavy_oil")).add(new ResourceLocation("buildcraftenergy", "oil_heavy_heat_0")).add(new ResourceLocation("buildcraftenergy", "oil_heavy_heat_1")).add(new ResourceLocation("buildcraftenergy", "oil_heavy_heat_2"));
+        }
+        if (GTAPI.isModLoaded(Ref.MOD_FR)){
+            this.tag(SeedOil.getFluidTag()).add(RegistryUtils.getFluidFromID(new ResourceLocation(Ref.MOD_FR, "seed_oil")));
         }
     }
 }

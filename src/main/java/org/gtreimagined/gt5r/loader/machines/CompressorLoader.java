@@ -51,7 +51,7 @@ public class CompressorLoader {
         }
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lapis, 1)).io(PLATE.get(Lapis)).add("lapis_plate", 300, 2);
         COMPRESSOR.RB().ii(DUST.getMaterialIngredient(Lazurite, 1)).io(PLATE.get(Lazurite)).add("lazurite", 300, 2);
-        COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4)).io(new ItemStack(Plantball)).add("plantball",300, 2);
+        COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SAPLINGS, 4).setIgnoreNbt()).io(new ItemStack(Plantball)).add("plantball",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(ItemTags.SMALL_FLOWERS, 8)).io(new ItemStack(Plantball)).add("plantball_1",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Tags.Items.CROPS, 8)).io(new ItemStack(Plantball)).add("plantball_2",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Tags.Items.SEEDS, 16)).io(new ItemStack(Plantball)).add("plantball_3",300, 2);
@@ -72,7 +72,6 @@ public class CompressorLoader {
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.MELON_SLICE, 8)).io(new ItemStack(Plantball)).add("plantball_20",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.SUGAR_CANE, 8)).io(new ItemStack(Plantball)).add("plantball_21",300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(CoalBall)).io(CompressedCoalBall).add("compressed_coal_ball", 300, 2);
-        COMPRESSOR.RB().ii(RecipeIngredient.of(CoalChunk)).io(GEM.get(Diamond)).add("diamond_from_coal", 300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.SNOW_BLOCK)).io(Items.ICE).add("ice", 300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.ICE, 1)).io(Items.PACKED_ICE).add("packed_ice", 300, 2);
         COMPRESSOR.RB().ii(RecipeIngredient.of(Items.PACKED_ICE, 2)).io(Items.BLUE_ICE).add("blue_ice", 300, 2);

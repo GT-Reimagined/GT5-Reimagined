@@ -41,6 +41,11 @@ public class CoverBasicRedstoneInput extends BaseCover {
     }
 
     @Override
+    public void onPlace() {
+        onBlockUpdate();
+    }
+
+    @Override
     public void onFirstTick() {
         onBlockUpdate();
     }

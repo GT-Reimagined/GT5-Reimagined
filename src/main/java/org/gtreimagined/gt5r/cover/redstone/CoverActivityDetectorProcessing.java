@@ -17,8 +17,8 @@ public class CoverActivityDetectorProcessing extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
-        if (source().getTile() instanceof BlockEntityMachine<?> machine && machine.has(MachineFlag.RECIPE) && machine.isServerSide()){
+    public void onTickPost() {
+        if (source().getTile() instanceof BlockEntityMachine<?> machine && machine.has(MachineFlag.RECIPE)){
             if (machine.getMachineState() == MachineState.ACTIVE){
                 setOutputRedstone(inverted ? 0 : 15);
             } else {

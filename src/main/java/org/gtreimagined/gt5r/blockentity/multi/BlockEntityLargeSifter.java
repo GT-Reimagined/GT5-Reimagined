@@ -28,13 +28,13 @@ public class BlockEntityLargeSifter extends BlockEntityMultiMachine<BlockEntityL
             protected boolean addSingleItemOutput() {
                 List<ITrackedHandler> outputs = itemHandler.map(i -> ((LargeSifterMultiMachineItemHandler)i).outputList).orElse(List.of());
                 if (outputs.isEmpty()) return false;
-                ItemStack[] stacks = activeRecipe.getOutputItems(false);
+                List<ItemStack> stacks = activeRecipe.getOutputItems(false);
                 if (itemHandler.map(i -> !i.canOutputsFit(stacks)).orElse(false)) return false;
                 int sucessful = 0;
                 boolean chance = activeRecipe.hasOutputChances();
                 for (int i = 0; i < outputs.size(); i++) {
-                    if (stacks.length == i) break;
-                    ItemStack stack = stacks[i];
+                    if (stacks.size() == i) break;
+                    ItemStack stack = stacks.get(i);
                     if (chance && Ref.RNG.nextInt(10000) >= activeRecipe.getOutputChances()[i]){
                         sucessful++;
                         continue;
@@ -42,7 +42,7 @@ public class BlockEntityLargeSifter extends BlockEntityMultiMachine<BlockEntityL
                     insertItem(outputs.get(i), stack, false);
                     sucessful++;
                 }
-                return sucessful == stacks.length;
+                return sucessful == stacks.size();
             }
         });
         this.itemHandler.set(() -> new LargeSifterMultiMachineItemHandler(this));

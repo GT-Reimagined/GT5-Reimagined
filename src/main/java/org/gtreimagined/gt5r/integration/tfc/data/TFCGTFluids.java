@@ -14,6 +14,7 @@ import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.fluid.GTClientFluidTypeExtension;
 import org.gtreimagined.gtlib.fluid.GTFluid;
 import org.gtreimagined.gtlib.material.Material;
+import org.gtreimagined.gtlib.material.MaterialColorChanger;
 import org.gtreimagined.gtlib.material.MaterialTags;
 
 import java.util.ArrayList;
@@ -48,8 +49,11 @@ public class TFCGTFluids {
     }
 
     private static IClientFluidTypeExtensions prepareFluidExtension(Material fluid) {
-        return GTClientFluidTypeExtension.builder().stillTexture(GTFluid.LIQUID_HOT_STILL_TEXTURE).flowingTexture(GTFluid.LIQUID_HOT_FLOW_TEXTURE)
-                .overlayTexture(GTFluid.OVERLAY_TEXTURE).tintColor(0xFF000000 | (fluid.getRGB() & 0x00FFFFFF)).build();
+        return GTClientFluidTypeExtension.create(b -> b.stillTexture(GTFluid.LIQUID_HOT_STILL_TEXTURE).flowingTexture(GTFluid.LIQUID_HOT_FLOW_TEXTURE)
+                .overlayTexture(GTFluid.OVERLAY_TEXTURE).tintColorGetter(() -> {
+                    int rgb = MaterialColorChanger.getMaterialRgb(fluid);
+                    return 0xFF000000 | (rgb & 0x00FFFFFF);
+                }));
     }
 
     private static BlockBehaviour.Properties prepareProperties() {

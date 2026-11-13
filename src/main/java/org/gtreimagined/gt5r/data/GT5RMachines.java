@@ -105,7 +105,7 @@ import org.gtreimagined.gtlib.blockentity.single.BlockEntityBatteryBuffer;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityDigitalTransformer;
 import org.gtreimagined.gtlib.blockentity.single.BlockEntityTransformer;
 import org.gtreimagined.gtlib.cover.ICover;
-import org.gtreimagined.gtlib.integration.xei.GTLibXEIPlugin;
+import org.gtreimagined.gtlib.integration.recipeviewer.GTLibRecipeViewerPlugin;
 import org.gtreimagined.gtlib.machine.BlockMachine;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.Tier;
@@ -124,8 +124,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static org.gtreimagined.gt5r.data.Materials.Netherite;
-import static org.gtreimagined.gt5r.data.Materials.Wood;
+import static org.gtreimagined.gt5r.data.Materials.*;
 import static org.gtreimagined.gtlib.Data.*;
 import static org.gtreimagined.gtlib.machine.MachineFlag.*;
 import static org.gtreimagined.gtlib.machine.Tier.*;
@@ -143,9 +142,12 @@ public class GT5RMachines {
     /**
      ** Steam Singleblock Machines
      **/
-    public static SteamMachine SOLID_FUEL_BOILER = new SteamMachine(GT5Reimagined.ID, "solid_fuel_boiler").setTiers(BRONZE, STEEL).setMap(RecipeMaps.SOLID_FUEL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).setBaseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityCoalBoiler::new).setNoOutputCover().addTooltipInfo("tooltip.gt5r.boiler");
+    public static SteamMachine SOLID_FUEL_BOILER = new SteamMachine(GT5Reimagined.ID, "solid_fuel_boiler").setTiers(BRONZE, STEEL).setMap(RecipeMaps.SOLID_FUEL_BOILERS).addFlags(GUI, STEAM, ITEM, FLUID, CELL).setBaseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityCoalBoiler::new).setNoOutputCover()
+            .addTooltipInfo((machine, stack, world, tooltip, flag) -> {
+                tooltip.add(Utils.translatable("tooltip.gt5r.solid_fuel_boiler." + machine.getTier().getId()));
+            });
     public static SteamMachine LAVA_BOILER = new SteamMachine(GT5Reimagined.ID, "lava_boiler").setTiers(STEEL).addFlags(GUI, STEAM, ITEM, FLUID).setBaseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntityLavaBoiler::new).setNoOutputCover().addTooltipInfo("tooltip.gt5r.boiler");
-    public static SteamMachine SOLAR_BOILER = new SteamMachine(GT5Reimagined.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setBaseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntitySolarBoiler::new).setAllowsFrontIO().setNoOutputCover().addTooltipInfo("tooltip.gt5r.boiler");
+    public static SteamMachine SOLAR_BOILER = new SteamMachine(GT5Reimagined.ID, "solar_boiler").setTiers(BRONZE).addFlags(GUI, STEAM, ITEM, FLUID).setBaseTexture(Textures.BRICKED_HANDLER).setTile(BlockEntitySolarBoiler::new).setAllowsFrontIO().setNoOutputCover().addTooltipInfo("tooltip.gt5r.solid_fuel_boiler.bronze");
     public static SteamMachine STEAM_ALLOY_SMELTER = new SteamMachine(GT5Reimagined.ID, "steam_alloy_smelter").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setBaseTexture(Textures.BRICKED_HANDLER).setSound(GT5RSounds.FURNACE,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
     public static SteamMachine STEAM_COMPRESSOR = new SteamMachine(GT5Reimagined.ID, "steam_compressor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
     public static SteamMachine STEAM_EXTRACTOR = new SteamMachine(GT5Reimagined.ID, "steam_extractor").setTiers(BRONZE, STEEL).addFlags(GUI, ITEM, FLUID).setSound(GT5RSounds.EXTRACTOR,  0.6f).setOutputCover(GTCoreCovers.COVER_STEAM_VENT);
@@ -197,6 +199,7 @@ public class GT5RMachines {
     public static BasicMachine FORGE_HAMMER = new BasicMachine(GT5Reimagined.ID, "forge_hammer").setMap(RecipeMaps.FORGE_HAMMER).addFlags(GUI, ITEM).setSound(SoundEvents.ANVIL_PLACE, 0.6f);
     public static BasicMachine FORMING_PRESS = new BasicMachine(GT5Reimagined.ID, "forming_press").setMap(RecipeMaps.FORMING_PRESS).addFlags(GUI, ITEM);
     public static BasicMachine FURNACE = new BasicMachine(GT5Reimagined.ID, "furnace").setMap(RecipeMaps.ELECTRIC_FURNACE).addFlags(GUI, ITEM).setSound(GT5RSounds.FURNACE,  0.6f);
+    public static BasicMachine LASER_CUTTER = new BasicMachine(GT5Reimagined.ID, "laser_cutter").setMap(RecipeMaps.LASER_CUTTER).addFlags(GUI, ITEM);
     public static BasicMachine LASER_ENGRAVER = new BasicMachine(GT5Reimagined.ID, "laser_engraver").setMap(RecipeMaps.LASER_ENGRAVER).addFlags(GUI, ITEM).setSound(GT5RSounds.MAGNETIZER,  0.6f);
     public static BasicMachine LATHE = new BasicMachine(GT5Reimagined.ID, "lathe").setMap(RecipeMaps.LATHE).addFlags(GUI, ITEM);
     public static BasicMachine MACERATOR = new BasicMachine(GT5Reimagined.ID, "macerator").setTiers(LV, MV, HV, EV).setMap(RecipeMaps.PULVERIZER).setTile(BlockEntityMacerator::new).addTooltipInfo("tooltip.macerator.0").setTierSpecificLang().setCustomModel().addFlags(GUI, ITEM).setSound(GT5RSounds.MACERATOR,  0.6f);
@@ -275,18 +278,18 @@ public class GT5RMachines {
         BRONZE_DRUM = GTCoreBlocks.createDrum(Materials.Bronze, 16000);
         INVAR_DRUM = GTCoreBlocks.createDrum(Materials.Invar, 32000);
         STEEL_DRUM = GTCoreBlocks.createDrum(Materials.Steel, 48000);
-        STAINLESS_DRUM = GTCoreBlocks.createDrum(Materials.StainlessSteel, 64000).acidProof();
+        STAINLESS_DRUM = GTCoreBlocks.createDrum(StainlessSteel, 64000).acidProof();
         if (GTAPI.isModLoaded("botania")) MANASTEEL_DRUM = GTCoreBlocks.createDrum(Materials.Manasteel, 64000).acidProof().magicProof();
         TITANIUM_DRUM = GTCoreBlocks.createDrum(Materials.Titanium, 128000);
         NETHERRITE_DRUM = GTCoreBlocks.createDrum(Materials.Netherite, 128000).acidProof().magicProof();
         TUNGSTENSTEEL_DRUM = GTCoreBlocks.createDrum(Materials.TungstenSteel, 256000).magicProof();
-        TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000).magicProof();
+        TUNGSTEN_DRUM = GTCoreBlocks.createDrum(Materials.Tungsten, 256000).acidProof().magicProof();
         if (GTAPI.isModLoaded("botania")) GAIA_DRUM = GTCoreBlocks.createDrum(Materials.GaiaSpirit, 1024000).acidProof().magicProof();
         ADAMANTIUM = GTCoreBlocks.createDrum(Materials.Adamantium, 4096000).acidProof().magicProof();
         WOOD_TANK = new MultiblockTankMachine(GT5Reimagined.ID, Wood, true, 432000, () -> GT5RBlocks.WOOD_WALL).maxHeat(350);
         STEEL_TANKS = createTankMachine(Materials.Steel, 3);
         INVAR_TANKS = createTankMachine(Materials.Invar, 2);
-        STAINLESS_STEEL_TANKS = createTankMachine(Materials.StainlessSteel, 4);
+        STAINLESS_STEEL_TANKS = createTankMachine(StainlessSteel, 4);
         TITANIUM_TANKS = createTankMachine(Materials.Titanium, 8);
         NETHERITE_TANKS = createTankMachine(Netherite, 8);
         TUNGSTENSTEEL_TANKS = createTankMachine(Materials.TungstenSteel, 16);
@@ -350,7 +353,7 @@ public class GT5RMachines {
     public static MultiMachine LARGE_HEAT_EXCHANGER = new MultiMachine(GT5Reimagined.ID, "large_heat_exchanger").setTiers(NONE).setMap(RecipeMaps.HEAT_EXCHANGER).addFlags(GUI, FLUID, ITEM, HEAT).addStructureTooltip(8).setTile(BlockEntityLargeHeatExchanger::new).setCustomModel().setTextureBlock(GT5RBlocks.TITANIUM_CASING);
     public static MultiMachine IMPLOSION_COMPRESSOR = new MultiMachine(GT5Reimagined.ID, "implosion_compressor").setTiers(HV).setMap(RecipeMaps.IMPLOSION_COMPRESSOR).addFlags(GUI, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityImplosionCompressor::new).setTextureBlock(GT5RBlocks.SOLID_STEEL_CASING);
     public static MultiMachine LARGE_AUTOCLAVE = new MultiMachine(GT5Reimagined.ID, "large_autoclave").setTiers(HV).setMap(RecipeMaps.AUTOCLAVE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityLargeAutoclave::new).setTextureBlock(GT5RBlocks.STAINLESS_STEEL_CASING);
-    public static MultiMachine LARGE_BATHING_VAT = new MultiMachine(GT5Reimagined.ID, "large_bathing_vat").setTiers(NONE).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).addStructureTooltip(8).setTile(BlockEntityLargeBath::new).setTextureBlock(GT5RBlocks.STAINLESS_STEEL_WALL).setBlockColorHandler((state, world, pos, machine, i) -> i == 0 ? Materials.StainlessSteel.getRGB() : -1).setItemColorHandler((stack, block, i) -> i == 0 ? Materials.StainlessSteel.getRGB() : -1);
+    public static MultiMachine LARGE_BATHING_VAT = new MultiMachine(GT5Reimagined.ID, "large_bathing_vat").setTiers(NONE).setMap(RecipeMaps.BATH).addFlags(GUI, ITEM, FLUID).addStructureTooltip(8).setTile(BlockEntityLargeBath::new).setTextureBlock(GT5RBlocks.STAINLESS_STEEL_WALL).setBlockColorHandler((state, world, pos, machine, i) -> i == 0 ? StainlessSteel.getRGB() : -1).setItemColorHandler((stack, block, i) -> i == 0 ? StainlessSteel.getRGB() : -1);
     public static MultiMachine LARGE_BOILER = new MultiMachine(GT5Reimagined.ID, "large_boiler").setTiers(LV, MV, HV, EV).addFlags(GUI, ITEM, FLUID).setMap(RecipeMaps.LARGE_BOILERS).setTile(BlockEntityLargeBoiler::new).setCustomModel().setTierSpecificLang().addStructureTooltip(13, (machine, stack, world, flag, i) -> {
         if (i == 1){
             double total = machine.getTier() == LV ? 32000 : machine.getTier() == MV ? 36000 : machine.getTier() == HV ? 41600 : 48000;
@@ -447,16 +450,21 @@ public class GT5RMachines {
                 new MultiblockTankMachine(GT5Reimagined.ID, material, true, 432 * multiplier * 1000, casing).gasProof(),
                 new MultiblockTankMachine(GT5Reimagined.ID, material, false, 2000 * multiplier * 1000, casing).gasProof()
         };
-        if (material == Materials.StainlessSteel || material == Netherite){
+        if (material == StainlessSteel || material == Netherite || material == Tungsten || material == Adamantium){
             multiblockTankMachines[0].acidProof();
             multiblockTankMachines[1].acidProof();
+        }
+        List<Material> magicMaterials = List.of(Manasteel, Netherite, TungstenSteel, Tungsten, GaiaSpirit, Adamantium);
+        if (magicMaterials.contains(material)){
+            multiblockTankMachines[0].magicProof();
+            multiblockTankMachines[1].magicProof();
         }
         return multiblockTankMachines;
     }
 
     public static void init() {
         GTAPI.registerJEICategoryWorkstation(RecipeMaps.ALLOY_SMELTER, MULTI_SMELTER, HV);
-        GTLibXEIPlugin.addWorkstations(new ResourceLocation("crafting"), l -> {
+        GTLibRecipeViewerPlugin.addWorkstations(new ResourceLocation("crafting"), l -> {
             l.addAll(AUTOCRAFTER.getTiers().stream().map(t -> AUTOCRAFTER.getItem(t)).toList());
             l.add(AUTOCRAFTER_ASSEMBLY_LINE.getItem(HV));
         });

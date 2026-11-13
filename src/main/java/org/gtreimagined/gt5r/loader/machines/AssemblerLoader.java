@@ -11,6 +11,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.Tags;
+import org.gtreimagined.gt5r.GT5RConfig;
 import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockCoil;
@@ -19,6 +20,7 @@ import org.gtreimagined.gt5r.data.GT5RBlocks;
 import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RMachines;
+import org.gtreimagined.gt5r.data.GT5RMaterialTags;
 import org.gtreimagined.gt5r.data.GT5RMaterialTypes;
 import org.gtreimagined.gt5r.data.ToolTypes;
 import org.gtreimagined.gt5r.integration.tfc.TFCRegistrar;
@@ -194,7 +196,9 @@ public class AssemblerLoader {
         addCoverRecipe(GT5RCovers.COVER_ITEM_DETECTOR.getItem(), of(PLATES_IRON_ALUMINIUM, 1), of(Items.LIGHT_WEIGHTED_PRESSURE_PLATE, 1));
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), DUST.getMaterialIngredient(Plastic, 2)).io(GT5RCovers.COVER_MUFFLER.getItem()).add("muffler", 1600, 2);
         ASSEMBLER.RB().ii(of(PLATES_IRON_ALUMINIUM, 1), DUST.getMaterialIngredient(Wood, 2)).io(GT5RCovers.COVER_MUFFLER.getItem()).add("muffler_1", 1600, 2);
-        ASSEMBLER.RB().ii(of(CarbonFibre, 2), SELECTOR_TAG_INGREDIENTS.get(2).get()).io(CarbonMesh).add("carbon_mesh", 800, 2);
+        if (!GT5RConfig.HARD_CARBON.get()) {
+            ASSEMBLER.RB().ii(of(CarbonFibre, 2), SELECTOR_TAG_INGREDIENTS.get(2).get()).io(CarbonMesh).add("carbon_mesh", 800, 2);
+        }
         ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0).get()).io(GT5RCovers.COVER_ITEM_FILTER.getItem()).add("item_filter", 1600, 32);
         ASSEMBLER.RB().ii(FINE_WIRE.getMaterialIngredient(Steel, 64), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(0).get()).io(GT5RCovers.COVER_ITEM_FILTER.getItem()).add("item_filter_cheap", 1600, 32);
         ASSEMBLER.RB().ii(of(CarbonFibre, 4), FOIL.getMaterialIngredient(Zinc, 16), SELECTOR_TAG_INGREDIENTS.get(1).get()).io(GT5RCovers.COVER_FLUID_FILTER.getItem()).add("fluid_filter", 1600, 32);
@@ -211,7 +215,7 @@ public class AssemblerLoader {
         ASSEMBLER.RB().ii(of(Items.PAPER, 3), SELECTOR_TAG_INGREDIENTS.get(3).get()).fi(Glue.getLiquid(1000)).io(Tape).add("tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Plastic, 3), SELECTOR_TAG_INGREDIENTS.get(3).get()).fi(Glue.getLiquid(1000)).io(DuctTape).add("duct_tape", 200, 16);
         ASSEMBLER.RB().ii(FOIL.getMaterialIngredient(Tungsten, 3), SELECTOR_TAG_INGREDIENTS.get(3).get()).fi(Glue.getLiquid(1000)).io(FALDuctTape).add("fal_duct_tape", 200, 16);
-        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Graphite, 8), FOIL.getMaterialIngredient(Silicon, 1)).fi(Glue.getLiquid(250)).io(SMALL_DUST.get(Graphene)).add("graphene_dust", 480, 240);
+        ASSEMBLER.RB().ii(DUST.getMaterialIngredient(Graphite, 8), FOIL.getMaterialIngredient(Plastic, 1)).fi(Glue.getLiquid(250)).io(SMALL_DUST.get(Graphene)).add("graphene_dust", 480, 240);
     }
 
     private static void hoppers(){
@@ -288,22 +292,22 @@ public class AssemblerLoader {
     }
 
     private static void turbines(){
-        MaterialTags.TOOLS.getAll().forEach((m,t) -> {
-            if (t.toolTypes().contains(ToolTypes.SMALL_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), LONG_ROD.getMaterialIngredient(Magnalium, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 2), GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.SMALL_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_small_turbine_rotor_from_broken", 160, 16);
+        GT5RMaterialTags.TURBINE_DATA.getAll().forEach((m, t) -> {
+            if (m.has(GT5RMaterialTypes.SMALL_TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), LONG_ROD.getMaterialIngredient(Magnalium, 1)).io(GT5RMaterialTypes.SMALL_TURBINE_ROTOR.get(m)).add(m.getId() + "_small_turbine_rotor", 320, 16);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 2), GT5RMaterialTypes.SMALL_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.SMALL_TURBINE_ROTOR.get(m)).add(m.getId() + "_small_turbine_rotor_from_broken", 160, 16);
             }
-            if (t.toolTypes().contains(ToolTypes.TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), LONG_ROD.getMaterialIngredient(Titanium, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor", 480, 64);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), GT5RMaterialTypes.BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_turbine_rotor_from_broken", 240, 64);
+            if (m.has(GT5RMaterialTypes.TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), LONG_ROD.getMaterialIngredient(Titanium, 1)).io(GT5RMaterialTypes.TURBINE_ROTOR.get(m)).add(m.getId() + "_turbine_rotor", 480, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 4), GT5RMaterialTypes.BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.TURBINE_ROTOR.get(m)).add(m.getId() + "_turbine_rotor_from_broken", 240, 64);
             }
-            if (t.toolTypes().contains(ToolTypes.LARGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), LONG_ROD.getMaterialIngredient(TungstenSteel, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor", 640, 64);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.LARGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
+            if (m.has(GT5RMaterialTypes.LARGE_TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 12), LONG_ROD.getMaterialIngredient(TungstenSteel, 1)).io(GT5RMaterialTypes.LARGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_large_turbine_rotor", 640, 64);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 6), GT5RMaterialTypes.LARGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.LARGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_large_turbine_rotor_from_broken", 320, 64);
             }
-            if (t.toolTypes().contains(ToolTypes.HUGE_TURBINE_ROTOR)){
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), LONG_ROD.getMaterialIngredient(Adamantium, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
-                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(ToolTypes.HUGE_TURBINE_ROTOR.getToolStack(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
+            if (m.has(GT5RMaterialTypes.HUGE_TURBINE_ROTOR)){
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 16), LONG_ROD.getMaterialIngredient(Adamantium, 1)).io(GT5RMaterialTypes.HUGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_huge_turbine_rotor", 960, 256);
+                ASSEMBLER.RB().ii(GT5RMaterialTypes.TURBINE_BLADE.getMaterialIngredient(m, 8), GT5RMaterialTypes.HUGE_BROKEN_TURBINE_ROTOR.getMaterialIngredient(m, 1)).io(GT5RMaterialTypes.HUGE_TURBINE_ROTOR.get(m)).add(m.getId() + "_huge_turbine_rotor_from_broken", 480, 256);
             }
         });
     }

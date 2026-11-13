@@ -14,10 +14,16 @@ import org.gtreimagined.gt5r.data.GT5RCovers;
 import org.gtreimagined.gt5r.data.GT5RItems;
 import org.gtreimagined.gt5r.data.GT5RRecipeTags;
 import org.gtreimagined.gt5r.data.RecipeMaps;
+import org.gtreimagined.gtcore.GTCore;
 import org.gtreimagined.gtcore.block.RedstoneWire;
 import org.gtreimagined.gtcore.data.GTCoreItems;
+import org.gtreimagined.gtcore.machine.ChestMachine;
+import org.gtreimagined.gtcore.machine.DrumMachine;
+import org.gtreimagined.gtcore.machine.HopperMachine;
+import org.gtreimagined.gtcore.machine.WorkbenchMachine;
 import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.data.GTTools;
+import org.gtreimagined.gtlib.item.ItemBasic;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTags;
@@ -143,6 +149,30 @@ public class RecyclingLoader {
                 addRecyclingRecipe(cableItem, of(c.getMaterial(), amount, Rubber, multiplier));
             });
         });
+        GTAPI.all(ItemBasic.class, GTCore.ID).stream().filter(i -> i.getId().contains("mold") || i.getId().contains("shape")).forEach(i -> {
+            addRecyclingRecipe(i, of(Steel, 4f));
+        });
+        GTAPI.all(DrumMachine.class).forEach(d -> {
+            addRecyclingRecipe(d.getItem(NONE), of(d.getMaterial(), 6f));
+        });
+        GTAPI.all(HopperMachine.class).forEach(d -> {
+            addRecyclingRecipe(d.getItem(NONE), of(d.getMaterial(), 5f, Wood, 8f));
+        });
+        GTAPI.all(ChestMachine.class).forEach(d -> {
+            addRecyclingRecipe(d.getItem(NONE), of(d.getMaterial(), 5f));
+        });
+        GTAPI.all(WorkbenchMachine.class).forEach(d -> {
+            boolean charge = d.getId().contains("charging");
+            Tier tier = charge ? HV : NONE;
+            ImmutableMap.Builder<Material, Float> m = ImmutableMap.builder();
+            m.put(d.getMaterial(), 6f + (charge ? 1f : 0f) + (d.getMaterial() == Gold ? 6f : 0f));
+            m.put(Wood, 12f);
+            if (charge){
+                if (d.getMaterial() != Gold) m.put(Gold, 6f);
+                m.put(Rubber, 6f);
+            }
+            addRecyclingRecipe(d.getItem(tier), m.build());
+        });
         addRecyclingRecipe(GTCoreItems.MotorLV, of(Copper, 2f, Tin, 1f, Steel, 1f, Iron, 0.5f));
         addRecyclingRecipe(GTCoreItems.MotorMV, of(Copper, 5f, Aluminium, 1f, Steel, 0.5f));
         addRecyclingRecipe(GTCoreItems.MotorHV, of(Copper, 8f, Gold, 1f, StainlessSteel, 1f, Steel, 0.5f));
@@ -255,7 +285,7 @@ public class RecyclingLoader {
     }
 
     private static void addRecyclingRecipe(ItemLike input, ImmutableMap<Material, Float> outputs){
-        addRecyclingRecipe(RecipeIngredient.of(input), outputs, RegistryUtils.getIdFromItem(input.asItem()).getPath());
+        addRecyclingRecipe(RecipeIngredient.of(input, 1).setIgnoreNbt(), outputs, RegistryUtils.getIdFromItem(input.asItem()).getPath());
     }
 
     private static void addRecyclingRecipe(Ingredient input, ImmutableMap<Material, Float> outputs, String id){

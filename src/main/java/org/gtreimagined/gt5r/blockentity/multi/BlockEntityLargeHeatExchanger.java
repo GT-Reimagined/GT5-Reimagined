@@ -10,6 +10,7 @@ import org.gtreimagined.gtlib.capability.machine.DefaultHeatHandler;
 import org.gtreimagined.gtlib.capability.machine.MachineFluidHandler;
 import org.gtreimagined.gtlib.capability.machine.MultiMachineFluidHandler;
 import org.gtreimagined.gtlib.gui.SlotType;
+import org.gtreimagined.gtlib.gui.SlotTypes;
 import org.gtreimagined.gtlib.machine.MachineState;
 import org.gtreimagined.gtlib.machine.event.IMachineEvent;
 import org.gtreimagined.gtlib.machine.event.MachineEvent;
@@ -84,7 +85,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
             @Override
             public boolean canOutput() {
-                return !tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids() || tile.fluidHandler.map(t -> t.getOutputTanks() != null && t.getOutputTanks().getTanks() > 1 && t.getOutputTanks().getTank(0).fill(Utils.ca(activeRecipe.getOutputFluids()[0].getAmount() * concurrentRecipes, activeRecipe.getOutputFluids()[0]), FluidAction.SIMULATE) == activeRecipe.getOutputFluids()[0].getAmount() * concurrentRecipes).orElse(false);
+                return !tile.fluidHandler.isPresent() || !activeRecipe.hasOutputFluids() || tile.fluidHandler.map(t -> t.getOutputTanks() != null && t.getOutputTanks().getTanks() > 1 && t.getOutputTanks().getTank(0).fill(Utils.ca(activeRecipe.getOutputFluids().get(0).getAmount() * concurrentRecipes, activeRecipe.getOutputFluids().get(0)), FluidAction.SIMULATE) == activeRecipe.getOutputFluids().get(0).getAmount() * concurrentRecipes).orElse(false);
             }
 
             @Override
@@ -97,7 +98,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (activeRecipe.hasOutputItems()) {
                         tile.itemHandler.ifPresent(h -> {
                             //Roll the chances here. If they don't fit add flat (no chances).
-                            ItemStack[] out = activeRecipe.getOutputItems(true);
+                            List<ItemStack> out = activeRecipe.getOutputItems(true);
                             if (h.canOutputsFit(out)) {
                                 h.addOutputs(out);
                             } else {
@@ -108,7 +109,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
                     if (activeRecipe.hasOutputFluids()) {
                         tile.fluidHandler.ifPresent(h -> {
                             if (h.getOutputTanks() == null) return;
-                            h.getOutputTanks().getTank(0).fill(activeRecipe.getOutputFluids()[0].copy(), FluidAction.EXECUTE);
+                            h.getOutputTanks().getTank(0).fill(activeRecipe.getOutputFluids().get(0).copy(), FluidAction.EXECUTE);
                         });
                     }
                     heatHandler.ifPresent(h -> h.insert((int) activeRecipe.getPower(), false));
@@ -151,7 +152,7 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
     @Override
     public void onFirstTickServer(Level level, BlockPos pos, BlockState state) {
         super.onFirstTickServer(level, pos, state);
-        onMachineEvent(SlotType.STORAGE);
+        onMachineEvent(SlotTypes.STORAGE);
     }
 
     @Override
@@ -206,14 +207,14 @@ public class BlockEntityLargeHeatExchanger extends BlockEntityMultiMachine<Block
 
     @Override
     public boolean test(SlotType<?> slotType, int slot, ItemStack stack) {
-        if (slotType == SlotType.STORAGE) return stack.getItem() instanceof ItemSelectorTag;
+        if (slotType == SlotTypes.STORAGE) return stack.getItem() instanceof ItemSelectorTag;
         return true;
     }
 
     @Override
     public void onMachineEvent(IMachineEvent event, Object... data) {
-        if (event == SlotType.STORAGE){
-            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotType.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
+        if (event == SlotTypes.STORAGE){
+            ItemStack circuit = itemHandler.map(i -> i.getHandler(SlotTypes.STORAGE).getStackInSlot(0)).orElse(ItemStack.EMPTY);
             if (circuit.getItem() instanceof ItemSelectorTag circuit1){
                 superheatedThreshold = 80000 - (circuit1.circuitId * 3000);
                 efficiency = 1000 - (circuit1.circuitId * 15);

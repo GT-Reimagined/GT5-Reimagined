@@ -28,8 +28,8 @@ public class CoverProgressSensor extends CoverBasicRedstoneOutput {
     }
 
     @Override
-    public void onUpdate() {
-        if (handler.getTile().getLevel() == null || handler.getTile().getLevel().isClientSide) return;
+    public void onTickPost() {
+        if (handler.getTile().getLevel() == null) return;
         MachineRecipeHandler<?> recipeHandler = handler.getTile() instanceof BlockEntityMachine<?> machine ? machine.recipeHandler.side(side).orElse(null) : null;
         if (recipeHandler != null){
             long scale = recipeHandler.getMaxProgress() > 0 ? recipeHandler.getMaxProgress() / 15L : 0;
