@@ -6,8 +6,8 @@ navigation:
 
 # Multiblocks
 
-A list GT5r Multiblocks.  These are machines that take multiple of individual blocks to complete the machine.
+A list GT5R Multiblocks.  These are machines that take multiple of individual blocks to complete the machine.
 
-## List of Multiblocks Machines
+## List of GT5R Multiblocks Machines
 
 <CategoryIndex category="multiblocks" />
