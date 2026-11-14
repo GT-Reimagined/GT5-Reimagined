@@ -1,6 +1,7 @@
 package org.gtreimagined.gt5r.loader.machines;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -23,6 +24,7 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes;
 import org.gtreimagined.gtlib.material.Material;
 import org.gtreimagined.gtlib.material.MaterialTypeBlock;
 import org.gtreimagined.gtlib.material.MaterialTypeItem;
+import org.gtreimagined.gtlib.pipe.PipeSize;
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient;
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient;
 import org.gtreimagined.gtlib.util.RegistryUtils;
@@ -63,6 +65,21 @@ public class BathLoader {
                 .fi(Netherite.getLiquid(L/4))
                 .io(GEM.get(NetherizedDiamond))
                 .add("netherized_diamond_recipe",144);
+        BATH.RB()
+                .ii(RecipeIngredient.of(ItemTags.PLANKS))
+                .fi(Creosote.getFluidIngredient(100))
+                .io(GTCoreBlocks.TREATED_PLANKS.asItem())
+                .add("treated_planks", 144);
+        BATH.RB()
+                .ii(RecipeIngredient.of(ItemTags.WOODEN_STAIRS))
+                .fi(Creosote.getFluidIngredient(75))
+                .io(GTCoreBlocks.TREATED_STAIRS.asItem())
+                .add("treated_stairs", 102);
+        BATH.RB()
+                .ii(RecipeIngredient.of(ItemTags.WOODEN_SLABS))
+                .fi(Creosote.getFluidIngredient(50))
+                .io(GTCoreBlocks.TREATED_STAIRS.asItem())
+                .add("treated_slabs", 72);
         BATH.RB().fi(FluidIngredient.of(GT5RTags.BLUE_DYE, L))
                 .ii(Items.PAPER).io(GTCoreItems.EmptyBlueprint).add("empty_blueprint", 16);
         BATH.RB().ii(DUST.getMaterialIngredient(Tungstate, 7)).fi(HydrochloricAcid.getLiquid(4000)).io(DUST.get(LithiumChloride, 4), DUST.get(TungsticAcid, 7)).add("tungstate", 512);

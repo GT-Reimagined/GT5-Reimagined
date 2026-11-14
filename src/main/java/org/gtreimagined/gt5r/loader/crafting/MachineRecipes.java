@@ -830,6 +830,7 @@ public class MachineRecipes {
             }
         });
         provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(Lead), 'W', ItemTags.PLANKS, 's', SAW.getTag()), "SCs", "WRW", "WRW");
+        provider.addItemRecipe(output, "item_barrels", GTCoreBlocks.TREATED_WOOD_ITEM_BARREL.getItem(NONE), of('S', SOFT_HAMMER.getTag(), 'C', Tags.Items.CHESTS_WOODEN, 'R', LONG_ROD.getMaterialTag(Iron), 'W', TagUtils.getForgelikeItemTag("treated_wood"), 's', SAW.getTag()), "SCs", "WRW", "WRW");
         provider.addItemRecipe(output, "plastic_storage_box", GTCoreBlocks.PLASTIC_STORAGE_BOX.getItem(NONE),
                 of('S', SCREW.getMaterialTag(Plastic), 'C', Tags.Items.CHESTS_WOODEN, 'P', PLATE.getMaterialTag(Plastic)), "SPS", "PCP", "SPS");
         if (GTCoreBlocks.IRONWOOD_ITEM_BARREL != null) {
