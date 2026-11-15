@@ -1,4 +1,4 @@
-modLoader="javafml"
+modLoader="kotlinforforge"
 license="LGPLv3"
 loaderVersion="${loader_version_range}"
 issueTrackerURL="https://github.com/GT-Reimagined/GT5-Reimagined/issues"

@@ -217,7 +217,7 @@ processResources {
     var replaceProperties = [
             minecraft_version_range  : project.minecraft_version_range,
             forge_version_range      : project.forge_version_range,
-            loader_version_range     : project.loader_version_range,
+            loader_version_range     : project.kff_version_range,
             gtlib_version_range      : project.gtlib_version_range,
             guideme_version_range    : project.guideme_version_range,
             version                  : project.mod_version,
