@@ -1051,7 +1051,8 @@ public class GT5RMaterialEvents {
          ** Periodic Elements
          */
         event.setMaterial(Materials.Beryllium).tool().toolDamage(2).toolSpeed(14).toolDurability(64).toolQuality(2).build();
-        event.setMaterial(Materials.Titanium).tool().toolDamage(3).toolSpeed(8).toolDurability(2560).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
+        event.setMaterial(Materials.Titanium).tool().toolDamage(3).toolSpeed(8).toolDurability(2560).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build()
+                .addArmor(new int[]{3, 8, 6, 3}, 2.0f, 0.0f, 80, of(Enchantments.ALL_DAMAGE_PROTECTION, 5));
         event.setMaterial(Materials.Chromium).tool().toolDamage(3).toolSpeed(11).toolDurability(256).toolQuality(3).build();
         event.setMaterial(Materials.Manganese).tool().toolDamage(2).toolSpeed(7).toolDurability(256).toolQuality(2).build();
         event.setMaterial(Materials.Cobalt).tool().toolDamage(3).toolSpeed(5).toolDurability(256).toolQuality(3).build();
@@ -1061,7 +1062,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Technetium).tool().toolDamage(1).toolSpeed(10).toolDurability(1280).toolQuality(1).build();
         event.setMaterial(Materials.Palladium).tool().toolDamage(2).toolSpeed(8).toolDurability(512).toolQuality(2).build().harvestLevel(2);
         event.setMaterial(Materials.Neodymium).tool().toolDamage(3).toolSpeed(6).toolDurability(512).toolQuality(3).build();
-        event.setMaterial(Materials.Tungsten).tool().toolDamage(3).toolSpeed(8).toolDurability(5120).toolQuality(3).build(); // TODO: stats like non burnable
+        event.setMaterial(Materials.Tungsten).tool().toolDamage(3).toolSpeed(8).toolDurability(5120).toolQuality(3).build() // TODO: stats like non burnable
+                .addArmor(new int[]{3, 8, 6, 3}, 3.0f, 0.3f, 160, of(Enchantments.ALL_DAMAGE_PROTECTION, 5));
         event.setMaterial(Materials.Osmium).tool().toolDamage(4).toolSpeed(16).toolDurability(1280).toolQuality(4).build();
         event.setMaterial(Materials.Iridium).tool().toolDamage(4).toolSpeed(6).toolDurability(5120).toolQuality(4).build();
         event.setMaterial(Materials.Platinum).tool().toolDamage(2).toolSpeed(15).toolDurability(64).toolQuality(2).toolEnchantments(of(Enchantments.SMITE, 5)).build().harvestLevel(2);
@@ -1072,7 +1074,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Materials.Vibranium).tool().toolDamage(15).toolSpeed(1000).toolDurability(512).toolQuality(15).toolEnchantments(of(Enchantments.BLOCK_FORTUNE, 5, Enchantments.MOB_LOOTING, 10)).build();
         event.setMaterial(Materials.Neutronium).tool().toolDamage(9).toolSpeed(24).toolDurability(655360).toolQuality(6).build();
         event.setMaterial(Materials.Naquadah).tool().toolDamage(4).toolSpeed(6).toolDurability(1280).toolQuality(4).build();
-        event.setMaterial(Adamantium).tool().toolDamage(5).toolSpeed(10).toolDurability(5120).toolQuality(5).toolEnchantments(of(Enchantments.SILK_TOUCH, 1, Enchantments.SHARPNESS, 7, Enchantments.POWER_ARROWS, 7)).build();
+        event.setMaterial(Adamantium).tool().toolDamage(5).toolSpeed(10).toolDurability(5120).toolQuality(5).toolEnchantments(of(Enchantments.SILK_TOUCH, 1, Enchantments.SHARPNESS, 7, Enchantments.POWER_ARROWS, 7)).build()
+                .addArmor(new int[]{5, 10, 10, 5}, 5.0f, 0.5f, 160, of(Enchantments.ALL_DAMAGE_PROTECTION, 10));
 
         /**
          **  Metals
@@ -1116,7 +1119,8 @@ public class GT5RMaterialEvents {
         event.setMaterial(Trinitanium).tool().toolDamage(4).toolQuality(4).toolSpeed(16).toolDurability(5120).toolEnchantments(of(Enchantments.SHARPNESS, 7, Enchantments.POWER_ARROWS, 7)).build();
         event.setMaterial(Materials.TritaniumAlloy).tool().toolDamage(5).toolSpeed(12).toolDurability(2560).toolQuality(5).build();
         event.setMaterial(Materials.TungstenCarbide).tool().toolDamage(4).toolSpeed(10).toolDurability(5120).toolQuality(4).build();
-        event.setMaterial(Materials.TungstenSteel).tool(Materials.TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build();
+        event.setMaterial(Materials.TungstenSteel).tool(Materials.TungstenCarbide).toolEnchantments(of(Enchantments.SHARPNESS, 4)).build()
+                .addArmor(new int[]{3, 8, 6, 3}, 4.0f, 0.1f, 160, of(Enchantments.ALL_DAMAGE_PROTECTION, 5));
         event.setMaterial(Materials.VanadiumSteel).tool().toolDamage(3).toolSpeed(7).toolDurability(512).toolQuality(3).toolEnchantments(of(Enchantments.SHARPNESS, 3)).build();
         event.setMaterial(Materials.WroughtIron).tool(Iron).toolDurability(384).build()
                 .addArmor(new int[]{2, 6, 5, 2}, 1.0F, 0.0F, 17, of(Enchantments.ALL_DAMAGE_PROTECTION, 1));
