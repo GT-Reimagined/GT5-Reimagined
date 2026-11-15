@@ -290,7 +290,7 @@ public class GT5Reimagined extends GTMod {
         loader.accept("arc_furnace", ArcFurnaceLoader::init);
         loader.accept("assembler", AssemblerLoader::init);
         loader.accept("autoclave", AutoclaveLoader::init);
-        loader.accept("bath", BathLoader::init);
+        loader.accept("bath", BathLoader::initBath);
         loader.accept("bender", BenderLoader::init);
         loader.accept("canner", CannerLoader::init);
         loader.accept("centrifuge", CentrifugeLoader::init);
