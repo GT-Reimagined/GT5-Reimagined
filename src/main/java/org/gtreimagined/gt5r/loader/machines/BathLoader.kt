@@ -1,4 +1,3 @@
-@file:JvmName("BathLoader")
 package org.gtreimagined.gt5r.loader.machines
 
 import net.minecraft.resources.ResourceLocation
@@ -205,7 +204,7 @@ fun initBath() {
     })
 }
 
-fun mercurybathing() {
+private fun mercurybathing() {
     GT5RMaterialTags.BATH_MERCURY.all.forEach { (main, side) ->
         RecipeMaps.BATH.RB()
             .ii(RecipeIngredient.of(CRUSHED_ORE.get(main), 1))
@@ -220,7 +219,7 @@ fun mercurybathing() {
     }
 }
 
-fun persulfatebathing() {
+private fun persulfatebathing() {
     GT5RMaterialTags.BATH_PERSULFATE.all.forEach { (main, side) ->
         RecipeMaps.BATH.RB()
             .ii(RecipeIngredient.of(CRUSHED_ORE.get(main), 1))
