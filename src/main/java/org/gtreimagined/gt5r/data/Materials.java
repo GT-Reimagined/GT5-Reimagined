@@ -722,6 +722,7 @@ public class Materials {
     public static Material Sugar = GTCoreMaterials.Sugar;
     public static Material Bone = GTCoreMaterials.Bone;
     public static Material Wood = GTLibMaterials.Wood;
+    public static Material TreatedWood = GTCoreMaterials.TreatedWood;
     public static Material Blaze = GTCoreMaterials.Blaze;
     public static Material Flint = GTCoreMaterials.Flint;
     public static Material Charcoal = GTCoreMaterials.Charcoal;

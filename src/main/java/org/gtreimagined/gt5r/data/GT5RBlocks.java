@@ -269,6 +269,7 @@ public class GT5RBlocks {
     public static final Wire<?> WIRE_NAQUADAH_ALLOY = GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.NaquadahAlloy, 8, Tier.ZPM).amps(2));
     public static final Wire<?> WIRE_DURANIUM = GTAPI.register(Wire.class,new Wire<>(GT5Reimagined.ID, Materials.Duranium, 16, Tier.ZPM).amps(1));
     public static final FluidPipe<?> FLUID_PIPE_WOOD = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Wood, 350, false).caps(1).pressures(getPressures(150)));
+    public static final FluidPipe<?> FLUID_PIPE_TREATED_WOOD = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, TreatedWood, 350, false).caps(1).pressures(getPressures(225)));
     public static final FluidPipe<?> FLUID_PIPE_COPPER = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Copper, 1696, true).caps(1).pressures(getPressures(300)));
     public static final FluidPipe<?> FLUID_PIPE_BRONZE = GTAPI.register(FluidPipe.class,new FluidPipe<>(GT5Reimagined.ID, Materials.Bronze, 1696, true).caps(1).pressures(getPressures(450)));
     // it's not in gt6, not sure whether to keep it or not

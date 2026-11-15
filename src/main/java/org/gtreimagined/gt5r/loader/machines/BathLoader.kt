@@ -30,6 +30,7 @@ import org.gtreimagined.gtlib.data.GTMaterialTypes.TINY_DUST
 import org.gtreimagined.gtlib.material.Material
 import org.gtreimagined.gtlib.material.MaterialTypeBlock
 import org.gtreimagined.gtlib.material.MaterialTypeItem
+import org.gtreimagined.gtlib.pipe.PipeSize
 import org.gtreimagined.gtlib.recipe.ingredient.FluidIngredient
 import org.gtreimagined.gtlib.recipe.ingredient.RecipeIngredient
 import org.gtreimagined.gtlib.util.RegistryUtils
@@ -77,6 +78,24 @@ fun initBath() {
         .fi(Materials.Creosote.getFluidIngredient(50))
         .io(GTCoreBlocks.TREATED_STAIRS.asItem())
         .add("treated_slabs", 72)
+    PipeSize.entries.forEach { size ->
+        if (size == PipeSize.VTINY) return@forEach
+        val amount = when(size){
+            PipeSize.VTINY -> 0
+            PipeSize.TINY -> 50
+            PipeSize.SMALL -> 100
+            PipeSize.NORMAL -> 300
+            PipeSize.LARGE -> 600
+            PipeSize.HUGE -> 1200
+            PipeSize.QUADRUPLE -> 1200
+            PipeSize.NONUPLE -> 900
+        }
+        RecipeMaps.BATH.RB()
+            .ii(GT5RBlocks.FLUID_PIPE_WOOD.getBlock(size))
+            .fi(Materials.Creosote.getFluidIngredient(amount))
+            .io(ItemStack(GT5RBlocks.FLUID_PIPE_TREATED_WOOD.getBlock(size)))
+            .add("${size.id}_treated_wood_fluid_pipe", 72 * (amount / 50L))
+    }
     RecipeMaps.BATH.RB().fi(FluidIngredient.of(GT5RTags.BLUE_DYE, Ref.L))
         .ii(Items.PAPER).io(GTCoreItems.EmptyBlueprint).add("empty_blueprint", 16)
     RecipeMaps.BATH.RB().ii(DUST.getMaterialIngredient(Materials.Tungstate, 7))
