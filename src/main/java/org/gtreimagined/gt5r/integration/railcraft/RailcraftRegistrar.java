@@ -6,11 +6,12 @@ import org.gtreimagined.gtlib.GTAPI;
 import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import thedarkcolour.kotlinforforge.forge.ForgeKt;
 
 public class RailcraftRegistrar extends GTMod {
     public RailcraftRegistrar(){
         if (isEnabled()){
-            FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(RailcraftRecipes::initRecipes));
+            ForgeKt.getMOD_BUS().<GTCraftingEvent>addListener(e -> e.addLoader(RailcraftRecipes::initRecipes));
         }
     }
     @Override

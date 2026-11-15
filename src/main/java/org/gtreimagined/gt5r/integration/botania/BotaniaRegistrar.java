@@ -26,6 +26,7 @@ import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import thedarkcolour.kotlinforforge.forge.ForgeKt;
 import vazkii.botania.common.block.block_entity.PetalApothecaryBlockEntity;
 
 import static org.gtreimagined.gt5r.data.Materials.*;
@@ -34,7 +35,7 @@ import static org.gtreimagined.gtlib.data.GTMaterialTypes.*;
 public class BotaniaRegistrar extends GTMod {
     public BotaniaRegistrar(){
         if (isEnabled()){
-            FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(BotaniaRecipes::init));
+            ForgeKt.getMOD_BUS().<GTCraftingEvent>addListener(e -> e.addLoader(BotaniaRecipes::init));
             MinecraftForge.EVENT_BUS.addGenericListener(BlockEntity.class, this::onAttachCaps);
         }
     }

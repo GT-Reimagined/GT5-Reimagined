@@ -62,6 +62,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import thedarkcolour.kotlinforforge.forge.ForgeKt;
 
 import java.util.function.BiConsumer;
 
@@ -76,7 +77,7 @@ public class TFCRegistrar extends GTMod {
     public TFCRegistrar(){
         super();
         if (isEnabled()) {
-            FMLJavaModLoadingContext.get().getModEventBus().register(this);
+            ForgeKt.getMOD_BUS().register(this);
             MinecraftForge.EVENT_BUS.addListener(this::registerRecipeLoaders);
             GTLibDynamics.clientProvider(GT5Reimagined.ID, () -> new TFCLangProvider(GT5Reimagined.ID, "TFC en_us Lang", "en_us"));
         }

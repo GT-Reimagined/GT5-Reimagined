@@ -34,6 +34,7 @@ import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
 import org.gtreimagined.gtlib.util.TagUtils;
 import org.gtreimagined.gtlib.worldgen.IGTWorldgenFunction;
+import thedarkcolour.kotlinforforge.forge.ForgeKt;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -43,7 +44,7 @@ import static org.gtreimagined.gt5r.data.Materials.*;
 public class IERegistrar extends GTMod implements IGTWorldgenFunction {
     public IERegistrar(){
         if (isEnabled()){
-            FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(this::init));
+            ForgeKt.getMOD_BUS().<GTCraftingEvent>addListener(e -> e.addLoader(this::init));
             MinecraftForge.EVENT_BUS.addListener(this::initMachineRecipes);
         }
     }

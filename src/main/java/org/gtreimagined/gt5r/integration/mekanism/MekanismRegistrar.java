@@ -13,6 +13,7 @@ import org.gtreimagined.gtlib.datagen.GTLibDynamics;
 import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
 import org.gtreimagined.gtlib.util.RegistryUtils;
+import thedarkcolour.kotlinforforge.forge.ForgeKt;
 
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class MekanismRegistrar extends GTMod {
     public MekanismRegistrar() {
         super();
         if (isEnabled()){
-            FMLJavaModLoadingContext.get().getModEventBus().register(this);
+            ForgeKt.getMOD_BUS().register(this);
         }
     }
     @Override

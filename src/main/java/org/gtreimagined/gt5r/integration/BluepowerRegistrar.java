@@ -9,13 +9,14 @@ import org.gtreimagined.gtlib.GTMod;
 import org.gtreimagined.gtlib.datagen.providers.GTRecipeProvider;
 import org.gtreimagined.gtlib.event.GTCraftingEvent;
 import org.gtreimagined.gtlib.registration.RegistrationEvent;
+import thedarkcolour.kotlinforforge.forge.ForgeKt;
 
 import java.util.function.Consumer;
 
 public class BluepowerRegistrar extends GTMod {
     public BluepowerRegistrar(){
         if (isEnabled()){
-            FMLJavaModLoadingContext.get().getModEventBus().<GTCraftingEvent>addListener(e -> e.addLoader(this::initRecipes));
+            ForgeKt.getMOD_BUS().<GTCraftingEvent>addListener(e -> e.addLoader(this::initRecipes));
         }
     }
     @Override
