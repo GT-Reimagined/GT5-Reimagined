@@ -1,0 +1,133 @@
+{
+  "loader": "gt5r:bathing_pot",
+	"format_version": "1.9.0",
+	"credit": "Made with Blockbench",
+	"textures": {
+		"bottom": "gtcore:block/machine/base/item_storage/bottom",
+		"side_overlay": "gtcore:block/machine/overlay/item_storage/side",
+		"side": "gtcore:block/machine/base/item_storage/side",
+		"nei": "gtcore:block/characters/nei",
+		"particle": "gtcore:block/machine/base/item_storage/bottom"
+	},
+	"elements": [
+		{
+			"name": "overlay",
+			"from": [0, 0, 0],
+			"to": [16, 8, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 8], "texture": "#side_overlay", "tintindex": -1},
+				"east": {"uv": [0, 0, 16, 8], "texture": "#side_overlay", "tintindex": -1},
+				"south": {"uv": [0, 0, 16, 8], "texture": "#side_overlay", "tintindex": -1},
+				"west": {"uv": [0, 0, 16, 8], "texture": "#side_overlay", "tintindex": -1}
+			}
+		},
+		{
+			"name": "bottom",
+			"from": [0, 0, 0],
+			"to": [16, 2, 16],
+			"faces": {
+				"north": {"uv": [0, 6, 16, 8], "texture": "#side", "tintindex":  0},
+				"east": {"uv": [0, 6, 16, 8], "texture": "#side", "tintindex":  0},
+				"south": {"uv": [0, 6, 16, 8], "texture": "#side", "tintindex":  0},
+				"west": {"uv": [0, 6, 16, 8], "texture": "#side", "tintindex":  0},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#bottom", "tintindex":  0},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#bottom", "tintindex":  0}
+			}
+		},
+		{
+			"name": "north-side",
+			"from": [0, 2, 0],
+			"to": [16, 8, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#side", "tintindex":  0},
+				"east": {"uv": [14, 0, 16, 6], "texture": "#side", "tintindex":  0},
+				"south": {"uv": [0, 0, 16, 6], "texture": "#side", "tintindex":  0},
+				"west": {"uv": [0, 0, 2, 6], "texture": "#side", "tintindex":  0},
+				"up": {"uv": [0, 0, 16, 2], "texture": "#bottom", "tintindex":  0}
+			}
+		},
+		{
+			"name": "south-side",
+			"from": [0, 2, 14],
+			"to": [16, 8, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, 14]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 6], "texture": "#side", "tintindex":  0},
+				"east": {"uv": [0, 0, 2, 6], "texture": "#side", "tintindex":  0},
+				"south": {"uv": [0, 0, 16, 6], "texture": "#side", "tintindex":  0},
+				"west": {"uv": [14, 0, 16, 6], "texture": "#side", "tintindex":  0},
+				"up": {"uv": [0, 14, 16, 16], "texture": "#bottom", "tintindex":  0}
+			}
+		},
+		{
+			"name": "west-side",
+			"from": [0, 2, 2],
+			"to": [2, 8, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 2, 12]},
+			"faces": {
+				"east": {"uv": [2, 0, 14, 6], "texture": "#side", "tintindex":  0},
+				"west": {"uv": [2, 0, 14, 6], "texture": "#side", "tintindex":  0},
+				"up": {"uv": [0, 2, 2, 14], "texture": "#bottom", "tintindex":  0}
+			}
+		},
+		{
+			"name": "east-size",
+			"from": [14, 2, 2],
+			"to": [16, 8, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [14, 2, 12]},
+			"faces": {
+				"east": {"uv": [2, 0, 14, 6], "texture": "#side", "tintindex":  0},
+				"west": {"uv": [2, 0, 14, 6], "texture": "#side", "tintindex":  0},
+				"up": {"uv": [14, 2, 16, 14], "texture": "#bottom", "tintindex":  0}
+			}
+		},
+		{
+			"name": "nei",
+			"from": [0, 8.01, 0],
+			"to": [2, 8.01, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 8.01, 0]},
+			"faces": {
+				"up": {"uv": [0, 0, 2, 2], "texture": "#nei", "tintindex":  2}
+			}
+		},
+    {
+      "name": "fluid",
+      "from": [2, 7, 2],
+      "to": [14, 7, 14],
+      "rotation": {"angle": 0, "axis": "y", "origin": [2, 5, 2]},
+      "faces": {
+        "up": {"uv": [2, 2, 14, 14], "texture": "#missing", "tintindex": 1}
+      }
+    }
+	],
+  "inside": {
+    "textures": {
+      "dust": "gt5r:block/block_dust"
+    },
+    "elements": [
+      {
+        "name": "inside",
+        "from": [2, 7, 2],
+        "to": [14, 7, 14],
+        "rotation": {"angle": 0, "axis": "y", "origin": [2, 5, 2]},
+        "faces": {
+          "up": {"uv": [2, 2, 14, 14], "texture": "#dust", "tintindex": 1}
+        }
+      }
+    ]
+  },
+	"groups": [
+		0,
+		{
+			"name": "base",
+			"origin": [0, 2, 0],
+			"scope": 0,
+			"color": 0,
+			"children": [1, 2, 3, 4, 5]
+		},
+		6,
+		7
+	]
+}
