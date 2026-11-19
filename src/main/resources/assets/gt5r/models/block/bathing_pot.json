@@ -98,7 +98,7 @@
       "to": [14, 7, 14],
       "rotation": {"angle": 0, "axis": "y", "origin": [2, 5, 2]},
       "faces": {
-        "up": {"uv": [2, 2, 14, 14], "texture": "#missing", "tintindex": 1}
+        "up": {"uv": [2, 2, 14, 14], "texture": "#missing", "tintindex": 4}
       }
     }
 	],
