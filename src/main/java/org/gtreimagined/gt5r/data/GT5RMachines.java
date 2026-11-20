@@ -15,8 +15,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.Shapes;
 import org.gtreimagined.gt5r.GT5Reimagined;
+import org.gtreimagined.gt5r.block.BlockBathingPot;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
+import org.gtreimagined.gt5r.blockentity.single.BlockEntityBathingPot;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityMagicEnergyConverter;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamMacerator;
 import org.gtreimagined.gt5r.blockentity.single.miniportals.BlockEntityMiniEndPortal;
@@ -440,6 +442,7 @@ public class GT5RMachines {
     }).setItemColorHandler((stack, block, i) -> i == 0 ? 0x00FF00 : -1);
     @Nullable
     public static BasicMachine MINIATURE_JAMD_PORTAL = null;
+    public static BasicMachine BATHING_POT = new BasicMachine(GT5Reimagined.ID, "bathing_pot").removeFlags(EU, COVERABLE).setTiers(NONE).setBlock(BlockBathingPot::new).setTile(BlockEntityBathingPot::new);
     /**
      ** Creative Machines
      **/
