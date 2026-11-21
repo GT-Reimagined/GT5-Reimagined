@@ -442,7 +442,7 @@ public class GT5RMachines {
     }).setItemColorHandler((stack, block, i) -> i == 0 ? 0x00FF00 : -1);
     @Nullable
     public static BasicMachine MINIATURE_JAMD_PORTAL = null;
-    public static BasicMachine BATHING_POT = new BasicMachine(GT5Reimagined.ID, "bathing_pot").removeFlags(EU, COVERABLE).setTiers(NONE).setBlock(BlockBathingPot::new).setTile(BlockEntityBathingPot::new);
+    public static BasicMachine BATHING_POT = new BasicMachine(GT5Reimagined.ID, "bathing_pot").setTiers(NONE).removeFlags(EU, COVERABLE).setBlock(BlockBathingPot::new).setItemBlockClass(() -> BlockBathingPot.class).setTile(BlockEntityBathingPot::new);
     /**
      ** Creative Machines
      **/
