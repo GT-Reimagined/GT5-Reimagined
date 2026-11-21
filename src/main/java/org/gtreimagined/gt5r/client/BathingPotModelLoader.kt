@@ -16,7 +16,5 @@ object BathingPotModelLoader: GTModelLoader<BathingPotModel>(GT5RModelManager.LO
         return BathingPotModel(base, inside)
     }
 
-    @JvmStatic
-    fun init(){
-    }
+    fun init() {}
 }

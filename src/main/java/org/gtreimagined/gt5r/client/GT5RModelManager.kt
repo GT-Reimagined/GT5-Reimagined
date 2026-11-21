@@ -1,15 +1,18 @@
-package org.gtreimagined.gt5r.client;
+package org.gtreimagined.gt5r.client
 
-import net.minecraft.resources.ResourceLocation;
-import org.gtreimagined.gt5r.GT5Reimagined;
+import net.minecraft.resources.ResourceLocation
+import org.gtreimagined.gt5r.GT5Reimagined
+import org.gtreimagined.gt5r.client.ReactorModelLoader
 
-public class GT5RModelManager {
+object GT5RModelManager {
+    @JvmField
+    val LOADER_REACTOR: ResourceLocation = ResourceLocation(GT5Reimagined.ID, "reactor")
+    @JvmField
+    val LOADER_BATHING_POT: ResourceLocation = ResourceLocation(GT5Reimagined.ID, "bathing_pot")
 
-    public static final ResourceLocation LOADER_REACTOR = new ResourceLocation(GT5Reimagined.ID, "reactor");
-    public static final ResourceLocation LOADER_BATHING_POT = new ResourceLocation(GT5Reimagined.ID, "bathing_pot");
-
-    public static void init(){
-        new ReactorModelLoader(LOADER_REACTOR);
-        BathingPotModelLoader.init();
+    @JvmStatic
+    fun init() {
+        ReactorModelLoader.init()
+        BathingPotModelLoader.init()
     }
 }
