@@ -43,6 +43,7 @@ public class ClientHandler {
         GTAPI.all(BlockCasing.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         GTAPI.all(BlockColoredWall.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
         GTAPI.all(BlockBedrockFlower.class, t -> ModelUtils.setRenderLayer(t, RenderType.cutout()));
+        ModelUtils.setRenderLayer(GT5RMachines.BATHING_POT.getBlockState(Tier.NONE), RenderType.cutout());
         ModelUtils.setRenderLayer(GT5RBlocks.BRONZE_CAULDRON, RenderType.cutout());
         ModelUtils.setRenderLayer(GT5RBlocks.BRONZE_WATER_CAULDRON, RenderType.cutout());
         ModelUtils.setRenderLayer(GT5RMachines.NUCLEAR_REACTOR_CORE.getBlockState(Tier.NONE), RenderType.cutout());

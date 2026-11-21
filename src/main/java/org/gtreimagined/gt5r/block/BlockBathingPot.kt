@@ -10,6 +10,7 @@ import net.minecraft.world.level.block.SoundType
 import net.minecraft.world.level.block.state.BlockState
 import org.gtreimagined.gt5r.GT5Reimagined
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityBathingPot
+import org.gtreimagined.gtcore.data.GTCoreColors
 import org.gtreimagined.gtlib.datagen.providers.GTBlockStateProvider
 import org.gtreimagined.gtlib.datagen.providers.GTItemModelProvider
 import org.gtreimagined.gtlib.machine.BlockMachine
@@ -30,7 +31,7 @@ class BlockBathingPot(type: Machine<*>, tier: Tier): BlockMachine(type, tier,
 
     override fun getBlockColor(state: BlockState, world: BlockGetter?, pos: BlockPos?, i: Int): Int {
         return when(i){
-            0 -> 0x664f2f
+            0 -> GTCoreColors.ANY_WOOD
             1 -> {
                 if (world == null || pos == null) return -1
                 val be = world.getBlockEntity(pos)
@@ -49,7 +50,7 @@ class BlockBathingPot(type: Machine<*>, tier: Tier): BlockMachine(type, tier,
                     -1
                 }
             }
-            2 -> 0xffff00
+            2 -> GTCoreColors.NEI
             else -> -1
         }
     }
