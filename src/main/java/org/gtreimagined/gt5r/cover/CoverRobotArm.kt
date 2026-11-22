@@ -1,161 +1,149 @@
-package org.gtreimagined.gt5r.cover;
+package org.gtreimagined.gt5r.cover
 
-import brachy.modularui.api.drawable.Text;
-import brachy.modularui.drawable.ItemDrawable;
-import brachy.modularui.factory.SidedPosGuiData;
-import brachy.modularui.screen.ModularPanel;
-import brachy.modularui.screen.UISettings;
-import brachy.modularui.value.sync.EnumSyncValue;
-import brachy.modularui.value.sync.IntSyncValue;
-import brachy.modularui.value.sync.PanelSyncManager;
-import brachy.modularui.widgets.ButtonWidget;
-import brachy.modularui.widgets.CycleButtonWidget;
-import brachy.modularui.widgets.TextWidget;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.world.item.Items;
-import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.capability.ICoverHandler;
-import org.gtreimagined.gtlib.capability.machine.MachineItemHandler;
-import org.gtreimagined.gtlib.cover.CoverFactory;
-import org.gtreimagined.gtlib.gui.SlotType;
-import org.gtreimagined.gtlib.gui.SlotTypes;
-import org.gtreimagined.gtlib.gui.event.GuiEvents;
-import org.gtreimagined.gtlib.gui.event.IGuiEvent;
-import org.gtreimagined.gtlib.machine.Tier;
-import org.gtreimagined.gtlib.mui.GTGuiTextures;
-import org.gtreimagined.gtlib.mui.GTMuiUtils;
-import org.gtreimagined.gtlib.util.Utils;
-import net.minecraft.core.Direction;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import org.gtreimagined.gt5r.cover.base.CoverBasicTransport;
-import org.jetbrains.annotations.Nullable;
+import brachy.modularui.api.drawable.Text
+import brachy.modularui.factory.SidedPosGuiData
+import brachy.modularui.screen.ModularPanel
+import brachy.modularui.screen.UISettings
+import brachy.modularui.value.sync.IntSyncValue
+import brachy.modularui.value.sync.PanelSyncManager
+import brachy.modularui.widgets.ButtonWidget
+import net.minecraft.client.gui.screens.Screen
+import net.minecraft.core.Direction
+import net.minecraft.nbt.CompoundTag
+import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.ItemStack
+import org.gtreimagined.gtlib.blockentity.BlockEntityMachine
+import org.gtreimagined.gtlib.capability.ICoverHandler
+import org.gtreimagined.gtlib.capability.machine.MachineItemHandler
+import org.gtreimagined.gtlib.cover.CoverFactory
+import org.gtreimagined.gtlib.gui.SlotTypes
+import org.gtreimagined.gtlib.gui.event.GuiEvents
+import org.gtreimagined.gtlib.gui.event.IGuiEvent
+import org.gtreimagined.gtlib.machine.Tier
+import org.gtreimagined.gtlib.mui.GTMuiUtils
+import org.gtreimagined.gtlib.util.ca
+import org.gtreimagined.gtlib.util.literal
+import java.util.function.Consumer
+import java.util.function.IntSupplier
 
-public class CoverRobotArm extends CoverItemRegulator {
-    int slot = 0;
-    public CoverRobotArm(ICoverHandler<?> source, @Nullable Tier tier, Direction side, CoverFactory factory) {
-        super(source, tier, side, factory);
-    }
-
-    @Override
-    public void addWidgets(ModularPanel<?> modularPanel, SidedPosGuiData sidedPosGuiData, PanelSyncManager syncManager, UISettings uiSettings) {
-        super.addWidgets(modularPanel, sidedPosGuiData, syncManager, uiSettings);
-        syncManager.syncValue("slot", new IntSyncValue(() -> this.slot));
-        modularPanel.child(new ButtonWidget<>()
-                .overlay(Text.dynamic(() -> {
-                    int slot = GTMuiUtils.getSyncedValue("slot", Integer.class, syncManager.getModularSyncManager()).orElse(0);
-                    return Utils.literal("Slot: " + slot);
-                }))
-                .onMousePressed((context, mouseButton) -> {
-                    syncManager.callSyncedAction("extra_button_event", packet -> {
-                        packet.writeVarIntArray(new int[]{Screen.hasShiftDown() ? 1 : 0, 4});
-                    });
-                    return true;
+class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, factory: CoverFactory) : CoverItemRegulator(source, tier, side, factory) {
+    var slot: Int = 0
+    override fun addWidgets(modularPanel: ModularPanel<*>, sidedPosGuiData: SidedPosGuiData, syncManager: PanelSyncManager, uiSettings: UISettings) {
+        super.addWidgets(modularPanel, sidedPosGuiData, syncManager, uiSettings)
+        syncManager.syncValue("slot", IntSyncValue { this.slot })
+        modularPanel.child(
+            ButtonWidget()
+                .overlay(Text.dynamic {
+                    val slot =
+                        GTMuiUtils.getSyncedValue("slot", Int::class.java, syncManager.modularSyncManager)
+                            .orElse(0)
+                    literal("Slot: $slot")
                 })
-                .size(36, 12).pos(70, 69));
-    }
-
-    @Override
-    protected String getRenderId() {
-        return "conveyor";
-    }
-
-    @Override
-    public boolean onTransfer(Object object, boolean inputSide, boolean simulate) {
-        if (object instanceof ItemStack stack && !exportMode.isExport() && handler.getTile() instanceof BlockEntityMachine<?> machine && inputSide) {
-            if (machine.itemHandler.isPresent()){
-                if (stack.isEmpty()) return true;
-                if (slotLimit > 0 && stack.getCount() < slotLimit) return true;
-                ItemStack toInsert = slotLimit > 0 ? Utils.ca(slotLimit, stack) : stack.copy();
-                MachineItemHandler<?> itemHandler = machine.itemHandler.get();
-                if (itemHandler.getInputCount() > 0){
-                    ItemStack inserted = itemHandler.getInputHandler().insertItem(slot, toInsert, true);
-                    if (inserted.isEmpty()){
-                        if (!simulate) {
-                            itemHandler.getInputHandler().insertItem(slot, toInsert, false);
-                        }
-                        stack.setCount(0);
-                    } else if (inserted.getCount() < toInsert.getCount()) {
-                        if (!simulate) {
-                            itemHandler.getInputHandler().insertItem(slot, toInsert, false);
-                        }
-                        stack.setCount(toInsert.getCount() - inserted.getCount());
+                .onMousePressed { _, _ ->
+                    syncManager.callSyncedAction("extra_button_event") { packet ->
+                        packet.writeVarIntArray(intArrayOf(if (Screen.hasShiftDown()) 1 else 0, 4))
                     }
-                } else if (itemHandler.getHandler(SlotTypes.STORAGE).getSlots() > 0){
-                    ItemStack inserted = itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, true);
-                    if (inserted.isEmpty()){
+                    true
+                }
+                .size(36, 12).pos(70, 69)
+        )
+    }
+
+    override fun getRenderId(): String {
+        return "conveyor"
+    }
+
+    override fun onTransfer(stack: Any, inputSide: Boolean, simulate: Boolean): Boolean {
+        val machine = handler.tile
+        if (stack is ItemStack && !exportMode.isExport && machine is BlockEntityMachine<*> && inputSide) {
+            if (machine.itemHandler.isPresent) {
+                if (stack.isEmpty) return true
+                if (slotLimit > 0 && stack.count < slotLimit) return true
+                val toInsert = if (slotLimit > 0) ca(slotLimit, stack) else stack.copy()
+                val itemHandler: MachineItemHandler<*>? = machine.itemHandler.get()
+                if (itemHandler!!.inputCount > 0) {
+                    val inserted = itemHandler.inputHandler.insertItem(slot, toInsert, true)
+                    if (inserted.isEmpty) {
                         if (!simulate) {
-                            itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, false);
+                            itemHandler.inputHandler.insertItem(slot, toInsert, false)
                         }
-                        stack.setCount(0);
-                    } else if (inserted.getCount() < toInsert.getCount()) {
+                        stack.count = 0
+                    } else if (inserted.count < toInsert.count) {
                         if (!simulate) {
-                            itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, false);
+                            itemHandler.inputHandler.insertItem(slot, toInsert, false)
                         }
-                        stack.setCount(toInsert.getCount() - inserted.getCount());
+                        stack.count = toInsert.count - inserted.count
+                    }
+                } else if (itemHandler.getHandler(SlotTypes.STORAGE).slots > 0) {
+                    val inserted = itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, true)
+                    if (inserted.isEmpty) {
+                        if (!simulate) {
+                            itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, false)
+                        }
+                        stack.count = 0
+                    } else if (inserted.count < toInsert.count) {
+                        if (!simulate) {
+                            itemHandler.getHandler(SlotTypes.STORAGE).insertItem(slot, toInsert, false)
+                        }
+                        stack.count = toInsert.count - inserted.count
                     }
                 }
-                return true;
+                return true
             }
         }
-        return false;
+        return false
     }
 
-    @Override
-    public void onGuiEvent(IGuiEvent event, Player playerEntity) {
-        ImportExportMode previous = exportMode;
-        super.onGuiEvent(event, playerEntity);
-        if (event.getFactory() == GuiEvents.EXTRA_BUTTON){
-
-            GuiEvents.GuiEvent ev = (GuiEvents.GuiEvent) event;
-            int button = ev.data[1];
-            if (button == 1){
-                if (previous.isExport() != exportMode.isExport()){
-                    slot = 0;
-                    handler.getTile().setChanged();
+    override fun onGuiEvent(event: IGuiEvent, playerEntity: Player?) {
+        val previous = exportMode
+        super.onGuiEvent(event, playerEntity)
+        if (event.getFactory() === GuiEvents.EXTRA_BUTTON) {
+            val ev = event as GuiEvents.GuiEvent
+            var tile = handler.tile
+            val button = ev.data[1]
+            if (button == 1) {
+                if (previous.isExport != exportMode.isExport) {
+                    slot = 0
+                    tile.setChanged()
                 }
             }
-            if (button == 4){
-                if (handler.getTile() instanceof BlockEntityMachine<?> machine){
-                    machine.itemHandler.ifPresent(h -> {
-                        if (exportMode.isExport()){
-                            if (h.getOutputCount() > 0){
-                                slot++;
-                                if (slot >= h.getOutputCount()) slot = 0;
+            if (button == 4) {
+                if (tile is BlockEntityMachine<*>) {
+                    tile.itemHandler.ifPresent { h ->
+                        if (exportMode.isExport) {
+                            if (h.outputCount > 0) {
+                                slot++
+                                if (slot >= h.outputCount) slot = 0
                             } else {
-                                slot = 0;
+                                slot = 0
                             }
                         }
-                        if (!exportMode.isExport()){
-                            if (h.getInputCount() > 0){
-                                slot++;
-                                if (slot >= h.getInputCount()) slot = 0;
-                            } else if (h.getHandler(SlotTypes.STORAGE).getSlots() > 0){
-                                slot++;
-                                if (slot >= h.getHandler(SlotTypes.STORAGE).getSlots()) slot = 0;
-                            }else {
-                                slot = 0;
+                        if (!exportMode.isExport) {
+                            if (h.inputCount > 0) {
+                                slot++
+                                if (slot >= h.inputCount) slot = 0
+                            } else if (h.getHandler(SlotTypes.STORAGE).slots > 0) {
+                                slot++
+                                if (slot >= h.getHandler(SlotTypes.STORAGE).slots) slot = 0
+                            } else {
+                                slot = 0
                             }
                         }
-                        machine.setChanged();
-                    });
+                        tile.setChanged()
+                    }
                 }
             }
         }
     }
 
-    @Override
-    public void deserialize(CompoundTag nbt) {
-        super.deserialize(nbt);
-        slot = nbt.getInt("slot");
+    override fun deserialize(nbt: CompoundTag) {
+        super.deserialize(nbt)
+        slot = nbt.getInt("slot")
     }
 
-    @Override
-    public CompoundTag serialize() {
-        CompoundTag nbt =  super.serialize();
-        nbt.putInt("slot", slot);
-        return nbt;
+    override fun serialize(): CompoundTag {
+        val nbt = super.serialize()
+        nbt.putInt("slot", slot)
+        return nbt
     }
 }
