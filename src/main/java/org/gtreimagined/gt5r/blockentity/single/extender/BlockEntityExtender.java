@@ -13,6 +13,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
 import org.gtreimagined.gt5r.blockentity.single.bridge.BlockEntityBridge;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
+import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.data.GTTools;
 import org.gtreimagined.gtlib.machine.types.Machine;
 import org.gtreimagined.gtlib.tool.GTToolType;
@@ -20,7 +21,7 @@ import org.gtreimagined.gtlib.util.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class BlockEntityExtender extends BlockEntityMachine<BlockEntityExtender> {
+public abstract class BlockEntityExtender extends BlockEntityMachine<BlockEntityExtender> implements IExtendingBlockEntity {
     public BlockEntityExtender(Machine<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
     }
@@ -45,6 +46,11 @@ public abstract class BlockEntityExtender extends BlockEntityMachine<BlockEntity
             }
         }
         return super.onInteractServer(state, world, pos, player, hand, hit, type);
+    }
+
+    @Override
+    public BlockEntity getExtendedBlockEntity(Direction side) {
+        return side == getOutputFacing() ? getCachedBlockEntity(getSecondaryOutputFacing()) : getCachedBlockEntity(getOutputFacing());
     }
 
     private boolean isNotExtendingBlockEntity(BlockEntity entity) {

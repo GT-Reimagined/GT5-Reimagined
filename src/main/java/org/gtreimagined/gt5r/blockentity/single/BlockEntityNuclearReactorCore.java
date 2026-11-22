@@ -4,7 +4,6 @@ import lombok.Setter;
 import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityUniversalExtender;
 import org.gtreimagined.gtlib.Ref;
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine;
-import org.gtreimagined.gtlib.blockentity.IExtendingBlockEntity;
 import org.gtreimagined.gtlib.blockentity.IPostTickTile;
 import org.gtreimagined.gtlib.capability.IFilterableHandler;
 import org.gtreimagined.gtlib.capability.item.TrackedItemHandler;

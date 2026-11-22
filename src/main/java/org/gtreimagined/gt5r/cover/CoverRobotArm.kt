@@ -12,6 +12,8 @@ import net.minecraft.core.Direction
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.level.block.entity.BlockEntity
+import org.gtreimagined.gt5r.blockentity.single.extender.BlockEntityExtender
 import org.gtreimagined.gtlib.blockentity.BlockEntityMachine
 import org.gtreimagined.gtlib.capability.ICoverHandler
 import org.gtreimagined.gtlib.capability.machine.MachineItemHandler
@@ -23,8 +25,6 @@ import org.gtreimagined.gtlib.machine.Tier
 import org.gtreimagined.gtlib.mui.GTMuiUtils
 import org.gtreimagined.gtlib.util.ca
 import org.gtreimagined.gtlib.util.literal
-import java.util.function.Consumer
-import java.util.function.IntSupplier
 
 class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, factory: CoverFactory) : CoverItemRegulator(source, tier, side, factory) {
     var slot: Int = 0
@@ -109,6 +109,10 @@ class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, facto
             }
             if (button == 4) {
                 if (tile is BlockEntityMachine<*>) {
+                    if (tile is BlockEntityExtender) {
+                        val extended: BlockEntity? = tile.getExtendedBlockEntity(side)
+                        if (extended is BlockEntityMachine<*>) tile = extended
+                    }
                     tile.itemHandler.ifPresent { h ->
                         if (exportMode.isExport) {
                             if (h.outputCount > 0) {
