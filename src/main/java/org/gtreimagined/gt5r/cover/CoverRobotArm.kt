@@ -22,7 +22,7 @@ import org.gtreimagined.gtlib.gui.SlotTypes
 import org.gtreimagined.gtlib.gui.event.GuiEvents
 import org.gtreimagined.gtlib.gui.event.IGuiEvent
 import org.gtreimagined.gtlib.machine.Tier
-import org.gtreimagined.gtlib.mui.GTMuiUtils
+import org.gtreimagined.gtlib.mui.getSyncedValue
 import org.gtreimagined.gtlib.util.ca
 import org.gtreimagined.gtlib.util.literal
 
@@ -35,7 +35,7 @@ class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, facto
             ButtonWidget()
                 .overlay(Text.dynamic {
                     val slot =
-                        GTMuiUtils.getSyncedValue("slot", Int::class.java, syncManager.modularSyncManager)
+                        getSyncedValue<Int>("slot", syncManager.modularSyncManager)
                             .orElse(0)
                     literal("Slot: $slot")
                 })
