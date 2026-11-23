@@ -99,7 +99,6 @@ import org.gtreimagined.gt5r.loader.machines.DistilleryLoader
 import org.gtreimagined.gt5r.loader.machines.ElectrolyzerLoader
 import org.gtreimagined.gt5r.loader.machines.ElectromagneticSeparatorLoader
 import org.gtreimagined.gt5r.loader.machines.ExtractorLoader
-import org.gtreimagined.gt5r.loader.machines.ExtruderLoader
 import org.gtreimagined.gt5r.loader.machines.FermenterLoader
 import org.gtreimagined.gt5r.loader.machines.FluidCannerLoader
 import org.gtreimagined.gt5r.loader.machines.FluidHeaterLoader
