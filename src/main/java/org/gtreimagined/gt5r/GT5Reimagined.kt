@@ -131,6 +131,7 @@ import org.gtreimagined.gt5r.loader.machines.generator.Fuels
 import org.gtreimagined.gt5r.loader.machines.generator.LargeBoilerLoader
 import org.gtreimagined.gt5r.loader.machines.generator.SolidFuelBoilerLoader
 import org.gtreimagined.gt5r.loader.machines.initBath
+import org.gtreimagined.gt5r.loader.machines.initExtruder
 import org.gtreimagined.gt5r.loader.multi.BedrockDrillLoader
 import org.gtreimagined.gt5r.loader.multi.BlastFurnaceLoader
 import org.gtreimagined.gt5r.loader.multi.CokeOvenLoader
@@ -300,7 +301,7 @@ object GT5Reimagined : GTMod(){
         loader("electrolyzer", ElectrolyzerLoader::init)
         loader("electromagnetic_separator", ElectromagneticSeparatorLoader::init)
         loader("extractor", ExtractorLoader::init)
-        loader("extruder", ExtruderLoader::init)
+        loader("extruder", ::initExtruder)
         loader("fermenter", FermenterLoader::init)
         loader("fluid_canner", FluidCannerLoader::init)
         loader("fluid_heater", FluidHeaterLoader::init)
