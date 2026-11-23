@@ -37,6 +37,8 @@ fun initExtruder() {
     EXTRUDER.RB().ii(INGOT.getMaterialIngredient(Materials.Zirconium, 1), RecipeIngredient.of(GTCoreItems.CellShape, 1).setNoConsume()).io(GT5RItems.EmptyNuclearFuelRod).add("empty_nuclear_rod", 216, 96)
     EXTRUDER.RB().ii(DUST.getMaterialIngredient(GTCoreMaterials.Beeswax, 1), RecipeIngredient.of(GTCoreItems.BottleShape, 1).setNoConsume()).io(GTCoreItems.EmptyWaxPill).add("empty_wax_pill", 64, 16)
     EXTRUDER.RB().ii(DUST.getMaterialIngredient(Materials.Glass, 1), RecipeIngredient.of(GTCoreItems.BottleShape, 1).setNoConsume()).io(Items.GLASS_BOTTLE).add("glass_bottle", 64, 16)
+    EXTRUDER.RB().ii(DUST.getMaterialIngredient(Materials.Stone, 9), RecipeIngredient.of(GTCoreItems.BlockShape, 1).setNoConsume())
+        .io(Items.STONE).add("stone_from_stone_dust", 576, 128)
     GTMaterialTypes.RING.all().forEach { r ->
         if (r.has(INGOT)) {
             EXTRUDER.RB().ii(RecipeIngredient.of(INGOT.getMaterialTag(r), 1), RecipeIngredient.of(GTCoreItems.RingShape, 1).setNoConsume())
