@@ -57,8 +57,20 @@ class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, facto
     }
 
     override fun onTransfer(stack: Any, inputSide: Boolean, simulate: Boolean): Boolean {
-        val machine = handler.tile
-        if (stack is ItemStack && !exportMode.isExport && machine is BlockEntityMachine<*> && inputSide) {
+        val tile = handler.tile
+        var machine: BlockEntityMachine<*>? = null
+        if (tile is BlockEntityMachine<*>) machine = tile
+        var isExport = exportMode.isExport
+        if (tile is BlockEntityExtender) {
+            val extended: BlockEntity? = tile.getExtendedBlockEntity(side)
+            if (extended is BlockEntityMachine<*>) machine = extended
+        }
+        if (tile is BlockEntityPipe<*> && !exportMode.isExport){
+            val neighbor = tile.getCachedBlockEntity(side)
+            if (neighbor is BlockEntityMachine<*>) machine = neighbor
+            isExport = true
+        }
+        if (stack is ItemStack && !isExport && machine is BlockEntityMachine<*> && inputSide) {
             if (machine.itemHandler.isPresent) {
                 if (stack.isEmpty) return true
                 if (slotLimit > 0 && stack.count < slotLimit) return true
@@ -113,6 +125,7 @@ class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, facto
             if (button == 4) {
                 var machine: BlockEntityMachine<*>? = null
                 if (tile is BlockEntityMachine<*>) machine = tile
+                var isExport = exportMode.isExport
                 if (tile is BlockEntityExtender) {
                     val extended: BlockEntity? = tile.getExtendedBlockEntity(side)
                     if (extended is BlockEntityMachine<*>) machine = extended
@@ -120,17 +133,17 @@ class CoverRobotArm(source: ICoverHandler<*>, tier: Tier, side: Direction, facto
                 if (tile is BlockEntityPipe<*> && !exportMode.isExport){
                     val neighbor = tile.getCachedBlockEntity(side)
                     if (neighbor is BlockEntityMachine<*>) machine = neighbor
+                    isExport = true
                 }
                 machine?.itemHandler?.ifPresent { h ->
-                    if (exportMode.isExport) {
+                    if (isExport) {
                         if (h.outputCount > 0) {
                             slot++
                             if (slot >= h.outputCount) slot = 0
                         } else {
                             slot = 0
                         }
-                    }
-                    if (!exportMode.isExport) {
+                    } else {
                         if (h.inputCount > 0) {
                             slot++
                             if (slot >= h.inputCount) slot = 0
