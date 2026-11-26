@@ -2,6 +2,7 @@ package org.gtreimagined.gt5r.data;
 
 import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.StructureUtility;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityDesulfurizer;
 import org.gtreimagined.gtlib.machine.Tier;
 import org.gtreimagined.gtlib.structure.FakeTileElement;
 import org.gtreimagined.gtlib.util.TagUtils;
@@ -145,6 +146,14 @@ public class Structures {
 
 
 
+        DESULFURIZER.setStructure(BlockEntityDesulfurizer.class, b -> b.part("main")
+                .of("H~H", "HHH", "HHH").of("CCC", "CPC", "CCC").of(1).of(1).of(1).of(1).of("OOO", "OOO", "OOO").build()
+                .at('H', GT5RBlocks.STAINLESS_STEEL_CASING, INPUT_HATCH, ENERGY_HATCH)
+                .atElement('C', ofChain(StructureUtility.<BlockEntityDesulfurizer>ofBlock(GT5RBlocks.STAINLESS_STEEL_CASING)))
+                .at('P', GT5RBlocks.STEEL_PIPE_CASING)
+                .at('O', GT5RBlocks.STAINLESS_STEEL_CASING, OUTPUT_HATCH, ENERGY_HATCH)
+                .build()
+        );
         DISTLLATION_TOWER.setStructure(BlockEntityDistillationTower.class, b -> b.part("bottom")
                 .of("H~H", "HHH", "HHH").build()
                 .part("layer").of("CCC", "C-C", "CCC").offsetFunction((i, int3) -> new int3(int3.getX(), int3.getY() + i, int3.getZ())).max(11).build()

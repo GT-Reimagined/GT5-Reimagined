@@ -18,6 +18,7 @@ import org.gtreimagined.gt5r.GT5Reimagined;
 import org.gtreimagined.gt5r.block.BlockBathingPot;
 import org.gtreimagined.gt5r.block.BlockCasing;
 import org.gtreimagined.gt5r.block.BlockColoredWall;
+import org.gtreimagined.gt5r.blockentity.multi.BlockEntityDesulfurizer;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityBathingPot;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntityMagicEnergyConverter;
 import org.gtreimagined.gt5r.blockentity.single.BlockEntitySteamMacerator;
@@ -349,6 +350,7 @@ public class GT5RMachines {
     public static MultiMachine BLAST_FURNACE = new MultiMachine(GT5Reimagined.ID, "electric_blast_furnace").setTiers(LV).setMap(RecipeMaps.E_BLAST_FURNACE).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(11).setTile(BlockEntityElectricBlastFurnace::new).setCustomModel().setTextureBlock(GT5RBlocks.HEAT_PROOF_CASING);
     public static MultiMachine COMBUSTION_ENGINE = new MultiMachine(GT5Reimagined.ID, "combustion_engine").setTiers(EV).setMap(RecipeMaps.COMBUSTION_FUELS).addFlags(GUI, FLUID, EU, GENERATOR).addStructureTooltip(13).setTile(BlockEntityCombustionEngine::new).setCustomModel().setTextureBlock(GT5RBlocks.TITANIUM_CASING);
     public static MultiMachine CRACKING_UNIT = new MultiMachine(GT5Reimagined.ID, "cracking_unit").setTiers(HV).setMap(RecipeMaps.CRACKING).addFlags(GUI, ITEM, FLUID, EU).addStructureTooltip(9).setTile(BlockEntityOilCrackingUnit::new).setCustomModel().setTextureBlock(GT5RBlocks.STAINLESS_STEEL_CASING);
+    public static MultiMachine DESULFURIZER = new MultiMachine(GT5Reimagined.ID, "desulfurizer").setTiers(HV).setMap(RecipeMaps.DESULFURIZER).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityDesulfurizer::new).setCustomModel().setTextureBlock(GT5RBlocks.STAINLESS_STEEL_CASING);
     public static MultiMachine DISTLLATION_TOWER = new MultiMachine(GT5Reimagined.ID, "distillation_tower").setTiers(HV).setMap(RecipeMaps.DISTILLATION).addStructureTooltip(8).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityDistillationTower::new).setCustomModel().setTextureBlock(GT5RBlocks.STAINLESS_STEEL_CASING);
     public static MultiMachine CRYO_DISTLLATION_TOWER = new MultiMachine(GT5Reimagined.ID, "cryo_distillation_tower").setTiers(HV).setMap(RecipeMaps.CRYO_DISTILLATION).addStructureTooltip(8).addFlags(GUI, ITEM, FLUID, EU).setTile(BlockEntityDistillationTower::new).setCustomModel().setTextureBlock(GT5RBlocks.FROST_PROOF_CASING);
     public static MultiMachine FUSION_REACTOR = new MultiMachine(GT5Reimagined.ID, "fusion_control_computer").setTiers(LUV).setMap(RecipeMaps.FUSION).addFlags(GUI, FLUID, ITEM, EU).addStructureTooltip(7).setTile(BlockEntityFusionReactor::new).setTextureBlock(GT5RBlocks.FUSION_CASING);

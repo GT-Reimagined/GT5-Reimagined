@@ -81,6 +81,8 @@ public class RecipeMaps {
             new RecipeMap<>(GT5Reimagined.ID, "cracking", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY);
     public static RecipeMap<RecipeBuilder> ASSEMBLY_LINE =
             new RecipeMap<>(GT5Reimagined.ID, "assembly_line", new RecipeBuilder()).guiProperties(Guis.MULTI_DISPLAY_FLUID);
+    public static RecipeMap<RecipeBuilder> DESULFURIZER =
+            new RecipeMap<>(GT5Reimagined.ID, "desulfurizer", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> DEHYDRATOR =
             new RecipeMap<>(GT5Reimagined.ID, "dehydrator", new RecipeBuilder());
     public static RecipeMap<RecipeBuilder> DISASSEMBLER =
