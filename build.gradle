@@ -171,6 +171,7 @@ dependencies {
             break
         case "jei":
             modLocalRuntime("mezz.jei:jei-${project.minecraft_version}-forge:${project.jei_version}")
+            modLocalRuntime("net.mezzdev.config:mezz_config-${project.minecraft_version}-forge:${project.mezz_config_version}")
             break
     }
 
